@@ -13,7 +13,6 @@ public class UnitOrder : Order
     unitRadius = GetComponent<NavMeshAgent>().radius * ((transform.lossyScale.x + transform.lossyScale.z) / 2f);
   }
 
-  // Update is called once per frame
   void Update()
   {
     if (followTarget)
@@ -33,8 +32,17 @@ public class UnitOrder : Order
     {
       GetComponent<NavMeshAgent>().stoppingDistance = 0f;
       followTarget = false;
+    }
 
-      return;
+    NavMeshAgent agent = GetComponent<NavMeshAgent>();
+
+    // Check if we have arrived yet
+    if (!agent.pathPending && agent.remainingDistance <= agent.stoppingDistance && (!agent.hasPath || agent.velocity.sqrMagnitude == 0f))
+    {
+      if (GetComponent<Attack>() != null)
+      {
+        GetComponent<Attack>().SetDetectingEnemies(true);
+      }
     }
   }
 
@@ -44,12 +52,22 @@ public class UnitOrder : Order
 
     GetComponent<NavMeshAgent>().stoppingDistance = 0f;
     GetComponent<NavMeshAgent>().destination = destinationOrder;
+
+    if (GetComponent<Attack>() != null)
+    {
+      GetComponent<Attack>().SetDetectingEnemies(false);
+    }
   }
 
   public override void IssueOrderTarget(GameObject targetUnit)
   {
     followTarget = true;
     destinationUnit = targetUnit;
+
+    if (GetComponent<Attack>() != null)
+    {
+      GetComponent<Attack>().SetDetectingEnemies(false);
+    }
 
     SetTargetAsDestination();
   }
@@ -85,11 +103,5 @@ public class UnitOrder : Order
     stoppingDistance *= 1.5f;
 
     agent.stoppingDistance = stoppingDistance;
-
-    // Check if we have arrived yet
-    //if (!agent.pathPending && agent.remainingDistance <= agent.stoppingDistance && (!agent.hasPath || agent.velocity.sqrMagnitude == 0f))
-    //{
-    //  return;
-    //}
   }
 } // class end

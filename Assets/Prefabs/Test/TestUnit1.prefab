@@ -17,6 +17,8 @@ GameObject:
   - component: {fileID: -4344032711224995398}
   - component: {fileID: 1361761537150511401}
   - component: {fileID: 8050787078840904803}
+  - component: {fileID: 8117268998613147774}
+  - component: {fileID: -7882642707261165639}
   m_Layer: 0
   m_Name: TestUnit1
   m_TagString: Untagged
@@ -135,7 +137,6 @@ MonoBehaviour:
   selectionCirclePrefab: {fileID: 1632290516313722442, guid: 15304a1a55ebbd9408fc3756b9638ab0,
     type: 3}
   scaleModifier: 0.9
-  selectFaction: 0
 --- !u!114 &-4344032711224995398
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -174,3 +175,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01893e5819900094ca554f1f09d650cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8117268998613147774
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5794094148499116390}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0192c10ce0d2589489e608135047b104, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+--- !u!114 &-7882642707261165639
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5794094148499116390}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdcce6eefadf3814dbaf768a4697cd9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackDamage: 2
+  attacksPerSecond: 1.2
+  attackRange: 0.8
+  enemyDetectRange: 5
