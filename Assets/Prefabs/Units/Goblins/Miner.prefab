@@ -46,7 +46,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5820753501731554686}
-  m_Mesh: {fileID: 8212647606947288923, guid: d11e6155fe728af49a1398ba3d96275f, type: 3}
+  m_Mesh: {fileID: 8212647606947288923, guid: 654bbb64dc837f941a6665ea4ec718fd, type: 3}
 --- !u!23 &5258988807121809826
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -101,10 +101,10 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5820753501731554686}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
+  m_IsTrigger: 1
+  m_Enabled: 0
   serializedVersion: 2
-  m_Radius: 2.3
+  m_Radius: 3.5
   m_Center: {x: -0.00503695, y: 0, z: -0.00503695}
 --- !u!208 &59565600938928824
 NavMeshObstacle:
@@ -116,11 +116,11 @@ NavMeshObstacle:
   m_Enabled: 1
   serializedVersion: 3
   m_Shape: 0
-  m_Extents: {x: 2.2, y: 2.65, z: 2.2}
+  m_Extents: {x: 3.7, y: 3.8, z: 3.7}
   m_MoveThreshold: 0.1
-  m_Carve: 0
+  m_Carve: 1
   m_CarveOnlyStationary: 1
-  m_Center: {x: -0.0050000004, y: 0.46, z: -0.0050000004}
+  m_Center: {x: -0.0050000004, y: 0.1, z: -0.0050000004}
   m_TimeToStationary: 0.5
 --- !u!114 &2925301031265551285
 MonoBehaviour:
