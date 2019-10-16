@@ -11,7 +11,7 @@ public class CameraControls : MonoBehaviour
 
   /*********************** Zoom variables ***********************/
   private const float MIN_ZOOM = 10f;
-  private const float MAX_ZOOM = 35f;
+  private const float MAX_ZOOM = 30f;
   private readonly float zoomSpeed = 1f;
 
   // Update is called once per frame

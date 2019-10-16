@@ -48,8 +48,6 @@ namespace BezierSolution
 
 			Vector3 targetPos = spline.MoveAlongSpline( ref progress, targetSpeed * Time.deltaTime );
 
-      Debug.Log(progress);
-
 			cachedTransform.position = targetPos;
 			//cachedTransform.position = Vector3.Lerp( cachedTransform.position, targetPos, movementLerpModifier * Time.deltaTime );
 

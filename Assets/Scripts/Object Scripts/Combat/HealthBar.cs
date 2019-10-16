@@ -43,7 +43,11 @@ public class HealthBar : MonoBehaviour
   {
     transform.position = playerCamera.WorldToScreenPoint(health.transform.position + Vector3.up * heightOffset);
 
-    transform.localScale = originalScale * playerCamera.GetComponent<CameraControls>().GetZoomPerc() * objectSize;
+    Vector3 objectScale = originalScale * playerCamera.GetComponent<CameraControls>().GetZoomPerc();
+    objectScale.x *= objectSize;
+    objectScale.y *= objectSize * 0.5f;
+
+    transform.localScale = objectScale;
   }
 
   private void OnDestroy()
