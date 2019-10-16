@@ -31,6 +31,7 @@ public class Selectable : MonoBehaviour
 
   private GameObject selectionCircle;
   private GameObject targetCircle;
+  private float selectionCircleRadius;
 
   private const float ALPHA_OPAQUE = 1f;
   private const float ALPHA_TRANSLUCENT = 0.3f;
@@ -42,30 +43,22 @@ public class Selectable : MonoBehaviour
   private void Awake()
   {
     selectionCircle = Instantiate(selectionCirclePrefab);
-    selectionCircle.transform.SetParent(transform, false);
+    selectionCircle.transform.SetParent(gameObject.transform, false);
     selectionCircle.name = "SelectionCircle";
     targetCircle = Instantiate(selectionCirclePrefab);
-    targetCircle.transform.SetParent(transform, false);
+    targetCircle.transform.SetParent(gameObject.transform, false);
     targetCircle.name = "TargetCircle";
 
     // Get size of game object
-    Vector3 parentSize = GetComponent<Collider>().bounds.size;
-
-    // Get the largest of the 2d coordinates
-    float largestAxis = Mathf.Max(parentSize.x, parentSize.z);
-
-    Vector3 circleScale = new Vector3(largestAxis * 2f, largestAxis * 2f);
-
-    // Set the size of the circles equal to the bounds size and then scale with modifier
-    selectionCircle.transform.localScale *= 2f * scaleModifier;
-    targetCircle.transform.localScale *= 2f * scaleModifier * TARGET_CIRCLE_MODIFIER;
-
-    // Circles have to hover very slightly off the ground
-    Vector3 circlePos = transform.position;
-    circlePos.y = 0.01f;
-    selectionCircle.transform.position = circlePos;
-    targetCircle.transform.position = circlePos;
-
+    Vector3 parentSize = gameObject.GetComponent<Collider>().bounds.size;
+    // Get radius average of x and z and then scale
+    selectionCircleRadius = ((parentSize.x + parentSize.z) / 4) * scaleModifier;
+    // Set the projector size
+    selectionCircle.GetComponent<Projector>().orthographicSize = selectionCircleRadius;
+    targetCircle.GetComponent<Projector>().orthographicSize = selectionCircleRadius * TARGET_CIRCLE_MODIFIER;
+    // Set how far down the projector projects based on the y position of the object
+    selectionCircle.GetComponent<Projector>().farClipPlane += parentSize.y;
+    targetCircle.GetComponent<Projector>().farClipPlane += parentSize.y;
     // Default invisible
     ChangeTransparency(selectionCircle, ALPHA_TRANSPARENT);
     ChangeTransparency(targetCircle, ALPHA_TRANSPARENT);
@@ -91,18 +84,19 @@ public class Selectable : MonoBehaviour
     }
   }
 
+  public float GetSelectionCircleSize()
+  {
+    return selectionCircleRadius;
+  }
+
   private void ChangeTransparency(GameObject circle, float alpha)
   {
-    MaterialPropertyBlock block = new MaterialPropertyBlock();
-    circle.GetComponent<Renderer>().GetPropertyBlock(block);
+    Material circleMaterial = new Material(circle.GetComponent<Projector>().material);
 
-    Color newColor = block.GetColor("_BaseColor");
-
+    Color newColor = circleMaterial.color;
     newColor.a = alpha;
-
-    block.SetColor("_BaseColor", newColor);
-
-    circle.GetComponent<Renderer>().SetPropertyBlock(block);
+    circleMaterial.color = newColor;
+    circle.GetComponent<Projector>().material = circleMaterial;
   }
 
   public void CheckFactionColour(Faction.FACTIONS playerFaction)
@@ -146,10 +140,9 @@ public class Selectable : MonoBehaviour
 
   private void ChangeColour(GameObject circle, SELECT_FACTION newFactionColour)
   {
-    MaterialPropertyBlock block = new MaterialPropertyBlock();
-    circle.GetComponent<Renderer>().GetPropertyBlock(block);
+    Material circleMaterial = new Material(circle.GetComponent<Projector>().material);
 
-    Color newColor = block.GetColor("_BaseColor");
+    Color newColor = circleMaterial.color;
 
     switch (newFactionColour)
     {
@@ -175,9 +168,8 @@ public class Selectable : MonoBehaviour
         break;
     }
 
-    block.SetColor("_BaseColor", newColor);
-
-    circle.GetComponent<Renderer>().SetPropertyBlock(block);
+    circleMaterial.color = newColor;
+    circle.GetComponent<Projector>().material = circleMaterial;
   }
 
   
@@ -201,10 +193,8 @@ public class Selectable : MonoBehaviour
     while (true)
     {
       ++blinkLoops;
-      MaterialPropertyBlock block = new MaterialPropertyBlock();
-      targetCircle.GetComponent<Renderer>().GetPropertyBlock(block);
 
-      switch (block.GetColor("_BaseColor").a.ToString())
+      switch (targetCircle.GetComponent<Projector>().material.color.a.ToString())
       {
         case "0":
           ChangeTransparency(targetCircle, 1);

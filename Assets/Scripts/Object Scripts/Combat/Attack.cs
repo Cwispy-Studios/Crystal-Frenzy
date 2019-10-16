@@ -13,7 +13,7 @@ public class Attack : MonoBehaviour
 
   private bool detectingEnemies = true;
 
-  private GameObject attackTarget = null;
+  private GameObject attackTarget;
   //private GameObject detectedTarget;
 
   private void Awake()
