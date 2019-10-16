@@ -7,11 +7,11 @@ public class CameraControls : MonoBehaviour
   private readonly float moveDetectPerc = 0.01f;
 
   /*********************** Pan variables ***********************/
-  private readonly float panSpeed = 75f;
+  private readonly float panSpeed = 85f;
 
   /*********************** Zoom variables ***********************/
   private const float MIN_ZOOM = 10f;
-  private const float MAX_ZOOM = 35f;
+  private const float MAX_ZOOM = 25f;
   private readonly float zoomSpeed = 1f;
 
   // Update is called once per frame
