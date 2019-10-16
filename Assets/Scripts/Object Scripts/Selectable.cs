@@ -49,22 +49,22 @@ public class Selectable : MonoBehaviour
     targetCircle.name = "TargetCircle";
 
     // Get size of game object
-    Vector3 parentSize = gameObject.GetComponent<Collider>().bounds.size;
+    Vector3 parentSize = GetComponent<Collider>().bounds.size;
 
     // Get the largest of the 2d coordinates
     float largestAxis = Mathf.Max(parentSize.x, parentSize.z);
 
-    Vector3 circleScale = new Vector3(largestAxis, largestAxis);
+    Vector3 circleScale = new Vector3(largestAxis * 2f, largestAxis * 2f);
 
     // Set the size of the circles equal to the bounds size and then scale with modifier
-    selectionCircle.transform.localScale = circleScale * scaleModifier;
-    targetCircle.transform.localScale = circleScale * scaleModifier * TARGET_CIRCLE_MODIFIER;
+    selectionCircle.transform.localScale *= 2f * scaleModifier;
+    targetCircle.transform.localScale *= 2f * scaleModifier * TARGET_CIRCLE_MODIFIER;
 
     // Circles have to hover very slightly off the ground
     Vector3 circlePos = transform.position;
     circlePos.y = 0.01f;
-    selectionCircle.transform.localPosition = circlePos;
-    targetCircle.transform.localPosition = circlePos;
+    selectionCircle.transform.position = circlePos;
+    targetCircle.transform.position = circlePos;
 
     // Default invisible
     ChangeTransparency(selectionCircle, ALPHA_TRANSPARENT);
