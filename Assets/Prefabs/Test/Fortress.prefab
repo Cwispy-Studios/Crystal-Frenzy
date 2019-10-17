@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: -2782081079138082621}
   - component: {fileID: -7574980005491341107}
   - component: {fileID: -5597285710630779948}
+  - component: {fileID: -1996863512100147343}
   - component: {fileID: -3109146819516284861}
   - component: {fileID: 7406312429625842019}
   - component: {fileID: 1036473008959279404}
@@ -156,6 +157,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+--- !u!114 &-1996863512100147343
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2176489734026949311}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f46ca6d4acc06d84590ca4596c85cfae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fovActive: 1
+  fovMeshPrefab: {fileID: 6477082172712516352, guid: 3022b499539b4c64c9f13e17f43e0903,
+    type: 3}
+  fovRange: 65
 --- !u!114 &-3109146819516284861
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -180,8 +197,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3071ad8670c3bb458ac99a06f22f059, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  connectedNodes: []
-  pathSplines: []
+  connectedNodes:
+  - {fileID: -927199367670048503, guid: 297a1d00553881048995dad3847517ac, type: 3}
+  pathSplines:
+  - {fileID: 2090115093539842534, guid: e9068e208d49a2b46ab7a2268525c536, type: 3}
 --- !u!114 &1036473008959279404
 MonoBehaviour:
   m_ObjectHideFlags: 0

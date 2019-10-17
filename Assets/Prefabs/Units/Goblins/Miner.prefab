@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 2925301031265551285}
   - component: {fileID: 6816871588829118027}
   - component: {fileID: 3709448142759241958}
+  - component: {fileID: 6874352428671528951}
   - component: {fileID: 6153243619529093130}
   - component: {fileID: -7819313882947085818}
   m_Layer: 0
@@ -163,6 +164,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+--- !u!114 &6874352428671528951
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5820753501731554686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f46ca6d4acc06d84590ca4596c85cfae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fovActive: 1
+  fovMeshPrefab: {fileID: 6477082172712516352, guid: 3022b499539b4c64c9f13e17f43e0903,
+    type: 3}
+  fovRange: 25
 --- !u!114 &6153243619529093130
 MonoBehaviour:
   m_ObjectHideFlags: 0

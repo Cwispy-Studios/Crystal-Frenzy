@@ -1,4 +1,17 @@
-﻿using System.Collections;
+﻿/******************************************************************************/
+/*!
+\file   HealthBar.cs
+\author Unity3d College, Wong Zhihao
+\par    email: wongzhihao.student.utwente.nl
+\date   15 October 2019
+\brief
+
+  Brief:
+    Implementation from: https://www.youtube.com/watch?v=kQqqo_9FfsU&t=396s
+*/
+/******************************************************************************/
+
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 

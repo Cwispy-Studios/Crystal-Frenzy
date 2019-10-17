@@ -176,29 +176,6 @@ public class CameraObjectSelection : MonoBehaviour
     }
   }
 
-  //private Selectable CheckMouseIsOverSelectable()
-  //{
-  //  Ray ray;
-
-  //  // Retrieve the ray from the mouse to camera
-  //  ray = GetComponent<Camera>().ScreenPointToRay(Input.mousePosition);
-
-  //  // Check if the mouse was over any collider when clicked
-  //  if (Physics.Raycast(ray, out RaycastHit hit))
-  //  {
-  //    // Retrieve selectable component
-  //    Selectable selectable = hit.collider.GetComponent<Selectable>();
-
-  //    // Check if the object is selectable
-  //    if (selectable != null)
-  //    {
-  //      return selectable;
-  //    }
-  //  }
-
-  //  return null;
-  //}
-
   private void DragSelection(Selectable[] selectables)
   {
     // Loop through every selectable in the game and check if they are within the selection bounds of your drag selection

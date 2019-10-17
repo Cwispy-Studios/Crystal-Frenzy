@@ -76,6 +76,9 @@ public class Attack : MonoBehaviour
         // If enemy is near enough, try to attack. Otherwise set the NavMeshAgent to move towards it
         if (closestEnemyRange <= (attackRange + unitRadius + enemyRadius))
         {
+          GetComponent<NavMeshAgent>().stoppingDistance = 0;
+          GetComponent<NavMeshAgent>().destination = transform.position;
+
           if (attackCooldown >= attacksPerSecond)
           {
             detectedEnemy.GetComponent<Health>().ModifyHealth(-attackDamage);

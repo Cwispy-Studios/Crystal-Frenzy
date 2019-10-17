@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 5744090797016498280}
   - component: {fileID: -4344032711224995398}
   - component: {fileID: 1361761537150511401}
+  - component: {fileID: 63402130707971940}
   - component: {fileID: 8050787078840904803}
   - component: {fileID: -7228197117641757379}
   - component: {fileID: 7811596594329816276}
@@ -163,6 +164,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 1
+--- !u!114 &63402130707971940
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5794094148499116390}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f46ca6d4acc06d84590ca4596c85cfae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fovActive: 1
+  fovMeshPrefab: {fileID: 6477082172712516352, guid: 3022b499539b4c64c9f13e17f43e0903,
+    type: 3}
+  fovRange: 15
 --- !u!114 &8050787078840904803
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -187,7 +204,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0192c10ce0d2589489e608135047b104, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 25
 --- !u!114 &7811596594329816276
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -200,7 +217,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdcce6eefadf3814dbaf768a4697cd9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackDamage: 5
+  attackDamage: 3
   attacksPerSecond: 1.5
   attackRange: 1
   enemyDetectRange: 7

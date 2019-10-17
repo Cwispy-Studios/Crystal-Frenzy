@@ -1,4 +1,18 @@
-﻿using System.Collections;
+﻿/**************************************************************************************************/
+/*!
+\file   FogProjector.cs
+\author Andrew Hung
+\par    email: wongzhihao.student.utwente.nl
+\date   16 October 2019
+\brief
+
+  Brief:
+    Implementation from: 
+    https://andrewhungblog.wordpress.com/2018/06/23/implementing-fog-of-war-in-unity/#comments
+*/
+/**************************************************************************************************/
+
+using System.Collections;
 using UnityEngine;
 
 public class FogProjector : MonoBehaviour
@@ -9,11 +23,11 @@ public class FogProjector : MonoBehaviour
 
   public RenderTexture fogTexture;
 
-  private RenderTexture prevTexture;
-  private RenderTexture currTexture;
-  private Projector projector;
+  private RenderTexture prevTexture = null;
+  private RenderTexture currTexture = null;
+  private Projector projector = null;
 
-  private float blendAmount;
+  private float blendAmount = 5f;
 
   private void Awake()
   {
