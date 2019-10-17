@@ -7,6 +7,16 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: ChimneyMaterial
+    second: {fileID: 2100000, guid: 30e4fcb306e882a40b1b6d9e5616737a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: CottageFrameMaterial
+    second: {fileID: 2100000, guid: 2fa3a228670c7ad46845e66e25c72c76, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: CottageRoofMaterial
     second: {fileID: 2100000, guid: 154cd9fc3ef64314593335c1ab608db3, type: 2}
   - first:
@@ -37,6 +47,16 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: StoneMaterial
+    second: {fileID: 2100000, guid: 33acf5f14c398094da0971bafcbf1d74, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: TowerBridgeMaterial
+    second: {fileID: 2100000, guid: 84197acfdc3a3ee428e43b6f184bd0fc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: TowerDoorMaterial
     second: {fileID: 2100000, guid: d52d8701af69b9e45884012a26bf09b3, type: 2}
   - first:
@@ -62,6 +82,16 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: TurretMaterial
+    second: {fileID: 2100000, guid: bbfbe18ea70c6fa4cacc1e0b53087ddb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: TurretRoofMaterial
+    second: {fileID: 2100000, guid: 8213b0e403cce764a887b811e29a844e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: WallMaterial
     second: {fileID: 2100000, guid: b3055790d7304e041aa3e09bdbde0b20, type: 2}
   - first:
@@ -83,7 +113,7 @@ ModelImporter:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Crystal1_texture
-    second: {fileID: 2800000, guid: c41d39168cd521745bca675470aac25d, type: 3}
+    second: {fileID: 2800000, guid: 1ea4b26e8b8b5df4589b5dcab30377e2, type: 3}
   materials:
     importMaterials: 1
     materialName: 0
@@ -114,7 +144,7 @@ ModelImporter:
     isReadable: 0
   meshes:
     lODScreenPercentages: []
-    globalScale: 25
+    globalScale: 30
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
@@ -161,7 +191,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 25
+    globalScale: 0.29999998
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0
