@@ -13,7 +13,14 @@ public class ConqueredNode : MonoBehaviour
   }
 
   [SerializeField]
-  private GameObject[] tempFOVMeshes;
+  private GameObject[] tempFOVMeshes = null;
+  [SerializeField]
+  private GameObject cameraBound;
+  public GameObject CameraBound
+  {
+    get { return cameraBound; }
+    set { if (cameraBound == null) cameraBound = value; }
+  }
 
   public void EnablePreparationFOV()
   {

@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.AI;
 
 public class UnitManager : MonoBehaviour
 {
@@ -17,6 +18,7 @@ public class UnitManager : MonoBehaviour
 
   private ResourceManager resourceManager = null;
   private List<GameObject> unitButtonsList = null;
+  private GameObject assemblySpace = null;
 
   private void Start()
   {
@@ -36,7 +38,6 @@ public class UnitManager : MonoBehaviour
       GameObject unit = Instantiate(unitPrefab);
 
       // Assign the unit button and the unit together
-      // Assign the unit button and the unit together
       unitButton.GetComponent<UnitButton>().Unit = unit;
       unit.GetComponent<RecruitableUnit>().UnitButton = unitButton;
 
@@ -50,8 +51,6 @@ public class UnitManager : MonoBehaviour
       unitButton.GetComponent<RectTransform>().sizeDelta = ICON_SIZE;
       unitButton.transform.localScale = new Vector3(1f, 1f, 1f);
 
-      // TODO: Set the unit's transform on the roster area
-
       // Add the button to the unit list
       unitButtonsList.Add(unitButton);
 
@@ -59,6 +58,68 @@ public class UnitManager : MonoBehaviour
       resourceManager.UpdateArmySize(unitPoints);
 
       UpdateButtonPositions();
+
+      PositionUnitsOnAssemblySpace();
+    }
+  }
+
+  private void PositionUnitsOnAssemblySpace()
+  {
+    if (unitButtonsList.Count > 0)
+    {
+      Vector3 assemblyPos = assemblySpace.transform.position;
+      Vector3 frontAssemblyPos = assemblyPos + (assemblySpace.transform.forward * (assemblySpace.GetComponent<Renderer>().bounds.size.z / 2));
+      Debug.Log(assemblySpace.GetComponent<Renderer>().bounds);
+
+      for (int i = 0; i < unitButtonsList.Count; ++i)
+      {
+        Debug.Log(unitButtonsList[i].name);
+        UnitButton unitButton = unitButtonsList[i].GetComponent<UnitButton>();
+        // Get the size of the unit
+        float unitRadius = unitButton.Unit.GetComponent<NavMeshAgent>().radius * ((transform.lossyScale.x + transform.lossyScale.z) / 2f);
+
+        GameObject unit = unitButton.GetComponent<UnitButton>().Unit;
+
+        // If it is even numbered
+        if (unitButtonsList.Count % 2 == 0)
+        {
+          // Even numbered units are placed on the left (- radius), odd numbered units are placed on the right (+ radius)
+          if (i % 2 == 0)
+          {
+            unit.transform.position = frontAssemblyPos + (-assemblySpace.transform.right * unitRadius) + 
+              (-assemblySpace.transform.right * unitRadius * 2 * (i / 2));
+          }
+
+          else
+          {
+            unit.transform.position = frontAssemblyPos + (assemblySpace.transform.right * unitRadius) +
+              (assemblySpace.transform.right * unitRadius * 2 * (i / 2));
+          }
+        }
+
+        // Odd numbered, unit can be placed in the center
+        else
+        {
+          if (i == 0)
+          {
+            unit.transform.position = frontAssemblyPos;
+          }
+
+          else
+          {
+            // Even numbered units are placed on the left (- radius), odd numbered units are placed on the right (+ radius)
+            if (i % 2 == 0)
+            {
+              unit.transform.position = frontAssemblyPos + (-assemblySpace.transform.right * unitRadius * 2 * (i / 2));
+            }
+
+            else
+            {
+              unit.transform.position = frontAssemblyPos + (assemblySpace.transform.right * unitRadius * 2 * ((i / 2) + 1));
+            }
+          }
+        }
+      }
     }
   }
 
@@ -72,6 +133,7 @@ public class UnitManager : MonoBehaviour
     Destroy(removeButton);
 
     UpdateButtonPositions();
+    PositionUnitsOnAssemblySpace();
   }
 
   private void UpdateButtonPositions()
@@ -100,5 +162,10 @@ public class UnitManager : MonoBehaviour
         unitButtonsList[i].GetComponent<RectTransform>().anchoredPosition = buttonPos;
       }
     }
+  }
+
+  public void SetAssemblySpace(GameObject setAssemblySpace)
+  {
+    assemblySpace = setAssemblySpace;
   }
 }

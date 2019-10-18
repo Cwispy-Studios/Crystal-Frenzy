@@ -12,6 +12,10 @@ public class GameManager : MonoBehaviour
   [SerializeField]
   private GameObject playerCamera = null, fortress = null;
 
+  [Header("UI Interfaces")]
+  [SerializeField]
+  private UIInterface uiInterface = null;
+
   private static ResourceManager resourceManager;
 
   private List<GameObject> conqueredNodes; 
@@ -19,8 +23,10 @@ public class GameManager : MonoBehaviour
   private int currentPhaseCycle = 0;
   public static PHASES currentPhase { get; private set; }
 
+  /////////////////////////////////////////////////////////
   // Preparation phase
   private bool nodeSelected;
+  private bool phaseCycleSetup = false;
 
   private void Awake()
   {
@@ -28,6 +34,11 @@ public class GameManager : MonoBehaviour
     conqueredNodes = new List<GameObject>();
     conqueredNodes.Add(fortress);
     currentPhase = PHASES.PREPARATION;
+  }
+
+  private void FixedUpdate()
+  {
+    phaseText.text = currentPhase.ToString() + " PHASE";
   }
 
   private void Update()
@@ -49,22 +60,75 @@ public class GameManager : MonoBehaviour
     }
   }
 
-  private void FixedUpdate()
-  {
-    phaseText.text = currentPhase.ToString() + " PHASE";
-  }
-
   private void PreparationPhase()
   {
-    if (nodeSelected == false)
+    GameObject lastConqueredNode = conqueredNodes[conqueredNodes.Count - 1];
+
+    if (phaseCycleSetup == false)
     {
       // Force the camera into a bird's eye view
       playerCamera.GetComponent<CameraManager>().SetBirdsEyeView();
 
       // Get the latest conquered node and set all the temp FOV mesh to true so we can see the paths and crystal nodes 
-      conqueredNodes[conqueredNodes.Count - 1].GetComponent<ConqueredNode>().EnablePreparationFOV();
+      lastConqueredNode.GetComponent<ConqueredNode>().EnablePreparationFOV();
+
+      // Update the camera bounds
+      playerCamera.GetComponent<CameraControls>().AddCameraBounds(lastConqueredNode.GetComponent<ConqueredNode>().CameraBound);
+
+      // Set the UI Interfaces to invisible and show the button to select army roster
+      uiInterface.PreparationPhaseSelectNodeUI();
+
+      playerCamera.GetComponent<CameraControls>().enabled = true;
+      playerCamera.GetComponent<CameraIssueOrdering>().enabled = true;
+
+      phaseCycleSetup = true;
     }
-    // Force the camera to look at the unit spawn area
-    
+
+    if (nodeSelected == false)
+    {
+      // While it is false, keep the button not interactable
+      if (lastConqueredNode.GetComponent<CrystalSeekerSpawner>().crystalSelected == false)
+      {
+        uiInterface.PreparationPhaseSetSelectArmyButtonInteractable(false);
+      }
+
+      // Once crystal is selected, button is selectable
+      else
+      {
+        uiInterface.PreparationPhaseSetSelectArmyButtonInteractable(true);
+      }
+    }
+
+    // Army selection roster
+    else
+    {
+
+    }
+  }
+
+  public void NodeSelected()
+  {
+    nodeSelected = true;
+
+    uiInterface.PreparationPhaseSelectArmyUI();
+
+    // Set the camera to point at the assembly space
+    Vector3 setupPos = conqueredNodes[conqueredNodes.Count - 1].GetComponent<ConqueredNode>().AssemblySpace.transform.position;
+    // Retains the camera height
+    setupPos.y = playerCamera.transform.position.y;
+
+    playerCamera.transform.position = setupPos;
+    playerCamera.GetComponent<Camera>().orthographicSize = 25f;
+    // Disable the camera controls
+    playerCamera.GetComponent<CameraControls>().enabled = false;
+    playerCamera.GetComponent<CameraIssueOrdering>().enabled = false;
+    // Set the unit manager assembly space reference
+    uiInterface.SetUnitManagerAssemblySpace(conqueredNodes[conqueredNodes.Count - 1].GetComponent<ConqueredNode>().AssemblySpace);
+  }
+
+  public void ReturnToNodeSelection()
+  {
+    phaseCycleSetup = false;
+    nodeSelected = false;
   }
 }

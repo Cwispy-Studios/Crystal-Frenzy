@@ -9,10 +9,19 @@ public class CrystalSeekerSpawner : MonoBehaviour
   private GameObject crystalTarget = null;
   private GameObject crystalPath = null;
 
+  public bool crystalSelected { get; private set; }
+
+  private void Awake()
+  {
+    crystalSelected = false;
+  }
+
   private void Update()
   {
     if (crystalTarget != null && crystalPath != null)
     {
+      crystalSelected = true;
+
       PathIndicatorIllumination();
 
       if (Input.GetKeyDown(KeyCode.C))
@@ -26,6 +35,11 @@ public class CrystalSeekerSpawner : MonoBehaviour
         bezierWalker.spline = crystalPathSpline;
         bezierWalker.SetStartAndEndPoints(1, bezierWalker.spline.Count - 2);
       }
+    }
+
+    else
+    {
+      crystalSelected = false;
     }
   }
 
