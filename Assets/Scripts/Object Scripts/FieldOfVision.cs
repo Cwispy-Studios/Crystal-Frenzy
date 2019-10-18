@@ -5,12 +5,12 @@ public class FieldOfVision : MonoBehaviour
   public bool fovActive = true;
 
   [SerializeField]
-  private GameObject fovMeshPrefab;
+  private GameObject fovMeshPrefab = null;
 
   [SerializeField]
-  private float fovRange;
+  private float fovRange = 15f;
 
-  private GameObject fovMesh;
+  private GameObject fovMesh = null;
 
   private void Awake()
   {
@@ -27,6 +27,11 @@ public class FieldOfVision : MonoBehaviour
 
   private void Update()
   {
+    if (GetComponent<Faction>().faction != Faction.FACTIONS.GOBLINS)
+    {
+      fovActive = false;
+    }
+
     fovMesh.SetActive(fovActive);
   }
 }

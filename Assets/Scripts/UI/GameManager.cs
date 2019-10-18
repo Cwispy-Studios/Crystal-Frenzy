@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
@@ -7,23 +8,34 @@ public class GameManager : MonoBehaviour
   [SerializeField]
   private Text phaseText = null, nodeText = null;
 
-  [Header("")]
+  [Header("Scene Objects")]
+  [SerializeField]
+  private GameObject playerCamera = null, fortress = null;
 
-  private ResourceManager resourceManager;
+  private static ResourceManager resourceManager;
+
+  private List<GameObject> conqueredNodes; 
 
   private int currentPhaseCycle = 0;
-  private PHASES currentPhase = PHASES.PREPARATION;
+  public static PHASES currentPhase { get; private set; }
 
-  private void Start()
+  // Preparation phase
+  private bool nodeSelected;
+
+  private void Awake()
   {
     resourceManager = GetComponent<ResourceManager>();
+    conqueredNodes = new List<GameObject>();
+    conqueredNodes.Add(fortress);
+    currentPhase = PHASES.PREPARATION;
   }
 
-  private void FixedUpdate()
+  private void Update()
   {
     switch (currentPhase)
     {
-      case PHASES.PREPARATION: phaseText.text = PHASES.PREPARATION.ToString() + " PHASE";
+      case PHASES.PREPARATION:
+        PreparationPhase();
         break;
 
       case PHASES.ESCORT:
@@ -35,5 +47,24 @@ public class GameManager : MonoBehaviour
       case PHASES.DEFENSE:
         break;
     }
+  }
+
+  private void FixedUpdate()
+  {
+    phaseText.text = currentPhase.ToString() + " PHASE";
+  }
+
+  private void PreparationPhase()
+  {
+    if (nodeSelected == false)
+    {
+      // Force the camera into a bird's eye view
+      playerCamera.GetComponent<CameraManager>().SetBirdsEyeView();
+
+      // Get the latest conquered node and set all the temp FOV mesh to true so we can see the paths and crystal nodes 
+      conqueredNodes[conqueredNodes.Count - 1].GetComponent<ConqueredNode>().EnablePreparationFOV();
+    }
+    // Force the camera to look at the unit spawn area
+    
   }
 }

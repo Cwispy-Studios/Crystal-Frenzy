@@ -14,6 +14,8 @@ public class CameraControls : MonoBehaviour
   private const float MAX_ZOOM = 30f;
   private readonly float zoomSpeed = 1f;
 
+  private bool birdsEyeView = false;
+
   // Update is called once per frame
   private void Update()
   {
@@ -51,6 +53,8 @@ public class CameraControls : MonoBehaviour
     {
       gameObject.transform.Translate(Quaternion.Euler(0, -90, 0) * transform.right * moveSpeed * Time.deltaTime / GetZoomPerc(), Space.World);
     }
+
+    
   }
 
   private void Pan()
@@ -87,5 +91,10 @@ public class CameraControls : MonoBehaviour
   public float GetZoomPerc()
   {
     return MAX_ZOOM / transform.position.y;
+  }
+
+  public void SetBirdsEyeView()
+  {
+    birdsEyeView = true;
   }
 }
