@@ -60,6 +60,9 @@ public class GameManager : MonoBehaviour
     }
   }
 
+  ///////////////////////////////////////////////////////////////
+  // PREPARATION FUNCTIONS
+
   private void PreparationPhase()
   {
     GameObject lastConqueredNode = conqueredNodes[conqueredNodes.Count - 1];
@@ -102,7 +105,17 @@ public class GameManager : MonoBehaviour
     // Army selection roster
     else
     {
+      // While it is false, keep the button not interactable
+      if (resourceManager.ArmySize == 0)
+      {
+        uiInterface.PreparationPhaseSetAttackButtonInteractable(false);
+      }
 
+      // Once crystal is selected, button is selectable
+      else
+      {
+        uiInterface.PreparationPhaseSetAttackButtonInteractable(true);
+      }
     }
   }
 
@@ -130,5 +143,23 @@ public class GameManager : MonoBehaviour
   {
     phaseCycleSetup = false;
     nodeSelected = false;
+  }
+
+  ///////////////////////////////////////////////////////////////
+  // ESCORT FUNCTIONS
+  public void BeginEscort()
+  {
+    currentPhase = PHASES.ESCORT;
+
+    uiInterface.PreparationPhaseDisableUI();
+
+    playerCamera.GetComponent<CameraControls>().enabled = true;
+    playerCamera.GetComponent<CameraIssueOrdering>().enabled = true;
+    playerCamera.GetComponent<CameraManager>().SetNormalView();
+
+    // TODO: Change unit panel buttons to combat buttons
+    // TODO: Start wave spawner (also create wave spawner)
+    // TODO: Turn off tempFOVMeshes
+    // TODO: Spawn crystal seeker
   }
 }

@@ -20,22 +20,10 @@ public class CameraManager : MonoBehaviour
     }
   }
 
-  public void SetNormalView(GameObject assemblySpace = null)
+  public void SetNormalView()
   {
     transform.eulerAngles = lastCamRot;
     GetComponent<Camera>().orthographic = false;
-
-    if (assemblySpace != null)
-    {
-      float height = 30f;
-      float camera_rot = 55f;
-      float x_mag = height / Mathf.Tan(camera_rot * Mathf.Deg2Rad);
-
-      Vector3 cameraPos = (assemblySpace.transform.position - assemblySpace.transform.forward * x_mag);
-      cameraPos.y = height;
-      transform.position = cameraPos;
-      transform.LookAt(assemblySpace.transform);
-    }
   }
 
   public void PanToNode()

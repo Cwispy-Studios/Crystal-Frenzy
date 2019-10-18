@@ -137,7 +137,7 @@ PrefabInstance:
     - target: {fileID: 6477082172712516352, guid: 3022b499539b4c64c9f13e17f43e0903,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6477082172712516355, guid: 3022b499539b4c64c9f13e17f43e0903,
         type: 3}
@@ -162,7 +162,7 @@ PrefabInstance:
     - target: {fileID: 6477082172712516355, guid: 3022b499539b4c64c9f13e17f43e0903,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: -0.03832965
       objectReference: {fileID: 0}
     - target: {fileID: 6477082172712516355, guid: 3022b499539b4c64c9f13e17f43e0903,
         type: 3}
@@ -172,7 +172,7 @@ PrefabInstance:
     - target: {fileID: 6477082172712516355, guid: 3022b499539b4c64c9f13e17f43e0903,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.9992652
       objectReference: {fileID: 0}
     - target: {fileID: 6477082172712516355, guid: 3022b499539b4c64c9f13e17f43e0903,
         type: 3}
@@ -187,7 +187,7 @@ PrefabInstance:
     - target: {fileID: 6477082172712516355, guid: 3022b499539b4c64c9f13e17f43e0903,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: -4.393
       objectReference: {fileID: 0}
     - target: {fileID: 6477082172712516355, guid: 3022b499539b4c64c9f13e17f43e0903,
         type: 3}
@@ -197,7 +197,7 @@ PrefabInstance:
     - target: {fileID: 6477082172712516355, guid: 3022b499539b4c64c9f13e17f43e0903,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 3
+      value: 3.5
       objectReference: {fileID: 0}
     - target: {fileID: 6477082172712516355, guid: 3022b499539b4c64c9f13e17f43e0903,
         type: 3}
@@ -596,7 +596,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &164642936
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2206,7 +2206,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1191645569
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3246,6 +3246,7 @@ MonoBehaviour:
   selectArmyButton: {fileID: 760825541}
   armyRecruitmentPanel: {fileID: 1191645568}
   backToSelectNodesButton: {fileID: 164642935}
+  attackButton: {fileID: 1758965991}
 --- !u!1001 &1705961532
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3678,7 +3679,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1758965992
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3722,7 +3723,7 @@ MonoBehaviour:
     m_NormalColor: {r: 0.735849, g: 0.097187616, b: 0.097187616, a: 1}
     m_HighlightedColor: {r: 0.627451, g: 0.08235294, b: 0.08235294, a: 1}
     m_PressedColor: {r: 0.41176474, g: 0.054901965, b: 0.054901965, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_SelectedColor: {r: 0.7372549, g: 0.098039225, b: 0.098039225, a: 1}
     m_DisabledColor: {r: 0.29411766, g: 0.29411766, b: 0.29411766, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1

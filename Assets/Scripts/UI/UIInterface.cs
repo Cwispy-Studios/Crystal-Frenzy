@@ -29,8 +29,18 @@ public class UIInterface : MonoBehaviour
     preparationPhaseUI.SetSelectArmyButtonInteractable(interactable);
   }
 
+  public void PreparationPhaseSetAttackButtonInteractable(bool interactable)
+  {
+    preparationPhaseUI.SetAttackButtonInteractable(interactable);
+  }
+
   public void SetUnitManagerAssemblySpace(GameObject assemblySpace)
   {
     unitManager.SetAssemblySpace(assemblySpace);
+  }
+
+  public void PreparationPhaseDisableUI()
+  {
+    preparationPhaseUI.DisableUI();
   }
 }
