@@ -7,6 +7,61 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: Bandolier_Material
+    second: {fileID: 2100000, guid: 5a479c46152a47745b251237e38731e1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BodyMaterial
+    second: {fileID: 2100000, guid: 0be7e49faa733ff4fbf49375c8df67a4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ClothMaterial
+    second: {fileID: 2100000, guid: 39765aaa8302444488e484e477fda631, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: EarMaterial
+    second: {fileID: 2100000, guid: 11be89348cda1b649aa9dd6a2f539daf, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: EyeMaterial
+    second: {fileID: 2100000, guid: f606e9d569cc87844bb936b2747c90f0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: FaceMaterial
+    second: {fileID: 2100000, guid: 36d9f2911184bcb46959a485d9996814, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: LipMaterial
+    second: {fileID: 2100000, guid: f2e4d494668b90c4e84888ec595811cd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MouthMaterial
+    second: {fileID: 2100000, guid: 8ab459fcb88fbd5449687fbe62d83593, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: NoseMaterial
+    second: {fileID: 2100000, guid: abfb8784d12b86947b5a3732048c0bf1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: RockMaterial
+    second: {fileID: 2100000, guid: 6de8006081b81784bbfe9c42bce90b22, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ToothMaterial
+    second: {fileID: 2100000, guid: df84777d95a6a4b479efb46477b1eebf, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: lambert1
     second: {fileID: 2100000, guid: d564ac10dc4d6cb4e8f6ee1964b9c8ec, type: 2}
   - first:
@@ -44,7 +99,7 @@ ModelImporter:
     isReadable: 0
   meshes:
     lODScreenPercentages: []
-    globalScale: 50
+    globalScale: 40
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
@@ -91,7 +146,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 0.5
+    globalScale: 0.39999998
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0
