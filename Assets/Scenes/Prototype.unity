@@ -3824,7 +3824,7 @@ Terrain:
   serializedVersion: 5
   m_TerrainData: {fileID: 15600000, guid: acbb528ff79986d48b8e9c4e18042976, type: 2}
   m_TreeDistance: 5000
-  m_TreeBillboardDistance: 50
+  m_TreeBillboardDistance: 100
   m_TreeCrossFadeLength: 5
   m_TreeMaximumFullLODCount: 50
   m_DetailObjectDistance: 80
@@ -5221,11 +5221,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 127503179}
     m_Modifications:
-    - target: {fileID: -2302235071193994444, guid: 0e887b4fbdc5b104b845d936c9f21f1f,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
     - target: {fileID: 8561795349910026768, guid: 0e887b4fbdc5b104b845d936c9f21f1f,
         type: 3}
       propertyPath: m_Name
@@ -5236,6 +5231,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: -2302235071193994444, guid: 0e887b4fbdc5b104b845d936c9f21f1f,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
     - target: {fileID: 8561795349910026780, guid: 0e887b4fbdc5b104b845d936c9f21f1f,
         type: 3}
       propertyPath: m_LocalPosition.x
