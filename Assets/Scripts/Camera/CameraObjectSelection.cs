@@ -29,6 +29,19 @@ public class CameraObjectSelection : MonoBehaviour
   {
     // Store every selectable in a list
     Selectable[] selectables = FindObjectsOfType<Selectable>();
+
+    // Update the selection colour of every unit
+    foreach (Selectable selectableObject in selectables)
+    {
+      // Set the colour
+      selectableObject.CheckFactionColour(GetComponent<Faction>().faction);
+    }
+
+    // If player is in attack move command, do not perform any selection/deselection actions
+    if (GetComponent<CameraIssueOrdering>().AttackMoveOrder)
+    {
+      return;
+    }
     
     // When LMB is pressed down
     if (Input.GetMouseButtonDown(0))
@@ -149,13 +162,6 @@ public class CameraObjectSelection : MonoBehaviour
           hoveredSelectable.selectStatus = Selectable.SELECT_STATUS.HOVER;
         }
       }
-    }
-
-    // Update the selection colour of every unit
-    foreach (Selectable selectableObject in selectables)
-    {
-      // Set the colour
-      selectableObject.CheckFactionColour(GetComponent<Faction>().faction);
     }
   }
 

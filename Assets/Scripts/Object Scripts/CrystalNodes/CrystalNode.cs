@@ -6,6 +6,8 @@ public class CrystalNode : MonoBehaviour
   private GameObject[] connectedNodes = null;
   [SerializeField]
   private GameObject[] pathSplines = null;
+  [SerializeField]
+  private GameObject[] spawnPoints = null;
 
   public void CheckCrystalIsValid(GameObject checkObject, ref GameObject setTarget, ref GameObject crystalPath)
   {

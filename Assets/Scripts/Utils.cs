@@ -72,4 +72,9 @@ public class Utils
 
     return null;
   }
+
+  public static float RandomGaussian()
+  {
+    return 1f;
+  }
 }

@@ -3,20 +3,63 @@ using UnityEngine;
 
 public class CameraIssueOrdering : MonoBehaviour
 {
+  private const KeyCode attackMoveCommand = KeyCode.A;
+
   private List<GameObject> selectableObjects;
+
+  public bool AttackMoveOrder { get; private set; }
+
+  private void Awake()
+  {
+    AttackMoveOrder = false;
+  }
 
   void Update()
   {
     selectableObjects = GetComponent<CameraObjectSelection>().SelectedUnitsList;
 
-    // When RMB clicked and there are units selected
-    if (Input.GetMouseButtonDown(1) && selectableObjects.Count > 0)
+    // Check if there are friendly units in that list
+    bool friendlyUnitsInList = FriendlyUnitsInList(selectableObjects);
+
+    if (selectableObjects.Count == 0)
     {
-      RightClick();
+      AttackMoveOrder = false;
+    }
+
+    else
+    {
+      // During attack move order, left clicking on the ground issues an attack move order, where units constantly seek out enemies
+      // while moving to the destination. Right clicking cancels the order
+      if (AttackMoveOrder)
+      {
+        if (Input.GetMouseButtonDown(0))
+        {
+          Order(true);
+        }
+
+        else if (Input.GetMouseButtonDown(1))
+        {
+          AttackMoveOrder = false;
+        }
+      }
+
+      else
+      {
+        // When RMB clicked and there are units selected
+        if (Input.GetMouseButtonDown(1))
+        {
+          Order();
+        }
+
+        if (Input.GetKeyDown(attackMoveCommand) && friendlyUnitsInList)
+        {
+          AttackMoveOrder = true;
+        }
+      }
     }
   }
 
-  private void RightClick()
+  private void Order(bool attackMoveOrder = false)
   {
     Ray ray = GetComponent<Camera>().ScreenPointToRay(Input.mousePosition);
 
@@ -36,6 +79,11 @@ public class CameraIssueOrdering : MonoBehaviour
           {
             // Issue an order to the object 
             selectedObject.GetComponent<Order>().IssueOrderPoint(hit.point);
+
+            if (attackMoveOrder)
+            {
+              selectedObject.GetComponent<Attack>().SetAttackMovePosition(hit.point);
+            }
           }
         }
       }
@@ -70,6 +118,11 @@ public class CameraIssueOrdering : MonoBehaviour
             {
               // Issue an order to the object 
               selectedObject.GetComponent<Order>().IssueOrderPoint(hit.point);
+
+              if (attackMoveOrder)
+              {
+                selectedObject.GetComponent<Attack>().SetAttackMovePosition(hit.point);
+              }
             }
           }
         }
@@ -80,5 +133,19 @@ public class CameraIssueOrdering : MonoBehaviour
     {
       Debug.LogWarning("Clicked on nothing");
     }
+  }
+
+  private bool FriendlyUnitsInList(List<GameObject> selectedList)
+  {
+    foreach (GameObject selectedObject in selectedList)
+    {
+      if (selectedObject.GetComponent<ObjectTypes>().objectType != ObjectTypes.OBJECT_TYPES.UNIT && 
+          selectedObject.GetComponent<Faction>().faction != Faction.FACTIONS.GOBLINS)
+      {
+        return false;
+      }
+    }
+
+    return true;
   }
 }

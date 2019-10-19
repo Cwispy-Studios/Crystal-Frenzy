@@ -14,7 +14,9 @@ public class Attack : MonoBehaviour
   private bool detectingEnemies = true;
 
   private GameObject attackTarget = null;
-  //private GameObject detectedTarget;
+
+  private Vector3 attackMovePosition;
+  private bool isAttackMoveOrder = false;
 
   private void Awake()
   {
@@ -25,6 +27,12 @@ public class Attack : MonoBehaviour
 
   private void Update()
   {
+    // As long as unit is not detecting enemies, it is not under an attack move order, so we set it to false
+    if (detectingEnemies == false)
+    {
+      isAttackMoveOrder = false;
+    }
+
     // If there is no attack target and is detecting enemies, unit will constantly look out for enemies within their detect range
     if (attackTarget == null && detectingEnemies)
     {
@@ -62,7 +70,7 @@ public class Attack : MonoBehaviour
         {
           enemyRadius = detectedEnemy.GetComponent<NavMeshAgent>().radius * ((transform.lossyScale.x + transform.lossyScale.z) / 2f);
         }
-        
+
         else if (detectedEnemy.GetComponent<NavMeshObstacle>() != null)
         {
           enemyRadius = GetComponent<NavMeshObstacle>().radius * ((transform.lossyScale.x + transform.lossyScale.z) / 2f);
@@ -73,7 +81,7 @@ public class Attack : MonoBehaviour
           Debug.LogError("Attacking a unit without a NavMesh! Targeted unit is " + detectedEnemy.name);
         }
 
-        // If enemy is near enough, try to attack. Otherwise set the NavMeshAgent to move towards it
+        // If enemy is near enough, try to attack and hold position. Otherwise set the NavMeshAgent to move towards it
         if (closestEnemyRange <= (attackRange + unitRadius + enemyRadius))
         {
           GetComponent<NavMeshAgent>().stoppingDistance = 0;
@@ -90,6 +98,16 @@ public class Attack : MonoBehaviour
         {
           GetComponent<NavMeshAgent>().stoppingDistance = attackRange + unitRadius + enemyRadius;
           GetComponent<NavMeshAgent>().destination = detectedEnemy.transform.position;
+        }
+      }
+
+      // No enemies found, check if there is an attack order position to move towards to
+      else
+      {
+        if (isAttackMoveOrder)
+        {
+          GetComponent<NavMeshAgent>().stoppingDistance = 0;
+          GetComponent<NavMeshAgent>().destination = attackMovePosition;
         }
       }
     }
@@ -132,5 +150,12 @@ public class Attack : MonoBehaviour
   public void SetDetectingEnemies(bool value)
   {
     detectingEnemies = value;
+  }
+
+  public void SetAttackMovePosition(Vector3 attackMovePos)
+  {
+    attackMovePosition = attackMovePos;
+    detectingEnemies = true;
+    isAttackMoveOrder = true;
   }
 }

@@ -157,6 +157,10 @@ public class GameManager : MonoBehaviour
     playerCamera.GetComponent<CameraIssueOrdering>().enabled = true;
     playerCamera.GetComponent<CameraManager>().SetNormalView();
 
+    conqueredNodes[conqueredNodes.Count - 1].GetComponent<CrystalSeekerSpawner>().SpawnCrystalSeeker();
+    conqueredNodes[conqueredNodes.Count - 1].GetComponent<CrystalSeekerSpawner>().enabled = false;
+    conqueredNodes[conqueredNodes.Count - 1].GetComponent<CrystalOrder>().enabled = false;
+
     // TODO: Change unit panel buttons to combat buttons
     // TODO: Start wave spawner (also create wave spawner)
     // TODO: Turn off tempFOVMeshes
