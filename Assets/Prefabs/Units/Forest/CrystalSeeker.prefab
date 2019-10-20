@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: -6115934162520556740}
   - component: {fileID: 8265050866731321899}
   - component: {fileID: 4235808347420824296}
+  - component: {fileID: -730047924417295603}
   - component: {fileID: -1532671479032559535}
   m_Layer: 0
   m_Name: CrystalSeeker
@@ -158,6 +159,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+--- !u!114 &-730047924417295603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7396513783761032937}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0192c10ce0d2589489e608135047b104, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 500
+  combatantType: 1
 --- !u!114 &-1532671479032559535
 MonoBehaviour:
   m_ObjectHideFlags: 0

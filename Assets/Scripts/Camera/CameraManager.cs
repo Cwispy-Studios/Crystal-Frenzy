@@ -10,7 +10,7 @@ public class CameraManager : MonoBehaviour
   public void SetBirdsEyeView()
   {
     // Extra safety check
-    if (GameManager.currentPhase == PHASES.PREPARATION)
+    if (GameManager.CurrentPhase == PHASES.PREPARATION)
     {
       lastCamRot = transform.rotation.eulerAngles;
 

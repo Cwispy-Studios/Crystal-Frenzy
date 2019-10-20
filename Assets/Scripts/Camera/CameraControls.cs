@@ -64,13 +64,13 @@ public class CameraControls : MonoBehaviour
   private void Pan()
   {
     // Check for input on left keys
-    if (Input.GetKey("a") || Input.GetKey("left"))
+    if (Input.GetKey("left"))
     {
       transform.Rotate(0, -panSpeed * Time.deltaTime, 0, Space.World);
     }
 
     // Check for input on right keys
-    else if (Input.GetKey("d") || Input.GetKey("right"))
+    else if (Input.GetKey("right"))
     {
       transform.Rotate(0, panSpeed * Time.deltaTime, 0, Space.World);
     }

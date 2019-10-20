@@ -106,10 +106,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.6
-  m_Height: 3.2
+  m_Radius: 0.8
+  m_Height: 3.4
   m_Direction: 1
-  m_Center: {x: 0, y: 1, z: 0}
+  m_Center: {x: 0, y: 0.9, z: 0}
 --- !u!195 &6986816071556721861
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -146,7 +146,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selectionCirclePrefab: {fileID: 1632290516313722442, guid: 15304a1a55ebbd9408fc3756b9638ab0,
     type: 3}
-  scaleModifier: 0.9
+  scaleModifier: 1
 --- !u!114 &1390012186275506533
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -188,7 +188,7 @@ MonoBehaviour:
   fovActive: 1
   fovMeshPrefab: {fileID: 6477082172712516352, guid: 3022b499539b4c64c9f13e17f43e0903,
     type: 3}
-  fovRange: 15
+  fovRange: 18
 --- !u!114 &4559491972518532284
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -214,6 +214,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 25
+  combatantType: 0
 --- !u!114 &4365369355350160395
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -229,7 +230,8 @@ MonoBehaviour:
   attackDamage: 3
   attacksPerSecond: 1.5
   attackRange: 1
-  enemyDetectRange: 10
+  enemyDetectRange: 12
+  preferredTarget: 0
 --- !u!114 &7125494102815859543
 MonoBehaviour:
   m_ObjectHideFlags: 0

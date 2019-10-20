@@ -16,9 +16,9 @@ GameObject:
   - component: {fileID: 2925301031265551285}
   - component: {fileID: 6816871588829118027}
   - component: {fileID: 3709448142759241958}
+  - component: {fileID: -7819313882947085818}
   - component: {fileID: 6874352428671528951}
   - component: {fileID: 6153243619529093130}
-  - component: {fileID: -7819313882947085818}
   m_Layer: 0
   m_Name: Miner
   m_TagString: Untagged
@@ -164,6 +164,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+--- !u!114 &-7819313882947085818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5820753501731554686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0192c10ce0d2589489e608135047b104, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  combatantType: 1
 --- !u!114 &6874352428671528951
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -202,16 +216,3 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
---- !u!114 &-7819313882947085818
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5820753501731554686}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0192c10ce0d2589489e608135047b104, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 100

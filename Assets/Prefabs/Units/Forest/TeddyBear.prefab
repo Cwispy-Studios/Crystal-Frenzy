@@ -19,6 +19,7 @@ GameObject:
   - component: {fileID: 3993787377942230371}
   - component: {fileID: 2914032785281923454}
   - component: {fileID: 5354171361829680825}
+  - component: {fileID: 332880475672617696}
   m_Layer: 0
   m_Name: TeddyBear
   m_TagString: Untagged
@@ -104,10 +105,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.6
-  m_Height: 3.2
+  m_Radius: 0.8
+  m_Height: 3.4
   m_Direction: 1
-  m_Center: {x: 0, y: 1, z: 0}
+  m_Center: {x: 0, y: 0.9, z: 0}
 --- !u!195 &7556039122687216922
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -117,7 +118,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 629991203131557990}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.7
+  m_Radius: 1
   m_Speed: 8
   m_Acceleration: 12
   avoidancePriority: 50
@@ -144,7 +145,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selectionCirclePrefab: {fileID: 1632290516313722442, guid: 15304a1a55ebbd9408fc3756b9638ab0,
     type: 3}
-  scaleModifier: 0.9
+  scaleModifier: 1
 --- !u!114 &1972586564151363770
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -196,6 +197,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 15
+  combatantType: 0
 --- !u!114 &5354171361829680825
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -211,4 +213,18 @@ MonoBehaviour:
   attackDamage: 2
   attacksPerSecond: 1.2
   attackRange: 0.8
-  enemyDetectRange: 8
+  enemyDetectRange: 10
+  preferredTarget: 0
+--- !u!114 &332880475672617696
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 629991203131557990}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ea702aae35bb4f41a27c2882f0d48f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}

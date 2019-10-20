@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic; // List
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class CameraObjectSelection : MonoBehaviour
 {
@@ -37,23 +38,26 @@ public class CameraObjectSelection : MonoBehaviour
       selectableObject.CheckFactionColour(GetComponent<Faction>().faction);
     }
 
-    // If player is in attack move command, do not perform any selection/deselection actions
-    if (GetComponent<CameraIssueOrdering>().AttackMoveOrder)
+    if (CameraProperties.selectionDisabled)
     {
+      isSelecting = false;
+      CameraProperties.selectionDisabled = false;
       return;
     }
     
     // When LMB is pressed down
-    if (Input.GetMouseButtonDown(0))
+    if (Input.GetMouseButtonDown(0) && !CameraProperties.mouseOverUI)
     {
+      Debug.Log("Mouse down");
       // Begin selection and save this mouse position
       isSelecting = true;
       originalMousePosition = Input.mousePosition;
     }
 
     // When LMB is released, or checks if LMB is already released but the game still registers it as selecting
-    if (Input.GetMouseButtonUp(0) || (isSelecting == true && Input.GetMouseButton(0) == false))
+    if (isSelecting == true && (Input.GetMouseButtonUp(0) || Input.GetMouseButton(0) == false))
     {
+      Debug.Log("Mouse up");
       isSelecting = false;
 
       // Mouse is in the same position as when the LMB was clicked, so process this as a click.
@@ -77,8 +81,7 @@ public class CameraObjectSelection : MonoBehaviour
             {
               if (hoverObject.GetComponent<ObjectTypes>().objectType == ObjectTypes.OBJECT_TYPES.UNIT)
               {
-                selectedUnitsList.Add(hoverObject);
-                hoverObject.GetComponent<Selectable>().selectStatus = Selectable.SELECT_STATUS.SELECTED;
+                AddObjectToSelectionList(hoverObject);
               }
 
               else
@@ -95,8 +98,7 @@ public class CameraObjectSelection : MonoBehaviour
             {
               if (i == 0)
               {
-                selectedUnitsList.Add(mouseHoverUnitsList[i]);
-                mouseHoverUnitsList[i].GetComponent<Selectable>().selectStatus = Selectable.SELECT_STATUS.SELECTED;
+                AddObjectToSelectionList(mouseHoverUnitsList[i]);
               }
 
               else
@@ -112,14 +114,7 @@ public class CameraObjectSelection : MonoBehaviour
         {
           foreach (GameObject hoverObject in mouseHoverUnitsList)
           {
-            Selectable selectedObject = hoverObject.GetComponent<Selectable>();
-
-            if (!selectedUnitsList.Contains(hoverObject))
-            {
-              selectedUnitsList.Add(hoverObject);
-
-              selectedObject.selectStatus = Selectable.SELECT_STATUS.SELECTED;
-            }
+            AddObjectToSelectionList(hoverObject);
           } // foreach end
         } // else Left Shift end
       }
@@ -136,7 +131,7 @@ public class CameraObjectSelection : MonoBehaviour
     } 
 
     // Mouse is just hovering over the map
-    else
+    else if (!CameraProperties.mouseOverUI)
     {
       // Clear the current hover list
       if (mouseHoverUnitsList.Count > 1)
@@ -146,21 +141,10 @@ public class CameraObjectSelection : MonoBehaviour
 
       // Check if the mouse is hovering over any selectable
       GameObject hoveredObject = Utils.CheckMouseIsOverSelectable();
-      Selectable hoveredSelectable = null;
 
-      if (hoveredObject != null)
+      if (hoveredObject != null && hoveredObject.GetComponent<Selectable>() != null)
       {
-        hoveredSelectable = hoveredObject.GetComponent<Selectable>();
-      }
-
-      if (hoveredSelectable != null)
-      {
-        // If object is already selected, the hover selection should not overwrite that
-        if (hoveredSelectable.selectStatus != Selectable.SELECT_STATUS.SELECTED)
-        {
-          mouseHoverUnitsList.Add(hoveredObject.gameObject);
-          hoveredSelectable.selectStatus = Selectable.SELECT_STATUS.HOVER;
-        }
+        AddObjectToHoverList(hoveredObject.gameObject);
       }
     }
   }
@@ -217,17 +201,7 @@ public class CameraObjectSelection : MonoBehaviour
         // If there are friendly units, only friendly units can be added to the list
         if (!friendlyObjectsInList || (friendlyObjectsInList && selectableIsFriendly))
         {
-          // Only change the status if object is already unselected
-          if (selectableObject.selectStatus == Selectable.SELECT_STATUS.UNSELECTED)
-          {
-            selectableObject.selectStatus = Selectable.SELECT_STATUS.HOVER;
-          }
-
-          // Check if this unit already exists in the list
-          if (!mouseHoverUnitsList.Contains(selectableObject.gameObject))
-          {
-            mouseHoverUnitsList.Add(selectableObject.gameObject);
-          }
+          AddObjectToHoverList(selectableObject.gameObject);
         }
       }
 
@@ -301,12 +275,13 @@ public class CameraObjectSelection : MonoBehaviour
     }
   }
 
-  private void ClearSelectionList()
+  public void ClearSelectionList()
   {
     foreach (GameObject selectedObject in selectedUnitsList)
     {
+      // Only clear if selected status is hover
       Selectable selectableObject = selectedObject.GetComponent<Selectable>();
-
+      
       selectableObject.selectStatus = Selectable.SELECT_STATUS.UNSELECTED;
     }
 
@@ -319,7 +294,10 @@ public class CameraObjectSelection : MonoBehaviour
     {
       foreach (GameObject hoverObject in mouseHoverUnitsList)
       {
-        hoverObject.GetComponent<Selectable>().selectStatus = Selectable.SELECT_STATUS.UNSELECTED;
+        if (hoverObject.GetComponent<Selectable>().selectStatus == Selectable.SELECT_STATUS.HOVER)
+        {
+          hoverObject.GetComponent<Selectable>().selectStatus = Selectable.SELECT_STATUS.UNSELECTED;
+        }
       }
     }
 
@@ -327,6 +305,31 @@ public class CameraObjectSelection : MonoBehaviour
     friendlyObjectsInList = false;
     friendlyUnitsInList = false;
     nonFriendlyUnitsPurgedFromList = false;
+  }
+
+  public void AddObjectToHoverList(GameObject hoverObject)
+  {
+    if (!mouseHoverUnitsList.Contains(hoverObject))
+    {
+      mouseHoverUnitsList.Add(hoverObject);
+      
+    }
+
+    // If object is already selected, the hover selection should not overwrite that
+    if (hoverObject.GetComponent<Selectable>().selectStatus != Selectable.SELECT_STATUS.SELECTED)
+    {
+      hoverObject.GetComponent<Selectable>().selectStatus = Selectable.SELECT_STATUS.HOVER;
+    }
+  }
+
+  public void AddObjectToSelectionList(GameObject selectedObject)
+  {
+    if (!selectedUnitsList.Contains(selectedObject))
+    {
+      selectedUnitsList.Add(selectedObject);
+
+      selectedObject.GetComponent<Selectable>().selectStatus = Selectable.SELECT_STATUS.SELECTED;
+    }
   }
 
   private void OnGUI()
@@ -338,4 +341,16 @@ public class CameraObjectSelection : MonoBehaviour
       //DrawScreenRect(rect2);
     }
   }
+
+  //private void OnMouseDown()
+  //{
+  //  EventSystem eventSys = GameObject.Find("EventSystem").GetComponent<EventSystem>();
+
+  //  if (eventSys.IsPointerOverGameObject())
+  //  {
+  //    eventSys.
+  //    Debug.Log("OVER!");
+  //    return; // exit out of OnMouseDown() because its over the uGUI
+  //  }
+  //}
 }

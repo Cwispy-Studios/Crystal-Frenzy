@@ -32,7 +32,9 @@ public class CameraIssueOrdering : MonoBehaviour
       // while moving to the destination. Right clicking cancels the order
       if (AttackMoveOrder)
       {
-        if (Input.GetMouseButtonDown(0))
+        CameraProperties.selectionDisabled = true;
+
+        if (Input.GetMouseButtonDown(0) && !CameraProperties.mouseOverUI)
         {
           Order(true);
         }
