@@ -1,7 +1,0 @@
-﻿public enum PHASES
-{
-  PREPARATION = 0,
-  ESCORT,
-  FORTIFICATION,
-  DEFENSE
-}

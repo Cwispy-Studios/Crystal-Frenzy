@@ -48,7 +48,6 @@ public class CameraObjectSelection : MonoBehaviour
     // When LMB is pressed down
     if (Input.GetMouseButtonDown(0) && !CameraProperties.mouseOverUI)
     {
-      Debug.Log("Mouse down");
       // Begin selection and save this mouse position
       isSelecting = true;
       originalMousePosition = Input.mousePosition;
@@ -57,7 +56,6 @@ public class CameraObjectSelection : MonoBehaviour
     // When LMB is released, or checks if LMB is already released but the game still registers it as selecting
     if (isSelecting == true && (Input.GetMouseButtonUp(0) || Input.GetMouseButton(0) == false))
     {
-      Debug.Log("Mouse up");
       isSelecting = false;
 
       // Mouse is in the same position as when the LMB was clicked, so process this as a click.

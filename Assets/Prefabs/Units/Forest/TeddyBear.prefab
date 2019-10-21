@@ -20,6 +20,7 @@ GameObject:
   - component: {fileID: 2914032785281923454}
   - component: {fileID: 5354171361829680825}
   - component: {fileID: 332880475672617696}
+  - component: {fileID: -5750879654358924529}
   m_Layer: 0
   m_Name: TeddyBear
   m_TagString: Untagged
@@ -105,10 +106,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.8
-  m_Height: 3.4
+  m_Radius: 0.9
+  m_Height: 4.2
   m_Direction: 1
-  m_Center: {x: 0, y: 0.9, z: 0}
+  m_Center: {x: 0, y: 1.2, z: 0}
 --- !u!195 &7556039122687216922
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -213,7 +214,7 @@ MonoBehaviour:
   attackDamage: 2
   attacksPerSecond: 1.2
   attackRange: 0.8
-  enemyDetectRange: 10
+  enemyDetectRange: 12
   preferredTarget: 0
 --- !u!114 &332880475672617696
 MonoBehaviour:
@@ -228,3 +229,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
+--- !u!114 &-5750879654358924529
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 629991203131557990}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9347d1a8695b16347b2077e2606b6f70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

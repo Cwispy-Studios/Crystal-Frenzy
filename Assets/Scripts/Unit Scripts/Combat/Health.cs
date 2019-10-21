@@ -59,17 +59,8 @@ public class Health : MonoBehaviour
 
   private void Update()
   {
-    if (Input.GetKeyDown(KeyCode.Space))
-    {
-      ModifyHealth(-10);
-    }
-
-    if (Input.GetKeyDown(KeyCode.M))
-    {
-      ModifyHealth(10);
-    }
-
-    if (CurrentHealth == maxHealth)
+    // Layer 10 is invisible, enemies are set to invisible if they are inside fog of war
+    if (CurrentHealth == maxHealth || gameObject.layer == 10)
     {
       OnHealthRemoved(this);
     }

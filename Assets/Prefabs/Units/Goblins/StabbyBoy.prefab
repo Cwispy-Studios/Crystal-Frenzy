@@ -106,10 +106,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.8
-  m_Height: 3.4
+  m_Radius: 0.9
+  m_Height: 4.2
   m_Direction: 1
-  m_Center: {x: 0, y: 0.9, z: 0}
+  m_Center: {x: 0, y: 1.2, z: 0}
 --- !u!195 &6986816071556721861
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -188,7 +188,7 @@ MonoBehaviour:
   fovActive: 1
   fovMeshPrefab: {fileID: 6477082172712516352, guid: 3022b499539b4c64c9f13e17f43e0903,
     type: 3}
-  fovRange: 18
+  fovRange: 25
 --- !u!114 &4559491972518532284
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -230,7 +230,7 @@ MonoBehaviour:
   attackDamage: 3
   attacksPerSecond: 1.5
   attackRange: 1
-  enemyDetectRange: 12
+  enemyDetectRange: 15
   preferredTarget: 0
 --- !u!114 &7125494102815859543
 MonoBehaviour:

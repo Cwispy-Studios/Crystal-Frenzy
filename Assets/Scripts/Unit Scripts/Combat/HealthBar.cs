@@ -58,7 +58,7 @@ public class HealthBar : MonoBehaviour
 
     Vector3 objectScale = originalScale * playerCamera.GetComponent<CameraControls>().GetZoomPerc();
     objectScale.x *= objectSize;
-    objectScale.y *= objectSize * 0.5f;
+    //objectScale.y *= objectSize * 0.5f;
 
     transform.localScale = objectScale;
   }
