@@ -14,6 +14,7 @@ public class RecruitableUnit : MonoBehaviour
 
   public void KillUnit()
   {
+    unitButton.GetComponent<UnitButton>().DestroyButton();
     Destroy(unitButton);
   }
 }

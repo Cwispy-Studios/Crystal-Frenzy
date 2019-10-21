@@ -15,9 +15,13 @@ GameObject:
   - component: {fileID: 4179004458946160244}
   - component: {fileID: 5981894810483090413}
   - component: {fileID: 3592447304192908867}
+  - component: {fileID: -8700839933956722381}
+  - component: {fileID: 1476391264982174357}
   - component: {fileID: 7807008728789946622}
   - component: {fileID: 3721100528942192966}
   - component: {fileID: -1362289475002516740}
+  - component: {fileID: -6445918545018131961}
+  - component: {fileID: 2547541493230240812}
   m_Layer: 0
   m_Name: CrystalNode
   m_TagString: Untagged
@@ -143,6 +147,35 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   faction: 3
+--- !u!114 &-8700839933956722381
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8532510506944539445}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9528c87b036fe784ea83b13e6b7186d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectType: 0
+--- !u!114 &1476391264982174357
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8532510506944539445}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f46ca6d4acc06d84590ca4596c85cfae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fovActive: 1
+  fovMeshPrefab: {fileID: 6477082172712516352, guid: 3022b499539b4c64c9f13e17f43e0903,
+    type: 3}
+  fovRange: 65
 --- !u!114 &7807008728789946622
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -171,6 +204,8 @@ MonoBehaviour:
   - {fileID: 0}
   pathSplines:
   - {fileID: 0}
+  spawnPoints: []
+  treeWall: {fileID: 0}
 --- !u!114 &-1362289475002516740
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -183,5 +218,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d31e8991233beb44e91a420910683514, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  crystalSeekerPrefab: {fileID: -927199367670048503, guid: d11e6155fe728af49a1398ba3d96275f,
+  minerPrefab: {fileID: 5820753501731554686, guid: 2ca99be31026d1841bd01375187b753c,
     type: 3}
+  bushPrefab: {fileID: 0}
+--- !u!114 &-6445918545018131961
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8532510506944539445}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ac9691da67fbb44fa991240c8136998, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  assemblySpace: {fileID: 0}
+  tempFOVMeshes:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  cameraBound: {fileID: 0}
+--- !u!114 &2547541493230240812
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8532510506944539445}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1ce8240a519fcf4fb730ce929e15249, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  goldReward: 100
+  crystalIncomeReward: 20

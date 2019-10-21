@@ -2,8 +2,6 @@
 
 public class ConqueredNode : MonoBehaviour
 {
-  public bool conquered = false;
-
   [SerializeField]
   private GameObject assemblySpace;
   public GameObject AssemblySpace

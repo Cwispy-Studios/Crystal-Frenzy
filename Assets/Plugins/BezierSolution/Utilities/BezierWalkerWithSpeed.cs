@@ -165,5 +165,13 @@ namespace BezierSolution
       transform.position = spline[startPoint].position;
       transform.rotation = Quaternion.LookRotation(spline.GetTangent(progress));
     } // func end
+
+    public bool TargetReached()
+    {
+      if (progress >= endProgress)
+        return true;
+
+      else return false;
+    }
 	}
 }

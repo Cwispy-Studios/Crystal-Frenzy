@@ -42,6 +42,7 @@ public class CameraIssueOrdering : MonoBehaviour
         if (Input.GetMouseButtonDown(0) && !CameraProperties.mouseOverUI)
         {
           Order(true);
+          AttackMoveOrder = false;
         }
 
         else if (Input.GetMouseButtonDown(1))
@@ -73,11 +74,8 @@ public class CameraIssueOrdering : MonoBehaviour
     // Ignore UI elements
     int layerMask = (1 << 9) | (1 << 10);
 
-    Debug.Log(layerMask);
-
     if (Physics.Raycast(ray, out RaycastHit hit, 100f, ~layerMask))
     {
-      Debug.Log(hit.collider.name + " " + hit.point);
       // Right click on ground, order units to that point
       if (hit.collider.tag == "Ground")
       {

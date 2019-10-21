@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
   private List<GameObject> conqueredNodes;
   private GameObject attackNode;
 
-  private int currentPhaseCycle = 0;
+  private int currentPhaseCycle = 1;
   public static PHASES CurrentPhase { get; private set; }
 
   /////////////////////////////////////////////////////////
@@ -44,6 +44,7 @@ public class GameManager : MonoBehaviour
   private void FixedUpdate()
   {
     phaseText.text = CurrentPhase.ToString() + " PHASE";
+    nodeText.text = "Node " + currentPhaseCycle.ToString();
   }
 
   private void Update()
@@ -55,9 +56,6 @@ public class GameManager : MonoBehaviour
         break;
 
       case PHASES.ESCORT:
-        break;
-
-      case PHASES.FORTIFICATION:
         break;
 
       case PHASES.DEFENSE:
@@ -177,13 +175,59 @@ public class GameManager : MonoBehaviour
     attackingFromNode.GetComponent<CrystalSeekerSpawner>().enabled = false;
     attackingFromNode.GetComponent<CrystalOrder>().enabled = false;
 
-    // TODO: Change unit panel buttons to combat buttons
+    // Change unit panel buttons to combat buttons so clicking on them selects units instead of deleting them
     uiInterface.UnitManager.SetUnitButtonsToCombat();
 
     // Start wave spawners of attack node
     attackNode.GetComponent<CrystalNode>().SetWaveSpawnersActive(true, spawnedCrystalSeeker);
+    // Disables the tree wall so units can pass through
+    attackNode.GetComponent<CrystalNode>().DisableTreeWall();
 
     // Turn off tempFOVMeshes so we can't see the enemies attacking from the path
     attackingFromNode.GetComponent<ConqueredNode>().DisablePreparationFOV();
+  }
+
+  public void EscortWin()
+  {
+    // Advance to the next Preparation Phase
+    ++currentPhaseCycle;
+
+    CurrentPhase = PHASES.PREPARATION;
+
+    // Remove all units on the playing field, friendly units are contained in Unit Manager, enemy units are contained in Hideable Manager
+    uiInterface.EscortPhaseRemoveAllUnits();
+    GetComponent<HideableManager>().RemoveAllUnits();
+
+    // Add the conquered node to the list
+    conqueredNodes.Add(attackNode);
+
+    GameObject conqueredNode = conqueredNodes[conqueredNodes.Count - 1];
+
+    // Enable the crystal nodes functionalities and spawns a crystal seeker
+    conqueredNode.GetComponent<CrystalSeekerSpawner>().enabled = true;
+    conqueredNode.GetComponent<CrystalOrder>().enabled = true;
+
+    // Disable wave spawners of the conquered node
+    conqueredNode.GetComponent<CrystalNode>().SetWaveSpawnersActive(false, null);
+
+    // Turn on all the tempFOVMeshes of every conquered nodes 
+    for (int i = 0; i < conqueredNodes.Count; ++i)
+    {
+      conqueredNodes[i].GetComponent<ConqueredNode>().EnablePreparationFOV();
+    }
+
+    // Turn the conquered node into your faction
+    conqueredNode.GetComponent<Faction>().faction = Faction.FACTIONS.GOBLINS;
+
+    // Update the camera bounds
+    playerCamera.GetComponent<CameraControls>().AddCameraBounds(conqueredNode.GetComponent<ConqueredNode>().CameraBound);
+
+    phaseCycleSetup = false;
+    nodeSelected = false;
+  }
+
+  public void EscortLose()
+  {
+
   }
 }

@@ -24,7 +24,7 @@ public class ResourceManager : MonoBehaviour
   private void LateUpdate()
   {
     goldText.text = Gold.ToString();
-    crystalText.text = Crystals.ToString();
+    crystalText.text = Crystals.ToString() + " (+" + crystalsIncome.ToString() + ")";
     UnitCapText.text = ArmySize.ToString() + " / " + startingUnitCap;
   }
 

@@ -8,6 +8,11 @@ public class CrystalNode : MonoBehaviour
   private GameObject[] pathSplines = null;
   [SerializeField]
   private GameObject[] spawnPoints = null;
+  [SerializeField]
+  private GameObject treeWall = null;
+
+  // To add disable component in inspector
+  private void Start() { }
 
   public void CheckCrystalIsValid(GameObject checkObject, ref GameObject setTarget, ref GameObject crystalPath)
   {
@@ -29,6 +34,14 @@ public class CrystalNode : MonoBehaviour
     {
       spawnPoint.GetComponent<WaveSpawner>().enabled = active;
       spawnPoint.GetComponent<WaveSpawner>().target = target;
+    }
+  }
+
+  public void DisableTreeWall()
+  {
+    if (treeWall != null)
+    {
+      treeWall.SetActive(false);
     }
   }
 }

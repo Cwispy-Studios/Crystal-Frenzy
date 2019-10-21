@@ -19,6 +19,7 @@ GameObject:
   - component: {fileID: -7819313882947085818}
   - component: {fileID: 6874352428671528951}
   - component: {fileID: 6153243619529093130}
+  - component: {fileID: 4440799278527876923}
   m_Layer: 0
   m_Name: Miner
   m_TagString: Untagged
@@ -208,7 +209,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spline: {fileID: 0}
   travelMode: 0
-  speed: 3
+  speed: 2.5
   rotationLerpModifier: 10
   lookForward: 1
   onPathCompleted:
@@ -216,3 +217,15 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &4440799278527876923
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5820753501731554686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09b88cc0cadcf8949975609bdfeae27b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

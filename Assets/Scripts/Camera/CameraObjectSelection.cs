@@ -172,12 +172,17 @@ public class CameraObjectSelection : MonoBehaviour
       ClearHoverList(true);
     }
 
-    Selectable clickedObject = Utils.CheckMouseIsOverSelectable().GetComponent<Selectable>();
+    GameObject check = Utils.CheckMouseIsOverSelectable();
 
-    if (clickedObject != null)
+    if (check != null)
     {
-      selectedUnitsList.Add(clickedObject.gameObject);
-      clickedObject.selectStatus = Selectable.SELECT_STATUS.SELECTED;
+      Selectable clickedObject = check.GetComponent<Selectable>();
+
+      if (clickedObject != null)
+      {
+        selectedUnitsList.Add(clickedObject.gameObject);
+        clickedObject.selectStatus = Selectable.SELECT_STATUS.SELECTED;
+      }
     }
   }
 

@@ -8,7 +8,7 @@ public class Attack : MonoBehaviour
   [SerializeField]
   private float attacksPerSecond = 1f, attackRange = 1f, enemyDetectRange = 1f;
   [SerializeField]
-  private COMBATANT_TYPE preferredTarget;
+  private COMBATANT_TYPE preferredTarget = COMBATANT_TYPE.NORMAL;
 
   private float attackCooldown = 0;
   private float unitRadius = 0;

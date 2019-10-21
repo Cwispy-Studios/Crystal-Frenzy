@@ -60,4 +60,12 @@ public class HideableManager : MonoBehaviour
       updateCountdown += Time.deltaTime;
     }
   }
+
+  public void RemoveAllUnits()
+  {
+    for (int i = hideableUnits.Count - 1; i >= 0; --i)
+    {
+      Destroy(hideableUnits[i]);
+    }
+  }
 }

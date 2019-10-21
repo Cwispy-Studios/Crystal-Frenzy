@@ -22,7 +22,7 @@ public class Health : MonoBehaviour
   [SerializeField]
   private int maxHealth = 100;
   [SerializeField]
-  private COMBATANT_TYPE combatantType;
+  private COMBATANT_TYPE combatantType = COMBATANT_TYPE.NORMAL;
   public COMBATANT_TYPE CombatantType
   {
     get

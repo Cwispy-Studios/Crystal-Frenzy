@@ -2,7 +2,7 @@
 
 public class UnitButton : MonoBehaviour
 {
-  public UnitManager unitManager { private get; set; }
+  private UnitManager unitManager;
 
   // Once set, unit cannot be over written
   private GameObject unit = null;
@@ -10,6 +10,11 @@ public class UnitButton : MonoBehaviour
   {
     get { return unit; }
     set { if (unit == null) unit = value; }
+  }
+
+  private void Awake()
+  {
+    unitManager = FindObjectOfType<UnitManager>();
   }
 
   public void DestroyButton()

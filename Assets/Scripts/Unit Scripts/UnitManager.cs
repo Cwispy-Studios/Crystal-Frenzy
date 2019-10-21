@@ -211,4 +211,17 @@ public class UnitManager : MonoBehaviour
       unitButton.onClick.AddListener((delegate { SelectUnitButton(unitButton.GetComponent<UnitButton>().Unit, unitButton.gameObject); }));
     }
   }
+
+  public void RemoveAllUnits()
+  {
+    for (int i = unitButtonsList.Count - 1; i >= 0; --i)
+    {
+      resourceManager.UpdateArmySize(-unitButtonsList[i].GetComponent<UnitButton>().Unit.GetComponent<RecruitableUnit>().unitPoints);
+
+      Destroy(unitButtonsList[i].GetComponent<UnitButton>().Unit);
+      Destroy(unitButtonsList[i]);
+
+      unitButtonsList.Remove(unitButtonsList[i]);
+    }
+  }
 }

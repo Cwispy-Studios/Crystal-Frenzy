@@ -90,4 +90,16 @@ public class CrystalSeekerSpawner : MonoBehaviour
 
     return crystalSeeker;
   }
+
+  private void OnDisable()
+  {
+    if (crystalPath != null)
+    {
+      ParticleSystem particleSystem = crystalPath.GetComponentInChildren<ParticleSystem>();
+      var emittor = particleSystem.emission;
+
+      emittor.enabled = false;
+      particleSystem.Clear();
+    }
+  }
 }

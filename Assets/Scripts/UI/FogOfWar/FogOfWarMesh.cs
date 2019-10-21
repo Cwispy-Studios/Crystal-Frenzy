@@ -10,7 +10,7 @@ public enum FOV_SHAPE
 public class FogOfWarMesh : MonoBehaviour
 {
   [SerializeField]
-  private FOV_SHAPE fovShape;
+  private FOV_SHAPE fovShape = FOV_SHAPE.CIRCLE;
   public FOV_SHAPE FovShape
   {
     get

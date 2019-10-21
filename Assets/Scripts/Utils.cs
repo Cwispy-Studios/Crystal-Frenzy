@@ -57,8 +57,11 @@ public class Utils
     // Retrieve the ray from the mouse to camera
     ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
+    // Do not count UI, Terrain, FOV and Invisible objects
+    int layerMask = (1 << 5) | (1 << 8) | (1 << 9) | (1 << 10);
+
     // Check if the mouse was over any collider when clicked
-    if (Physics.Raycast(ray, out RaycastHit hit))
+    if (Physics.Raycast(ray, out RaycastHit hit, 100f, ~layerMask))
     {
       // Retrieve selectable component
       GameObject selectable = hit.collider.gameObject;

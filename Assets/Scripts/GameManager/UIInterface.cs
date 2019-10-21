@@ -16,6 +16,19 @@ public class UIInterface : MonoBehaviour
       return unitManager;
     }
   }
+
+  [SerializeField]
+  private LootPopup lootPopup = null;
+
+  private Camera playerCamera;
+
+  private void Awake()
+  {
+    lootPopup.gameObject.SetActive(false);
+
+    playerCamera = Camera.main;
+  }
+
   //////////////////////////////////////////////////////////////////////////////////////
   // PREPARATION PHASE
   //////////////////////////////////////////////////////////////////////////////////////
@@ -44,5 +57,25 @@ public class UIInterface : MonoBehaviour
   public void PreparationPhaseDisableUI()
   {
     preparationPhaseUI.DisableUI();
+  }
+
+  //////////////////////////////////////////////////////////////////////////////////////
+  // ESCORT PHASE
+  //////////////////////////////////////////////////////////////////////////////////////
+  public void EscortPhaseRemoveAllUnits()
+  {
+    unitManager.RemoveAllUnits();
+  }
+
+  public void ShowRewardPopup(int gold, int crystal)
+  {
+    lootPopup.SetText(gold, crystal);
+
+    lootPopup.gameObject.SetActive(true);
+  }
+
+  public void HideRewardPopup()
+  {
+    lootPopup.gameObject.SetActive(false);
   }
 }

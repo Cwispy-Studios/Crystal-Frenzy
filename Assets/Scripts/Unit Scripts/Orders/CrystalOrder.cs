@@ -2,6 +2,9 @@
 
 public class CrystalOrder : Order
 {
+  // To add disable component in inspector
+  private void Start() { }
+
   public override void IssueOrderPoint(Vector3 destinationOrder)
   {
   }
