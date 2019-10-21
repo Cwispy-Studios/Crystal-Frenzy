@@ -4,15 +4,19 @@ using UnityEngine.EventSystems;
 
 public class CameraObjectSelection : MonoBehaviour
 {
-  private List<GameObject> selectedUnitsList;
-  public List<GameObject> SelectedUnitsList
+  private static List<GameObject> selectedUnitsList;
+  public static List<GameObject> SelectedUnitsList
   {
     get { return selectedUnitsList; }
   }
 
   private bool isSelecting = false;
   private Vector3 originalMousePosition;
-  private List<GameObject> mouseHoverUnitsList;
+  private static List<GameObject> mouseHoverUnitsList;
+  public static List<GameObject> MouseHoverUnitsList
+  {
+    get { return mouseHoverUnitsList; }
+  }
   private bool friendlyObjectsInList = false;
   private bool friendlyUnitsInList = false;
   private bool nonFriendlyUnitsPurgedFromList = false;
@@ -149,12 +153,23 @@ public class CameraObjectSelection : MonoBehaviour
     }
   }
 
+  public static void RemoveDeadSelectedUnit(GameObject deadSelectedUnit)
+  {
+    selectedUnitsList.Remove(deadSelectedUnit);
+  }
+
+  public static void RemoveDeadHoverUnit(GameObject deadHoverUnit)
+  {
+    mouseHoverUnitsList.Remove(deadHoverUnit);
+  }
+
   private void Click()
   {
     // Clear selection if left shift not held
     if (!Input.GetKey(KeyCode.LeftShift))
     {
       ClearSelectionList();
+      ClearHoverList(true);
     }
 
     Selectable clickedObject = Utils.CheckMouseIsOverSelectable().GetComponent<Selectable>();

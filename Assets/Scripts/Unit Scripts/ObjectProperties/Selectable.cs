@@ -209,4 +209,17 @@ public class Selectable : MonoBehaviour
       }
     }
   }
+
+  private void OnDestroy()
+  {
+    if (selectStatus == SELECT_STATUS.SELECTED)
+    {
+      CameraObjectSelection.RemoveDeadSelectedUnit(gameObject);
+    }
+
+    else if (selectStatus == SELECT_STATUS.HOVER)
+    {
+      CameraObjectSelection.RemoveDeadHoverUnit(gameObject);
+    }
+  }
 }

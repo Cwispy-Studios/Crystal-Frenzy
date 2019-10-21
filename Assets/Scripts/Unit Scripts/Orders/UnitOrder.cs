@@ -48,7 +48,6 @@ public class UnitOrder : Order
 
   public override void IssueOrderPoint(Vector3 destinationOrder)
   {
-    Debug.Log(destinationOrder);
     followTarget = false;
 
     GetComponent<NavMeshAgent>().stoppingDistance = 0f;

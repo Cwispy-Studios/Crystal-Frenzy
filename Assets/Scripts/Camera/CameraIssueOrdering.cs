@@ -16,7 +16,7 @@ public class CameraIssueOrdering : MonoBehaviour
 
   void Update()
   {
-    selectableObjects = GetComponent<CameraObjectSelection>().SelectedUnitsList;
+    selectableObjects = CameraObjectSelection.SelectedUnitsList;
 
     // Check if there are friendly units in that list
     bool friendlyUnitsInList = FriendlyUnitsInList(selectableObjects);
@@ -71,10 +71,13 @@ public class CameraIssueOrdering : MonoBehaviour
     Ray ray = GetComponent<Camera>().ScreenPointToRay(Input.mousePosition);
 
     // Ignore UI elements
-    //int layerMask = 1 << 5;
+    int layerMask = (1 << 9) | (1 << 10);
 
-    if (Physics.Raycast(ray, out RaycastHit hit))
+    Debug.Log(layerMask);
+
+    if (Physics.Raycast(ray, out RaycastHit hit, 100f, ~layerMask))
     {
+      Debug.Log(hit.collider.name + " " + hit.point);
       // Right click on ground, order units to that point
       if (hit.collider.tag == "Ground")
       {
