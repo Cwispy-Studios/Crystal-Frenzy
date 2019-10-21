@@ -53,7 +53,15 @@ public class Health : MonoBehaviour
     // Kill the unit
     if (CurrentHealth == 0)
     {
+      // Check if unit is recruitable, destroys the unit button as well
+      RecruitableUnit recruitableUnit = GetComponent<RecruitableUnit>();
 
+      if (recruitableUnit != null)
+      {
+        recruitableUnit.KillUnit();
+      }
+
+      Destroy(gameObject);
     }
   }
 

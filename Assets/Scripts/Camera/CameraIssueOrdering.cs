@@ -21,6 +21,11 @@ public class CameraIssueOrdering : MonoBehaviour
     // Check if there are friendly units in that list
     bool friendlyUnitsInList = FriendlyUnitsInList(selectableObjects);
 
+    if (!friendlyUnitsInList)
+    {
+      return;
+    }
+
     if (selectableObjects.Count == 0)
     {
       AttackMoveOrder = false;

@@ -28,6 +28,8 @@ public class CameraObjectSelection : MonoBehaviour
 
   private void Update()
   {
+    // TODO: UPDATE SELECTED AND HOVER LIST TO CHECK FOR NULL OBJECTS
+
     // Store every selectable in a list
     Selectable[] selectables = FindObjectsOfType<Selectable>();
 
@@ -230,26 +232,14 @@ public class CameraObjectSelection : MonoBehaviour
     Bounds colliderBounds = checkObject.GetComponent<Collider>().bounds;
     Vector3 cMin = camera.WorldToScreenPoint(colliderBounds.min);
     Vector3 cMax = camera.WorldToScreenPoint(colliderBounds.max);
-    //Debug.Log(cMin.z);
-    //Debug.Log(cMax.z);
-    //Debug.Log("");
     cMin.z = 0;
     cMax.z = 0;
     colliderBounds.SetMinMax(Vector3.Min(cMin, cMax), Vector3.Max(cMin, cMax));
-
-    //cMin.y = Screen.height - cMin.y;
-    //cMax.y = Screen.height - cMax.y;
-    //rect2 = Rect.MinMaxRect(cMin.x, cMin.y, cMax.x, cMax.y);
-    //Debug.Log(colliderBounds.min);
-    //Debug.Log(colliderBounds.max);
 
     // Set up the selection bounds based on the mouse positions
     Bounds selectionBounds = new Bounds();
     selectionBounds.SetMinMax(Vector3.Min(originalMousePosition, Input.mousePosition),
                               Vector3.Max(originalMousePosition, Input.mousePosition));
-
-    //Debug.Log(colliderBounds);
-    //Debug.Log(selectionBounds);
 
     // Check if they intersect
     return selectionBounds.Intersects(colliderBounds);

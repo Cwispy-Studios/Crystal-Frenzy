@@ -137,6 +137,15 @@ public class UnitManager : MonoBehaviour
     PositionUnitsOnAssemblySpace();
   }
 
+  public void KillUnit(GameObject removeButton, int unitPoints)
+  {
+    unitButtonsList.Remove(removeButton);
+
+    resourceManager.UpdateArmySize(-unitPoints);
+    
+    UpdateButtonPositions();
+  }
+
   private void UpdateButtonPositions()
   {
     if (unitButtonsList.Count > 0)

@@ -11,4 +11,9 @@ public class RecruitableUnit : MonoBehaviour
     get { return unitButton; }
     set { if (unitButton == null) unitButton = value; }
   }
+
+  public void KillUnit()
+  {
+    Destroy(unitButton);
+  }
 }
