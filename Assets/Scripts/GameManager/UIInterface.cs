@@ -21,6 +21,7 @@ public class UIInterface : MonoBehaviour
   private LootPopup lootPopup = null;
 
   private Camera playerCamera;
+  private GameObject showingLootObject;
 
   private void Awake()
   {
@@ -67,15 +68,20 @@ public class UIInterface : MonoBehaviour
     unitManager.RemoveAllUnits();
   }
 
-  public void ShowRewardPopup(int gold, int crystal)
+  public void ShowLootPopup(int gold, int crystal, GameObject lootObject)
   {
+    showingLootObject = lootObject;
+
     lootPopup.SetText(gold, crystal);
 
     lootPopup.gameObject.SetActive(true);
   }
 
-  public void HideRewardPopup()
+  public void HideRewardPopup(GameObject lootObject)
   {
-    lootPopup.gameObject.SetActive(false);
+    if (lootObject == showingLootObject)
+    {
+      lootPopup.gameObject.SetActive(false);
+    }
   }
 }

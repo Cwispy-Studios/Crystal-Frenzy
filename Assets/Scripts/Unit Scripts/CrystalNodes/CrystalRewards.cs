@@ -31,12 +31,12 @@ public class CrystalRewards : MonoBehaviour
 
     if (popupHoverLength >= POPUP_HOVER_TIME)
     {
-      uiInterface.ShowRewardPopup(goldLoot, crystalIncomeReward);
+      uiInterface.ShowLootPopup(goldLoot, crystalIncomeReward, gameObject);
     }
 
     else
     {
-      uiInterface.HideRewardPopup();
+      uiInterface.HideRewardPopup(gameObject);
     }
   }
 }

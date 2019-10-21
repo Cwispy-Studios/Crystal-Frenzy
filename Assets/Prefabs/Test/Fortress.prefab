@@ -34,13 +34,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2176489734026949311}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 5.5, z: 0}
-  m_LocalScale: {x: 9, y: 11, z: 9}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 8.953, y: 0, z: 0}
 --- !u!33 &2176489734026949280
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -48,7 +48,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2176489734026949311}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: -2130345723145856513, guid: 72ecf31d6aed4cb44ab0745d98bf6a2f, type: 3}
 --- !u!23 &2176489734026949281
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -66,7 +66,26 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 75ef726395729ef459d31c675b2129f3, type: 2}
+  - {fileID: 7760375262151609378, guid: 72ecf31d6aed4cb44ab0745d98bf6a2f, type: 3}
+  - {fileID: 6552712208104094336, guid: 72ecf31d6aed4cb44ab0745d98bf6a2f, type: 3}
+  - {fileID: 8379324291032844756, guid: 72ecf31d6aed4cb44ab0745d98bf6a2f, type: 3}
+  - {fileID: 1370133414012564050, guid: 72ecf31d6aed4cb44ab0745d98bf6a2f, type: 3}
+  - {fileID: -6369355408595068400, guid: 72ecf31d6aed4cb44ab0745d98bf6a2f, type: 3}
+  - {fileID: 6122350970019620951, guid: 72ecf31d6aed4cb44ab0745d98bf6a2f, type: 3}
+  - {fileID: 6207629931271776393, guid: 72ecf31d6aed4cb44ab0745d98bf6a2f, type: 3}
+  - {fileID: 7106216217269199355, guid: 72ecf31d6aed4cb44ab0745d98bf6a2f, type: 3}
+  - {fileID: -2051470181153394171, guid: 72ecf31d6aed4cb44ab0745d98bf6a2f, type: 3}
+  - {fileID: 5784764021074166936, guid: 72ecf31d6aed4cb44ab0745d98bf6a2f, type: 3}
+  - {fileID: 1496237204816742178, guid: 72ecf31d6aed4cb44ab0745d98bf6a2f, type: 3}
+  - {fileID: -141464772439005712, guid: 72ecf31d6aed4cb44ab0745d98bf6a2f, type: 3}
+  - {fileID: -5528487850159911382, guid: 72ecf31d6aed4cb44ab0745d98bf6a2f, type: 3}
+  - {fileID: 6452190776118402613, guid: 72ecf31d6aed4cb44ab0745d98bf6a2f, type: 3}
+  - {fileID: 6670659438154417540, guid: 72ecf31d6aed4cb44ab0745d98bf6a2f, type: 3}
+  - {fileID: 1268312043147498784, guid: 72ecf31d6aed4cb44ab0745d98bf6a2f, type: 3}
+  - {fileID: 6508453767911533249, guid: 72ecf31d6aed4cb44ab0745d98bf6a2f, type: 3}
+  - {fileID: -7013034672932136567, guid: 72ecf31d6aed4cb44ab0745d98bf6a2f, type: 3}
+  - {fileID: 7243733679325773911, guid: 72ecf31d6aed4cb44ab0745d98bf6a2f, type: 3}
+  - {fileID: -2957340777060511217, guid: 72ecf31d6aed4cb44ab0745d98bf6a2f, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -95,10 +114,10 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2176489734026949311}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.6
+  m_Radius: 10
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!208 &-5054215509888451885
 NavMeshObstacle:
@@ -110,11 +129,11 @@ NavMeshObstacle:
   m_Enabled: 1
   serializedVersion: 3
   m_Shape: 0
-  m_Extents: {x: 0.7, y: 0.85, z: 0.7}
+  m_Extents: {x: 11, y: 0.8, z: 11}
   m_MoveThreshold: 0.1
   m_Carve: 1
   m_CarveOnlyStationary: 1
-  m_Center: {x: 0, y: -0.22, z: 0}
+  m_Center: {x: 0, y: 0, z: 0}
   m_TimeToStationary: 0.5
 --- !u!114 &-2782081079138082621
 MonoBehaviour:
@@ -201,6 +220,8 @@ MonoBehaviour:
   - {fileID: -927199367670048503, guid: 297a1d00553881048995dad3847517ac, type: 3}
   pathSplines:
   - {fileID: 2090115093539842534, guid: e9068e208d49a2b46ab7a2268525c536, type: 3}
+  spawnPoints: []
+  treeWall: {fileID: 0}
 --- !u!114 &1036473008959279404
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -213,5 +234,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d31e8991233beb44e91a420910683514, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  crystalSeekerPrefab: {fileID: -927199367670048503, guid: d11e6155fe728af49a1398ba3d96275f,
-    type: 3}
+  minerPrefab: {fileID: 0}
+  bushPrefab: {fileID: 0}
