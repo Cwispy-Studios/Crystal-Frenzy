@@ -11,8 +11,8 @@ public class CameraControls : MonoBehaviour
   private readonly float panSpeed = 75f;
 
   /*********************** Zoom variables ***********************/
-  private const float MIN_ZOOM = 10f;
-  private const float MAX_ZOOM = 30f;
+  private const float MIN_ZOOM = 15f;
+  private const float MAX_ZOOM = 35f;
   private readonly float zoomSpeed = 1f;
 
   private List<GameObject> cameraBounds = new List<GameObject>();

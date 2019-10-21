@@ -19,6 +19,8 @@ public class UIInterface : MonoBehaviour
 
   [SerializeField]
   private LootPopup lootPopup = null;
+  [SerializeField]
+  private LootTargetPanel lootTargetPanel = null;
 
   private Camera playerCamera;
   private GameObject showingLootObject;
@@ -68,6 +70,9 @@ public class UIInterface : MonoBehaviour
     unitManager.RemoveAllUnits();
   }
 
+  //////////////////////////////////////////////////////////////////////////////////////
+  // OTHERS
+  //////////////////////////////////////////////////////////////////////////////////////
   public void ShowLootPopup(int gold, int crystal, GameObject lootObject)
   {
     showingLootObject = lootObject;
@@ -83,5 +88,10 @@ public class UIInterface : MonoBehaviour
     {
       lootPopup.gameObject.SetActive(false);
     }
+  }
+
+  public void UpdateLootTargetPanel(int gold, int crystal)
+  {
+    lootTargetPanel.SetText(gold, crystal);
   }
 }

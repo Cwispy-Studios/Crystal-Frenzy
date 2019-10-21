@@ -148,6 +148,9 @@ public class GameManager : MonoBehaviour
 
     // Update the reference to the node we are going to attack
     attackNode = attackingFromNode.GetComponent<CrystalSeekerSpawner>().CrystalTarget;
+
+    // Update the loot target panel
+    uiInterface.UpdateLootTargetPanel(attackNode.GetComponent<CrystalRewards>().goldLoot, attackNode.GetComponent<CrystalRewards>().crystalIncomeReward);
   }
 
   public void ReturnToNodeSelection()
@@ -221,6 +224,10 @@ public class GameManager : MonoBehaviour
 
     // Update the camera bounds
     playerCamera.GetComponent<CameraControls>().AddCameraBounds(conqueredNode.GetComponent<ConqueredNode>().CameraBound);
+
+    // Collect loot
+    resourceManager.CollectLoot(conqueredNode.GetComponent<CrystalRewards>().goldLoot, conqueredNode.GetComponent<CrystalRewards>().crystalIncomeReward);
+    uiInterface.UpdateLootTargetPanel(0, 0);
 
     phaseCycleSetup = false;
     nodeSelected = false;

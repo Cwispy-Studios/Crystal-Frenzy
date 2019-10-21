@@ -34,7 +34,7 @@ public class Selectable : MonoBehaviour
   private float selectionCircleRadius;
 
   private const float ALPHA_OPAQUE = 1f;
-  private const float ALPHA_TRANSLUCENT = 0.3f;
+  private const float ALPHA_TRANSLUCENT = 0.4f;
   private const float ALPHA_TRANSPARENT = 0f;
 
   private int blinkLoops = 0;

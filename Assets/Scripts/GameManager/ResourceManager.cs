@@ -32,4 +32,11 @@ public class ResourceManager : MonoBehaviour
   {
     ArmySize += value;
   }
+
+  public void CollectLoot(int gold, int crystalIncome)
+  {
+    Gold += gold;
+    crystalsIncome += crystalIncome;
+    Crystals += crystalsIncome;
+  }
 }

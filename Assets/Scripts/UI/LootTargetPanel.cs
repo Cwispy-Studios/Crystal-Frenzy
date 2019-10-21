@@ -9,6 +9,11 @@ public class LootTargetPanel : MonoBehaviour
   // Cache for Loot Popup
   public int cacheGold = 0, cacheCrystalIncome = 0;
 
+  private void Awake()
+  {
+    SetText(0, 0);
+  }
+
   public void SetText(int gold, int crystal)
   {
     cacheGold = gold;
