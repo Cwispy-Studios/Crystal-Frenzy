@@ -267,6 +267,7 @@ MonoBehaviour:
   mageTowerPrefab: {fileID: 1236374215028544222, guid: c658d85342009ac48b5df0f78d2b92b7,
     type: 3}
   buildingType: 1
+  connectedNode: {fileID: 0}
   available: 1
 --- !u!1 &46928399 stripped
 GameObject:
@@ -468,7 +469,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &87451411
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11918,6 +11919,7 @@ MonoBehaviour:
   blacksmithButton: {fileID: 2132209111}
   brawlPitButton: {fileID: 1680702248}
   mageTowerButton: {fileID: 1152221126}
+  connectedNode: {fileID: 0}
 --- !u!1 &462960864 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2090115093539842534, guid: e9068e208d49a2b46ab7a2268525c536,
@@ -17287,6 +17289,7 @@ MonoBehaviour:
   mageTowerPrefab: {fileID: 1236374215028544222, guid: c658d85342009ac48b5df0f78d2b92b7,
     type: 3}
   buildingType: 0
+  connectedNode: {fileID: 0}
   available: 1
 --- !u!1 &587232069
 GameObject:
@@ -19244,7 +19247,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 43a7d98bd4222b64e933596512dc09ad, type: 3}
+  m_Sprite: {fileID: 21300000, guid: aa04e061333880a46991f27891ffd0ee, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -20024,7 +20027,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 1a5d8785d80a4ee42a2a4c8632436dc0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: cf1462bc694c3c249831ad8ac5293aa2, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -20995,6 +20998,7 @@ MonoBehaviour:
   mageTowerPrefab: {fileID: 1236374215028544222, guid: c658d85342009ac48b5df0f78d2b92b7,
     type: 3}
   buildingType: 4
+  connectedNode: {fileID: 0}
   available: 1
 --- !u!1 &1168604734
 GameObject:
@@ -21204,7 +21208,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 43a7d98bd4222b64e933596512dc09ad, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 323fe7b13fe80174aa4e0d629bc5ba8d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -22865,6 +22869,7 @@ MonoBehaviour:
   mageTowerPrefab: {fileID: 1236374215028544222, guid: c658d85342009ac48b5df0f78d2b92b7,
     type: 3}
   buildingType: 3
+  connectedNode: {fileID: 0}
   available: 1
 --- !u!1001 &1705961532
 PrefabInstance:
@@ -24457,7 +24462,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: a454050719005b444b59a84eaafba779, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8dd861a6e819de241bca68a36048a6bd, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -35741,6 +35746,7 @@ MonoBehaviour:
   mageTowerPrefab: {fileID: 1236374215028544222, guid: c658d85342009ac48b5df0f78d2b92b7,
     type: 3}
   buildingType: 2
+  connectedNode: {fileID: 0}
   available: 1
 --- !u!1 &2141928319
 GameObject:
