@@ -4,19 +4,11 @@ using UnityEngine.EventSystems;
 
 public class CameraObjectSelection : MonoBehaviour
 {
-  private static List<GameObject> selectedUnitsList;
-  public static List<GameObject> SelectedUnitsList
-  {
-    get { return selectedUnitsList; }
-  }
+  public static List<GameObject> SelectedUnitsList { get; private set; }
 
   private bool isSelecting = false;
   private Vector3 originalMousePosition;
-  private static List<GameObject> mouseHoverUnitsList;
-  public static List<GameObject> MouseHoverUnitsList
-  {
-    get { return mouseHoverUnitsList; }
-  }
+  public static List<GameObject> MouseHoverUnitsList { get; private set; }
   private bool friendlyObjectsInList = false;
   private bool friendlyUnitsInList = false;
   private bool nonFriendlyUnitsPurgedFromList = false;
@@ -26,8 +18,8 @@ public class CameraObjectSelection : MonoBehaviour
 
   private void Awake()
   {
-    selectedUnitsList = new List<GameObject>();
-    mouseHoverUnitsList = new List<GameObject>();
+    SelectedUnitsList = new List<GameObject>();
+    MouseHoverUnitsList = new List<GameObject>();
   }
 
   private void Update()
@@ -81,7 +73,7 @@ public class CameraObjectSelection : MonoBehaviour
           // If there are friendly units, only add Unit types to selectables
           if (friendlyUnitsInList)
           {
-            foreach (GameObject hoverObject in mouseHoverUnitsList)
+            foreach (GameObject hoverObject in MouseHoverUnitsList)
             {
               if (hoverObject.GetComponent<ObjectTypes>().objectType == ObjectTypes.OBJECT_TYPES.UNIT)
               {
@@ -98,16 +90,16 @@ public class CameraObjectSelection : MonoBehaviour
           // There are only buildings, only select the first object
           else
           {
-            for (int i = 0; i < mouseHoverUnitsList.Count; ++i)
+            for (int i = 0; i < MouseHoverUnitsList.Count; ++i)
             {
               if (i == 0)
               {
-                AddObjectToSelectionList(mouseHoverUnitsList[i]);
+                AddObjectToSelectionList(MouseHoverUnitsList[i]);
               }
 
               else
               {
-                mouseHoverUnitsList[i].GetComponent<Selectable>().selectStatus = Selectable.SELECT_STATUS.UNSELECTED;
+                MouseHoverUnitsList[i].GetComponent<Selectable>().selectStatus = Selectable.SELECT_STATUS.UNSELECTED;
               }
             }
           }
@@ -116,7 +108,7 @@ public class CameraObjectSelection : MonoBehaviour
         // Left shift held, do not clear existing list and add on from hoverUnits list
         else
         {
-          foreach (GameObject hoverObject in mouseHoverUnitsList)
+          foreach (GameObject hoverObject in MouseHoverUnitsList)
           {
             AddObjectToSelectionList(hoverObject);
           } // foreach end
@@ -138,7 +130,7 @@ public class CameraObjectSelection : MonoBehaviour
     else if (!CameraProperties.mouseOverUI)
     {
       // Clear the current hover list
-      if (mouseHoverUnitsList.Count > 1)
+      if (MouseHoverUnitsList.Count > 1)
         Debug.LogError("HOVER UNITS LIST HAS MORE THAN 1 OBJECT WHEN IT IS NOT DRAGGING!");
 
       ClearHoverList(true);
@@ -155,12 +147,12 @@ public class CameraObjectSelection : MonoBehaviour
 
   public static void RemoveDeadSelectedUnit(GameObject deadSelectedUnit)
   {
-    selectedUnitsList.Remove(deadSelectedUnit);
+    SelectedUnitsList.Remove(deadSelectedUnit);
   }
 
   public static void RemoveDeadHoverUnit(GameObject deadHoverUnit)
   {
-    mouseHoverUnitsList.Remove(deadHoverUnit);
+    MouseHoverUnitsList.Remove(deadHoverUnit);
   }
 
   private void Click()
@@ -180,7 +172,7 @@ public class CameraObjectSelection : MonoBehaviour
 
       if (clickedObject != null)
       {
-        selectedUnitsList.Add(clickedObject.gameObject);
+        SelectedUnitsList.Add(clickedObject.gameObject);
         clickedObject.selectStatus = Selectable.SELECT_STATUS.SELECTED;
       }
     }
@@ -233,7 +225,7 @@ public class CameraObjectSelection : MonoBehaviour
           selectableObject.selectStatus = Selectable.SELECT_STATUS.UNSELECTED;
 
           // Remove the unit from the hover list
-          if (!mouseHoverUnitsList.Remove(selectableObject.gameObject))
+          if (!MouseHoverUnitsList.Remove(selectableObject.gameObject))
           {
             Debug.LogError("Hover unit not found when removing from list!" + selectableObject.gameObject);
           }
@@ -267,17 +259,17 @@ public class CameraObjectSelection : MonoBehaviour
 
   private void PurgeHoverListOfNonFriendlyUnits()
   {
-    for (int i = 0; i < mouseHoverUnitsList.Count; ++i)
+    for (int i = 0; i < MouseHoverUnitsList.Count; ++i)
     {
       // Check if the unit is non friendly
-      if (mouseHoverUnitsList[i].GetComponent<Faction>().faction != GetComponent<Faction>().faction)
+      if (MouseHoverUnitsList[i].GetComponent<Faction>().faction != GetComponent<Faction>().faction)
       {
-        mouseHoverUnitsList[i].GetComponent<Selectable>().selectStatus = Selectable.SELECT_STATUS.UNSELECTED;
+        MouseHoverUnitsList[i].GetComponent<Selectable>().selectStatus = Selectable.SELECT_STATUS.UNSELECTED;
 
         // Remove the unit from the hover list
-        if (!mouseHoverUnitsList.Remove(mouseHoverUnitsList[i]))
+        if (!MouseHoverUnitsList.Remove(MouseHoverUnitsList[i]))
         {
-          Debug.LogError("Hover unit not found when purging non friendlies from list!" + mouseHoverUnitsList[i].name);
+          Debug.LogError("Hover unit not found when purging non friendlies from list!" + MouseHoverUnitsList[i].name);
         }
       }
     }
@@ -285,7 +277,7 @@ public class CameraObjectSelection : MonoBehaviour
 
   public void ClearSelectionList()
   {
-    foreach (GameObject selectedObject in selectedUnitsList)
+    foreach (GameObject selectedObject in SelectedUnitsList)
     {
       // Only clear if selected status is hover
       Selectable selectableObject = selectedObject.GetComponent<Selectable>();
@@ -293,14 +285,14 @@ public class CameraObjectSelection : MonoBehaviour
       selectableObject.selectStatus = Selectable.SELECT_STATUS.UNSELECTED;
     }
 
-    selectedUnitsList.Clear();
+    SelectedUnitsList.Clear();
   }
 
   private void ClearHoverList(bool resetSelection)
   {
     if (resetSelection)
     {
-      foreach (GameObject hoverObject in mouseHoverUnitsList)
+      foreach (GameObject hoverObject in MouseHoverUnitsList)
       {
         if (hoverObject.GetComponent<Selectable>().selectStatus == Selectable.SELECT_STATUS.HOVER)
         {
@@ -309,7 +301,7 @@ public class CameraObjectSelection : MonoBehaviour
       }
     }
 
-    mouseHoverUnitsList.Clear();
+    MouseHoverUnitsList.Clear();
     friendlyObjectsInList = false;
     friendlyUnitsInList = false;
     nonFriendlyUnitsPurgedFromList = false;
@@ -317,9 +309,9 @@ public class CameraObjectSelection : MonoBehaviour
 
   public void AddObjectToHoverList(GameObject hoverObject)
   {
-    if (!mouseHoverUnitsList.Contains(hoverObject))
+    if (!MouseHoverUnitsList.Contains(hoverObject))
     {
-      mouseHoverUnitsList.Add(hoverObject);
+      MouseHoverUnitsList.Add(hoverObject);
       
     }
 
@@ -332,9 +324,9 @@ public class CameraObjectSelection : MonoBehaviour
 
   public void AddObjectToSelectionList(GameObject selectedObject)
   {
-    if (!selectedUnitsList.Contains(selectedObject))
+    if (!SelectedUnitsList.Contains(selectedObject))
     {
-      selectedUnitsList.Add(selectedObject);
+      SelectedUnitsList.Add(selectedObject);
 
       selectedObject.GetComponent<Selectable>().selectStatus = Selectable.SELECT_STATUS.SELECTED;
     }

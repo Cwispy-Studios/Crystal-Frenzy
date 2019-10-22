@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
   private UIInterface uiInterface = null;
 
   public static ResourceManager resourceManager;
+  public static BuildingManager buildingManager;
 
   private List<GameObject> conqueredNodes;
   private GameObject attackNode;
@@ -31,6 +32,7 @@ public class GameManager : MonoBehaviour
   private void Awake()
   {
     resourceManager = GetComponent<ResourceManager>();
+    buildingManager = GetComponent<BuildingManager>();
 
     conqueredNodes = new List<GameObject>
     {

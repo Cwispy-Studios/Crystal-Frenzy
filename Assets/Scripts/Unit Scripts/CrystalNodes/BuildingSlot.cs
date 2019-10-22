@@ -2,7 +2,8 @@
 
 public class BuildingSlot : MonoBehaviour
 {
-  private bool active = false;
+  [HideInInspector]
+  public bool active = false;
   private bool constructed = false;
 
   [SerializeField]
@@ -13,6 +14,12 @@ public class BuildingSlot : MonoBehaviour
     if (constructed == false)
     {
       buildingSlot.GetComponent<Selectable>().enabled = active;
+
+      if (active == false)
+      {
+        CameraObjectSelection.SelectedUnitsList.Remove(buildingSlot);
+        CameraObjectSelection.MouseHoverUnitsList.Remove(buildingSlot);
+      }
     }
   }
 }

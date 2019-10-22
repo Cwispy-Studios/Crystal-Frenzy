@@ -36,7 +36,7 @@ public class CrystalRewards : MonoBehaviour
 
     else
     {
-      uiInterface.HideRewardPopup(gameObject);
+      uiInterface.HideLootPopup(gameObject);
     }
   }
 }

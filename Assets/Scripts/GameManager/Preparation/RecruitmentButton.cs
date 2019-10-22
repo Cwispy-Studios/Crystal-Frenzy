@@ -41,11 +41,7 @@ public class RecruitmentButton : MonoBehaviour, IPointerEnterHandler, IPointerEx
 
   public void OnPointerEnter(PointerEventData eventData)
   {
-    uiInterface.ShowUnitTooltipPopup(recruitableUnit.name,
-                                     recruitableUnit.GetComponent<RecruitableUnit>().unitPoints,
-                                     recruitableUnit.GetComponent<Health>().MaxHealth,
-                                     recruitableUnit.GetComponent<Attack>().AttackDamage,
-                                     recruitableUnit.GetComponent<Attack>().AttacksPerSecond);
+    GetComponentInParent<ArmyRecruitmentPanel>().SetText(this, recruitableUnit);
   }
 
   public void OnPointerExit(PointerEventData eventData)

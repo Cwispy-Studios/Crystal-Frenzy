@@ -23,6 +23,8 @@ public class UIInterface : MonoBehaviour
   private LootTargetPanel lootTargetPanel = null;
   [SerializeField]
   private UnitTooltipPopup unitTooltipPopup = null;
+  [SerializeField]
+  private ConstructPanel constructPanel = null;
 
   private Camera playerCamera;
   private GameObject showingLootObject;
@@ -103,7 +105,7 @@ public class UIInterface : MonoBehaviour
     lootPopup.gameObject.SetActive(true);
   }
 
-  public void HideRewardPopup(GameObject lootObject)
+  public void HideLootPopup(GameObject lootObject)
   {
     if (lootObject == showingLootObject)
     {
@@ -116,14 +118,16 @@ public class UIInterface : MonoBehaviour
     lootTargetPanel.SetText(gold, crystal);
   }
 
-  public void ShowUnitTooltipPopup(string name, int cost, int health, int damage, float attackSpeed)
+  public void ShowUnitTooltipPopup(string name, int cost, int health, int damage, float attackSpeed, string description, string constructMessage)
   {
     unitTooltipPopup.gameObject.SetActive(true);
-    unitTooltipPopup.SetText(name, cost, health, damage, attackSpeed);
+    unitTooltipPopup.SetText(name, cost, health, damage, attackSpeed, description, constructMessage);
   }
 
   public void HideUnitTooltipPopup()
   {
     unitTooltipPopup.gameObject.SetActive(false);
   }
+
+
 }
