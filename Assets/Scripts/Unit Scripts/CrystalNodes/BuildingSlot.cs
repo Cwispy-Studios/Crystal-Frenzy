@@ -26,4 +26,10 @@ public class BuildingSlot : MonoBehaviour
       }
     }
   }
+
+  public void SetConstruction(GameObject constructedBuilding)
+  {
+    constructed = true;
+    buildingSlot = constructedBuilding;
+  }
 }

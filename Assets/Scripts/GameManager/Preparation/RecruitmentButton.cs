@@ -11,6 +11,9 @@ public class RecruitmentButton : MonoBehaviour, IPointerEnterHandler, IPointerEx
 
   private UIInterface uiInterface = null;
 
+  [HideInInspector]
+  public bool available = true;
+
   private void Awake()
   {
     uiInterface = FindObjectOfType<UIInterface>();
@@ -23,7 +26,7 @@ public class RecruitmentButton : MonoBehaviour, IPointerEnterHandler, IPointerEx
 
   private void Update()
   {
-    if (GameManager.resourceManager.ArmySize + recruitableUnit.GetComponent<RecruitableUnit>().unitPoints > GameManager.resourceManager.UnitCap)
+    if (!available || GameManager.resourceManager.ArmySize + recruitableUnit.GetComponent<RecruitableUnit>().unitPoints > GameManager.resourceManager.UnitCap)
     {
       GetComponent<Button>().interactable = false;
     }

@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 18564506}
   - component: {fileID: 18564505}
   - component: {fileID: 18564504}
+  - component: {fileID: 18564507}
   m_Layer: 5
   m_Name: ArcheryRangeButton
   m_TagString: Untagged
@@ -243,6 +244,30 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 18564502}
   m_CullTransparentMesh: 0
+--- !u!114 &18564507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 18564502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ea75f78d111e724eb5b3d17bf134d3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  farmPrefab: {fileID: 6242424490941132753, guid: 8b85e3933b86ce84a883b3d5351766bb,
+    type: 3}
+  archeryRangePrefab: {fileID: 6548944953667490202, guid: 022069a4bdb75da4c9291b174bf29265,
+    type: 3}
+  blacksmithPrefab: {fileID: 1008145746713162640, guid: 13a94e4eb0c6ebd46a9721c761f4a08a,
+    type: 3}
+  brawlPitPrefab: {fileID: 6242424490941132753, guid: 106fdf50b8dbb064b9b3e36cb5545ffa,
+    type: 3}
+  mageTowerPrefab: {fileID: 1236374215028544222, guid: c658d85342009ac48b5df0f78d2b92b7,
+    type: 3}
+  buildingType: 1
+  available: 1
 --- !u!1 &46928399 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6477082172712516352, guid: b2f5f57778c989847b78033fc4a84516,
@@ -629,7 +654,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &102371703
 RectTransform:
   m_ObjectHideFlags: 0
@@ -690,7 +715,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: fdc5aa674f541ba4c8e8eeaf7ecd0912, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 90a2dde0942123c4ebb9c4af580c5818, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -11520,7 +11545,7 @@ PrefabInstance:
     - target: {fileID: 4625980501723797798, guid: 515433029e942ff46a8ae49154164f32,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4625980501723797798, guid: 515433029e942ff46a8ae49154164f32,
         type: 3}
@@ -11812,7 +11837,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &457235595
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11888,11 +11913,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7590ddf22f123ac4f8637f106db5e08e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  farmButton: {fileID: 0}
-  archeryRangeButton: {fileID: 0}
-  blacksmithButton: {fileID: 0}
-  brawlPitButton: {fileID: 0}
-  mageTowerButton: {fileID: 0}
+  farmButton: {fileID: 583025478}
+  archeryRangeButton: {fileID: 18564507}
+  blacksmithButton: {fileID: 2132209111}
+  brawlPitButton: {fileID: 1680702248}
+  mageTowerButton: {fileID: 1152221126}
 --- !u!1 &462960864 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2090115093539842534, guid: e9068e208d49a2b46ab7a2268525c536,
@@ -17129,7 +17154,7 @@ GameObject:
   - component: {fileID: 583025477}
   - component: {fileID: 583025476}
   - component: {fileID: 583025475}
-  - component: {fileID: 4493786476782097422}
+  - component: {fileID: 583025478}
   m_Layer: 5
   m_Name: FarmButton
   m_TagString: Untagged
@@ -17239,6 +17264,30 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 583025473}
   m_CullTransparentMesh: 0
+--- !u!114 &583025478
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 583025473}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ea75f78d111e724eb5b3d17bf134d3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  farmPrefab: {fileID: 6242424490941132753, guid: 8b85e3933b86ce84a883b3d5351766bb,
+    type: 3}
+  archeryRangePrefab: {fileID: 6548944953667490202, guid: 022069a4bdb75da4c9291b174bf29265,
+    type: 3}
+  blacksmithPrefab: {fileID: 1008145746713162640, guid: 13a94e4eb0c6ebd46a9721c761f4a08a,
+    type: 3}
+  brawlPitPrefab: {fileID: 6242424490941132753, guid: 106fdf50b8dbb064b9b3e36cb5545ffa,
+    type: 3}
+  mageTowerPrefab: {fileID: 1236374215028544222, guid: c658d85342009ac48b5df0f78d2b92b7,
+    type: 3}
+  buildingType: 0
+  available: 1
 --- !u!1 &587232069
 GameObject:
   m_ObjectHideFlags: 0
@@ -18267,7 +18316,7 @@ Transform:
   - {fileID: 210427857}
   - {fileID: 127503179}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &760825541
 GameObject:
@@ -18889,6 +18938,7 @@ MonoBehaviour:
   recruitableUnit: {fileID: 41785935244700089, guid: 1c53db8fd0db6234fabfb4a17217d695,
     type: 3}
   unitManager: {fileID: 1184662316}
+  available: 1
 --- !u!114 &778008220
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19625,8 +19675,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 155, y: -120}
-  m_SizeDelta: {x: 210, y: 60}
+  m_AnchoredPosition: {x: 300, y: -135}
+  m_SizeDelta: {x: 500, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &918644467
 MonoBehaviour:
@@ -19649,8 +19699,8 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 4c84d0a18f805df4e9b2d7cf9a253dd5, type: 3}
-    m_FontSize: 16
+    m_Font: {fileID: 12800000, guid: ce18b66c30817bf4a93169e72ca30dae, type: 3}
+    m_FontSize: 22
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1
@@ -19661,7 +19711,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'Description '
+  m_Text: Description
 --- !u!222 &918644468
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -19923,7 +19973,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &935600187
 RectTransform:
   m_ObjectHideFlags: 0
@@ -20065,6 +20115,7 @@ MonoBehaviour:
   recruitableUnit: {fileID: 41785935244700089, guid: 8dd1cd32615a42f4bbc176ec3358b10e,
     type: 3}
   unitManager: {fileID: 1184662316}
+  available: 1
 --- !u!114 &943192586
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20188,7 +20239,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 498, y: 59.000023}
+  m_AnchoredPosition: {x: 498, y: 57}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &995008525
@@ -20811,6 +20862,7 @@ GameObject:
   - component: {fileID: 1152221125}
   - component: {fileID: 1152221124}
   - component: {fileID: 1152221123}
+  - component: {fileID: 1152221126}
   m_Layer: 5
   m_Name: MageTowerButton
   m_TagString: Untagged
@@ -20920,6 +20972,30 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1152221121}
   m_CullTransparentMesh: 0
+--- !u!114 &1152221126
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1152221121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ea75f78d111e724eb5b3d17bf134d3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  farmPrefab: {fileID: 6242424490941132753, guid: 8b85e3933b86ce84a883b3d5351766bb,
+    type: 3}
+  archeryRangePrefab: {fileID: 6548944953667490202, guid: 022069a4bdb75da4c9291b174bf29265,
+    type: 3}
+  blacksmithPrefab: {fileID: 1008145746713162640, guid: 13a94e4eb0c6ebd46a9721c761f4a08a,
+    type: 3}
+  brawlPitPrefab: {fileID: 6242424490941132753, guid: 106fdf50b8dbb064b9b3e36cb5545ffa,
+    type: 3}
+  mageTowerPrefab: {fileID: 1236374215028544222, guid: c658d85342009ac48b5df0f78d2b92b7,
+    type: 3}
+  buildingType: 4
+  available: 1
 --- !u!1 &1168604734
 GameObject:
   m_ObjectHideFlags: 0
@@ -21899,7 +21975,7 @@ Transform:
   - {fileID: 126032205}
   - {fileID: 1331269609}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1508061320
 GameObject:
@@ -22013,7 +22089,7 @@ Transform:
   - {fileID: 1452845805}
   - {fileID: 1930881270}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1534395767
 GameObject:
@@ -22410,6 +22486,7 @@ MonoBehaviour:
   recruitableUnit: {fileID: 41785935244700089, guid: 1c53db8fd0db6234fabfb4a17217d695,
     type: 3}
   unitManager: {fileID: 1184662316}
+  available: 1
 --- !u!1 &1646267670
 GameObject:
   m_ObjectHideFlags: 0
@@ -22499,7 +22576,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1.0000001, z: 0.99999994}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 37.586002, y: -32.423, z: 9.858001}
 --- !u!1 &1646993492
 GameObject:
@@ -22655,6 +22732,7 @@ GameObject:
   - component: {fileID: 1680702247}
   - component: {fileID: 1680702246}
   - component: {fileID: 1680702245}
+  - component: {fileID: 1680702248}
   m_Layer: 5
   m_Name: BrawlPitButton
   m_TagString: Untagged
@@ -22764,6 +22842,30 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1680702243}
   m_CullTransparentMesh: 0
+--- !u!114 &1680702248
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1680702243}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ea75f78d111e724eb5b3d17bf134d3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  farmPrefab: {fileID: 6242424490941132753, guid: 8b85e3933b86ce84a883b3d5351766bb,
+    type: 3}
+  archeryRangePrefab: {fileID: 6548944953667490202, guid: 022069a4bdb75da4c9291b174bf29265,
+    type: 3}
+  blacksmithPrefab: {fileID: 1008145746713162640, guid: 13a94e4eb0c6ebd46a9721c761f4a08a,
+    type: 3}
+  brawlPitPrefab: {fileID: 6242424490941132753, guid: 106fdf50b8dbb064b9b3e36cb5545ffa,
+    type: 3}
+  mageTowerPrefab: {fileID: 1236374215028544222, guid: c658d85342009ac48b5df0f78d2b92b7,
+    type: 3}
+  buildingType: 3
+  available: 1
 --- !u!1001 &1705961532
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23398,7 +23500,7 @@ PrefabInstance:
     - target: {fileID: 2968315466822462495, guid: ffb16f5b8ecaf134eb85d285fbdda1d8,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 220
+      value: 215
       objectReference: {fileID: 0}
     - target: {fileID: 2968315466822462495, guid: ffb16f5b8ecaf134eb85d285fbdda1d8,
         type: 3}
@@ -23762,7 +23864,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 1404, y: 59.000023}
+  m_AnchoredPosition: {x: 1400, y: 59.000023}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1819961164
@@ -24038,75 +24140,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c78feec8469af9441afd8a3e499113d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1001 &1886847239
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1008145746713162640, guid: 13a94e4eb0c6ebd46a9721c761f4a08a,
-        type: 3}
-      propertyPath: m_Name
-      value: BlackSmith (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 4298403200936853891, guid: 13a94e4eb0c6ebd46a9721c761f4a08a,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 526.2104
-      objectReference: {fileID: 0}
-    - target: {fileID: 4298403200936853891, guid: 13a94e4eb0c6ebd46a9721c761f4a08a,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.010000229
-      objectReference: {fileID: 0}
-    - target: {fileID: 4298403200936853891, guid: 13a94e4eb0c6ebd46a9721c761f4a08a,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 172.03156
-      objectReference: {fileID: 0}
-    - target: {fileID: 4298403200936853891, guid: 13a94e4eb0c6ebd46a9721c761f4a08a,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4298403200936853891, guid: 13a94e4eb0c6ebd46a9721c761f4a08a,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4298403200936853891, guid: 13a94e4eb0c6ebd46a9721c761f4a08a,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4298403200936853891, guid: 13a94e4eb0c6ebd46a9721c761f4a08a,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4298403200936853891, guid: 13a94e4eb0c6ebd46a9721c761f4a08a,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4298403200936853891, guid: 13a94e4eb0c6ebd46a9721c761f4a08a,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4298403200936853891, guid: 13a94e4eb0c6ebd46a9721c761f4a08a,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4298403200936853891, guid: 13a94e4eb0c6ebd46a9721c761f4a08a,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 13a94e4eb0c6ebd46a9721c761f4a08a, type: 3}
 --- !u!1001 &1887789122
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24230,7 +24263,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 1306, y: 59.000023}
+  m_AnchoredPosition: {x: 1300, y: 59.000023}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1888782775
@@ -24557,7 +24590,7 @@ Transform:
   - {fileID: 1886751013}
   - {fileID: 294830233}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1926628599
 GameObject:
@@ -29599,6 +29632,7 @@ MonoBehaviour:
   recruitableUnit: {fileID: 41785935244700089, guid: 1c53db8fd0db6234fabfb4a17217d695,
     type: 3}
   unitManager: {fileID: 1184662316}
+  available: 1
 --- !u!114 &1935374488
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29716,8 +29750,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 105, y: -46}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: 105, y: -48}
+  m_SizeDelta: {x: 160, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1938197150
 MonoBehaviour:
@@ -29732,7 +29766,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -29741,7 +29775,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: ce18b66c30817bf4a93169e72ca30dae, type: 3}
-    m_FontSize: 25
+    m_FontSize: 28
     m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 2
@@ -29795,7 +29829,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 250, y: -190}
+  m_AnchoredPosition: {x: 245, y: -180}
   m_SizeDelta: {x: 400, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1941746686
@@ -29819,8 +29853,8 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 4c84d0a18f805df4e9b2d7cf9a253dd5, type: 3}
-    m_FontSize: 20
+    m_Font: {fileID: 12800000, guid: ce18b66c30817bf4a93169e72ca30dae, type: 3}
+    m_FontSize: 25
     m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 0
@@ -30049,7 +30083,7 @@ PrefabInstance:
     - target: {fileID: 3997390838456929133, guid: 46b73d7e6806884428c4a84702bbc1f2,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 403
+      value: 400
       objectReference: {fileID: 0}
     - target: {fileID: 3997390838456929133, guid: 46b73d7e6806884428c4a84702bbc1f2,
         type: 3}
@@ -30123,7 +30157,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 65, y: -65}
+  m_AnchoredPosition: {x: 55, y: -80}
   m_SizeDelta: {x: 30, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1972643430
@@ -30322,18 +30356,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 5977045165969753710}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1998926600
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1998926599}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 820a2d7c654f0d54cb3a05ab9205318a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2016094926 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 737092888763501998, guid: c992426098980464aa12ed2359825fa6,
@@ -30440,8 +30462,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 130, y: -30}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: 220, y: -45}
+  m_SizeDelta: {x: 350, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2027928053
 MonoBehaviour:
@@ -30456,7 +30478,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.7536071, b: 0.1509434, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -30464,8 +30486,8 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 4c84d0a18f805df4e9b2d7cf9a253dd5, type: 3}
-    m_FontSize: 25
+    m_Font: {fileID: 12800000, guid: ce18b66c30817bf4a93169e72ca30dae, type: 3}
+    m_FontSize: 40
     m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 2
@@ -30476,7 +30498,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Name
+  m_Text: Archery Range
 --- !u!222 &2027928054
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -35436,7 +35458,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 170, y: -63}
+  m_AnchoredPosition: {x: 160, y: -82}
   m_SizeDelta: {x: 160, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2048033868
@@ -35460,11 +35482,11 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 4c84d0a18f805df4e9b2d7cf9a253dd5, type: 3}
-    m_FontSize: 35
+    m_Font: {fileID: 12800000, guid: ce18b66c30817bf4a93169e72ca30dae, type: 3}
+    m_FontSize: 30
     m_FontStyle: 1
     m_BestFit: 0
-    m_MinSize: 1
+    m_MinSize: 0
     m_MaxSize: 40
     m_Alignment: 3
     m_AlignByGeometry: 0
@@ -35586,6 +35608,7 @@ GameObject:
   - component: {fileID: 2132209110}
   - component: {fileID: 2132209109}
   - component: {fileID: 2132209108}
+  - component: {fileID: 2132209111}
   m_Layer: 5
   m_Name: BlacksmithButton
   m_TagString: Untagged
@@ -35695,6 +35718,30 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2132209106}
   m_CullTransparentMesh: 0
+--- !u!114 &2132209111
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2132209106}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ea75f78d111e724eb5b3d17bf134d3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  farmPrefab: {fileID: 6242424490941132753, guid: 8b85e3933b86ce84a883b3d5351766bb,
+    type: 3}
+  archeryRangePrefab: {fileID: 6548944953667490202, guid: 022069a4bdb75da4c9291b174bf29265,
+    type: 3}
+  blacksmithPrefab: {fileID: 1008145746713162640, guid: 13a94e4eb0c6ebd46a9721c761f4a08a,
+    type: 3}
+  brawlPitPrefab: {fileID: 6242424490941132753, guid: 106fdf50b8dbb064b9b3e36cb5545ffa,
+    type: 3}
+  mageTowerPrefab: {fileID: 1236374215028544222, guid: c658d85342009ac48b5df0f78d2b92b7,
+    type: 3}
+  buildingType: 2
+  available: 1
 --- !u!1 &2141928319
 GameObject:
   m_ObjectHideFlags: 0
@@ -36048,7 +36095,7 @@ PrefabInstance:
     - target: {fileID: 4625980501723797798, guid: 515433029e942ff46a8ae49154164f32,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4625980501723797798, guid: 515433029e942ff46a8ae49154164f32,
         type: 3}
@@ -36212,24 +36259,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 515433029e942ff46a8ae49154164f32, type: 3}
---- !u!114 &4493786476782097422
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 583025473}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ea75f78d111e724eb5b3d17bf134d3b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  farmPrefab: {fileID: 0}
-  archeryRangePrefab: {fileID: 0}
-  blacksmithPrefab: {fileID: 0}
-  brawlPitPrefab: {fileID: 0}
-  mageTowerPrefab: {fileID: 0}
-  buildingType: 0
 --- !u!224 &5135489995457932142 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3997390838456929133, guid: 46b73d7e6806884428c4a84702bbc1f2,

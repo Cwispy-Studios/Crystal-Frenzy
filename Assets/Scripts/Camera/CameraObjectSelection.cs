@@ -24,7 +24,8 @@ public class CameraObjectSelection : MonoBehaviour
 
   private void Update()
   {
-    // TODO: UPDATE SELECTED AND HOVER LIST TO CHECK FOR NULL OBJECTS
+    // UPDATE SELECTED AND HOVER LIST TO CHECK FOR NULL OBJECTS
+    ClearDeadUnits();
 
     // Store every selectable in a list
     Selectable[] selectables = FindObjectsOfType<Selectable>();
@@ -145,15 +146,34 @@ public class CameraObjectSelection : MonoBehaviour
     }
   }
 
-  public static void RemoveDeadSelectedUnit(GameObject deadSelectedUnit)
+  private void ClearDeadUnits()
   {
-    SelectedUnitsList.Remove(deadSelectedUnit);
+    for (int i = SelectedUnitsList.Count - 1; i >= 0; --i)
+    {
+      if (SelectedUnitsList[i] == null)
+      {
+        SelectedUnitsList.RemoveAt(i);
+      }
+    }
+
+    for (int i = MouseHoverUnitsList.Count - 1; i >= 0; --i)
+    {
+      if (MouseHoverUnitsList[i] == null)
+      {
+        MouseHoverUnitsList.RemoveAt(i);
+      }
+    }
   }
 
-  public static void RemoveDeadHoverUnit(GameObject deadHoverUnit)
-  {
-    MouseHoverUnitsList.Remove(deadHoverUnit);
-  }
+  //public static void RemoveDeadSelectedUnit(GameObject deadSelectedUnit)
+  //{
+  //  SelectedUnitsList.Remove(deadSelectedUnit);
+  //}
+
+  //public static void RemoveDeadHoverUnit(GameObject deadHoverUnit)
+  //{
+  //  MouseHoverUnitsList.Remove(deadHoverUnit);
+  //}
 
   private void Click()
   {

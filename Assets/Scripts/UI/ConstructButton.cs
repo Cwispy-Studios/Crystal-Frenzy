@@ -25,6 +25,11 @@ public class ConstructButton : MonoBehaviour, IPointerEnterHandler, IPointerExit
 
   private UIInterface uiInterface = null;
 
+  public GameObject connectedNode;
+
+  [HideInInspector]
+  public bool available = true;
+
   private void Awake()
   {
     uiInterface = FindObjectOfType<UIInterface>();
@@ -35,12 +40,38 @@ public class ConstructButton : MonoBehaviour, IPointerEnterHandler, IPointerExit
     GetComponent<Button>().onClick.AddListener(ConstructBuilding);
   }
 
+  private void Update()
+  {
+    switch (buildingType)
+    {
+      case BUILDING_TYPE.FARM:
+        GetComponent<Button>().interactable = farmPrefab.GetComponent<ConstructableBuilding>().goldCost <= GameManager.resourceManager.Gold && available;
+        break;
+
+      case BUILDING_TYPE.ARCHERY_RANGE:
+        GetComponent<Button>().interactable = archeryRangePrefab.GetComponent<ConstructableBuilding>().goldCost <= GameManager.resourceManager.Gold && available;
+        break;
+
+      case BUILDING_TYPE.BLACKSMITH:
+        GetComponent<Button>().interactable = blacksmithPrefab.GetComponent<ConstructableBuilding>().goldCost <= GameManager.resourceManager.Gold && available;
+        break;
+
+      case BUILDING_TYPE.BRAWL_PIT:
+        GetComponent<Button>().interactable = brawlPitPrefab.GetComponent<ConstructableBuilding>().goldCost <= GameManager.resourceManager.Gold && available;
+        break;
+
+      case BUILDING_TYPE.MAGE_TOWER:
+        GetComponent<Button>().interactable = mageTowerPrefab.GetComponent<ConstructableBuilding>().goldCost <= GameManager.resourceManager.Gold && available;
+        break;
+    }
+  }
+
   private void ConstructBuilding()
   {
     switch (buildingType)
     {
       case BUILDING_TYPE.FARM:
-
+        connectedNode.GetComponentInParent<BuildingSlot>().SetConstruction(Instantiate(farmPrefab, connectedNode.transform.position, connectedNode.transform.rotation, connectedNode.transform.parent));
         break;
 
       case BUILDING_TYPE.ARCHERY_RANGE:
@@ -55,11 +86,16 @@ public class ConstructButton : MonoBehaviour, IPointerEnterHandler, IPointerExit
       case BUILDING_TYPE.MAGE_TOWER:
         break;
     }
+
+    uiInterface.HideBuildingTooltipPopup();
+    uiInterface.HideConstructPanel(connectedNode);
+    Destroy(connectedNode);
   }
 
   public void OnPointerEnter(PointerEventData eventData)
   {
     string buildingName = "";
+    int cost = 0;
     string description = "";
     string constructed = "";
     
@@ -67,18 +103,22 @@ public class ConstructButton : MonoBehaviour, IPointerEnterHandler, IPointerExit
     {
       case BUILDING_TYPE.FARM:
         buildingName = "Farm";
-        description = "Increases your maximum unit cap by <color=orange>3</color>, allowing you to command more units during the Escort and Defense Phases. " +
-          "Provides food for your army by setting up a base of operations to harvest the environment for resources.";
+        description = "Increases maximum unit cap by <color=orange>3</color>, allowing you to command more units in battle. ";
+
+        cost = farmPrefab.GetComponent<ConstructableBuilding>().goldCost;
+
         break;
 
       case BUILDING_TYPE.ARCHERY_RANGE:
         buildingName = "Archery Range";
-        description = "Allows you command of <color=orange>Shooty Boys</color>. Shooty Boys are ranged imps that rain arrows down upon your enemies from a distance.";
+        description = "Allows you command of <color=orange>Shooty Boys</color>. Ranged imps that rain arrows down upon your enemies from a distance.";
 
         if (GameManager.buildingManager.archeryRangeConstructed)
         {
           constructed = "BUILDING ALREADY CONSTRUCTED";
         }
+
+        cost = archeryRangePrefab.GetComponent<ConstructableBuilding>().goldCost;
 
         break;
 
@@ -91,34 +131,42 @@ public class ConstructButton : MonoBehaviour, IPointerEnterHandler, IPointerExit
           constructed = "BUILDING ALREADY CONSTRUCTED";
         }
 
+        cost = blacksmithPrefab.GetComponent<ConstructableBuilding>().goldCost;
+
         break;
 
       case BUILDING_TYPE.BRAWL_PIT:
         buildingName = "Brawl Pit";
-        description = "Allows you command of <color=orange>Brutes</color>. Brutes are heavy melee units that are able to both soak up and inflict massive damage.";
+        description = "Allows you command of <color=orange>Brutes</color>. Heavy melee units that are able to both soak up and inflict massive damage.";
 
         if (GameManager.buildingManager.brawlPitConstructed)
         {
           constructed = "BUILDING ALREADY CONSTRUCTED";
         }
 
+        cost = brawlPitPrefab.GetComponent<ConstructableBuilding>().goldCost;
+
         break;
 
       case BUILDING_TYPE.MAGE_TOWER:
         buildingName = "Mage Tower";
-        description = "Allows you command of <color=orange>Warlocks</color>. Gifted magic users, Warlocks are able to both heal and buff your troops while inflicting unnatural devastation.";
+        description = "Allows you command of <color=orange>Warlocks</color>. Gifted magic users able to buff your army while inflicting unnatural devastation.";
 
         if (GameManager.buildingManager.mageTowerConstructed)
         {
           constructed = "BUILDING ALREADY CONSTRUCTED";
         }
 
+        cost = mageTowerPrefab.GetComponent<ConstructableBuilding>().goldCost;
+
         break;
     }
+
+    uiInterface.ShowBuildingTooltipPopup(buildingName, cost, description, constructed);
   }
 
   public void OnPointerExit(PointerEventData eventData)
   {
-    throw new System.NotImplementedException();
+    uiInterface.HideBuildingTooltipPopup();
   }
 }

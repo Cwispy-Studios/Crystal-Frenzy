@@ -36,6 +36,8 @@ public class UIInterface : MonoBehaviour
   {
     lootPopup.gameObject.SetActive(false);
     unitTooltipPopup.gameObject.SetActive(false);
+    constructPanel.gameObject.SetActive(false);
+    buildingTooltipPopup.gameObject.SetActive(false);
 
     playerCamera = Camera.main;
   }
@@ -121,15 +123,21 @@ public class UIInterface : MonoBehaviour
     lootTargetPanel.SetText(gold, crystal);
   }
 
-  public void ShowUnitTooltipPopup(string name, int cost, int health, int damage, float attackSpeed, string description, string constructMessage)
+  public void ShowUnitTooltipPopup(string unitName, int cost, int health, int damage, float attackSpeed, string description, string constructMessage)
   {
     unitTooltipPopup.gameObject.SetActive(true);
-    unitTooltipPopup.SetText(name, cost, health, damage, attackSpeed, description, constructMessage);
+    unitTooltipPopup.SetText(unitName, cost, health, damage, attackSpeed, description, constructMessage);
   }
 
-  public void ShowBuildingTooltipPopup(string name, int cost, string description, string constructMessage)
+  public void ShowBuildingTooltipPopup(string buildingName, int cost, string description, string constructMessage)
   {
+    buildingTooltipPopup.gameObject.SetActive(true);
+    buildingTooltipPopup.SetText(buildingName, cost, description, constructMessage);
+  }
 
+  public void HideBuildingTooltipPopup()
+  {
+    buildingTooltipPopup.gameObject.SetActive(false);
   }
 
   public void HideUnitTooltipPopup()
@@ -141,6 +149,7 @@ public class UIInterface : MonoBehaviour
   {
     showingConstructObject = node;
     constructPanel.gameObject.SetActive(true);
+    constructPanel.connectedNode = node;
   }
 
   public void HideConstructPanel(GameObject node)

@@ -212,14 +212,14 @@ public class Selectable : MonoBehaviour
 
   private void OnDestroy()
   {
-    if (selectStatus == SELECT_STATUS.SELECTED)
-    {
-      CameraObjectSelection.RemoveDeadSelectedUnit(gameObject);
-    }
+    //if (selectStatus == SELECT_STATUS.SELECTED)
+    //{
+    //  CameraObjectSelection.Select(gameObject);
+    //}
 
-    else if (selectStatus == SELECT_STATUS.HOVER)
-    {
-      CameraObjectSelection.RemoveDeadHoverUnit(gameObject);
-    }
+    //else if (selectStatus == SELECT_STATUS.HOVER)
+    //{
+    //  CameraObjectSelection.RemoveDeadHoverUnit(gameObject);
+    //}
   }
 }
