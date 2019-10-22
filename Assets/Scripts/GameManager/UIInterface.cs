@@ -71,6 +71,24 @@ public class UIInterface : MonoBehaviour
   }
 
   //////////////////////////////////////////////////////////////////////////////////////
+  // PREPARATION DEFENSE PHASE
+  //////////////////////////////////////////////////////////////////////////////////////
+  public void PreparationDefensePhaseSelectArmyUI()
+  {
+    preparationPhaseUI.DefenseSelectArmyUI();
+  }
+
+  public void PreparationDefensePhaseSetDefendButtonInteractable(bool interactable)
+  {
+    preparationPhaseUI.SetDefendButtonInteractable(interactable);
+  }
+
+  public void PreparationDefensePhaseDisableUI()
+  {
+    preparationPhaseUI.DefenseDisableUI();
+  }
+
+  //////////////////////////////////////////////////////////////////////////////////////
   // OTHERS
   //////////////////////////////////////////////////////////////////////////////////////
   public void ShowLootPopup(int gold, int crystal, GameObject lootObject)

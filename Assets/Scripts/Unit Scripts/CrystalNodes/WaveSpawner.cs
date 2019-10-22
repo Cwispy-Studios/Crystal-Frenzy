@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.AI;
 
 //[ExecuteInEditMode]
 public class WaveSpawner : MonoBehaviour
@@ -61,6 +62,7 @@ public class WaveSpawner : MonoBehaviour
     else
     {
       GameObject spawnedEnemy = Instantiate(enemyToSpawn, transform.position, transform.rotation);
+      spawnedEnemy.GetComponent<NavMeshAgent>().Warp(transform.position);
 
       // Set it to attack move towards the crystal seeker position instead of at the crystal seeker
       spawnedEnemy.GetComponent<EnemyAI>().target = target;

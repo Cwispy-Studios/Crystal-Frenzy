@@ -63,6 +63,9 @@ public class UnitManager : MonoBehaviour
       UpdateButtonPositions();
 
       PositionUnitsOnAssemblySpace();
+
+      //if (GameManager.currentPhaseCycle == 2)
+      //  Time.timeScale = 0.01f;
     }
   }
 
@@ -76,10 +79,12 @@ public class UnitManager : MonoBehaviour
       for (int i = 0; i < unitButtonsList.Count; ++i)
       {
         UnitButton unitButton = unitButtonsList[i].GetComponent<UnitButton>();
-        // Get the size of the unit
-        float unitRadius = unitButton.Unit.GetComponent<NavMeshAgent>().radius * ((transform.lossyScale.x + transform.lossyScale.z) / 2f);
-
         GameObject unit = unitButton.GetComponent<UnitButton>().Unit;
+
+        // Get the size of the unit
+        float unitRadius = unit.GetComponent<NavMeshAgent>().radius * ((transform.lossyScale.x + transform.lossyScale.z) / 2f);
+
+        Vector3 assemblyPosition;
 
         // If it is even numbered
         if (unitButtonsList.Count % 2 == 0)
@@ -87,13 +92,14 @@ public class UnitManager : MonoBehaviour
           // Even numbered units are placed on the left (- radius), odd numbered units are placed on the right (+ radius)
           if (i % 2 == 0)
           {
-            unit.transform.position = frontAssemblyPos + (-assemblySpace.transform.right * unitRadius) + 
+            assemblyPosition = frontAssemblyPos + (-assemblySpace.transform.right * unitRadius) + 
               (-assemblySpace.transform.right * unitRadius * 2 * (i / 2));
+
           }
 
           else
           {
-            unit.transform.position = frontAssemblyPos + (assemblySpace.transform.right * unitRadius) +
+            assemblyPosition = frontAssemblyPos + (assemblySpace.transform.right * unitRadius) +
               (assemblySpace.transform.right * unitRadius * 2 * (i / 2));
           }
         }
@@ -103,7 +109,7 @@ public class UnitManager : MonoBehaviour
         {
           if (i == 0)
           {
-            unit.transform.position = frontAssemblyPos;
+            assemblyPosition = frontAssemblyPos;
           }
 
           else
@@ -111,15 +117,18 @@ public class UnitManager : MonoBehaviour
             // Even numbered units are placed on the left (- radius), odd numbered units are placed on the right (+ radius)
             if (i % 2 == 0)
             {
-              unit.transform.position = frontAssemblyPos + (-assemblySpace.transform.right * unitRadius * 2 * (i / 2));
+              assemblyPosition = frontAssemblyPos + (-assemblySpace.transform.right * unitRadius * 2 * (i / 2));
             }
 
             else
             {
-              unit.transform.position = frontAssemblyPos + (assemblySpace.transform.right * unitRadius * 2 * ((i / 2) + 1));
+              assemblyPosition = frontAssemblyPos + (assemblySpace.transform.right * unitRadius * 2 * ((i / 2) + 1));
             }
           }
         }
+
+        unit.transform.position = assemblyPosition;
+        unit.GetComponent<NavMeshAgent>().Warp(assemblyPosition);
       }
     }
   }

@@ -20,7 +20,7 @@ GameObject:
   - component: {fileID: -1532671479032559535}
   - component: {fileID: -4166828967767744573}
   m_Layer: 0
-  m_Name: CrystalSeeker
+  m_Name: Bush
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -99,7 +99,7 @@ SphereCollider:
   m_GameObject: {fileID: 7396513783761032937}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Radius: 2.3
   m_Center: {x: -0.005527854, y: 0, z: -0.0667125}
@@ -172,7 +172,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0192c10ce0d2589489e608135047b104, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 500
+  maxHealth: 200
   combatantType: 1
 --- !u!114 &-1532671479032559535
 MonoBehaviour:
@@ -189,7 +189,7 @@ MonoBehaviour:
   spline: {fileID: 0}
   travelMode: 0
   speed: 2.5
-  rotationLerpModifier: 10
+  rotationLerpModifier: 5
   lookForward: 1
   onPathCompleted:
     m_PersistentCalls:

@@ -27,7 +27,6 @@ public class GameManager : MonoBehaviour
   /////////////////////////////////////////////////////////
   // Preparation phase
   private bool nodeSelected;
-  private bool phaseCycleSetup = false;
 
   private void Awake()
   {
@@ -39,6 +38,11 @@ public class GameManager : MonoBehaviour
     };
 
     CurrentPhase = PHASES.PREPARATION;
+  }
+
+  private void Start()
+  {
+    BeginPreparationPhase();
   }
 
   private void FixedUpdate()
@@ -55,10 +59,8 @@ public class GameManager : MonoBehaviour
         PreparationPhase();
         break;
 
-      case PHASES.ESCORT:
-        break;
-
-      case PHASES.DEFENSE:
+      case PHASES.PREPARATION_DEFENSE:
+        PreparationDefensePhase();
         break;
     }
   }
@@ -69,29 +71,6 @@ public class GameManager : MonoBehaviour
   private void PreparationPhase()
   {
     GameObject lastConqueredNode = conqueredNodes[conqueredNodes.Count - 1];
-
-    if (phaseCycleSetup == false)
-    {
-      // Force the camera into a bird's eye view
-      playerCamera.GetComponent<CameraManager>().SetBirdsEyeView();
-      Vector3 camPos = lastConqueredNode.transform.position;
-      camPos.y = playerCamera.transform.position.y;
-      playerCamera.transform.position = camPos;
-
-      // Get the latest conquered node and set all the temp FOV mesh to true so we can see the paths and crystal nodes 
-      lastConqueredNode.GetComponent<ConqueredNode>().EnablePreparationFOV();
-
-      // Update the camera bounds
-      playerCamera.GetComponent<CameraControls>().AddCameraBounds(lastConqueredNode.GetComponent<ConqueredNode>().CameraBound);
-
-      // Set the UI Interfaces to invisible and show the button to select army roster
-      uiInterface.PreparationPhaseSelectNodeUI();
-
-      playerCamera.GetComponent<CameraControls>().enabled = true;
-      playerCamera.GetComponent<CameraIssueOrdering>().enabled = true;
-
-      phaseCycleSetup = true;
-    }
 
     if (nodeSelected == false)
     {
@@ -125,6 +104,29 @@ public class GameManager : MonoBehaviour
     }
   }
 
+  public void BeginPreparationPhase()
+  {
+    GameObject lastConqueredNode = conqueredNodes[conqueredNodes.Count - 1];
+
+    // Force the camera into a bird's eye view
+    playerCamera.GetComponent<CameraManager>().SetBirdsEyeView();
+    Vector3 camPos = lastConqueredNode.transform.position;
+    camPos.y = playerCamera.transform.position.y;
+    playerCamera.transform.position = camPos;
+
+    // Get the latest conquered node and set all the temp FOV mesh to true so we can see the paths and crystal nodes 
+    lastConqueredNode.GetComponent<ConqueredNode>().EnablePreparationFOV();
+
+    // Update the camera bounds
+    playerCamera.GetComponent<CameraControls>().AddCameraBounds(lastConqueredNode.GetComponent<ConqueredNode>().CameraBound);
+
+    // Set the UI Interfaces to invisible and show the button to select army roster
+    uiInterface.PreparationPhaseSelectNodeUI();
+
+    playerCamera.GetComponent<CameraControls>().enabled = true;
+    playerCamera.GetComponent<CameraIssueOrdering>().enabled = true;
+  }
+
   public void NodeSelected()
   {
     nodeSelected = true;
@@ -139,7 +141,7 @@ public class GameManager : MonoBehaviour
     setupPos.y = playerCamera.transform.position.y;
 
     playerCamera.transform.position = setupPos;
-    playerCamera.GetComponent<Camera>().orthographicSize = 25f;
+    playerCamera.GetComponent<CameraManager>().SetAssemblyOrthographicSize();
     // Disable the camera controls
     playerCamera.GetComponent<CameraControls>().enabled = false;
     playerCamera.GetComponent<CameraIssueOrdering>().enabled = false;
@@ -155,7 +157,6 @@ public class GameManager : MonoBehaviour
 
   public void ReturnToNodeSelection()
   {
-    phaseCycleSetup = false;
     nodeSelected = false;
   }
 
@@ -229,12 +230,114 @@ public class GameManager : MonoBehaviour
     resourceManager.CollectLoot(conqueredNode.GetComponent<CrystalRewards>().goldLoot, conqueredNode.GetComponent<CrystalRewards>().crystalIncomeReward);
     uiInterface.UpdateLootTargetPanel(0, 0);
 
-    phaseCycleSetup = false;
     nodeSelected = false;
+
+    BeginPreparationPhase();
   }
 
   public void EscortLose()
   {
+    CurrentPhase = PHASES.PREPARATION_DEFENSE;
 
+    // Remove all units on the playing field, friendly units are contained in Unit Manager, enemy units are contained in Hideable Manager
+    uiInterface.EscortPhaseRemoveAllUnits();
+    GetComponent<HideableManager>().RemoveAllUnits();
+
+    // Enable the crystal nodes functionalities and spawns a crystal seeker
+    attackNode.GetComponent<CrystalSeekerSpawner>().enabled = true;
+    attackNode.GetComponent<CrystalSeekerSpawner>().SetCrystalTarget(conqueredNodes[conqueredNodes.Count - 1]);
+    attackNode.GetComponent<CrystalOrder>().enabled = true;
+
+    // Disable wave spawners of the conquered node
+    attackNode.GetComponent<CrystalNode>().SetWaveSpawnersActive(false, null);
+
+    // Turn on all the tempFOVMeshes of every conquered nodes 
+    for (int i = 0; i < conqueredNodes.Count; ++i)
+    {
+      conqueredNodes[i].GetComponent<ConqueredNode>().EnablePreparationFOV();
+    }
+
+    BeginPreparationDefensePhase();
+  }
+
+  public void BeginPreparationDefensePhase()
+  {
+    GameObject lastConqueredNode = conqueredNodes[conqueredNodes.Count - 1];
+
+    // Force the camera into a bird's eye view
+    playerCamera.GetComponent<CameraManager>().SetBirdsEyeView();
+    Vector3 camPos = lastConqueredNode.transform.position;
+    camPos.y = playerCamera.transform.position.y;
+    playerCamera.transform.position = camPos;
+
+    // Get the latest conquered node and set all the temp FOV mesh to true so we can see the paths and crystal nodes 
+    lastConqueredNode.GetComponent<ConqueredNode>().EnablePreparationFOV();
+
+    playerCamera.GetComponent<CameraControls>().enabled = true;
+    playerCamera.GetComponent<CameraIssueOrdering>().enabled = true;
+
+    uiInterface.PreparationDefensePhaseSelectArmyUI();
+
+    GameObject attackingFromNode = conqueredNodes[conqueredNodes.Count - 1];
+
+    // Set the camera to point at the assembly space
+    Vector3 setupPos = attackingFromNode.GetComponent<ConqueredNode>().AssemblySpace.transform.position;
+    // Retains the camera height
+    setupPos.y = playerCamera.transform.position.y;
+
+    playerCamera.transform.position = setupPos;
+    // Disable the camera controls
+    playerCamera.GetComponent<CameraControls>().enabled = false;
+    playerCamera.GetComponent<CameraIssueOrdering>().enabled = false;
+    // Set the unit manager assembly space reference
+    uiInterface.UnitManager.SetAssemblySpace(attackingFromNode.GetComponent<ConqueredNode>().AssemblySpace);
+
+    // Update the loot target panel
+    uiInterface.UpdateLootTargetPanel(0, 0);
+  }
+
+  private void PreparationDefensePhase()
+  {
+    GameObject lastConqueredNode = conqueredNodes[conqueredNodes.Count - 1];
+
+    // Army selection roster
+    // While it is false, keep the button not interactable
+    if (resourceManager.ArmySize == 0)
+    {
+      uiInterface.PreparationDefensePhaseSetDefendButtonInteractable(false);
+    }
+
+    // Once army is selected, button is selectable
+    else
+    {
+      uiInterface.PreparationDefensePhaseSetDefendButtonInteractable(true);
+    }
+  }
+
+  public void BeginDefense()
+  {
+    // Update phase, UI and camera
+    CurrentPhase = PHASES.DEFENSE;
+
+    uiInterface.PreparationDefensePhaseDisableUI();
+
+    playerCamera.GetComponent<CameraControls>().enabled = true;
+    playerCamera.GetComponent<CameraIssueOrdering>().enabled = true;
+    playerCamera.GetComponent<CameraManager>().SetNormalView();
+
+    // Disable the crystal nodes functionalities and spawns a crystal seeker
+    GameObject spawnedCrystalSeeker = attackNode.GetComponent<CrystalSeekerSpawner>().SpawnCrystalSeeker();
+    attackNode.GetComponent<CrystalSeekerSpawner>().enabled = false;
+
+    // Change unit panel buttons to combat buttons so clicking on them selects units instead of deleting them
+    uiInterface.UnitManager.SetUnitButtonsToCombat();
+
+    // Start wave spawners of attack node
+    attackNode.GetComponent<CrystalNode>().SetWaveSpawnersActive(true, spawnedCrystalSeeker);
+    // Disables the tree wall so units can pass through
+    attackNode.GetComponent<CrystalNode>().DisableTreeWall();
+
+    // Turn off tempFOVMeshes so we can't see the enemies attacking from the path
+    conqueredNodes[conqueredNodes.Count - 1].GetComponent<ConqueredNode>().DisablePreparationFOV();
   }
 }

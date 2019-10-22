@@ -11,12 +11,16 @@ public class PreparationPhaseUI : MonoBehaviour
   private GameObject backToSelectNodesButton = null;
   [SerializeField]
   private GameObject attackButton = null;
+  [SerializeField]
+  private GameObject defendButton = null;
 
   private void Awake()
   {
-    selectArmyButton.GetComponent<Button>().onClick.AddListener(FindObjectOfType<GameManager>().NodeSelected);
-    backToSelectNodesButton.GetComponent<Button>().onClick.AddListener(FindObjectOfType<GameManager>().ReturnToNodeSelection);
-    attackButton.GetComponent<Button>().onClick.AddListener(FindObjectOfType<GameManager>().BeginEscort);
+    GameManager gameManager = FindObjectOfType<GameManager>();
+    selectArmyButton.GetComponent<Button>().onClick.AddListener(gameManager.NodeSelected);
+    backToSelectNodesButton.GetComponent<Button>().onClick.AddListener(gameManager.ReturnToNodeSelection);
+    attackButton.GetComponent<Button>().onClick.AddListener(gameManager.BeginEscort);
+    defendButton.GetComponent<Button>().onClick.AddListener(gameManager.BeginDefense);
   }
 
   public void SelectNodeUI()
@@ -35,6 +39,12 @@ public class PreparationPhaseUI : MonoBehaviour
     attackButton.SetActive(true);
   }
 
+  public void DefenseSelectArmyUI()
+  {
+    armyRecruitmentPanel.SetActive(true);
+    defendButton.SetActive(true);
+  }
+
   public void SetSelectArmyButtonInteractable(bool interactable)
   {
     selectArmyButton.GetComponent<Button>().interactable = interactable;
@@ -45,10 +55,21 @@ public class PreparationPhaseUI : MonoBehaviour
     attackButton.GetComponent<Button>().interactable = interactable;
   }
 
+  public void SetDefendButtonInteractable(bool interactable)
+  {
+    defendButton.GetComponent<Button>().interactable = interactable;
+  }
+
   public void DisableUI()
   {
     armyRecruitmentPanel.SetActive(false);
     backToSelectNodesButton.SetActive(false);
     attackButton.SetActive(false);
+  }
+
+  public void DefenseDisableUI()
+  {
+    armyRecruitmentPanel.SetActive(false);
+    defendButton.SetActive(false);
   }
 }

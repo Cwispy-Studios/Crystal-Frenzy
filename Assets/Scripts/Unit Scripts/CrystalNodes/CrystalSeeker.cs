@@ -3,6 +3,7 @@
 public class CrystalSeeker : MonoBehaviour
 {
   private GameManager gameManager;
+  private bool crystalSeekerReachedTarget = false;
 
   private void Awake()
   {
@@ -17,6 +18,7 @@ public class CrystalSeeker : MonoBehaviour
       // Player wins!
       if (GetComponent<Faction>().faction == Faction.FACTIONS.GOBLINS)
       {
+        crystalSeekerReachedTarget = true;
         gameManager.EscortWin();
         Destroy(gameObject);
       }
@@ -24,23 +26,26 @@ public class CrystalSeeker : MonoBehaviour
       // Enemy captures your node
       else if (GetComponent<Faction>().faction == Faction.FACTIONS.FOREST)
       {
-
+        crystalSeekerReachedTarget = true;
       }
     }
   }
 
   private void OnDestroy()
   {
-    // Player's Crystal Seeker died
-    if (GetComponent<Faction>().faction == Faction.FACTIONS.GOBLINS)
+    if (crystalSeekerReachedTarget == false)
     {
-      gameManager.EscortLose();
-    }
+      // Player's Crystal Seeker died
+      if (GetComponent<Faction>().faction == Faction.FACTIONS.GOBLINS)
+      {
+        gameManager.EscortLose();
+      }
 
-    // Enemy's Crystal Seeker died
-    else if (GetComponent<Faction>().faction == Faction.FACTIONS.FOREST)
-    {
+      // Enemy's Crystal Seeker died
+      else if (GetComponent<Faction>().faction == Faction.FACTIONS.FOREST)
+      {
 
+      }
     }
   }
 }
