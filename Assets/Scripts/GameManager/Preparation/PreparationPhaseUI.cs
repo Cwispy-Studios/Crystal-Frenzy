@@ -31,11 +31,16 @@ public class PreparationPhaseUI : MonoBehaviour
     attackButton.SetActive(false);
   }
 
-  public void SelectArmyUI()
+  public void SelectArmyUI(bool conquered)
   {
     selectArmyButton.SetActive(false);
     armyRecruitmentPanel.SetActive(true);
-    backToSelectNodesButton.SetActive(true);
+
+    if (!conquered)
+    {
+      backToSelectNodesButton.SetActive(true);
+    }
+    
     attackButton.SetActive(true);
   }
 

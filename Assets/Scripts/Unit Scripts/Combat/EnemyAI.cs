@@ -9,11 +9,19 @@ public class EnemyAI : MonoBehaviour
 
   private void Update()
   {
-    if (target != null && updateCountdown <= 0)
+    if (target != null)
     {
-      GetComponent<Order>().IssueOrderPoint(target.transform.position);
-      GetComponent<Attack>().SetAttackMovePosition(target.transform.position);
-      updateCountdown = UPDATE_INTERVAL;
+      if (updateCountdown <= 0)
+      {
+        GetComponent<Order>().IssueOrderPoint(target.transform.position);
+        GetComponent<Attack>().SetAttackMovePosition(target.transform.position);
+        updateCountdown = UPDATE_INTERVAL;
+      }
+      
+      else
+      {
+        updateCountdown -= Time.deltaTime;
+      }
     }
   }
 }

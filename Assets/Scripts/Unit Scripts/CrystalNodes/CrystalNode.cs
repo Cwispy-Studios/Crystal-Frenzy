@@ -10,6 +10,8 @@ public class CrystalNode : MonoBehaviour
   private GameObject[] spawnPoints = null;
   [SerializeField]
   private GameObject treeWall = null;
+  [HideInInspector]
+  public GameObject conqueredNode = null;
 
   // To add disable component in inspector
   private void Start() { }

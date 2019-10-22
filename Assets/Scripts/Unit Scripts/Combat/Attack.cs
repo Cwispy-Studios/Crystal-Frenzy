@@ -94,49 +94,7 @@ public class Attack : MonoBehaviour
       // Check if any enemy found
       if (detectedEnemy != null)
       {
-        // Try to attack them, check the distance between them. The distance from their position + their radius to your position + your radius 
-        // must be smaller than the attack range
-        float enemyRadius = 0;
-
-        // Check if enemy has navmeshagent or navmeshobstacle
-        if (detectedEnemy.GetComponent<NavMeshAgent>() != null)
-        {
-          enemyRadius = detectedEnemy.GetComponent<NavMeshAgent>().radius * ((transform.lossyScale.x + transform.lossyScale.z) / 2f);
-        }
-
-        else if (detectedEnemy.GetComponent<NavMeshObstacle>() != null)
-        {
-          enemyRadius = detectedEnemy.GetComponent<NavMeshObstacle>().radius * ((transform.lossyScale.x + transform.lossyScale.z) / 2f);
-        }
-
-        else
-        {
-          Debug.LogError("Attacking a unit without a NavMesh! Targeted unit is " + detectedEnemy.name);
-        }
-
-        // If enemy is near enough, try to attack and hold position. Otherwise set the NavMeshAgent to move towards it
-        if (closestEnemyRange <= (attackRange + unitRadius + enemyRadius))
-        {
-          // Rotates the unit towards its target, it does not matter if it is not facing the target yet, it can still attack.
-          Vector3 direction = detectedEnemy.transform.position - transform.position;
-          Quaternion toRotation = Quaternion.FromToRotation(transform.forward, direction);
-          transform.rotation = Quaternion.Lerp(transform.rotation, toRotation, GetComponent<NavMeshAgent>().angularSpeed * Mathf.Deg2Rad * Time.deltaTime);
-
-          GetComponent<NavMeshAgent>().stoppingDistance = 0;
-          GetComponent<NavMeshAgent>().destination = transform.position;
-
-          if (attackCooldown >= attacksPerSecond)
-          {
-            detectedEnemy.GetComponent<Health>().ModifyHealth(-attackDamage);
-            attackCooldown -= attacksPerSecond;
-          }
-        }
-
-        else
-        {
-          GetComponent<NavMeshAgent>().stoppingDistance = attackRange + unitRadius + enemyRadius;
-          GetComponent<NavMeshAgent>().destination = detectedEnemy.transform.position;
-        }
+        AttackEnemy(detectedEnemy, closestEnemyRange);
       }
 
       // No enemies found, check if there is an attack order position to move towards to
@@ -148,6 +106,13 @@ public class Attack : MonoBehaviour
           GetComponent<NavMeshAgent>().destination = attackMovePosition;
         }
       }
+    }
+
+    else if (attackTarget != null)
+    {
+      float enemyRange = Vector3.Distance(transform.position, attackTarget.transform.position);
+
+      AttackEnemy(attackTarget, enemyRange);
     }
 
     if (attackCooldown <= attacksPerSecond)
@@ -180,20 +145,78 @@ public class Attack : MonoBehaviour
     return false;    
   }
 
-  private void AttackTarget()
+  private void AttackEnemy(GameObject enemy, float enemyRange)
   {
+    // Try to attack them, check the distance between them. The distance from their position + their radius to your position + your radius 
+    // must be smaller than the attack range
+    float enemyRadius = GetEnemyRadius(enemy);
 
+    // If enemy is near enough, try to attack and hold position. Otherwise set the NavMeshAgent to move towards it
+    if (enemyRange <= (attackRange + unitRadius + enemyRadius))
+    {
+      // Rotates the unit towards its target, it does not matter if it is not facing the target yet, it can still attack.
+      Vector3 direction = enemy.transform.position - transform.position;
+      Quaternion toRotation = Quaternion.FromToRotation(transform.forward, direction);
+      transform.rotation = Quaternion.Lerp(transform.rotation, toRotation, GetComponent<NavMeshAgent>().angularSpeed * Mathf.Deg2Rad * Time.deltaTime);
+
+      GetComponent<NavMeshAgent>().stoppingDistance = 0;
+      GetComponent<NavMeshAgent>().destination = transform.position;
+
+      if (attackCooldown >= attacksPerSecond)
+      {
+        enemy.GetComponent<Health>().ModifyHealth(-attackDamage);
+        attackCooldown -= attacksPerSecond;
+      }
+    }
+
+    else
+    {
+      GetComponent<NavMeshAgent>().stoppingDistance = attackRange + unitRadius + enemyRadius;
+      GetComponent<NavMeshAgent>().destination = enemy.transform.position;
+    }
+  }
+
+  public void SetAttackTarget(GameObject target)
+  {
+    attackTarget = target;
+    detectingEnemies = false;
   }
 
   public void SetDetectingEnemies(bool value)
   {
     detectingEnemies = value;
+
+    if (value == false)
+    {
+      attackTarget = null;
+    }
   }
 
   public void SetAttackMovePosition(Vector3 attackMovePos)
   {
+    attackTarget = null;
     attackMovePosition = attackMovePos;
     detectingEnemies = true;
     isAttackMoveOrder = true;
+  }
+
+  private float GetEnemyRadius(GameObject enemy)
+  {
+    // Check if enemy has navmeshagent or navmeshobstacle
+    if (enemy.GetComponent<NavMeshAgent>() != null)
+    {
+      return enemy.GetComponent<NavMeshAgent>().radius * ((transform.lossyScale.x + transform.lossyScale.z) / 2f);
+    }
+
+    else if (enemy.GetComponent<NavMeshObstacle>() != null)
+    {
+      return enemy.GetComponent<NavMeshObstacle>().radius * ((transform.lossyScale.x + transform.lossyScale.z) / 2f);
+    }
+
+    else
+    {
+      Debug.LogError("Attacking a unit without a NavMesh! Targeted unit is " + enemy.name);
+      return 0;
+    }
   }
 }

@@ -66,10 +66,36 @@ public class UnitOrder : Order
 
     if (GetComponent<Attack>() != null)
     {
-      GetComponent<Attack>().SetDetectingEnemies(false);
-    }
+      // Check if target is friendly or enemy
+      Faction faction = GetComponent<Faction>();
+      Faction targetFaction = targetUnit.GetComponent<Faction>();
 
-    SetTargetAsDestination();
+      if (faction != null && targetFaction != null)
+      {
+        // Friendly/neutral unit
+        if (targetFaction.faction == Faction.FACTIONS.NEUTRAL || faction.faction == targetFaction.faction)
+        {
+          SetTargetAsDestination();
+        }
+
+        // Enemy unit
+        else
+        {
+          GetComponent<Attack>().SetAttackTarget(targetUnit);
+        }
+      }
+      
+
+      else
+      {
+        SetTargetAsDestination();
+      }
+    }
+    
+    else
+    {
+      SetTargetAsDestination();
+    }
   }
 
   private void SetTargetAsDestination()

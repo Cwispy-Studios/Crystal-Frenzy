@@ -41,10 +41,10 @@ public class UIInterface : MonoBehaviour
     preparationPhaseUI.SelectNodeUI();
   }
 
-  public void PreparationPhaseSelectArmyUI()
+  public void PreparationPhaseSelectArmyUI(bool conquered)
   {
     bottomUIPanel.SetActive(true);
-    preparationPhaseUI.SelectArmyUI();
+    preparationPhaseUI.SelectArmyUI(conquered);
   }
 
   public void PreparationPhaseSetSelectArmyButtonInteractable(bool interactable)

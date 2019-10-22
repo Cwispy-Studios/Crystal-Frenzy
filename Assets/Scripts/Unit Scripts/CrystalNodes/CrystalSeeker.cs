@@ -27,6 +27,8 @@ public class CrystalSeeker : MonoBehaviour
       else if (GetComponent<Faction>().faction == Faction.FACTIONS.FOREST)
       {
         crystalSeekerReachedTarget = true;
+        gameManager.DefenseLose();
+        Destroy(gameObject);
       }
     }
   }
@@ -44,7 +46,7 @@ public class CrystalSeeker : MonoBehaviour
       // Enemy's Crystal Seeker died
       else if (GetComponent<Faction>().faction == Faction.FACTIONS.FOREST)
       {
-
+        gameManager.DefenseWin();
       }
     }
   }

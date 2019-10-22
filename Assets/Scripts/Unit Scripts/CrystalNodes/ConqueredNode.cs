@@ -20,6 +20,8 @@ public class ConqueredNode : MonoBehaviour
     set { if (cameraBound == null) cameraBound = value; }
   }
 
+  public bool conquered = false;
+
   public void EnablePreparationFOV()
   {
     for (int i = 0; i < tempFOVMeshes.Length; ++i)
