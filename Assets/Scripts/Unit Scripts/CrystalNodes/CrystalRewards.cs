@@ -19,7 +19,7 @@ public class CrystalRewards : MonoBehaviour
   private void Update()
   {
     // Check if this object is in the mouseHoverList
-    if (popupHoverLength < POPUP_HOVER_TIME && CameraObjectSelection.MouseHoverUnitsList.Contains(gameObject))
+    if (CameraObjectSelection.SelectedUnitsList.Contains(gameObject))
     {
       popupHoverLength += Time.deltaTime;
     }

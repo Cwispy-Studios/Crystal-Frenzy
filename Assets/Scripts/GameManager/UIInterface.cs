@@ -21,6 +21,8 @@ public class UIInterface : MonoBehaviour
   private LootPopup lootPopup = null;
   [SerializeField]
   private LootTargetPanel lootTargetPanel = null;
+  [SerializeField]
+  private UnitTooltipPopup unitTooltipPopup = null;
 
   private Camera playerCamera;
   private GameObject showingLootObject;
@@ -28,6 +30,7 @@ public class UIInterface : MonoBehaviour
   private void Awake()
   {
     lootPopup.gameObject.SetActive(false);
+    unitTooltipPopup.gameObject.SetActive(false);
 
     playerCamera = Camera.main;
   }
@@ -111,5 +114,16 @@ public class UIInterface : MonoBehaviour
   public void UpdateLootTargetPanel(int gold, int crystal)
   {
     lootTargetPanel.SetText(gold, crystal);
+  }
+
+  public void ShowUnitTooltipPopup(string name, int cost, int health, int damage, float attackSpeed)
+  {
+    unitTooltipPopup.gameObject.SetActive(true);
+    unitTooltipPopup.SetText(name, cost, health, damage, attackSpeed);
+  }
+
+  public void HideUnitTooltipPopup()
+  {
+    unitTooltipPopup.gameObject.SetActive(false);
   }
 }

@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
   [SerializeField]
   private UIInterface uiInterface = null;
 
-  private static ResourceManager resourceManager;
+  public static ResourceManager resourceManager;
 
   private List<GameObject> conqueredNodes;
   private GameObject attackNode;

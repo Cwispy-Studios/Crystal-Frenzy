@@ -5,10 +5,22 @@ public class Attack : MonoBehaviour
 {
   [SerializeField]
   private int attackDamage = 0;
+  public int AttackDamage
+  {
+    get { return attackDamage; }
+  }
+
   [SerializeField]
   private float attacksPerSecond = 1f, attackRange = 1f, enemyDetectRange = 1f;
+  public float AttacksPerSecond
+  {
+    get { return attacksPerSecond; }
+  }
+
   [SerializeField]
   private COMBATANT_TYPE preferredTarget = COMBATANT_TYPE.NORMAL;
+  [SerializeField]
+  private GameObject projectilePrefab = null;
 
   private float attackCooldown = 0;
   private float unitRadius = 0;
@@ -162,9 +174,26 @@ public class Attack : MonoBehaviour
       GetComponent<NavMeshAgent>().stoppingDistance = 0;
       GetComponent<NavMeshAgent>().destination = transform.position;
 
+      // Check if ready to attack
       if (attackCooldown >= attacksPerSecond)
       {
-        enemy.GetComponent<Health>().ModifyHealth(-attackDamage);
+        // Check if there is projectile
+        if (projectilePrefab != null)
+        {
+          // Create the projectile at half height of the unit
+          Vector3 projectilePos = transform.position;
+          projectilePos.y = (GetComponent<NavMeshAgent>().height / 2) * transform.lossyScale.y;
+          GameObject projectile = Instantiate(projectilePrefab, projectilePos, new Quaternion());
+
+          projectile.GetComponent<Projectile>().SetTarget(enemy, attackDamage);
+        }
+
+        // No projectile means attack hits immediately
+        else
+        {
+          enemy.GetComponent<Health>().ModifyHealth(-attackDamage);
+        }
+
         attackCooldown -= attacksPerSecond;
       }
     }
