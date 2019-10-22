@@ -25,6 +25,8 @@ public class UIInterface : MonoBehaviour
   private UnitTooltipPopup unitTooltipPopup = null;
   [SerializeField]
   private ConstructPanel constructPanel = null;
+  [SerializeField]
+  private BuildingTooltipPopup buildingTooltipPopup = null;
 
   private Camera playerCamera;
   private GameObject showingLootObject;
@@ -123,6 +125,11 @@ public class UIInterface : MonoBehaviour
   {
     unitTooltipPopup.gameObject.SetActive(true);
     unitTooltipPopup.SetText(name, cost, health, damage, attackSpeed, description, constructMessage);
+  }
+
+  public void ShowBuildingTooltipPopup(string name, int cost, string description, string constructMessage)
+  {
+
   }
 
   public void HideUnitTooltipPopup()

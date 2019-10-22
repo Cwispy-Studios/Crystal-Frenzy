@@ -20,7 +20,7 @@ public class ArmyRecruitmentPanel : MonoBehaviour
     warlockButton.GetComponent<Button>().interactable = GameManager.buildingManager.mageTowerConstructed;
   }
 
-  // Identifies the button and then sets the text accordingly
+  // Identifies the button and then sets the unit tooltip text accordingly
   public void SetText(RecruitmentButton button, GameObject recruitableUnit)
   {
     string unitName = "";
