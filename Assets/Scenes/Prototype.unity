@@ -899,28 +899,6 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 1036473008959279404, guid: 867dd8fa1b64e2d41b7fd836efdd719e,
-        type: 3}
-      propertyPath: crystalSeekerPrefab
-      value: 
-      objectReference: {fileID: 5820753501731554686, guid: 2ca99be31026d1841bd01375187b753c,
-        type: 3}
-    - target: {fileID: 1036473008959279404, guid: 867dd8fa1b64e2d41b7fd836efdd719e,
-        type: 3}
-      propertyPath: minerPrefab
-      value: 
-      objectReference: {fileID: 5820753501731554686, guid: 2ca99be31026d1841bd01375187b753c,
-        type: 3}
-    - target: {fileID: -5054215509888451885, guid: 867dd8fa1b64e2d41b7fd836efdd719e,
-        type: 3}
-      propertyPath: m_Extents.x
-      value: 10.5
-      objectReference: {fileID: 0}
-    - target: {fileID: -5054215509888451885, guid: 867dd8fa1b64e2d41b7fd836efdd719e,
-        type: 3}
-      propertyPath: m_Extents.z
-      value: 10.5
-      objectReference: {fileID: 0}
     - target: {fileID: 2176489734026949281, guid: 867dd8fa1b64e2d41b7fd836efdd719e,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -1021,6 +999,28 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[2]
       value: 
       objectReference: {fileID: 2100000, guid: 28e4e7aec0ca88f4fb9d9b69715faf80, type: 2}
+    - target: {fileID: 1036473008959279404, guid: 867dd8fa1b64e2d41b7fd836efdd719e,
+        type: 3}
+      propertyPath: crystalSeekerPrefab
+      value: 
+      objectReference: {fileID: 5820753501731554686, guid: 2ca99be31026d1841bd01375187b753c,
+        type: 3}
+    - target: {fileID: 1036473008959279404, guid: 867dd8fa1b64e2d41b7fd836efdd719e,
+        type: 3}
+      propertyPath: minerPrefab
+      value: 
+      objectReference: {fileID: 5820753501731554686, guid: 2ca99be31026d1841bd01375187b753c,
+        type: 3}
+    - target: {fileID: -5054215509888451885, guid: 867dd8fa1b64e2d41b7fd836efdd719e,
+        type: 3}
+      propertyPath: m_Extents.x
+      value: 10.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -5054215509888451885, guid: 867dd8fa1b64e2d41b7fd836efdd719e,
+        type: 3}
+      propertyPath: m_Extents.z
+      value: 10.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 867dd8fa1b64e2d41b7fd836efdd719e, type: 3}
 --- !u!1 &164642935
@@ -11314,21 +11314,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -6445918545018131961, guid: 515433029e942ff46a8ae49154164f32,
-        type: 3}
-      propertyPath: tempFOVMeshes.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -6445918545018131961, guid: 515433029e942ff46a8ae49154164f32,
-        type: 3}
-      propertyPath: assemblySpace
-      value: 
-      objectReference: {fileID: 1177576888}
-    - target: {fileID: -6445918545018131961, guid: 515433029e942ff46a8ae49154164f32,
-        type: 3}
-      propertyPath: cameraBound
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 3721100528942192966, guid: 515433029e942ff46a8ae49154164f32,
         type: 3}
       propertyPath: spawnPoints.Array.size
@@ -11403,6 +11388,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -6445918545018131961, guid: 515433029e942ff46a8ae49154164f32,
+        type: 3}
+      propertyPath: tempFOVMeshes.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -6445918545018131961, guid: 515433029e942ff46a8ae49154164f32,
+        type: 3}
+      propertyPath: assemblySpace
+      value: 
+      objectReference: {fileID: 1177576888}
+    - target: {fileID: -6445918545018131961, guid: 515433029e942ff46a8ae49154164f32,
+        type: 3}
+      propertyPath: cameraBound
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 515433029e942ff46a8ae49154164f32, type: 3}
@@ -32691,41 +32691,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -6445918545018131961, guid: 515433029e942ff46a8ae49154164f32,
-        type: 3}
-      propertyPath: tempFOVMeshes.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: -6445918545018131961, guid: 515433029e942ff46a8ae49154164f32,
-        type: 3}
-      propertyPath: assemblySpace
-      value: 
-      objectReference: {fileID: 1951849344}
-    - target: {fileID: -6445918545018131961, guid: 515433029e942ff46a8ae49154164f32,
-        type: 3}
-      propertyPath: cameraBound
-      value: 
-      objectReference: {fileID: 588420166}
-    - target: {fileID: -6445918545018131961, guid: 515433029e942ff46a8ae49154164f32,
-        type: 3}
-      propertyPath: tempFOVMeshes.Array.data[0]
-      value: 
-      objectReference: {fileID: 371010977}
-    - target: {fileID: -6445918545018131961, guid: 515433029e942ff46a8ae49154164f32,
-        type: 3}
-      propertyPath: tempFOVMeshes.Array.data[1]
-      value: 
-      objectReference: {fileID: 46928399}
-    - target: {fileID: -6445918545018131961, guid: 515433029e942ff46a8ae49154164f32,
-        type: 3}
-      propertyPath: tempFOVMeshes.Array.data[2]
-      value: 
-      objectReference: {fileID: 1720344456}
-    - target: {fileID: -6445918545018131961, guid: 515433029e942ff46a8ae49154164f32,
-        type: 3}
-      propertyPath: tempFOVMeshes.Array.data[3]
-      value: 
-      objectReference: {fileID: 986663566}
     - target: {fileID: 3721100528942192966, guid: 515433029e942ff46a8ae49154164f32,
         type: 3}
       propertyPath: spawnPoints.Array.size
@@ -32811,6 +32776,11 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3592447304192908867, guid: 515433029e942ff46a8ae49154164f32,
+        type: 3}
+      propertyPath: faction
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 7807008728789946622, guid: 515433029e942ff46a8ae49154164f32,
         type: 3}
       propertyPath: m_Enabled
@@ -32821,20 +32791,50 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2547541493230240812, guid: 515433029e942ff46a8ae49154164f32,
-        type: 3}
-      propertyPath: goldLoot
-      value: 150
-      objectReference: {fileID: 0}
     - target: {fileID: 1476391264982174357, guid: 515433029e942ff46a8ae49154164f32,
         type: 3}
       propertyPath: fovActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3592447304192908867, guid: 515433029e942ff46a8ae49154164f32,
+    - target: {fileID: -6445918545018131961, guid: 515433029e942ff46a8ae49154164f32,
         type: 3}
-      propertyPath: faction
-      value: 3
+      propertyPath: tempFOVMeshes.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: -6445918545018131961, guid: 515433029e942ff46a8ae49154164f32,
+        type: 3}
+      propertyPath: assemblySpace
+      value: 
+      objectReference: {fileID: 1951849344}
+    - target: {fileID: -6445918545018131961, guid: 515433029e942ff46a8ae49154164f32,
+        type: 3}
+      propertyPath: cameraBound
+      value: 
+      objectReference: {fileID: 588420166}
+    - target: {fileID: -6445918545018131961, guid: 515433029e942ff46a8ae49154164f32,
+        type: 3}
+      propertyPath: tempFOVMeshes.Array.data[0]
+      value: 
+      objectReference: {fileID: 371010977}
+    - target: {fileID: -6445918545018131961, guid: 515433029e942ff46a8ae49154164f32,
+        type: 3}
+      propertyPath: tempFOVMeshes.Array.data[1]
+      value: 
+      objectReference: {fileID: 46928399}
+    - target: {fileID: -6445918545018131961, guid: 515433029e942ff46a8ae49154164f32,
+        type: 3}
+      propertyPath: tempFOVMeshes.Array.data[2]
+      value: 
+      objectReference: {fileID: 1720344456}
+    - target: {fileID: -6445918545018131961, guid: 515433029e942ff46a8ae49154164f32,
+        type: 3}
+      propertyPath: tempFOVMeshes.Array.data[3]
+      value: 
+      objectReference: {fileID: 986663566}
+    - target: {fileID: 2547541493230240812, guid: 515433029e942ff46a8ae49154164f32,
+        type: 3}
+      propertyPath: goldLoot
+      value: 150
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 515433029e942ff46a8ae49154164f32, type: 3}
