@@ -28,6 +28,7 @@ public class UIInterface : MonoBehaviour
 
   private Camera playerCamera;
   private GameObject showingLootObject;
+  private GameObject showingConstructObject;
 
   private void Awake()
   {
@@ -129,5 +130,17 @@ public class UIInterface : MonoBehaviour
     unitTooltipPopup.gameObject.SetActive(false);
   }
 
+  public void ShowConstructPanel(GameObject node)
+  {
+    showingConstructObject = node;
+    constructPanel.gameObject.SetActive(true);
+  }
 
+  public void HideConstructPanel(GameObject node)
+  {
+    if (node == showingConstructObject)
+    {
+      constructPanel.gameObject.SetActive(false);
+    }
+  }
 }

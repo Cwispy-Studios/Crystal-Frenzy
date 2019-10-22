@@ -14,22 +14,13 @@ public class BuildSlot : MonoBehaviour
     // Check if this object is selected
     if (CameraObjectSelection.SelectedUnitsList.Contains(gameObject))
     {
-
+      // Show construct panel
+      uiInterface.ShowConstructPanel(gameObject);
     }
 
     else
     {
-
+      uiInterface.HideConstructPanel(gameObject);
     }
-
-    //if (popupHoverLength >= POPUP_HOVER_TIME)
-    //{
-    //  uiInterface.ShowLootPopup(goldLoot, crystalIncomeReward, gameObject);
-    //}
-
-    //else
-    //{
-    //  uiInterface.HideRewardPopup(gameObject);
-    //}
   }
 }

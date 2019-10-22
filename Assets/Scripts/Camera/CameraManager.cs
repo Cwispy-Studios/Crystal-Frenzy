@@ -35,6 +35,11 @@ public class CameraManager : MonoBehaviour
     GetComponent<Camera>().orthographicSize = BIRDS_EYE_VIEW_ORT_ASSEMBLY_SIZE;
   }
 
+  public void SetNodeSelectionOrthographicSize()
+  {
+    GetComponent<Camera>().orthographicSize = BIRDS_EYE_VIEW_ORT_SIZE;
+  }
+
   public void SetNormalView()
   {
     transform.eulerAngles = lastCamRot;

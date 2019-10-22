@@ -160,6 +160,20 @@ public class GameManager : MonoBehaviour
   public void ReturnToNodeSelection()
   {
     nodeSelected = false;
+
+    GameObject lastConqueredNode = conqueredNodes[conqueredNodes.Count - 1];
+
+    // Force the camera into a bird's eye view
+    playerCamera.GetComponent<CameraManager>().SetNodeSelectionOrthographicSize();
+    Vector3 camPos = lastConqueredNode.transform.position;
+    camPos.y = playerCamera.transform.position.y;
+    playerCamera.transform.position = camPos;
+
+    // Set the UI Interfaces to invisible and show the button to select army roster
+    uiInterface.PreparationPhaseSelectNodeUI();
+
+    playerCamera.GetComponent<CameraControls>().enabled = true;
+    playerCamera.GetComponent<CameraIssueOrdering>().enabled = true;
   }
 
   ///////////////////////////////////////////////////////////////
@@ -219,6 +233,12 @@ public class GameManager : MonoBehaviour
     // Disable wave spawners of the conquered node
     conqueredNode.GetComponent<CrystalNode>().SetWaveSpawnersActive(false, null);
 
+    // If conquered node has a building slot, activate it
+    if (conqueredNode.GetComponent<BuildingSlot>().enabled == true)
+    {
+      conqueredNode.GetComponent<BuildingSlot>().inControl = true;
+    }
+
     // Turn on all the tempFOVMeshes of every conquered nodes 
     for (int i = 0; i < conqueredNodes.Count; ++i)
     {
@@ -265,6 +285,8 @@ public class GameManager : MonoBehaviour
     BeginPreparationDefensePhase();
   }
 
+  ///////////////////////////////////////////////////////////////
+  // PREPARATION DEFENSE FUNCTIONS
   public void BeginPreparationDefensePhase()
   {
     GameObject lastConqueredNode = conqueredNodes[conqueredNodes.Count - 1];
@@ -319,6 +341,8 @@ public class GameManager : MonoBehaviour
     }
   }
 
+  ///////////////////////////////////////////////////////////////
+  // DEFENSE FUNCTIONS
   public void BeginDefense()
   {
     // Update phase, UI and camera
@@ -405,6 +429,12 @@ public class GameManager : MonoBehaviour
     attackNode.GetComponent<CrystalSeekerSpawner>().enabled = true;
     attackNode.GetComponent<CrystalSeekerSpawner>().SetCrystalTarget(conqueredNodes[conqueredNodes.Count - 1]);
     attackNode.GetComponent<CrystalOrder>().enabled = true;
+
+    // If the node we lost has a building slot, we flag it as lost control
+    if (attackNode.GetComponent<BuildingSlot>().enabled == true)
+    {
+      attackNode.GetComponent<BuildingSlot>().inControl = false;
+    }
 
     // Disable wave spawners of the new attacking node
     attackNode.GetComponent<CrystalNode>().SetWaveSpawnersActive(false, null);
