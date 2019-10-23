@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 8333475125884544587}
   - component: {fileID: 3071251298802986126}
   - component: {fileID: 7832636824632668955}
+  - component: {fileID: 5111280773853372222}
   m_Layer: 0
   m_Name: BlackSmith
   m_TagString: Untagged
@@ -184,3 +185,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   goldCost: 350
+--- !u!114 &5111280773853372222
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1008145746713162640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aaa869f56237a8849ac4c72b2e440ca1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buildingType: 2

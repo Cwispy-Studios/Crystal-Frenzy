@@ -256,17 +256,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ea75f78d111e724eb5b3d17bf134d3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  farmPrefab: {fileID: 6242424490941132753, guid: 8b85e3933b86ce84a883b3d5351766bb,
+  constructableBuildingPrefab: {fileID: 6548944953667490202, guid: 022069a4bdb75da4c9291b174bf29265,
     type: 3}
-  archeryRangePrefab: {fileID: 6548944953667490202, guid: 022069a4bdb75da4c9291b174bf29265,
-    type: 3}
-  blacksmithPrefab: {fileID: 1008145746713162640, guid: 13a94e4eb0c6ebd46a9721c761f4a08a,
-    type: 3}
-  brawlPitPrefab: {fileID: 6242424490941132753, guid: 106fdf50b8dbb064b9b3e36cb5545ffa,
-    type: 3}
-  mageTowerPrefab: {fileID: 1236374215028544222, guid: c658d85342009ac48b5df0f78d2b92b7,
-    type: 3}
-  buildingType: 1
   connectedNode: {fileID: 0}
   available: 1
 --- !u!1 &46928399 stripped
@@ -11485,11 +11476,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 744430761}
     m_Modifications:
-    - target: {fileID: 1309242855395777868, guid: 515433029e942ff46a8ae49154164f32,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: connectedNodes.Array.data[0]
       value: 
@@ -11561,6 +11547,11 @@ PrefabInstance:
     - target: {fileID: 4625980501723797798, guid: 515433029e942ff46a8ae49154164f32,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309242855395777868, guid: 515433029e942ff46a8ae49154164f32,
+        type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -6445918545018131961, guid: 515433029e942ff46a8ae49154164f32,
@@ -11838,7 +11829,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &457235595
 RectTransform:
   m_ObjectHideFlags: 0
@@ -17278,17 +17269,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ea75f78d111e724eb5b3d17bf134d3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  farmPrefab: {fileID: 6242424490941132753, guid: 8b85e3933b86ce84a883b3d5351766bb,
+  constructableBuildingPrefab: {fileID: 6242424490941132753, guid: 8b85e3933b86ce84a883b3d5351766bb,
     type: 3}
-  archeryRangePrefab: {fileID: 6548944953667490202, guid: 022069a4bdb75da4c9291b174bf29265,
-    type: 3}
-  blacksmithPrefab: {fileID: 1008145746713162640, guid: 13a94e4eb0c6ebd46a9721c761f4a08a,
-    type: 3}
-  brawlPitPrefab: {fileID: 6242424490941132753, guid: 106fdf50b8dbb064b9b3e36cb5545ffa,
-    type: 3}
-  mageTowerPrefab: {fileID: 1236374215028544222, guid: c658d85342009ac48b5df0f78d2b92b7,
-    type: 3}
-  buildingType: 0
   connectedNode: {fileID: 0}
   available: 1
 --- !u!1 &587232069
@@ -17930,9 +17912,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   archeryRangeConstructed: 0
+  archeryRangeInControl: 0
   blacksmithConstructed: 0
+  blacksmithInControl: 0
   mageTowerConstructed: 0
+  mageTowerInControl: 0
   brawlPitConstructed: 0
+  brawlPitInControl: 0
 --- !u!1001 &698772543
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20987,17 +20973,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ea75f78d111e724eb5b3d17bf134d3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  farmPrefab: {fileID: 6242424490941132753, guid: 8b85e3933b86ce84a883b3d5351766bb,
+  constructableBuildingPrefab: {fileID: 1236374215028544222, guid: c658d85342009ac48b5df0f78d2b92b7,
     type: 3}
-  archeryRangePrefab: {fileID: 6548944953667490202, guid: 022069a4bdb75da4c9291b174bf29265,
-    type: 3}
-  blacksmithPrefab: {fileID: 1008145746713162640, guid: 13a94e4eb0c6ebd46a9721c761f4a08a,
-    type: 3}
-  brawlPitPrefab: {fileID: 6242424490941132753, guid: 106fdf50b8dbb064b9b3e36cb5545ffa,
-    type: 3}
-  mageTowerPrefab: {fileID: 1236374215028544222, guid: c658d85342009ac48b5df0f78d2b92b7,
-    type: 3}
-  buildingType: 4
   connectedNode: {fileID: 0}
   available: 1
 --- !u!1 &1168604734
@@ -22858,17 +22835,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ea75f78d111e724eb5b3d17bf134d3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  farmPrefab: {fileID: 6242424490941132753, guid: 8b85e3933b86ce84a883b3d5351766bb,
+  constructableBuildingPrefab: {fileID: 6242424490941132753, guid: 106fdf50b8dbb064b9b3e36cb5545ffa,
     type: 3}
-  archeryRangePrefab: {fileID: 6548944953667490202, guid: 022069a4bdb75da4c9291b174bf29265,
-    type: 3}
-  blacksmithPrefab: {fileID: 1008145746713162640, guid: 13a94e4eb0c6ebd46a9721c761f4a08a,
-    type: 3}
-  brawlPitPrefab: {fileID: 6242424490941132753, guid: 106fdf50b8dbb064b9b3e36cb5545ffa,
-    type: 3}
-  mageTowerPrefab: {fileID: 1236374215028544222, guid: c658d85342009ac48b5df0f78d2b92b7,
-    type: 3}
-  buildingType: 3
   connectedNode: {fileID: 0}
   available: 1
 --- !u!1001 &1705961532
@@ -35735,17 +35703,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ea75f78d111e724eb5b3d17bf134d3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  farmPrefab: {fileID: 6242424490941132753, guid: 8b85e3933b86ce84a883b3d5351766bb,
+  constructableBuildingPrefab: {fileID: 1008145746713162640, guid: 13a94e4eb0c6ebd46a9721c761f4a08a,
     type: 3}
-  archeryRangePrefab: {fileID: 6548944953667490202, guid: 022069a4bdb75da4c9291b174bf29265,
-    type: 3}
-  blacksmithPrefab: {fileID: 1008145746713162640, guid: 13a94e4eb0c6ebd46a9721c761f4a08a,
-    type: 3}
-  brawlPitPrefab: {fileID: 6242424490941132753, guid: 106fdf50b8dbb064b9b3e36cb5545ffa,
-    type: 3}
-  mageTowerPrefab: {fileID: 1236374215028544222, guid: c658d85342009ac48b5df0f78d2b92b7,
-    type: 3}
-  buildingType: 2
   connectedNode: {fileID: 0}
   available: 1
 --- !u!1 &2141928319
@@ -36045,11 +36004,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 744430761}
     m_Modifications:
-    - target: {fileID: 1309242855395777868, guid: 515433029e942ff46a8ae49154164f32,
-        type: 3}
-      propertyPath: buildingSlot
-      value: 
-      objectReference: {fileID: 1998926599}
     - target: {fileID: 0}
       propertyPath: connectedNodes.Array.data[0]
       value: 
@@ -36118,6 +36072,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1309242855395777868, guid: 515433029e942ff46a8ae49154164f32,
+        type: 3}
+      propertyPath: buildingSlot
+      value: 
+      objectReference: {fileID: 1998926599}
     - target: {fileID: -6445918545018131961, guid: 515433029e942ff46a8ae49154164f32,
         type: 3}
       propertyPath: tempFOVMeshes.Array.size
@@ -36297,11 +36256,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7917784616187768491}
     m_Modifications:
-    - target: {fileID: 4550873669923929624, guid: 7fddc9519d4830a489e336dcc91770c7,
-        type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5977045166760064361, guid: 7fddc9519d4830a489e336dcc91770c7,
         type: 3}
       propertyPath: m_Name
@@ -36310,6 +36264,11 @@ PrefabInstance:
     - target: {fileID: 5977045166760064361, guid: 7fddc9519d4830a489e336dcc91770c7,
         type: 3}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4550873669923929624, guid: 7fddc9519d4830a489e336dcc91770c7,
+        type: 3}
+      propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5977045166760064356, guid: 7fddc9519d4830a489e336dcc91770c7,

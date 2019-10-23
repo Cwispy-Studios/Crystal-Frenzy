@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 3009367357106636948}
   - component: {fileID: 3009367357106636949}
   - component: {fileID: 6585107557667843053}
+  - component: {fileID: -4941056094100014120}
   m_Layer: 0
   m_Name: ArcheryRange
   m_TagString: Untagged
@@ -176,3 +177,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   goldCost: 450
+--- !u!114 &-4941056094100014120
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6548944953667490202}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aaa869f56237a8849ac4c72b2e440ca1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buildingType: 1

@@ -139,7 +139,8 @@ public class CameraObjectSelection : MonoBehaviour
       // Check if the mouse is hovering over any selectable
       GameObject hoveredObject = Utils.CheckMouseIsOverSelectable();
 
-      if (hoveredObject != null && hoveredObject.GetComponent<Selectable>() != null)
+      if (hoveredObject != null && hoveredObject.GetComponent<Selectable>() != null && 
+        hoveredObject.GetComponent<Selectable>().enabled)
       {
         AddObjectToHoverList(hoveredObject.gameObject);
       }
@@ -164,16 +165,6 @@ public class CameraObjectSelection : MonoBehaviour
       }
     }
   }
-
-  //public static void RemoveDeadSelectedUnit(GameObject deadSelectedUnit)
-  //{
-  //  SelectedUnitsList.Remove(deadSelectedUnit);
-  //}
-
-  //public static void RemoveDeadHoverUnit(GameObject deadHoverUnit)
-  //{
-  //  MouseHoverUnitsList.Remove(deadHoverUnit);
-  //}
 
   private void Click()
   {
@@ -203,7 +194,7 @@ public class CameraObjectSelection : MonoBehaviour
     // Loop through every selectable in the game and check if they are within the selection bounds of your drag selection
     foreach (Selectable selectableObject in selectables)
     {
-      if (IsWithinSelectionBounds(selectableObject.gameObject))
+      if (selectableObject.enabled && IsWithinSelectionBounds(selectableObject.gameObject))
       {
         // Check if this selectable is a friendly, if it is then there is now a friendly in the list
         bool selectableIsFriendly = selectableObject.gameObject.GetComponent<Faction>().faction == GetComponent<Faction>().faction;

@@ -2,29 +2,15 @@
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public enum BUILDING_TYPE
-{
-  FARM = 0,
-  ARCHERY_RANGE,
-  BLACKSMITH,
-  BRAWL_PIT,
-  MAGE_TOWER
-}
-
 public class ConstructButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
   [SerializeField]
-  private GameObject
-    farmPrefab = null,
-    archeryRangePrefab = null,
-    blacksmithPrefab = null,
-    brawlPitPrefab = null,
-    mageTowerPrefab = null;
-
-  public BUILDING_TYPE buildingType;
+  private GameObject constructableBuildingPrefab = null;
+  private BUILDING_TYPE constructableBuildingType;
 
   private UIInterface uiInterface = null;
 
+  [HideInInspector]
   public GameObject connectedNode;
 
   [HideInInspector]
@@ -33,6 +19,7 @@ public class ConstructButton : MonoBehaviour, IPointerEnterHandler, IPointerExit
   private void Awake()
   {
     uiInterface = FindObjectOfType<UIInterface>();
+    constructableBuildingType = constructableBuildingPrefab.GetComponent<BuildingType>().buildingType;
   }
 
   private void Start()
@@ -42,50 +29,13 @@ public class ConstructButton : MonoBehaviour, IPointerEnterHandler, IPointerExit
 
   private void Update()
   {
-    switch (buildingType)
-    {
-      case BUILDING_TYPE.FARM:
-        GetComponent<Button>().interactable = farmPrefab.GetComponent<ConstructableBuilding>().goldCost <= GameManager.resourceManager.Gold && available;
-        break;
-
-      case BUILDING_TYPE.ARCHERY_RANGE:
-        GetComponent<Button>().interactable = archeryRangePrefab.GetComponent<ConstructableBuilding>().goldCost <= GameManager.resourceManager.Gold && available;
-        break;
-
-      case BUILDING_TYPE.BLACKSMITH:
-        GetComponent<Button>().interactable = blacksmithPrefab.GetComponent<ConstructableBuilding>().goldCost <= GameManager.resourceManager.Gold && available;
-        break;
-
-      case BUILDING_TYPE.BRAWL_PIT:
-        GetComponent<Button>().interactable = brawlPitPrefab.GetComponent<ConstructableBuilding>().goldCost <= GameManager.resourceManager.Gold && available;
-        break;
-
-      case BUILDING_TYPE.MAGE_TOWER:
-        GetComponent<Button>().interactable = mageTowerPrefab.GetComponent<ConstructableBuilding>().goldCost <= GameManager.resourceManager.Gold && available;
-        break;
-    }
+    GetComponent<Button>().interactable = (constructableBuildingPrefab.GetComponent<ConstructableBuilding>().goldCost <= GameManager.resourceManager.Gold && available);
   }
 
   private void ConstructBuilding()
   {
-    switch (buildingType)
-    {
-      case BUILDING_TYPE.FARM:
-        connectedNode.GetComponentInParent<BuildingSlot>().SetConstruction(Instantiate(farmPrefab, connectedNode.transform.position, connectedNode.transform.rotation, connectedNode.transform.parent));
-        break;
-
-      case BUILDING_TYPE.ARCHERY_RANGE:
-        break;
-
-      case BUILDING_TYPE.BLACKSMITH:
-        break;
-
-      case BUILDING_TYPE.BRAWL_PIT:
-        break;
-
-      case BUILDING_TYPE.MAGE_TOWER:
-        break;
-    }
+    connectedNode.GetComponentInParent<BuildingSlot>().SetConstruction(
+      Instantiate(constructableBuildingPrefab, connectedNode.transform.position, connectedNode.transform.rotation, connectedNode.transform.parent));
 
     uiInterface.HideBuildingTooltipPopup();
     uiInterface.HideConstructPanel(connectedNode);
@@ -95,17 +45,15 @@ public class ConstructButton : MonoBehaviour, IPointerEnterHandler, IPointerExit
   public void OnPointerEnter(PointerEventData eventData)
   {
     string buildingName = "";
-    int cost = 0;
+    int cost = constructableBuildingPrefab.GetComponent<ConstructableBuilding>().goldCost;
     string description = "";
     string constructed = "";
     
-    switch (buildingType)
+    switch (constructableBuildingPrefab.GetComponent<BuildingType>().buildingType)
     {
       case BUILDING_TYPE.FARM:
         buildingName = "Farm";
         description = "Increases maximum unit cap by <color=orange>3</color>, allowing you to command more units in battle. ";
-
-        cost = farmPrefab.GetComponent<ConstructableBuilding>().goldCost;
 
         break;
 
@@ -118,8 +66,6 @@ public class ConstructButton : MonoBehaviour, IPointerEnterHandler, IPointerExit
           constructed = "BUILDING ALREADY CONSTRUCTED";
         }
 
-        cost = archeryRangePrefab.GetComponent<ConstructableBuilding>().goldCost;
-
         break;
 
       case BUILDING_TYPE.BLACKSMITH:
@@ -130,8 +76,6 @@ public class ConstructButton : MonoBehaviour, IPointerEnterHandler, IPointerExit
         {
           constructed = "BUILDING ALREADY CONSTRUCTED";
         }
-
-        cost = blacksmithPrefab.GetComponent<ConstructableBuilding>().goldCost;
 
         break;
 
@@ -144,8 +88,6 @@ public class ConstructButton : MonoBehaviour, IPointerEnterHandler, IPointerExit
           constructed = "BUILDING ALREADY CONSTRUCTED";
         }
 
-        cost = brawlPitPrefab.GetComponent<ConstructableBuilding>().goldCost;
-
         break;
 
       case BUILDING_TYPE.MAGE_TOWER:
@@ -156,8 +98,6 @@ public class ConstructButton : MonoBehaviour, IPointerEnterHandler, IPointerExit
         {
           constructed = "BUILDING ALREADY CONSTRUCTED";
         }
-
-        cost = mageTowerPrefab.GetComponent<ConstructableBuilding>().goldCost;
 
         break;
     }

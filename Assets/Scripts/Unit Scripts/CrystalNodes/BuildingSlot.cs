@@ -12,6 +12,11 @@ public class BuildingSlot : MonoBehaviour
   [SerializeField]
   private GameObject buildingSlot = null;
 
+  private void Awake()
+  {
+    
+  }
+
   private void Update()
   {
     if (constructed == false)

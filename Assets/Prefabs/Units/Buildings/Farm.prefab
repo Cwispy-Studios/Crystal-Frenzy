@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 2702266524641654492}
   - component: {fileID: 2702266524641654493}
   - component: {fileID: 2702266524641654490}
+  - component: {fileID: -7085389377338950226}
   m_Layer: 0
   m_Name: Farm
   m_TagString: Untagged
@@ -167,3 +168,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   goldCost: 200
+--- !u!114 &-7085389377338950226
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6242424490941132753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aaa869f56237a8849ac4c72b2e440ca1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buildingType: 0
