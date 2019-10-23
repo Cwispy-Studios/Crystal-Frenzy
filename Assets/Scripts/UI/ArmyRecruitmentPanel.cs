@@ -15,12 +15,12 @@ public class ArmyRecruitmentPanel : MonoBehaviour
 
   private void Update()
   {
-    shootyBoyButton.GetComponent<Button>().interactable = GameManager.buildingManager.archeryRangeConstructed;
-    shootyBoyButton.available = GameManager.buildingManager.archeryRangeConstructed;
-    bruteButton.GetComponent<Button>().interactable = GameManager.buildingManager.brawlPitConstructed;
-    bruteButton.available = GameManager.buildingManager.brawlPitConstructed;
-    warlockButton.GetComponent<Button>().interactable = GameManager.buildingManager.mageTowerConstructed;
-    warlockButton.available = GameManager.buildingManager.mageTowerConstructed;
+    shootyBoyButton.available = shootyBoyButton.GetComponent<Button>().interactable = 
+      GameManager.buildingManager.archeryRangeConstructed && GameManager.buildingManager.archeryRangeInControl;
+    bruteButton.available = bruteButton.GetComponent<Button>().interactable = 
+      GameManager.buildingManager.brawlPitConstructed && GameManager.buildingManager.blacksmithInControl;
+    warlockButton.available = warlockButton.GetComponent<Button>().interactable = 
+      GameManager.buildingManager.mageTowerConstructed && GameManager.buildingManager.mageTowerInControl;
   }
 
   // Identifies the button and then sets the unit tooltip text accordingly

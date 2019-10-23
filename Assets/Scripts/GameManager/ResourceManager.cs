@@ -25,7 +25,7 @@ public class ResourceManager : MonoBehaviour
   {
     goldText.text = Gold.ToString();
     crystalText.text = Crystals.ToString() + " (+" + crystalsIncome.ToString() + ")";
-    UnitCapText.text = ArmySize.ToString() + " / " + startingUnitCap;
+    UnitCapText.text = ArmySize.ToString() + " / " + UnitCap;
   }
 
   public void UpdateArmySize(int value)
@@ -38,5 +38,15 @@ public class ResourceManager : MonoBehaviour
     Gold += gold;
     crystalsIncome += crystalIncome;
     Crystals += crystalsIncome;
+  }
+
+  public void FarmClaimed(FoodProvider farm)
+  {
+    UnitCap += farm.foodProvided;
+  }
+
+  public void FarmLost(FoodProvider farm)
+  {
+    UnitCap -= farm.foodProvided;
   }
 }

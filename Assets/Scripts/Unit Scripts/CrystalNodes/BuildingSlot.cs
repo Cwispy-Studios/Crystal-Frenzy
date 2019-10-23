@@ -8,6 +8,13 @@ public class BuildingSlot : MonoBehaviour
   public bool inControl = false;
   // Whether a building has been constructed on this slot yet
   private bool constructed = false;
+  public bool Constructed
+  {
+    get
+    {
+      return constructed;
+    }
+  }
 
   [SerializeField]
   private GameObject buildingSlot = null;
@@ -36,5 +43,17 @@ public class BuildingSlot : MonoBehaviour
   {
     constructed = true;
     buildingSlot = constructedBuilding;
+  }
+
+  public void RecaptureBuilding()
+  {
+    buildingSlot.GetComponent<Faction>().faction = Faction.FACTIONS.GOBLINS;
+    GameManager.buildingManager.RecaptureBuilding(buildingSlot);
+  }
+
+  public void LoseBuilding()
+  {
+    buildingSlot.GetComponent<Faction>().faction = Faction.FACTIONS.NEUTRAL;
+    GameManager.buildingManager.LoseBuilding(buildingSlot);
   }
 }

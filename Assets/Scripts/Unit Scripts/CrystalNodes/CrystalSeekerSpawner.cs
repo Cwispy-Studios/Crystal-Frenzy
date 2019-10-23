@@ -109,6 +109,13 @@ public class CrystalSeekerSpawner : MonoBehaviour
     return crystalSeeker;
   }
 
+  public void ResetCrystalSelection()
+  {
+    crystalTarget = null;
+    crystalPath = null;
+    crystalSelected = false;
+  }
+
   private void OnDisable()
   {
     if (crystalPath != null)

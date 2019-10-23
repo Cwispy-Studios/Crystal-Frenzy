@@ -226,6 +226,8 @@ public class GameManager : MonoBehaviour
 
     GameObject conqueredNode = conqueredNodes[conqueredNodes.Count - 1];
 
+    conqueredNode.GetComponent<ConqueredNode>().conquered = true;
+
     // Enable the crystal nodes functionalities
     conqueredNode.GetComponent<CrystalSeekerSpawner>().enabled = true;
     conqueredNode.GetComponent<CrystalOrder>().enabled = true;
@@ -233,10 +235,19 @@ public class GameManager : MonoBehaviour
     // Disable wave spawners of the conquered node
     conqueredNode.GetComponent<CrystalNode>().SetWaveSpawnersActive(false, null);
 
+    BuildingSlot buildingSlot = conqueredNode.GetComponent<BuildingSlot>();
+
     // If conquered node has a building slot, activate it
-    if (conqueredNode.GetComponent<BuildingSlot>().enabled == true)
+    if (buildingSlot.enabled == true)
     {
-      conqueredNode.GetComponent<BuildingSlot>().inControl = true;
+      buildingSlot.inControl = true;
+
+      // Check if a building has already been constructed, if yes, recapture it
+      if (buildingSlot.Constructed)
+      {
+        // Sets the faction correctly
+        buildingSlot.RecaptureBuilding();
+      }
     }
 
     // Turn on all the tempFOVMeshes of every conquered nodes 
@@ -251,9 +262,31 @@ public class GameManager : MonoBehaviour
     // Update the camera bounds
     playerCamera.GetComponent<CameraControls>().AddCameraBounds(conqueredNode.GetComponent<ConqueredNode>().CameraBound);
 
-    // Collect loot
-    resourceManager.CollectLoot(conqueredNode.GetComponent<CrystalRewards>().goldLoot, conqueredNode.GetComponent<CrystalRewards>().crystalIncomeReward);
+    // Collect loot, only if node has not already been conquered before
+    if (conqueredNode.GetComponent<ConqueredNode>().conquered == false)
+    {
+      resourceManager.CollectLoot(conqueredNode.GetComponent<CrystalRewards>().goldLoot, conqueredNode.GetComponent<CrystalRewards>().crystalIncomeReward);
+    }
+
     uiInterface.UpdateLootTargetPanel(0, 0);
+
+    // Check if our newly conquered node has already conquered a node. If yes, skip to army selection screen and force player
+    // to attack that node. Otherwise, player is free to choose
+    if (conqueredNode.GetComponent<CrystalNode>().conqueredNode != null)
+    {
+      attackingFromNode.GetComponent<CrystalSeekerSpawner>().SetCrystalTarget(attackingFromNode.GetComponent<CrystalNode>().conqueredNode);
+      uiInterface.PreparationPhaseSelectArmyUI(true);
+      nodeSelected = true;
+    }
+
+    else
+    {
+      // If capturing a node that has a crystal selected, we reset it to null
+      if (conqueredNode.GetComponent<CrystalSeekerSpawner>().crystalSelected == true)
+      {
+        conqueredNode.GetComponent<CrystalSeekerSpawner>().ResetCrystalSelection();
+      }
+    }
 
     nodeSelected = false;
 
@@ -403,6 +436,7 @@ public class GameManager : MonoBehaviour
     {
       attackingFromNode.GetComponent<CrystalSeekerSpawner>().SetCrystalTarget(attackingFromNode.GetComponent<CrystalNode>().conqueredNode);
       uiInterface.PreparationPhaseSelectArmyUI(true);
+      nodeSelected = true;
     }
   }
 
@@ -430,10 +464,19 @@ public class GameManager : MonoBehaviour
     attackNode.GetComponent<CrystalSeekerSpawner>().SetCrystalTarget(conqueredNodes[conqueredNodes.Count - 1]);
     attackNode.GetComponent<CrystalOrder>().enabled = true;
 
+    BuildingSlot buildingSlot = attackNode.GetComponent<BuildingSlot>();
+
     // If the node we lost has a building slot, we flag it as lost control
-    if (attackNode.GetComponent<BuildingSlot>().enabled == true)
+    if (buildingSlot.enabled == true)
     {
-      attackNode.GetComponent<BuildingSlot>().inControl = false;
+      buildingSlot.inControl = false;
+
+      // Check if a building has already been constructed, if yes, lose it
+      if (buildingSlot.Constructed)
+      {
+        // Sets the faction correctly
+        buildingSlot.LoseBuilding();
+      }
     }
 
     // Disable wave spawners of the new attacking node

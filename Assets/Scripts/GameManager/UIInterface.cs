@@ -101,11 +101,11 @@ public class UIInterface : MonoBehaviour
   //////////////////////////////////////////////////////////////////////////////////////
   // OTHERS
   //////////////////////////////////////////////////////////////////////////////////////
-  public void ShowLootPopup(int gold, int crystal, GameObject lootObject)
+  public void ShowLootPopup(int gold, int crystal, bool conquered, GameObject lootObject)
   {
     showingLootObject = lootObject;
 
-    lootPopup.SetText(gold, crystal);
+    lootPopup.SetText(gold, crystal, conquered);
 
     lootPopup.gameObject.SetActive(true);
   }

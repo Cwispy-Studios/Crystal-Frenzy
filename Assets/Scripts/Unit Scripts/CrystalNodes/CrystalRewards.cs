@@ -19,19 +19,19 @@ public class CrystalRewards : MonoBehaviour
   private void Update()
   {
     // Check if this object is in the mouseHoverList
-    if (CameraObjectSelection.SelectedUnitsList.Contains(gameObject))
+    if (CameraObjectSelection.MouseHoverUnitsList.Contains(gameObject))
     {
       popupHoverLength += Time.deltaTime;
     }
 
-    else if (!CameraObjectSelection.MouseHoverUnitsList.Contains(gameObject))
+    else
     {
       popupHoverLength = 0;
     }
 
     if (popupHoverLength >= POPUP_HOVER_TIME)
     {
-      uiInterface.ShowLootPopup(goldLoot, crystalIncomeReward, gameObject);
+      uiInterface.ShowLootPopup(goldLoot, crystalIncomeReward, GetComponent<ConqueredNode>().conquered, gameObject);
     }
 
     else
