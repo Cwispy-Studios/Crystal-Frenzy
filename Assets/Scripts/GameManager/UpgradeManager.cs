@@ -15,7 +15,11 @@ public class UpgradeManager : MonoBehaviour
   [SerializeField]
   private GameObject[]
     minerHealthUpgradePrefabs = null,
-    minerSpeedUpgradePrefabs  = null;
+    minerSpeedUpgradePrefabs  = null,
+    stabbyUpgradePrefabs = null,
+    shootyUpgradePrefabs = null,
+    bruteUpgradePrefabs = null,
+    warlockUpgradePrefabs = null;
 
   // The LH key holds the upgrade type. The value of this key is a tuple. 
   // The 1st value of the tuple is the upgraded level of that corresponding upgrade type
@@ -33,6 +37,10 @@ public class UpgradeManager : MonoBehaviour
 
     InitialiseUpgrades(minerHealthUpgradePrefabs);
     InitialiseUpgrades(minerSpeedUpgradePrefabs);
+    InitialiseUpgrades(stabbyUpgradePrefabs);
+    InitialiseUpgrades(shootyUpgradePrefabs);
+    InitialiseUpgrades(bruteUpgradePrefabs);
+    InitialiseUpgrades(warlockUpgradePrefabs);
   }
 
   private void InitialiseUpgrades(GameObject[] upgradePrefabs)

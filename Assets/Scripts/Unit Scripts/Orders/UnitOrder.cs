@@ -122,7 +122,7 @@ public class UnitOrder : Order
 
     else
     {
-      Debug.LogError("Unit Order destination unit has no NavMesh! Name is " + destinationUnit.name);
+      Debug.LogWarning("Unit Order destination unit has no NavMesh! Name is " + destinationUnit.name);
     }
 
     stoppingDistance += unitRadius;

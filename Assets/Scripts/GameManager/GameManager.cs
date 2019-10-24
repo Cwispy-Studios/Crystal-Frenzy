@@ -197,6 +197,14 @@ public class GameManager : MonoBehaviour
     attackingFromNode.GetComponent<CrystalSeekerSpawner>().enabled = false;
     attackingFromNode.GetComponent<CrystalOrder>().enabled = false;
 
+    BuildingSlot buildingSlot = attackNode.GetComponent<BuildingSlot>();
+
+    // If attack node has a building slot, deactivate it
+    if (buildingSlot.enabled == true)
+    {
+      buildingSlot.inControl = false;
+    }
+
     // Change unit panel buttons to combat buttons so clicking on them selects units instead of deleting them
     uiInterface.UnitManager.SetUnitButtonsToCombat();
 

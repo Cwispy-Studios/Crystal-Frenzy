@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 7394659449738150961}
   - component: {fileID: 4100849591000208237}
   - component: {fileID: 532199220920963035}
+  - component: {fileID: 4974711632971954448}
   m_Layer: 0
   m_Name: Brute
   m_TagString: Untagged
@@ -252,3 +253,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unitType: 2
+--- !u!114 &4974711632971954448
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6530087302226205059}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7bd655b194cc6048bba13aaa5e20901, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  affectedByUpgrades: 04000000
