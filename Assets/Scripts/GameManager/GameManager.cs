@@ -228,6 +228,10 @@ public class GameManager : MonoBehaviour
 
     GameObject conqueredNode = conqueredNodes[conqueredNodes.Count - 1];
 
+    resourceManager.CollectLoot(conqueredNode.GetComponent<CrystalRewards>().goldLoot,
+      conqueredNode.GetComponent<CrystalRewards>().crystalIncomeReward,
+      conqueredNode.GetComponent<ConqueredNode>().conquered);
+
     conqueredNode.GetComponent<ConqueredNode>().conquered = true;
 
     // Enable the crystal nodes functionalities
@@ -263,10 +267,6 @@ public class GameManager : MonoBehaviour
 
     // Update the camera bounds
     playerCamera.GetComponent<CameraControls>().AddCameraBounds(conqueredNode.GetComponent<ConqueredNode>().CameraBound);
-
-    resourceManager.CollectLoot(conqueredNode.GetComponent<CrystalRewards>().goldLoot, 
-      conqueredNode.GetComponent<CrystalRewards>().crystalIncomeReward, 
-      conqueredNode.GetComponent<ConqueredNode>().conquered);
 
     uiInterface.UpdateLootTargetPanel(0, 0);
 

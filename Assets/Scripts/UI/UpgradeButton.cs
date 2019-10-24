@@ -100,21 +100,21 @@ public class UpgradeButton : MonoBehaviour
         {
           case 1:
             upgradeName = "Greased Motors";
-            description = "The Miner's motors are now regularly maintained, increasing it's movement speed.";
+            description = "The Miner's motors are now maintained, increasing it's movement speed.";
             break;
 
           case 2:
-            upgradeName = "Reinforced Plating";
-            description = "The Miner is outfitted with additional platings, increasing it's health. The additional platings also slow down the Miner.";
+            upgradeName = "Fine Motors";
+            description = "";
             break;
 
           case 3:
-            upgradeName = "Imbued Plating";
-            description = "The Miner's constrution is further improved, increasing it's health. The additional constructions also slow down the Miner.";
+            upgradeName = "Advanced Plating";
+            description = "";
             break;
 
           case 4:
-            upgradeName = "Infused Plating";
+            upgradeName = "Crystal Powered Motors";
             description = "The Miner's armour is infused with Crystal essense, greatly increating it's health and slightly increasing it's movement speed.";
             break;
 
