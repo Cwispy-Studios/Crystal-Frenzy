@@ -6,9 +6,6 @@ public class UpgradeButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 {
   public UPGRADE_TYPE upgradeType;
 
-  [SerializeField]
-  private GameObject targetPrefab;
-
   public int cost;
   public UpgradeProperties upgradeProperties;
 

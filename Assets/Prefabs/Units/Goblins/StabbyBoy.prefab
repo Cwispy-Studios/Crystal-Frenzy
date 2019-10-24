@@ -206,7 +206,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0192c10ce0d2589489e608135047b104, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 25
+  maxHealth: 200
   combatantType: 0
 --- !u!114 &4365369355350160395
 MonoBehaviour:
@@ -220,7 +220,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdcce6eefadf3814dbaf768a4697cd9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackDamage: 2
+  attackDamage: 15
   attacksPerSecond: 1.5
   attackRange: 1
   enemyDetectRange: 15
@@ -251,12 +251,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7bd655b194cc6048bba13aaa5e20901, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upgradeProperties:
-    health: 0
-    damage: 0
-    attackSpeed: 0
-    attackRange: 0
-    detectRange: 0
-    fovRange: 0
-    speed: 0
-    cost: 0
+  affectedByUpgrades: 

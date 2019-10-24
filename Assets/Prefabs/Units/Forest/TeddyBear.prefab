@@ -197,7 +197,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0192c10ce0d2589489e608135047b104, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 15
+  maxHealth: 120
   combatantType: 0
 --- !u!114 &5354171361829680825
 MonoBehaviour:
@@ -211,11 +211,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdcce6eefadf3814dbaf768a4697cd9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackDamage: 2
+  attackDamage: 10
   attacksPerSecond: 1.2
   attackRange: 0.8
   enemyDetectRange: 12
   preferredTarget: 0
+  projectilePrefab: {fileID: 0}
 --- !u!114 &332880475672617696
 MonoBehaviour:
   m_ObjectHideFlags: 0
