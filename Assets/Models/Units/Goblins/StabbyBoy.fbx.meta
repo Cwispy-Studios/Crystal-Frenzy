@@ -7,6 +7,71 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: ChestStrapMaterial
+    second: {fileID: 2100000, guid: 0a5c553980259574db33d9d743981547, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: EyeMaterial
+    second: {fileID: 2100000, guid: dffdb5c8f409678489c9c1150779016b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: GloveMaterial
+    second: {fileID: 2100000, guid: 7bc9c64958a664147a65902aab2156ee, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: HelmetDetailMaterial
+    second: {fileID: 2100000, guid: e2ad83da284725c4688a6794563f9d9f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: HelmetMaterial
+    second: {fileID: 2100000, guid: 35acbe2af98b38a49bdb202d409be7de, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: LeatherChestMaterial
+    second: {fileID: 2100000, guid: efdce3b3310f20e49a0e23e8dbeb7915, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: LipMaterial
+    second: {fileID: 2100000, guid: 581f2224cdcdd3d46ae091b5403f7b45, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MouthMaterial
+    second: {fileID: 2100000, guid: 117e27ddc2f091240a2c7f0c4fc00452, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: PantsMaterial
+    second: {fileID: 2100000, guid: f42ae5163195b4647883655a7dcc18b6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ShirtMaterial
+    second: {fileID: 2100000, guid: 58de0eab7b922f849b48f5558a0f7804, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ShoeMaterial
+    second: {fileID: 2100000, guid: b06382f09070db741b034b0a88388bb3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SkinMaterial
+    second: {fileID: 2100000, guid: 620548eced0f54447b025e10973ac2f5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: TeethMaterial
+    second: {fileID: 2100000, guid: 916db2fc7a951cc49a5a830e20a3ce1f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: lambert1
     second: {fileID: 2100000, guid: 75ef726395729ef459d31c675b2129f3, type: 2}
   - first:
@@ -49,7 +114,7 @@ ModelImporter:
     isReadable: 0
   meshes:
     lODScreenPercentages: []
-    globalScale: 90
+    globalScale: 20
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
@@ -96,7 +161,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 0.9
+    globalScale: 20
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0
