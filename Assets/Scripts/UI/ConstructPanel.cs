@@ -11,14 +11,7 @@ public class ConstructPanel : MonoBehaviour
     brawlPitButton = null,
     mageTowerButton = null;
 
-  private UIInterface uiInterface = null;
-
   public GameObject connectedNode;
-
-  private void Awake()
-  {
-    uiInterface = FindObjectOfType<UIInterface>();
-  }
 
   private void Update()
   {

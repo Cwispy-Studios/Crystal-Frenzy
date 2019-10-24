@@ -24,6 +24,7 @@ public class Health : MonoBehaviour
   public int MaxHealth
   {
     get { return maxHealth; }
+    set { maxHealth = value; }
   }
 
   [SerializeField]
@@ -40,7 +41,7 @@ public class Health : MonoBehaviour
 
   public event Action<float> OnHealthChanged = delegate { };
 
-  private void OnEnable()
+  private void Start()
   {
     CurrentHealth = maxHealth;
   }
@@ -89,6 +90,14 @@ public class Health : MonoBehaviour
     if (CurrentHealth != maxHealth)
     {
       OnHealthRemoved(this);
+    }
+  }
+
+  public void SetUpgradedProperties(UpgradeProperties[] upgradeProperties)
+  {
+    for (int i = 0; i < upgradeProperties.Length; ++i)
+    {
+      maxHealth += upgradeProperties[i].health;
     }
   }
 }

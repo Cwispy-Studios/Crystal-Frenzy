@@ -2,9 +2,14 @@
 
 public class CameraVisibility : MonoBehaviour
 {
+  public GameObject prefab;
+
   private void Update()
   {
-    GameObject[] gameObjects = FindObjectsOfType<GameObject>();
+    if (Input.GetKeyDown(KeyCode.G))
+    {
+      prefab.GetComponent<Health>().MaxHealth += 10;
+    }
 
 
   }

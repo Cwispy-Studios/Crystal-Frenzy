@@ -17,4 +17,12 @@ public class RecruitableUnit : MonoBehaviour
     unitButton.GetComponent<UnitButton>().DestroyButton();
     Destroy(unitButton);
   }
+
+  public void SetUpgradedProperties(UpgradeProperties[] upgradeProperties)
+  {
+    for (int i = 0; i < upgradeProperties.Length; ++i)
+    {
+      unitPoints += upgradeProperties[i].cost;
+    }
+  }
 }

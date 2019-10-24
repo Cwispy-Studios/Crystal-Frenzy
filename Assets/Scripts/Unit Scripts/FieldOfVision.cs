@@ -12,7 +12,7 @@ public class FieldOfVision : MonoBehaviour
 
   private GameObject fovMesh = null;
 
-  private void Awake()
+  private void Start()
   {
     fovMesh = Instantiate(fovMeshPrefab);
 
@@ -33,5 +33,13 @@ public class FieldOfVision : MonoBehaviour
     }
 
     fovMesh.SetActive(fovActive);
+  }
+
+  public void SetUpgradedProperties(UpgradeProperties[] upgradeProperties)
+  {
+    for (int i = 0; i < upgradeProperties.Length; ++i)
+    {
+      fovRange += upgradeProperties[i].fovRange;
+    }
   }
 }

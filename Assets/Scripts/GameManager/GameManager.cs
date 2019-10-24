@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
 
   public static ResourceManager resourceManager;
   public static BuildingManager buildingManager;
+  public static UpgradeManager upgradeManager;
 
   private List<GameObject> conqueredNodes;
   private GameObject attackNode;
@@ -33,6 +34,7 @@ public class GameManager : MonoBehaviour
   {
     resourceManager = GetComponent<ResourceManager>();
     buildingManager = GetComponent<BuildingManager>();
+    upgradeManager = GetComponent<UpgradeManager>();
 
     conqueredNodes = new List<GameObject>
     {
@@ -49,7 +51,7 @@ public class GameManager : MonoBehaviour
 
   private void FixedUpdate()
   {
-    phaseText.text = CurrentPhase.ToString() + " PHASE";
+    phaseText.text = CurrentPhase.ToString().Replace("_", " ") + " PHASE";
     nodeText.text = "Node " + currentPhaseCycle.ToString();
   }
 
@@ -262,11 +264,9 @@ public class GameManager : MonoBehaviour
     // Update the camera bounds
     playerCamera.GetComponent<CameraControls>().AddCameraBounds(conqueredNode.GetComponent<ConqueredNode>().CameraBound);
 
-    // Collect loot, only if node has not already been conquered before
-    if (conqueredNode.GetComponent<ConqueredNode>().conquered == false)
-    {
-      resourceManager.CollectLoot(conqueredNode.GetComponent<CrystalRewards>().goldLoot, conqueredNode.GetComponent<CrystalRewards>().crystalIncomeReward);
-    }
+    resourceManager.CollectLoot(conqueredNode.GetComponent<CrystalRewards>().goldLoot, 
+      conqueredNode.GetComponent<CrystalRewards>().crystalIncomeReward, 
+      conqueredNode.GetComponent<ConqueredNode>().conquered);
 
     uiInterface.UpdateLootTargetPanel(0, 0);
 
@@ -463,6 +463,9 @@ public class GameManager : MonoBehaviour
     attackNode.GetComponent<CrystalSeekerSpawner>().enabled = true;
     attackNode.GetComponent<CrystalSeekerSpawner>().SetCrystalTarget(conqueredNodes[conqueredNodes.Count - 1]);
     attackNode.GetComponent<CrystalOrder>().enabled = true;
+
+    // Lose the crystal income from that node
+    resourceManager.LoseIncome(attackNode.GetComponent<CrystalRewards>().crystalIncomeReward);
 
     BuildingSlot buildingSlot = attackNode.GetComponent<BuildingSlot>();
 

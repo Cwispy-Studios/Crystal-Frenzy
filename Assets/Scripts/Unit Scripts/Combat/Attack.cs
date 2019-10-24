@@ -34,9 +34,12 @@ public class Attack : MonoBehaviour
 
   private void Awake()
   {
-    attackCooldown = attacksPerSecond;
-
     unitRadius = GetComponent<NavMeshAgent>().radius * ((transform.lossyScale.x + transform.lossyScale.z) / 2f);
+  }
+
+  private void Start()
+  {
+    attackCooldown = attacksPerSecond;
   }
 
   private void Update()
@@ -246,6 +249,17 @@ public class Attack : MonoBehaviour
     {
       Debug.LogError("Attacking a unit without a NavMesh! Targeted unit is " + enemy.name);
       return 0;
+    }
+  }
+
+  public void SetUpgradedProperties(UpgradeProperties[] upgradeProperties)
+  {
+    for (int i = 0; i < upgradeProperties.Length; ++i)
+    {
+      attackDamage += upgradeProperties[i].damage;
+      attacksPerSecond += upgradeProperties[i].attackSpeed;
+      attackRange += upgradeProperties[i].attackRange;
+      enemyDetectRange += upgradeProperties[i].detectRange;
     }
   }
 }

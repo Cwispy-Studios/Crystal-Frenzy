@@ -44,6 +44,11 @@ public class RecruitmentButton : MonoBehaviour, IPointerEnterHandler, IPointerEx
 
   public void OnPointerEnter(PointerEventData eventData)
   {
+    if (GameManager.CurrentPhase == PHASES.ESCORT || GameManager.CurrentPhase == PHASES.DEFENSE)
+    {
+      return;
+    }
+
     GetComponentInParent<ArmyRecruitmentPanel>().SetText(this, recruitableUnit);
   }
 

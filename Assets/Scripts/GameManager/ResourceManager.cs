@@ -33,11 +33,21 @@ public class ResourceManager : MonoBehaviour
     ArmySize += value;
   }
 
-  public void CollectLoot(int gold, int crystalIncome)
+  public void CollectLoot(int gold, int crystalIncome, bool conquered)
   {
-    Gold += gold;
+    // Only collect gold if node has not already been conquered before
+    if (!conquered)
+    {
+      Gold += gold;
+    }
+    
     crystalsIncome += crystalIncome;
     Crystals += crystalsIncome;
+  }
+
+  public void LoseIncome(int crystalIncome)
+  {
+    crystalsIncome -= crystalIncome;
   }
 
   public void FarmClaimed(FoodProvider farm)
@@ -48,5 +58,10 @@ public class ResourceManager : MonoBehaviour
   public void FarmLost(FoodProvider farm)
   {
     UnitCap -= farm.foodProvided;
+  }
+
+  public void UpgradeCost(UpgradeButton upgradeButton)
+  {
+    Crystals -= upgradeButton.cost;
   }
 }

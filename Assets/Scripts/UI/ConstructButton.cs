@@ -44,6 +44,11 @@ public class ConstructButton : MonoBehaviour, IPointerEnterHandler, IPointerExit
 
   public void OnPointerEnter(PointerEventData eventData)
   {
+    if (GameManager.CurrentPhase == PHASES.ESCORT || GameManager.CurrentPhase == PHASES.DEFENSE)
+    {
+      return;
+    }
+
     string buildingName = "";
     int cost = constructableBuildingPrefab.GetComponent<ConstructableBuilding>().goldCost;
     string description = "";

@@ -130,4 +130,12 @@ public class UnitOrder : Order
 
     agent.stoppingDistance = stoppingDistance;
   }
+
+  public void SetUpgradedProperties(UpgradeProperties[] upgradeProperties)
+  {
+    for (int i = 0; i < upgradeProperties.Length; ++i)
+    {
+      GetComponent<NavMeshAgent>().speed += upgradeProperties[i].speed;
+    }
+  }
 } // class end

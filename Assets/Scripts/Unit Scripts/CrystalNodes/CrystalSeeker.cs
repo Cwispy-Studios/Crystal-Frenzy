@@ -50,4 +50,12 @@ public class CrystalSeeker : MonoBehaviour
       }
     }
   }
+
+  public void SetUpgradedProperties(UpgradeProperties[] upgradeProperties)
+  {
+    for (int i = 0; i < upgradeProperties.Length; ++i)
+    {
+      GetComponent<BezierSolution.BezierWalkerWithSpeed>().speed += upgradeProperties[i].speed;
+    }
+  }
 }
