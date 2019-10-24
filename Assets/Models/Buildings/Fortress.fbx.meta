@@ -3,7 +3,107 @@ guid: 72ecf31d6aed4cb44ab0745d98bf6a2f
 ModelImporter:
   serializedVersion: 26
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BeamMaterial
+    second: {fileID: 2100000, guid: 1c185658bca3ca24f8fa7f2e7eda4a55, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: CampfireGroundMaterial
+    second: {fileID: 2100000, guid: 0f55ca7b98d27294bb97a2a4cd24714f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: CampfireLogMaterial
+    second: {fileID: 2100000, guid: 31a6cad5850e194458de48ee6d12db0d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: CrystalMaterial
+    second: {fileID: 2100000, guid: 32ae81931abf7c84086c47eee94876c1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: GroundMaterial
+    second: {fileID: 2100000, guid: c840c0dfc25590b4aa9504e6bb83951e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MinerBodyJointMaterial
+    second: {fileID: 2100000, guid: 311c506074f78e2489a3c230e259d659, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MinerBodyMaterial
+    second: {fileID: 2100000, guid: 2d04622628eb78f43b037bf4336a871d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MinerBodyMaterial2
+    second: {fileID: 2100000, guid: 57482618e5b7559458b21cb685d25b9a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MinerLegJointMaterial
+    second: {fileID: 2100000, guid: 8481d400950465142b2da791af56eff3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MinerLowerLegMaterial
+    second: {fileID: 2100000, guid: ea478f212c72c5143bf6d9855b2b4078, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MinerMiddleLegMaterial
+    second: {fileID: 2100000, guid: 9208b9fb8840e6c448d42849fb2a16f8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MinerUpperLegMaterial
+    second: {fileID: 2100000, guid: f319d3bb0b782e94ebc9ecc48dd95bda, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MinerWindowMaterial
+    second: {fileID: 2100000, guid: 2999c8b8b7b214542a782ce2833f9fae, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: TowerBaseMaterial
+    second: {fileID: 2100000, guid: d6f315c48521a6e4e9602cd32410a379, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: TowerDetailMaterial
+    second: {fileID: 2100000, guid: 801cf92e098056a49a7923cdcc2879df, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: TowerRubbleMaterial
+    second: {fileID: 2100000, guid: 1e6df4c0045bb4e428e4b8b5409ceede, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: WalkWayMaterial
+    second: {fileID: 2100000, guid: c89807415718be640aebdfb64a2916d6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: WallBaseMaterial1
+    second: {fileID: 2100000, guid: 8142a34a6486f984582f33d4a11d5a64, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: WallDetailMaterial
+    second: {fileID: 2100000, guid: 28e4e7aec0ca88f4fb9d9b69715faf80, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: WallRubbleMaterial
+    second: {fileID: 2100000, guid: 07c7e4a56a3082940a892875d4e615ed, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
@@ -81,7 +181,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 0.29999998
+    globalScale: 30
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0
