@@ -3,6 +3,9 @@ using UnityEngine;
 
 public class CameraObjectSelection : MonoBehaviour
 {
+  [SerializeField]
+  private UnitManager unitManager = null;
+
   public static List<GameObject> SelectedUnitsList { get; private set; }
 
   private bool isSelecting = false;
@@ -117,6 +120,8 @@ public class CameraObjectSelection : MonoBehaviour
 
       // Reset the hover list
       ClearHoverList(false);
+
+      unitManager.UpdateSelectionLists();
     }
 
     // While selecting and dragging but LMB is not yet released, only stores MOVABLE units from your side

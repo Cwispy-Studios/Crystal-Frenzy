@@ -21,7 +21,6 @@ GameObject:
   - component: {fileID: 5425989825014420962}
   - component: {fileID: 4365369355350160395}
   - component: {fileID: 7125494102815859543}
-  - component: {fileID: 8519624644027771179}
   - component: {fileID: -8312105283777516902}
   m_Layer: 0
   m_Name: StabbyBoy
@@ -51,7 +50,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 41785935244700089}
-  m_Mesh: {fileID: -5750084716789328873, guid: bb9648afe27705442bfc00b447c5d73c, type: 3}
+  m_Mesh: {fileID: 201326468204349266, guid: bb9648afe27705442bfc00b447c5d73c, type: 3}
 --- !u!23 &1044825018096924072
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -69,7 +68,19 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 75ef726395729ef459d31c675b2129f3, type: 2}
+  - {fileID: 2100000, guid: b06382f09070db741b034b0a88388bb3, type: 2}
+  - {fileID: 2100000, guid: f42ae5163195b4647883655a7dcc18b6, type: 2}
+  - {fileID: 2100000, guid: 58de0eab7b922f849b48f5558a0f7804, type: 2}
+  - {fileID: 2100000, guid: efdce3b3310f20e49a0e23e8dbeb7915, type: 2}
+  - {fileID: 2100000, guid: 0a5c553980259574db33d9d743981547, type: 2}
+  - {fileID: 2100000, guid: 7bc9c64958a664147a65902aab2156ee, type: 2}
+  - {fileID: 2100000, guid: e2ad83da284725c4688a6794563f9d9f, type: 2}
+  - {fileID: 2100000, guid: 35acbe2af98b38a49bdb202d409be7de, type: 2}
+  - {fileID: 2100000, guid: 620548eced0f54447b025e10973ac2f5, type: 2}
+  - {fileID: 2100000, guid: dffdb5c8f409678489c9c1150779016b, type: 2}
+  - {fileID: 2100000, guid: 117e27ddc2f091240a2c7f0c4fc00452, type: 2}
+  - {fileID: 2100000, guid: 581f2224cdcdd3d46ae091b5403f7b45, type: 2}
+  - {fileID: 2100000, guid: 916db2fc7a951cc49a5a830e20a3ce1f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -240,19 +251,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unitPoints: 1
---- !u!114 &8519624644027771179
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 41785935244700089}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d7bd655b194cc6048bba13aaa5e20901, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  affectedByUpgrades: 
 --- !u!114 &-8312105283777516902
 MonoBehaviour:
   m_ObjectHideFlags: 0

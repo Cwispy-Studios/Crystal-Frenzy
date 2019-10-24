@@ -4,10 +4,10 @@ public class BuildingManager : MonoBehaviour
 {
   [HideInInspector]
   public bool
-    archeryRangeConstructed = false, archeryRangeInControl = false,
-    blacksmithConstructed = false, blacksmithInControl = false,
-    mageTowerConstructed = false, mageTowerInControl = false,
-    brawlPitConstructed = false, brawlPitInControl = false;
+    archeryRangeConstructed = true, archeryRangeInControl = true,
+    blacksmithConstructed   = true, blacksmithInControl   = true,
+    mageTowerConstructed    = true, mageTowerInControl    = true,
+    brawlPitConstructed     = true, brawlPitInControl     = true;
 
   public void RecaptureBuilding(GameObject recapturedBuilding)
   {

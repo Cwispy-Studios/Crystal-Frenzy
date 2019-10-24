@@ -21,7 +21,6 @@ GameObject:
   - component: {fileID: 6297998255224061119}
   - component: {fileID: 2359579135509208406}
   - component: {fileID: 9135789159771556362}
-  - component: {fileID: 7643111652644536438}
   - component: {fileID: -4999248856370183593}
   m_Layer: 0
   m_Name: Warlock
@@ -241,19 +240,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unitPoints: 3
---- !u!114 &7643111652644536438
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2071221393297015012}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d7bd655b194cc6048bba13aaa5e20901, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  affectedByUpgrades: 05000000
 --- !u!114 &-4999248856370183593
 MonoBehaviour:
   m_ObjectHideFlags: 0

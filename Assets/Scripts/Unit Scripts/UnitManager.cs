@@ -6,7 +6,8 @@ using UnityEngine.AI;
 public class UnitManager : MonoBehaviour
 {
   private readonly Vector3 ICON_SIZE = new Vector3(70f, 70f);
-  private readonly Vector3 FIRST_ICON_POS = new Vector3(-640f, 40f);
+  private readonly Vector3 SELECTED_ICON_SIZE = new Vector3(80f, 80f);
+  private readonly Vector3 FIRST_ICON_POS = new Vector3(15f, 0);
   private readonly float ICON_GAP = 80f;
 
   private readonly int MAX_ICONS_X = 17;
@@ -21,6 +22,14 @@ public class UnitManager : MonoBehaviour
   private GameObject assemblySpace = null;
 
   private GameObject playerCamera = null;
+
+  private List<GameObject> stabbyList = new List<GameObject>();
+  private List<GameObject> shootyList = new List<GameObject>();
+  private List<GameObject> bruteList = new List<GameObject>();
+  private List<GameObject> warlockList = new List<GameObject>();
+
+  public List<GameObject> SelectedUnits { get; } = new List<GameObject>();
+  public List<GameObject> UnselectedUnits { get; } = new List<GameObject>();
 
   private void Awake()
   {
@@ -50,22 +59,171 @@ public class UnitManager : MonoBehaviour
       unitButton.GetComponent<Button>().onClick.AddListener(delegate { RemoveUnitFromRoster(unit, unitButton); });
       // Set UnitPanel as the parent
       unitButton.transform.SetParent(transform, false);
-      // Set button dimensions and scale
-      unitButton.GetComponent<RectTransform>().sizeDelta = ICON_SIZE;
-      unitButton.transform.localScale = new Vector3(1f, 1f, 1f);
 
       // Add the button to the unit list
       unitButtonsList.Add(unitButton);
+      AddUnitToList(unit);
 
       // Update army size
       resourceManager.UpdateArmySize(unitPoints);
 
+      SortUnits();
+
       UpdateButtonPositions();
 
       PositionUnitsOnAssemblySpace();
+    }
+  }
 
-      //if (GameManager.currentPhaseCycle == 2)
-      //  Time.timeScale = 0.01f;
+  private void RemoveUnitFromRoster(GameObject removeUnit, GameObject removeButton)
+  {
+    unitButtonsList.Remove(removeButton);
+    RemoveUnitFromList(removeUnit);
+
+    resourceManager.UpdateArmySize(-removeUnit.GetComponent<RecruitableUnit>().unitPoints);
+
+    Destroy(removeUnit);
+    Destroy(removeButton);
+
+    SortUnits();
+    UpdateButtonPositions();
+    PositionUnitsOnAssemblySpace();
+  }
+
+  public void KillUnit(GameObject removeButton, int unitPoints)
+  {
+    SelectedUnits.Remove(removeButton.GetComponent<UnitButton>().Unit);
+    RemoveUnitFromList(removeButton.GetComponent<UnitButton>().Unit);
+    unitButtonsList.Remove(removeButton);
+
+    resourceManager.UpdateArmySize(-unitPoints);
+    
+    UpdateButtonPositions();
+  }
+
+  private void UpdateButtonPositions()
+  {
+    // Holds the button positions
+    Vector3 buttonPos = FIRST_ICON_POS;
+    float fromPanelOffset = FIRST_ICON_POS.x;
+    float panelWidth = GetComponentInParent<RectTransform>().sizeDelta.x;
+
+    for (int i = 0; i < SelectedUnits.Count; ++i)
+    {
+      GameObject unitButton = SelectedUnits[i].GetComponent<RecruitableUnit>().UnitButton;
+
+      // Set button dimensions and scale
+      unitButton.GetComponent<RectTransform>().sizeDelta = SELECTED_ICON_SIZE;
+      unitButton.transform.localScale = new Vector3(1f, 1f, 1f);
+
+      // Check if icon will overflow the end of the unit panel on x-axis
+      if (buttonPos.x + ICON_GAP > panelWidth - fromPanelOffset)
+      {
+        buttonPos.x = FIRST_ICON_POS.x;
+        buttonPos.y -= ICON_GAP;
+      }
+
+      unitButton.GetComponent<RectTransform>().anchoredPosition = buttonPos;
+
+      buttonPos.x += ICON_GAP;
+    }
+
+    for (int i = 0; i < UnselectedUnits.Count; ++i)
+    {
+      GameObject unitButton = UnselectedUnits[i].GetComponent<RecruitableUnit>().UnitButton;
+
+      // Set button dimensions and scale
+      unitButton.GetComponent<RectTransform>().sizeDelta = ICON_SIZE;
+      unitButton.transform.localScale = new Vector3(1f, 1f, 1f);
+
+      // Check if icon will overflow the end of the unit panel on x-axis
+      if (buttonPos.x + ICON_GAP > panelWidth - fromPanelOffset)
+      {
+        buttonPos.x = FIRST_ICON_POS.x;
+        buttonPos.y -= ICON_GAP;
+      }
+
+      unitButton.GetComponent<RectTransform>().anchoredPosition = buttonPos;
+
+      buttonPos.x += ICON_GAP;
+    }
+  }
+
+  private void SortUnits()
+  {
+    SelectedUnits.Clear();
+    UnselectedUnits.Clear();
+
+    // Goes through the unit lists in the order we want the units to be placed in the unit panel
+    SortSelectedUnselectedList(bruteList);
+    SortSelectedUnselectedList(stabbyList);
+    SortSelectedUnselectedList(warlockList);
+    SortSelectedUnselectedList(shootyList);
+  }
+
+  public void SortSelectedUnselectedList(List<GameObject> unitList)
+  {
+    for (int i = 0; i < unitList.Count; ++i)
+    {
+      if (unitList[i].GetComponent<Selectable>().selectStatus == Selectable.SELECT_STATUS.SELECTED)
+      {
+        SelectedUnits.Add(unitList[i]);
+      }
+
+      else
+      {
+        UnselectedUnits.Add(unitList[i]);
+      }
+    }
+  }
+
+  public void UpdateSelectionLists()
+  {
+    SortUnits();
+    UpdateButtonPositions();
+  }
+
+  public void AddUnitToList(GameObject unit)
+  {
+    switch (unit.GetComponent<UnitType>().unitType)
+    {
+      case UNIT_TYPE.STABBY:
+        stabbyList.Add(unit);
+        break;
+
+      case UNIT_TYPE.SHOOTY:
+        shootyList.Add(unit);
+        break;
+
+      case UNIT_TYPE.BRUTE:
+        bruteList.Add(unit);
+        break;
+
+      case UNIT_TYPE.WARLOCK:
+        warlockList.Add(unit);
+        break;
+    }
+  }
+
+  public void RemoveUnitFromList(GameObject unit)
+  {
+    switch (unit.GetComponent<UnitType>().unitType)
+    {
+      case UNIT_TYPE.STABBY:
+        stabbyList.Remove(unit);
+        break;
+
+      case UNIT_TYPE.SHOOTY:
+        shootyList.Remove(unit);
+        break;
+
+      case UNIT_TYPE.BRUTE:
+        bruteList.Remove(unit);
+        break;
+
+      case UNIT_TYPE.WARLOCK:
+        warlockList.Remove(unit);
+        break;
     }
   }
 
@@ -92,7 +250,7 @@ public class UnitManager : MonoBehaviour
           // Even numbered units are placed on the left (- radius), odd numbered units are placed on the right (+ radius)
           if (i % 2 == 0)
           {
-            assemblyPosition = frontAssemblyPos + (-assemblySpace.transform.right * unitRadius) + 
+            assemblyPosition = frontAssemblyPos + (-assemblySpace.transform.right * unitRadius) +
               (-assemblySpace.transform.right * unitRadius * 2 * (i / 2));
 
           }
@@ -129,56 +287,6 @@ public class UnitManager : MonoBehaviour
 
         unit.transform.position = assemblyPosition;
         unit.GetComponent<NavMeshAgent>().Warp(assemblyPosition);
-      }
-    }
-  }
-
-  private void RemoveUnitFromRoster(GameObject removeUnit, GameObject removeButton)
-  {
-    unitButtonsList.Remove(removeButton);
-
-    resourceManager.UpdateArmySize(-removeUnit.GetComponent<RecruitableUnit>().unitPoints);
-
-    Destroy(removeUnit);
-    Destroy(removeButton);
-
-    UpdateButtonPositions();
-    PositionUnitsOnAssemblySpace();
-  }
-
-  public void KillUnit(GameObject removeButton, int unitPoints)
-  {
-    unitButtonsList.Remove(removeButton);
-
-    resourceManager.UpdateArmySize(-unitPoints);
-    
-    UpdateButtonPositions();
-  }
-
-  private void UpdateButtonPositions()
-  {
-    if (unitButtonsList.Count > 0)
-    {
-      // TODO: Create seperate lists for every unit type, then sort them based on unit types
-
-      for (int i = 0; i < unitButtonsList.Count; ++i)
-      {
-        Vector3 buttonPos = FIRST_ICON_POS;
-
-        if (i < MAX_ICONS_X)
-        {
-          buttonPos.x += ICON_GAP * i;
-        }
-
-        else
-        {
-          buttonPos.x += ICON_GAP * (i - MAX_ICONS_X);
-          buttonPos.y -= ICON_GAP;
-        }
-
-        // TODO: Make icons smaller if unit roster size exceeds 17 * 2
-
-        unitButtonsList[i].GetComponent<RectTransform>().anchoredPosition = buttonPos;
       }
     }
   }
@@ -223,6 +331,11 @@ public class UnitManager : MonoBehaviour
 
   public void RemoveAllUnits()
   {
+    stabbyList.Clear();
+    shootyList.Clear();
+    bruteList.Clear();
+    warlockList.Clear();
+
     for (int i = unitButtonsList.Count - 1; i >= 0; --i)
     {
       resourceManager.UpdateArmySize(-unitButtonsList[i].GetComponent<UnitButton>().Unit.GetComponent<RecruitableUnit>().unitPoints);

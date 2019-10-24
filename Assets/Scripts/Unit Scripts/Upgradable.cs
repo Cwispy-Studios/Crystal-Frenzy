@@ -9,6 +9,11 @@ public class Upgradable : MonoBehaviour
     SetUpgradedValues();
   }
 
+  private void Update()
+  {
+    
+  }
+
   public void SetUpgradedValues()
   {
     for (int i = 0; i < affectedByUpgrades.Length; ++i)
