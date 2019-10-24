@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic; // List
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 public class CameraObjectSelection : MonoBehaviour
 {

@@ -3,11 +3,18 @@ using UnityEngine;
 
 public class CameraIssueOrdering : MonoBehaviour
 {
+  [SerializeField]
+  private GameObject moveCirclePrefab = null;
+
   private const KeyCode attackMoveCommand = KeyCode.A;
 
   private List<GameObject> selectableObjects;
 
   public bool AttackMoveOrder { get; private set; }
+
+  private bool orderToGround = false;
+  private bool attackToGround = false;
+  private Vector3 orderToGroundPos;
 
   private void Awake()
   {
@@ -65,6 +72,21 @@ public class CameraIssueOrdering : MonoBehaviour
         }
       }
     }
+
+    if (orderToGround)
+    {
+      orderToGround = false;
+      GameObject moveCircle = Instantiate(moveCirclePrefab, orderToGroundPos + (Vector3.up * 0.001f), Quaternion.Euler(90, 0, 0));
+
+      if (attackToGround)
+      {
+        Color redCircleColor = new Color(1, 0, 0, 0.8f);
+
+        moveCircle.GetComponent<Renderer>().material.SetColor("_Color", redCircleColor);
+
+        attackToGround = false;
+      }
+    }
   }
 
   private void Order(bool attackMoveOrder = false)
@@ -87,6 +109,17 @@ public class CameraIssueOrdering : MonoBehaviour
           {
             // Issue an order to the object 
             selectedObject.GetComponent<Order>().IssueOrderPoint(hit.point);
+
+            if (selectedObject.GetComponent<UnitOrder>())
+            {
+              orderToGround = true;
+              orderToGroundPos = hit.point;
+
+              if (attackMoveOrder)
+              {
+                attackToGround = true;
+              }
+            }
 
             if (attackMoveOrder)
             {
@@ -126,6 +159,17 @@ public class CameraIssueOrdering : MonoBehaviour
             {
               // Issue an order to the object 
               selectedObject.GetComponent<Order>().IssueOrderPoint(hit.point);
+
+              if (selectedObject.GetComponent<UnitOrder>())
+              {
+                orderToGround = true;
+                orderToGroundPos = hit.point;
+
+                if (attackMoveOrder)
+                {
+                  attackToGround = true;
+                }
+              }
 
               if (attackMoveOrder)
               {

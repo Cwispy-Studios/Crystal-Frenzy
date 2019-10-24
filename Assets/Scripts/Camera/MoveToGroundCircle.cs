@@ -1,18 +1,27 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class MoveToGroundCircle : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+  private const float fadeSpeed = 1.8f, shrinkSpeed = 2f;
+
+  private void Update()
+  {
+    Color circleColour = GetComponent<Renderer>().material.color;
+    Vector3 circleScale = transform.localScale;
+
+    if (circleColour.a > 0 && circleScale.x > 0)
     {
-        
+      circleColour.a -= fadeSpeed * Time.deltaTime;
+      circleScale.x -= shrinkSpeed * Time.deltaTime;
+      circleScale.y -= shrinkSpeed * Time.deltaTime;
+
+      GetComponent<Renderer>().material.color = circleColour;
+      transform.localScale = circleScale;
     }
 
-    // Update is called once per frame
-    void Update()
+    else
     {
-        
+      Destroy(gameObject);
     }
+  }
 }
