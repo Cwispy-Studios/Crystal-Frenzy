@@ -83,6 +83,13 @@ public class UpgradeManager : MonoBehaviour
     }
   }
 
+  public UpgradeProperties RetrieveCurrentUpgradeProperties(UPGRADE_TYPE upgradeType)
+  {
+    int upgradeLevel = upgrades[upgradeType].currentUpgradeLevel;
+
+    return upgrades[upgradeType].upgradeLevelsButtons[upgradeLevel + 1].GetComponent<UpgradeButton>().upgradeProperties;
+  }
+
   public GameObject UpgradeButton(UPGRADE_TYPE upgradeType)
   {
     // Create a new struct to update the upgrade level

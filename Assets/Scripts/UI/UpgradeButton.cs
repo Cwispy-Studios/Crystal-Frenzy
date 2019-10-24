@@ -2,7 +2,7 @@
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class UpgradeButton : MonoBehaviour
+public class UpgradeButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
   public UPGRADE_TYPE upgradeType;
 
@@ -47,6 +47,8 @@ public class UpgradeButton : MonoBehaviour
     }
 
     GameManager.resourceManager.UpgradeCost(this);
+
+    uiInterface.HideUpgradeTooltipPopup();
   }
 
   public void OnPointerEnter(PointerEventData eventData)
@@ -115,7 +117,7 @@ public class UpgradeButton : MonoBehaviour
 
           case 4:
             upgradeName = "Crystal Powered Motors";
-            description = "The Miner's armour is infused with Crystal essense, greatly increating it's health and slightly increasing it's movement speed.";
+            description = "The Miner's motors have been engineered to move with the help of Crystal energy, greatly increasing it's movement speed.";
             break;
 
           default:
@@ -138,11 +140,13 @@ public class UpgradeButton : MonoBehaviour
         break;
     }
 
-    //GetComponentInParent<ArmyRecruitmentPanel>().SetText(this, recruitableUnit);
+    UpgradeProperties upgradeProperties = GameManager.upgradeManager.RetrieveCurrentUpgradeProperties(upgradeType);
+
+    uiInterface.ShowUpgradeTooltipPopup(upgradeName, cost, upgradeProperties.health, upgradeProperties.damage, upgradeProperties.attackSpeed, description, constructMessage);
   }
 
   public void OnPointerExit(PointerEventData eventData)
   {
-    uiInterface.HideUnitTooltipPopup();
+    uiInterface.HideUpgradeTooltipPopup();
   }
 }

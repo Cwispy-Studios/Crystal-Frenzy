@@ -27,6 +27,8 @@ public class UIInterface : MonoBehaviour
   private ConstructPanel constructPanel = null;
   [SerializeField]
   private BuildingTooltipPopup buildingTooltipPopup = null;
+  [SerializeField]
+  private UpgradeTooltipPopup upgradeTooltipPopup = null;
 
   private Camera playerCamera;
   private GameObject showingLootObject;
@@ -129,6 +131,11 @@ public class UIInterface : MonoBehaviour
     unitTooltipPopup.SetText(unitName, cost, health, damage, attackSpeed, description, constructMessage);
   }
 
+  public void HideUnitTooltipPopup()
+  {
+    unitTooltipPopup.gameObject.SetActive(false);
+  }
+
   public void ShowBuildingTooltipPopup(string buildingName, int cost, string description, string constructMessage)
   {
     buildingTooltipPopup.gameObject.SetActive(true);
@@ -138,11 +145,6 @@ public class UIInterface : MonoBehaviour
   public void HideBuildingTooltipPopup()
   {
     buildingTooltipPopup.gameObject.SetActive(false);
-  }
-
-  public void HideUnitTooltipPopup()
-  {
-    unitTooltipPopup.gameObject.SetActive(false);
   }
 
   public void ShowConstructPanel(GameObject node)
@@ -158,5 +160,16 @@ public class UIInterface : MonoBehaviour
     {
       constructPanel.gameObject.SetActive(false);
     }
+  }
+
+  public void ShowUpgradeTooltipPopup(string unitName, int cost, int health, int damage, float attackSpeed, string description, string constructMessage)
+  {
+    upgradeTooltipPopup.gameObject.SetActive(true);
+    upgradeTooltipPopup.SetText(unitName, cost, health, damage, attackSpeed, description, constructMessage);
+  }
+
+  public void HideUpgradeTooltipPopup()
+  {
+    upgradeTooltipPopup.gameObject.SetActive(false);
   }
 }
