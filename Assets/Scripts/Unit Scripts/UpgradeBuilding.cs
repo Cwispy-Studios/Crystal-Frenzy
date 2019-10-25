@@ -3,10 +3,16 @@
 public class UpgradeBuilding : MonoBehaviour
 {
   [SerializeField]
+  private GameObject upgradePanelPrefab = null;
+
+  private UIInterface uiInterface;
   private GameObject upgradePanel;
 
   private void Awake()
   {
+    uiInterface = FindObjectOfType<UIInterface>();
+    upgradePanel = Instantiate(upgradePanelPrefab, uiInterface.transform, false);
+
     upgradePanel.SetActive(false);
   }
 
