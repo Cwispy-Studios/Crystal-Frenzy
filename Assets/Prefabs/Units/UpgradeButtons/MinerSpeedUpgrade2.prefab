@@ -37,7 +37,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 75, y: -30}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 75, y: 75}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8384574509271695802
 CanvasRenderer:
@@ -135,8 +135,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   upgradeType: 1
-  targetPrefab: {fileID: 5820753501731554686, guid: 2ca99be31026d1841bd01375187b753c,
-    type: 3}
   cost: 180
   upgradeProperties:
     health: 0
