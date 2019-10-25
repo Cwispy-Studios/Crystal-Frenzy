@@ -96,7 +96,7 @@ public class CameraIssueOrdering : MonoBehaviour
     // Ignore UI elements
     int layerMask = (1 << 9) | (1 << 10);
 
-    if (Physics.Raycast(ray, out RaycastHit hit, 100f, ~layerMask))
+    if (Physics.Raycast(ray, out RaycastHit hit, 500f, ~layerMask))
     {
       // Right click on ground, order units to that point
       if (hit.collider.tag == "Ground")

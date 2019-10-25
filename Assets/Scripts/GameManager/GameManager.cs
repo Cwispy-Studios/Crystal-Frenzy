@@ -113,10 +113,7 @@ public class GameManager : MonoBehaviour
     GameObject lastConqueredNode = conqueredNodes[conqueredNodes.Count - 1];
 
     // Force the camera into a bird's eye view
-    playerCamera.GetComponent<CameraManager>().SetBirdsEyeView();
-    Vector3 camPos = lastConqueredNode.transform.position;
-    camPos.y = playerCamera.transform.position.y;
-    playerCamera.transform.position = camPos;
+    playerCamera.GetComponent<CameraManager>().SetBirdsEyeView(lastConqueredNode.transform.position);
 
     // Get the latest conquered node and set all the temp FOV mesh to true so we can see the paths and crystal nodes 
     lastConqueredNode.GetComponent<ConqueredNode>().EnablePreparationFOV();
@@ -131,7 +128,7 @@ public class GameManager : MonoBehaviour
     playerCamera.GetComponent<CameraIssueOrdering>().enabled = true;
   }
 
-  public void NodeSelected()
+  public void BeginArmySelection()
   {
     nodeSelected = true;
 
@@ -140,16 +137,10 @@ public class GameManager : MonoBehaviour
     GameObject attackingFromNode = conqueredNodes[conqueredNodes.Count - 1];
 
     // Set the camera to point at the assembly space
-    Vector3 setupPos = attackingFromNode.GetComponent<ConqueredNode>().AssemblySpace.transform.position;
-    // Retains the camera height
-    setupPos.y = playerCamera.transform.position.y;
-
-    playerCamera.transform.position = setupPos;
-    playerCamera.GetComponent<CameraManager>().SetAssemblyOrthographicSize();
-    // Disable the camera controls
-    playerCamera.GetComponent<CameraControls>().enabled = false;
+    playerCamera.GetComponent<CameraManager>().PointCameraAtAssembly(attackingFromNode.GetComponent<ConqueredNode>().AssemblySpace.transform.position);
+    // Disable the camera ordering
     playerCamera.GetComponent<CameraIssueOrdering>().enabled = false;
-    // Set the unit manager assembly space reference
+    // Set the unit manager assembly space reference so that selecting our troops spawns them in the assembly space
     uiInterface.UnitManager.SetAssemblySpace(attackingFromNode.GetComponent<ConqueredNode>().AssemblySpace);
 
     // Update the reference to the node we are going to attack
@@ -166,15 +157,11 @@ public class GameManager : MonoBehaviour
     GameObject lastConqueredNode = conqueredNodes[conqueredNodes.Count - 1];
 
     // Force the camera into a bird's eye view
-    playerCamera.GetComponent<CameraManager>().SetNodeSelectionOrthographicSize();
-    Vector3 camPos = lastConqueredNode.transform.position;
-    camPos.y = playerCamera.transform.position.y;
-    playerCamera.transform.position = camPos;
+    playerCamera.GetComponent<CameraManager>().SetBirdsEyeView(lastConqueredNode.transform.position);
 
     // Set the UI Interfaces to invisible and show the button to select army roster
     uiInterface.PreparationPhaseSelectNodeUI();
 
-    playerCamera.GetComponent<CameraControls>().enabled = true;
     playerCamera.GetComponent<CameraIssueOrdering>().enabled = true;
   }
 
@@ -187,9 +174,7 @@ public class GameManager : MonoBehaviour
 
     uiInterface.PreparationPhaseDisableUI();
 
-    playerCamera.GetComponent<CameraControls>().enabled = true;
     playerCamera.GetComponent<CameraIssueOrdering>().enabled = true;
-    playerCamera.GetComponent<CameraManager>().SetNormalView();
 
     // Disabled the crystal nodes functionalities and spawns a crystal seeker
     GameObject attackingFromNode = conqueredNodes[conqueredNodes.Count - 1];
@@ -330,32 +315,19 @@ public class GameManager : MonoBehaviour
   // PREPARATION DEFENSE FUNCTIONS
   public void BeginPreparationDefensePhase()
   {
-    GameObject lastConqueredNode = conqueredNodes[conqueredNodes.Count - 1];
-
-    // Force the camera into a bird's eye view
-    playerCamera.GetComponent<CameraManager>().SetBirdsEyeView();
-    Vector3 camPos = lastConqueredNode.transform.position;
-    camPos.y = playerCamera.transform.position.y;
-    playerCamera.transform.position = camPos;
-
-    // Get the latest conquered node and set all the temp FOV mesh to true so we can see the paths and crystal nodes 
-    lastConqueredNode.GetComponent<ConqueredNode>().EnablePreparationFOV();
-
-    playerCamera.GetComponent<CameraControls>().enabled = true;
-    playerCamera.GetComponent<CameraIssueOrdering>().enabled = true;
-
-    uiInterface.PreparationDefensePhaseSelectArmyUI();
-
     GameObject attackingFromNode = conqueredNodes[conqueredNodes.Count - 1];
 
     // Set the camera to point at the assembly space
-    Vector3 setupPos = attackingFromNode.GetComponent<ConqueredNode>().AssemblySpace.transform.position;
-    // Retains the camera height
-    setupPos.y = playerCamera.transform.position.y;
+    playerCamera.GetComponent<CameraManager>().PointCameraAtAssembly(attackingFromNode.GetComponent<ConqueredNode>().AssemblySpace.transform.position);
 
-    playerCamera.transform.position = setupPos;
-    // Disable the camera controls
-    playerCamera.GetComponent<CameraControls>().enabled = false;
+    // Get the latest conquered node and set all the temp FOV mesh to true so we can see the paths and crystal nodes 
+    attackingFromNode.GetComponent<ConqueredNode>().EnablePreparationFOV();
+
+    playerCamera.GetComponent<CameraIssueOrdering>().enabled = true;
+
+    uiInterface.PreparationDefensePhaseSelectArmyUI();
+    
+    // Disable the camera ordering
     playerCamera.GetComponent<CameraIssueOrdering>().enabled = false;
     // Set the unit manager assembly space reference
     uiInterface.UnitManager.SetAssemblySpace(attackingFromNode.GetComponent<ConqueredNode>().AssemblySpace);
@@ -391,9 +363,7 @@ public class GameManager : MonoBehaviour
 
     uiInterface.PreparationDefensePhaseDisableUI();
 
-    playerCamera.GetComponent<CameraControls>().enabled = true;
     playerCamera.GetComponent<CameraIssueOrdering>().enabled = true;
-    playerCamera.GetComponent<CameraManager>().SetNormalView();
 
     // Disable the crystal nodes functionalities and spawns a crystal seeker
     GameObject spawnedCrystalSeeker = attackNode.GetComponent<CrystalSeekerSpawner>().SpawnCrystalSeeker();

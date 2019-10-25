@@ -2,7 +2,7 @@
 
 public class MoveToGroundCircle : MonoBehaviour
 {
-  private const float fadeSpeed = 1.8f, shrinkSpeed = 2f;
+  private const float fadeSpeed = 3f, shrinkSpeed = 6.5f;
 
   private void Update()
   {

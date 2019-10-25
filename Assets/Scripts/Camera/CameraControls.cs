@@ -12,16 +12,28 @@ public class CameraControls : MonoBehaviour
 
   /*********************** Zoom variables ***********************/
   private const float MIN_ZOOM = 15f;
-  private const float MAX_ZOOM = 35f;
+  public static readonly float MAX_ZOOM = 35f;
   private readonly float zoomSpeed = 1f;
+
+  [HideInInspector]
+
+  public bool birdsEyeViewMode = false;
 
   private List<GameObject> cameraBounds = new List<GameObject>();
 
   private void LateUpdate()
   {
-    Move();
-    Pan();
-    Zoom();
+    if (!birdsEyeViewMode)
+    {
+      Move();
+      Pan();
+      Zoom();
+    }
+    
+    else
+    {
+      Move();
+    }
   }
 
   private void Move()
@@ -180,7 +192,15 @@ public class CameraControls : MonoBehaviour
 
   public float GetZoomPerc()
   {
-    return MAX_ZOOM / transform.position.y;
+    if (birdsEyeViewMode)
+    {
+      return 1f;
+    }
+
+    else
+    {
+      return MAX_ZOOM / transform.position.y;
+    }
   }
 
   public void AddCameraBounds(GameObject cameraBound)
