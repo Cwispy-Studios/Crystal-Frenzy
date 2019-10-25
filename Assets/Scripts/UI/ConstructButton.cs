@@ -34,6 +34,8 @@ public class ConstructButton : MonoBehaviour, IPointerEnterHandler, IPointerExit
 
   private void ConstructBuilding()
   {
+    GameManager.resourceManager.SpendGold(constructableBuildingPrefab.GetComponent<ConstructableBuilding>().goldCost);
+
     connectedNode.GetComponentInParent<BuildingSlot>().SetConstruction(
       Instantiate(constructableBuildingPrefab, connectedNode.transform.position, connectedNode.transform.rotation, connectedNode.transform.parent));
 
@@ -57,8 +59,10 @@ public class ConstructButton : MonoBehaviour, IPointerEnterHandler, IPointerExit
     switch (constructableBuildingPrefab.GetComponent<BuildingType>().buildingType)
     {
       case BUILDING_TYPE.FARM:
+        Farm farm = constructableBuildingPrefab.GetComponent<Farm>();
         buildingName = "Farm";
-        description = "Increases maximum unit cap by <color=orange>3</color>, allowing you to command more units in battle. ";
+        description = "Increases maximum unit cap by <color=orange>" + farm.farmUpgradeProperties[0].foodProvided + 
+          "</color>, allowing you to command more units in battle. ";
 
         break;
 

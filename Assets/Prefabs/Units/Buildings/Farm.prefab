@@ -194,4 +194,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9877ee38472d8641b67af420cde76e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  foodProvided: 3
+  farmUpgradeProperties:
+  - foodProvided: 3
+    cost: 0
+  - foodProvided: 7
+    cost: 350
+  - foodProvided: 12
+    cost: 600
+  farmLevel: 1
+  upgradePanelPrefab: {fileID: 1313008160368365651, guid: aafc1acca1b609942a2211b4bcf04902,
+    type: 3}

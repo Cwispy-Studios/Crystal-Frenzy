@@ -14,7 +14,8 @@ public class BuildingManager : MonoBehaviour
     switch (recapturedBuilding.GetComponent<BuildingType>().buildingType)
     {
       case BUILDING_TYPE.FARM:
-        GameManager.resourceManager.FarmClaimed(recapturedBuilding.GetComponent<FoodProvider>());
+        Farm farm = recapturedBuilding.GetComponent<Farm>();
+        GameManager.resourceManager.FarmClaimed(farm, farm.farmLevel);
         break;
 
       case BUILDING_TYPE.ARCHERY_RANGE:
@@ -40,7 +41,8 @@ public class BuildingManager : MonoBehaviour
     switch (lostBuilding.GetComponent<BuildingType>().buildingType)
     {
       case BUILDING_TYPE.FARM:
-        GameManager.resourceManager.FarmLost(lostBuilding.GetComponent<FoodProvider>());
+        Farm farm = lostBuilding.GetComponent<Farm>();
+        GameManager.resourceManager.FarmLost(farm, farm.farmLevel);
         break;
 
       case BUILDING_TYPE.ARCHERY_RANGE:

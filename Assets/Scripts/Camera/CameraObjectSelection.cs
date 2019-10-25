@@ -15,13 +15,23 @@ public class CameraObjectSelection : MonoBehaviour
   private bool friendlyUnitsInList = false;
   private bool nonFriendlyUnitsPurgedFromList = false;
 
-  // DEBUG
-  //private Rect rect2;
+  private KeyCode groupCommand = KeyCode.LeftControl;
+  private KeyCode addGroupCommand = KeyCode.LeftShift;
+
+  // Keys 1 - 9
+  private const int MAX_GROUPS = 9;
+  private List<GameObject>[] groupedUnits;
 
   private void Awake()
   {
     SelectedUnitsList = new List<GameObject>();
     MouseHoverUnitsList = new List<GameObject>();
+    groupedUnits = new List<GameObject>[MAX_GROUPS];
+
+    for (int i = 0; i < MAX_GROUPS; ++i)
+    {
+      groupedUnits[i] = new List<GameObject>();
+    }
   }
 
   private void Update()
@@ -149,6 +159,8 @@ public class CameraObjectSelection : MonoBehaviour
         AddObjectToHoverList(hoveredObject.gameObject);
       }
     }
+
+    GroupUnits();
   }
 
   private void ClearDeadUnits()
@@ -290,6 +302,109 @@ public class CameraObjectSelection : MonoBehaviour
     }
   }
 
+
+  private void GroupUnits()
+  {
+    // Group command (Ctrl + Num) groups units, clearing the old list
+    if (Input.GetKey(groupCommand))
+    {
+      // If there are no friendly units selected do nothing
+      if (unitManager.SelectedUnits.Count == 0)
+      {
+        return;
+      }
+
+      for (int numKey = (int)KeyCode.Alpha1; numKey <= (int)KeyCode.Alpha9; ++numKey)
+      {
+        if (Input.GetKeyDown((KeyCode)numKey))
+        {
+          AddSelectedUnitsToGroup(numKey - (int)KeyCode.Alpha1 + 1, false);
+        }
+      }
+    }
+
+    // Add group command (Shift + Num) adds units to an existing or empty group
+    else if (Input.GetKey(addGroupCommand))
+    {
+      // If there are no friendly units selected do nothing
+      if (unitManager.SelectedUnits.Count == 0)
+      {
+        return;
+      }
+
+      for (int numKey = (int)KeyCode.Alpha1; numKey <= (int)KeyCode.Alpha9; ++numKey)
+      {
+        if (Input.GetKeyDown((KeyCode)numKey))
+        {
+          AddSelectedUnitsToGroup(numKey - (int)KeyCode.Alpha1 + 1, true);
+        }
+      }
+    }
+
+    // Check if player is calling the groups
+    else
+    {
+      for (int numKey = (int)KeyCode.Alpha1; numKey <= (int)KeyCode.Alpha9; ++numKey)
+      {
+        if (Input.GetKeyDown((KeyCode)numKey))
+        {
+          SelectUnitsInGroup(numKey - (int)KeyCode.Alpha1 + 1);
+        }
+      }
+    }
+  }
+
+  private void AddSelectedUnitsToGroup(int groupNum, bool addMode)
+  {
+    List<GameObject> selectedUnits = unitManager.SelectedUnits;
+    List<GameObject> group = groupedUnits[groupNum - 1];
+    if (!addMode)
+    {
+      group.Clear();
+
+      for (int i = 0; i < selectedUnits.Count; ++i)
+      {
+        group.Add(selectedUnits[i]);
+      }
+    }
+
+    else
+    {
+      for (int i = 0; i < selectedUnits.Count; ++i)
+      {
+        if (!group.Contains(selectedUnits[i]))
+        {
+          group.Add(selectedUnits[i]);
+        }
+      } // for
+    } // else
+  }
+
+  private void SelectUnitsInGroup(int groupNum)
+  {
+    List<GameObject> group = groupedUnits[groupNum - 1];
+
+    if (group.Count > 0)
+    {
+      ClearSelectionList();
+
+      for (int i = group.Count - 1; i >= 0; --i)
+      {
+        if (group[i] == null)
+        {
+          group.RemoveAt(i);
+        }
+
+        else
+        {
+          AddObjectToSelectionList(group[i]);
+        }
+      }
+
+      unitManager.UpdateSelectionLists();
+    }
+  }
+
   public void ClearSelectionList()
   {
     foreach (GameObject selectedObject in SelectedUnitsList)
@@ -353,19 +468,6 @@ public class CameraObjectSelection : MonoBehaviour
     {
       Rect rect = Utils.GetScreenRect(originalMousePosition, Input.mousePosition);
       Utils.DrawScreenRectBorder(rect, 2);
-      //DrawScreenRect(rect2);
     }
   }
-
-  //private void OnMouseDown()
-  //{
-  //  EventSystem eventSys = GameObject.Find("EventSystem").GetComponent<EventSystem>();
-
-  //  if (eventSys.IsPointerOverGameObject())
-  //  {
-  //    eventSys.
-  //    Debug.Log("OVER!");
-  //    return; // exit out of OnMouseDown() because its over the uGUI
-  //  }
-  //}
 }
