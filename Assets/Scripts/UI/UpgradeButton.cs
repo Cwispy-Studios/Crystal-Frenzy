@@ -26,16 +26,20 @@ public class UpgradeButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     GetComponent<Button>().onClick.AddListener(Upgrade);
   }
 
-  private void FixedUpdate()
+  private void Update()
   {
     // Check against the Upgrade Manager if it has been upgraded 
     GameObject newButton = GameManager.upgradeManager.CheckUpgradeLevel(upgradeType, upgradeProperties.upgradeLevel);
+
     if (newButton != null)
     {
       ExternalUpgrade(newButton);
     }
+  }
 
-    GetComponent<Button>().interactable = (cost <= GameManager.resourceManager.Crystals);
+  private void FixedUpdate()
+  {
+    GetComponent<Button>().interactable = (cost <= GameManager.resourceManager.Crystals) && (GameManager.upgradeManager.UpgradeIsAvailable(upgradeType));
   }
 
   private void Upgrade()
@@ -48,6 +52,7 @@ public class UpgradeButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
       // Set the next level button's transform equal to this
       nextLevelButton.transform.position = transform.position;
       nextLevelButton.transform.SetParent(transform.parent);
+      nextLevelButton.GetComponent<RectTransform>().localScale = new Vector3(1f, 1f, 1f);
     }
 
     GameManager.resourceManager.UpgradeCost(this);
@@ -141,21 +146,132 @@ public class UpgradeButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         break;
 
       case UPGRADE_TYPE.STABBY:
+        switch (upgradeLevel)
+        {
+          case 1:
+            upgradeName = "Upgraded Stabby";
+            description = "The Miner's motors are now maintained, increasing it's movement speed.";
+            break;
+
+          case 2:
+            upgradeName = "Upgraded Stabby";
+            description = "";
+            break;
+
+          case 3:
+            upgradeName = "Upgraded Stabby";
+            description = "";
+            break;
+
+          default:
+            Debug.LogError("Upgrade button not found! Upgrade type is " + upgradeType + ", upgrade level is " + upgradeLevel);
+            break;
+        }
         break;
 
       case UPGRADE_TYPE.SHOOTY:
+        switch (upgradeLevel)
+        {
+          case 1:
+            upgradeName = "Upgraded Shooty";
+            description = "The Miner's motors are now maintained, increasing it's movement speed.";
+            break;
+
+          case 2:
+            upgradeName = "Upgraded Shooty";
+            description = "";
+            break;
+
+          case 3:
+            upgradeName = "Upgraded Shooty";
+            description = "";
+            break;
+
+          default:
+            Debug.LogError("Upgrade button not found! Upgrade type is " + upgradeType + ", upgrade level is " + upgradeLevel);
+            break;
+        }
         break;
 
       case UPGRADE_TYPE.BRUTE:
+        switch (upgradeLevel)
+        {
+          case 1:
+            upgradeName = "Upgraded Brute";
+            description = "The Miner's motors are now maintained, increasing it's movement speed.";
+            break;
+
+          case 2:
+            upgradeName = "Upgraded Brute";
+            description = "";
+            break;
+
+          case 3:
+            upgradeName = "Upgraded Brute";
+            description = "";
+            break;
+
+          default:
+            Debug.LogError("Upgrade button not found! Upgrade type is " + upgradeType + ", upgrade level is " + upgradeLevel);
+            break;
+        }
         break;
 
       case UPGRADE_TYPE.WARLOCK:
+        break;
+
+      case UPGRADE_TYPE.STABBY_CHEAP:
+        switch (upgradeLevel)
+        {
+          case 1:
+            upgradeName = "Upgraded Stabby Cheap";
+            description = "The Miner's motors are now maintained, increasing it's movement speed.";
+            break;
+
+          case 2:
+            upgradeName = "Upgraded Stabby Cheap";
+            description = "";
+            break;
+
+          case 3:
+            upgradeName = "Upgraded Stabby Cheap";
+            description = "";
+            break;
+
+          default:
+            Debug.LogError("Upgrade button not found! Upgrade type is " + upgradeType + ", upgrade level is " + upgradeLevel);
+            break;
+        }
+        break;
+
+      case UPGRADE_TYPE.STABBY_BEEFED:
+        switch (upgradeLevel)
+        {
+          case 1:
+            upgradeName = "Upgraded Stabby Beefed";
+            description = "The Miner's motors are now maintained, increasing it's movement speed.";
+            break;
+
+          case 2:
+            upgradeName = "Upgraded Stabby Beefed";
+            description = "";
+            break;
+
+          case 3:
+            upgradeName = "Upgraded Stabby Beefed";
+            description = "";
+            break;
+
+          default:
+            Debug.LogError("Upgrade button not found! Upgrade type is " + upgradeType + ", upgrade level is " + upgradeLevel);
+            break;
+        }
         break;
     }
 
     UpgradeProperties upgradeProperties = GameManager.upgradeManager.RetrieveCurrentUpgradeProperties(upgradeType);
 
-    uiInterface.ShowUpgradeTooltipPopup(upgradeName, cost, upgradeProperties.health, upgradeProperties.damage, upgradeProperties.attackSpeed, description, constructMessage);
+    uiInterface.ShowUpgradeTooltipPopup(upgradeName, upgradeProperties.cost, cost, upgradeProperties.health, upgradeProperties.damage, upgradeProperties.attackSpeed, description, constructMessage);
   }
 
   public void OnPointerExit(PointerEventData eventData)

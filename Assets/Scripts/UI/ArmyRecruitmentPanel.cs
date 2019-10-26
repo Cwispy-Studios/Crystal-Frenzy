@@ -89,10 +89,10 @@ public class ArmyRecruitmentPanel : MonoBehaviour
       {
         for (int up = 0; up < upgradeProperties.Length; ++up)
         {
-          upgradedCost += upgradeProperties[i].cost;
-          upgradedHealth += upgradeProperties[i].health;
-          upgradedDamage += upgradeProperties[i].damage;
-          upgradedAttackSpeed += upgradeProperties[i].attackSpeed;
+          upgradedCost += upgradeProperties[up].cost;
+          upgradedHealth += upgradeProperties[up].health;
+          upgradedDamage += upgradeProperties[up].damage;
+          upgradedAttackSpeed += upgradeProperties[up].attackSpeed;
         }
       }
     }

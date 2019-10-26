@@ -162,10 +162,10 @@ public class UIInterface : MonoBehaviour
     }
   }
 
-  public void ShowUpgradeTooltipPopup(string unitName, int cost, float health, float damage, float attackSpeed, string description, string constructMessage)
+  public void ShowUpgradeTooltipPopup(string unitName, int unitCost, int cost, float health, float damage, float attackSpeed, string description, string constructMessage)
   {
     upgradeTooltipPopup.gameObject.SetActive(true);
-    upgradeTooltipPopup.SetText(unitName, cost, health, damage, attackSpeed, description, constructMessage);
+    upgradeTooltipPopup.SetText(unitName, unitCost, cost, health, damage, attackSpeed, description, constructMessage);
   }
 
   public void HideUpgradeTooltipPopup()

@@ -41,6 +41,22 @@ public class UnitManager : MonoBehaviour
   public void AddUnitToPanel(GameObject unitPrefab, Sprite buttonImage)
   {
     int unitPoints = unitPrefab.GetComponent<RecruitableUnit>().unitPoints;
+
+    UPGRADE_TYPE[] affectedByUpgrades = unitPrefab.GetComponent<Upgradable>().affectedByUpgrades;
+
+    for (int i = 0; i < affectedByUpgrades.Length; ++i)
+    {
+      // Retrieve the ugrade properties
+      UpgradeProperties[] upgradeProperties = GameManager.upgradeManager.RetrieveUpgradeProperties(affectedByUpgrades[i]);
+
+      if (upgradeProperties != null)
+      {
+        for (int up = 0; up < upgradeProperties.Length; ++up)
+        {
+          unitPoints += upgradeProperties[up].cost;
+        }
+      }
+    }
     
     // Check if the unit can be recruited within the unit cap
     if (resourceManager.ArmySize + unitPoints <= resourceManager.UnitCap)

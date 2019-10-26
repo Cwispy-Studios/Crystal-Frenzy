@@ -10,22 +10,29 @@ public struct UpgradeTypeAveragePrice
 // Holds all the upgrades buttons and logic for upgrading
 public class UpgradeManager : MonoBehaviour
 {
-  public struct UpgradeLevels
+  public class UpgradeLevels
   {
+    public bool available;
+
     public int maxLevel;
     public int currentUpgradeLevel;
     public Dictionary<int, GameObject> upgradeLevelsButtons;
+    public List<UPGRADE_TYPE> upgradesTo;
+    public List<UPGRADE_TYPE> exclusiveFrom;
   }
 
   // Prefabs for the upgrade buttons. These buttons also hold the upgrade properties.
   [SerializeField]
   private GameObject[]
     minerHealthUpgradePrefabs = null,
-    minerSpeedUpgradePrefabs  = null,
+    minerSpeedUpgradePrefabs = null,
     stabbyUpgradePrefabs = null,
     shootyUpgradePrefabs = null,
     bruteUpgradePrefabs = null,
-    warlockUpgradePrefabs = null;
+    warlockUpgradePrefabs = null,
+    stabbyCheapUpgrade = null,
+    stabbyStrongUpgrade = null
+    ;
 
   // The LH key holds the upgrade type. The value of this key holds all the data of the upgrade type
   // UpgradeLevels holds the max upgradable level, the current level of upgrade and all the upgrade buttons for the upgrade type
@@ -39,15 +46,17 @@ public class UpgradeManager : MonoBehaviour
     // recruitment panel when viewing their stats.
     upgrades = new Dictionary<UPGRADE_TYPE, UpgradeLevels>();
 
-    InitialiseUpgrades(minerHealthUpgradePrefabs);
-    InitialiseUpgrades(minerSpeedUpgradePrefabs);
-    InitialiseUpgrades(stabbyUpgradePrefabs);
-    InitialiseUpgrades(shootyUpgradePrefabs);
-    InitialiseUpgrades(bruteUpgradePrefabs);
-    InitialiseUpgrades(warlockUpgradePrefabs);
+    InitialiseUpgrades(minerHealthUpgradePrefabs, true, new List<UPGRADE_TYPE>() , new List<UPGRADE_TYPE>());
+    InitialiseUpgrades(minerSpeedUpgradePrefabs, true, new List<UPGRADE_TYPE>(), new List<UPGRADE_TYPE>());
+    InitialiseUpgrades(stabbyUpgradePrefabs, true, new List<UPGRADE_TYPE> { UPGRADE_TYPE.STABBY_CHEAP, UPGRADE_TYPE.STABBY_BEEFED }, new List<UPGRADE_TYPE>());
+    InitialiseUpgrades(shootyUpgradePrefabs, true, new List<UPGRADE_TYPE>(), new List<UPGRADE_TYPE>());
+    InitialiseUpgrades(bruteUpgradePrefabs, true, new List<UPGRADE_TYPE>(), new List<UPGRADE_TYPE>());
+    InitialiseUpgrades(warlockUpgradePrefabs, true, new List<UPGRADE_TYPE>(), new List<UPGRADE_TYPE>());
+    InitialiseUpgrades(stabbyCheapUpgrade, false, new List<UPGRADE_TYPE>(), new List<UPGRADE_TYPE> { UPGRADE_TYPE.STABBY_BEEFED });
+    InitialiseUpgrades(stabbyStrongUpgrade, false, new List<UPGRADE_TYPE>(), new List<UPGRADE_TYPE> { UPGRADE_TYPE.STABBY_CHEAP });
   }
 
-  private void InitialiseUpgrades(GameObject[] upgradePrefabs)
+  private void InitialiseUpgrades(GameObject[] upgradePrefabs, bool startsAvailable, List<UPGRADE_TYPE> furtherUpgrades, List<UPGRADE_TYPE> exclusive)
   {
     UPGRADE_TYPE upgradeType = upgradePrefabs[0].GetComponent<UpgradeButton>().upgradeType;
     
@@ -68,7 +77,8 @@ public class UpgradeManager : MonoBehaviour
       }
     }
 
-    UpgradeLevels upgradeLevels = new UpgradeLevels { maxLevel = upgradePrefabs.Length, currentUpgradeLevel = 0, upgradeLevelsButtons = upgradeButtons };
+    UpgradeLevels upgradeLevels = new UpgradeLevels { maxLevel = upgradePrefabs.Length, currentUpgradeLevel = 0, upgradeLevelsButtons = upgradeButtons,
+      available = startsAvailable, upgradesTo = furtherUpgrades, exclusiveFrom = exclusive };
 
     upgrades.Add(upgradeType, upgradeLevels);
   }
@@ -104,24 +114,24 @@ public class UpgradeManager : MonoBehaviour
 
   public GameObject UpgradeButton(UPGRADE_TYPE upgradeType)
   {
-    // Create a new struct to update the upgrade level
-    UpgradeLevels newUpgradeLevel = upgrades[upgradeType];
+    ++upgrades[upgradeType].currentUpgradeLevel;
 
-    ++newUpgradeLevel.currentUpgradeLevel;
-
-    upgrades[upgradeType] = newUpgradeLevel;
+    SetExclusiveUnavailable(upgradeType);
 
     // Check if the max level has been reached
-    if (newUpgradeLevel.currentUpgradeLevel == newUpgradeLevel.maxLevel)
+    if (upgrades[upgradeType].currentUpgradeLevel == upgrades[upgradeType].maxLevel)
     {
       // No more upgrade levels so the button will simply be removed
+      // Check if there are any upgrades to and set those as available
+      CheckUpgradeToReady(upgradeType);
+
       return null;
     }
 
     else
     {
       // Instantiate and return the upgrade button of the next level
-      return Instantiate(upgrades[upgradeType].upgradeLevelsButtons[newUpgradeLevel.currentUpgradeLevel + 1]);
+      return Instantiate(upgrades[upgradeType].upgradeLevelsButtons[upgrades[upgradeType].currentUpgradeLevel + 1]);
     }
   }
 
@@ -132,7 +142,7 @@ public class UpgradeManager : MonoBehaviour
 
   public GameObject CheckUpgradeLevel(UPGRADE_TYPE upgradeType, int upgradeLevel)
   {
-    int currentUpgradeLevel = upgrades[upgradeType].currentUpgradeLevel + 1;
+      int currentUpgradeLevel = upgrades[upgradeType].currentUpgradeLevel + 1;
 
     // If levels are unequal, return the new button that should replace the old one
     if (upgradeLevel != currentUpgradeLevel)
@@ -152,7 +162,7 @@ public class UpgradeManager : MonoBehaviour
       UpgradeLevels upgradeLevels = upgrades[(UPGRADE_TYPE)upgradeType];
       int averageUpgradeCost = 0;
 
-      if (upgradeLevels.currentUpgradeLevel != upgradeLevels.maxLevel)
+      if (upgradeLevels.available && upgradeLevels.currentUpgradeLevel != upgradeLevels.maxLevel)
       {
         for (int i = upgradeLevels.currentUpgradeLevel; i < upgradeLevels.maxLevel; ++i)
         {
@@ -182,6 +192,44 @@ public class UpgradeManager : MonoBehaviour
       // The button will check every fixedupdate if it's level is still the same as the one here.
       // Once it detects it is different, it will automatically change
       upgrades[upgradeType] = newUpgradeLevel;
+
+      SetExclusiveUnavailable(upgradeType);
+    }
+
+    else
+    {
+      CheckUpgradeToReady(upgradeType);
+    }
+  }
+
+  public bool UpgradeIsAvailable(UPGRADE_TYPE upgradeType)
+  {
+    return upgrades[upgradeType].available;
+  }
+
+  private void CheckUpgradeToReady(UPGRADE_TYPE upgradeType)
+  {
+    if (upgrades[upgradeType].upgradesTo.Count > 0)
+    {
+      for (int i = 0; i < upgrades[upgradeType].upgradesTo.Count; ++i)
+      {
+        UPGRADE_TYPE upgradeToType = upgrades[upgradeType].upgradesTo[i];
+
+        upgrades[upgradeToType].available = true;
+      }
+    }
+  }
+
+  private void SetExclusiveUnavailable(UPGRADE_TYPE upgradeType)
+  {
+    if (upgrades[upgradeType].exclusiveFrom.Count > 0)
+    {
+      for (int i = 0; i < upgrades[upgradeType].exclusiveFrom.Count; ++i)
+      {
+        UPGRADE_TYPE exclusiveType = upgrades[upgradeType].exclusiveFrom[i];
+
+        upgrades[exclusiveType].available = false;
+      }
     }
   }
 }
