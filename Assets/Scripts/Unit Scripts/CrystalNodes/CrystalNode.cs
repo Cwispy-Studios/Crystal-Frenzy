@@ -59,4 +59,12 @@ public class CrystalNode : MonoBehaviour
       }
     }
   }
+
+  public void AdjustSpawners(float waveSpawnerDifficultyMultiplier)
+  {
+    for (int i = 0; i < spawnPoints.Length; ++i)
+    {
+      spawnPoints[i].GetComponent<WaveSpawner>().AdjustDifficulty(waveSpawnerDifficultyMultiplier);
+    }
+  }
 }

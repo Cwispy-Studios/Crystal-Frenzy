@@ -52,10 +52,10 @@ public class CrystalRewards : MonoBehaviour
   public bool BuildingSlotRewarded { get; private set; } = false;
 
   /**************************************************** RESOURCES VARIABLES ****************************************************/
-  private const float GOLD_PER_POINTONE_LOOT_WEIGHT = 20f;
-  private const float CRYSTAL_PER_POINTONE_LOOT_WEIGHT = 2f;
-  private const float GOLD_INCREASE_PER_NODE = 5f;
-  private const float CRYSTAL_INCREASE_PER_NODE = 0.5f;
+  private const float GOLD_PER_POINTONE_LOOT_WEIGHT = 25f;
+  private const float CRYSTAL_PER_POINTONE_LOOT_WEIGHT = 3f;
+  private const float GOLD_INCREASE_PER_NODE = 7f;
+  private const float CRYSTAL_INCREASE_PER_NODE = 0.8f;
 
   // Makes units spawn faster
   private float waveSpawnerDifficultyMultiplier = 1f;
@@ -120,7 +120,7 @@ public class CrystalRewards : MonoBehaviour
         GetComponent<BuildingSlot>().enabled = true;
         BuildingSlotRewarded = true;
         waveSpawnerDifficultyMultiplier += 0.2f;
-        lootWeight -= 0.15f;
+        lootWeight -= 0.2f;
       }
 
       else
@@ -135,6 +135,8 @@ public class CrystalRewards : MonoBehaviour
 
       goldLoot = Mathf.CeilToInt( (GOLD_PER_POINTONE_LOOT_WEIGHT + (nodeNumber * GOLD_INCREASE_PER_NODE)) * goldRewardWeight * 10f);
       crystalIncomeReward = Mathf.CeilToInt( (CRYSTAL_PER_POINTONE_LOOT_WEIGHT + (nodeNumber * CRYSTAL_INCREASE_PER_NODE)) * crystalIncomeRewardWeight * 10f);
+
+      GetComponent<CrystalNode>().AdjustSpawners(waveSpawnerDifficultyMultiplier);
     }
   }
 
@@ -207,7 +209,7 @@ public class CrystalRewards : MonoBehaviour
       {
         waveSpawnerDifficultyMultiplier += 0.35f;
         // Makes the resource rewards lesser
-        lootWeight -= 0.5f;
+        lootWeight -= 0.55f;
         RewardedUpgrade = averagePricesPerUpgradeType[i].upgradeType;
         RewardsUpgrade = true;
         Debug.Log("Rewarded upgrade: " + RewardedUpgrade);
