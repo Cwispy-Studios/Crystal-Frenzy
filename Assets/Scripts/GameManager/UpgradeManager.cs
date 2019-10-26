@@ -1,6 +1,12 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
+public struct UpgradeTypeAveragePrice
+{
+  public UPGRADE_TYPE upgradeType;
+  public int averagePrice;
+}
+
 // Holds all the upgrades buttons and logic for upgrading
 public class UpgradeManager : MonoBehaviour
 {
@@ -122,5 +128,30 @@ public class UpgradeManager : MonoBehaviour
   public int GetNextUpgradeLevel(UPGRADE_TYPE upgradeType)
   {
     return upgrades[upgradeType].currentUpgradeLevel + 1;
+  }
+
+  public List<UpgradeTypeAveragePrice> GetListOfAverageUpgradablePrices()
+  {
+    List<UpgradeTypeAveragePrice> priceList = new List<UpgradeTypeAveragePrice>();
+    for (int upgradeType = 0; upgradeType < (int)UPGRADE_TYPE.LAST; ++upgradeType)
+    {
+      UpgradeLevels upgradeLevels = upgrades[(UPGRADE_TYPE)upgradeType];
+      int averageUpgradeCost = 0;
+
+      if (upgradeLevels.currentUpgradeLevel != upgradeLevels.maxLevel)
+      {
+        for (int i = upgradeLevels.currentUpgradeLevel; i < upgradeLevels.maxLevel; ++i)
+        {
+          averageUpgradeCost += upgradeLevels.upgradeLevelsButtons[i + 1].GetComponent<UpgradeButton>().cost;
+        }
+
+        averageUpgradeCost /= (upgradeLevels.maxLevel - upgradeLevels.currentUpgradeLevel);
+
+        UpgradeTypeAveragePrice upgradeTypeAveragePrice = new UpgradeTypeAveragePrice { upgradeType = (UPGRADE_TYPE)upgradeType, averagePrice = averageUpgradeCost };
+        priceList.Add(upgradeTypeAveragePrice);
+      }
+    }
+
+    return priceList;
   }
 }

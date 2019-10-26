@@ -103,11 +103,11 @@ public class UIInterface : MonoBehaviour
   //////////////////////////////////////////////////////////////////////////////////////
   // OTHERS
   //////////////////////////////////////////////////////////////////////////////////////
-  public void ShowLootPopup(int gold, int crystal, bool conquered, GameObject lootObject)
+  public void ShowLootPopup(int gold, int crystal, bool buildingSlot, bool upgradeRewarded, UPGRADE_TYPE upgradeReward, bool conquered, GameObject lootObject)
   {
     showingLootObject = lootObject;
 
-    lootPopup.SetText(gold, crystal, conquered);
+    lootPopup.SetText(gold, crystal, buildingSlot, upgradeRewarded, upgradeReward, conquered);
 
     lootPopup.gameObject.SetActive(true);
   }
@@ -120,9 +120,9 @@ public class UIInterface : MonoBehaviour
     }
   }
 
-  public void UpdateLootTargetPanel(int gold, int crystal)
+  public void UpdateLootTargetPanel(int gold, int crystal, bool buildingSlot, bool upgradeRewarded, UPGRADE_TYPE upgradeReward)
   {
-    lootTargetPanel.SetText(gold, crystal);
+    lootTargetPanel.SetText(gold, crystal, buildingSlot, upgradeRewarded, upgradeReward);
   }
 
   public void ShowUnitTooltipPopup(string unitName, int cost, float health, float damage, float attackSpeed, string description, string constructMessage)

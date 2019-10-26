@@ -250,13 +250,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8532510506944539445}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b1ce8240a519fcf4fb730ce929e15249, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   goldLoot: 0
   crystalIncomeReward: 20
+  randomised: 1
 --- !u!114 &1309242855395777868
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -269,5 +270,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: daa5ab8940dac0442887677b80aab227, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  active: 0
+  inControl: 0
   buildingSlot: {fileID: 0}

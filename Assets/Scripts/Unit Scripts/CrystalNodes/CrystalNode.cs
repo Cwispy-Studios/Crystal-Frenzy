@@ -46,4 +46,17 @@ public class CrystalNode : MonoBehaviour
       treeWall.SetActive(false);
     }
   }
+
+  public void InitialiseRewards()
+  {
+    for (int i = 0; i < connectedNodes.Length; ++i)
+    {
+      CrystalRewards crystalRewards = connectedNodes[i].GetComponent<CrystalRewards>();
+
+      if (crystalRewards && crystalRewards.enabled == false)
+      {
+        crystalRewards.enabled = true;
+      }
+    }
+  }
 }

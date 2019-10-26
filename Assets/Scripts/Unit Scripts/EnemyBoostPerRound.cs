@@ -3,7 +3,7 @@
 public class EnemyBoostPerRound : MonoBehaviour
 {
   [SerializeField]
-  private BoostValues boostValues;
+  private BoostValues boostValues = null;
 
   private void Awake()
   {

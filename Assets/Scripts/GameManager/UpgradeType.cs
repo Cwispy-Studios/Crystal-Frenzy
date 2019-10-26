@@ -5,5 +5,6 @@
   STABBY,
   SHOOTY,
   BRUTE,
-  WARLOCK
+  WARLOCK,
+  LAST
 }

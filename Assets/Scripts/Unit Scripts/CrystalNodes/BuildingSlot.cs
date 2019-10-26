@@ -6,15 +6,7 @@ public class BuildingSlot : MonoBehaviour
   // Whether you can view the construct panel by clicking on this object
   // This is set to false when you are not in control of the node
   public bool inControl = false;
-  // Whether a building has been constructed on this slot yet
-  private bool constructed = false;
-  public bool Constructed
-  {
-    get
-    {
-      return constructed;
-    }
-  }
+  public bool Constructed { get; private set; } = false;
 
   [SerializeField]
   private GameObject buildingSlot = null;
@@ -26,7 +18,7 @@ public class BuildingSlot : MonoBehaviour
 
   private void Update()
   {
-    if (constructed == false)
+    if (Constructed == false)
     {
       // Makes the building slot unselectable when we are not in control of the node
       buildingSlot.GetComponent<Selectable>().enabled = inControl;
@@ -41,7 +33,7 @@ public class BuildingSlot : MonoBehaviour
 
   public void SetConstruction(GameObject constructedBuilding)
   {
-    constructed = true;
+    Constructed = true;
     buildingSlot = constructedBuilding;
   }
 
@@ -55,5 +47,10 @@ public class BuildingSlot : MonoBehaviour
   {
     buildingSlot.GetComponent<Faction>().faction = Faction.FACTIONS.NEUTRAL;
     GameManager.buildingManager.LoseBuilding(buildingSlot);
+  }
+
+  private void OnDisable()
+  {
+    buildingSlot.SetActive(false);
   }
 }

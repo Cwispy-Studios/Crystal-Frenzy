@@ -43,6 +43,18 @@ public class GameManager : MonoBehaviour
     };
 
     CurrentPhase = PHASES.PREPARATION;
+
+    //for (int i = 0; i < 20; ++i)
+    //{
+    //  Debug.Log(RandomFromDistribution.RandomRangeLinear(0.65f, 2f, -2f));
+    //}
+
+    //Debug.Log("----------------------------------------------------------");
+
+    //for (int i = 0; i < 20; ++i)
+    //{
+    //  Debug.Log(RandomFromDistribution.RandomRangeExponential(0.65f, 2f, 0.5f, RandomFromDistribution.Direction_e.Left));
+    //}
   }
 
   private void Start()
@@ -89,6 +101,9 @@ public class GameManager : MonoBehaviour
       else
       {
         uiInterface.PreparationPhaseSetSelectArmyButtonInteractable(true);
+        // Update the loot target panel
+        CrystalRewards crystalRewards = lastConqueredNode.GetComponent<CrystalSeekerSpawner>().CrystalTarget.GetComponent<CrystalRewards>();
+        uiInterface.UpdateLootTargetPanel(crystalRewards.GoldLoot, crystalRewards.CrystalIncomeReward, crystalRewards.BuildingSlotRewarded, crystalRewards.RewardsUpgrade, crystalRewards.RewardedUpgrade);
       }
     }
 
@@ -150,9 +165,6 @@ public class GameManager : MonoBehaviour
 
     // Update the reference to the node we are going to attack
     attackNode = attackingFromNode.GetComponent<CrystalSeekerSpawner>().CrystalTarget;
-
-    // Update the loot target panel
-    uiInterface.UpdateLootTargetPanel(attackNode.GetComponent<CrystalRewards>().goldLoot, attackNode.GetComponent<CrystalRewards>().crystalIncomeReward);
   }
 
   public void ReturnToNodeSelection()
@@ -221,8 +233,8 @@ public class GameManager : MonoBehaviour
 
     GameObject conqueredNode = conqueredNodes[conqueredNodes.Count - 1];
 
-    resourceManager.CollectLoot(conqueredNode.GetComponent<CrystalRewards>().goldLoot,
-      conqueredNode.GetComponent<CrystalRewards>().crystalIncomeReward,
+    resourceManager.CollectLoot(conqueredNode.GetComponent<CrystalRewards>().GoldLoot,
+      conqueredNode.GetComponent<CrystalRewards>().CrystalIncomeReward,
       conqueredNode.GetComponent<ConqueredNode>().conquered);
 
     conqueredNode.GetComponent<ConqueredNode>().conquered = true;
@@ -233,6 +245,9 @@ public class GameManager : MonoBehaviour
 
     // Disable wave spawners of the conquered node
     conqueredNode.GetComponent<CrystalNode>().SetWaveSpawnersActive(false, null);
+
+    // Initialise the rewards of the connecting nodes (if they have not already been initialised)
+    conqueredNode.GetComponent<CrystalNode>().InitialiseRewards();
 
     BuildingSlot buildingSlot = conqueredNode.GetComponent<BuildingSlot>();
 
@@ -261,7 +276,7 @@ public class GameManager : MonoBehaviour
     // Update the camera bounds
     playerCamera.GetComponent<CameraControls>().AddCameraBounds(conqueredNode.GetComponent<ConqueredNode>().CameraBound);
 
-    uiInterface.UpdateLootTargetPanel(0, 0);
+    uiInterface.UpdateLootTargetPanel(0, 0, false, false, UPGRADE_TYPE.LAST);
 
     // Check if our newly conquered node has already conquered a node. If yes, skip to army selection screen and force player
     // to attack that node. Otherwise, player is free to choose
@@ -335,7 +350,7 @@ public class GameManager : MonoBehaviour
     uiInterface.UnitManager.SetAssemblySpace(attackingFromNode.GetComponent<ConqueredNode>().AssemblySpace);
 
     // Update the loot target panel
-    uiInterface.UpdateLootTargetPanel(0, 0);
+    uiInterface.UpdateLootTargetPanel(0, 0, false, false, UPGRADE_TYPE.LAST);
   }
 
   private void PreparationDefensePhase()
@@ -440,7 +455,7 @@ public class GameManager : MonoBehaviour
     attackNode.GetComponent<CrystalOrder>().enabled = true;
 
     // Lose the crystal income from that node
-    resourceManager.LoseIncome(attackNode.GetComponent<CrystalRewards>().crystalIncomeReward);
+    resourceManager.LoseIncome(attackNode.GetComponent<CrystalRewards>().CrystalIncomeReward);
 
     BuildingSlot buildingSlot = attackNode.GetComponent<BuildingSlot>();
 

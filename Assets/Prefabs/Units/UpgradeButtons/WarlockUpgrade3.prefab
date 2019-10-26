@@ -135,13 +135,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   upgradeType: 5
-  cost: 150
+  cost: 550
   upgradeProperties:
-    health: 0
-    damage: 2
-    attackSpeed: 0
-    attackRange: 0
-    detectRange: 0
+    health: 20
+    regeneraton: 0.5
+    damage: 1
+    attackSpeed: 0.2
+    attackRange: 2
+    detectRange: 2
     fovRange: 0
     speed: 0
     cost: 0
