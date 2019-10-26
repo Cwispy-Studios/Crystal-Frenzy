@@ -136,11 +136,13 @@ public class UnitOrder : Order
     for (int i = 0; i < upgradeProperties.Length; ++i)
     {
       GetComponent<NavMeshAgent>().speed += upgradeProperties[i].speed;
+      GetComponent<NavMeshAgent>().acceleration = GetComponent<NavMeshAgent>().speed * 1.5f;
     }
   }
 
   public void SetBoostedValues(BoostValues boostValues)
   {
     GetComponent<NavMeshAgent>().speed += (GameManager.CurrentRound - 1) * boostValues.speedModifier * GetComponent<NavMeshAgent>().speed;
+    GetComponent<NavMeshAgent>().acceleration = GetComponent<NavMeshAgent>().speed * 1.5f;
   }
 } // class end

@@ -267,6 +267,102 @@ public class UpgradeButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
             break;
         }
         break;
+
+      case UPGRADE_TYPE.SHOOTY_FAST:
+        switch (upgradeLevel)
+        {
+          case 1:
+            upgradeName = "Upgraded Shooty Fast";
+            description = "The Miner's motors are now maintained, increasing it's movement speed.";
+            break;
+
+          case 2:
+            upgradeName = "Upgraded Shooty Fast";
+            description = "";
+            break;
+
+          case 3:
+            upgradeName = "Upgraded Shooty Fast";
+            description = "";
+            break;
+
+          default:
+            Debug.LogError("Upgrade button not found! Upgrade type is " + upgradeType + ", upgrade level is " + upgradeLevel);
+            break;
+        }
+        break;
+
+      case UPGRADE_TYPE.SHOOTY_NUKE:
+        switch (upgradeLevel)
+        {
+          case 1:
+            upgradeName = "Upgraded Shooty Nuke";
+            description = "The Miner's motors are now maintained, increasing it's movement speed.";
+            break;
+
+          case 2:
+            upgradeName = "Upgraded Shooty Nuke";
+            description = "";
+            break;
+
+          case 3:
+            upgradeName = "Upgraded Shooty Nuke";
+            description = "";
+            break;
+
+          default:
+            Debug.LogError("Upgrade button not found! Upgrade type is " + upgradeType + ", upgrade level is " + upgradeLevel);
+            break;
+        }
+        break;
+
+      case UPGRADE_TYPE.BRUTE_CHEAP:
+        switch (upgradeLevel)
+        {
+          case 1:
+            upgradeName = "Upgraded Brute Cheap";
+            description = "The Miner's motors are now maintained, increasing it's movement speed.";
+            break;
+
+          case 2:
+            upgradeName = "Upgraded Brute Cheap";
+            description = "";
+            break;
+
+          case 3:
+            upgradeName = "Upgraded Brute Cheap";
+            description = "";
+            break;
+
+          default:
+            Debug.LogError("Upgrade button not found! Upgrade type is " + upgradeType + ", upgrade level is " + upgradeLevel);
+            break;
+        }
+        break;
+
+      case UPGRADE_TYPE.BRUTE_TANK:
+        switch (upgradeLevel)
+        {
+          case 1:
+            upgradeName = "Upgraded Brute Tank";
+            description = "The Miner's motors are now maintained, increasing it's movement speed.";
+            break;
+
+          case 2:
+            upgradeName = "Upgraded Brute Tank";
+            description = "";
+            break;
+
+          case 3:
+            upgradeName = "Upgraded Brute Tank";
+            description = "";
+            break;
+
+          default:
+            Debug.LogError("Upgrade button not found! Upgrade type is " + upgradeType + ", upgrade level is " + upgradeLevel);
+            break;
+        }
+        break;
     }
 
     UpgradeProperties upgradeProperties = GameManager.upgradeManager.RetrieveCurrentUpgradeProperties(upgradeType);

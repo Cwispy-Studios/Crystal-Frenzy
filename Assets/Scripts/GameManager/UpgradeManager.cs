@@ -31,8 +31,11 @@ public class UpgradeManager : MonoBehaviour
     bruteUpgradePrefabs = null,
     warlockUpgradePrefabs = null,
     stabbyCheapUpgrade = null,
-    stabbyStrongUpgrade = null
-    ;
+    stabbyStrongUpgrade = null,
+    shootyNukeUpgrade = null,
+    shootyFastUpgrade = null,
+    bruteCheapUpgrade = null,
+    bruteTankUpgrade = null;
 
   // The LH key holds the upgrade type. The value of this key holds all the data of the upgrade type
   // UpgradeLevels holds the max upgradable level, the current level of upgrade and all the upgrade buttons for the upgrade type
@@ -48,12 +51,20 @@ public class UpgradeManager : MonoBehaviour
 
     InitialiseUpgrades(minerHealthUpgradePrefabs, true, new List<UPGRADE_TYPE>() , new List<UPGRADE_TYPE>());
     InitialiseUpgrades(minerSpeedUpgradePrefabs, true, new List<UPGRADE_TYPE>(), new List<UPGRADE_TYPE>());
+
     InitialiseUpgrades(stabbyUpgradePrefabs, true, new List<UPGRADE_TYPE> { UPGRADE_TYPE.STABBY_CHEAP, UPGRADE_TYPE.STABBY_BEEFED }, new List<UPGRADE_TYPE>());
-    InitialiseUpgrades(shootyUpgradePrefabs, true, new List<UPGRADE_TYPE>(), new List<UPGRADE_TYPE>());
-    InitialiseUpgrades(bruteUpgradePrefabs, true, new List<UPGRADE_TYPE>(), new List<UPGRADE_TYPE>());
+    InitialiseUpgrades(shootyUpgradePrefabs, true, new List<UPGRADE_TYPE> { UPGRADE_TYPE.SHOOTY_FAST, UPGRADE_TYPE.SHOOTY_NUKE }, new List<UPGRADE_TYPE>());
+    InitialiseUpgrades(bruteUpgradePrefabs, true, new List<UPGRADE_TYPE> { UPGRADE_TYPE.BRUTE_CHEAP, UPGRADE_TYPE.BRUTE_TANK }, new List<UPGRADE_TYPE>());
     InitialiseUpgrades(warlockUpgradePrefabs, true, new List<UPGRADE_TYPE>(), new List<UPGRADE_TYPE>());
+
     InitialiseUpgrades(stabbyCheapUpgrade, false, new List<UPGRADE_TYPE>(), new List<UPGRADE_TYPE> { UPGRADE_TYPE.STABBY_BEEFED });
     InitialiseUpgrades(stabbyStrongUpgrade, false, new List<UPGRADE_TYPE>(), new List<UPGRADE_TYPE> { UPGRADE_TYPE.STABBY_CHEAP });
+
+    InitialiseUpgrades(shootyFastUpgrade, false, new List<UPGRADE_TYPE>(), new List<UPGRADE_TYPE> { UPGRADE_TYPE.SHOOTY_NUKE });
+    InitialiseUpgrades(shootyNukeUpgrade, false, new List<UPGRADE_TYPE>(), new List<UPGRADE_TYPE> { UPGRADE_TYPE.SHOOTY_FAST });
+
+    InitialiseUpgrades(bruteCheapUpgrade, false, new List<UPGRADE_TYPE>(), new List<UPGRADE_TYPE> { UPGRADE_TYPE.BRUTE_TANK });
+    InitialiseUpgrades(bruteTankUpgrade, false, new List<UPGRADE_TYPE>(), new List<UPGRADE_TYPE> { UPGRADE_TYPE.BRUTE_CHEAP });
   }
 
   private void InitialiseUpgrades(GameObject[] upgradePrefabs, bool startsAvailable, List<UPGRADE_TYPE> furtherUpgrades, List<UPGRADE_TYPE> exclusive)
