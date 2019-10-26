@@ -8,10 +8,10 @@ public class UnitManager : MonoBehaviour
   private readonly Vector3 ICON_SIZE = new Vector3(70f, 70f);
   private readonly Vector3 SELECTED_ICON_SIZE = new Vector3(80f, 80f);
   private readonly Vector3 FIRST_ICON_POS = new Vector3(15f, 0);
-  private readonly float ICON_GAP = 80f;
+  private readonly float ICON_GAP_X = 80f;
+  private readonly float ICON_GAP_Y = 95f;
 
-  private readonly int MAX_ICONS_X = 17;
-
+ 
   [SerializeField]
   private GameManager gameManager = null;
   [SerializeField]
@@ -133,15 +133,17 @@ public class UnitManager : MonoBehaviour
       unitButton.transform.localScale = new Vector3(1f, 1f, 1f);
 
       // Check if icon will overflow the end of the unit panel on x-axis
-      if (buttonPos.x + ICON_GAP > panelWidth - fromPanelOffset)
+      if (buttonPos.x + ICON_GAP_X > panelWidth - fromPanelOffset)
       {
         buttonPos.x = FIRST_ICON_POS.x;
-        buttonPos.y -= ICON_GAP;
+        buttonPos.y -= ICON_GAP_Y;
       }
 
       unitButton.GetComponent<RectTransform>().anchoredPosition = buttonPos;
 
-      buttonPos.x += ICON_GAP;
+      buttonPos.x += ICON_GAP_X;
+
+      unitButton.GetComponent<UnitButton>().SetHealthBarTransform(SELECTED_ICON_SIZE, true);
     }
 
     for (int i = 0; i < UnselectedUnits.Count; ++i)
@@ -153,15 +155,17 @@ public class UnitManager : MonoBehaviour
       unitButton.transform.localScale = new Vector3(1f, 1f, 1f);
 
       // Check if icon will overflow the end of the unit panel on x-axis
-      if (buttonPos.x + ICON_GAP > panelWidth - fromPanelOffset)
+      if (buttonPos.x + ICON_GAP_X > panelWidth - fromPanelOffset)
       {
         buttonPos.x = FIRST_ICON_POS.x;
-        buttonPos.y -= ICON_GAP;
+        buttonPos.y -= ICON_GAP_Y;
       }
 
       unitButton.GetComponent<RectTransform>().anchoredPosition = buttonPos;
 
-      buttonPos.x += ICON_GAP;
+      buttonPos.x += ICON_GAP_X;
+
+      unitButton.GetComponent<UnitButton>().SetHealthBarTransform(ICON_SIZE, false);
     }
   }
 
@@ -332,6 +336,7 @@ public class UnitManager : MonoBehaviour
 
     // If double click, center on the unit
 
+    UpdateSelectionLists();
   }
 
   public void SetUnitButtonsToCombat()
