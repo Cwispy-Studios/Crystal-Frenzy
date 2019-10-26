@@ -115,11 +115,12 @@ public class CrystalRewards : MonoBehaviour
       }
 
       /************************** Randomise if node has building slot **************************/
+      // Building slot not affected by loot weight
       if (Random.Range(0, 1f) <= BUILDING_SLOT_CHANCE)
       {
         GetComponent<BuildingSlot>().enabled = true;
         BuildingSlotRewarded = true;
-        waveSpawnerDifficultyMultiplier += 0.2f;
+        waveSpawnerDifficultyMultiplier += 0.1f;
         lootWeight -= 0.2f;
       }
 
@@ -207,7 +208,7 @@ public class CrystalRewards : MonoBehaviour
     {
       if (cumulativeSumOfWeights[i] > randomNumber)
       {
-        waveSpawnerDifficultyMultiplier += 0.35f;
+        waveSpawnerDifficultyMultiplier += 0.2f;
         // Makes the resource rewards lesser
         lootWeight -= 0.55f;
         RewardedUpgrade = averagePricesPerUpgradeType[i].upgradeType;
@@ -257,5 +258,16 @@ public class CrystalRewards : MonoBehaviour
     weightPerGoldCost = REWARD_WEIGHT_RANGE / costRange;
 
     return averagePricesPerUpgradeType;
+  }
+
+  public void CollectLoot(bool conquered)
+  {
+    GameManager.resourceManager.CollectLoot(GoldLoot, CrystalIncomeReward, conquered);
+    
+    // Collect upgrade
+    if (RewardsUpgrade)
+    {
+      GameManager.upgradeManager.UpgradeReward(RewardedUpgrade);
+    }
   }
 }

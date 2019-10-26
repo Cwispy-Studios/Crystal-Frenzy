@@ -3,6 +3,8 @@
 [System.Serializable]
 public class UpgradeProperties
 {
+  public int upgradeLevel;
+
   [Header("Health components")]
   // Health components
   public float health;

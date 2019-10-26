@@ -233,9 +233,7 @@ public class GameManager : MonoBehaviour
 
     GameObject conqueredNode = conqueredNodes[conqueredNodes.Count - 1];
 
-    resourceManager.CollectLoot(conqueredNode.GetComponent<CrystalRewards>().GoldLoot,
-      conqueredNode.GetComponent<CrystalRewards>().CrystalIncomeReward,
-      conqueredNode.GetComponent<ConqueredNode>().conquered);
+    conqueredNode.GetComponent<CrystalRewards>().CollectLoot(conqueredNode.GetComponent<ConqueredNode>().conquered);
 
     conqueredNode.GetComponent<ConqueredNode>().conquered = true;
 

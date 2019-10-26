@@ -1,5 +1,11 @@
 ﻿using UnityEngine;
 
+public enum UPGRADE_PANEL_TYPE
+{
+  FORTRESS = 0,
+  BLACKSMITH
+}
+
 public class UpgradePanel : MonoBehaviour
 {
   [SerializeField]

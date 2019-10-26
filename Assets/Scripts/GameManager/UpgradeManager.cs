@@ -130,6 +130,20 @@ public class UpgradeManager : MonoBehaviour
     return upgrades[upgradeType].currentUpgradeLevel + 1;
   }
 
+  public GameObject CheckUpgradeLevel(UPGRADE_TYPE upgradeType, int upgradeLevel)
+  {
+    int currentUpgradeLevel = upgrades[upgradeType].currentUpgradeLevel + 1;
+
+    // If levels are unequal, return the new button that should replace the old one
+    if (upgradeLevel != currentUpgradeLevel)
+    {
+      return Instantiate(upgrades[upgradeType].upgradeLevelsButtons[currentUpgradeLevel]);
+    }
+
+    // Return null if nothing changed
+    else return null;
+  }
+
   public List<UpgradeTypeAveragePrice> GetListOfAverageUpgradablePrices()
   {
     List<UpgradeTypeAveragePrice> priceList = new List<UpgradeTypeAveragePrice>();
@@ -153,5 +167,21 @@ public class UpgradeManager : MonoBehaviour
     }
 
     return priceList;
+  }
+
+  public void UpgradeReward(UPGRADE_TYPE upgradeType)
+  {
+    // Does nothing if at max level, means player wasted their upgrade
+    if (upgrades[upgradeType].currentUpgradeLevel != upgrades[upgradeType].maxLevel)
+    {
+      // Create a new struct to update the upgrade level
+      UpgradeLevels newUpgradeLevel = upgrades[upgradeType];
+
+      ++newUpgradeLevel.currentUpgradeLevel;
+
+      // The button will check every fixedupdate if it's level is still the same as the one here.
+      // Once it detects it is different, it will automatically change
+      upgrades[upgradeType] = newUpgradeLevel;
+    }
   }
 }

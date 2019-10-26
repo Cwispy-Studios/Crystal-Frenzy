@@ -28,6 +28,13 @@ public class UpgradeButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
   private void FixedUpdate()
   {
+    // Check against the Upgrade Manager if it has been upgraded 
+    GameObject newButton = GameManager.upgradeManager.CheckUpgradeLevel(upgradeType, upgradeProperties.upgradeLevel);
+    if (newButton != null)
+    {
+      ExternalUpgrade(newButton);
+    }
+
     GetComponent<Button>().interactable = (cost <= GameManager.resourceManager.Crystals);
   }
 
@@ -46,6 +53,15 @@ public class UpgradeButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     GameManager.resourceManager.UpgradeCost(this);
 
     uiInterface.HideUpgradeTooltipPopup();
+  }
+
+  private void ExternalUpgrade(GameObject newButton)
+  {
+    upgraded = true;
+    nextLevelButton = newButton;
+
+    nextLevelButton.transform.position = transform.position;
+    nextLevelButton.transform.SetParent(transform.parent);
   }
 
   public void OnPointerEnter(PointerEventData eventData)
