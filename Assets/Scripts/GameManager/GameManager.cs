@@ -23,7 +23,8 @@ public class GameManager : MonoBehaviour
   private List<GameObject> conqueredNodes;
   private GameObject attackNode;
 
-  private int currentPhaseCycle = 1;
+  // Enemies get stronger each round
+  private int currentRound = 0;
   public static PHASES CurrentPhase { get; private set; }
 
   /////////////////////////////////////////////////////////
@@ -52,7 +53,7 @@ public class GameManager : MonoBehaviour
   private void FixedUpdate()
   {
     phaseText.text = CurrentPhase.ToString().Replace("_", " ") + " PHASE";
-    nodeText.text = "Node " + currentPhaseCycle.ToString();
+    nodeText.text = "Node " + currentRound.ToString();
   }
 
   private void Update()
@@ -110,6 +111,10 @@ public class GameManager : MonoBehaviour
 
   public void BeginPreparationPhase()
   {
+    CurrentPhase = PHASES.PREPARATION;
+
+    ++currentRound;
+
     GameObject lastConqueredNode = conqueredNodes[conqueredNodes.Count - 1];
 
     // Force the camera into a bird's eye view
@@ -204,11 +209,6 @@ public class GameManager : MonoBehaviour
 
   public void EscortWin()
   {
-    // Advance to the next Preparation Phase
-    ++currentPhaseCycle;
-
-    CurrentPhase = PHASES.PREPARATION;
-
     // Remove all units on the playing field, friendly units are contained in Unit Manager, enemy units are contained in Hideable Manager
     uiInterface.EscortPhaseRemoveAllUnits();
     GetComponent<HideableManager>().RemoveAllUnits();
@@ -288,8 +288,6 @@ public class GameManager : MonoBehaviour
 
   public void EscortLose()
   {
-    CurrentPhase = PHASES.PREPARATION_DEFENSE;
-
     // Remove all units on the playing field, friendly units are contained in Unit Manager, enemy units are contained in Hideable Manager
     uiInterface.EscortPhaseRemoveAllUnits();
     GetComponent<HideableManager>().RemoveAllUnits();
@@ -315,6 +313,10 @@ public class GameManager : MonoBehaviour
   // PREPARATION DEFENSE FUNCTIONS
   public void BeginPreparationDefensePhase()
   {
+    CurrentPhase = PHASES.PREPARATION_DEFENSE;
+
+    ++currentRound;
+
     GameObject attackingFromNode = conqueredNodes[conqueredNodes.Count - 1];
 
     // Set the camera to point at the assembly space
@@ -383,8 +385,6 @@ public class GameManager : MonoBehaviour
 
   public void DefenseWin()
   {
-    CurrentPhase = PHASES.PREPARATION;
-
     // Remove all units on the playing field, friendly units are contained in Unit Manager, enemy units are contained in Hideable Manager
     uiInterface.EscortPhaseRemoveAllUnits();
     GetComponent<HideableManager>().RemoveAllUnits();
@@ -420,9 +420,6 @@ public class GameManager : MonoBehaviour
 
   public void DefenseLose()
   {
-    CurrentPhase = PHASES.PREPARATION_DEFENSE;
-    --currentPhaseCycle;
-
     // Remove all units on the playing field, friendly units are contained in Unit Manager, enemy units are contained in Hideable Manager
     uiInterface.EscortPhaseRemoveAllUnits();
     GetComponent<HideableManager>().RemoveAllUnits();
