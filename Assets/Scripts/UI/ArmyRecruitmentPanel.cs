@@ -70,11 +70,38 @@ public class ArmyRecruitmentPanel : MonoBehaviour
       Debug.LogError("Button type not found in ArmyRecruitmentPanel! Button name is " + button.name);
     }
 
+    // Retrieve the upgraded properties
+    int upgradedCost = recruitableUnit.GetComponent<RecruitableUnit>().unitPoints;
+
+    float
+      upgradedHealth = recruitableUnit.GetComponent<Health>().MaxHealth, 
+      upgradedDamage = recruitableUnit.GetComponent<Attack>().AttackDamage,
+      upgradedAttackSpeed = recruitableUnit.GetComponent<Attack>().AttacksPerSecond;
+
+    UPGRADE_TYPE[] affectedByUpgrades = recruitableUnit.GetComponent<Upgradable>().affectedByUpgrades;
+
+    for (int i = 0; i < affectedByUpgrades.Length; ++i)
+    {
+      // Retrieve the ugrade properties
+      UpgradeProperties[] upgradeProperties = GameManager.upgradeManager.RetrieveUpgradeProperties(affectedByUpgrades[i]);
+
+      if (upgradeProperties != null)
+      {
+        for (int up = 0; up < upgradeProperties.Length; ++up)
+        {
+          upgradedCost += upgradeProperties[i].cost;
+          upgradedHealth += upgradeProperties[i].health;
+          upgradedDamage += upgradeProperties[i].damage;
+          upgradedAttackSpeed += upgradeProperties[i].attackSpeed;
+        }
+      }
+    }
+
     uiInterface.ShowUnitTooltipPopup(unitName,
-                                     recruitableUnit.GetComponent<RecruitableUnit>().unitPoints,
-                                     recruitableUnit.GetComponent<Health>().MaxHealth,
-                                     recruitableUnit.GetComponent<Attack>().AttackDamage,
-                                     recruitableUnit.GetComponent<Attack>().AttacksPerSecond,
+                                     upgradedCost,
+                                     upgradedHealth,
+                                     upgradedDamage,
+                                     upgradedAttackSpeed,
                                      description,
                                      constructMessage);
   }
