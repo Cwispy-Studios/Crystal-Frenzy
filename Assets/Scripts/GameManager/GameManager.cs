@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour
   private GameObject attackNode;
 
   // Enemies get stronger each round
-  private int currentRound = 0;
+  public static int CurrentRound { get; private set; } = 0;
   public static PHASES CurrentPhase { get; private set; }
 
   /////////////////////////////////////////////////////////
@@ -53,7 +53,7 @@ public class GameManager : MonoBehaviour
   private void FixedUpdate()
   {
     phaseText.text = CurrentPhase.ToString().Replace("_", " ") + " PHASE";
-    nodeText.text = "Node " + currentRound.ToString();
+    nodeText.text = "Node " + CurrentRound.ToString();
   }
 
   private void Update()
@@ -113,7 +113,7 @@ public class GameManager : MonoBehaviour
   {
     CurrentPhase = PHASES.PREPARATION;
 
-    ++currentRound;
+    ++CurrentRound;
 
     GameObject lastConqueredNode = conqueredNodes[conqueredNodes.Count - 1];
 
@@ -315,7 +315,7 @@ public class GameManager : MonoBehaviour
   {
     CurrentPhase = PHASES.PREPARATION_DEFENSE;
 
-    ++currentRound;
+    ++CurrentRound;
 
     GameObject attackingFromNode = conqueredNodes[conqueredNodes.Count - 1];
 

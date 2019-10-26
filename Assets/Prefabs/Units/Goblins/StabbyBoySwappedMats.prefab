@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: -8312105283777516902}
   - component: {fileID: 8484305965210510493}
   m_Layer: 0
-  m_Name: StabbyBoy
+  m_Name: StabbyBoySwappedMats
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -220,6 +220,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 200
+  regeneration: 0.8
   combatantType: 0
 --- !u!114 &4365369355350160395
 MonoBehaviour:

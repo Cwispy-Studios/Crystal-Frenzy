@@ -109,4 +109,10 @@ public class Health : MonoBehaviour
       regeneration += upgradeProperties[i].regeneraton;
     }
   }
+
+  public void SetBoostedValues(BoostValues boostValues)
+  {
+      maxHealth += (GameManager.CurrentRound - 1) * boostValues.healthModifier * maxHealth;
+      regeneration += (GameManager.CurrentRound - 1) * boostValues.regeneratonModifier * regeneration;
+  }
 }

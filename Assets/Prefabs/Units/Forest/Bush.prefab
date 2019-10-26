@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 8265050866731321899}
   - component: {fileID: 4235808347420824296}
   - component: {fileID: -730047924417295603}
+  - component: {fileID: -3592790259009596221}
   - component: {fileID: -1532671479032559535}
   - component: {fileID: -4166828967767744573}
   m_Layer: 0
@@ -173,8 +174,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 1200
-  regeneration: 1
+  regeneration: 2.5
   combatantType: 1
+--- !u!114 &-3592790259009596221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7396513783761032937}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6de39788d03a2548a59d36100eec578, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boostValues:
+    healthModifier: 0.07
+    regeneratonModifier: 0.1
+    damageModifier: 0
+    attackSpeedModifier: 0
+    attackRangeModifier: 0
+    detectRangeModifier: 0
+    speedModifier: 0.03
 --- !u!114 &-1532671479032559535
 MonoBehaviour:
   m_ObjectHideFlags: 0

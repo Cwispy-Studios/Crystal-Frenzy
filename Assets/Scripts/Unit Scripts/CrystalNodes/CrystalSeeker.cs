@@ -58,4 +58,9 @@ public class CrystalSeeker : MonoBehaviour
       GetComponent<BezierSolution.BezierWalkerWithSpeed>().speed += upgradeProperties[i].speed;
     }
   }
+
+  public void SetBoostedValues(BoostValues boostValues)
+  {
+    GetComponent<BezierSolution.BezierWalkerWithSpeed>().speed += (GameManager.CurrentRound - 1) * boostValues.speedModifier * GetComponent<BezierSolution.BezierWalkerWithSpeed>().speed;
+  }
 }

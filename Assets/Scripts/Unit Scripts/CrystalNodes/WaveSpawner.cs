@@ -76,10 +76,10 @@ public class WaveSpawner : MonoBehaviour
     // Here we randomise which type of enemy to spawn as specified in CalculateSumOfWeights()
     int randomNumber = Random.Range(0, sumOfWeights);
 
-    // Find the largest cumulative sum that is smaller than this random number, go from the highest to lowest
-    for (int i = enemySpawners.Length - 1; i >= 0; --i)
+    // Find the largest cumulative sum that is smaller than this random number, go from the lowest to highest
+    for (int i = 0; i < enemySpawners.Length; ++i)
     {
-      if (randomNumber < cumulativeSumOfWeights[i])
+      if (cumulativeSumOfWeights[i] > randomNumber)
       {
         enemyToSpawn = enemySpawners[i].enemyType;
         spawnCountdown = RandomFromDistribution.RandomNormalDistribution(enemySpawners[i].meanSpawnInterval, enemySpawners[i].sdSpawnInterval);

@@ -262,4 +262,12 @@ public class Attack : MonoBehaviour
       enemyDetectRange += upgradeProperties[i].detectRange;
     }
   }
+
+  public void SetBoostedValues(BoostValues boostValues)
+  {
+    attackDamage += (GameManager.CurrentRound - 1) * boostValues.damageModifier * attackDamage;
+    attacksPerSecond += (GameManager.CurrentRound - 1) * boostValues.attackSpeedModifier * attacksPerSecond;
+    attackRange += (GameManager.CurrentRound - 1) * boostValues.attackRangeModifier * attackRange;
+    enemyDetectRange += (GameManager.CurrentRound - 1) * boostValues.detectRangeModifier * enemyDetectRange;
+  }
 }

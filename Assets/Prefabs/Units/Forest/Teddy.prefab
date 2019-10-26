@@ -389,6 +389,7 @@ GameObject:
   - component: {fileID: 6535236377957169003}
   - component: {fileID: 6535236377957169004}
   - component: {fileID: 6535236377957168994}
+  - component: {fileID: 8284558412841734293}
   - component: {fileID: 6535236377957168995}
   - component: {fileID: 6535236377957168996}
   m_Layer: 0
@@ -611,7 +612,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 55
-  regeneration: 0.2
+  regeneration: 0.8
   combatantType: 0
 --- !u!114 &6535236377957168994
 MonoBehaviour:
@@ -631,6 +632,26 @@ MonoBehaviour:
   enemyDetectRange: 12
   preferredTarget: 0
   projectilePrefab: {fileID: 0}
+--- !u!114 &8284558412841734293
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6535236377957169005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6de39788d03a2548a59d36100eec578, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boostValues:
+    healthModifier: 0.08
+    regeneratonModifier: 0.15
+    damageModifier: 0
+    attackSpeedModifier: 0
+    attackRangeModifier: 0
+    detectRangeModifier: 0
+    speedModifier: 0.04
 --- !u!114 &6535236377957168995
 MonoBehaviour:
   m_ObjectHideFlags: 0

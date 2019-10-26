@@ -21,10 +21,8 @@ public class UpgradeManager : MonoBehaviour
     bruteUpgradePrefabs = null,
     warlockUpgradePrefabs = null;
 
-  // The LH key holds the upgrade type. The value of this key is a tuple. 
-  // The 1st value of the tuple is the upgraded level of that corresponding upgrade type
-  // The 2nd value of the tuple holds another Dictionary, which holds all the upgrade buttons for every upgrade level of an upgrade type
-  // The key of this Dictionary is the upgrade level and the value is the corresponding upgrade button
+  // The LH key holds the upgrade type. The value of this key holds all the data of the upgrade type
+  // UpgradeLevels holds the max upgradable level, the current level of upgrade and all the upgrade buttons for the upgrade type
   public Dictionary<UPGRADE_TYPE, UpgradeLevels> upgrades;
 
   private void Awake()
