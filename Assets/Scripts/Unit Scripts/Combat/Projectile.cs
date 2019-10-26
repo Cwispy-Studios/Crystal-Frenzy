@@ -5,7 +5,7 @@ public class Projectile : MonoBehaviour
   [SerializeField]
   private float speed = 0;        // How fast the projectile travels
 
-  private int damage;         // How much damage is inflicted upon the target
+  private float damage;         // How much damage is inflicted upon the target
   private GameObject target;  // Object to travel towards to
   private Vector3 targetPos;  // Cache position in case target dies
 
@@ -44,7 +44,7 @@ public class Projectile : MonoBehaviour
     }
   }
 
-  public void SetTarget(GameObject setTarget, int setDamage)
+  public void SetTarget(GameObject setTarget, float setDamage)
   {
     target = setTarget;
     damage = setDamage;

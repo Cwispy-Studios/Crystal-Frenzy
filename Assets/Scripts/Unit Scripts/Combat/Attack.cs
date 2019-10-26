@@ -4,8 +4,8 @@ using UnityEngine.AI;
 public class Attack : MonoBehaviour
 {
   [SerializeField]
-  private int attackDamage = 0;
-  public int AttackDamage
+  private float attackDamage = 0;
+  public float AttackDamage
   {
     get { return attackDamage; }
   }

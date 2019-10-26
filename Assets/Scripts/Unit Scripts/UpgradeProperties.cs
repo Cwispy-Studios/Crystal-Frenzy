@@ -5,11 +5,12 @@ public class UpgradeProperties
 {
   [Header("Health components")]
   // Health components
-  public int health;
+  public float health;
+  public float regeneraton;
 
   [Header("Attack components")]
   // Attack components
-  public int damage;
+  public float damage;
   public float attackSpeed;
   public float attackRange;
   public float detectRange;
@@ -25,20 +26,4 @@ public class UpgradeProperties
   [Header("Recruitment components")]
   // Recruitment components
   public int cost;
-
-  public void Reset()
-  {
-    health = 0;
-
-    damage = 0;
-    attackSpeed = 0;
-    attackRange = 0;
-    detectRange = 0;
-
-    fovRange = 0;
-
-    speed = 0;
-
-    cost = 0;
-  }
 }

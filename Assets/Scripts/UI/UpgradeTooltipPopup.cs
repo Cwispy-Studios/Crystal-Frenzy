@@ -7,12 +7,15 @@ public class UpgradeTooltipPopup : MonoBehaviour
   private Text nameText = null, costText = null, healthText = null, damageText = null, attackSpeedText = null, 
     descriptionText = null, constructText = null;
 
-  public void SetText(string name, int cost, int health, int damage, float attackSpeed, string description, string constructMessage)
+  public void SetText(string name, int cost, float health, float damage, float attackSpeed, string description, string constructMessage)
   {
+    int intHealth = Mathf.CeilToInt(health);
+    int intDamage = Mathf.CeilToInt(damage);
+
     nameText.text = name;
     costText.text = cost.ToString();
-    healthText.text = "+" + health.ToString();
-    damageText.text = "+" + damage.ToString();
+    healthText.text = "+" + intHealth.ToString();
+    damageText.text = "+" + intDamage.ToString();
     attackSpeedText.text = "+" + attackSpeed.ToString();
     descriptionText.text = description;
     constructText.text = constructMessage;

@@ -125,7 +125,7 @@ public class UIInterface : MonoBehaviour
     lootTargetPanel.SetText(gold, crystal);
   }
 
-  public void ShowUnitTooltipPopup(string unitName, int cost, int health, int damage, float attackSpeed, string description, string constructMessage)
+  public void ShowUnitTooltipPopup(string unitName, int cost, float health, float damage, float attackSpeed, string description, string constructMessage)
   {
     unitTooltipPopup.gameObject.SetActive(true);
     unitTooltipPopup.SetText(unitName, cost, health, damage, attackSpeed, description, constructMessage);
@@ -162,7 +162,7 @@ public class UIInterface : MonoBehaviour
     }
   }
 
-  public void ShowUpgradeTooltipPopup(string unitName, int cost, int health, int damage, float attackSpeed, string description, string constructMessage)
+  public void ShowUpgradeTooltipPopup(string unitName, int cost, float health, float damage, float attackSpeed, string description, string constructMessage)
   {
     upgradeTooltipPopup.gameObject.SetActive(true);
     upgradeTooltipPopup.SetText(unitName, cost, health, damage, attackSpeed, description, constructMessage);

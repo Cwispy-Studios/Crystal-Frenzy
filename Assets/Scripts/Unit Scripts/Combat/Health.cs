@@ -20,11 +20,17 @@ public class Health : MonoBehaviour
   public static event Action<Health> OnHealthRemoved = delegate { };
 
   [SerializeField]
-  private int maxHealth = 100;
-  public int MaxHealth
+  private float maxHealth = 100;
+  public float MaxHealth
   {
     get { return maxHealth; }
-    set { maxHealth = value; }
+  }
+
+  [SerializeField]
+  private float regeneration = 0.1f;
+  public float Regeneration
+  {
+    get { return regeneration; }
   }
 
   [SerializeField]
@@ -37,7 +43,7 @@ public class Health : MonoBehaviour
     }
   }
 
-  public int CurrentHealth { get; private set; }
+  public float CurrentHealth { get; private set; }
 
   public event Action<float> OnHealthChanged = delegate { };
 
@@ -46,18 +52,18 @@ public class Health : MonoBehaviour
     CurrentHealth = maxHealth;
   }
 
-  public void ModifyHealth(int amount)
+  public void ModifyHealth(float amount)
   {
     CurrentHealth += amount;
 
     CurrentHealth = Mathf.Clamp(CurrentHealth, 0, maxHealth);
 
-    float currentHealthPct = (float) CurrentHealth / maxHealth;
+    float currentHealthPct = CurrentHealth / maxHealth;
 
     OnHealthChanged(currentHealthPct);
 
     // Kill the unit
-    if (CurrentHealth == 0)
+    if (CurrentHealth <= 0)
     {
       // Check if unit is recruitable, destroys the unit button as well
       RecruitableUnit recruitableUnit = GetComponent<RecruitableUnit>();
@@ -73,7 +79,9 @@ public class Health : MonoBehaviour
 
   private void Update()
   {
-    // Layer 10 is invisible, enemies are set to invisible if they are inside fog of war
+    ModifyHealth(regeneration * Time.deltaTime);
+
+    // Layer 10 is invisible, enemies are set to invisible if they are inside fog of war, we shouldn't see their health bars
     if (CurrentHealth == maxHealth || gameObject.layer == 10)
     {
       OnHealthRemoved(this);
@@ -98,6 +106,7 @@ public class Health : MonoBehaviour
     for (int i = 0; i < upgradeProperties.Length; ++i)
     {
       maxHealth += upgradeProperties[i].health;
+      regeneration += upgradeProperties[i].regeneraton;
     }
   }
 }
