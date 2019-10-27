@@ -49,6 +49,9 @@ public class CrystalSeeker : MonoBehaviour
       if (GetComponent<Faction>().faction == Faction.FACTIONS.GOBLINS)
       {
         gameManager.EscortLose();
+
+        // Set the miner manager health to 10%
+        GameManager.minerManager.MinerDestroyed();
       }
 
       // Enemy's Crystal Seeker died

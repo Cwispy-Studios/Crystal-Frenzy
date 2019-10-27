@@ -91,7 +91,7 @@ public class LootPopup : MonoBehaviour
       {
         compareColour = "<color=white>";
 
-        additionalRewardsText[numAddRewards].text = compareColour + upgradeReward.ToString().Replace("_", " ") + " UPGRADE (" + lootTargetPanel.upgradeRewarded.ToString().Replace("_", " " + "</color>");
+        additionalRewardsText[numAddRewards].text = compareColour + upgradeReward.ToString().Replace("_", " ") + " UPGRADE (" + lootTargetPanel.upgradeRewarded.ToString().Replace("_", " ") + "UPGRADE</color>";
         ++numAddRewards;
       }
       
@@ -105,7 +105,7 @@ public class LootPopup : MonoBehaviour
       
       else if (upgradeRewarded == false && lootTargetPanel.isBuildingSlotRewarded)
       {
-        additionalRewardsText[numAddRewards].text = "<color=red>NONE</color> ( " + upgradeReward.ToString().Replace("_", " ") + ")";
+        additionalRewardsText[numAddRewards].text = "<color=red>NONE</color> (" + upgradeReward.ToString().Replace("_", " ") + ")";
       }
     }
     

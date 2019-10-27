@@ -52,10 +52,10 @@ public class CrystalRewards : MonoBehaviour
   public bool BuildingSlotRewarded { get; private set; } = false;
 
   /**************************************************** RESOURCES VARIABLES ****************************************************/
-  private const float GOLD_PER_POINTONE_LOOT_WEIGHT = 25f;
-  private const float CRYSTAL_PER_POINTONE_LOOT_WEIGHT = 3f;
-  private const float GOLD_INCREASE_PER_NODE = 7f;
-  private const float CRYSTAL_INCREASE_PER_NODE = 0.8f;
+  private const float GOLD_PER_POINTONE_LOOT_WEIGHT = 35f;
+  private const float CRYSTAL_PER_POINTONE_LOOT_WEIGHT = 2.5f;
+  private const float GOLD_INCREASE_PER_NODE = 8.5f;
+  private const float CRYSTAL_INCREASE_PER_NODE = 0.7f;
 
   // Makes units spawn faster
   private float waveSpawnerDifficultyMultiplier = 1f;
@@ -103,7 +103,7 @@ public class CrystalRewards : MonoBehaviour
       //  Debug.Log("----------------------------------------");
       //}
 
-      lootWeight = RandomFromDistribution.RandomRangeLinear(MIN_WEIGHT, MAX_WEIGHT, -2f);
+      lootWeight = RandomFromDistribution.RandomRangeLinear(MIN_WEIGHT, MAX_WEIGHT, -2.2f);
       //lootWeight = RandomFromDistribution.RandomRangeExponential(MIN_WEIGHT, MAX_WEIGHT, 0.5f, RandomFromDistribution.Direction_e.Left);
 
       waveSpawnerDifficultyMultiplier = lootWeight;
@@ -194,10 +194,11 @@ public class CrystalRewards : MonoBehaviour
       cumulativeSumOfWeights[i] = cumulatedWeight;
     }
 
-    // The last number is the chance that no upgrade is rewarded. This is based on the loot weight you get, multiplied by the most expensive upgrade
-    // multiplied by another number to weigh it more or less towards not getting an upgrade. (Having enough loot weight to get here shouldn't be too hard
+    // The last number is the chance that no upgrade is rewarded. At best, it is a 50% chance to not get an upgrade.
+    // This is added on with the max possible loot weight minus the loot weight you get (so a higher loot weight means a lower chance)
+    // multiplied by the most expensive upgrade (Having enough loot weight to get here shouldn't be too hard
     // but actually being able to get an upgrade should be harder)
-    cumulatedWeight += Mathf.FloorToInt((MAX_WEIGHT - lootWeight) * mostExpensiveUpgradeType * 3.35f);
+    cumulatedWeight += cumulatedWeight + Mathf.FloorToInt((MAX_WEIGHT - lootWeight) * mostExpensiveUpgradeType);
     cumulativeSumOfWeights[cumulativeSumOfWeights.Length - 1] = cumulatedWeight;
 
     // Randomise a number which determines which upgrade to reward
