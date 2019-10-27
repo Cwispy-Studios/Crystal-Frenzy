@@ -94,7 +94,7 @@ public class CameraIssueOrdering : MonoBehaviour
     Ray ray = GetComponent<Camera>().ScreenPointToRay(Input.mousePosition);
 
     // Ignore UI elements
-    int layerMask = (1 << 9) | (1 << 10);
+    int layerMask = (1 << 5) | (1 << 9) | (1 << 10);
 
     if (Physics.Raycast(ray, out RaycastHit hit, 500f, ~layerMask))
     {

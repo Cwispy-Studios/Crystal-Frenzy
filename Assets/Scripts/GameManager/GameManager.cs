@@ -221,6 +221,8 @@ public class GameManager : MonoBehaviour
 
   public void EscortWin()
   {
+    resourceManager.GainCrystalManpower();
+
     // Remove all units on the playing field, friendly units are contained in Unit Manager, enemy units are contained in Hideable Manager
     uiInterface.EscortPhaseRemoveAllUnits();
     GetComponent<HideableManager>().RemoveAllUnits();
@@ -301,6 +303,8 @@ public class GameManager : MonoBehaviour
 
   public void EscortLose()
   {
+    resourceManager.GainCrystalManpower();
+
     // Remove all units on the playing field, friendly units are contained in Unit Manager, enemy units are contained in Hideable Manager
     uiInterface.EscortPhaseRemoveAllUnits();
     GetComponent<HideableManager>().RemoveAllUnits();
@@ -398,6 +402,8 @@ public class GameManager : MonoBehaviour
 
   public void DefenseWin()
   {
+    resourceManager.GainCrystalManpower();
+
     // Remove all units on the playing field, friendly units are contained in Unit Manager, enemy units are contained in Hideable Manager
     uiInterface.EscortPhaseRemoveAllUnits();
     GetComponent<HideableManager>().RemoveAllUnits();
@@ -433,6 +439,8 @@ public class GameManager : MonoBehaviour
 
   public void DefenseLose()
   {
+    resourceManager.GainCrystalManpower();
+
     // Remove all units on the playing field, friendly units are contained in Unit Manager, enemy units are contained in Hideable Manager
     uiInterface.EscortPhaseRemoveAllUnits();
     GetComponent<HideableManager>().RemoveAllUnits();
