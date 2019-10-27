@@ -9,11 +9,11 @@ public class MinerManager : MonoBehaviour
   private CrystalSeeker minerPrefab;
 
   public float CurrentMinerHealth { get; private set; }
-  private float maxMinerHealth;
+  public float MaxMinerHealth { get; private set; }
 
   private void Awake()
   {
-    CurrentMinerHealth = maxMinerHealth = minerPrefab.GetComponent<Health>().MaxHealth;
+    CurrentMinerHealth = MaxMinerHealth = minerPrefab.GetComponent<Health>().MaxHealth;
   }
 
   public void HandleMinerHealthChanged(float pct, float currentHealth)
@@ -25,7 +25,14 @@ public class MinerManager : MonoBehaviour
   public void UpgradeMinerHealth(float healthIncrease, float newMaxHealth)
   {
     CurrentMinerHealth += healthIncrease;
-    maxMinerHealth = newMaxHealth;
-    minerHealthBar.fillAmount = CurrentMinerHealth / maxMinerHealth;
+    MaxMinerHealth = newMaxHealth;
+    minerHealthBar.fillAmount = CurrentMinerHealth / MaxMinerHealth;
+  }
+
+  public void RepairMiner(int healthRepaired)
+  {
+    CurrentMinerHealth += healthRepaired;
+    Mathf.Clamp(CurrentMinerHealth, 0, MaxMinerHealth);
+    minerHealthBar.fillAmount = CurrentMinerHealth / MaxMinerHealth;
   }
 }

@@ -174,7 +174,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0192c10ce0d2589489e608135047b104, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 500
+  maxHealth: 350
   regeneration: 2
   combatantType: 1
 --- !u!114 &-3592790259009596221
@@ -190,8 +190,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boostValues:
-    healthModifier: 0.07
-    regeneratonModifier: 0.1
+    healthModifier: 0.1
+    regeneratonModifier: 0.2
     damageModifier: 0
     attackSpeedModifier: 0
     attackRangeModifier: 0

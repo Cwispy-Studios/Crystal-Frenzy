@@ -35,7 +35,8 @@ public class UpgradeManager : MonoBehaviour
     shootyNukeUpgrade = null,
     shootyFastUpgrade = null,
     bruteCheapUpgrade = null,
-    bruteTankUpgrade = null;
+    bruteTankUpgrade = null,
+    crystalMiningUpgrade = null;
 
   // The LH key holds the upgrade type. The value of this key holds all the data of the upgrade type
   // UpgradeLevels holds the max upgradable level, the current level of upgrade and all the upgrade buttons for the upgrade type
@@ -65,6 +66,8 @@ public class UpgradeManager : MonoBehaviour
 
     InitialiseUpgrades(bruteCheapUpgrade, false, new List<UPGRADE_TYPE>(), new List<UPGRADE_TYPE> { UPGRADE_TYPE.BRUTE_TANK });
     InitialiseUpgrades(bruteTankUpgrade, false, new List<UPGRADE_TYPE>(), new List<UPGRADE_TYPE> { UPGRADE_TYPE.BRUTE_CHEAP });
+
+    InitialiseUpgrades(crystalMiningUpgrade, true, new List<UPGRADE_TYPE>(), new List<UPGRADE_TYPE>());
   }
 
   private void InitialiseUpgrades(GameObject[] upgradePrefabs, bool startsAvailable, List<UPGRADE_TYPE> furtherUpgrades, List<UPGRADE_TYPE> exclusive)

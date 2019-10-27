@@ -58,6 +58,11 @@ public class UpgradeButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     GameManager.resourceManager.UpgradeCost(this);
 
     uiInterface.HideUpgradeTooltipPopup();
+
+    if (upgradeType == UPGRADE_TYPE.CRYSTAL_MINING)
+    {
+      GameManager.resourceManager.crystalsPerUnitPoint += 5;
+    }
   }
 
   private void ExternalUpgrade(GameObject newButton)
@@ -356,6 +361,30 @@ public class UpgradeButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
           case 3:
             upgradeName = "Upgraded Brute Tank";
             description = "";
+            break;
+
+          default:
+            Debug.LogError("Upgrade button not found! Upgrade type is " + upgradeType + ", upgrade level is " + upgradeLevel);
+            break;
+        }
+        break;
+
+      case UPGRADE_TYPE.CRYSTAL_MINING:
+        switch (upgradeLevel)
+        {
+          case 1:
+            upgradeName = "Efficient Manpower";
+            description = "Increases the amount of crystals gained per unit point remaining at the end of Escort and Defense Phases.";
+            break;
+
+          case 2:
+            upgradeName = "Efficient Whipping";
+            description = "Increases the amount of crystals gained per unit point remaining at the end of Escort and Defense Phases.";
+            break;
+
+          case 3:
+            upgradeName = "Capital Punishment";
+            description = "Increases the amount of crystals gained per unit point remaining at the end of Escort and Defense Phases.";
             break;
 
           default:

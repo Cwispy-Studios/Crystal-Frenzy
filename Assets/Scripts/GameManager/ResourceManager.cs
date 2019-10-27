@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class ResourceManager : MonoBehaviour
 {
-  private const int CRYSTALS_PER_UNIT_POINT = 5;
+  public int crystalsPerUnitPoint = 5;
 
   [SerializeField]
   private int startingGold = 100, startingCrystals = 0, crystalsIncome = 0, startingUnitCap = 10;
@@ -74,6 +74,6 @@ public class ResourceManager : MonoBehaviour
   
   public void GainCrystalManpower()
   {
-    Crystals += CRYSTALS_PER_UNIT_POINT * ArmySize;
+    Crystals += crystalsPerUnitPoint * ArmySize;
   }
 }
