@@ -87,6 +87,32 @@ public class GameManager : MonoBehaviour
   ///////////////////////////////////////////////////////////////
   // PREPARATION FUNCTIONS
 
+  public void BeginPreparationPhase()
+  {
+    CurrentPhase = PHASES.PREPARATION;
+
+    ++CurrentRound;
+
+    GameObject lastConqueredNode = conqueredNodes[conqueredNodes.Count - 1];
+
+    // Force the camera into a bird's eye view
+    playerCamera.GetComponent<CameraManager>().SetBirdsEyeView(lastConqueredNode.transform.position);
+
+    // Get the latest conquered node and enable the assembly FOV mesh so we can see the conquered node area so we can see the paths and crystal nodes 
+    lastConqueredNode.GetComponent<ConqueredNode>().SetAssemblyFOV(true);
+    // Turn on the path visibility meshes to all the connected nodes we can attack so we can see the path and our options
+    lastConqueredNode.GetComponent<CrystalNode>().SetPathVisibilityMeshes(true);
+
+    // Update the camera bounds
+    playerCamera.GetComponent<CameraControls>().AddCameraBounds(lastConqueredNode.GetComponent<ConqueredNode>().SelectionCameraBound);
+
+    // Set the UI Interfaces to invisible and show the button to select army roster
+    uiInterface.PreparationPhaseSelectNodeUI();
+
+    playerCamera.GetComponent<CameraControls>().enabled = true;
+    playerCamera.GetComponent<CameraIssueOrdering>().enabled = true;
+  }
+
   private void PreparationPhase()
   {
     GameObject lastConqueredNode = conqueredNodes[conqueredNodes.Count - 1];
@@ -124,30 +150,6 @@ public class GameManager : MonoBehaviour
         uiInterface.PreparationPhaseSetAttackButtonInteractable(true);
       }
     }
-  }
-
-  public void BeginPreparationPhase()
-  {
-    CurrentPhase = PHASES.PREPARATION;
-
-    ++CurrentRound;
-
-    GameObject lastConqueredNode = conqueredNodes[conqueredNodes.Count - 1];
-
-    // Force the camera into a bird's eye view
-    playerCamera.GetComponent<CameraManager>().SetBirdsEyeView(lastConqueredNode.transform.position);
-
-    // Get the latest conquered node and set all the temp FOV mesh to true so we can see the paths and crystal nodes 
-    lastConqueredNode.GetComponent<ConqueredNode>().EnablePreparationFOV();
-
-    // Update the camera bounds
-    playerCamera.GetComponent<CameraControls>().AddCameraBounds(lastConqueredNode.GetComponent<ConqueredNode>().SelectionCameraBound);
-
-    // Set the UI Interfaces to invisible and show the button to select army roster
-    uiInterface.PreparationPhaseSelectNodeUI();
-
-    playerCamera.GetComponent<CameraControls>().enabled = true;
-    playerCamera.GetComponent<CameraIssueOrdering>().enabled = true;
   }
 
   public void BeginArmySelection()
@@ -218,8 +220,8 @@ public class GameManager : MonoBehaviour
     // Disables the tree wall so units can pass through
     attackNode.GetComponent<CrystalNode>().DisableTreeWall();
 
-    // Turn off tempFOVMeshes so we can't see the enemies attacking from the path
-    attackingFromNode.GetComponent<ConqueredNode>().DisablePreparationFOV();
+    // Turn off the path visibility meshes to all the connected nodes we don't see the enemies attacking
+    attackingFromNode.GetComponent<CrystalNode>().SetPathVisibilityMeshes(false);
   }
 
   public void EscortWin()
@@ -267,11 +269,8 @@ public class GameManager : MonoBehaviour
       }
     }
 
-    // Turn on all the tempFOVMeshes of every conquered nodes 
-    for (int i = 0; i < conqueredNodes.Count; ++i)
-    {
-      conqueredNodes[i].GetComponent<ConqueredNode>().EnablePreparationFOV();
-    }
+    // Find the node we conquered inside the node we were attacking from, and only turn on only those path visibility meshes
+    attackingFromNode.GetComponent<CrystalNode>().SetConqueredPathVisibilityMeshes(conqueredNode, true);
 
     // Turn the conquered node into your faction
     conqueredNode.GetComponent<Faction>().faction = Faction.FACTIONS.GOBLINS;
@@ -314,17 +313,12 @@ public class GameManager : MonoBehaviour
 
     // Enable the crystal nodes functionalities
     attackNode.GetComponent<CrystalSeekerSpawner>().enabled = true;
-    attackNode.GetComponent<CrystalSeekerSpawner>().SetCrystalTarget(conqueredNodes[conqueredNodes.Count - 1]);
+    // Set the node we were attacking to target the node we were attacking from.
+    attackNode.GetComponent<CrystalSeekerSpawner>().SetDefendingCrystalTarget(conqueredNodes[conqueredNodes.Count - 1]);
     attackNode.GetComponent<CrystalOrder>().enabled = true;
 
     // Disable wave spawners of the conquered node
     attackNode.GetComponent<CrystalNode>().SetWaveSpawnersActive(false, null);
-
-    // Turn on all the tempFOVMeshes of every conquered nodes 
-    for (int i = 0; i < conqueredNodes.Count; ++i)
-    {
-      conqueredNodes[i].GetComponent<ConqueredNode>().EnablePreparationFOV();
-    }
 
     BeginPreparationDefensePhase();
   }
@@ -342,15 +336,11 @@ public class GameManager : MonoBehaviour
     // Set the camera to point at the assembly space
     playerCamera.GetComponent<CameraManager>().PointCameraAtAssembly(attackingFromNode.GetComponent<ConqueredNode>().AssemblySpace.transform.position);
 
-    // Get the latest conquered node and set all the temp FOV mesh to true so we can see the paths and crystal nodes 
-    attackingFromNode.GetComponent<ConqueredNode>().EnablePreparationFOV();
-
-    playerCamera.GetComponent<CameraIssueOrdering>().enabled = true;
+    // Disables the player from issuing orders to units
+    playerCamera.GetComponent<CameraIssueOrdering>().enabled = false;
 
     uiInterface.PreparationDefensePhaseSelectArmyUI();
-    
-    // Disable the camera ordering
-    playerCamera.GetComponent<CameraIssueOrdering>().enabled = false;
+
     // Set the unit manager assembly space reference
     uiInterface.UnitManager.SetAssemblySpace(attackingFromNode.GetComponent<ConqueredNode>().AssemblySpace);
 
@@ -399,9 +389,6 @@ public class GameManager : MonoBehaviour
     attackNode.GetComponent<CrystalNode>().SetWaveSpawnersActive(true, spawnedCrystalSeeker);
     // Disables the tree wall so units can pass through
     attackNode.GetComponent<CrystalNode>().DisableTreeWall();
-
-    // Turn off tempFOVMeshes so we can't see the enemies attacking from the path
-    conqueredNodes[conqueredNodes.Count - 1].GetComponent<ConqueredNode>().DisablePreparationFOV();
   }
 
   public void DefenseWin()
@@ -420,12 +407,6 @@ public class GameManager : MonoBehaviour
 
     // Disable wave spawners of the conquered node
     attackNode.GetComponent<CrystalNode>().SetWaveSpawnersActive(false, null);
-
-    // Turn on all the tempFOVMeshes of every conquered nodes 
-    for (int i = 0; i < conqueredNodes.Count; ++i)
-    {
-      conqueredNodes[i].GetComponent<ConqueredNode>().EnablePreparationFOV();
-    }
 
     nodeSelected = false;
 
@@ -461,7 +442,7 @@ public class GameManager : MonoBehaviour
     // Enable the crystal nodes functionalities of the new attacking node
     attackNode.GetComponent<Faction>().faction = Faction.FACTIONS.NEUTRAL;
     attackNode.GetComponent<CrystalSeekerSpawner>().enabled = true;
-    attackNode.GetComponent<CrystalSeekerSpawner>().SetCrystalTarget(conqueredNodes[conqueredNodes.Count - 1]);
+    attackNode.GetComponent<CrystalSeekerSpawner>().SetDefendingCrystalTarget(conqueredNodes[conqueredNodes.Count - 1]);
     attackNode.GetComponent<CrystalOrder>().enabled = true;
 
     // Lose the crystal income from that node
@@ -485,11 +466,8 @@ public class GameManager : MonoBehaviour
     // Disable wave spawners of the new attacking node
     attackNode.GetComponent<CrystalNode>().SetWaveSpawnersActive(false, null);
 
-    // Turn on all the tempFOVMeshes of every conquered nodes 
-    for (int i = 0; i < conqueredNodes.Count; ++i)
-    {
-      conqueredNodes[i].GetComponent<ConqueredNode>().EnablePreparationFOV();
-    }
+    // Turn off the assembly visibility mesh of the node we lost
+    attackNode.GetComponent<ConqueredNode>().SetAssemblyFOV(false);
 
     BeginPreparationDefensePhase();
   }

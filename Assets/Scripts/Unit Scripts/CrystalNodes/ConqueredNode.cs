@@ -11,7 +11,7 @@ public class ConqueredNode : MonoBehaviour
   }
 
   [SerializeField]
-  private GameObject[] tempFOVMeshes = null;
+  private GameObject assemblyFOVMesh = null;
   [SerializeField]
   private GameObject selectionCameraBound;
   public GameObject SelectionCameraBound
@@ -22,19 +22,24 @@ public class ConqueredNode : MonoBehaviour
 
   public bool conquered = false;
 
-  public void EnablePreparationFOV()
+  public void SetAssemblyFOV(bool active)
   {
-    for (int i = 0; i < tempFOVMeshes.Length; ++i)
-    {
-      tempFOVMeshes[i].SetActive(true);
-    }
+    assemblyFOVMesh.SetActive(active);
   }
 
-  public void DisablePreparationFOV()
-  {
-    for (int i = 0; i < tempFOVMeshes.Length; ++i)
-    {
-      tempFOVMeshes[i].SetActive(false);
-    }
-  }
+  //public void EnablePreparationFOV()
+  //{
+  //  for (int i = 0; i < assemblyFOVMeshes.Length; ++i)
+  //  {
+  //    assemblyFOVMeshes[i].SetActive(true);
+  //  }
+  //}
+
+  //public void DisablePreparationFOV()
+  //{
+  //  for (int i = 0; i < assemblyFOVMeshes.Length; ++i)
+  //  {
+  //    assemblyFOVMeshes[i].SetActive(false);
+  //  }
+  //}
 }

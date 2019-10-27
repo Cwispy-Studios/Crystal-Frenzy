@@ -72,6 +72,9 @@ public class CrystalSeekerSpawner : MonoBehaviour
   public void SetDefendingCrystalTarget(GameObject target)
   {
     crystalTarget = target;
+
+    // We need to retrieve the crystal spline from the target the enemy is attacking.
+    crystalPath = target.GetComponent<CrystalNode>().RetrieveSpline(gameObject);
   }
 
   public GameObject SpawnCrystalSeeker()

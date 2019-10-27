@@ -6,4 +6,5 @@ public class ConnectedNodeData
   public GameObject connectedNode;
   public GameObject pathSpline;
   public GameObject[] pathVisibilityMeshes;
+  public GameObject cameraBound;
 }
