@@ -87,6 +87,20 @@ public class CrystalNode : MonoBehaviour
     }
   }
 
+  public GameObject RetrieveCameraBound(GameObject attackingNode)
+  {
+    for (int connectedNodeIndex = 0; connectedNodeIndex < connectedNodesData.Length; ++connectedNodeIndex)
+    {
+      // Find the node we conquered and set those visibility paths as active
+      if (attackingNode == connectedNodesData[connectedNodeIndex].connectedNode)
+      {
+        return connectedNodesData[connectedNodeIndex].cameraBound;
+      }
+    }
+
+    return null;
+  }
+
   public void SetWaveSpawnersActive(bool active, GameObject target)
   {
     foreach (GameObject spawnPoint in spawnPoints)

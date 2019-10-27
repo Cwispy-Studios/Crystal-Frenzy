@@ -23,13 +23,21 @@ public class CrystalSeeker : MonoBehaviour
         Destroy(gameObject);
       }
 
-      // Enemy captures your node OR defense phase and all your units are dead
-      else if (GetComponent<Faction>().faction == Faction.FACTIONS.FOREST || (GameManager.CurrentPhase == PHASES.DEFENSE && GameManager.resourceManager.ArmySize == 0))
+      // Enemy captures your node
+      else if (GetComponent<Faction>().faction == Faction.FACTIONS.FOREST)
       {
         crystalSeekerReachedTarget = true;
         gameManager.DefenseLose();
         Destroy(gameObject);
       }
+    }
+
+    // Defense phase and all your units die
+    else if ((GameManager.CurrentPhase == PHASES.DEFENSE && GameManager.resourceManager.ArmySize == 0))
+    {
+      crystalSeekerReachedTarget = true;
+      gameManager.DefenseLose();
+      Destroy(gameObject);
     }
   }
 

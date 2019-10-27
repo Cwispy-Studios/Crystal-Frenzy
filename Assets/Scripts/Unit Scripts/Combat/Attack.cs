@@ -3,6 +3,8 @@ using UnityEngine.AI;
 
 public class Attack : MonoBehaviour
 {
+  private const float STOPPING_MARGIN = 1f;
+
   [SerializeField]
   private float attackDamage = 0;
   public float AttackDamage
@@ -203,7 +205,7 @@ public class Attack : MonoBehaviour
 
     else
     {
-      GetComponent<NavMeshAgent>().stoppingDistance = attackRange + unitRadius + enemyRadius;
+      GetComponent<NavMeshAgent>().stoppingDistance = attackRange + unitRadius + enemyRadius - STOPPING_MARGIN;
       GetComponent<NavMeshAgent>().destination = enemy.transform.position;
     }
   }

@@ -109,6 +109,7 @@ public class UnitManager : MonoBehaviour
   public void KillUnit(GameObject removeButton, int unitPoints)
   {
     SelectedUnits.Remove(removeButton.GetComponent<UnitButton>().Unit);
+    UnselectedUnits.Remove(removeButton.GetComponent<UnitButton>().Unit);
     RemoveUnitFromList(removeButton.GetComponent<UnitButton>().Unit);
     unitButtonsList.Remove(removeButton);
 

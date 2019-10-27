@@ -20,6 +20,7 @@ GameObject:
   - component: {fileID: -3592790259009596221}
   - component: {fileID: -1532671479032559535}
   - component: {fileID: -4166828967767744573}
+  - component: {fileID: -2290414493991377031}
   m_Layer: 0
   m_Name: Bush
   m_TagString: Untagged
@@ -173,8 +174,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0192c10ce0d2589489e608135047b104, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 1200
-  regeneration: 2.5
+  maxHealth: 500
+  regeneration: 2
   combatantType: 1
 --- !u!114 &-3592790259009596221
 MonoBehaviour:
@@ -210,7 +211,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spline: {fileID: 0}
   travelMode: 0
-  speed: 2.5
+  speed: 1.75
   rotationLerpModifier: 5
   lookForward: 1
   onPathCompleted:
@@ -228,5 +229,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 09b88cc0cadcf8949975609bdfeae27b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-2290414493991377031
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7396513783761032937}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9347d1a8695b16347b2077e2606b6f70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

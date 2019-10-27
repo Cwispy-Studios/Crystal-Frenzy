@@ -82,7 +82,16 @@ public class WaveSpawner : MonoBehaviour
       if (cumulativeSumOfWeights[i] > randomNumber)
       {
         enemyToSpawn = enemySpawners[i].enemyType;
-        spawnCountdown = RandomFromDistribution.RandomNormalDistribution(enemySpawners[i].meanSpawnInterval, enemySpawners[i].sdSpawnInterval);
+
+        float difficultyModifier = 1f;
+
+        // Enemies spawn slower in defense phase
+        if (GameManager.CurrentPhase == PHASES.DEFENSE)
+        {
+          difficultyModifier = 1.5f;
+        }
+
+        spawnCountdown = RandomFromDistribution.RandomNormalDistribution(enemySpawners[i].meanSpawnInterval * difficultyModifier, enemySpawners[i].sdSpawnInterval);
 
         break;
       }

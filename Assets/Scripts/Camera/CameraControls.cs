@@ -217,4 +217,12 @@ public class CameraControls : MonoBehaviour
       cameraBounds.Add(cameraBound);
     }
   }
+
+  public void RemoveCameraBounds(GameObject cameraBound)
+  {
+    if (cameraBounds.Contains(cameraBound))
+    {
+      cameraBounds.Remove(cameraBound);
+    }
+  }
 }

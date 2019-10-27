@@ -195,10 +195,17 @@ public class GameManager : MonoBehaviour
 
     uiInterface.PreparationPhaseDisableUI();
 
+    GameObject attackingFromNode = conqueredNodes[conqueredNodes.Count - 1];
+
     playerCamera.GetComponent<CameraIssueOrdering>().enabled = true;
 
+    // Update the camera bounds
+    // Remove the selection camera bounds from the attacking node
+    playerCamera.GetComponent<CameraControls>().RemoveCameraBounds(attackingFromNode.GetComponent<ConqueredNode>().SelectionCameraBound);
+    // Add the specific path camera bound we are attacking 
+    playerCamera.GetComponent<CameraControls>().AddCameraBounds(attackingFromNode.GetComponent<CrystalNode>().RetrieveCameraBound(attackNode));
+
     // Disabled the crystal nodes functionalities and spawns a crystal seeker
-    GameObject attackingFromNode = conqueredNodes[conqueredNodes.Count - 1];
     GameObject spawnedCrystalSeeker = attackingFromNode.GetComponent<CrystalSeekerSpawner>().SpawnCrystalSeeker();
     attackingFromNode.GetComponent<CrystalSeekerSpawner>().ResetCrystalSelection();
     attackingFromNode.GetComponent<CrystalSeekerSpawner>().enabled = false;
@@ -429,6 +436,11 @@ public class GameManager : MonoBehaviour
     // Remove all units on the playing field, friendly units are contained in Unit Manager, enemy units are contained in Hideable Manager
     uiInterface.EscortPhaseRemoveAllUnits();
     GetComponent<HideableManager>().RemoveAllUnits();
+
+    GameObject lostNode = conqueredNodes[conqueredNodes.Count - 1];
+
+    // Remove the path camera bounds from the node we lost
+    playerCamera.GetComponent<CameraControls>().RemoveCameraBounds(lostNode.GetComponent<CrystalNode>().RetrieveCameraBound(attackNode));
 
     // Disable wave spawners and crystal nodes functionalities of the attacking node we lost to
     attackNode.GetComponent<CrystalNode>().SetWaveSpawnersActive(false, null);
