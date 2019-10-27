@@ -38,7 +38,7 @@ public class CrystalRewards : MonoBehaviour
   private float lootWeight = 1f;
 
   // The margin from min and max weight before upgrades have a chance to be included as a reward
-  private const float MIN_REWARD_MARGIN = 0.25f;
+  private const float MIN_REWARD_MARGIN = 0.3f;
   private const float MAX_REWARD_MARGIN = 0.15f;
   private const float MIN_REWARD_WEIGHT = MIN_WEIGHT + MIN_REWARD_MARGIN;
   private const float MAX_REWARD_WEIGHT = MAX_WEIGHT - MAX_REWARD_MARGIN;
@@ -48,7 +48,7 @@ public class CrystalRewards : MonoBehaviour
 
 
   /**************************************************** BUILDING SLOT VARIABLES ****************************************************/
-  private const float BUILDING_SLOT_CHANCE = 0.45f;
+  private const float BUILDING_SLOT_CHANCE = 0.4f;
   public bool BuildingSlotRewarded { get; private set; } = false;
 
   /**************************************************** RESOURCES VARIABLES ****************************************************/
@@ -197,7 +197,7 @@ public class CrystalRewards : MonoBehaviour
     // The last number is the chance that no upgrade is rewarded. This is based on the loot weight you get, multiplied by the most expensive upgrade
     // multiplied by another number to weigh it more or less towards not getting an upgrade. (Having enough loot weight to get here shouldn't be too hard
     // but actually being able to get an upgrade should be harder)
-    cumulatedWeight += Mathf.FloorToInt((MAX_WEIGHT - lootWeight) * mostExpensiveUpgradeType * 3f);
+    cumulatedWeight += Mathf.FloorToInt((MAX_WEIGHT - lootWeight) * mostExpensiveUpgradeType * 3.35f);
     cumulativeSumOfWeights[cumulativeSumOfWeights.Length - 1] = cumulatedWeight;
 
     // Randomise a number which determines which upgrade to reward
@@ -210,7 +210,7 @@ public class CrystalRewards : MonoBehaviour
       {
         waveSpawnerDifficultyMultiplier += 0.2f;
         // Makes the resource rewards lesser
-        lootWeight -= 0.55f;
+        lootWeight -= 0.45f;
         RewardedUpgrade = averagePricesPerUpgradeType[i].upgradeType;
         RewardsUpgrade = true;
         Debug.Log("Rewarded upgrade: " + RewardedUpgrade);

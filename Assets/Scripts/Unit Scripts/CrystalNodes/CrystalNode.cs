@@ -3,6 +3,9 @@
 public class CrystalNode : MonoBehaviour
 {
   [SerializeField]
+  private ConnectedNodeData[] connectedNodesData;
+
+  [SerializeField]
   private GameObject[] connectedNodes = null;
   [SerializeField]
   private GameObject[] pathSplines = null;
@@ -20,10 +23,24 @@ public class CrystalNode : MonoBehaviour
   {
     for (int i = 0; i < connectedNodes.Length; ++i)
     {
+      // Check if the crystal selected is connected to this node, and if the crystal does not already belong to the player, 
+      // AND the crystal node number must be greater than or equal to this node
       if (connectedNodes[i] == checkObject && checkObject.GetComponent<Faction>().faction != GetComponent<Faction>().faction)
       {
         setTarget = checkObject;
         crystalPath = pathSplines[i];
+
+        for (int notSelected = 0; notSelected < connectedNodes.Length; ++notSelected)
+        {
+          if (notSelected != i)
+          {
+            ParticleSystem particleSystem = pathSplines[notSelected].GetComponentInChildren<ParticleSystem>();
+            var emittor = particleSystem.emission;
+
+            emittor.enabled = false;
+            particleSystem.Clear();
+          }
+        }
 
         break;
       }

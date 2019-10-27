@@ -153,6 +153,7 @@ public class CameraControls : MonoBehaviour
     {
       // Every bounds we check, if out of bounds we save a corrected value to clamp the position to
       float correctedX = 0;
+      float closestCorrection = 99999f;
 
       for (int i = 0; i < cameraBounds.Count; ++i)
       {
@@ -165,12 +166,18 @@ public class CameraControls : MonoBehaviour
           // and the x-axis may be valid for the next one, if it is then we do not need to correct
           if (tempCamPosition.x < cameraBound.min.x)
           {
-            correctedX = cameraBound.min.x;
+            if (Mathf.Abs(tempCamPosition.x - cameraBound.min.x) < closestCorrection)
+            {
+              correctedX = cameraBound.min.x;
+            }
           }
 
           else if (tempCamPosition.x > cameraBound.max.x)
           {
-            correctedX = cameraBound.max.x;
+            if (Mathf.Abs(tempCamPosition.x - cameraBound.min.x) < closestCorrection)
+            {
+              correctedX = cameraBound.max.x;
+            }
           }
 
           // The x-axis is in bounds, so the move is valid. We can then stop the function since we know the move is valid

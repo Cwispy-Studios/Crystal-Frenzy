@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
   public static ResourceManager resourceManager;
   public static BuildingManager buildingManager;
   public static UpgradeManager upgradeManager;
+  public static MinerManager minerManager;
 
   private List<GameObject> conqueredNodes;
   private GameObject attackNode;
@@ -36,6 +37,7 @@ public class GameManager : MonoBehaviour
     resourceManager = GetComponent<ResourceManager>();
     buildingManager = GetComponent<BuildingManager>();
     upgradeManager = GetComponent<UpgradeManager>();
+    minerManager = GetComponent<MinerManager>();
 
     conqueredNodes = new List<GameObject>
     {

@@ -43,13 +43,21 @@ public class Health : MonoBehaviour
     }
   }
 
-  public float CurrentHealth { get; private set; }
+  public float CurrentHealth { get; protected set; }
 
   public event Action<float> OnHealthChanged = delegate { };
 
   private void Start()
   {
-    CurrentHealth = maxHealth;
+    if (GetComponent<CrystalSeeker>() != null && GetComponent<Faction>().faction == Faction.FACTIONS.GOBLINS)
+    {
+      CurrentHealth = GameManager.minerManager.CurrentMinerHealth;
+    }
+
+    else
+    {
+      CurrentHealth = maxHealth;
+    }
   }
 
   public void ModifyHealth(float amount)
@@ -61,6 +69,11 @@ public class Health : MonoBehaviour
     float currentHealthPct = CurrentHealth / maxHealth;
 
     OnHealthChanged(currentHealthPct);
+    
+    if (GetComponent<CrystalSeeker>() != null && GetComponent<Faction>().faction == Faction.FACTIONS.GOBLINS)
+    {
+      GameManager.minerManager.HandleMinerHealthChanged(currentHealthPct, CurrentHealth);
+    }
 
     // Kill the unit
     if (CurrentHealth <= 0)
@@ -107,6 +120,11 @@ public class Health : MonoBehaviour
     {
       maxHealth += upgradeProperties[i].health;
       regeneration += upgradeProperties[i].regeneraton;
+
+      if (GetComponent<CrystalSeeker>() != null && GetComponent<Faction>().faction == Faction.FACTIONS.GOBLINS)
+      {
+        GameManager.minerManager.UpgradeMinerHealth(upgradeProperties[i].health, maxHealth);
+      }
     }
   }
 
