@@ -19,9 +19,9 @@ public class CrystalNode : MonoBehaviour
   // To add disable component in inspector
   private void Start() { }
 
-  public void CheckCrystalIsValid(GameObject checkObject, ref GameObject setTarget, ref GameObject crystalPath)
+  public bool CheckCrystalIsValid(GameObject checkObject, ref GameObject setTarget, ref GameObject crystalPath)
   {
-    for (int i = 0; i < connectedNodes.Length; ++i)
+    for (int i = 0; i < connectedNodesData.Length; ++i)
     {
       // Check if the crystal selected is connected to this node, and if the crystal does not already belong to the player, 
       // AND the crystal node number must be greater than or equal to this node
@@ -42,9 +42,11 @@ public class CrystalNode : MonoBehaviour
           }
         }
 
-        break;
+        return true;
       }
     }
+
+    return false;
   }
 
   public void SetWaveSpawnersActive(bool active, GameObject target)

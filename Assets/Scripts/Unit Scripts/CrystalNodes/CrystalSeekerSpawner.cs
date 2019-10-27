@@ -26,16 +26,9 @@ public class CrystalSeekerSpawner : MonoBehaviour
 
   private void Update()
   {
-    if (crystalTarget != null && crystalPath != null)
+    if (crystalSelected)
     {
-      crystalSelected = true;
-
       PathIndicatorIllumination();
-    }
-
-    else
-    {
-      crystalSelected = false;
     }
   }
 
@@ -64,8 +57,21 @@ public class CrystalSeekerSpawner : MonoBehaviour
     {
       // Check against the connected nodes if that crystal is connected with this object and if crystal does not already belong to the player
       // Also saves the crystal path if it is valid
-      GetComponent<CrystalNode>().CheckCrystalIsValid(target, ref crystalTarget, ref crystalPath);
+      if (GetComponent<CrystalNode>().CheckCrystalIsValid(target, ref crystalTarget, ref crystalPath))
+      {
+        crystalSelected = true;
+      }
+
+      else
+      {
+        crystalSelected = false;
+      }
     }
+  }
+
+  public void SetDefendingCrystalTarget(GameObject target)
+  {
+    crystalTarget = target;
   }
 
   public GameObject SpawnCrystalSeeker()
@@ -111,12 +117,13 @@ public class CrystalSeekerSpawner : MonoBehaviour
 
   public void ResetCrystalSelection()
   {
+    TurnOffPathIllumination();
     crystalTarget = null;
     crystalPath = null;
     crystalSelected = false;
   }
 
-  private void OnDisable()
+  private void TurnOffPathIllumination()
   {
     if (crystalPath != null)
     {

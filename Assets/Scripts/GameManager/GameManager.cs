@@ -141,7 +141,7 @@ public class GameManager : MonoBehaviour
     lastConqueredNode.GetComponent<ConqueredNode>().EnablePreparationFOV();
 
     // Update the camera bounds
-    playerCamera.GetComponent<CameraControls>().AddCameraBounds(lastConqueredNode.GetComponent<ConqueredNode>().CameraBound);
+    playerCamera.GetComponent<CameraControls>().AddCameraBounds(lastConqueredNode.GetComponent<ConqueredNode>().SelectionCameraBound);
 
     // Set the UI Interfaces to invisible and show the button to select army roster
     uiInterface.PreparationPhaseSelectNodeUI();
@@ -198,6 +198,7 @@ public class GameManager : MonoBehaviour
     // Disabled the crystal nodes functionalities and spawns a crystal seeker
     GameObject attackingFromNode = conqueredNodes[conqueredNodes.Count - 1];
     GameObject spawnedCrystalSeeker = attackingFromNode.GetComponent<CrystalSeekerSpawner>().SpawnCrystalSeeker();
+    attackingFromNode.GetComponent<CrystalSeekerSpawner>().ResetCrystalSelection();
     attackingFromNode.GetComponent<CrystalSeekerSpawner>().enabled = false;
     attackingFromNode.GetComponent<CrystalOrder>().enabled = false;
 
@@ -276,7 +277,7 @@ public class GameManager : MonoBehaviour
     conqueredNode.GetComponent<Faction>().faction = Faction.FACTIONS.GOBLINS;
 
     // Update the camera bounds
-    playerCamera.GetComponent<CameraControls>().AddCameraBounds(conqueredNode.GetComponent<ConqueredNode>().CameraBound);
+    playerCamera.GetComponent<CameraControls>().AddCameraBounds(conqueredNode.GetComponent<ConqueredNode>().SelectionCameraBound);
 
     uiInterface.UpdateLootTargetPanel(0, 0, false, false, UPGRADE_TYPE.LAST);
 
@@ -388,6 +389,7 @@ public class GameManager : MonoBehaviour
 
     // Disable the crystal nodes functionalities and spawns a crystal seeker
     GameObject spawnedCrystalSeeker = attackNode.GetComponent<CrystalSeekerSpawner>().SpawnCrystalSeeker();
+    attackNode.GetComponent<CrystalSeekerSpawner>().ResetCrystalSelection();
     attackNode.GetComponent<CrystalSeekerSpawner>().enabled = false;
 
     // Change unit panel buttons to combat buttons so clicking on them selects units instead of deleting them

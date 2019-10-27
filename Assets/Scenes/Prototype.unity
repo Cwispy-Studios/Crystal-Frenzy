@@ -1206,7 +1206,7 @@ PrefabInstance:
     - target: {fileID: 2176489734026949283, guid: 867dd8fa1b64e2d41b7fd836efdd719e,
         type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1653367792446962587, guid: 867dd8fa1b64e2d41b7fd836efdd719e,
         type: 3}
@@ -1237,6 +1237,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7406312429625842019, guid: 867dd8fa1b64e2d41b7fd836efdd719e,
         type: 3}
+      propertyPath: connectedNodesData.Array.data[0].pathVisibilityMeshes.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7406312429625842019, guid: 867dd8fa1b64e2d41b7fd836efdd719e,
+        type: 3}
       propertyPath: connectedNodes.Array.data[0]
       value: 
       objectReference: {fileID: 6609814139638013112}
@@ -1260,6 +1265,16 @@ PrefabInstance:
       propertyPath: connectedNodesData.Array.data[0].pathSpline
       value: 
       objectReference: {fileID: 488553596}
+    - target: {fileID: 7406312429625842019, guid: 867dd8fa1b64e2d41b7fd836efdd719e,
+        type: 3}
+      propertyPath: connectedNodesData.Array.data[0].pathVisibilityMeshes.Array.data[0]
+      value: 
+      objectReference: {fileID: 889630323}
+    - target: {fileID: 7406312429625842019, guid: 867dd8fa1b64e2d41b7fd836efdd719e,
+        type: 3}
+      propertyPath: connectedNodesData.Array.data[0].pathVisibilityMeshes.Array.data[1]
+      value: 
+      objectReference: {fileID: 1894789660}
     - target: {fileID: 9086957502837967012, guid: 867dd8fa1b64e2d41b7fd836efdd719e,
         type: 3}
       propertyPath: crystalNodesSplines.Array.size
@@ -7402,6 +7417,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: CrystalNode
       objectReference: {fileID: 0}
+    - target: {fileID: 8532510506944539445, guid: 515433029e942ff46a8ae49154164f32,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4625980501723797798, guid: 515433029e942ff46a8ae49154164f32,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7440,7 +7460,7 @@ PrefabInstance:
     - target: {fileID: 4625980501723797798, guid: 515433029e942ff46a8ae49154164f32,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4625980501723797798, guid: 515433029e942ff46a8ae49154164f32,
         type: 3}
@@ -7456,6 +7476,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7950338876556812265, guid: 515433029e942ff46a8ae49154164f32,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 515433029e942ff46a8ae49154164f32, type: 3}
@@ -12420,7 +12445,7 @@ PrefabInstance:
     - target: {fileID: 4625980501723797798, guid: 515433029e942ff46a8ae49154164f32,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4625980501723797798, guid: 515433029e942ff46a8ae49154164f32,
         type: 3}
@@ -19135,7 +19160,7 @@ GameObject:
   - component: {fileID: 588420169}
   - component: {fileID: 588420168}
   m_Layer: 10
-  m_Name: CameraBound
+  m_Name: SelectionCameraBound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19873,6 +19898,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: CrystalNode (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8532510506944539445, guid: 515433029e942ff46a8ae49154164f32,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4625980501723797798, guid: 515433029e942ff46a8ae49154164f32,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -20572,12 +20602,12 @@ Transform:
   m_Children:
   - {fileID: 576539452}
   - {fileID: 1775000364}
+  - {fileID: 127503179}
   - {fileID: 7917784616187768491}
   - {fileID: 210427857}
   - {fileID: 795398030}
-  - {fileID: 127503179}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &760825541
 GameObject:
@@ -20712,6 +20742,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: CrystalNode (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8532510506944539445, guid: 515433029e942ff46a8ae49154164f32,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4625980501723797798, guid: 515433029e942ff46a8ae49154164f32,
         type: 3}
@@ -21067,7 +21102,7 @@ PrefabInstance:
     - target: {fileID: 4625980501723797798, guid: 515433029e942ff46a8ae49154164f32,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4625980501723797798, guid: 515433029e942ff46a8ae49154164f32,
         type: 3}
@@ -22861,6 +22896,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: CrystalNode (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8532510506944539445, guid: 515433029e942ff46a8ae49154164f32,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4625980501723797798, guid: 515433029e942ff46a8ae49154164f32,
         type: 3}
@@ -25431,6 +25471,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: CrystalNode (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 8532510506944539445, guid: 515433029e942ff46a8ae49154164f32,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4625980501723797798, guid: 515433029e942ff46a8ae49154164f32,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -25827,7 +25872,7 @@ MonoBehaviour:
   - {fileID: 1226674884}
   - {fileID: 889630323}
   - {fileID: 1894789660}
-  cameraBound: {fileID: 2066059685}
+  selectionCameraBound: {fileID: 2066059685}
   conquered: 0
 --- !u!1 &1481862224
 GameObject:
@@ -25861,7 +25906,7 @@ Transform:
   - {fileID: 126032205}
   - {fileID: 1331269609}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1508061320
 GameObject:
@@ -25975,7 +26020,7 @@ Transform:
   - {fileID: 1452845805}
   - {fileID: 1930881270}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1534395767
 GameObject:
@@ -26705,7 +26750,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1.0000001, z: 0.99999994}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 37.586002, y: -32.423, z: 9.858001}
 --- !u!1001 &1649974002
 PrefabInstance:
@@ -27814,6 +27859,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: CrystalNode (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8532510506944539445, guid: 515433029e942ff46a8ae49154164f32,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4625980501723797798, guid: 515433029e942ff46a8ae49154164f32,
         type: 3}
@@ -29197,7 +29247,7 @@ Transform:
   - {fileID: 1886751013}
   - {fileID: 294830233}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1926628599
 GameObject:
@@ -40536,7 +40586,7 @@ GameObject:
   - component: {fileID: 2066059688}
   - component: {fileID: 2066059687}
   m_Layer: 10
-  m_Name: CameraBound
+  m_Name: SelectionCameraBound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -41109,7 +41159,7 @@ PrefabInstance:
     - target: {fileID: 4625980501723797798, guid: 515433029e942ff46a8ae49154164f32,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4625980501723797798, guid: 515433029e942ff46a8ae49154164f32,
         type: 3}
@@ -41176,6 +41226,11 @@ PrefabInstance:
       propertyPath: tempFOVMeshes.Array.data[5]
       value: 
       objectReference: {fileID: 2042762536}
+    - target: {fileID: -6445918545018131961, guid: 515433029e942ff46a8ae49154164f32,
+        type: 3}
+      propertyPath: selectionCameraBound
+      value: 
+      objectReference: {fileID: 588420166}
     - target: {fileID: 3721100528942192966, guid: 515433029e942ff46a8ae49154164f32,
         type: 3}
       propertyPath: spawnPoints.Array.size
@@ -41189,6 +41244,11 @@ PrefabInstance:
     - target: {fileID: 3721100528942192966, guid: 515433029e942ff46a8ae49154164f32,
         type: 3}
       propertyPath: pathSplines.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3721100528942192966, guid: 515433029e942ff46a8ae49154164f32,
+        type: 3}
+      propertyPath: connectedNodesData.Array.size
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3721100528942192966, guid: 515433029e942ff46a8ae49154164f32,
@@ -41249,6 +41309,36 @@ PrefabInstance:
     - target: {fileID: 3721100528942192966, guid: 515433029e942ff46a8ae49154164f32,
         type: 3}
       propertyPath: pathSplines.Array.data[2]
+      value: 
+      objectReference: {fileID: 499539286}
+    - target: {fileID: 3721100528942192966, guid: 515433029e942ff46a8ae49154164f32,
+        type: 3}
+      propertyPath: connectedNodesData.Array.data[0].connectedNode
+      value: 
+      objectReference: {fileID: 1474019194}
+    - target: {fileID: 3721100528942192966, guid: 515433029e942ff46a8ae49154164f32,
+        type: 3}
+      propertyPath: connectedNodesData.Array.data[0].pathSpline
+      value: 
+      objectReference: {fileID: 488553596}
+    - target: {fileID: 3721100528942192966, guid: 515433029e942ff46a8ae49154164f32,
+        type: 3}
+      propertyPath: connectedNodesData.Array.data[1].connectedNode
+      value: 
+      objectReference: {fileID: 210427856}
+    - target: {fileID: 3721100528942192966, guid: 515433029e942ff46a8ae49154164f32,
+        type: 3}
+      propertyPath: connectedNodesData.Array.data[2].connectedNode
+      value: 
+      objectReference: {fileID: 795398029}
+    - target: {fileID: 3721100528942192966, guid: 515433029e942ff46a8ae49154164f32,
+        type: 3}
+      propertyPath: connectedNodesData.Array.data[1].pathSpline
+      value: 
+      objectReference: {fileID: 2090115094034611644}
+    - target: {fileID: 3721100528942192966, guid: 515433029e942ff46a8ae49154164f32,
+        type: 3}
+      propertyPath: connectedNodesData.Array.data[2].pathSpline
       value: 
       objectReference: {fileID: 499539286}
     - target: {fileID: 7950338876556812265, guid: 515433029e942ff46a8ae49154164f32,

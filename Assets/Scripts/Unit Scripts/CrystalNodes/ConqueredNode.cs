@@ -13,11 +13,11 @@ public class ConqueredNode : MonoBehaviour
   [SerializeField]
   private GameObject[] tempFOVMeshes = null;
   [SerializeField]
-  private GameObject cameraBound;
-  public GameObject CameraBound
+  private GameObject selectionCameraBound;
+  public GameObject SelectionCameraBound
   {
-    get { return cameraBound; }
-    set { if (cameraBound == null) cameraBound = value; }
+    get { return selectionCameraBound; }
+    set { if (selectionCameraBound == null) selectionCameraBound = value; }
   }
 
   public bool conquered = false;
