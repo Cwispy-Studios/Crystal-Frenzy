@@ -2081,18 +2081,6 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 1653367792446962587, guid: 867dd8fa1b64e2d41b7fd836efdd719e,
-        type: 3}
-      propertyPath: upgradePanel
-      value: 
-      objectReference: {fileID: 4547757109260012683, guid: 0fa873248aff6e24285c5ba55939698f,
-        type: 3}
-    - target: {fileID: 1653367792446962587, guid: 867dd8fa1b64e2d41b7fd836efdd719e,
-        type: 3}
-      propertyPath: upgradePanelPrefab
-      value: 
-      objectReference: {fileID: 4547757109260012683, guid: 0fa873248aff6e24285c5ba55939698f,
-        type: 3}
     - target: {fileID: 7406312429625842019, guid: 867dd8fa1b64e2d41b7fd836efdd719e,
         type: 3}
       propertyPath: connectedNodes.Array.size
@@ -2386,6 +2374,18 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[2]
       value: 
       objectReference: {fileID: 2100000, guid: 28e4e7aec0ca88f4fb9d9b69715faf80, type: 2}
+    - target: {fileID: 1653367792446962587, guid: 867dd8fa1b64e2d41b7fd836efdd719e,
+        type: 3}
+      propertyPath: upgradePanel
+      value: 
+      objectReference: {fileID: 4547757109260012683, guid: 0fa873248aff6e24285c5ba55939698f,
+        type: 3}
+    - target: {fileID: 1653367792446962587, guid: 867dd8fa1b64e2d41b7fd836efdd719e,
+        type: 3}
+      propertyPath: upgradePanelPrefab
+      value: 
+      objectReference: {fileID: 4547757109260012683, guid: 0fa873248aff6e24285c5ba55939698f,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 867dd8fa1b64e2d41b7fd836efdd719e, type: 3}
 --- !u!1 &130477235
@@ -21938,6 +21938,11 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1574251319325358431, guid: 86e2a491536334e4fa911620190206de,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1574251319325358428, guid: 86e2a491536334e4fa911620190206de,
         type: 3}
       propertyPath: unitManager
@@ -21953,20 +21958,20 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1574251319325358431, guid: 86e2a491536334e4fa911620190206de,
+    - target: {fileID: 4641990794309465099, guid: 86e2a491536334e4fa911620190206de,
         type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9150068185864046625, guid: 86e2a491536334e4fa911620190206de,
         type: 3}
       propertyPath: m_ShowCustomSorter
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4641990794309465099, guid: 86e2a491536334e4fa911620190206de,
+    - target: {fileID: 9150068185864046625, guid: 86e2a491536334e4fa911620190206de,
         type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
@@ -38702,7 +38707,7 @@ RectTransform:
   m_Children:
   - {fileID: 848230053}
   m_Father: {fileID: 1004907082}
-  m_RootOrder: 4
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
