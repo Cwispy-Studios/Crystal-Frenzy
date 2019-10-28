@@ -32,7 +32,7 @@ public class Projectile : MonoBehaviour
 
           for (int i = 0; i < colliders.Length; ++i)
           {
-            if (colliders[i].GetComponent<Faction>() != null || colliders[i].GetComponent<Health>() != null)
+            if (colliders[i].GetComponent<Faction>() != null && colliders[i].GetComponent<Health>() != null)
             {
               // Check if is unfriendly unit and has health
               if ((GetComponent<Faction>().faction == Faction.FACTIONS.GOBLINS && colliders[i].GetComponent<Faction>().faction == Faction.FACTIONS.FOREST) ||

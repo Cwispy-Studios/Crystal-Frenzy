@@ -132,7 +132,7 @@ public class CameraIssueOrdering : MonoBehaviour
       // Right clicked on unit, check if unit is selectable
       else
       {
-        if (hit.collider.GetComponent<Selectable>() != null)
+        if (hit.collider.GetComponent<Selectable>() != null && hit.collider.GetComponent<Selectable>().enabled)
         {
           hit.collider.GetComponent<Selectable>().StartBlinking();
 

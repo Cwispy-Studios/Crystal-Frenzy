@@ -479,9 +479,11 @@ GameObject:
   - component: {fileID: -7227843587306996854}
   - component: {fileID: 7166861746412957926}
   - component: {fileID: -3898149679235963123}
-  - component: {fileID: 1529752382060195170}
   - component: {fileID: -684774737325982190}
   - component: {fileID: -74903051473994080}
+  - component: {fileID: 5928447059531628494}
+  - component: {fileID: 8126889666865299208}
+  - component: {fileID: -5452306018236235992}
   - component: {fileID: -5566881076960737436}
   - component: {fileID: -8668155199046305409}
   m_Layer: 0
@@ -711,18 +713,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 1
---- !u!114 &1529752382060195170
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8254410145237751959}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01893e5819900094ca554f1f09d650cc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &-684774737325982190
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -737,6 +727,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 120
   regeneration: 2.2
+  explodesOnDeath: 0
+  explosionDmgPctOfHealth: 0.5
+  explosionRadius: 10
   combatantType: 0
 --- !u!114 &-74903051473994080
 MonoBehaviour:
@@ -760,6 +753,51 @@ MonoBehaviour:
   healPct: 0.5
   preferredTarget: 0
   projectilePrefab: {fileID: 0}
+--- !u!114 &5928447059531628494
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8254410145237751959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6de39788d03a2548a59d36100eec578, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boostValues:
+    healthModifier: 0.065
+    regeneratonModifier: 0.15
+    damageModifier: 0.05
+    attackSpeedModifier: 0.02
+    attackRangeModifier: 0
+    detectRangeModifier: 0
+    speedModifier: 0.02
+--- !u!114 &8126889666865299208
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8254410145237751959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ea702aae35bb4f41a27c2882f0d48f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+--- !u!114 &-5452306018236235992
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8254410145237751959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9347d1a8695b16347b2077e2606b6f70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &-5566881076960737436
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -783,6 +821,11 @@ MonoBehaviour:
     attackSlowPct: 0.5
     moveSlowPct: 0.5
     statusDuration: 5
+  curseEffect:
+    hasEffect: 0
+    statusType: 0
+    attackReducPct: 0
+    statusDuration: 0
 --- !u!114 &-8668155199046305409
 MonoBehaviour:
   m_ObjectHideFlags: 0

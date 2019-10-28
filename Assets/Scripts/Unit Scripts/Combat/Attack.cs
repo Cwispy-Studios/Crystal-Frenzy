@@ -50,13 +50,18 @@ public class Attack : MonoBehaviour
   private float unitRadius = 0;
 
   private bool detectingEnemies = true;
+  private GameObject detectedTarget = null;
 
   private GameObject attackTarget = null;
 
   private Vector3 attackMovePosition;
   private bool isAttackMoveOrder = false;
 
-  private float updateCountdown = 0;
+  private const float DETECT_INTERVAL = 1f;
+  private float detectCountdown = 0;
+
+  private const float ATTACK_UPDATE_INTERVAL = 0.1f;
+  private float attackCountdown = 0;
 
   private void Awake()
   {
@@ -78,41 +83,56 @@ public class Attack : MonoBehaviour
       attackCooldown += Time.deltaTime;
     }
 
-    if (updateCountdown < 0.5f)
-    {
-      updateCountdown += Time.deltaTime;
-      return;
-    }
-
-    else
-    {
-      updateCountdown -= 0.5f;
-    }
-
     // As long as unit is not detecting enemies, it is not under an attack move order, so we set it to false
     if (detectingEnemies == false)
     {
       isAttackMoveOrder = false;
     }
 
-    // If there is no attack target and is detecting enemies, unit will constantly look out for enemies within their detect range
-    if (attackTarget == null && detectingEnemies)
+    if (detectCountdown < DETECT_INTERVAL)
     {
-      DetectEnemies();
+      detectCountdown += Time.deltaTime;
     }
 
-    else if (attackTarget != null)
+    else
     {
-      float enemyRange = Vector3.Distance(transform.position, attackTarget.transform.position);
+      detectCountdown = 0f;
 
-      AttackEnemy(attackTarget, enemyRange, isHealing);
+      // If there is no attack target and is detecting enemies, unit will constantly look out for enemies within their detect range
+      if (attackTarget == null && detectingEnemies)
+      {
+        DetectEnemies();
+      }
+    }
+
+    if (attackCountdown < ATTACK_UPDATE_INTERVAL)
+    {
+      attackCountdown += Time.deltaTime;
+    }
+
+    else
+    {
+      attackCountdown = 0;
+
+      if (attackTarget != null)
+      {
+        float enemyRange = Vector3.Distance(transform.position, attackTarget.transform.position);
+
+        AttackEnemy(attackTarget, enemyRange, isHealing);
+      }
+
+      else if (detectingEnemies && detectedTarget != null)
+      {
+        float enemyRange = Vector3.Distance(transform.position, detectedTarget.transform.position);
+
+        AttackEnemy(detectedTarget, enemyRange, isHealing);
+      }
     }
   }
 
   private void DetectEnemies()
   {
     Collider[] unitsInRange = Physics.OverlapSphere(transform.position, enemyDetectRange);
-    GameObject detectedEnemy = null;
 
     float closestEnemyRange = 9999f;
 
@@ -140,7 +160,7 @@ public class Attack : MonoBehaviour
             if (distance < closestEnemyRange)
             {
               closestEnemyRange = distance;
-              detectedEnemy = unitsInRange[i].gameObject;
+              detectedTarget = unitsInRange[i].gameObject;
             }
           }
         }
@@ -160,7 +180,7 @@ public class Attack : MonoBehaviour
             if (unitsInRange[i].GetComponent<Health>().HealthPct() < lowestHpPct)
             {
               closestEnemyRange = distance;
-              detectedEnemy = unitsInRange[i].gameObject;
+              detectedTarget = unitsInRange[i].gameObject;
             }
           }
         }
@@ -181,16 +201,16 @@ public class Attack : MonoBehaviour
           if (distance < closestEnemyRange)
           {
             closestEnemyRange = distance;
-            detectedEnemy = unitsInRange[i].gameObject;
+            detectedTarget = unitsInRange[i].gameObject;
           }
         }
       }
     }
 
     // Check if any enemy found
-    if (detectedEnemy != null)
+    if (detectedTarget != null)
     {
-      AttackEnemy(detectedEnemy, closestEnemyRange, isHealing);
+      AttackEnemy(detectedTarget, closestEnemyRange, isHealing);
     }
 
     // No enemies found, check if there is an attack order position to move towards to
@@ -296,7 +316,7 @@ public class Attack : MonoBehaviour
 
             for (int i = 0; i < colliders.Length; ++i)
             {
-              if (colliders[i].GetComponent<Faction>() != null || colliders[i].GetComponent<Health>() != null)
+              if (colliders[i].GetComponent<Faction>() != null && colliders[i].GetComponent<Health>() != null)
               {
                 // Check if is unfriendly unit and has health
                 if ((GetComponent<Faction>().faction == Faction.FACTIONS.GOBLINS && colliders[i].GetComponent<Faction>().faction == Faction.FACTIONS.FOREST) ||

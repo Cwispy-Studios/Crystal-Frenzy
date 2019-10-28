@@ -34,6 +34,11 @@ public class Health : MonoBehaviour
   }
 
   [SerializeField]
+  private bool explodesOnDeath = false;
+  [SerializeField]
+  private float explosionDmgPctOfHealth = 0.25f, explosionRadius = 10f;
+
+  [SerializeField]
   private COMBATANT_TYPE combatantType = COMBATANT_TYPE.NORMAL;
   public COMBATANT_TYPE CombatantType
   {
@@ -84,6 +89,31 @@ public class Health : MonoBehaviour
       if (recruitableUnit != null)
       {
         recruitableUnit.KillUnit();
+      }
+
+      if (explodesOnDeath)
+      {
+        int layerMask = 0;
+
+        Collider[] colliders = Physics.OverlapSphere(transform.position, explosionRadius, ~layerMask);
+
+        for (int i = 0; i < colliders.Length; ++i)
+        {
+          if (colliders[i].GetComponent<Faction>() != null && colliders[i].GetComponent<Health>() != null)
+          {
+            // Check if is unfriendly unit and has health
+            if ((GetComponent<Faction>().faction == Faction.FACTIONS.GOBLINS && colliders[i].GetComponent<Faction>().faction == Faction.FACTIONS.FOREST) ||
+                (GetComponent<Faction>().faction == Faction.FACTIONS.FOREST && colliders[i].GetComponent<Faction>().faction == Faction.FACTIONS.GOBLINS))
+            {
+              colliders[i].GetComponent<Health>().ModifyHealth(-explosionDmgPctOfHealth * MaxHealth);
+
+              if (GetComponent<StatusEffects>())
+              {
+                GetComponent<StatusEffects>().AfflictStatusEffects(colliders[i].gameObject);
+              }
+            }
+          }
+        }
       }
 
       Destroy(gameObject);
