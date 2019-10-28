@@ -9,15 +9,31 @@ public class Poison : StatusEffect
 
   public void SetAffliction(StatusEffect poison, GameObject afflictedTarget)
   {
-    statusType = STATUS_EFFECTS.POISON;
-    active = true;
-
     Poison poisonEffect = (Poison)poison;
+    statusType = STATUS_EFFECTS.POISON;
 
-    dps = poisonEffect.dps;
-    statusDuration = poisonEffect.statusDuration;
+    if (active)
+    {
+      if (dps < poisonEffect.dps)
+      {
+        dps = poisonEffect.dps;
+      }
 
-    afflictedUnit = afflictedTarget;
+      if (statusDuration < poisonEffect.statusDuration)
+      {
+        statusDuration = poisonEffect.statusDuration;
+      }
+    }
+
+    else
+    {
+      active = true;
+
+      dps = poisonEffect.dps;
+      statusDuration = poisonEffect.statusDuration;
+
+      afflictedUnit = afflictedTarget;
+    }
   }
 
   public void Update()

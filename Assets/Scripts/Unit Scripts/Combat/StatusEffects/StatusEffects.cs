@@ -18,7 +18,7 @@ public class StatusEffects : MonoBehaviour
     {
       if (poisonEffect.hasEffect)
       {
-        target.GetComponent<Afflictable>().posionAffliction.SetAffliction(poisonEffect, target);
+        target.GetComponent<Afflictable>().posionAffliction.SetAffliction(poisonEffect);
       }
     }
   }
