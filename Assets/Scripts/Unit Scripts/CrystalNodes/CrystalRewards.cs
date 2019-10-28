@@ -24,7 +24,7 @@ public class CrystalRewards : MonoBehaviour
   }
 
   [SerializeField]
-  private int nodeNumber = 1;
+  private float nodeNumber = 1;
 
   /**************************************************** RANDOM REWARD VARIABLES ****************************************************/
   [SerializeField]

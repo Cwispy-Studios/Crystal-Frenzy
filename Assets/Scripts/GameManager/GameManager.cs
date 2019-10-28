@@ -224,8 +224,8 @@ public class GameManager : MonoBehaviour
 
     // Start wave spawners of attack node
     attackNode.GetComponent<CrystalNode>().SetWaveSpawnersActive(true, spawnedCrystalSeeker);
-    // Disables the tree wall so units can pass through
-    attackNode.GetComponent<CrystalNode>().DisableTreeWall();
+    // Disables the tree wall so units can pass through, finds it in the attacking node
+    attackingFromNode.GetComponent<CrystalNode>().DisableTreeWall(attackNode);
 
     // Turn off the path visibility meshes to all the connected nodes we don't see the enemies attacking
     attackingFromNode.GetComponent<CrystalNode>().SetPathVisibilityMeshes(false);
@@ -394,8 +394,6 @@ public class GameManager : MonoBehaviour
 
     // Start wave spawners of attack node
     attackNode.GetComponent<CrystalNode>().SetWaveSpawnersActive(true, spawnedCrystalSeeker);
-    // Disables the tree wall so units can pass through
-    attackNode.GetComponent<CrystalNode>().DisableTreeWall();
   }
 
   public void DefenseWin()

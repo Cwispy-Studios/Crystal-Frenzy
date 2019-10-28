@@ -7,8 +7,6 @@ public class CrystalNode : MonoBehaviour
 
   [SerializeField]
   private GameObject[] spawnPoints = null;
-  [SerializeField]
-  private GameObject treeWall = null;
   [HideInInspector]
   public GameObject conqueredNode = null;
 
@@ -110,11 +108,18 @@ public class CrystalNode : MonoBehaviour
     }
   }
 
-  public void DisableTreeWall()
+  public void DisableTreeWall(GameObject attackedNode)
   {
-    if (treeWall != null)
+    for (int connectedNodeIndex = 0; connectedNodeIndex < connectedNodesData.Length; ++connectedNodeIndex)
     {
-      treeWall.SetActive(false);
+      // Find the node we are attacking and cut down their tree
+      if (attackedNode == connectedNodesData[connectedNodeIndex].connectedNode)
+      {
+        if (connectedNodesData[connectedNodeIndex].treeWall != null)
+        {
+          connectedNodesData[connectedNodeIndex].treeWall.SetActive(false);
+        }
+      }
     }
   }
 

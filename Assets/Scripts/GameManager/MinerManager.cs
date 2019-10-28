@@ -49,7 +49,7 @@ public class MinerManager : MonoBehaviour
 
   public void MinerDestroyed()
   {
-    CurrentMinerHealth = MaxMinerHealth * 0.1f;
-    minerHealthBar.fillAmount = 0.1f;
+    CurrentMinerHealth = MaxMinerHealth * destroyedMinerHealthPct;
+    minerHealthBar.fillAmount = destroyedMinerHealthPct;
   }
 }
