@@ -11,6 +11,8 @@ public enum STATUS_EFFECTS
 public class StatusEffects : MonoBehaviour
 {
   public Poison poisonEffect = null;
+  public Slow slowEffect = null;
+  public Curse curseEffect = null;
 
   public void AfflictStatusEffects(GameObject target)
   {
@@ -19,6 +21,16 @@ public class StatusEffects : MonoBehaviour
       if (poisonEffect.hasEffect)
       {
         target.GetComponent<Afflictable>().posionAffliction.SetAffliction(poisonEffect);
+      }
+
+      if (slowEffect.hasEffect)
+      {
+        target.GetComponent<Afflictable>().slowAffliction.SetAffliction(slowEffect);
+      }
+
+      if (curseEffect.hasEffect)
+      {
+        target.GetComponent<Afflictable>().curseAffliction.SetAffliction(curseEffect);
       }
     }
   }

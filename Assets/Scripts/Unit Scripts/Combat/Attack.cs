@@ -19,6 +19,15 @@ public class Attack : MonoBehaviour
     get { return attacksPerSecond; }
   }
 
+  private float normalAttacksPerSecond;
+  private float normalMoveSpeed;
+  private float normalDamage;
+
+  [SerializeField]
+  private bool aoe = false;
+  [SerializeField]
+  private float aoeRadius = 1f;
+
   [SerializeField]
   private bool isHealer = false;
   public bool IsHealer
@@ -48,7 +57,6 @@ public class Attack : MonoBehaviour
   private bool isAttackMoveOrder = false;
 
   private float updateCountdown = 0;
-  private float updateLength = 0;
 
   private void Awake()
   {
@@ -58,6 +66,9 @@ public class Attack : MonoBehaviour
   private void Start()
   {
     attackCooldown = attacksPerSecond;
+    normalAttacksPerSecond = attacksPerSecond;
+    normalMoveSpeed = GetComponent<NavMeshAgent>().speed;
+    normalDamage = attackDamage;
   }
 
   private void Update()
@@ -243,8 +254,6 @@ public class Attack : MonoBehaviour
       GetComponent<NavMeshAgent>().enabled = false;
       GetComponent<NavMeshObstacle>().enabled = true;
 
-      Debug.Log(name + " " + attackCooldown + " " + attacksPerSecond);
-
       // Check if ready to attack
       if (attackCooldown >= attacksPerSecond)
       {
@@ -279,7 +288,6 @@ public class Attack : MonoBehaviour
         // No projectile means attack hits immediately
         else
         {
-          Debug.Log(name + enemy);
           enemy.GetComponent<Health>().ModifyHealth(-attackDamage);
 
           if (GetComponent<StatusEffects>())
@@ -388,5 +396,16 @@ public class Attack : MonoBehaviour
     attacksPerSecond += (GameManager.CurrentRound - 1) * boostValues.attackSpeedModifier * attacksPerSecond;
     attackRange += (GameManager.CurrentRound - 1) * boostValues.attackRangeModifier * attackRange;
     enemyDetectRange += (GameManager.CurrentRound - 1) * boostValues.detectRangeModifier * enemyDetectRange;
+  }
+
+  public void SetSlowAffliction(float attackSlowAmount, float moveSlowAmount)
+  {
+    attacksPerSecond = normalAttacksPerSecond * (1f + attackSlowAmount);
+    GetComponent<NavMeshAgent>().speed = normalMoveSpeed * (1f - moveSlowAmount);
+  }
+
+  public void SetCurseAffliction(float attackReducAmount)
+  {
+    attackDamage = normalDamage * (1f - attackReducAmount);
   }
 }

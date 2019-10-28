@@ -32,6 +32,48 @@ public class UnitButton : MonoBehaviour
     unit.GetComponent<Health>().OnHealthChanged += HandleHealthChanged;
   }
 
+  private void LateUpdate()
+  {
+    Afflictable afflictable = unit.GetComponent<Afflictable>();
+
+    if (afflictable)
+    {
+      int numAfflictions = 0;
+
+      Color healthBarColour = new Color(0, 0, 0, 1);
+
+      if (afflictable.posionAffliction.Active)
+      {
+        healthBarColour += HealthBarController.poisonColour;
+        ++numAfflictions;
+      }
+
+      if (afflictable.slowAffliction.Active)
+      {
+        healthBarColour += HealthBarController.slowColour;
+        ++numAfflictions;
+      }
+
+      if (afflictable.curseAffliction.Active)
+      {
+        healthBarColour += HealthBarController.curseColour;
+        ++numAfflictions;
+      }
+
+      if (numAfflictions == 0)
+      {
+        healthBarColour = new Color(1, 0, 0, 1);
+      }
+
+      else
+      {
+        healthBarColour /= numAfflictions;
+      }
+
+      healthBar.color = healthBarColour;
+    }
+  }
+
   public void DestroyButton()
   {
     unit.GetComponent<Health>().OnHealthChanged -= HandleHealthChanged;

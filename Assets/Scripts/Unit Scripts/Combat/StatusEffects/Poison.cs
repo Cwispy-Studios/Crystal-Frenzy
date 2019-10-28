@@ -7,12 +7,18 @@ public class Poison : StatusEffect
   public float dps = 0;
   public float statusDuration = 1;
 
-  public void SetAffliction(StatusEffect poison, GameObject afflictedTarget)
+  public Poison(GameObject unit)
+  {
+    Active = false;
+    afflictedUnit = unit;
+  }
+
+  public void SetAffliction(StatusEffect poison)
   {
     Poison poisonEffect = (Poison)poison;
     statusType = STATUS_EFFECTS.POISON;
 
-    if (active)
+    if (Active)
     {
       if (dps < poisonEffect.dps)
       {
@@ -27,18 +33,16 @@ public class Poison : StatusEffect
 
     else
     {
-      active = true;
+      Active = true;
 
       dps = poisonEffect.dps;
       statusDuration = poisonEffect.statusDuration;
-
-      afflictedUnit = afflictedTarget;
     }
   }
 
   public void Update()
   {
-    if (!active)
+    if (!Active)
     {
       return;
     }
@@ -61,14 +65,14 @@ public class Poison : StatusEffect
 
       else
       {
-        active = false;
+        Active = false;
         return;
       }
     }
 
     else
     {
-      active = false;
+      Active = false;
       return;
     }
   }

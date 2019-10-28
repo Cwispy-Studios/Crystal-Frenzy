@@ -3,7 +3,7 @@
 public class StatusEffect
 {
   public bool hasEffect = false;
-  public bool active { get; protected set; } = false;
+  public bool Active { get; protected set; } = false;
 
   [HideInInspector]
   public STATUS_EFFECTS statusType;
@@ -11,7 +11,7 @@ public class StatusEffect
 
   public void Reset()
   {
-    active = false;
+    Active = false;
     afflictedUnit = null;
   }
 }
