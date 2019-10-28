@@ -119,6 +119,9 @@ public class Attack : MonoBehaviour
       {
         if (isAttackMoveOrder)
         {
+          GetComponent<NavMeshAgent>().enabled = true;
+          GetComponent<NavMeshObstacle>().enabled = false;
+
           GetComponent<NavMeshAgent>().stoppingDistance = 0;
           GetComponent<NavMeshAgent>().destination = attackMovePosition;
         }
@@ -168,23 +171,26 @@ public class Attack : MonoBehaviour
     // must be smaller than the attack range
     float enemyRadius = GetEnemyRadius(enemy);
 
+    Animator animator = GetComponent<Animator>();
+
     // If enemy is near enough, try to attack and hold position. Otherwise set the NavMeshAgent to move towards it
     if (enemyRange <= (attackRange + unitRadius + enemyRadius))
     {
       // Rotates the unit towards its target, it does not matter if it is not facing the target yet, it can still attack.
       LookTowardsTarget(enemy);
-      //Vector3 direction = enemy.transform.position - transform.position;
-      //Quaternion toRotation = Quaternion.FromToRotation(transform.forward, direction);
-      //transform.rotation = Quaternion.Lerp(transform.rotation, toRotation, GetComponent<NavMeshAgent>().angularSpeed * Mathf.Deg2Rad * Time.deltaTime);
 
-      GetComponent<NavMeshAgent>().stoppingDistance = 0;
-      GetComponent<NavMeshAgent>().destination = transform.position;
+      if (GetComponent<NavMeshAgent>().enabled)
+      {
+        GetComponent<NavMeshAgent>().stoppingDistance = 0;
+        GetComponent<NavMeshAgent>().destination = transform.position;
+      }
+      
+      GetComponent<NavMeshAgent>().enabled = false;
+      GetComponent<NavMeshObstacle>().enabled = true;
 
       // Check if ready to attack
       if (attackCooldown >= attacksPerSecond)
       {
-        Animator animator = GetComponent<Animator>();
-
         // Check if there is projectile
         if (projectilePrefab != null)
         {
@@ -195,10 +201,9 @@ public class Attack : MonoBehaviour
 
           projectile.GetComponent<Projectile>().SetTarget(enemy, attackDamage);
 
-          if (animator)
+          if (animator && animator.enabled)
           {
             animator.SetTrigger("Ranged Attack");
-            Debug.Log("Ranged");
           }
           
         }
@@ -208,10 +213,9 @@ public class Attack : MonoBehaviour
         {
           enemy.GetComponent<Health>().ModifyHealth(-attackDamage);
 
-          if (animator)
+          if (animator && animator.enabled)
           {
             animator.SetTrigger("Melee Attack");
-            Debug.Log("Melee");
           }
         }
 
@@ -219,8 +223,11 @@ public class Attack : MonoBehaviour
       }
     }
 
-    else
+    else if (animator && animator.enabled && animator.GetCurrentAnimatorStateInfo(0).IsName("Idle") || animator.GetCurrentAnimatorStateInfo(0).IsName("Move"))
     {
+      GetComponent<NavMeshAgent>().enabled = true;
+      GetComponent<NavMeshObstacle>().enabled = false;
+
       GetComponent<NavMeshAgent>().stoppingDistance = attackRange + unitRadius + enemyRadius - STOPPING_MARGIN;
       GetComponent<NavMeshAgent>().destination = enemy.transform.position;
     }
@@ -228,6 +235,9 @@ public class Attack : MonoBehaviour
 
   public void SetAttackTarget(GameObject target)
   {
+    GetComponent<NavMeshAgent>().enabled = true;
+    GetComponent<NavMeshObstacle>().enabled = false;
+
     attackTarget = target;
     detectingEnemies = false;
   }

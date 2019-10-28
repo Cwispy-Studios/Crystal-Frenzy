@@ -8,6 +8,9 @@ public class UnitOrder : Order
   private bool followTarget = false;
   private Vector3 followTargetOldPos;
 
+  private bool queuedOrder = false;
+  private Vector3 queuedOrderPos = new Vector3();
+
   private void Awake()
   {
     unitRadius = GetComponent<NavMeshAgent>().radius * ((transform.lossyScale.x + transform.lossyScale.z) / 2f);
@@ -15,8 +18,27 @@ public class UnitOrder : Order
 
   void Update()
   {
+    if (queuedOrder)
+    {
+      Animator animator = GetComponent<Animator>();
+
+      if (animator)
+      {
+        if (animator.GetCurrentAnimatorStateInfo(0).IsName("Idle") || animator.GetCurrentAnimatorStateInfo(0).IsName("Move"))
+        {
+          GetComponent<NavMeshAgent>().enabled = true;
+          GetComponent<NavMeshObstacle>().enabled = false;
+          GetComponent<NavMeshAgent>().destination = queuedOrderPos;
+          queuedOrder = false;
+        }
+      }
+    }
+
     if (followTarget)
     {
+      GetComponent<NavMeshAgent>().enabled = true;
+      GetComponent<NavMeshObstacle>().enabled = false;
+
       // Target still exists
       if (destinationUnit != null)
       {
@@ -36,19 +58,35 @@ public class UnitOrder : Order
 
     NavMeshAgent agent = GetComponent<NavMeshAgent>();
 
-    // Check if we have arrived yet
-    if (!agent.pathPending && agent.remainingDistance <= agent.stoppingDistance && (!agent.hasPath || agent.velocity.sqrMagnitude == 0f))
+    if (agent.enabled)
     {
-      if (GetComponent<Attack>() != null)
+      // Check if we have arrived yet
+      if (agent.enabled && !agent.pathPending && agent.remainingDistance <= agent.stoppingDistance && (!agent.hasPath || agent.velocity.sqrMagnitude == 0f))
       {
-        GetComponent<Attack>().SetDetectingEnemies(true);
+        if (GetComponent<Attack>() != null)
+        {
+          GetComponent<Attack>().SetDetectingEnemies(true);
+        }
+
+        Animator animator = GetComponent<Animator>();
+
+        if (animator)
+        {
+          animator.SetBool("Move", false);
+        }
       }
 
-      Animator animator = GetComponent<Animator>();
-
-      if (animator)
+      else
       {
-        animator.SetBool("Walk Forward", false);
+        Animator animator = GetComponent<Animator>();
+
+        if (animator)
+        {
+          animator.SetBool("Move", true);
+        }
+
+        GetComponent<NavMeshAgent>().enabled = true;
+        GetComponent<NavMeshObstacle>().enabled = false;
       }
     }
 
@@ -58,7 +96,7 @@ public class UnitOrder : Order
 
       if (animator)
       {
-        animator.SetBool("Walk Forward", true);
+        animator.SetBool("Move", false);
       }
     }
   }
@@ -67,8 +105,32 @@ public class UnitOrder : Order
   {
     followTarget = false;
 
+    GetComponent<NavMeshAgent>().enabled = true;
+    GetComponent<NavMeshObstacle>().enabled = false;
+
     GetComponent<NavMeshAgent>().stoppingDistance = 0f;
-    GetComponent<NavMeshAgent>().destination = destinationOrder;
+
+    Animator animator = GetComponent<Animator>();
+
+    if (animator && animator.enabled)
+    {
+      if (animator.GetCurrentAnimatorStateInfo(0).IsName("Idle") || animator.GetCurrentAnimatorStateInfo(0).IsName("Move"))
+      {
+        GetComponent<NavMeshAgent>().destination = destinationOrder;
+      }
+
+      else
+      {
+        queuedOrder = true;
+        queuedOrderPos = destinationOrder;
+      }
+    }
+
+    else
+    {
+      GetComponent<NavMeshAgent>().destination = destinationOrder;
+    }
+    
 
     if (GetComponent<Attack>() != null)
     {
@@ -80,6 +142,9 @@ public class UnitOrder : Order
   {
     followTarget = true;
     destinationUnit = targetUnit;
+
+    GetComponent<NavMeshAgent>().enabled = true;
+    GetComponent<NavMeshObstacle>().enabled = false;
 
     if (GetComponent<Attack>() != null)
     {
@@ -119,8 +184,29 @@ public class UnitOrder : Order
   {
     NavMeshAgent agent = GetComponent<NavMeshAgent>();
 
+    Animator animator = GetComponent<Animator>();
+
     followTargetOldPos = destinationUnit.transform.position;
-    agent.destination = destinationUnit.transform.position;
+
+    if (animator && animator.enabled)
+    {
+      if (animator.GetCurrentAnimatorStateInfo(0).IsName("Idle") || animator.GetCurrentAnimatorStateInfo(0).IsName("Move"))
+      {
+        agent.destination = destinationUnit.transform.position;
+      }
+
+      else
+      {
+        queuedOrder = true;
+        queuedOrderPos = destinationUnit.transform.position;
+      }
+    }
+
+    else
+    {
+      followTargetOldPos = destinationUnit.transform.position;
+      agent.destination = destinationUnit.transform.position;
+    }
 
     float stoppingDistance = 0f;
 

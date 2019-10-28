@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4474010097363987138}
   - component: {fileID: 5176104100469323871}
   - component: {fileID: 6986816071556721861}
+  - component: {fileID: -6231351951380315802}
   - component: {fileID: 2255082812454074551}
   - component: {fileID: 1390012186275506533}
   - component: {fileID: 4762916270734496246}
@@ -53,7 +54,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 41785935244700089}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 9000000, guid: bb9648afe27705442bfc00b447c5d73c, type: 3}
   m_Controller: {fileID: 0}
   m_CullingMode: 1
@@ -184,6 +185,22 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!208 &-6231351951380315802
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 41785935244700089}
+  m_Enabled: 0
+  serializedVersion: 3
+  m_Shape: 0
+  m_Extents: {x: 1, y: 2.1, z: 1}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 1, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!114 &2255082812454074551
 MonoBehaviour:
   m_ObjectHideFlags: 0
