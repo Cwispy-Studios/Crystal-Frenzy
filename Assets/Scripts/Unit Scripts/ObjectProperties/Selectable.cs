@@ -64,6 +64,16 @@ public class Selectable : MonoBehaviour
     ChangeTransparency(targetCircle, ALPHA_TRANSPARENT);
   }
 
+  private void OnEnable()
+  {
+    CameraObjectSelection.AddSelectable(this);
+  }
+
+  private void OnDisable()
+  {
+    CameraObjectSelection.RemoveSelectable(this);
+  }
+
   private void Update()
   {
     switch (selectStatus)

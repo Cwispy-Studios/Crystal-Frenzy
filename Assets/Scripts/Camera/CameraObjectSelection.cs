@@ -6,6 +6,8 @@ public class CameraObjectSelection : MonoBehaviour
   [SerializeField]
   private UnitManager unitManager = null;
 
+  private static List<Selectable> activeSelectableUnits = new List<Selectable>();
+
   public static List<GameObject> SelectedUnitsList { get; private set; }
 
   private bool isSelecting = false;
@@ -39,14 +41,11 @@ public class CameraObjectSelection : MonoBehaviour
     // UPDATE SELECTED AND HOVER LIST TO CHECK FOR NULL OBJECTS
     ClearDeadUnits();
 
-    // Store every selectable in a list
-    Selectable[] selectables = FindObjectsOfType<Selectable>();
-
     // Update the selection colour of every unit
-    foreach (Selectable selectableObject in selectables)
+    for (int i = 0; i < activeSelectableUnits.Count; ++i)
     {
       // Set the colour
-      selectableObject.CheckFactionColour(GetComponent<Faction>().faction);
+      activeSelectableUnits[i].CheckFactionColour(GetComponent<Faction>().faction);
     }
 
     if (CameraProperties.selectionDisabled)
@@ -138,7 +137,7 @@ public class CameraObjectSelection : MonoBehaviour
     // This list here is built until the LMB is released, so we have to keep updating and maintaining the list
     if (isSelecting)
     {
-      DragSelection(selectables);
+      DragSelection();
     } 
 
     // Mouse is just hovering over the map
@@ -204,11 +203,13 @@ public class CameraObjectSelection : MonoBehaviour
     }
   }
 
-  private void DragSelection(Selectable[] selectables)
+  private void DragSelection()
   {
     // Loop through every selectable in the game and check if they are within the selection bounds of your drag selection
-    foreach (Selectable selectableObject in selectables)
+    for (int i = 0; i < activeSelectableUnits.Count; ++i)
     {
+      Selectable selectableObject = activeSelectableUnits[i];
+
       if (selectableObject.enabled && IsWithinSelectionBounds(selectableObject.gameObject))
       {
         // Check if this selectable is a friendly, if it is then there is now a friendly in the list
@@ -459,6 +460,16 @@ public class CameraObjectSelection : MonoBehaviour
 
       selectedObject.GetComponent<Selectable>().selectStatus = Selectable.SELECT_STATUS.SELECTED;
     }
+  }
+
+  public static void AddSelectable(Selectable selectableObject)
+  {
+    activeSelectableUnits.Add(selectableObject);
+  }
+
+  public static void RemoveSelectable(Selectable selectableObject)
+  {
+    activeSelectableUnits.Remove(selectableObject);
   }
 
   private void OnGUI()

@@ -53089,14 +53089,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.64705884, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 28dbc3b6bfdef4b458fa0f37c4a610ac, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5b6d71764a7419d4bb14134ce1eb513a, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -54380,6 +54380,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Health Bar
       objectReference: {fileID: 0}
+    - target: {fileID: 7808222846368046770, guid: f9b2d52be47e85749a1c63cedabdb7a8,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7808222846368046771, guid: f9b2d52be47e85749a1c63cedabdb7a8,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -54484,6 +54489,27 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7808222846368046772, guid: f9b2d52be47e85749a1c63cedabdb7a8,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 5b6d71764a7419d4bb14134ce1eb513a,
+        type: 3}
+    - target: {fileID: 7808222846368046772, guid: f9b2d52be47e85749a1c63cedabdb7a8,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7808222846368046772, guid: f9b2d52be47e85749a1c63cedabdb7a8,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7808222846368046772, guid: f9b2d52be47e85749a1c63cedabdb7a8,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f9b2d52be47e85749a1c63cedabdb7a8, type: 3}
@@ -54722,6 +54748,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 294830233}
     m_Modifications:
+    - target: {fileID: 8757897495273366803, guid: 3d5ca9dcc6337a7449e1c9e804ff8949,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 729705589347070874, guid: 3d5ca9dcc6337a7449e1c9e804ff8949,
         type: 3}
       propertyPath: m_Name

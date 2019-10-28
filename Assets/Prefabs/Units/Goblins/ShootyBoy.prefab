@@ -224,7 +224,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0192c10ce0d2589489e608135047b104, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 95
+  maxHealth: 125
   regeneration: 0.1
   combatantType: 0
 --- !u!114 &4365369355350160395
@@ -243,6 +243,8 @@ MonoBehaviour:
   attacksPerSecond: 1.2
   attackRange: 15
   enemyDetectRange: 20
+  isHealer: 0
+  healPct: 0.5
   preferredTarget: 0
   projectilePrefab: {fileID: 3938936689609613190, guid: 1b44f608e3ea32a418a00627d548542f,
     type: 3}

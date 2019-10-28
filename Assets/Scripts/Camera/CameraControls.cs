@@ -4,7 +4,7 @@ using UnityEngine;
 public class CameraControls : MonoBehaviour
 {
   /*********************** Move variables ***********************/
-  private readonly float moveSpeed = 80f;
+  private readonly float moveSpeed = 100f;
   private readonly float moveDetectPerc = 0.01f;
 
   /*********************** Pan variables ***********************/

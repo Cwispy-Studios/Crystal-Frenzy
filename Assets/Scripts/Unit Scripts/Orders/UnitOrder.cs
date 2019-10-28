@@ -39,8 +39,9 @@ public class UnitOrder : Order
       {
         if (animator.GetCurrentAnimatorStateInfo(0).IsName("Idle") || animator.GetCurrentAnimatorStateInfo(0).IsName("Move"))
         {
-          GetComponent<NavMeshAgent>().enabled = true;
           GetComponent<NavMeshObstacle>().enabled = false;
+          GetComponent<NavMeshAgent>().enabled = true;
+          
           GetComponent<NavMeshAgent>().destination = queuedOrderPos;
           queuedOrder = false;
         }
@@ -49,8 +50,8 @@ public class UnitOrder : Order
 
     if (followTarget)
     {
-      GetComponent<NavMeshAgent>().enabled = true;
       GetComponent<NavMeshObstacle>().enabled = false;
+      GetComponent<NavMeshAgent>().enabled = true;
 
       // Target still exists
       if (destinationUnit != null)
@@ -98,8 +99,8 @@ public class UnitOrder : Order
           animator.SetBool("Move", true);
         }
 
-        GetComponent<NavMeshAgent>().enabled = true;
         GetComponent<NavMeshObstacle>().enabled = false;
+        GetComponent<NavMeshAgent>().enabled = true;
       }
     }
 
@@ -118,8 +119,8 @@ public class UnitOrder : Order
   {
     followTarget = false;
 
-    GetComponent<NavMeshAgent>().enabled = true;
     GetComponent<NavMeshObstacle>().enabled = false;
+    GetComponent<NavMeshAgent>().enabled = true;
 
     GetComponent<NavMeshAgent>().stoppingDistance = 0f;
 
@@ -156,8 +157,8 @@ public class UnitOrder : Order
     followTarget = true;
     destinationUnit = targetUnit;
 
-    GetComponent<NavMeshAgent>().enabled = true;
     GetComponent<NavMeshObstacle>().enabled = false;
+    GetComponent<NavMeshAgent>().enabled = true;
 
     if (GetComponent<Attack>() != null)
     {

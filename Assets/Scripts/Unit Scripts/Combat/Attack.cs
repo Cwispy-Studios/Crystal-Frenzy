@@ -37,6 +37,9 @@ public class Attack : MonoBehaviour
   [SerializeField]
   private GameObject projectilePrefab = null;
 
+  [SerializeField]
+  private STATUS_EFFECTS[] statusEffects;
+
   private float attackCooldown = 0;
   private float unitRadius = 0;
 
@@ -168,8 +171,8 @@ public class Attack : MonoBehaviour
       {
         if (isAttackMoveOrder)
         {
-          GetComponent<NavMeshAgent>().enabled = true;
           GetComponent<NavMeshObstacle>().enabled = false;
+          GetComponent<NavMeshAgent>().enabled = true;
 
           GetComponent<NavMeshAgent>().stoppingDistance = 0;
           GetComponent<NavMeshAgent>().destination = attackMovePosition;
