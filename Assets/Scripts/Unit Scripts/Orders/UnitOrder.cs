@@ -22,7 +22,7 @@ public class UnitOrder : Order
   {
     if (updateCountdown < 1f)
     {
-      ++updateCountdown;
+      updateCountdown += Time.deltaTime;
       return;
     }
 

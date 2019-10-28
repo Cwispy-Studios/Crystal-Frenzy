@@ -66,7 +66,7 @@ public class Attack : MonoBehaviour
   {
     if (updateCountdown < 1f)
     {
-      ++updateCountdown;
+      updateCountdown += Time.deltaTime;
       return;
     }
 
