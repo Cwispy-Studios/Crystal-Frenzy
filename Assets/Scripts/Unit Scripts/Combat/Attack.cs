@@ -172,9 +172,10 @@ public class Attack : MonoBehaviour
     if (enemyRange <= (attackRange + unitRadius + enemyRadius))
     {
       // Rotates the unit towards its target, it does not matter if it is not facing the target yet, it can still attack.
-      Vector3 direction = enemy.transform.position - transform.position;
-      Quaternion toRotation = Quaternion.FromToRotation(transform.forward, direction);
-      transform.rotation = Quaternion.Lerp(transform.rotation, toRotation, GetComponent<NavMeshAgent>().angularSpeed * Mathf.Deg2Rad * Time.deltaTime);
+      LookTowardsTarget(enemy);
+      //Vector3 direction = enemy.transform.position - transform.position;
+      //Quaternion toRotation = Quaternion.FromToRotation(transform.forward, direction);
+      //transform.rotation = Quaternion.Lerp(transform.rotation, toRotation, GetComponent<NavMeshAgent>().angularSpeed * Mathf.Deg2Rad * Time.deltaTime);
 
       GetComponent<NavMeshAgent>().stoppingDistance = 0;
       GetComponent<NavMeshAgent>().destination = transform.position;
@@ -182,6 +183,8 @@ public class Attack : MonoBehaviour
       // Check if ready to attack
       if (attackCooldown >= attacksPerSecond)
       {
+        Animator animator = GetComponent<Animator>();
+
         // Check if there is projectile
         if (projectilePrefab != null)
         {
@@ -191,12 +194,25 @@ public class Attack : MonoBehaviour
           GameObject projectile = Instantiate(projectilePrefab, projectilePos, new Quaternion());
 
           projectile.GetComponent<Projectile>().SetTarget(enemy, attackDamage);
+
+          if (animator)
+          {
+            animator.SetTrigger("Ranged Attack");
+            Debug.Log("Ranged");
+          }
+          
         }
 
         // No projectile means attack hits immediately
         else
         {
           enemy.GetComponent<Health>().ModifyHealth(-attackDamage);
+
+          if (animator)
+          {
+            animator.SetTrigger("Melee Attack");
+            Debug.Log("Melee");
+          }
         }
 
         attackCooldown -= attacksPerSecond;
@@ -252,6 +268,12 @@ public class Attack : MonoBehaviour
       Debug.LogError("Attacking a unit without a NavMesh! Targeted unit is " + enemy.name);
       return 0;
     }
+  }
+
+  private void LookTowardsTarget(GameObject target)
+  {
+    Quaternion targetRotation = Quaternion.LookRotation(target.transform.position - transform.position);
+    transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, GetComponent<NavMeshAgent>().angularSpeed * Mathf.Deg2Rad * Time.deltaTime);
   }
 
   public void SetUpgradedProperties(UpgradeProperties[] upgradeProperties)

@@ -51,5 +51,7 @@ public class MinerManager : MonoBehaviour
   {
     CurrentMinerHealth = MaxMinerHealth * destroyedMinerHealthPct;
     minerHealthBar.fillAmount = destroyedMinerHealthPct;
+
+    minerHealthText.text = Mathf.CeilToInt(CurrentMinerHealth).ToString() + " / " + Mathf.CeilToInt(MaxMinerHealth).ToString();
   }
 }

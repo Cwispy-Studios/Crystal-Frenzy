@@ -43,6 +43,23 @@ public class UnitOrder : Order
       {
         GetComponent<Attack>().SetDetectingEnemies(true);
       }
+
+      Animator animator = GetComponent<Animator>();
+
+      if (animator)
+      {
+        animator.SetBool("Walk Forward", false);
+      }
+    }
+
+    else
+    {
+      Animator animator = GetComponent<Animator>();
+
+      if (animator)
+      {
+        animator.SetBool("Walk Forward", true);
+      }
     }
   }
 

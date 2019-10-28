@@ -8,7 +8,7 @@ public class UpgradeBuilding : MonoBehaviour
   private UIInterface uiInterface;
   private GameObject upgradePanel;
 
-  private void Awake()
+  private void Start()
   {
     uiInterface = FindObjectOfType<UIInterface>();
     upgradePanel = Instantiate(upgradePanelPrefab, uiInterface.transform, false);

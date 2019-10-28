@@ -199,8 +199,7 @@ public class CameraObjectSelection : MonoBehaviour
 
       if (clickedObject != null)
       {
-        SelectedUnitsList.Add(clickedObject.gameObject);
-        clickedObject.selectStatus = Selectable.SELECT_STATUS.SELECTED;
+        AddObjectToSelectionList(clickedObject.gameObject);
       }
     }
   }
@@ -439,7 +438,7 @@ public class CameraObjectSelection : MonoBehaviour
 
   public void AddObjectToHoverList(GameObject hoverObject)
   {
-    if (!MouseHoverUnitsList.Contains(hoverObject))
+    if (hoverObject.GetComponent<Selectable>().enabled && !MouseHoverUnitsList.Contains(hoverObject))
     {
       MouseHoverUnitsList.Add(hoverObject);
       
@@ -454,7 +453,7 @@ public class CameraObjectSelection : MonoBehaviour
 
   public void AddObjectToSelectionList(GameObject selectedObject)
   {
-    if (!SelectedUnitsList.Contains(selectedObject))
+    if (selectedObject.GetComponent<Selectable>().enabled && !SelectedUnitsList.Contains(selectedObject))
     {
       SelectedUnitsList.Add(selectedObject);
 
