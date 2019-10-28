@@ -20,21 +20,23 @@ public class UnitOrder : Order
 
   void Update()
   {
-    if (updateCountdown < 1f)
-    {
-      updateCountdown += Time.deltaTime;
-      return;
-    }
+    Animator animator = GetComponent<Animator>();
 
-    else
+    if (animator && animator.enabled)
     {
-      updateCountdown = 0;
+      if (GetComponent<NavMeshAgent>().velocity != Vector3.zero)
+      {
+        animator.SetBool("Move", true);
+      }
+
+      else
+      {
+        animator.SetBool("Move", false);
+      }
     }
 
     if (queuedOrder)
     {
-      Animator animator = GetComponent<Animator>();
-
       if (animator)
       {
         if (animator.GetCurrentAnimatorStateInfo(0).IsName("Idle") || animator.GetCurrentAnimatorStateInfo(0).IsName("Move"))
@@ -46,6 +48,17 @@ public class UnitOrder : Order
           queuedOrder = false;
         }
       }
+    }
+
+    if (updateCountdown < 1f)
+    {
+      updateCountdown += Time.deltaTime;
+      return;
+    }
+
+    else
+    {
+      updateCountdown = 0;
     }
 
     if (followTarget)
@@ -75,29 +88,22 @@ public class UnitOrder : Order
     if (agent.enabled)
     {
       // Check if we have arrived yet
-      if (agent.enabled && !agent.pathPending && agent.remainingDistance <= agent.stoppingDistance && (!agent.hasPath || agent.velocity.sqrMagnitude == 0f))
+      if (!agent.pathPending && agent.remainingDistance <= agent.stoppingDistance && (!agent.hasPath || agent.velocity.sqrMagnitude == 0f))
       {
         if (GetComponent<Attack>() != null)
         {
           GetComponent<Attack>().SetDetectingEnemies(true);
         }
-
-        Animator animator = GetComponent<Animator>();
-
-        if (animator && animator.enabled)
-        {
-          animator.SetBool("Move", false);
-        }
       }
 
       else
       {
-        Animator animator = GetComponent<Animator>();
+        //Animator animator = GetComponent<Animator>();
 
-        if (animator && animator.enabled)
-        {
-          animator.SetBool("Move", true);
-        }
+        //if (animator && animator.enabled)
+        //{
+        //  animator.SetBool("Move", true);
+        //}
 
         GetComponent<NavMeshObstacle>().enabled = false;
         GetComponent<NavMeshAgent>().enabled = true;
@@ -106,12 +112,12 @@ public class UnitOrder : Order
 
     else
     {
-      Animator animator = GetComponent<Animator>();
+      //Animator animator = GetComponent<Animator>();
 
-      if (animator && animator.enabled)
-      {
-        animator.SetBool("Move", false);
-      }
+      //if (animator && animator.enabled)
+      //{
+      //  animator.SetBool("Move", false);
+      //}
     }
   }
 

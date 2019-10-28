@@ -3,11 +3,12 @@
 public class Projectile : MonoBehaviour
 {
   [SerializeField]
-  private float speed = 0;        // How fast the projectile travels
+  private float speed = 0;                // How fast the projectile travels
 
-  private float damage;         // How much damage is inflicted upon the target
-  private GameObject target;  // Object to travel towards to
-  private Vector3 targetPos;  // Cache position in case target dies
+  private float damage;                   // How much damage is inflicted upon the target
+  private GameObject target;              // Object to travel towards to
+  private Vector3 targetPos;              // Cache position in case target dies
+  private StatusEffects statusEffects;    // The status effects of the object who shot the projectile
 
   private void Update()
   {
@@ -23,6 +24,11 @@ public class Projectile : MonoBehaviour
       {
         // Damage the target
         target.GetComponent<Health>().ModifyHealth(-damage);
+
+        if (statusEffects)
+        {
+          statusEffects.AfflictStatusEffects(target);
+        }
       }
 
       // Destroy projectile since it has reached destination
@@ -44,10 +50,11 @@ public class Projectile : MonoBehaviour
     }
   }
 
-  public void SetTarget(GameObject setTarget, float setDamage)
+  public void SetTarget(GameObject setTarget, float setDamage, StatusEffects statusEffects)
   {
     target = setTarget;
     damage = setDamage;
+    this.statusEffects = statusEffects;
 
     targetPos = target.transform.position;
   }

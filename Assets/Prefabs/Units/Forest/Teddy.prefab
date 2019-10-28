@@ -393,6 +393,7 @@ GameObject:
   - component: {fileID: 8284558412841734293}
   - component: {fileID: 6535236377957168995}
   - component: {fileID: 6535236377957168996}
+  - component: {fileID: 5280886360926694213}
   m_Layer: 0
   m_Name: Teddy
   m_TagString: Untagged
@@ -629,7 +630,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 55
-  regeneration: 0.8
+  regeneration: 0.35
   combatantType: 0
 --- !u!114 &6535236377957168994
 MonoBehaviour:
@@ -647,6 +648,8 @@ MonoBehaviour:
   attacksPerSecond: 1.1
   attackRange: 0.8
   enemyDetectRange: 12
+  isHealer: 0
+  healPct: 0.5
   preferredTarget: 0
   projectilePrefab: {fileID: 0}
 --- !u!114 &8284558412841734293
@@ -692,6 +695,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9347d1a8695b16347b2077e2606b6f70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5280886360926694213
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6535236377957169005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a533fab9a76c8ea4098c563139cf9fea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &6536432551157897295

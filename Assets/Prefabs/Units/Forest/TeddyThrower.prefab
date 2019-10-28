@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 8109413875993358450}
   - component: {fileID: 8109413875993358453}
   - component: {fileID: -2614433931187345692}
+  - component: {fileID: 819403203178679864}
   m_Layer: 0
   m_Name: TeddyThrower
   m_TagString: Untagged
@@ -219,6 +220,8 @@ MonoBehaviour:
   attacksPerSecond: 1.4
   attackRange: 10
   enemyDetectRange: 12
+  isHealer: 0
+  healPct: 0.5
   preferredTarget: 0
   projectilePrefab: {fileID: 0}
 --- !u!114 &8109413875993358450
@@ -266,3 +269,15 @@ MonoBehaviour:
     attackRangeModifier: 0.02
     detectRangeModifier: 0
     speedModifier: 0.05
+--- !u!114 &819403203178679864
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8109413875993358460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a533fab9a76c8ea4098c563139cf9fea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

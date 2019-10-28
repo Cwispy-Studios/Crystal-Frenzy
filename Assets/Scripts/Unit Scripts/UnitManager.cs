@@ -307,6 +307,7 @@ public class UnitManager : MonoBehaviour
         }
 
         unit.transform.position = assemblyPosition;
+        unit.GetComponent<NavMeshAgent>().destination = assemblyPosition;
         unit.GetComponent<NavMeshAgent>().Warp(assemblyPosition);
       }
     }

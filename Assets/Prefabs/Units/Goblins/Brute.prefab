@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 4100849591000208237}
   - component: {fileID: 532199220920963035}
   - component: {fileID: 4974711632971954448}
+  - component: {fileID: 1716260139354408529}
   m_Layer: 0
   m_Name: Brute
   m_TagString: Untagged
@@ -134,7 +135,7 @@ NavMeshObstacle:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6530087302226205059}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Shape: 0
   m_Extents: {x: 1, y: 2.5, z: 1}
@@ -243,6 +244,8 @@ MonoBehaviour:
   attacksPerSecond: 0.7
   attackRange: 2
   enemyDetectRange: 15
+  isHealer: 0
+  healPct: 0.5
   preferredTarget: 0
   projectilePrefab: {fileID: 0}
 --- !u!114 &4100849591000208237
@@ -284,3 +287,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   affectedByUpgrades: 04000000
+--- !u!114 &1716260139354408529
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6530087302226205059}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a533fab9a76c8ea4098c563139cf9fea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
