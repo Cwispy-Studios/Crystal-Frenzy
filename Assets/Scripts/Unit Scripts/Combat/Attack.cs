@@ -20,6 +20,19 @@ public class Attack : MonoBehaviour
   }
 
   [SerializeField]
+  private bool isHealer = false;
+  public bool IsHealer
+  {
+    get
+    {
+      return isHealer;
+    }
+  }
+  [SerializeField]
+  private float healPct = 0.5f;
+  private bool isHealing = false;
+
+  [SerializeField]
   private COMBATANT_TYPE preferredTarget = COMBATANT_TYPE.NORMAL;
   [SerializeField]
   private GameObject projectilePrefab = null;
@@ -34,6 +47,8 @@ public class Attack : MonoBehaviour
   private Vector3 attackMovePosition;
   private bool isAttackMoveOrder = false;
 
+  private float updateCountdown = 0;
+
   private void Awake()
   {
     unitRadius = GetComponent<NavMeshAgent>().radius * ((transform.lossyScale.x + transform.lossyScale.z) / 2f);
@@ -46,6 +61,17 @@ public class Attack : MonoBehaviour
 
   private void Update()
   {
+    if (updateCountdown < 1f)
+    {
+      ++updateCountdown;
+      return;
+    }
+
+    else
+    {
+      updateCountdown = 0;
+    }
+
     // As long as unit is not detecting enemies, it is not under an attack move order, so we set it to false
     if (detectingEnemies == false)
     {
@@ -62,12 +88,15 @@ public class Attack : MonoBehaviour
 
       bool preferredTargetTypeInRange = false;
 
+      float lowestHpPct = 100f;
+      isHealing = false;
+
       for (int i = 0; i < unitsInRange.Length; ++i)
       {
         bool unitIsEnemy = CheckUnitIsTargetableEnemy(unitsInRange[i].gameObject);
 
         // Check if the unit in range is an enemy and has a health component
-        if (unitIsEnemy && unitsInRange[i].GetComponent<Health>())
+        if (!isHealing && unitIsEnemy && unitsInRange[i].GetComponent<Health>())
         {
           // First we check if the enemy has already found their preferred target type. If not found, they can target anyone.
           // If found, we only search for enemies of that target type
@@ -79,6 +108,26 @@ public class Attack : MonoBehaviour
               float distance = Vector3.Distance(transform.position, unitsInRange[i].transform.position);
 
               if (distance < closestEnemyRange)
+              {
+                closestEnemyRange = distance;
+                detectedEnemy = unitsInRange[i].gameObject;
+              }
+            }
+          }
+
+          // Check if this unit is a healer and the unit in range is a friend and has a health component
+          else if (isHealer && !unitIsEnemy && unitsInRange[i].GetComponent<Health>())
+          {
+            // Check if unit can be healed and is the preferred type
+            if (!unitsInRange[i].GetComponent<Health>().AtMaxHealth() && unitsInRange[i].GetComponent<Health>().CombatantType == preferredTarget)
+            {
+              isHealing = true;
+
+              // Save the distance
+              float distance = Vector3.Distance(transform.position, unitsInRange[i].transform.position);
+
+              // Prioritise lowest hp
+              if (unitsInRange[i].GetComponent<Health>().HealthPct() < lowestHpPct)
               {
                 closestEnemyRange = distance;
                 detectedEnemy = unitsInRange[i].gameObject;
@@ -111,7 +160,7 @@ public class Attack : MonoBehaviour
       // Check if any enemy found
       if (detectedEnemy != null)
       {
-        AttackEnemy(detectedEnemy, closestEnemyRange);
+        AttackEnemy(detectedEnemy, closestEnemyRange, isHealing);
       }
 
       // No enemies found, check if there is an attack order position to move towards to
@@ -132,7 +181,7 @@ public class Attack : MonoBehaviour
     {
       float enemyRange = Vector3.Distance(transform.position, attackTarget.transform.position);
 
-      AttackEnemy(attackTarget, enemyRange);
+      AttackEnemy(attackTarget, enemyRange, isHealing);
     }
 
     if (attackCooldown <= attacksPerSecond)
@@ -165,7 +214,7 @@ public class Attack : MonoBehaviour
     return false;    
   }
 
-  private void AttackEnemy(GameObject enemy, float enemyRange)
+  private void AttackEnemy(GameObject enemy, float enemyRange, bool healing)
   {
     // Try to attack them, check the distance between them. The distance from their position + their radius to your position + your radius 
     // must be smaller than the attack range
@@ -191,8 +240,19 @@ public class Attack : MonoBehaviour
       // Check if ready to attack
       if (attackCooldown >= attacksPerSecond)
       {
+        // Healing has no projectile
+        if (isHealing)
+        {
+          enemy.GetComponent<Health>().ModifyHealth(attackDamage * healPct);
+
+          if (animator != null && animator.enabled)
+          {
+            animator.SetTrigger("Cast Spell");
+          }
+        }
+
         // Check if there is projectile
-        if (projectilePrefab != null)
+        else if (projectilePrefab != null)
         {
           // Create the projectile at half height of the unit
           Vector3 projectilePos = transform.position;
@@ -213,7 +273,7 @@ public class Attack : MonoBehaviour
         {
           enemy.GetComponent<Health>().ModifyHealth(-attackDamage);
 
-          if (animator && animator.enabled)
+          if (animator != null && animator.enabled)
           {
             animator.SetTrigger("Melee Attack");
           }
@@ -223,7 +283,16 @@ public class Attack : MonoBehaviour
       }
     }
 
-    else if (animator && animator.enabled && animator.GetCurrentAnimatorStateInfo(0).IsName("Idle") || animator.GetCurrentAnimatorStateInfo(0).IsName("Move"))
+    else if (animator != null && animator.enabled && (animator.GetCurrentAnimatorStateInfo(0).IsName("Idle") || animator.GetCurrentAnimatorStateInfo(0).IsName("Move")))
+    {
+      GetComponent<NavMeshAgent>().enabled = true;
+      GetComponent<NavMeshObstacle>().enabled = false;
+
+      GetComponent<NavMeshAgent>().stoppingDistance = attackRange + unitRadius + enemyRadius - STOPPING_MARGIN;
+      GetComponent<NavMeshAgent>().destination = enemy.transform.position;
+    }
+
+    else
     {
       GetComponent<NavMeshAgent>().enabled = true;
       GetComponent<NavMeshObstacle>().enabled = false;
@@ -233,8 +302,10 @@ public class Attack : MonoBehaviour
     }
   }
 
-  public void SetAttackTarget(GameObject target)
+  public void SetAttackTarget(GameObject target, bool healing)
   {
+    isHealing = healing;
+
     GetComponent<NavMeshAgent>().enabled = true;
     GetComponent<NavMeshObstacle>().enabled = false;
 

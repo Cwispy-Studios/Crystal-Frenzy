@@ -11,6 +11,8 @@ public class UnitOrder : Order
   private bool queuedOrder = false;
   private Vector3 queuedOrderPos = new Vector3();
 
+  private float updateCountdown = 0;
+
   private void Awake()
   {
     unitRadius = GetComponent<NavMeshAgent>().radius * ((transform.lossyScale.x + transform.lossyScale.z) / 2f);
@@ -18,6 +20,17 @@ public class UnitOrder : Order
 
   void Update()
   {
+    if (updateCountdown < 1f)
+    {
+      ++updateCountdown;
+      return;
+    }
+
+    else
+    {
+      updateCountdown = 0;
+    }
+
     if (queuedOrder)
     {
       Animator animator = GetComponent<Animator>();
@@ -70,7 +83,7 @@ public class UnitOrder : Order
 
         Animator animator = GetComponent<Animator>();
 
-        if (animator)
+        if (animator && animator.enabled)
         {
           animator.SetBool("Move", false);
         }
@@ -80,7 +93,7 @@ public class UnitOrder : Order
       {
         Animator animator = GetComponent<Animator>();
 
-        if (animator)
+        if (animator && animator.enabled)
         {
           animator.SetBool("Move", true);
         }
@@ -94,7 +107,7 @@ public class UnitOrder : Order
     {
       Animator animator = GetComponent<Animator>();
 
-      if (animator)
+      if (animator && animator.enabled)
       {
         animator.SetBool("Move", false);
       }
@@ -157,13 +170,22 @@ public class UnitOrder : Order
         // Friendly/neutral unit
         if (targetFaction.faction == Faction.FACTIONS.NEUTRAL || faction.faction == targetFaction.faction)
         {
-          SetTargetAsDestination();
+          if (GetComponent<Attack>().IsHealer && targetUnit.GetComponent<Faction>().faction == targetFaction.faction && !targetUnit.GetComponent<Health>().AtMaxHealth()
+            && targetUnit.GetComponent<Health>().CombatantType == COMBATANT_TYPE.NORMAL)
+          {
+            GetComponent<Attack>().SetAttackTarget(targetUnit, true);
+          }
+
+          else
+          {
+            SetTargetAsDestination();
+          }
         }
 
         // Enemy unit
         else
         {
-          GetComponent<Attack>().SetAttackTarget(targetUnit);
+          GetComponent<Attack>().SetAttackTarget(targetUnit, false);
         }
       }
       
@@ -188,7 +210,7 @@ public class UnitOrder : Order
 
     followTargetOldPos = destinationUnit.transform.position;
 
-    if (animator && animator.enabled)
+    if (animator != null && animator.enabled)
     {
       if (animator.GetCurrentAnimatorStateInfo(0).IsName("Idle") || animator.GetCurrentAnimatorStateInfo(0).IsName("Move"))
       {
@@ -204,7 +226,6 @@ public class UnitOrder : Order
 
     else
     {
-      followTargetOldPos = destinationUnit.transform.position;
       agent.destination = destinationUnit.transform.position;
     }
 

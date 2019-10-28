@@ -65,6 +65,7 @@ public class HealthBar : MonoBehaviour
 
   private void OnDestroy()
   {
-    health.OnHealthChanged -= HandleHealthChanged;
+    if (health)
+      health.OnHealthChanged -= HandleHealthChanged;
   }
 }

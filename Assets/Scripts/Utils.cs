@@ -61,7 +61,7 @@ public class Utils
     int layerMask = (1 << 5) | (1 << 8) | (1 << 9) | (1 << 10);
 
     // Check if the mouse was over any collider when clicked
-    if (Physics.Raycast(ray, out RaycastHit hit, 500f, ~layerMask))
+    if (Physics.Raycast(ray, out RaycastHit hit, 750f, ~layerMask))
     {
       // Retrieve selectable component
       GameObject selectable = hit.collider.gameObject;

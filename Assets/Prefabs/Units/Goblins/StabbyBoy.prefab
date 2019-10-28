@@ -56,7 +56,7 @@ Animator:
   m_GameObject: {fileID: 41785935244700089}
   m_Enabled: 0
   m_Avatar: {fileID: 9000000, guid: bb9648afe27705442bfc00b447c5d73c, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e761ace889a78a946967af8d6890f71d, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -301,6 +301,8 @@ MonoBehaviour:
   attacksPerSecond: 1.5
   attackRange: 1
   enemyDetectRange: 15
+  isHealer: 0
+  healPct: 0.5
   preferredTarget: 0
   projectilePrefab: {fileID: 0}
 --- !u!114 &7125494102815859543

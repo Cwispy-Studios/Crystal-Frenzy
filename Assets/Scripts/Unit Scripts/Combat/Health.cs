@@ -133,4 +133,14 @@ public class Health : MonoBehaviour
       maxHealth += (GameManager.CurrentRound - 1) * boostValues.healthModifier * maxHealth;
       regeneration += (GameManager.CurrentRound - 1) * boostValues.regeneratonModifier * regeneration;
   }
+
+  public bool AtMaxHealth()
+  {
+    return CurrentHealth == MaxHealth;
+  }
+
+  public float HealthPct()
+  {
+    return CurrentHealth / MaxHealth;
+  }
 }
