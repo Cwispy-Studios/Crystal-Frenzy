@@ -288,7 +288,35 @@ public class Attack : MonoBehaviour
         // No projectile means attack hits immediately
         else
         {
-          enemy.GetComponent<Health>().ModifyHealth(-attackDamage);
+          if (aoe)
+          {
+            int layerMask = 0;
+
+            Collider[] colliders = Physics.OverlapSphere(enemy.transform.position, aoeRadius, ~layerMask);
+
+            for (int i = 0; i < colliders.Length; ++i)
+            {
+              if (colliders[i].GetComponent<Faction>() != null || colliders[i].GetComponent<Health>() != null)
+              {
+                // Check if is unfriendly unit and has health
+                if ((GetComponent<Faction>().faction == Faction.FACTIONS.GOBLINS && colliders[i].GetComponent<Faction>().faction == Faction.FACTIONS.FOREST) ||
+                    (GetComponent<Faction>().faction == Faction.FACTIONS.FOREST && colliders[i].GetComponent<Faction>().faction == Faction.FACTIONS.GOBLINS))
+                {
+                  colliders[i].GetComponent<Health>().ModifyHealth(-attackDamage);
+
+                  if (GetComponent<StatusEffects>())
+                  {
+                    GetComponent<StatusEffects>().AfflictStatusEffects(colliders[i].gameObject);
+                  }
+                }
+              }
+            }
+          }
+
+          else
+          {
+            enemy.GetComponent<Health>().ModifyHealth(-attackDamage);
+          }
 
           if (GetComponent<StatusEffects>())
           {

@@ -244,6 +244,8 @@ MonoBehaviour:
   attacksPerSecond: 0.7
   attackRange: 2
   enemyDetectRange: 15
+  aoe: 0
+  aoeRadius: 1
   isHealer: 0
   healPct: 0.5
   preferredTarget: 0
@@ -260,7 +262,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a219e24f726b7404b99519cc0b85ff8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitPoints: 3
+  unitPoints: 4
 --- !u!114 &532199220920963035
 MonoBehaviour:
   m_ObjectHideFlags: 0
