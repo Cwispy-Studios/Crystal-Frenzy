@@ -20,6 +20,9 @@ public class Health : MonoBehaviour
   public static event Action<Health> OnHealthRemoved = delegate { };
 
   [SerializeField]
+  private GameObject ragdollPrefab = null;
+
+  [SerializeField]
   private float maxHealth = 100;
   public float MaxHealth
   {
@@ -91,6 +94,7 @@ public class Health : MonoBehaviour
         recruitableUnit.KillUnit();
       }
 
+      // If enemy explodes on death, damages everything around it
       if (explodesOnDeath)
       {
         int layerMask = 0;
@@ -102,18 +106,23 @@ public class Health : MonoBehaviour
           if (colliders[i].GetComponent<Faction>() != null && colliders[i].GetComponent<Health>() != null)
           {
             // Check if is unfriendly unit and has health
-            if ((GetComponent<Faction>().faction == Faction.FACTIONS.GOBLINS && colliders[i].GetComponent<Faction>().faction == Faction.FACTIONS.FOREST) ||
-                (GetComponent<Faction>().faction == Faction.FACTIONS.FOREST && colliders[i].GetComponent<Faction>().faction == Faction.FACTIONS.GOBLINS))
-            {
+            //if ((GetComponent<Faction>().faction == Faction.FACTIONS.GOBLINS && colliders[i].GetComponent<Faction>().faction == Faction.FACTIONS.FOREST) ||
+            //    (GetComponent<Faction>().faction == Faction.FACTIONS.FOREST && colliders[i].GetComponent<Faction>().faction == Faction.FACTIONS.GOBLINS))
+            //{
               colliders[i].GetComponent<Health>().ModifyHealth(-explosionDmgPctOfHealth * MaxHealth);
 
               if (GetComponent<StatusEffects>())
               {
                 GetComponent<StatusEffects>().AfflictStatusEffects(colliders[i].gameObject);
               }
-            }
+            //}
           }
         }
+      }
+
+      if (ragdollPrefab)
+      {
+        Instantiate(ragdollPrefab, transform.position, transform.rotation);
       }
 
       Destroy(gameObject);
