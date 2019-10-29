@@ -38,7 +38,7 @@ public class CrystalRewards : MonoBehaviour
   private float lootWeight = 1f;
 
   // The margin from min and max weight before upgrades have a chance to be included as a reward
-  private const float MIN_REWARD_MARGIN = 0.3f;
+  private const float MIN_REWARD_MARGIN = 0.35f;
   private const float MAX_REWARD_MARGIN = 0.15f;
   private const float MIN_REWARD_WEIGHT = MIN_WEIGHT + MIN_REWARD_MARGIN;
   private const float MAX_REWARD_WEIGHT = MAX_WEIGHT - MAX_REWARD_MARGIN;
@@ -195,7 +195,7 @@ public class CrystalRewards : MonoBehaviour
     }
 
     // The last number is the chance that no upgrade is rewarded. At best, it is a 50% chance to not get an upgrade.
-    // This is added on with the max possible loot weight minus the loot weight you get (so a higher loot weight means a lower chance)
+    // This is added on with the max possible loot weight minus the loot weight you get (so a higher loot weight means a lower chance of getting no reward)
     // multiplied by the most expensive upgrade (Having enough loot weight to get here shouldn't be too hard
     // but actually being able to get an upgrade should be harder)
     cumulatedWeight += cumulatedWeight + Mathf.FloorToInt((MAX_WEIGHT - lootWeight) * mostExpensiveUpgradeType);

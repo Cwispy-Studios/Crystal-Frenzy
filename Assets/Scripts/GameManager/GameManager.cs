@@ -401,8 +401,8 @@ public class GameManager : MonoBehaviour
     // Change unit panel buttons to combat buttons so clicking on them selects units instead of deleting them
     uiInterface.UnitManager.SetUnitButtonsToCombat();
 
-    // Start wave spawners of attack node
-    attackNode.GetComponent<CrystalNode>().SetWaveSpawnersActive(true, spawnedCrystalSeeker);
+    // Start wave spawners of attack node towards your crystal
+    attackNode.GetComponent<CrystalNode>().SetWaveSpawnersActive(true, conqueredNodes[conqueredNodes.Count - 1]);
   }
 
   public void DefenseWin()
