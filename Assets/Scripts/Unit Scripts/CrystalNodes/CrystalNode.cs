@@ -15,7 +15,10 @@ public class CrystalNode : MonoBehaviour
   [HideInInspector]
   public GameObject conqueredNode = null;
   [HideInInspector]
-  public bool explored = false;
+  public bool explored = false,   // Unexplored nodes appear gray
+    active = false,               // Active node is the node that you are currently selecting from
+    conquerable = false,          // Conquerable are the nodes that are connected to your active node
+    targeted = false;             // Targeted nodes are the nodes we are attacking
 
   // To add disable component in inspector
   private void Start() { }
@@ -28,7 +31,14 @@ public class CrystalNode : MonoBehaviour
       // AND the crystal node number must be greater than or equal to this node
       if (connectedNodesData[i].connectedNode == checkObject && checkObject.GetComponent<Faction>().faction != GetComponent<Faction>().faction)
       {
+        // Set the previous node as not targetted if it exists and make the new one the targeted one
+        if (setTarget != null)
+        {
+          setTarget.GetComponent<CrystalNode>().targeted = false;
+        }
+        
         setTarget = checkObject;
+        setTarget.GetComponent<CrystalNode>().targeted = true;
         crystalPath = connectedNodesData[i].pathSpline;
 
         for (int notSelected = 0; notSelected < connectedNodesData.Length; ++notSelected)
@@ -64,22 +74,24 @@ public class CrystalNode : MonoBehaviour
     return null;
   }
 
-  public void SetPathVisibilityMeshes(bool active)
+  public void SetPathVisibilityMeshes(bool setActive)
   {
+    active = true;
     explored = true;
 
     for (int connectedNodeIndex = 0; connectedNodeIndex < connectedNodesData.Length; ++connectedNodeIndex)
     {
       connectedNodesData[connectedNodeIndex].connectedNode.GetComponent<CrystalNode>().explored = true;
+      connectedNodesData[connectedNodeIndex].connectedNode.GetComponent<CrystalNode>().conquerable = true;
 
       for (int visibilityMeshIndex = 0; visibilityMeshIndex < connectedNodesData[connectedNodeIndex].pathVisibilityMeshes.Length; ++visibilityMeshIndex)
       {
-        connectedNodesData[connectedNodeIndex].pathVisibilityMeshes[visibilityMeshIndex].SetActive(active);
+        connectedNodesData[connectedNodeIndex].pathVisibilityMeshes[visibilityMeshIndex].SetActive(setActive);
       }
     }
   }
 
-  public void SetConqueredPathVisibilityMeshes(GameObject conqueredNode, bool active)
+  public void SetConqueredPathVisibilityMeshes(GameObject conqueredNode, bool setActive)
   {
     for (int connectedNodeIndex = 0; connectedNodeIndex < connectedNodesData.Length; ++connectedNodeIndex)
     {
@@ -88,7 +100,7 @@ public class CrystalNode : MonoBehaviour
       {
         for (int visibilityMeshIndex = 0; visibilityMeshIndex < connectedNodesData[connectedNodeIndex].pathVisibilityMeshes.Length; ++visibilityMeshIndex)
         {
-          connectedNodesData[connectedNodeIndex].pathVisibilityMeshes[visibilityMeshIndex].SetActive(active);
+          connectedNodesData[connectedNodeIndex].pathVisibilityMeshes[visibilityMeshIndex].SetActive(setActive);
         }
 
         return;
@@ -152,6 +164,21 @@ public class CrystalNode : MonoBehaviour
     for (int i = 0; i < spawnPoints.Length; ++i)
     {
       spawnPoints[i].GetComponent<WaveSpawner>().AdjustDifficulty(waveSpawnerDifficultyMultiplier);
+    }
+  }
+
+  public void SetConnectedNodesUnconquerable(GameObject conqueredNode)
+  {
+    active = false;
+    targeted = false;
+    conqueredNode.GetComponent<CrystalNode>().active = true;
+
+    for (int i = 0; i < ConnectedNodesData.Length; ++i)
+    {
+      if (conqueredNode != connectedNodesData[i].connectedNode)
+      {
+        connectedNodesData[i].connectedNode.GetComponent<CrystalNode>().conquerable = false;
+      }
     }
   }
 }

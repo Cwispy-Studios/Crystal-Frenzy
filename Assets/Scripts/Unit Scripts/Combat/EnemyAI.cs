@@ -2,7 +2,7 @@
 
 public class EnemyAI : MonoBehaviour
 {
-  private const float UPDATE_INTERVAL = 0.5f;
+  private const float UPDATE_INTERVAL = 1f;
   private float updateCountdown = 0;
 
   public GameObject target;

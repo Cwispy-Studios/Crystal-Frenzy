@@ -183,6 +183,7 @@ namespace BezierSolution
           agent.enabled = true;
 
           Vector3 cacheDestination = agent.destination;
+          Vector3 cacheVelocity = agent.velocity;
 
           agent.Warp(transform.position + (direction * (unitRadius + collidingUnitRadius)));
 
@@ -193,11 +194,10 @@ namespace BezierSolution
           if (agent.enabled)
           {
             agent.destination = cacheDestination;
+            agent.velocity = cacheVelocity;
           }
         }
       }
-
-      Debug.Log(slowDownPerc);
 
       Mathf.Clamp(slowDownPerc, 0, 0.9f);
     }

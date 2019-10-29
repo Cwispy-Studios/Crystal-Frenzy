@@ -17,12 +17,12 @@ GameObject:
   - component: {fileID: 8109413875993358457}
   - component: {fileID: 8109413875993358456}
   - component: {fileID: 8109413875993358459}
-  - component: {fileID: 8109413875993358458}
+  - component: {fileID: -4138412749574945580}
   - component: {fileID: 8109413875993358461}
   - component: {fileID: 8109413875993358451}
+  - component: {fileID: -2614433931187345692}
   - component: {fileID: 8109413875993358450}
   - component: {fileID: 8109413875993358453}
-  - component: {fileID: -2614433931187345692}
   - component: {fileID: 819403203178679864}
   m_Layer: 0
   m_Name: TeddyThrower
@@ -110,7 +110,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 8109413875993358460}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 0
+  m_Enabled: 1
   m_Radius: 0.9
   m_Height: 4.2
   m_Direction: 1
@@ -194,7 +194,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 1
---- !u!114 &8109413875993358458
+--- !u!114 &-4138412749574945580
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -246,6 +246,26 @@ MonoBehaviour:
   healPct: 0.5
   preferredTarget: 0
   projectilePrefab: {fileID: 0}
+--- !u!114 &-2614433931187345692
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8109413875993358460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6de39788d03a2548a59d36100eec578, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boostValues:
+    healthModifier: 0.06
+    regeneratonModifier: 0.15
+    damageModifier: 0.03
+    attackSpeedModifier: 0.04
+    attackRangeModifier: 0.02
+    detectRangeModifier: 0
+    speedModifier: 0.05
 --- !u!114 &8109413875993358450
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -271,26 +291,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9347d1a8695b16347b2077e2606b6f70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &-2614433931187345692
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8109413875993358460}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6de39788d03a2548a59d36100eec578, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  boostValues:
-    healthModifier: 0.06
-    regeneratonModifier: 0.15
-    damageModifier: 0.03
-    attackSpeedModifier: 0.04
-    attackRangeModifier: 0.02
-    detectRangeModifier: 0
-    speedModifier: 0.05
 --- !u!114 &819403203178679864
 MonoBehaviour:
   m_ObjectHideFlags: 0

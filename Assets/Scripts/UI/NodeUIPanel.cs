@@ -11,7 +11,7 @@ public class NodeUIPanel : MonoBehaviour
 
   private UINode[] uiNodes;
 
-  private void Start()
+  private void Awake()
   {
     panelScale = GetComponent<RectTransform>().sizeDelta.x;
 

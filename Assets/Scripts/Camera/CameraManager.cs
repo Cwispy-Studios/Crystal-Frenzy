@@ -33,24 +33,34 @@ public class CameraManager : MonoBehaviour
     // Extra safety check
     if (GameManager.CurrentPhase == PHASES.PREPARATION || GameManager.CurrentPhase == PHASES.PREPARATION_DEFENSE)
     {
-      GetComponent<CameraControls>().birdsEyeViewMode = true;
-
-      Vector3 toPos = setPosition;
-      toPos.y = BIRDS_EYE_VIEW_Y;
-
-      StartLerp(toPos, BIRDS_EYE_VIEW_ROT, BIRDS_EYE_VIEW_FOV, 1.5f);
+      PointCameraAtPosition(setPosition, true);
     }
   }
 
-  public void PointCameraAtPosition(Vector3 assemblyPos, float duration = 1.5f)
+  public void PointCameraAtPosition(Vector3 pointPos, bool birdsEyeView, float duration = 1.5f)
   {
-    GetComponent<CameraControls>().birdsEyeViewMode = false;
+    GetComponent<CameraControls>().birdsEyeViewMode = birdsEyeView;
 
-    Vector3 toPos = assemblyPos;
-    toPos.z -= CameraControls.MAX_ZOOM / Mathf.Tan(DEFAULT_ROT.x * Mathf.Deg2Rad);
-    toPos.y = CameraControls.MAX_ZOOM;
+    Vector3 toPos = pointPos;
+    Vector3 rot;
+    float fov;
 
-    StartLerp(toPos, DEFAULT_ROT, DEFAULT_FOV, duration);
+    if (!birdsEyeView)
+    {
+      toPos.z -= CameraControls.MAX_ZOOM / Mathf.Tan(DEFAULT_ROT.x * Mathf.Deg2Rad);
+      toPos.y = CameraControls.MAX_ZOOM;
+      rot = DEFAULT_ROT;
+      fov = DEFAULT_FOV;
+    }
+
+    else
+    {
+      toPos.y = BIRDS_EYE_VIEW_Y;
+      rot = BIRDS_EYE_VIEW_ROT;
+      fov = BIRDS_EYE_VIEW_FOV;
+    }    
+
+    StartLerp(toPos, rot, fov, duration);
   }
 
   private IEnumerator LerpCamera(Vector3 fromPos, Vector3 toPos, Vector3 fromRot, Vector3 toRot, float fromFov, float toFov, float duration)

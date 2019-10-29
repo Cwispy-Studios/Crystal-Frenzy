@@ -7,7 +7,7 @@ public class UnitManager : MonoBehaviour
 {
   private readonly Vector3 ICON_SIZE = new Vector3(70f, 70f);
   private readonly Vector3 SELECTED_ICON_SIZE = new Vector3(80f, 80f);
-  private readonly Vector3 FIRST_ICON_POS = new Vector3(15f, 0);
+  private readonly Vector3 FIRST_ICON_POS = new Vector3(45f, 0);
   private readonly float ICON_GAP_X = 80f;
   private readonly float ICON_GAP_Y = 95f;
 

@@ -7,9 +7,18 @@ public class UINode : MonoBehaviour
   private Image nodeConnectingLinePrefab = null;
   private Image[] nodeConnectingLines;
 
-  private Color fortressColour = new Color(225f / 255f, 60f / 255f, 125f / 255f);
+  // Node colour for your fortress
+  private Color fortressColour = new Color(90f / 255f, 60f / 255f, 125f / 255f);
+  // Node colour if node is unexplored
   private Color unexploredColour = new Color(155f / 255f, 155f / 255f, 155f / 255f);
-  private Color conquerableColour = new Color(155f / 255f, 155f / 255f, 155f / 255f);
+  // Node colour if node is the current active one
+  private Color activeColour = new Color(0 / 255f, 200f / 255f, 0 / 255f);
+  // Node colour if you can select node to targset
+  private Color conquerableColour = new Color(255f / 255f, 170f / 255f, 50f / 255f);
+  // Node colour if node is selected to be attacked
+  private Color targetedColour = new Color(155f / 255f, 0 / 255f, 0 / 255f);
+  // Node colour if node is explored but can no longer be chosen
+  private Color blockedColour = new Color(125f / 255f, 125f / 255f, 25f / 255f);
 
   private Camera playerCamera;
   private GameObject node = null;
@@ -27,7 +36,7 @@ public class UINode : MonoBehaviour
 
   private void ZoomToNode()
   {
-    playerCamera.GetComponent<CameraManager>().PointCameraAtPosition(node.transform.position, 0.2f);
+    playerCamera.GetComponent<CameraManager>().PointCameraAtPosition(node.transform.position, playerCamera.GetComponent<CameraControls>().birdsEyeViewMode, 0.2f);
   }
 
   public void SetNode(GameObject setNode, float worldScale, float panelScale)
@@ -66,6 +75,11 @@ public class UINode : MonoBehaviour
 
         float lineAngle = Vector3.Angle(Vector3.right, heading);
 
+        if (heading.y < 0)
+        {
+          lineAngle = -lineAngle;
+        }
+
         nodeConnectingLines[i].GetComponent<RectTransform>().rotation = Quaternion.Euler(0, 0, lineAngle);
         nodeConnectingLines[i].GetComponent<RectTransform>().anchoredPosition = heading * buttonRadius + (Vector3.right * buttonRadius);
       }
@@ -76,9 +90,40 @@ public class UINode : MonoBehaviour
   {
     GetComponent<Button>().interactable = node.GetComponent<CrystalNode>().explored;
 
-    if (!node.GetComponent<CrystalNode>().explored)
+    // Fortress node never changes colour
+    if (node.GetComponent<CrystalNode>().IsFortress)
+    {
+      GetComponent<Image>().color = fortressColour;
+    }
+
+    // Unexplored nodes are nodes not connected to any nodes we have conquered
+    else if (!node.GetComponent<CrystalNode>().explored)
     {
       GetComponent<Image>().color = unexploredColour;
+    }
+
+    // Active node is the node you are currently playing on
+    else if (node.GetComponent<CrystalNode>().active)
+    {
+      GetComponent<Image>().color = activeColour;
+    }
+
+    // Targetted node is the node we are attacking / defending from
+    else if (node.GetComponent<CrystalNode>().targeted)
+    {
+      GetComponent<Image>().color = targetedColour;
+    }
+
+    // Explored and conquerable means the node can be targetted
+    else if (node.GetComponent<CrystalNode>().explored && node.GetComponent<CrystalNode>().conquerable)
+    {
+      GetComponent<Image>().color = conquerableColour;
+    }
+
+    // Explored and not conquerable means the node is blocked off because we selected another node
+    else if (node.GetComponent<CrystalNode>().explored && !node.GetComponent<CrystalNode>().conquerable)
+    {
+      GetComponent<Image>().color = blockedColour;
     }
   }
 }

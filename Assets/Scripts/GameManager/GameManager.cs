@@ -121,6 +121,7 @@ public class GameManager : MonoBehaviour
 
     if (nodeSelected == false)
     {
+      uiInterface.UpdateUINodeColours();
       // While it is false, keep the button not interactable
       if (lastConqueredNode.GetComponent<CrystalSeekerSpawner>().crystalSelected == false)
       {
@@ -163,7 +164,7 @@ public class GameManager : MonoBehaviour
     GameObject attackingFromNode = conqueredNodes[conqueredNodes.Count - 1];
 
     // Set the camera to point at the assembly space
-    playerCamera.GetComponent<CameraManager>().PointCameraAtPosition(attackingFromNode.GetComponent<ConqueredNode>().AssemblySpace.transform.position);
+    playerCamera.GetComponent<CameraManager>().PointCameraAtPosition(attackingFromNode.GetComponent<ConqueredNode>().AssemblySpace.transform.position, false);
     // Disable the camera ordering
     playerCamera.GetComponent<CameraIssueOrdering>().enabled = false;
     // Set the unit manager assembly space reference so that selecting our troops spawns them in the assembly space
@@ -171,6 +172,8 @@ public class GameManager : MonoBehaviour
 
     // Update the reference to the node we are going to attack
     attackNode = attackingFromNode.GetComponent<CrystalSeekerSpawner>().CrystalTarget;
+
+    uiInterface.UpdateUINodeColours();
   }
 
   public void ReturnToNodeSelection()
@@ -186,6 +189,8 @@ public class GameManager : MonoBehaviour
     uiInterface.PreparationPhaseSelectNodeUI();
 
     playerCamera.GetComponent<CameraIssueOrdering>().enabled = true;
+
+    uiInterface.UpdateUINodeColours();
   }
 
   ///////////////////////////////////////////////////////////////
@@ -243,6 +248,8 @@ public class GameManager : MonoBehaviour
 
     GameObject attackingFromNode = conqueredNodes[conqueredNodes.Count - 1];
     attackingFromNode.GetComponent<CrystalNode>().conqueredNode = attackNode;
+
+    attackingFromNode.GetComponent<CrystalNode>().SetConnectedNodesUnconquerable(attackNode);
 
     // Add the conquered node to the list
     conqueredNodes.Add(attackNode);
@@ -343,7 +350,7 @@ public class GameManager : MonoBehaviour
     GameObject attackingFromNode = conqueredNodes[conqueredNodes.Count - 1];
 
     // Set the camera to point at the assembly space
-    playerCamera.GetComponent<CameraManager>().PointCameraAtPosition(attackingFromNode.GetComponent<ConqueredNode>().AssemblySpace.transform.position);
+    playerCamera.GetComponent<CameraManager>().PointCameraAtPosition(attackingFromNode.GetComponent<ConqueredNode>().AssemblySpace.transform.position, false);
 
     // Disables the player from issuing orders to units
     playerCamera.GetComponent<CameraIssueOrdering>().enabled = false;
@@ -438,6 +445,8 @@ public class GameManager : MonoBehaviour
     GetComponent<HideableManager>().RemoveAllUnits();
 
     GameObject lostNode = conqueredNodes[conqueredNodes.Count - 1];
+    lostNode.GetComponent<CrystalNode>().active = false;
+    attackNode.GetComponent<CrystalNode>().targeted = true;
 
     // Remove the path camera bounds from the node we lost
     playerCamera.GetComponent<CameraControls>().RemoveCameraBounds(lostNode.GetComponent<CrystalNode>().RetrieveCameraBound(attackNode));
