@@ -112,7 +112,7 @@ NavMeshObstacle:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7396513783761032937}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_Shape: 0
   m_Extents: {x: 2.7, y: 3, z: 2.7}
@@ -176,6 +176,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 350
   regeneration: 2
+  explodesOnDeath: 0
+  explosionDmgPctOfHealth: 0.25
+  explosionRadius: 10
   combatantType: 1
 --- !u!114 &-3592790259009596221
 MonoBehaviour:

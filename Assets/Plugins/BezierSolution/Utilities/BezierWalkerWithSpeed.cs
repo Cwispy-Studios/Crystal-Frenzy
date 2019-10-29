@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.AI;
 
 namespace BezierSolution
 {
@@ -37,14 +38,38 @@ namespace BezierSolution
 		private bool onPathCompletedCalledAt1 = false;
 		private bool onPathCompletedCalledAt0 = false;
 
-		private void Awake()
+    private const float PERC_SLOWDOWN_PER_UNIT = 0.1f;
+    private float unitRadius = 5f;
+
+    private const float COLLISION_MARGIN = 1.1f;
+    private const float COLLISION_CHECK_INTERVAL = 0.1f;
+    private float collisionCountdown = 0;
+
+    private float slowDownPerc = 0;
+
+    private void Awake()
 		{
 			cachedTransform = transform;
-		}
+
+      unitRadius = GetComponent<SphereCollider>().radius * COLLISION_MARGIN;
+    }
 
 		private void Update()
 		{
 			float targetSpeed = ( isGoingForward ) ? speed : -speed;
+
+      if (collisionCountdown < COLLISION_CHECK_INTERVAL)
+      {
+        collisionCountdown += Time.deltaTime;
+      }
+
+      else
+      {
+        collisionCountdown = 0;
+        CheckCollision();
+      }
+
+      targetSpeed *= (1f - slowDownPerc);
 
 			Vector3 targetPos = spline.MoveAlongSpline( ref progress, targetSpeed * Time.deltaTime );
 
@@ -61,7 +86,7 @@ namespace BezierSolution
 				else
 					targetRotation = Quaternion.LookRotation( -spline.GetTangent( progress ) );
 
-				cachedTransform.rotation = Quaternion.Lerp( cachedTransform.rotation, targetRotation, rotationLerpModifier * Time.deltaTime );
+				cachedTransform.rotation = Quaternion.Lerp( cachedTransform.rotation, targetRotation, rotationLerpModifier * Time.deltaTime);
 			}
 
 			if( movingForward )
@@ -115,6 +140,67 @@ namespace BezierSolution
 				}
 			}
 		}
+
+    private void CheckCollision()
+    {
+      slowDownPerc = 0;
+
+      // Check for objects colliding with the crystal seeker
+      Collider[] colliders = Physics.OverlapSphere(transform.position, unitRadius, 1 << 0);
+
+      float angleFront = 90f;
+
+      // Push them away, while calculating how many of them are are in front of the crystal seeker
+      for (int i = 0; i < colliders.Length; ++i)
+      {
+        NavMeshAgent agent = colliders[i].GetComponent<NavMeshAgent>();
+        NavMeshObstacle obstacle = colliders[i].GetComponent<NavMeshObstacle>();
+
+        // Check if the object has both a navmesh agent and obstacle, indicating it is a unit
+        if (agent != null && obstacle != null)
+        {
+          // Find the radius of the colliding unit
+          float collidingUnitRadius = colliders[i].GetComponent<CapsuleCollider>().radius;
+
+          // Find the direction it is colliding in
+          Vector3 direction = colliders[i].transform.position - transform.position;
+          float distance = direction.magnitude;
+
+          direction /= distance;
+
+          float angleBetween = Vector3.Angle(transform.forward, direction);
+
+          if (angleBetween <= angleFront)
+          {
+            slowDownPerc += Mathf.Lerp(0, 0.25f, angleBetween / angleFront);
+          }
+
+          bool agentWasEnabled = agent.enabled;
+          bool obstacleWasEnabled = obstacle.enabled;
+
+          // Move the unit so that it is just not colliding with the crystal seeker
+          obstacle.enabled = false;
+          agent.enabled = true;
+
+          Vector3 cacheDestination = agent.destination;
+
+          agent.Warp(transform.position + (direction * (unitRadius + collidingUnitRadius)));
+
+          agent.enabled = agentWasEnabled;
+          obstacle.enabled = obstacleWasEnabled;
+
+          // Only resume the destination if agent was already enabled
+          if (agent.enabled)
+          {
+            agent.destination = cacheDestination;
+          }
+        }
+      }
+
+      Debug.Log(slowDownPerc);
+
+      Mathf.Clamp(slowDownPerc, 0, 0.9f);
+    }
 
     // This must be called only after assigning the Spline
     public void SetStartAndEndPoints(int startPoint, int endPoint = -1)

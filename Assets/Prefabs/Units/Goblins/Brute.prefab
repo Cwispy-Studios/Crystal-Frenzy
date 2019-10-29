@@ -227,6 +227,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 650
   regeneration: 0.1
+  explodesOnDeath: 0
+  explosionDmgPctOfHealth: 0.25
+  explosionRadius: 10
   combatantType: 0
 --- !u!114 &7394659449738150961
 MonoBehaviour:
@@ -242,7 +245,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackDamage: 50
   attacksPerSecond: 0.7
-  attackRange: 2
+  attackRange: 3
   enemyDetectRange: 15
   aoe: 0
   aoeRadius: 1
