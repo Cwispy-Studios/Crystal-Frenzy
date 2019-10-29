@@ -111,6 +111,8 @@ public class GameManager : MonoBehaviour
 
     playerCamera.GetComponent<CameraControls>().enabled = true;
     playerCamera.GetComponent<CameraIssueOrdering>().enabled = true;
+
+    uiInterface.UpdateUINodeColours();
   }
 
   private void PreparationPhase()
@@ -161,7 +163,7 @@ public class GameManager : MonoBehaviour
     GameObject attackingFromNode = conqueredNodes[conqueredNodes.Count - 1];
 
     // Set the camera to point at the assembly space
-    playerCamera.GetComponent<CameraManager>().PointCameraAtAssembly(attackingFromNode.GetComponent<ConqueredNode>().AssemblySpace.transform.position);
+    playerCamera.GetComponent<CameraManager>().PointCameraAtPosition(attackingFromNode.GetComponent<ConqueredNode>().AssemblySpace.transform.position);
     // Disable the camera ordering
     playerCamera.GetComponent<CameraIssueOrdering>().enabled = false;
     // Set the unit manager assembly space reference so that selecting our troops spawns them in the assembly space
@@ -341,7 +343,7 @@ public class GameManager : MonoBehaviour
     GameObject attackingFromNode = conqueredNodes[conqueredNodes.Count - 1];
 
     // Set the camera to point at the assembly space
-    playerCamera.GetComponent<CameraManager>().PointCameraAtAssembly(attackingFromNode.GetComponent<ConqueredNode>().AssemblySpace.transform.position);
+    playerCamera.GetComponent<CameraManager>().PointCameraAtPosition(attackingFromNode.GetComponent<ConqueredNode>().AssemblySpace.transform.position);
 
     // Disables the player from issuing orders to units
     playerCamera.GetComponent<CameraIssueOrdering>().enabled = false;

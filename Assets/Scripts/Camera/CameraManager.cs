@@ -16,6 +16,8 @@ using UnityEngine;
 
 public class CameraManager : MonoBehaviour
 {
+  public static bool cameraLerping = false;
+
   private readonly Vector3 DEFAULT_ROT = new Vector3(55f, 0f, 0f);
   private const float DEFAULT_FOV = 60f;
   private readonly Vector3 BIRDS_EYE_VIEW_ROT = new Vector3(90f, 0f, 0f);
@@ -40,7 +42,7 @@ public class CameraManager : MonoBehaviour
     }
   }
 
-  public void PointCameraAtAssembly(Vector3 assemblyPos)
+  public void PointCameraAtPosition(Vector3 assemblyPos, float duration = 1.5f)
   {
     GetComponent<CameraControls>().birdsEyeViewMode = false;
 
@@ -48,7 +50,7 @@ public class CameraManager : MonoBehaviour
     toPos.z -= CameraControls.MAX_ZOOM / Mathf.Tan(DEFAULT_ROT.x * Mathf.Deg2Rad);
     toPos.y = CameraControls.MAX_ZOOM;
 
-    StartLerp(toPos, DEFAULT_ROT, DEFAULT_FOV, 1.5f);
+    StartLerp(toPos, DEFAULT_ROT, DEFAULT_FOV, duration);
   }
 
   private IEnumerator LerpCamera(Vector3 fromPos, Vector3 toPos, Vector3 fromRot, Vector3 toRot, float fromFov, float toFov, float duration)
@@ -57,12 +59,18 @@ public class CameraManager : MonoBehaviour
 
     while (Time.time - startTime < duration)
     {
+      cameraLerping = true;
+      GetComponent<CameraControls>().enabled = false;
+
       transform.position = Vector3.Lerp(fromPos, toPos, (Time.time - startTime) / duration);
       transform.eulerAngles = Vector3.Lerp(fromRot, toRot, (Time.time - startTime) / duration);
       GetComponent<Camera>().fieldOfView = Mathf.Lerp(fromFov, toFov, (Time.time - startTime) / duration);
 
-      yield return null;
+      yield return 1;
     }
+
+    cameraLerping = false;
+    GetComponent<CameraControls>().enabled = true;
 
     transform.position = toPos;
     transform.eulerAngles = toRot;

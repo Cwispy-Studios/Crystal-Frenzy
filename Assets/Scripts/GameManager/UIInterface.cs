@@ -29,6 +29,8 @@ public class UIInterface : MonoBehaviour
   private BuildingTooltipPopup buildingTooltipPopup = null;
   [SerializeField]
   private UpgradeTooltipPopup upgradeTooltipPopup = null;
+  [SerializeField]
+  private NodeUIPanel nodeUIPanel = null;
 
   private Camera playerCamera;
   private GameObject showingLootObject;
@@ -171,5 +173,10 @@ public class UIInterface : MonoBehaviour
   public void HideUpgradeTooltipPopup()
   {
     upgradeTooltipPopup.gameObject.SetActive(false);
+  }
+
+  public void UpdateUINodeColours()
+  {
+    nodeUIPanel.UpdateUINodesColours();
   }
 }

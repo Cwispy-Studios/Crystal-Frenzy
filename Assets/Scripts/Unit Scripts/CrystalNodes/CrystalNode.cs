@@ -3,12 +3,19 @@
 public class CrystalNode : MonoBehaviour
 {
   [SerializeField]
+  private bool isFortress = false;
+  public bool IsFortress { get { return isFortress; } }
+
+  [SerializeField]
   private ConnectedNodeData[] connectedNodesData = null;
+  public ConnectedNodeData[] ConnectedNodesData { get { return connectedNodesData; } }
 
   [SerializeField]
   private GameObject[] spawnPoints = null;
   [HideInInspector]
   public GameObject conqueredNode = null;
+  [HideInInspector]
+  public bool explored = false;
 
   // To add disable component in inspector
   private void Start() { }
@@ -59,8 +66,12 @@ public class CrystalNode : MonoBehaviour
 
   public void SetPathVisibilityMeshes(bool active)
   {
+    explored = true;
+
     for (int connectedNodeIndex = 0; connectedNodeIndex < connectedNodesData.Length; ++connectedNodeIndex)
     {
+      connectedNodesData[connectedNodeIndex].connectedNode.GetComponent<CrystalNode>().explored = true;
+
       for (int visibilityMeshIndex = 0; visibilityMeshIndex < connectedNodesData[connectedNodeIndex].pathVisibilityMeshes.Length; ++visibilityMeshIndex)
       {
         connectedNodesData[connectedNodeIndex].pathVisibilityMeshes[visibilityMeshIndex].SetActive(active);

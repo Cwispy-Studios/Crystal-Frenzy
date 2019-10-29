@@ -217,13 +217,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3071ad8670c3bb458ac99a06f22f059, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  connectedNodes:
-  - {fileID: -927199367670048503, guid: 297a1d00553881048995dad3847517ac, type: 3}
-  pathSplines:
-  - {fileID: 2090115093539842534, guid: e9068e208d49a2b46ab7a2268525c536, type: 3}
+  isFortress: 1
+  connectedNodesData: []
   spawnPoints: []
-  treeWall: {fileID: 0}
   conqueredNode: {fileID: 0}
+  explored: 0
 --- !u!114 &1036473008959279404
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -250,4 +248,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e37ebb4da0a983c4ca6bbf6a3dbe44db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upgradePanel: {fileID: 0}
+  upgradePanelPrefab: {fileID: 0}

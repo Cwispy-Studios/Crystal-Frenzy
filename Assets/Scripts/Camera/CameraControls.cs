@@ -70,7 +70,10 @@ public class CameraControls : MonoBehaviour
       tempCamTransform.Translate(Quaternion.Euler(0, -90, 0) * transform.right * moveSpeed * Time.deltaTime / GetZoomPerc(), Space.World);
     }
 
-    CheckCameraInBounds(tempCamTransform.position);
+    if (CameraManager.cameraLerping == false)
+    {
+      CheckCameraInBounds(tempCamTransform.position);
+    }
   }
 
   private void Pan()
