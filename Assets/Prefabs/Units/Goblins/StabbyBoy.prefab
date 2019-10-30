@@ -57,7 +57,7 @@ Animator:
   m_GameObject: {fileID: 41785935244700089}
   m_Enabled: 0
   m_Avatar: {fileID: 9000000, guid: bb9648afe27705442bfc00b447c5d73c, type: 3}
-  m_Controller: {fileID: 9100000, guid: e761ace889a78a946967af8d6890f71d, type: 2}
+  m_Controller: {fileID: 0}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -283,6 +283,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0192c10ce0d2589489e608135047b104, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ragdollPrefab: {fileID: 0}
   maxHealth: 165
   regeneration: 0.6
   explodesOnDeath: 0
@@ -307,6 +308,7 @@ MonoBehaviour:
   enemyDetectRange: 15
   aoe: 0
   aoeRadius: 1
+  aoeDmgPct: 1
   isHealer: 0
   healPct: 0.5
   preferredTarget: 0

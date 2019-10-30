@@ -26,50 +26,51 @@ public class CameraIssueOrdering : MonoBehaviour
     selectableObjects = CameraObjectSelection.SelectedUnitsList;
 
     // Check if there are friendly units in that list
-    bool friendlyUnitsInList = FriendlyUnitsInList(selectableObjects);
+    bool friendlyUnitsInList = true;
+    bool friendlyObjectsInList = true;
 
-    if (!friendlyUnitsInList)
+    FriendlyUnitsInList(selectableObjects, ref friendlyUnitsInList, ref friendlyObjectsInList);
+
+    if (!friendlyObjectsInList)
     {
+      AttackMoveOrder = false;
       return;
     }
 
-    if (selectableObjects.Count == 0)
+    if (!friendlyUnitsInList)
     {
       AttackMoveOrder = false;
     }
 
-    else
+    // During attack move order, left clicking on the ground issues an attack move order, where units constantly seek out enemies
+    // while moving to the destination. Right clicking cancels the order
+    if (AttackMoveOrder)
     {
-      // During attack move order, left clicking on the ground issues an attack move order, where units constantly seek out enemies
-      // while moving to the destination. Right clicking cancels the order
-      if (AttackMoveOrder)
+      CameraProperties.selectionDisabled = true;
+
+      if (Input.GetMouseButtonDown(0) && !CameraProperties.mouseOverUI)
       {
-        CameraProperties.selectionDisabled = true;
-
-        if (Input.GetMouseButtonDown(0) && !CameraProperties.mouseOverUI)
-        {
-          Order(true);
-          AttackMoveOrder = false;
-        }
-
-        else if (Input.GetMouseButtonDown(1))
-        {
-          AttackMoveOrder = false;
-        }
+        Order(true);
+        AttackMoveOrder = false;
       }
 
-      else
+      else if (Input.GetMouseButtonDown(1))
       {
-        // When RMB clicked and there are units selected
-        if (Input.GetMouseButtonDown(1))
-        {
-          Order();
-        }
+        AttackMoveOrder = false;
+      }
+    }
 
-        if (Input.GetKeyDown(attackMoveCommand) && friendlyUnitsInList)
-        {
-          AttackMoveOrder = true;
-        }
+    else
+    {
+      // When RMB clicked and there are units selected
+      if (Input.GetMouseButtonDown(1))
+      {
+        Order();
+      }
+
+      if (Input.GetKeyDown(attackMoveCommand) && friendlyUnitsInList)
+      {
+        AttackMoveOrder = true;
       }
     }
 
@@ -187,17 +188,35 @@ public class CameraIssueOrdering : MonoBehaviour
     }
   }
 
-  private bool FriendlyUnitsInList(List<GameObject> selectedList)
+  private void FriendlyUnitsInList(List<GameObject> selectedList, ref bool friendlyUnits, ref bool friendlyObjects)
   {
-    foreach (GameObject selectedObject in selectedList)
+    if (selectedList.Count == 0)
     {
-      if (selectedObject.GetComponent<ObjectTypes>().objectType != ObjectTypes.OBJECT_TYPES.UNIT && 
-          selectedObject.GetComponent<Faction>().faction != Faction.FACTIONS.GOBLINS)
-      {
-        return false;
-      }
+      friendlyUnits = false;
+      friendlyObjects = false;
+
+      return;
     }
 
-    return true;
+    for (int i = 0; i < selectedList.Count; ++i)
+    {
+      GameObject selectedObject = selectedList[i];
+
+      if (selectedObject.GetComponent<Faction>().faction != Faction.FACTIONS.GOBLINS)
+      {
+        friendlyUnits = false;
+        friendlyObjects = false;
+
+        return;
+      }
+
+      else if (selectedObject.GetComponent<Faction>().faction == Faction.FACTIONS.GOBLINS)
+      {
+        if (selectedObject.GetComponent<ObjectTypes>().objectType != ObjectTypes.OBJECT_TYPES.UNIT)
+        {
+          friendlyUnits = false;
+        }
+      }
+    }
   }
 }

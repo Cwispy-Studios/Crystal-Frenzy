@@ -26,7 +26,7 @@ public class Attack : MonoBehaviour
   [SerializeField]
   private bool aoe = false;
   [SerializeField]
-  private float aoeRadius = 1f;
+  private float aoeRadius = 1f, aoeDmgPct = 1f;
 
   [SerializeField]
   private bool isHealer = false;
@@ -81,6 +81,17 @@ public class Attack : MonoBehaviour
     if (attackCooldown <= attacksPerSecond)
     {
       attackCooldown += Time.deltaTime;
+    }
+
+    if (attackTarget)
+    {
+      // Rotates the unit towards its target, it does not matter if it is not facing the target yet, it can still attack.
+      LookTowardsTarget(attackTarget);
+    }
+
+    else if (detectedTarget)
+    {
+      LookTowardsTarget(detectedTarget);
     }
 
     // As long as unit is not detecting enemies, it is not under an attack move order, so we set it to false
@@ -262,9 +273,6 @@ public class Attack : MonoBehaviour
     // If enemy is near enough, try to attack and hold position. Otherwise set the NavMeshAgent to move towards it
     if (enemyRange <= (attackRange + unitRadius + enemyRadius))
     {
-      // Rotates the unit towards its target, it does not matter if it is not facing the target yet, it can still attack.
-      LookTowardsTarget(enemy);
-
       if (GetComponent<NavMeshAgent>().enabled)
       {
         GetComponent<NavMeshAgent>().stoppingDistance = 0;
@@ -296,7 +304,7 @@ public class Attack : MonoBehaviour
           projectilePos.y = (GetComponent<NavMeshAgent>().height / 2) * transform.lossyScale.y;
           GameObject projectile = Instantiate(projectilePrefab, projectilePos, new Quaternion());
 
-          projectile.GetComponent<Projectile>().SetTarget(enemy, attackDamage, GetComponent<StatusEffects>());
+          projectile.GetComponent<Projectile>().SetTarget(enemy, attackDamage, GetComponent<StatusEffects>(), aoe, aoeRadius, aoeDmgPct);
 
           if (animator && animator.enabled)
           {
@@ -322,8 +330,16 @@ public class Attack : MonoBehaviour
                 if ((GetComponent<Faction>().faction == Faction.FACTIONS.GOBLINS && colliders[i].GetComponent<Faction>().faction == Faction.FACTIONS.FOREST) ||
                     (GetComponent<Faction>().faction == Faction.FACTIONS.FOREST && colliders[i].GetComponent<Faction>().faction == Faction.FACTIONS.GOBLINS))
                 {
-                  colliders[i].GetComponent<Health>().ModifyHealth(-attackDamage, enemy.transform.position);
-
+                  if (colliders[i].gameObject == enemy)
+                  {
+                    enemy.GetComponent<Health>().ModifyHealth(-attackDamage, transform.position);
+                  }
+           
+                  else
+                  {
+                    colliders[i].GetComponent<Health>().ModifyHealth(-attackDamage * aoeDmgPct, enemy.transform.position);
+                  }
+                 
                   if (GetComponent<StatusEffects>())
                   {
                     GetComponent<StatusEffects>().AfflictStatusEffects(colliders[i].gameObject);
@@ -435,6 +451,12 @@ public class Attack : MonoBehaviour
       attacksPerSecond += upgradeProperties[i].attackSpeed;
       attackRange += upgradeProperties[i].attackRange;
       enemyDetectRange += upgradeProperties[i].detectRange;
+      aoe = upgradeProperties[i].isAoe;
+      aoeRadius = upgradeProperties[i].aoeRadius;
+      aoeDmgPct = upgradeProperties[i].aoeDmgPct;
+
+      isHealer = upgradeProperties[i].isHealer;
+      healPct = upgradeProperties[i].healPct;
     }
   }
 

@@ -34,4 +34,20 @@ public class StatusEffects : MonoBehaviour
       }
     }
   }
+
+  public void SetUpgradedProperties(UpgradeProperties[] upgradeProperties)
+  {
+    for (int i = 0; i < upgradeProperties.Length; ++i)
+    {
+      slowEffect.hasEffect = upgradeProperties[i].addsSlow;
+      curseEffect.hasEffect = upgradeProperties[i].addsCurse;
+
+      slowEffect.attackSlowPct = upgradeProperties[i].attackSlowPct;
+      slowEffect.moveSlowPct = upgradeProperties[i].moveSlowPct;
+      slowEffect.statusDuration = upgradeProperties[i].slowDuration;
+
+      curseEffect.attackReducPct = upgradeProperties[i].attackReducPct;
+      curseEffect.statusDuration = upgradeProperties[i].curseDuration;
+    }
+  }
 }

@@ -909,6 +909,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5527892176030726158}
   - component: {fileID: 7312134506052275526}
+  - component: {fileID: 6312632776381162029}
   m_Layer: 0
   m_Name: TeddyRagdoll
   m_TagString: Untagged
@@ -1008,6 +1009,18 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.023815006, y: 0.44347388, z: 0.21243817}
     m_Extent: {x: 0.9995804, y: 1.4841537, z: 1.0788777}
   m_DirtyAABB: 0
+--- !u!114 &6312632776381162029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5539461946147069440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46a5c053d0d1e5b40a399924992c48b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5541643402059854114
 GameObject:
   m_ObjectHideFlags: 0

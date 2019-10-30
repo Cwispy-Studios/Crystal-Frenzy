@@ -225,6 +225,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0192c10ce0d2589489e608135047b104, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ragdollPrefab: {fileID: 0}
   maxHealth: 650
   regeneration: 0.1
   explodesOnDeath: 0
@@ -247,8 +248,9 @@ MonoBehaviour:
   attacksPerSecond: 0.7
   attackRange: 3
   enemyDetectRange: 15
-  aoe: 0
-  aoeRadius: 1
+  aoe: 1
+  aoeRadius: 2
+  aoeDmgPct: 0.1
   isHealer: 0
   healPct: 0.5
   preferredTarget: 0

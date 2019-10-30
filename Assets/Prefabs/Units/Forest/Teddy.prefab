@@ -424,9 +424,9 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6535236377957169005}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 433da66badda9cf4193e0b582a9ee998, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 41dbe594ad093cc4ab77ecd494e28415, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -655,6 +655,7 @@ MonoBehaviour:
   enemyDetectRange: 12
   aoe: 0
   aoeRadius: 1
+  aoeDmgPct: 1
   isHealer: 0
   healPct: 0.5
   preferredTarget: 0

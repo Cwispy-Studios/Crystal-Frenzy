@@ -132,7 +132,9 @@ public class Health : MonoBehaviour
         // Find the percentage of the overkill damage over the max health, the higher the percentage the greater the force
         float force = overkillDamage / maxHealth;
 
-        deadObject.GetComponentInChildren<Rigidbody>().AddForce((transform.position - damageDirection).normalized * force * 10000f);
+        force = Mathf.Clamp(force, 0.1f, 0.5f);
+
+        deadObject.GetComponentInChildren<Rigidbody>().AddForce((transform.position - damageDirection).normalized * force * 40000f);
         ragdollSpawned = true;
       }
   

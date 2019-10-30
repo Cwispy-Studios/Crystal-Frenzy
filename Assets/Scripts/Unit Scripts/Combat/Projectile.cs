@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.AI;
 
 public class Projectile : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class Projectile : MonoBehaviour
   private StatusEffects statusEffects;    // The status effects of the object who shot the projectile
   private bool aoe;
   private float aoeRadius;
+  private float aoeDmgPct;
 
   private void Update()
   {
@@ -18,8 +20,10 @@ public class Projectile : MonoBehaviour
 
     float distanceCovered = speed * Time.deltaTime;
 
+    float targetRadius = target.GetComponent<NavMeshObstacle>().radius * target.transform.lossyScale.x;
+
     // Check if the distance left between target and projectile is less than distance covered this frame
-    if (direction.sqrMagnitude <= (distanceCovered * distanceCovered))
+    if (direction.sqrMagnitude <= (distanceCovered * distanceCovered) + (targetRadius * targetRadius))
     {
       // Check if target is stil alive
       if (target != null)
@@ -38,7 +42,15 @@ public class Projectile : MonoBehaviour
               if ((GetComponent<Faction>().faction == Faction.FACTIONS.GOBLINS && colliders[i].GetComponent<Faction>().faction == Faction.FACTIONS.FOREST) ||
                   (GetComponent<Faction>().faction == Faction.FACTIONS.FOREST && colliders[i].GetComponent<Faction>().faction == Faction.FACTIONS.GOBLINS))
               {
-                colliders[i].GetComponent<Health>().ModifyHealth(-damage, transform.position);
+                if (colliders[i].gameObject == target)
+                {
+                  colliders[i].GetComponent<Health>().ModifyHealth(-damage, transform.position);
+                }
+
+                else
+                {
+                  colliders[i].GetComponent<Health>().ModifyHealth(-damage * aoeDmgPct, transform.position);
+                }
 
                 if (GetComponent<StatusEffects>())
                 {
@@ -80,13 +92,14 @@ public class Projectile : MonoBehaviour
     }
   }
 
-  public void SetTarget(GameObject setTarget, float setDamage, StatusEffects statusEffects, bool isAoe = false, float aoeRad = 0)
+  public void SetTarget(GameObject setTarget, float setDamage, StatusEffects statusEffects, bool isAoe, float aoeRad, float aoeDamagePct)
   {
     target = setTarget;
     damage = setDamage;
     this.statusEffects = statusEffects;
     aoe = isAoe;
     aoeRadius = aoeRad;
+    aoeDmgPct = aoeDamagePct;
 
     targetPos = target.transform.position;
   }

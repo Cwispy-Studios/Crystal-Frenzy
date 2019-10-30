@@ -134,7 +134,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 644d83c57f3598341b7fc508422dc91a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upgradeType: 12
+  upgradeType: 14
   cost: 385
   upgradeProperties:
     upgradeLevel: 2
@@ -144,6 +144,18 @@ MonoBehaviour:
     attackSpeed: 0
     attackRange: 0
     detectRange: 0
+    isAoe: 0
+    aoeRadius: 0
+    aoeDmgPct: 0
+    isHealer: 0
+    healPct: 0
+    addsSlow: 0
+    addsCurse: 0
+    attackSlowPct: 0
+    moveSlowPct: 0
+    slowDuration: 0
+    attackReducPct: 0
+    curseDuration: 0
     fovRange: 0
     speed: 0
     cost: 0

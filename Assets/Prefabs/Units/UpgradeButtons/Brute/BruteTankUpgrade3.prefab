@@ -135,15 +135,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   upgradeType: 11
-  cost: 555
+  cost: 525
   upgradeProperties:
     upgradeLevel: 3
-    health: 135
-    regeneraton: 5
-    damage: 12
-    attackSpeed: 0
+    health: 145
+    regeneraton: 4
+    damage: 5
+    attackSpeed: 0.1
     attackRange: 0
     detectRange: 0
+    isAoe: 1
+    aoeRadius: 6
+    aoeDmgPct: 0.8
+    isHealer: 0
+    healPct: 0
+    addsSlow: 0
+    addsCurse: 0
+    attackSlowPct: 0
+    moveSlowPct: 0
+    slowDuration: 0
+    attackReducPct: 0
+    curseDuration: 0
     fovRange: 0
     speed: 1
     cost: 0

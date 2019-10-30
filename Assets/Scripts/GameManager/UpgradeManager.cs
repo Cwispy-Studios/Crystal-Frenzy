@@ -30,13 +30,15 @@ public class UpgradeManager : MonoBehaviour
     shootyUpgradePrefabs = null,
     bruteUpgradePrefabs = null,
     warlockUpgradePrefabs = null,
-    stabbyCheapUpgrade = null,
-    stabbyStrongUpgrade = null,
-    shootyNukeUpgrade = null,
-    shootyFastUpgrade = null,
-    bruteCheapUpgrade = null,
-    bruteTankUpgrade = null,
-    crystalMiningUpgrade = null;
+    stabbyCheapUpgradePrefabs = null,
+    stabbyStrongUpgradePrefabs = null,
+    shootyNukeUpgradePrefabs = null,
+    shootyFastUpgradePrefabs = null,
+    bruteCheapUpgradePrefabs = null,
+    bruteTankUpgradePrefabs = null,
+    warlockHealerUpgradePrefabs = null,
+    warlockOffensiveUpgradePrefabs = null,
+    crystalMiningUpgradePrefabs = null;
 
   // The LH key holds the upgrade type. The value of this key holds all the data of the upgrade type
   // UpgradeLevels holds the max upgradable level, the current level of upgrade and all the upgrade buttons for the upgrade type
@@ -56,18 +58,21 @@ public class UpgradeManager : MonoBehaviour
     InitialiseUpgrades(stabbyUpgradePrefabs, true, new List<UPGRADE_TYPE> { UPGRADE_TYPE.STABBY_CHEAP, UPGRADE_TYPE.STABBY_BEEFED }, new List<UPGRADE_TYPE>());
     InitialiseUpgrades(shootyUpgradePrefabs, true, new List<UPGRADE_TYPE> { UPGRADE_TYPE.SHOOTY_FAST, UPGRADE_TYPE.SHOOTY_NUKE }, new List<UPGRADE_TYPE>());
     InitialiseUpgrades(bruteUpgradePrefabs, true, new List<UPGRADE_TYPE> { UPGRADE_TYPE.BRUTE_CHEAP, UPGRADE_TYPE.BRUTE_TANK }, new List<UPGRADE_TYPE>());
-    InitialiseUpgrades(warlockUpgradePrefabs, true, new List<UPGRADE_TYPE>(), new List<UPGRADE_TYPE>());
+    InitialiseUpgrades(warlockUpgradePrefabs, true, new List<UPGRADE_TYPE> { UPGRADE_TYPE.WARLOCK_HEALER, UPGRADE_TYPE.WARLOCK_OFFENSIVE }, new List<UPGRADE_TYPE>());
 
-    InitialiseUpgrades(stabbyCheapUpgrade, false, new List<UPGRADE_TYPE>(), new List<UPGRADE_TYPE> { UPGRADE_TYPE.STABBY_BEEFED });
-    InitialiseUpgrades(stabbyStrongUpgrade, false, new List<UPGRADE_TYPE>(), new List<UPGRADE_TYPE> { UPGRADE_TYPE.STABBY_CHEAP });
+    InitialiseUpgrades(stabbyCheapUpgradePrefabs, false, new List<UPGRADE_TYPE>(), new List<UPGRADE_TYPE> { UPGRADE_TYPE.STABBY_BEEFED });
+    InitialiseUpgrades(stabbyStrongUpgradePrefabs, false, new List<UPGRADE_TYPE>(), new List<UPGRADE_TYPE> { UPGRADE_TYPE.STABBY_CHEAP });
 
-    InitialiseUpgrades(shootyFastUpgrade, false, new List<UPGRADE_TYPE>(), new List<UPGRADE_TYPE> { UPGRADE_TYPE.SHOOTY_NUKE });
-    InitialiseUpgrades(shootyNukeUpgrade, false, new List<UPGRADE_TYPE>(), new List<UPGRADE_TYPE> { UPGRADE_TYPE.SHOOTY_FAST });
+    InitialiseUpgrades(shootyFastUpgradePrefabs, false, new List<UPGRADE_TYPE>(), new List<UPGRADE_TYPE> { UPGRADE_TYPE.SHOOTY_NUKE });
+    InitialiseUpgrades(shootyNukeUpgradePrefabs, false, new List<UPGRADE_TYPE>(), new List<UPGRADE_TYPE> { UPGRADE_TYPE.SHOOTY_FAST });
 
-    InitialiseUpgrades(bruteCheapUpgrade, false, new List<UPGRADE_TYPE>(), new List<UPGRADE_TYPE> { UPGRADE_TYPE.BRUTE_TANK });
-    InitialiseUpgrades(bruteTankUpgrade, false, new List<UPGRADE_TYPE>(), new List<UPGRADE_TYPE> { UPGRADE_TYPE.BRUTE_CHEAP });
+    InitialiseUpgrades(bruteCheapUpgradePrefabs, false, new List<UPGRADE_TYPE>(), new List<UPGRADE_TYPE> { UPGRADE_TYPE.BRUTE_TANK });
+    InitialiseUpgrades(bruteTankUpgradePrefabs, false, new List<UPGRADE_TYPE>(), new List<UPGRADE_TYPE> { UPGRADE_TYPE.BRUTE_CHEAP });
 
-    InitialiseUpgrades(crystalMiningUpgrade, true, new List<UPGRADE_TYPE>(), new List<UPGRADE_TYPE>());
+    InitialiseUpgrades(warlockHealerUpgradePrefabs, false, new List<UPGRADE_TYPE>(), new List<UPGRADE_TYPE> { UPGRADE_TYPE.WARLOCK_OFFENSIVE });
+    InitialiseUpgrades(warlockOffensiveUpgradePrefabs, false, new List<UPGRADE_TYPE>(), new List<UPGRADE_TYPE> { UPGRADE_TYPE.WARLOCK_HEALER });
+
+    InitialiseUpgrades(crystalMiningUpgradePrefabs, true, new List<UPGRADE_TYPE>(), new List<UPGRADE_TYPE>());
   }
 
   private void InitialiseUpgrades(GameObject[] upgradePrefabs, bool startsAvailable, List<UPGRADE_TYPE> furtherUpgrades, List<UPGRADE_TYPE> exclusive)

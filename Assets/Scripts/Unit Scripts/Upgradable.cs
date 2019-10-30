@@ -47,6 +47,11 @@ public class Upgradable : MonoBehaviour
         {
           GetComponent<CrystalSeeker>().SetUpgradedProperties(upgradeProperties);
         }
+
+        if (GetComponent<StatusEffects>())
+        {
+          GetComponent<StatusEffects>().SetUpgradedProperties(upgradeProperties);
+        }
       }     
     }
   }

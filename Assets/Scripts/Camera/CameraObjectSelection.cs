@@ -24,8 +24,11 @@ public class CameraObjectSelection : MonoBehaviour
   private const int MAX_GROUPS = 9;
   private List<GameObject>[] groupedUnits;
 
+  private Camera playerCamera;
+
   private void Awake()
   {
+    playerCamera = Camera.main;
     SelectedUnitsList = new List<GameObject>();
     MouseHoverUnitsList = new List<GameObject>();
     groupedUnits = new List<GameObject>[MAX_GROUPS];
@@ -160,6 +163,28 @@ public class CameraObjectSelection : MonoBehaviour
     }
 
     GroupUnits();
+
+    if (Input.GetKeyDown(KeyCode.Space))
+    {
+      CenterOnSelected();
+    }
+  }
+
+  private void CenterOnSelected()
+  {
+    if (unitManager.SelectedUnits.Count > 0)
+    {
+      Vector3 averageVector = Vector3.zero;
+
+      for (int i = 0; i < unitManager.SelectedUnits.Count; ++i)
+      {
+        averageVector += unitManager.SelectedUnits[i].transform.position;
+      }
+
+      averageVector /= unitManager.SelectedUnits.Count;
+
+      playerCamera.GetComponent<CameraManager>().PointCameraAtPosition(averageVector, playerCamera.GetComponent<CameraControls>().birdsEyeViewMode, 0.5f);
+    }
   }
 
   private void ClearDeadUnits()

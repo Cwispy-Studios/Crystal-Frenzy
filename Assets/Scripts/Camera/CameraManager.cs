@@ -37,7 +37,7 @@ public class CameraManager : MonoBehaviour
     }
   }
 
-  public void PointCameraAtPosition(Vector3 pointPos, bool birdsEyeView, float duration = 1.5f)
+  public void PointCameraAtPosition(Vector3 pointPos, bool birdsEyeView, float duration = 1.2f)
   {
     GetComponent<CameraControls>().birdsEyeViewMode = birdsEyeView;
 

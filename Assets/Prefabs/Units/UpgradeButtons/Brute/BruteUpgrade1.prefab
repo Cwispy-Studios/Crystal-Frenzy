@@ -140,10 +140,22 @@ MonoBehaviour:
     upgradeLevel: 1
     health: 50
     regeneraton: 0
-    damage: 10
+    damage: 15
     attackSpeed: 0.1
     attackRange: 0
     detectRange: 0
+    isAoe: 1
+    aoeRadius: 2.5
+    aoeDmgPct: 0.1
+    isHealer: 0
+    healPct: 0
+    addsSlow: 0
+    addsCurse: 0
+    attackSlowPct: 0
+    moveSlowPct: 0
+    slowDuration: 0
+    attackReducPct: 0
+    curseDuration: 0
     fovRange: 0
     speed: 0
     cost: 0

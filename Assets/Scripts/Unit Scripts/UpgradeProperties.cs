@@ -16,6 +16,28 @@ public class UpgradeProperties
   public float attackSpeed;
   public float attackRange;
   public float detectRange;
+  public bool isAoe;
+  public float aoeRadius;
+  public float aoeDmgPct;
+
+  [Header("Heal components")]
+  // Heal components
+  public bool isHealer;
+  public float healPct;
+
+  [Header("Status components")]
+  // Status components
+  public bool addsSlow;
+  public bool addsCurse;
+
+  [Header("Slow components")]
+  public float attackSlowPct;
+  public float moveSlowPct;
+  public float slowDuration;
+
+  [Header("Curse components")]
+  public float attackReducPct;
+  public float curseDuration;
 
   [Header("FOV components")]
   // FOV components
