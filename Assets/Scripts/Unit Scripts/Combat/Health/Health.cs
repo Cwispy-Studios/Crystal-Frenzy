@@ -21,6 +21,7 @@ public class Health : MonoBehaviour
 
   [SerializeField]
   private GameObject ragdollPrefab = null;
+  private bool ragdollSpawned = false;
 
   [SerializeField]
   private float maxHealth = 100;
@@ -68,9 +69,12 @@ public class Health : MonoBehaviour
     }
   }
 
-  public void ModifyHealth(float amount)
+  public void ModifyHealth(float amount, Vector3 damageDirection)
   {
     CurrentHealth += amount;
+
+    // Saves the negative health (if it died) so we can use it as a force for the ragdoll
+    float overkillDamage = CurrentHealth;
 
     CurrentHealth = Mathf.Clamp(CurrentHealth, 0, maxHealth);
 
@@ -109,29 +113,36 @@ public class Health : MonoBehaviour
             //if ((GetComponent<Faction>().faction == Faction.FACTIONS.GOBLINS && colliders[i].GetComponent<Faction>().faction == Faction.FACTIONS.FOREST) ||
             //    (GetComponent<Faction>().faction == Faction.FACTIONS.FOREST && colliders[i].GetComponent<Faction>().faction == Faction.FACTIONS.GOBLINS))
             //{
-              colliders[i].GetComponent<Health>().ModifyHealth(-explosionDmgPctOfHealth * MaxHealth);
+              colliders[i].GetComponent<Health>().ModifyHealth(-explosionDmgPctOfHealth * MaxHealth, transform.position);
 
               if (GetComponent<StatusEffects>())
               {
                 GetComponent<StatusEffects>().AfflictStatusEffects(colliders[i].gameObject);
               }
-            //}
           }
         }
       }
 
-      if (ragdollPrefab)
+      if (ragdollPrefab && !ragdollSpawned)
       {
-        Instantiate(ragdollPrefab, transform.position, transform.rotation);
-      }
+        var deadObject = Instantiate(ragdollPrefab, transform.position, transform.rotation);
 
+        overkillDamage = Mathf.Abs(overkillDamage);
+
+        // Find the percentage of the overkill damage over the max health, the higher the percentage the greater the force
+        float force = overkillDamage / maxHealth;
+
+        deadObject.GetComponentInChildren<Rigidbody>().AddForce((transform.position - damageDirection).normalized * force * 10000f);
+        ragdollSpawned = true;
+      }
+  
       Destroy(gameObject);
     }
   }
 
   private void Update()
   {
-    ModifyHealth(regeneration * Time.deltaTime);
+    ModifyHealth(regeneration * Time.deltaTime, Vector3.zero);
 
     // Layer 10 is invisible, enemies are set to invisible if they are inside fog of war, we shouldn't see their health bars
     if (CurrentHealth == maxHealth || gameObject.layer == 10)

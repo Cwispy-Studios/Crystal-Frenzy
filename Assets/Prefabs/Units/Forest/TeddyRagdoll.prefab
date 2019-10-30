@@ -909,9 +909,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5527892176030726158}
   - component: {fileID: 7312134506052275526}
-  - component: {fileID: 6581492369320229486}
   m_Layer: 0
-  m_Name: Teddy 1
+  m_Name: TeddyRagdoll
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1009,22 +1008,6 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.023815006, y: 0.44347388, z: 0.21243817}
     m_Extent: {x: 0.9995804, y: 1.4841537, z: 1.0788777}
   m_DirtyAABB: 0
---- !u!208 &6581492369320229486
-NavMeshObstacle:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5539461946147069440}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Shape: 0
-  m_Extents: {x: 1, y: 2, z: 1}
-  m_MoveThreshold: 0.1
-  m_Carve: 0
-  m_CarveOnlyStationary: 1
-  m_Center: {x: 0, y: 1, z: 0}
-  m_TimeToStationary: 0.5
 --- !u!1 &5541643402059854114
 GameObject:
   m_ObjectHideFlags: 0

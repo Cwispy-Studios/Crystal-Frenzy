@@ -60,7 +60,7 @@ public class Poison : StatusEffect
 
       if (afflictedUnit != null)
       {
-        afflictedUnit.GetComponent<Health>().ModifyHealth(-damage);
+        afflictedUnit.GetComponent<Health>().ModifyHealth(-damage, Vector3.zero);
       }
 
       else

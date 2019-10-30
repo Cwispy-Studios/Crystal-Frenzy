@@ -41,7 +41,7 @@ namespace BezierSolution
     private const float PERC_SLOWDOWN_PER_UNIT = 0.1f;
     private float unitRadius = 5f;
 
-    private const float COLLISION_MARGIN = 1.1f;
+    private const float COLLISION_MARGIN = 1f;
     private const float COLLISION_CHECK_INTERVAL = 0.1f;
     private float collisionCountdown = 0;
 

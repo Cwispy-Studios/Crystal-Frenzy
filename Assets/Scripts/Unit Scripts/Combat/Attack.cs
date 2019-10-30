@@ -60,7 +60,7 @@ public class Attack : MonoBehaviour
   private const float DETECT_INTERVAL = 1f;
   private float detectCountdown = 0;
 
-  private const float ATTACK_UPDATE_INTERVAL = 0.1f;
+  private const float ATTACK_UPDATE_INTERVAL = 0f;
   private float attackCountdown = 0;
 
   private void Awake()
@@ -280,7 +280,7 @@ public class Attack : MonoBehaviour
         // Healing has no projectile
         if (isHealing)
         {
-          enemy.GetComponent<Health>().ModifyHealth(attackDamage * healPct);
+          enemy.GetComponent<Health>().ModifyHealth(attackDamage * healPct, Vector3.zero);
 
           if (animator != null && animator.enabled)
           {
@@ -322,7 +322,7 @@ public class Attack : MonoBehaviour
                 if ((GetComponent<Faction>().faction == Faction.FACTIONS.GOBLINS && colliders[i].GetComponent<Faction>().faction == Faction.FACTIONS.FOREST) ||
                     (GetComponent<Faction>().faction == Faction.FACTIONS.FOREST && colliders[i].GetComponent<Faction>().faction == Faction.FACTIONS.GOBLINS))
                 {
-                  colliders[i].GetComponent<Health>().ModifyHealth(-attackDamage);
+                  colliders[i].GetComponent<Health>().ModifyHealth(-attackDamage, enemy.transform.position);
 
                   if (GetComponent<StatusEffects>())
                   {
@@ -335,7 +335,7 @@ public class Attack : MonoBehaviour
 
           else
           {
-            enemy.GetComponent<Health>().ModifyHealth(-attackDamage);
+            enemy.GetComponent<Health>().ModifyHealth(-attackDamage, transform.position);
           }
 
           if (GetComponent<StatusEffects>())

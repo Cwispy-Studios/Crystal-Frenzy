@@ -38,7 +38,7 @@ public class Projectile : MonoBehaviour
               if ((GetComponent<Faction>().faction == Faction.FACTIONS.GOBLINS && colliders[i].GetComponent<Faction>().faction == Faction.FACTIONS.FOREST) ||
                   (GetComponent<Faction>().faction == Faction.FACTIONS.FOREST && colliders[i].GetComponent<Faction>().faction == Faction.FACTIONS.GOBLINS))
               {
-                colliders[i].GetComponent<Health>().ModifyHealth(-damage);
+                colliders[i].GetComponent<Health>().ModifyHealth(-damage, transform.position);
 
                 if (GetComponent<StatusEffects>())
                 {
@@ -52,7 +52,7 @@ public class Projectile : MonoBehaviour
         else
         {
           // Damage the target
-          target.GetComponent<Health>().ModifyHealth(-damage);
+          target.GetComponent<Health>().ModifyHealth(-damage, transform.position);
 
           if (statusEffects)
           {
