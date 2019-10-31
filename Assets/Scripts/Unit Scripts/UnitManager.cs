@@ -323,18 +323,13 @@ public class UnitManager : MonoBehaviour
     CameraProperties.selectionDisabled = true;
     CameraObjectSelection selector = playerCamera.GetComponent<CameraObjectSelection>();
 
-    // If shift is not held, we are selecting that unit alone
+    // If shift is not held, we are selecting that unit alone, clear the list
     if (!Input.GetKey(KeyCode.LeftShift))
     {
       selector.ClearSelectionList();
-      selector.AddObjectToSelectionList(selectedUnit);
     }
 
-    // If shift is held, we add this unit to the selection list
-    else
-    {
-      selector.AddObjectToSelectionList(selectedUnit);
-    }
+    selector.AddObjectToSelectionList(selectedUnit);
 
     // If double click, center on the unit
 

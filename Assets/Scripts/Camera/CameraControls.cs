@@ -5,15 +5,15 @@ public class CameraControls : MonoBehaviour
 {
   /*********************** Move variables ***********************/
   private readonly float moveSpeed = 100f;
-  private readonly float birdsEyeViewMoveSpeed = 140f;
+  private readonly float birdsEyeViewMoveSpeed = 180f;
   private readonly float moveDetectPerc = 0.01f;
 
   /*********************** Pan variables ***********************/
   private readonly float panSpeed = 75f;
 
   /*********************** Zoom variables ***********************/
-  private const float MIN_ZOOM = 15f;
-  public static readonly float MAX_ZOOM = 35f;
+  private const float MIN_ZOOM = 25f;
+  public static readonly float MAX_ZOOM = 45f;
   private readonly float zoomSpeed = 1f;
 
   [HideInInspector]

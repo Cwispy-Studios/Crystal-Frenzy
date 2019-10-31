@@ -55,7 +55,7 @@ public class GameManager : MonoBehaviour
   private void FixedUpdate()
   {
     phaseText.text = CurrentPhase.ToString().Replace("_", " ") + " PHASE";
-    nodeText.text = "Node " + CurrentRound.ToString();
+    nodeText.text = "Round " + CurrentRound.ToString();
   }
 
   private void Update()
