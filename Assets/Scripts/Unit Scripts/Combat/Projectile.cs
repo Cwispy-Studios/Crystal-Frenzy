@@ -10,6 +10,7 @@ public class Projectile : MonoBehaviour
   private GameObject target;              // Object to travel towards to
   private Vector3 targetPos;              // Cache position in case target dies
   private StatusEffects statusEffects;    // The status effects of the object who shot the projectile
+  private float targetRadius;
   private bool aoe;
   private float aoeRadius;
   private float aoeDmgPct;
@@ -19,8 +20,6 @@ public class Projectile : MonoBehaviour
     Vector3 direction = targetPos - transform.position;
 
     float distanceCovered = speed * Time.deltaTime;
-
-    float targetRadius = target.GetComponent<NavMeshObstacle>().radius * target.transform.lossyScale.x;
 
     // Check if the distance left between target and projectile is less than distance covered this frame
     if (direction.sqrMagnitude <= (distanceCovered * distanceCovered) + (targetRadius * targetRadius))
@@ -102,5 +101,7 @@ public class Projectile : MonoBehaviour
     aoeDmgPct = aoeDamagePct;
 
     targetPos = target.transform.position;
+
+    targetRadius = target.GetComponent<NavMeshObstacle>().radius * target.transform.lossyScale.x;
   }
 }
