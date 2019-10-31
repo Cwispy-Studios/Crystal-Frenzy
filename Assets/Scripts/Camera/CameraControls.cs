@@ -43,39 +43,39 @@ public class CameraControls : MonoBehaviour
     // Calculate panDetect values
     Vector2 moveDetectThreshold = new Vector2(Screen.width * moveDetectPerc, Screen.height * moveDetectPerc);
 
-    // Stores the new camera position in a temp value first, check if this temp value is valid with all the stored camera bounds
-    // After checking and correcting, then we move the actual camera position
-    Transform tempCamTransform = transform;
+    // Stores the old camera position in a temp value first, check if the new value is valid with all the stored camera bounds
+    // If any errors, we revert to a corrected position
+    Vector3 previousPosition = transform.position;
 
     float scrollSpeed = birdsEyeViewMode ? birdsEyeViewMoveSpeed : moveSpeed;
 
     // Check left side of screen but don't move it if is past the screen
     if (Input.mousePosition.x <= moveDetectThreshold.x && Input.mousePosition.x >= 0)
     {
-      tempCamTransform.Translate(Vector3.right * -scrollSpeed * Time.deltaTime / GetZoomPerc());
+      transform.Translate(Vector3.right * -scrollSpeed * Time.deltaTime / GetZoomPerc());
     }
 
     // Check right side of screen
     else if (Input.mousePosition.x >= Screen.width - moveDetectThreshold.x && Input.mousePosition.x <= Screen.width)
     {
-      tempCamTransform.Translate(Vector3.right * scrollSpeed * Time.deltaTime / GetZoomPerc());
+      transform.Translate(Vector3.right * scrollSpeed * Time.deltaTime / GetZoomPerc());
     }
 
     // Check top side of screen
     if (Input.mousePosition.y <= moveDetectThreshold.y && Input.mousePosition.y >= 0)
     {
-      tempCamTransform.Translate(Quaternion.Euler(0, 90, 0) * transform.right * scrollSpeed * Time.deltaTime / GetZoomPerc(), Space.World);
+      transform.Translate(Quaternion.Euler(0, 90, 0) * transform.right * scrollSpeed * Time.deltaTime / GetZoomPerc(), Space.World);
     }
 
     // Check bottom side of screen
     else if (Input.mousePosition.y >= Screen.height - moveDetectThreshold.y && Input.mousePosition.y <= Screen.height)
     {
-      tempCamTransform.Translate(Quaternion.Euler(0, -90, 0) * transform.right * scrollSpeed * Time.deltaTime / GetZoomPerc(), Space.World);
+      transform.Translate(Quaternion.Euler(0, -90, 0) * transform.right * scrollSpeed * Time.deltaTime / GetZoomPerc(), Space.World);
     }
 
     if (CameraManager.cameraLerping == false)
     {
-      CheckCameraInBounds(tempCamTransform.position);
+      CheckCameraInBounds(previousPosition);
     }
   }
 
@@ -110,132 +110,53 @@ public class CameraControls : MonoBehaviour
     }
   }
 
-  private void CheckCameraInBounds(Vector3 tempCamPosition)
+  private void CheckCameraInBounds(Vector3 oldPosition)
   {
-    // First we do a check of the first and last camera bounds, checking if the z-axis is lower or greater than the min and max z-axis.
-    // If it is, then we know where the camera is and we can check the x-axis for that bound
-    // Camera is in the first bounds
-    if (tempCamPosition.z < cameraBounds[0].GetComponent<Renderer>().bounds.min.z)
-    {
-      Bounds cameraBound = cameraBounds[0].GetComponent<Renderer>().bounds;
-      tempCamPosition.z = cameraBound.min.z;
-
-      // Check the x-axis
-      if (tempCamPosition.x < cameraBound.min.x)
-      {
-        tempCamPosition.x = cameraBound.min.x;
-      }
-
-      else if (tempCamPosition.x > cameraBound.max.x)
-      {
-        tempCamPosition.x = cameraBound.max.x;
-      }
-
-      transform.position = tempCamPosition;
-    }
-
-    // Camera is in the last bounds
-    else if (tempCamPosition.z > cameraBounds[cameraBounds.Count - 1].GetComponent<Renderer>().bounds.max.z)
-    {
-      Bounds cameraBound = cameraBounds[cameraBounds.Count - 1].GetComponent<Renderer>().bounds;
-      tempCamPosition.z = cameraBound.max.z;
-
-      // Check the x-axis
-      if (tempCamPosition.x < cameraBound.min.x)
-      {
-        tempCamPosition.x = cameraBound.min.x;
-      }
-
-      else if (tempCamPosition.x > cameraBound.max.x)
-      {
-        tempCamPosition.x = cameraBound.max.x;
-      }
-
-      transform.position = tempCamPosition;
-    }
-
     // Check every bounds against the current camera position to know which bounds it is in
-    else
+    for (int i = 0; i < cameraBounds.Count; ++i)
     {
-      // Every bounds we check, if out of bounds we save a corrected value to clamp the position to
-      float correctedX = 0;
-      float correctedZ = 0;
-      float closestCorrectionX = 99999f;
-      float closestCorrectionZ = 99999f;
+      Bounds cameraBound = cameraBounds[i].GetComponent<Renderer>().bounds;
 
-      for (int i = 0; i < cameraBounds.Count; ++i)
+      // First we check if the new position is within any of the bounds
+      if (transform.position.x >= cameraBound.min.x && transform.position.x <= cameraBound.max.x &&
+        transform.position.z >= cameraBound.min.z && transform.position.z <= cameraBound.max.z)
       {
-        Bounds cameraBound = cameraBounds[i].GetComponent<Renderer>().bounds;
+        return;
+      }
 
-        bool xInBounds = false;
-        bool zInBounds = false;
-
-        // Check which bounds the camera is currently in
-        if (transform.position.z >= cameraBound.min.z && transform.position.z <= cameraBound.max.z)
+      else
+      {
+        // Otherwise, it means we have moved off the camera bound, find which bounds the old camera position is in now
+        if (oldPosition.x >= cameraBound.min.x && oldPosition.x <= cameraBound.max.x &&
+        oldPosition.z >= cameraBound.min.z && oldPosition.z <= cameraBound.max.z)
         {
-          // Check if the x-axis is within the bounds and set a correctedX. We do not correct immediately because the bounds overlap
-          // and the x-axis may be valid for the next one, if it is then we do not need to correct
-          if (tempCamPosition.x < cameraBound.min.x)
+          // Check if the axis are out of bounds and correct
+          if (oldPosition.x < cameraBound.min.x)
           {
-            if (Mathf.Abs(tempCamPosition.x - cameraBound.min.x) < closestCorrectionX)
-            {
-              correctedX = cameraBound.min.x;
-            }
+            oldPosition.x = cameraBound.min.x;
           }
 
-          else if (tempCamPosition.x > cameraBound.max.x)
+          else if (oldPosition.x > cameraBound.max.x)
           {
-            if (Mathf.Abs(tempCamPosition.x - cameraBound.min.x) < closestCorrectionX)
-            {
-              correctedX = cameraBound.max.x;
-            }
+            oldPosition.x = cameraBound.max.x;
           }
 
-          // The x-axis is in bounds, so the move is valid. We can then stop the function since we know the move is valid
-          else
+          else if (oldPosition.z < cameraBound.min.z)
           {
-            xInBounds = true;
+            oldPosition.z = cameraBound.min.z;
           }
 
-          // Check if the z-axis is within the bounds and set a correctedX. We do not correct immediately because the bounds overlap
-          // and the z-axis may be valid for the next one, if it is then we do not need to correct
-          if (tempCamPosition.z < cameraBound.min.z)
+          else if (oldPosition.z > cameraBound.max.z)
           {
-            if (Mathf.Abs(tempCamPosition.z - cameraBound.min.z) < closestCorrectionZ)
-            {
-              correctedZ = cameraBound.min.z;
-            }
-          }
-
-          else if (tempCamPosition.z > cameraBound.max.z)
-          {
-            if (Mathf.Abs(tempCamPosition.z - cameraBound.min.z) < closestCorrectionZ)
-            {
-              correctedZ = cameraBound.max.z;
-            }
-          }
-
-          // The x-axis is in bounds, so the move is valid. We can then stop the function since we know the move is valid
-          else
-          {
-            zInBounds = true;
-          }
-
-          if (xInBounds && zInBounds)
-          {
-            transform.position = tempCamPosition;
-
-            return;
+            oldPosition.z = cameraBound.max.z;
           }
         }
-      } // for
+      }
 
-      // If we get here, it means that the camera has moved out of the x-axis, and we simply need to correct that
-      tempCamPosition.x = correctedX;
-      tempCamPosition.z = correctedZ;
+      
+    }
 
-      transform.position = tempCamPosition;
-    } // else 
+    transform.position = oldPosition;
   }
 
   public float GetZoomPerc()

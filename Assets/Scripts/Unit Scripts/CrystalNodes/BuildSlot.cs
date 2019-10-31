@@ -12,7 +12,7 @@ public class BuildSlot : MonoBehaviour
   private void Update()
   {
     // Check if this object is selected
-    if (CameraObjectSelection.SelectedUnitsList.Contains(gameObject))
+    if ((GameManager.CurrentPhase == PHASES.PREPARATION || GameManager.CurrentPhase == PHASES.PREPARATION_DEFENSE) && CameraObjectSelection.SelectedUnitsList.Contains(gameObject))
     {
       // Show construct panel
       uiInterface.ShowConstructPanel(gameObject);

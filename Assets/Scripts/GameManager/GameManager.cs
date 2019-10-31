@@ -110,7 +110,7 @@ public class GameManager : MonoBehaviour
       // Get the latest conquered node and enable the assembly FOV mesh so we can see the conquered node area so we can see the paths and crystal nodes 
       lastConqueredNode.GetComponent<ConqueredNode>().SetAssemblyFOV(true);
       // Turn on the path visibility meshes to all the connected nodes we can attack so we can see the path and our options
-      lastConqueredNode.GetComponent<CrystalNode>().SetPathVisibilityMeshes(true, lastConqueredNode.GetComponent<CrystalNode>().conqueredNode);
+      lastConqueredNode.GetComponent<CrystalNode>().SetConqueredPathVisibilityMeshes(lastConqueredNode.GetComponent<CrystalNode>().conqueredNode, true);
 
       // Update the camera bounds
       playerCamera.GetComponent<CameraControls>().AddCameraBounds(lastConqueredNode.GetComponent<ConqueredNode>().SelectionCameraBound);
@@ -311,7 +311,7 @@ public class GameManager : MonoBehaviour
     // to attack that node. Otherwise, player is free to choose
     if (conqueredNode.GetComponent<CrystalNode>().conqueredNode != null)
     {
-      attackingFromNode.GetComponent<CrystalSeekerSpawner>().SetCrystalTarget(attackingFromNode.GetComponent<CrystalNode>().conqueredNode);
+      conqueredNode.GetComponent<CrystalSeekerSpawner>().SetCrystalTarget(conqueredNode.GetComponent<CrystalNode>().conqueredNode);
       BeginPreparationPhase(false);
       BeginArmySelection(true);
       nodeSelected = true;
@@ -445,6 +445,11 @@ public class GameManager : MonoBehaviour
       BeginPreparationPhase(false);
       BeginArmySelection(true);
     }
+
+    else
+    {
+      BeginPreparationPhase(true);
+    }
   }
 
   public void DefenseLose()
@@ -460,7 +465,7 @@ public class GameManager : MonoBehaviour
     attackNode.GetComponent<CrystalNode>().targeted = true;
 
     // Remove the path camera bounds from the node we lost
-    playerCamera.GetComponent<CameraControls>().RemoveCameraBounds(lostNode.GetComponent<CrystalNode>().RetrieveCameraBound(attackNode));
+    //playerCamera.GetComponent<CameraControls>().RemoveCameraBounds(lostNode.GetComponent<CrystalNode>().RetrieveCameraBound(attackNode));
 
     // Disable wave spawners and crystal nodes functionalities of the attacking node we lost to
     attackNode.GetComponent<CrystalNode>().SetWaveSpawnersActive(false, null);
@@ -500,6 +505,7 @@ public class GameManager : MonoBehaviour
 
     // Turn off the assembly visibility mesh of the node we lost
     attackNode.GetComponent<ConqueredNode>().SetAssemblyFOV(false);
+    conqueredNodes[conqueredNodes.Count - 1].GetComponent<CrystalNode>().SetPathVisibilityMeshes(false);
 
     BeginPreparationDefensePhase();
   }
