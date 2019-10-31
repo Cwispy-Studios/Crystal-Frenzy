@@ -181,11 +181,6 @@ public class CameraIssueOrdering : MonoBehaviour
         }
       }
     }
-
-    else
-    {
-      Debug.LogWarning("Clicked on nothing");
-    }
   }
 
   private void FriendlyUnitsInList(List<GameObject> selectedList, ref bool friendlyUnits, ref bool friendlyObjects)

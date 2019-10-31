@@ -471,8 +471,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8258028927313748669}
-  - component: {fileID: 8314481516195727149}
   - component: {fileID: 7567002321094583267}
+  - component: {fileID: 8314481516195727149}
   - component: {fileID: -4173001299858599813}
   - component: {fileID: 768322118961857680}
   - component: {fileID: -8947601926064624572}
@@ -525,6 +525,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &7567002321094583267
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8254410145237751959}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 66ca9bf0145725543a1e8a693589f362, type: 3}
+  m_Controller: {fileID: 9100000, guid: e761ace889a78a946967af8d6890f71d, type: 2}
+  m_CullingMode: 1
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!137 &8314481516195727149
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 0
@@ -602,25 +621,6 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.5955523, y: 0.47306192, z: 0.000007748604}
     m_Extent: {x: 2.277113, y: 1.2932206, z: 2.1682854}
   m_DirtyAABB: 0
---- !u!95 &7567002321094583267
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8254410145237751959}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 66ca9bf0145725543a1e8a693589f362, type: 3}
-  m_Controller: {fileID: 9100000, guid: e761ace889a78a946967af8d6890f71d, type: 2}
-  m_CullingMode: 1
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 1
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!136 &-4173001299858599813
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -740,7 +740,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ragdollPrefab: {fileID: 9172484940750733764, guid: d91ab0103a236ea449a323217bd3dd88,
     type: 3}
-  maxHealth: 120
+  maxHealth: 95
   regeneration: 2.2
   explodesOnDeath: 0
   explosionDmgPctOfHealth: 0.5
@@ -758,12 +758,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdcce6eefadf3814dbaf768a4697cd9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackDamage: 15
-  attacksPerSecond: 1.2
+  attackDamage: 13
+  attacksPerSecond: 1.35
   attackRange: 20
   enemyDetectRange: 25
   aoe: 0
   aoeRadius: 1
+  aoeDmgPct: 1
   isHealer: 0
   healPct: 0.5
   preferredTarget: 0
@@ -783,10 +784,12 @@ MonoBehaviour:
   boostValues:
     healthModifier: 0.065
     regeneratonModifier: 0.15
-    damageModifier: 0.05
-    attackSpeedModifier: 0.02
+    damageModifier: 0.07
+    attackSpeedModifier: 0.025
     attackRangeModifier: 0
     detectRangeModifier: 0
+    poisonDps: 0.1
+    poisonDuration: 0.1
     speedModifier: 0.02
 --- !u!114 &8126889666865299208
 MonoBehaviour:

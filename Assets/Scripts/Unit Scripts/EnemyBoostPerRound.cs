@@ -31,5 +31,10 @@ public class EnemyBoostPerRound : MonoBehaviour
     {
       GetComponent<CrystalSeeker>().SetBoostedValues(boostValues);
     }
+
+    if (GetComponent<StatusEffects>())
+    {
+
+    }
   }
 }

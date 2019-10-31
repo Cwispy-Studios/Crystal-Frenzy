@@ -426,7 +426,7 @@ Animator:
   m_GameObject: {fileID: 6535236377957169005}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 433da66badda9cf4193e0b582a9ee998, type: 3}
-  m_Controller: {fileID: 9100000, guid: 41dbe594ad093cc4ab77ecd494e28415, type: 2}
+  m_Controller: {fileID: 0}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -673,12 +673,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boostValues:
-    healthModifier: 0.065
-    regeneratonModifier: 0.15
+    healthModifier: 0.075
+    regeneratonModifier: 0.1
     damageModifier: 0.05
-    attackSpeedModifier: 0.02
+    attackSpeedModifier: 0.015
     attackRangeModifier: 0
     detectRangeModifier: 0
+    poisonDps: 0
+    poisonDuration: 0
     speedModifier: 0.02
 --- !u!114 &6535236377957168995
 MonoBehaviour:

@@ -50,4 +50,10 @@ public class StatusEffects : MonoBehaviour
       curseEffect.statusDuration = upgradeProperties[i].curseDuration;
     }
   }
+
+  public void SetBoostedValues(BoostValues boostValues)
+  {
+    poisonEffect.dps += (GameManager.CurrentRound - 1) * boostValues.poisonDps * poisonEffect.dps;
+    poisonEffect.statusDuration += (GameManager.CurrentRound - 1) * boostValues.poisonDuration * poisonEffect.statusDuration;
+  }
 }

@@ -263,7 +263,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0192c10ce0d2589489e608135047b104, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 350
+  ragdollPrefab: {fileID: 0}
+  maxHealth: 400
   regeneration: 2
   explodesOnDeath: 0
   explosionDmgPctOfHealth: 0.25
@@ -288,7 +289,9 @@ MonoBehaviour:
     attackSpeedModifier: 0
     attackRangeModifier: 0
     detectRangeModifier: 0
-    speedModifier: 0.03
+    poisonDps: 0
+    poisonDuration: 0
+    speedModifier: 0.01
 --- !u!114 &-1532671479032559535
 MonoBehaviour:
   m_ObjectHideFlags: 0

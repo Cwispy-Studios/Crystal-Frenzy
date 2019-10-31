@@ -15,6 +15,11 @@ public class BoostValues
   public float attackRangeModifier;
   public float detectRangeModifier;
 
+  [Header("Poison components")]
+  // Poison components
+  public float poisonDps;
+  public float poisonDuration;
+
   [Header("Navigation components")]
   // Navigation components
   public float speedModifier;

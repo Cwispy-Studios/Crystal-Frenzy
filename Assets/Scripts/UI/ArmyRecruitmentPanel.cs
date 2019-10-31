@@ -19,9 +19,8 @@ public class ArmyRecruitmentPanel : MonoBehaviour
       GameManager.buildingManager.archeryRangeConstructed && GameManager.buildingManager.archeryRangeInControl;
     bruteButton.available = bruteButton.GetComponent<Button>().interactable =
       GameManager.buildingManager.brawlPitConstructed && GameManager.buildingManager.blacksmithInControl;
-    //warlockButton.available = warlockButton.GetComponent<Button>().interactable =
-    //  GameManager.buildingManager.mageTowerConstructed && GameManager.buildingManager.mageTowerInControl;
-    warlockButton.available = true;
+    warlockButton.available = warlockButton.GetComponent<Button>().interactable =
+      GameManager.buildingManager.mageTowerConstructed && GameManager.buildingManager.mageTowerInControl;
   }
 
   // Identifies the button and then sets the unit tooltip text accordingly

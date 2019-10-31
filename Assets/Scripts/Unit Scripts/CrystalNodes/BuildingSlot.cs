@@ -30,6 +30,29 @@ public class BuildingSlot : MonoBehaviour
   {
     Constructed = true;
     buildingSlot = constructedBuilding;
+
+    switch (constructedBuilding.GetComponent<BuildingType>().buildingType)
+    {
+      case BUILDING_TYPE.ARCHERY_RANGE:
+        GameManager.buildingManager.archeryRangeConstructed = true;
+        GameManager.buildingManager.archeryRangeInControl = true;
+        break;
+
+      case BUILDING_TYPE.BLACKSMITH:
+        GameManager.buildingManager.blacksmithConstructed = true;
+        GameManager.buildingManager.blacksmithInControl = true;
+        break;
+
+      case BUILDING_TYPE.BRAWL_PIT:
+        GameManager.buildingManager.brawlPitConstructed = true;
+        GameManager.buildingManager.brawlPitInControl = true;
+        break;
+
+      case BUILDING_TYPE.MAGE_TOWER:
+        GameManager.buildingManager.mageTowerConstructed = true;
+        GameManager.buildingManager.mageTowerInControl = true;
+        break;
+    }
   }
 
   public void RecaptureBuilding()

@@ -218,6 +218,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0192c10ce0d2589489e608135047b104, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ragdollPrefab: {fileID: 0}
   maxHealth: 35
   regeneration: 0.5
   explodesOnDeath: 0
@@ -242,10 +243,12 @@ MonoBehaviour:
   enemyDetectRange: 12
   aoe: 0
   aoeRadius: 1
+  aoeDmgPct: 1
   isHealer: 0
   healPct: 0.5
   preferredTarget: 0
-  projectilePrefab: {fileID: 0}
+  projectilePrefab: {fileID: 2574113698076494503, guid: 5cb5b06f3a104064492c88450b1fcae8,
+    type: 3}
 --- !u!114 &-2614433931187345692
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -259,12 +262,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boostValues:
-    healthModifier: 0.06
-    regeneratonModifier: 0.15
-    damageModifier: 0.03
+    healthModifier: 0.05
+    regeneratonModifier: 0.12
+    damageModifier: 0.04
     attackSpeedModifier: 0.04
-    attackRangeModifier: 0.02
+    attackRangeModifier: 0.01
     detectRangeModifier: 0
+    poisonDps: 0
+    poisonDuration: 0
     speedModifier: 0.05
 --- !u!114 &8109413875993358450
 MonoBehaviour:

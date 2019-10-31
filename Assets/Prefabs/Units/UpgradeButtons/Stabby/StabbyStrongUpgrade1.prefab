@@ -138,12 +138,24 @@ MonoBehaviour:
   cost: 420
   upgradeProperties:
     upgradeLevel: 1
-    health: 120
+    health: 125
     regeneraton: 2
-    damage: 18
-    attackSpeed: -0.2
-    attackRange: 0
-    detectRange: 0
+    damage: 22
+    attackSpeed: -0.3
+    attackRange: 1
+    detectRange: 2
+    isAoe: 0
+    aoeRadius: 0
+    aoeDmgPct: 0
+    isHealer: 0
+    healPct: 0
+    addsSlow: 0
+    addsCurse: 0
+    attackSlowPct: 0
+    moveSlowPct: 0
+    slowDuration: 0
+    attackReducPct: 0
+    curseDuration: 0
     fovRange: 0
     speed: -1
     cost: 1

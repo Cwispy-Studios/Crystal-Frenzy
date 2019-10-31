@@ -8,7 +8,9 @@ public class UINode : MonoBehaviour
   private Image[] nodeConnectingLines;
 
   // Node colour for your fortress
-  private Color fortressColour = new Color(90f / 255f, 60f / 255f, 125f / 255f);
+  private Color fortressColour = new Color(185f / 255f, 60f / 255f, 125f / 255f);
+  // Node colour of the life crystal
+  private Color lifeCrystalColour = new Color(90f / 255f, 60f / 255f, 125f / 255f);
   // Node colour if node is unexplored
   private Color unexploredColour = new Color(155f / 255f, 155f / 255f, 155f / 255f);
   // Node colour if node is the current active one
@@ -94,6 +96,11 @@ public class UINode : MonoBehaviour
     if (node.GetComponent<CrystalNode>().IsFortress)
     {
       GetComponent<Image>().color = fortressColour;
+    }
+    // Life Crystal node never changes colour
+    else if (node.GetComponent<CrystalNode>().IsLifeCrystal)
+    {
+      GetComponent<Image>().color = lifeCrystalColour;
     }
 
     // Unexplored nodes are nodes not connected to any nodes we have conquered
