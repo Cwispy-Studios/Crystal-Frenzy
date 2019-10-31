@@ -120,7 +120,7 @@ public class CrystalRewards : MonoBehaviour
       {
         GetComponent<BuildingSlot>().enabled = true;
         BuildingSlotRewarded = true;
-        waveSpawnerDifficultyMultiplier += 0.1f;
+        waveSpawnerDifficultyMultiplier += 0.05f;
         lootWeight -= 0.2f;
       }
 
@@ -209,7 +209,7 @@ public class CrystalRewards : MonoBehaviour
     {
       if (cumulativeSumOfWeights[i] > randomNumber)
       {
-        waveSpawnerDifficultyMultiplier += 0.2f;
+        waveSpawnerDifficultyMultiplier += 0.15f;
         // Makes the resource rewards lesser
         lootWeight -= 0.45f;
         RewardedUpgrade = averagePricesPerUpgradeType[i].upgradeType;

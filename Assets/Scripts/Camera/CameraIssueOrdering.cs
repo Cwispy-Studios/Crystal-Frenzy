@@ -6,20 +6,13 @@ public class CameraIssueOrdering : MonoBehaviour
   [SerializeField]
   private GameObject moveCirclePrefab = null;
 
-  private const KeyCode attackMoveCommand = KeyCode.A;
+  private const KeyCode attackMoveCommand = KeyCode.LeftControl;
 
   private List<GameObject> selectableObjects;
-
-  public bool AttackMoveOrder { get; private set; }
 
   private bool orderToGround = false;
   private bool attackToGround = false;
   private Vector3 orderToGroundPos;
-
-  private void Awake()
-  {
-    AttackMoveOrder = false;
-  }
 
   void Update()
   {
@@ -33,44 +26,21 @@ public class CameraIssueOrdering : MonoBehaviour
 
     if (!friendlyObjectsInList)
     {
-      AttackMoveOrder = false;
       return;
     }
 
-    if (!friendlyUnitsInList)
-    {
-      AttackMoveOrder = false;
-    }
 
-    // During attack move order, left clicking on the ground issues an attack move order, where units constantly seek out enemies
-    // while moving to the destination. Right clicking cancels the order
-    if (AttackMoveOrder)
+    // When RMB clicked and there are units selected
+    if (Input.GetMouseButtonDown(1))
     {
-      CameraProperties.selectionDisabled = true;
-
-      if (Input.GetMouseButtonDown(0) && !CameraProperties.mouseOverUI)
+      if (Input.GetKey(attackMoveCommand) && friendlyUnitsInList)
       {
         Order(true);
-        AttackMoveOrder = false;
       }
-
-      else if (Input.GetMouseButtonDown(1))
+        
+      else
       {
-        AttackMoveOrder = false;
-      }
-    }
-
-    else
-    {
-      // When RMB clicked and there are units selected
-      if (Input.GetMouseButtonDown(1))
-      {
-        Order();
-      }
-
-      if (Input.GetKeyDown(attackMoveCommand) && friendlyUnitsInList)
-      {
-        AttackMoveOrder = true;
+        Order(false);
       }
     }
 
@@ -79,13 +49,11 @@ public class CameraIssueOrdering : MonoBehaviour
       orderToGround = false;
       GameObject moveCircle = Instantiate(moveCirclePrefab, orderToGroundPos + (Vector3.up * 0.001f), Quaternion.Euler(90, 0, 0));
 
-      if (attackToGround)
+      if (Input.GetKey(attackMoveCommand))
       {
         Color redCircleColor = new Color(1, 0, 0, 0.8f);
 
         moveCircle.GetComponent<Renderer>().material.SetColor("_Color", redCircleColor);
-
-        attackToGround = false;
       }
     }
   }
@@ -115,11 +83,6 @@ public class CameraIssueOrdering : MonoBehaviour
             {
               orderToGround = true;
               orderToGroundPos = hit.point;
-
-              if (attackMoveOrder)
-              {
-                attackToGround = true;
-              }
             }
 
             if (attackMoveOrder)
@@ -165,11 +128,6 @@ public class CameraIssueOrdering : MonoBehaviour
               {
                 orderToGround = true;
                 orderToGroundPos = hit.point;
-
-                if (attackMoveOrder)
-                {
-                  attackToGround = true;
-                }
               }
 
               if (attackMoveOrder)

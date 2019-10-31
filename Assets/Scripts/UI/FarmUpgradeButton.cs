@@ -40,7 +40,7 @@ public class FarmUpgradeButton : MonoBehaviour, IPointerEnterHandler, IPointerEx
     string buildingName = "Upgrade Farm";
     int cost = upgradingFarm.farmUpgradeProperties[upgradingFarm.farmLevel].cost;
     string description = "Increases maximum unit cap from " + upgradingFarm.farmUpgradeProperties[upgradingFarm.farmLevel - 1].foodProvided +
-      " to <color= orange> " + upgradingFarm.farmUpgradeProperties[upgradingFarm.farmLevel].foodProvided + "</color>, allowing you to command more units in battle. ";
+      " to <color=magenta> " + upgradingFarm.farmUpgradeProperties[upgradingFarm.farmLevel].foodProvided + "</color>, allowing you to command more units in battle. ";
     string constructed = "";
 
     uiInterface.ShowBuildingTooltipPopup(buildingName, cost, description, constructed);
@@ -55,8 +55,8 @@ public class FarmUpgradeButton : MonoBehaviour, IPointerEnterHandler, IPointerEx
 
     string buildingName = "Upgrade Farm";
     int cost = upgradingFarm.farmUpgradeProperties[upgradingFarm.farmLevel].cost;
-    string description = "Increases maximum unit cap from " + upgradingFarm.farmUpgradeProperties[upgradingFarm.farmLevel - 1].foodProvided + 
-      " to <color= orange> " + upgradingFarm.farmUpgradeProperties[upgradingFarm.farmLevel].foodProvided + "</color>, allowing you to command more units in battle. ";
+    string description = "Increases maximum unit cap from " + upgradingFarm.farmUpgradeProperties[upgradingFarm.farmLevel - 1].foodProvided +
+      " to <color=magenta> " + upgradingFarm.farmUpgradeProperties[upgradingFarm.farmLevel].foodProvided + "</color>, allowing you to command more units in battle. ";
     string constructed = "";
 
     uiInterface.ShowBuildingTooltipPopup(buildingName, cost, description, constructed);

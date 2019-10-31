@@ -61,14 +61,14 @@ public class ConstructButton : MonoBehaviour, IPointerEnterHandler, IPointerExit
       case BUILDING_TYPE.FARM:
         Farm farm = constructableBuildingPrefab.GetComponent<Farm>();
         buildingName = "Farm";
-        description = "Increases maximum unit cap by <color=orange>" + farm.farmUpgradeProperties[0].foodProvided + 
+        description = "Increases maximum unit cap by <color=magenta>" + farm.farmUpgradeProperties[0].foodProvided + 
           "</color>, allowing you to command more units in battle. ";
 
         break;
 
       case BUILDING_TYPE.ARCHERY_RANGE:
         buildingName = "Archery Range";
-        description = "Allows you command of <color=orange>Shooty Boys</color>. Ranged imps that rain arrows down upon your enemies from a distance.";
+        description = "Allows you command of <color=magenta>Shooty Boys</color>. Ranged imps that rain arrows down upon your enemies from a distance.";
 
         if (GameManager.buildingManager.archeryRangeConstructed)
         {
@@ -79,7 +79,7 @@ public class ConstructButton : MonoBehaviour, IPointerEnterHandler, IPointerExit
 
       case BUILDING_TYPE.BLACKSMITH:
         buildingName = "Blacksmith";
-        description = "Allows you to upgrade <color=orange>Stabby Boys</color>, <color=orange>Shooty Boys</color> and <color=orange>Brutes</color>.";
+        description = "Allows you to upgrade <color=magenta>Stabby Boys</color>, <color=magenta>Shooty Boys</color> and <color=magenta>Brutes</color>.";
 
         if (GameManager.buildingManager.blacksmithConstructed)
         {
@@ -90,7 +90,7 @@ public class ConstructButton : MonoBehaviour, IPointerEnterHandler, IPointerExit
 
       case BUILDING_TYPE.BRAWL_PIT:
         buildingName = "Brawl Pit";
-        description = "Allows you command of <color=orange>Brutes</color>. Heavy melee units that are able to both soak up and inflict massive damage.";
+        description = "Allows you command of <color=magenta>Brutes</color>. Heavy melee units that are able to both soak up and inflict massive damage.";
 
         if (GameManager.buildingManager.brawlPitConstructed)
         {
@@ -101,7 +101,7 @@ public class ConstructButton : MonoBehaviour, IPointerEnterHandler, IPointerExit
 
       case BUILDING_TYPE.MAGE_TOWER:
         buildingName = "Mage Tower";
-        description = "Allows you command of <color=orange>Warlocks</color>. Gifted magic users able to buff your army while inflicting unnatural devastation.";
+        description = "Allows you command of <color=magenta>Warlocks</color>. Gifted magic users able to buff your army while inflicting unnatural devastation.";
 
         if (GameManager.buildingManager.mageTowerConstructed)
         {
