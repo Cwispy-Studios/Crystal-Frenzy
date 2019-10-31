@@ -45,18 +45,6 @@ public class GameManager : MonoBehaviour
     };
 
     CurrentPhase = PHASES.PREPARATION;
-
-    //for (int i = 0; i < 20; ++i)
-    //{
-    //  Debug.Log(RandomFromDistribution.RandomRangeLinear(0.65f, 2f, -2f));
-    //}
-
-    //Debug.Log("----------------------------------------------------------");
-
-    //for (int i = 0; i < 20; ++i)
-    //{
-    //  Debug.Log(RandomFromDistribution.RandomRangeExponential(0.65f, 2f, 0.5f, RandomFromDistribution.Direction_e.Left));
-    //}
   }
 
   private void Start()
