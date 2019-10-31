@@ -63,6 +63,11 @@ public class UpgradeButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     {
       GameManager.resourceManager.crystalsPerUnitPoint += 5;
     }
+
+    if (upgradeType == UPGRADE_TYPE.MINER_HEALTH)
+    {
+      GameManager.minerManager.UpgradeMinerHealth(upgradeProperties.health);
+    }
   }
 
   private void ExternalUpgrade(GameObject newButton)

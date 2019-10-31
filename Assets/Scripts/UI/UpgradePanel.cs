@@ -13,6 +13,8 @@ public class UpgradePanel : MonoBehaviour
 
   private UIInterface uiInterface = null;
 
+  public GameObject building = null;
+
   private void Awake()
   {
     uiInterface = FindObjectOfType<UIInterface>();

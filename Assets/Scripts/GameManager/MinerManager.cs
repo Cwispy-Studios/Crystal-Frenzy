@@ -29,10 +29,10 @@ public class MinerManager : MonoBehaviour
     minerHealthText.text = Mathf.CeilToInt(CurrentMinerHealth).ToString() + " / " + Mathf.CeilToInt(MaxMinerHealth).ToString();
   }
 
-  public void UpgradeMinerHealth(float healthIncrease, float newMaxHealth)
+  public void UpgradeMinerHealth(float healthIncrease)
   {
     CurrentMinerHealth += healthIncrease;
-    MaxMinerHealth = newMaxHealth;
+    MaxMinerHealth += healthIncrease;
     minerHealthBar.fillAmount = CurrentMinerHealth / MaxMinerHealth;
 
     minerHealthText.text = Mathf.CeilToInt(CurrentMinerHealth).ToString() + " / " + Mathf.CeilToInt(MaxMinerHealth).ToString();

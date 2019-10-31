@@ -116,7 +116,7 @@ namespace BezierSolution
 			}
 			else
 			{
-				if( progress <= startProgress)
+				if( progress <= endProgress)
 				{
 					if( !onPathCompletedCalledAt0 )
 					{
@@ -125,7 +125,7 @@ namespace BezierSolution
 					}
 
 					if( travelMode == TravelMode.Once )
-						progress = startProgress;
+						progress = endProgress;
 					else if( travelMode == TravelMode.Loop )
 						progress += endProgress;
 					else
@@ -203,8 +203,10 @@ namespace BezierSolution
     }
 
     // This must be called only after assigning the Spline
-    public void SetStartAndEndPoints(int startPoint, int endPoint = -1)
+    public void SetStartAndEndPoints(int startPoint, int endPoint, bool movingForward)
     {
+      isGoingForward = movingForward;
+
       // Ensures we don't set an invalid start point
       if (startPoint > 0 && startPoint < spline.Count - 1)
       {
@@ -226,25 +228,16 @@ namespace BezierSolution
 
       else
       {
-        if (endPoint < startPoint)
+        // Ensures we don't set an invalid end point
+        if (endPoint > 0 && endPoint < spline.Count)
         {
-          Debug.LogWarning("End point assigned before start point! Start point assigned: " + startPoint + " End point assigned: " + endPoint);
-          endPoint = startPoint + 1;
+          endProgress = endPoint / (spline.Count - 1f);
         }
 
         else
         {
-          // Ensures we don't set an invalid end point
-          if (endPoint > 0 && endPoint < spline.Count)
-          {
-            endProgress = endPoint / (spline.Count - 1f);
-          }
-
-          else
-          {
-            endProgress = 1f;
-            Debug.LogWarning("Invalid end point assigned! Point assigned: " + endPoint + " Spline array till: " + (spline.Count - 1));
-          }
+          endProgress = 1f;
+          Debug.LogWarning("Invalid end point assigned! Point assigned: " + endPoint + " Spline array till: " + (spline.Count - 1));
         }
       }
 
@@ -254,7 +247,7 @@ namespace BezierSolution
 
     public bool TargetReached()
     {
-      if (progress >= endProgress)
+      if ((isGoingForward && progress >= endProgress) || (!isGoingForward && progress <= endProgress))
         return true;
 
       else return false;

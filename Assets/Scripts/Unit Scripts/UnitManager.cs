@@ -369,4 +369,24 @@ public class UnitManager : MonoBehaviour
 
     resourceManager.UpdateArmySize(-resourceManager.ArmySize);
   }
+
+  public List<GameObject> ReturnAllUnitsOfType(UNIT_TYPE unitType)
+  {
+    switch (unitType)
+    {
+      case UNIT_TYPE.STABBY:
+        return stabbyList;
+
+      case UNIT_TYPE.SHOOTY:
+        return shootyList;
+
+      case UNIT_TYPE.BRUTE:
+        return bruteList;
+
+      case UNIT_TYPE.WARLOCK:
+        return warlockList;
+    }
+
+    return null;
+  }
 }

@@ -87,33 +87,25 @@ public class CrystalSeekerSpawner : MonoBehaviour
     if (GameManager.CurrentPhase == PHASES.ESCORT)
     {
       crystalSeeker = Instantiate(minerPrefab);
-      bezierWalker = crystalSeeker.GetComponent<BezierWalkerWithSpeed>();
-
-      bezierWalker.spline = crystalPathSpline;
     }
 
     else if (GameManager.CurrentPhase == PHASES.DEFENSE)
     {
       crystalSeeker = Instantiate(bushPrefab);
-      bezierWalker = crystalSeeker.GetComponent<BezierWalkerWithSpeed>();
-
-      // Create an inverted spline for the enemy crystal seeker to travel along
-      BezierSpline invertedSpline = new GameObject().AddComponent<BezierSpline>();
-      invertedSpline.Initialize(crystalPathSpline.Count);
-
-      for (int i = 0, opp = crystalPathSpline.Count - 1; i < crystalPathSpline.Count; ++i, --opp)
-      {
-        invertedSpline[i].position = crystalPathSpline[opp].position;
-        invertedSpline[i].handleMode = BezierPoint.HandleMode.Mirrored;
-        invertedSpline[i].followingControlPointLocalPosition = -crystalPathSpline[opp].followingControlPointLocalPosition;
-        invertedSpline[i].precedingControlPointLocalPosition = -crystalPathSpline[opp].precedingControlPointLocalPosition;
-      }
-
-      bezierWalker.spline = invertedSpline;
     }
 
-    
-    bezierWalker.SetStartAndEndPoints(1, bezierWalker.spline.Count - 2);
+    bezierWalker = crystalSeeker.GetComponent<BezierWalkerWithSpeed>();
+    bezierWalker.spline = crystalPathSpline;
+
+    if (GameManager.CurrentPhase == PHASES.ESCORT)
+    {
+      bezierWalker.SetStartAndEndPoints(1, bezierWalker.spline.Count - 2, true);
+    }
+
+    else if (GameManager.CurrentPhase == PHASES.DEFENSE)
+    {
+      bezierWalker.SetStartAndEndPoints(bezierWalker.spline.Count - 2, 1, false);
+    }
 
     return crystalSeeker;
   }

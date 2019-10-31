@@ -223,6 +223,26 @@ public class CameraObjectSelection : MonoBehaviour
 
       if (clickedObject != null)
       {
+        // Check if clicked object is our controllable unit
+        if (clickedObject.GetComponent<RecruitableUnit>())
+        {
+          // Returns true if we are double clicking the unit
+          if (clickedObject.GetComponent<RecruitableUnit>().ClickedOnUnit())
+          {
+            ClearSelectionList();
+            ClearHoverList(true);
+
+            List<GameObject> unitTypeList = unitManager.ReturnAllUnitsOfType(clickedObject.GetComponent<UnitType>().unitType);
+
+            for (int i = 0; i < unitTypeList.Count; ++i)
+            {
+              AddObjectToSelectionList(unitTypeList[i]);
+            }
+
+            return;
+          }
+        }
+
         AddObjectToSelectionList(clickedObject.gameObject);
       }
     }

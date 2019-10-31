@@ -172,18 +172,13 @@ public class Health : MonoBehaviour
     {
       maxHealth += upgradeProperties[i].health;
       regeneration += upgradeProperties[i].regeneraton;
-
-      if (GetComponent<CrystalSeeker>() != null && GetComponent<Faction>().faction == Faction.FACTIONS.GOBLINS)
-      {
-        GameManager.minerManager.UpgradeMinerHealth(upgradeProperties[i].health, maxHealth);
-      }
     }
   }
 
   public void SetBoostedValues(BoostValues boostValues)
   {
-      maxHealth += (GameManager.CurrentRound - 1) * boostValues.healthModifier * maxHealth;
-      regeneration += (GameManager.CurrentRound - 1) * boostValues.regeneratonModifier * regeneration;
+    maxHealth += (GameManager.CurrentRound - 1) * boostValues.healthModifier * maxHealth;
+    regeneration += (GameManager.CurrentRound - 1) * boostValues.regeneratonModifier * regeneration;
   }
 
   public bool AtMaxHealth()
