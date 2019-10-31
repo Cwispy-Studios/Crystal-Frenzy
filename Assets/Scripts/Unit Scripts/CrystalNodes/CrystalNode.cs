@@ -78,19 +78,35 @@ public class CrystalNode : MonoBehaviour
     return null;
   }
 
-  public void SetPathVisibilityMeshes(bool setActive)
+  public void SetPathVisibilityMeshes(bool setActive, GameObject onlySetThisNodeVisible = null)
   {
     active = true;
     explored = true;
 
     for (int connectedNodeIndex = 0; connectedNodeIndex < connectedNodesData.Length; ++connectedNodeIndex)
     {
-      connectedNodesData[connectedNodeIndex].connectedNode.GetComponent<CrystalNode>().explored = true;
-      connectedNodesData[connectedNodeIndex].connectedNode.GetComponent<CrystalNode>().conquerable = true;
-
-      for (int visibilityMeshIndex = 0; visibilityMeshIndex < connectedNodesData[connectedNodeIndex].pathVisibilityMeshes.Length; ++visibilityMeshIndex)
+      if (onlySetThisNodeVisible == null)
       {
-        connectedNodesData[connectedNodeIndex].pathVisibilityMeshes[visibilityMeshIndex].SetActive(setActive);
+        connectedNodesData[connectedNodeIndex].connectedNode.GetComponent<CrystalNode>().explored = true;
+        connectedNodesData[connectedNodeIndex].connectedNode.GetComponent<CrystalNode>().conquerable = true;
+
+        for (int visibilityMeshIndex = 0; visibilityMeshIndex < connectedNodesData[connectedNodeIndex].pathVisibilityMeshes.Length; ++visibilityMeshIndex)
+        {
+          connectedNodesData[connectedNodeIndex].pathVisibilityMeshes[visibilityMeshIndex].SetActive(setActive);
+        }
+      }
+
+      else if (connectedNodesData[connectedNodeIndex].connectedNode = onlySetThisNodeVisible)
+      {
+        connectedNodesData[connectedNodeIndex].connectedNode.GetComponent<CrystalNode>().explored = true;
+        connectedNodesData[connectedNodeIndex].connectedNode.GetComponent<CrystalNode>().conquerable = true;
+
+        for (int visibilityMeshIndex = 0; visibilityMeshIndex < connectedNodesData[connectedNodeIndex].pathVisibilityMeshes.Length; ++visibilityMeshIndex)
+        {
+          connectedNodesData[connectedNodeIndex].pathVisibilityMeshes[visibilityMeshIndex].SetActive(setActive);
+        }
+
+        return;
       }
     }
   }

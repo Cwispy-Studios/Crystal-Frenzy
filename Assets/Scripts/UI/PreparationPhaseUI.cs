@@ -17,7 +17,7 @@ public class PreparationPhaseUI : MonoBehaviour
   private void Awake()
   {
     GameManager gameManager = FindObjectOfType<GameManager>();
-    selectArmyButton.GetComponent<Button>().onClick.AddListener(gameManager.BeginArmySelection);
+    selectArmyButton.GetComponent<Button>().onClick.AddListener( delegate { gameManager.BeginArmySelection(false); });
     backToSelectNodesButton.GetComponent<Button>().onClick.AddListener(gameManager.ReturnToNodeSelection);
     attackButton.GetComponent<Button>().onClick.AddListener(gameManager.BeginEscort);
     defendButton.GetComponent<Button>().onClick.AddListener(gameManager.BeginDefense);

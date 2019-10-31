@@ -49,7 +49,7 @@ public class GameManager : MonoBehaviour
 
   private void Start()
   {
-    BeginPreparationPhase();
+    BeginPreparationPhase(true);
   }
 
   private void FixedUpdate()
@@ -75,7 +75,7 @@ public class GameManager : MonoBehaviour
   ///////////////////////////////////////////////////////////////
   // PREPARATION FUNCTIONS
 
-  public void BeginPreparationPhase()
+  public void BeginPreparationPhase(bool allowSelection)
   {
     CurrentPhase = PHASES.PREPARATION;
 
@@ -83,24 +83,46 @@ public class GameManager : MonoBehaviour
 
     GameObject lastConqueredNode = conqueredNodes[conqueredNodes.Count - 1];
 
-    // Force the camera into a bird's eye view
-    playerCamera.GetComponent<CameraManager>().SetBirdsEyeView(lastConqueredNode.transform.position);
+    if (allowSelection)
+    {
+      // Force the camera into a bird's eye view
+      playerCamera.GetComponent<CameraManager>().SetBirdsEyeView(lastConqueredNode.transform.position);
 
-    // Get the latest conquered node and enable the assembly FOV mesh so we can see the conquered node area so we can see the paths and crystal nodes 
-    lastConqueredNode.GetComponent<ConqueredNode>().SetAssemblyFOV(true);
-    // Turn on the path visibility meshes to all the connected nodes we can attack so we can see the path and our options
-    lastConqueredNode.GetComponent<CrystalNode>().SetPathVisibilityMeshes(true);
+      // Get the latest conquered node and enable the assembly FOV mesh so we can see the conquered node area so we can see the paths and crystal nodes 
+      lastConqueredNode.GetComponent<ConqueredNode>().SetAssemblyFOV(true);
+      // Turn on the path visibility meshes to all the connected nodes we can attack so we can see the path and our options
+      lastConqueredNode.GetComponent<CrystalNode>().SetPathVisibilityMeshes(true);
 
-    // Update the camera bounds
-    playerCamera.GetComponent<CameraControls>().AddCameraBounds(lastConqueredNode.GetComponent<ConqueredNode>().SelectionCameraBound);
+      // Update the camera bounds
+      playerCamera.GetComponent<CameraControls>().AddCameraBounds(lastConqueredNode.GetComponent<ConqueredNode>().SelectionCameraBound);
 
-    // Set the UI Interfaces to invisible and show the button to select army roster
-    uiInterface.PreparationPhaseSelectNodeUI();
+      // Set the UI Interfaces to invisible and show the button to select army roster
+      uiInterface.PreparationPhaseSelectNodeUI();
 
-    playerCamera.GetComponent<CameraControls>().enabled = true;
-    playerCamera.GetComponent<CameraIssueOrdering>().enabled = true;
+      playerCamera.GetComponent<CameraControls>().enabled = true;
+      playerCamera.GetComponent<CameraIssueOrdering>().enabled = true;
 
-    uiInterface.UpdateUINodeColours();
+      uiInterface.UpdateUINodeColours();
+    }
+
+    else
+    {
+      // Get the latest conquered node and enable the assembly FOV mesh so we can see the conquered node area so we can see the paths and crystal nodes 
+      lastConqueredNode.GetComponent<ConqueredNode>().SetAssemblyFOV(true);
+      // Turn on the path visibility meshes to all the connected nodes we can attack so we can see the path and our options
+      lastConqueredNode.GetComponent<CrystalNode>().SetPathVisibilityMeshes(true, lastConqueredNode.GetComponent<CrystalNode>().conqueredNode);
+
+      // Update the camera bounds
+      playerCamera.GetComponent<CameraControls>().AddCameraBounds(lastConqueredNode.GetComponent<ConqueredNode>().SelectionCameraBound);
+
+      // Set the UI Interfaces to invisible and show the button to select army roster
+      uiInterface.PreparationPhaseSelectNodeUI();
+
+      playerCamera.GetComponent<CameraControls>().enabled = true;
+      playerCamera.GetComponent<CameraIssueOrdering>().enabled = true;
+
+      uiInterface.UpdateUINodeColours();
+    }
   }
 
   private void PreparationPhase()
@@ -110,6 +132,7 @@ public class GameManager : MonoBehaviour
     if (nodeSelected == false)
     {
       uiInterface.UpdateUINodeColours();
+
       // While it is false, keep the button not interactable
       if (lastConqueredNode.GetComponent<CrystalSeekerSpawner>().crystalSelected == false)
       {
@@ -143,11 +166,11 @@ public class GameManager : MonoBehaviour
     }
   }
 
-  public void BeginArmySelection()
+  public void BeginArmySelection(bool conquered)
   {
     nodeSelected = true;
 
-    uiInterface.PreparationPhaseSelectArmyUI(false);
+    uiInterface.PreparationPhaseSelectArmyUI(conquered);
 
     GameObject attackingFromNode = conqueredNodes[conqueredNodes.Count - 1];
 
@@ -289,22 +312,22 @@ public class GameManager : MonoBehaviour
     if (conqueredNode.GetComponent<CrystalNode>().conqueredNode != null)
     {
       attackingFromNode.GetComponent<CrystalSeekerSpawner>().SetCrystalTarget(attackingFromNode.GetComponent<CrystalNode>().conqueredNode);
-      uiInterface.PreparationPhaseSelectArmyUI(true);
+      BeginPreparationPhase(false);
+      BeginArmySelection(true);
       nodeSelected = true;
     }
 
     else
     {
+      BeginPreparationPhase(true);
+      nodeSelected = false;
+
       // If capturing a node that has a crystal selected, we reset it to null
       if (conqueredNode.GetComponent<CrystalSeekerSpawner>().crystalSelected == true)
       {
         conqueredNode.GetComponent<CrystalSeekerSpawner>().ResetCrystalSelection();
       }
     }
-
-    nodeSelected = false;
-
-    BeginPreparationPhase();
   }
 
   public void EscortLose()
@@ -412,15 +435,15 @@ public class GameManager : MonoBehaviour
 
     nodeSelected = false;
 
-    BeginPreparationPhase();
-
     // Check if our attacking from node has already conquered a node. If yes, skip to army selection screen and force player
     // to attack that node. Otherwise, player is free to choose
     if (attackingFromNode.GetComponent<CrystalNode>().conqueredNode != null)
     {
       attackingFromNode.GetComponent<CrystalSeekerSpawner>().SetCrystalTarget(attackingFromNode.GetComponent<CrystalNode>().conqueredNode);
-      uiInterface.PreparationPhaseSelectArmyUI(true);
       nodeSelected = true;
+
+      BeginPreparationPhase(false);
+      BeginArmySelection(true);
     }
   }
 

@@ -159,11 +159,16 @@ public class CameraControls : MonoBehaviour
     {
       // Every bounds we check, if out of bounds we save a corrected value to clamp the position to
       float correctedX = 0;
-      float closestCorrection = 99999f;
+      float correctedZ = 0;
+      float closestCorrectionX = 99999f;
+      float closestCorrectionZ = 99999f;
 
       for (int i = 0; i < cameraBounds.Count; ++i)
       {
         Bounds cameraBound = cameraBounds[i].GetComponent<Renderer>().bounds;
+
+        bool xInBounds = false;
+        bool zInBounds = false;
 
         // Check which bounds the camera is currently in
         if (transform.position.z >= cameraBound.min.z && transform.position.z <= cameraBound.max.z)
@@ -172,7 +177,7 @@ public class CameraControls : MonoBehaviour
           // and the x-axis may be valid for the next one, if it is then we do not need to correct
           if (tempCamPosition.x < cameraBound.min.x)
           {
-            if (Mathf.Abs(tempCamPosition.x - cameraBound.min.x) < closestCorrection)
+            if (Mathf.Abs(tempCamPosition.x - cameraBound.min.x) < closestCorrectionX)
             {
               correctedX = cameraBound.min.x;
             }
@@ -180,7 +185,7 @@ public class CameraControls : MonoBehaviour
 
           else if (tempCamPosition.x > cameraBound.max.x)
           {
-            if (Mathf.Abs(tempCamPosition.x - cameraBound.min.x) < closestCorrection)
+            if (Mathf.Abs(tempCamPosition.x - cameraBound.min.x) < closestCorrectionX)
             {
               correctedX = cameraBound.max.x;
             }
@@ -188,6 +193,35 @@ public class CameraControls : MonoBehaviour
 
           // The x-axis is in bounds, so the move is valid. We can then stop the function since we know the move is valid
           else
+          {
+            xInBounds = true;
+          }
+
+          // Check if the z-axis is within the bounds and set a correctedX. We do not correct immediately because the bounds overlap
+          // and the z-axis may be valid for the next one, if it is then we do not need to correct
+          if (tempCamPosition.z < cameraBound.min.z)
+          {
+            if (Mathf.Abs(tempCamPosition.z - cameraBound.min.z) < closestCorrectionZ)
+            {
+              correctedZ = cameraBound.min.z;
+            }
+          }
+
+          else if (tempCamPosition.z > cameraBound.max.z)
+          {
+            if (Mathf.Abs(tempCamPosition.z - cameraBound.min.z) < closestCorrectionZ)
+            {
+              correctedZ = cameraBound.max.z;
+            }
+          }
+
+          // The x-axis is in bounds, so the move is valid. We can then stop the function since we know the move is valid
+          else
+          {
+            zInBounds = true;
+          }
+
+          if (xInBounds && zInBounds)
           {
             transform.position = tempCamPosition;
 
@@ -198,6 +232,7 @@ public class CameraControls : MonoBehaviour
 
       // If we get here, it means that the camera has moved out of the x-axis, and we simply need to correct that
       tempCamPosition.x = correctedX;
+      tempCamPosition.z = correctedZ;
 
       transform.position = tempCamPosition;
     } // else 
