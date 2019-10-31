@@ -394,6 +394,7 @@ GameObject:
   - component: {fileID: 6535236377957168995}
   - component: {fileID: 6535236377957168996}
   - component: {fileID: 5280886360926694213}
+  - component: {fileID: 1544853214405841337}
   m_Layer: 0
   m_Name: Teddy
   m_TagString: Untagged
@@ -719,6 +720,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a533fab9a76c8ea4098c563139cf9fea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1544853214405841337
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6535236377957169005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac56f1b6c1ad8144fb388e944cfc04c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  goldProvided: 5
 --- !u!1 &6536432551157897295
 GameObject:
   m_ObjectHideFlags: 0

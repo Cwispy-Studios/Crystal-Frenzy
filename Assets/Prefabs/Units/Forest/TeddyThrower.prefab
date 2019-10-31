@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8132787461713434226}
+  - component: {fileID: -8739889122065282971}
   - component: {fileID: 2487316772142878496}
   - component: {fileID: 8816942227189992880}
   - component: {fileID: 8109413875993358455}
@@ -24,7 +25,7 @@ GameObject:
   - component: {fileID: 8109413875993358450}
   - component: {fileID: 8109413875993358453}
   - component: {fileID: 819403203178679864}
-  - component: {fileID: -8739889122065282971}
+  - component: {fileID: 8367624838384346998}
   m_Layer: 0
   m_Name: TeddyThrower
   m_TagString: Untagged
@@ -46,6 +47,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &-8739889122065282971
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8109413875993358460}
+  m_Enabled: 0
+  m_Avatar: {fileID: 9000000, guid: 433da66badda9cf4193e0b582a9ee998, type: 3}
+  m_Controller: {fileID: 9100000, guid: 10a0ad00fdc6ef24195ee14feac12f6b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!33 &2487316772142878496
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -306,22 +326,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a533fab9a76c8ea4098c563139cf9fea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!95 &-8739889122065282971
-Animator:
-  serializedVersion: 3
+--- !u!114 &8367624838384346998
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8109413875993358460}
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 433da66badda9cf4193e0b582a9ee998, type: 3}
-  m_Controller: {fileID: 9100000, guid: 10a0ad00fdc6ef24195ee14feac12f6b, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 1
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac56f1b6c1ad8144fb388e944cfc04c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  goldProvided: 8

@@ -542,6 +542,7 @@ GameObject:
   - component: {fileID: 9114432269934096791}
   - component: {fileID: 9114432269934096790}
   - component: {fileID: 9114432269934096789}
+  - component: {fileID: 8487460970819914081}
   m_Layer: 0
   m_Name: VolatileBug
   m_TagString: Untagged
@@ -910,6 +911,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a533fab9a76c8ea4098c563139cf9fea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8487460970819914081
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9114432269934096788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac56f1b6c1ad8144fb388e944cfc04c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  goldProvided: 10
 --- !u!1 &9114432756769351690
 GameObject:
   m_ObjectHideFlags: 0
