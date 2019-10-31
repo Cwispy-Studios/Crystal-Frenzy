@@ -9639,7 +9639,7 @@ NavMeshObstacle:
   m_Enabled: 1
   serializedVersion: 3
   m_Shape: 0
-  m_Extents: {x: 10.5, y: 0.8, z: 10.5}
+  m_Extents: {x: 11, y: 0.8, z: 11}
   m_MoveThreshold: 0.1
   m_Carve: 1
   m_CarveOnlyStationary: 1
@@ -9726,9 +9726,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3071ad8670c3bb458ac99a06f22f059, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isFortress: 0
+  isLifeCrystal: 0
   connectedNodesData: []
   spawnPoints: []
   conqueredNode: {fileID: 0}
+  explored: 0
+  active: 0
+  conquerable: 0
+  targeted: 0
 --- !u!114 &1973292458778046099
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9756,8 +9762,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0192c10ce0d2589489e608135047b104, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ragdollPrefab: {fileID: 0}
   maxHealth: 5000
   regeneration: 0.1
+  explodesOnDeath: 0
+  explosionDmgPctOfHealth: 0.25
+  explosionRadius: 10
   combatantType: 0
 --- !u!114 &1513422491572564236
 MonoBehaviour:

@@ -4,7 +4,8 @@ using UnityEngine;
 public class CameraControls : MonoBehaviour
 {
   /*********************** Move variables ***********************/
-  private readonly float moveSpeed = 120f;
+  private readonly float moveSpeed = 100f;
+  private readonly float birdsEyeViewMoveSpeed = 140f;
   private readonly float moveDetectPerc = 0.01f;
 
   /*********************** Pan variables ***********************/
@@ -46,28 +47,30 @@ public class CameraControls : MonoBehaviour
     // After checking and correcting, then we move the actual camera position
     Transform tempCamTransform = transform;
 
+    float scrollSpeed = birdsEyeViewMode ? birdsEyeViewMoveSpeed : moveSpeed;
+
     // Check left side of screen but don't move it if is past the screen
     if (Input.mousePosition.x <= moveDetectThreshold.x && Input.mousePosition.x >= 0)
     {
-      tempCamTransform.Translate(Vector3.right * -moveSpeed * Time.deltaTime / GetZoomPerc());
+      tempCamTransform.Translate(Vector3.right * -scrollSpeed * Time.deltaTime / GetZoomPerc());
     }
 
     // Check right side of screen
     else if (Input.mousePosition.x >= Screen.width - moveDetectThreshold.x && Input.mousePosition.x <= Screen.width)
     {
-      tempCamTransform.Translate(Vector3.right * moveSpeed * Time.deltaTime / GetZoomPerc());
+      tempCamTransform.Translate(Vector3.right * scrollSpeed * Time.deltaTime / GetZoomPerc());
     }
 
     // Check top side of screen
     if (Input.mousePosition.y <= moveDetectThreshold.y && Input.mousePosition.y >= 0)
     {
-      tempCamTransform.Translate(Quaternion.Euler(0, 90, 0) * transform.right * moveSpeed * Time.deltaTime / GetZoomPerc(), Space.World);
+      tempCamTransform.Translate(Quaternion.Euler(0, 90, 0) * transform.right * scrollSpeed * Time.deltaTime / GetZoomPerc(), Space.World);
     }
 
     // Check bottom side of screen
     else if (Input.mousePosition.y >= Screen.height - moveDetectThreshold.y && Input.mousePosition.y <= Screen.height)
     {
-      tempCamTransform.Translate(Quaternion.Euler(0, -90, 0) * transform.right * moveSpeed * Time.deltaTime / GetZoomPerc(), Space.World);
+      tempCamTransform.Translate(Quaternion.Euler(0, -90, 0) * transform.right * scrollSpeed * Time.deltaTime / GetZoomPerc(), Space.World);
     }
 
     if (CameraManager.cameraLerping == false)
