@@ -7,6 +7,10 @@ public class CrystalNode : MonoBehaviour
   public bool IsFortress { get { return isFortress; } }
 
   [SerializeField]
+  private bool isLifeCrystal = false;
+  public bool IsLifeCrystal { get { return isLifeCrystal; } }
+
+  [SerializeField]
   private ConnectedNodeData[] connectedNodesData = null;
   public ConnectedNodeData[] ConnectedNodesData { get { return connectedNodesData; } }
 
