@@ -11959,6 +11959,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 256584909}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &256584911 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1260482940059338626, guid: 4cce610ab183e2e42b2e9ce7e9935547,
+    type: 3}
+  m_PrefabInstance: {fileID: 256584909}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &256596092
 GameObject:
   m_ObjectHideFlags: 0
@@ -64014,7 +64020,7 @@ PrefabInstance:
     - target: {fileID: 6477082172712516352, guid: b2f5f57778c989847b78033fc4a84516,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6477082172712516355, guid: b2f5f57778c989847b78033fc4a84516,
         type: 3}
@@ -67521,7 +67527,7 @@ PrefabInstance:
     - target: {fileID: 6477082172712516352, guid: b2f5f57778c989847b78033fc4a84516,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6477082172712516355, guid: b2f5f57778c989847b78033fc4a84516,
         type: 3}
@@ -75148,6 +75154,11 @@ PrefabInstance:
       propertyPath: connectedNodesData.Array.data[0].cameraBound
       value: 
       objectReference: {fileID: 692124966}
+    - target: {fileID: 3721100528942192966, guid: 515433029e942ff46a8ae49154164f32,
+        type: 3}
+      propertyPath: connectedNodesData.Array.data[0].treeWall
+      value: 
+      objectReference: {fileID: 256584911}
     - target: {fileID: 7950338876556812265, guid: 515433029e942ff46a8ae49154164f32,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
