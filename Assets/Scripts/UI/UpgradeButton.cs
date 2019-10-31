@@ -160,17 +160,17 @@ public class UpgradeButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         {
           case 1:
             upgradeName = "Upgraded Stabby";
-            description = "The Miner's motors are now maintained, increasing it's movement speed.";
+            description = "Equip your Stabby Goblins with a sharper butter knife and some clothes";
             break;
 
           case 2:
             upgradeName = "Upgraded Stabby";
-            description = "";
+            description = "Equips your Stabby Goblins with a dagger and some armour";
             break;
 
           case 3:
             upgradeName = "Upgraded Stabby";
-            description = "";
+            description = "Equips your Stabby Goblins w";
             break;
 
           default:
@@ -184,17 +184,17 @@ public class UpgradeButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         {
           case 1:
             upgradeName = "Upgraded Shooty";
-            description = "The Miner's motors are now maintained, increasing it's movement speed.";
+            description = "Increased Damage and Health.";
             break;
 
           case 2:
             upgradeName = "Upgraded Shooty";
-            description = "";
+            description = "Increased Damage and Health";
             break;
 
           case 3:
             upgradeName = "Upgraded Shooty";
-            description = "";
+            description = "Increased Damage and Health";
             break;
 
           default:
@@ -208,17 +208,17 @@ public class UpgradeButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         {
           case 1:
             upgradeName = "Upgraded Brute";
-            description = "The Miner's motors are now maintained, increasing it's movement speed.";
+            description = "Increased Damage and Health.";
             break;
 
           case 2:
             upgradeName = "Upgraded Brute";
-            description = "";
+            description = "Increased Damage and Health";
             break;
 
           case 3:
             upgradeName = "Upgraded Brute";
-            description = "";
+            description = "Increased Damage and Health";
             break;
 
           default:
@@ -228,6 +228,27 @@ public class UpgradeButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         break;
 
       case UPGRADE_TYPE.WARLOCK:
+        switch (upgradeLevel)
+        {
+          case 1:
+            upgradeName = "Upgraded Warlock";
+            description = "Increased Damage and Health, your Warlocks heal more";
+            break;
+
+          case 2:
+            upgradeName = "Upgraded Warlock";
+            description = "Increased Damage and Health, your Warlocks heal more";
+            break;
+
+          case 3:
+            upgradeName = "Upgraded Warlock";
+            description = "Increased Damage and Health, your Warlocks heal more";
+            break;
+
+          default:
+            Debug.LogError("Upgrade button not found! Upgrade type is " + upgradeType + ", upgrade level is " + upgradeLevel);
+            break;
+        }
         break;
 
       case UPGRADE_TYPE.STABBY_CHEAP:
@@ -235,17 +256,17 @@ public class UpgradeButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         {
           case 1:
             upgradeName = "Upgraded Stabby Cheap";
-            description = "The Miner's motors are now maintained, increasing it's movement speed.";
+            description = "Your Stabby Goblins are as ill equipped as before. At least they are still cheap.";
             break;
 
           case 2:
             upgradeName = "Upgraded Stabby Cheap";
-            description = "";
+            description = "Your Stabby Goblins are as ill equipped as before. At least they are still cheap.";
             break;
 
           case 3:
             upgradeName = "Upgraded Stabby Cheap";
-            description = "";
+            description = "Your Stabby Goblins are as ill equipped as before. At least they are still cheap.";
             break;
 
           default:
@@ -259,7 +280,7 @@ public class UpgradeButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         {
           case 1:
             upgradeName = "Upgraded Stabby Beefed";
-            description = "The Miner's motors are now maintained, increasing it's movement speed.";
+            description = "Your Stabby Goblins have been beefed up, becoming significantly stronger at the cost of higher upkeep.";
             break;
 
           case 2:
@@ -283,7 +304,7 @@ public class UpgradeButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         {
           case 1:
             upgradeName = "Upgraded Shooty Fast";
-            description = "The Miner's motors are now maintained, increasing it's movement speed.";
+            description = "Your Shooty Goblins prioritise speed over damage, while sacrificing some range.";
             break;
 
           case 2:
@@ -307,7 +328,7 @@ public class UpgradeButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         {
           case 1:
             upgradeName = "Upgraded Shooty Nuke";
-            description = "The Miner's motors are now maintained, increasing it's movement speed.";
+            description = "Your Shooty Goblins are now marksmen, dealing massive damage from a further distance, at the cost of lower attack speed.";
             break;
 
           case 2:
@@ -331,7 +352,7 @@ public class UpgradeButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         {
           case 1:
             upgradeName = "Upgraded Brute Cheap";
-            description = "The Miner's motors are now maintained, increasing it's movement speed.";
+            description = "Your Brutes are now less ";
             break;
 
           case 2:
@@ -360,6 +381,54 @@ public class UpgradeButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
           case 2:
             upgradeName = "Upgraded Brute Tank";
+            description = "";
+            break;
+
+          case 3:
+            upgradeName = "Upgraded Brute Tank";
+            description = "";
+            break;
+
+          default:
+            Debug.LogError("Upgrade button not found! Upgrade type is " + upgradeType + ", upgrade level is " + upgradeLevel);
+            break;
+        }
+        break;
+
+      case UPGRADE_TYPE.WARLOCK_HEALER:
+        switch (upgradeLevel)
+        {
+          case 1:
+            upgradeName = "Saintly Warlocks";
+            description = "Your Warlocks now speak the word of God, and are able to heal more efficiently.";
+            break;
+
+          case 2:
+            upgradeName = "Saintly Warlocks";
+            description = "";
+            break;
+
+          case 3:
+            upgradeName = "Upgraded Brute Cheap";
+            description = "";
+            break;
+
+          default:
+            Debug.LogError("Upgrade button not found! Upgrade type is " + upgradeType + ", upgrade level is " + upgradeLevel);
+            break;
+        }
+        break;
+
+      case UPGRADE_TYPE.WARLOCK_OFFENSIVE:
+        switch (upgradeLevel)
+        {
+          case 1:
+            upgradeName = "Dark Warlock";
+            description = "Your warlocks dabble into Dark Magic, giving them splash damage.";
+            break;
+
+          case 2:
+            upgradeName = "Dark Warlock";
             description = "";
             break;
 
