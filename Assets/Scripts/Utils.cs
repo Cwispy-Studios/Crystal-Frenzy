@@ -60,7 +60,7 @@ public class Utils
     // Do not count UI, Terrain, FOV and Invisible objects
     int layerMask = (1 << 5) | (1 << 8) | (1 << 9) | (1 << 10);
 
-    float distance = playerCamera.GetComponent<CameraControls>().birdsEyeViewMode ? 750f : 65f;
+    float distance = playerCamera.GetComponent<CameraControls>().birdsEyeViewMode ? 750f : 150f;
 
     // Check if the mouse was over any collider when clicked
     if (Physics.Raycast(ray, out RaycastHit hit, distance, ~layerMask))
