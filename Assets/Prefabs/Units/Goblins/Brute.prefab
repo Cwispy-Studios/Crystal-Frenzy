@@ -41,7 +41,7 @@ Transform:
   m_GameObject: {fileID: 6530087302226205059}
   m_LocalRotation: {x: -0, y: 0.6363962, z: -0, w: 0.77136236}
   m_LocalPosition: {x: 483.61, y: 2.01, z: 71.42754}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -226,8 +226,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ragdollPrefab: {fileID: 0}
-  maxHealth: 550
-  regeneration: 0.45
+  maxHealth: 650
+  regeneration: 2
   explodesOnDeath: 0
   explosionDmgPctOfHealth: 0.25
   explosionRadius: 10

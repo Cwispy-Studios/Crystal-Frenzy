@@ -165,8 +165,28 @@ public class Attack : MonoBehaviour
     {
       bool unitIsEnemy = CheckUnitIsTargetableEnemy(unitsInRange[i].gameObject);
 
+      // Check if this unit is a healer and the unit in range is a friend and has a health component
+      if (isHealer && !unitIsEnemy && unitsInRange[i].GetComponent<Health>())
+      {
+        // Check if unit can be healed and is the preferred type
+        if (!unitsInRange[i].GetComponent<Health>().AtMaxHealth() && unitsInRange[i].GetComponent<Health>().CombatantType == preferredTarget)
+        {
+          isHealing = true;
+
+          // Save the distance
+          float distance = Vector3.Distance(transform.position, unitsInRange[i].transform.position);
+
+          // Prioritise lowest hp
+          if (unitsInRange[i].GetComponent<Health>().HealthPct() < lowestHpPct)
+          {
+            closestEnemyRange = distance;
+            detectedTarget = unitsInRange[i].gameObject;
+          }
+        }
+      }
+
       // Check if the unit in range is an enemy and has a health component
-      if (!isHealing && unitIsEnemy && unitsInRange[i].GetComponent<Health>())
+      else if (!isHealing && unitIsEnemy && unitsInRange[i].GetComponent<Health>())
       {
         // First we check if the enemy has already found their preferred target type. If not found, they can target anyone.
         // If found, we only search for enemies of that target type
@@ -178,26 +198,6 @@ public class Attack : MonoBehaviour
             float distance = Vector3.Distance(transform.position, unitsInRange[i].transform.position);
 
             if (distance < closestEnemyRange)
-            {
-              closestEnemyRange = distance;
-              detectedTarget = unitsInRange[i].gameObject;
-            }
-          }
-        }
-
-        // Check if this unit is a healer and the unit in range is a friend and has a health component
-        else if (isHealer && !unitIsEnemy && unitsInRange[i].GetComponent<Health>())
-        {
-          // Check if unit can be healed and is the preferred type
-          if (!unitsInRange[i].GetComponent<Health>().AtMaxHealth() && unitsInRange[i].GetComponent<Health>().CombatantType == preferredTarget)
-          {
-            isHealing = true;
-
-            // Save the distance
-            float distance = Vector3.Distance(transform.position, unitsInRange[i].transform.position);
-
-            // Prioritise lowest hp
-            if (unitsInRange[i].GetComponent<Health>().HealthPct() < lowestHpPct)
             {
               closestEnemyRange = distance;
               detectedTarget = unitsInRange[i].gameObject;
