@@ -19,6 +19,7 @@ public class CameraObjectSelection : MonoBehaviour
 
   private KeyCode groupCommand = KeyCode.LeftControl;
   private KeyCode addGroupCommand = KeyCode.LeftShift;
+  private const KeyCode selectAllCommand = KeyCode.A;
 
   // Keys 1 - 9
   private const int MAX_GROUPS = 9;
@@ -168,6 +169,27 @@ public class CameraObjectSelection : MonoBehaviour
     {
       CenterOnSelected();
     }
+
+    if (Input.GetKeyDown(selectAllCommand))
+    {
+      SelectAllUnits();
+    }
+  }
+
+  private void SelectAllUnits()
+  {
+    GameObject[] allFriendlyUnits = unitManager.ReturnAllUnits();
+    isSelecting = false;
+
+    ClearHoverList(true);
+    ClearSelectionList();
+
+    for (int i = 0; i < allFriendlyUnits.Length; ++i)
+    {
+      AddObjectToSelectionList(allFriendlyUnits[i].GetComponent<UnitButton>().Unit);
+    }
+
+    unitManager.UpdateSelectionLists();
   }
 
   private void CenterOnSelected()

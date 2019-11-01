@@ -23,6 +23,11 @@ public class Attack : MonoBehaviour
   private float normalMoveSpeed;
   private float normalDamage;
 
+  private float ogDamage;
+  private float ogAttackSpeed;
+  private float ogAttackRange;
+  private float ogDetectRange;
+
   [SerializeField]
   private bool aoe = false;
   [SerializeField]
@@ -66,6 +71,10 @@ public class Attack : MonoBehaviour
   private void Awake()
   {
     unitRadius = GetComponent<NavMeshAgent>().radius * ((transform.lossyScale.x + transform.lossyScale.z) / 2f);
+    ogDamage = attackDamage;
+    ogAttackSpeed = attacksPerSecond;
+    ogAttackRange = attackRange;
+    ogDetectRange = enemyDetectRange;
   }
 
   private void Start()
@@ -462,10 +471,10 @@ public class Attack : MonoBehaviour
 
   public void SetBoostedValues(BoostValues boostValues)
   {
-    attackDamage += (GameManager.CurrentRound - 1) * boostValues.damageModifier * attackDamage;
-    attacksPerSecond += (GameManager.CurrentRound - 1) * boostValues.attackSpeedModifier * attacksPerSecond;
-    attackRange += (GameManager.CurrentRound - 1) * boostValues.attackRangeModifier * attackRange;
-    enemyDetectRange += (GameManager.CurrentRound - 1) * boostValues.detectRangeModifier * enemyDetectRange;
+    attackDamage += (GameManager.CurrentRound - 1) * boostValues.damageModifier * ogAttackRange;
+    attacksPerSecond += (GameManager.CurrentRound - 1) * boostValues.attackSpeedModifier * ogAttackSpeed;
+    attackRange += (GameManager.CurrentRound - 1) * boostValues.attackRangeModifier * ogAttackRange;
+    enemyDetectRange += (GameManager.CurrentRound - 1) * boostValues.detectRangeModifier * ogDetectRange;
   }
 
   public void SetSlowAffliction(float attackSlowAmount, float moveSlowAmount)

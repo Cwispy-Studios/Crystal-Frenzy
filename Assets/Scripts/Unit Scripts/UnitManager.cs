@@ -384,4 +384,9 @@ public class UnitManager : MonoBehaviour
 
     return null;
   }
+
+  public GameObject[] ReturnAllUnits()
+  {
+    return unitButtonsList.ToArray();
+  }
 }

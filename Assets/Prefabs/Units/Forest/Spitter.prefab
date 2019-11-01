@@ -741,7 +741,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ragdollPrefab: {fileID: 9172484940750733764, guid: d91ab0103a236ea449a323217bd3dd88,
     type: 3}
-  maxHealth: 95
+  maxHealth: 125
   regeneration: 2.2
   explodesOnDeath: 0
   explosionDmgPctOfHealth: 0.5
@@ -832,8 +832,8 @@ MonoBehaviour:
   poisonEffect:
     hasEffect: 1
     statusType: 0
-    dps: 7
-    statusDuration: 5
+    dps: 6
+    statusDuration: 4
   slowEffect:
     hasEffect: 0
     statusType: 0
@@ -869,7 +869,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac56f1b6c1ad8144fb388e944cfc04c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  goldProvided: 18
+  goldProvided: 15
 --- !u!1 &8254492732438089453
 GameObject:
   m_ObjectHideFlags: 0

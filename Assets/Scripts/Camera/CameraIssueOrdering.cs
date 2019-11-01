@@ -29,7 +29,6 @@ public class CameraIssueOrdering : MonoBehaviour
       return;
     }
 
-
     // When RMB clicked and there are units selected
     if (Input.GetMouseButtonDown(1))
     {

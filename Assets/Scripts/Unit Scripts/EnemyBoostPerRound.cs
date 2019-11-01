@@ -5,7 +5,7 @@ public class EnemyBoostPerRound : MonoBehaviour
   [SerializeField]
   private BoostValues boostValues = null;
 
-  private void Awake()
+  private void Start()
   {
     SetBoostedValues();
   }
@@ -34,7 +34,7 @@ public class EnemyBoostPerRound : MonoBehaviour
 
     if (GetComponent<StatusEffects>())
     {
-
+      GetComponent<StatusEffects>().SetBoostedValues(boostValues);
     }
   }
 }

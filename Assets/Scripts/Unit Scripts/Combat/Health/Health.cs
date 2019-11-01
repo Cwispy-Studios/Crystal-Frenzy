@@ -37,6 +37,9 @@ public class Health : MonoBehaviour
     get { return regeneration; }
   }
 
+  private float ogHealth;
+  private float ogRegeneration;
+
   [SerializeField]
   private bool explodesOnDeath = false;
   [SerializeField]
@@ -55,6 +58,12 @@ public class Health : MonoBehaviour
   public float CurrentHealth { get; protected set; }
 
   public event Action<float> OnHealthChanged = delegate { };
+
+  private void Awake()
+  {
+    ogHealth = maxHealth;
+    ogRegeneration = regeneration;
+  }
 
   private void Start()
   {
@@ -177,8 +186,10 @@ public class Health : MonoBehaviour
 
   public void SetBoostedValues(BoostValues boostValues)
   {
-    maxHealth += (GameManager.CurrentRound - 1) * boostValues.healthModifier * maxHealth;
-    regeneration += (GameManager.CurrentRound - 1) * boostValues.regeneratonModifier * regeneration;
+    maxHealth += (GameManager.CurrentRound - 1) * boostValues.healthModifier * ogHealth;
+    regeneration += (GameManager.CurrentRound - 1) * boostValues.regeneratonModifier * ogRegeneration;
+
+    CurrentHealth = maxHealth;
   }
 
   public bool AtMaxHealth()

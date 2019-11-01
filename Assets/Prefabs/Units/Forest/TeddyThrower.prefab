@@ -787,7 +787,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0192c10ce0d2589489e608135047b104, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ragdollPrefab: {fileID: 0}
+  ragdollPrefab: {fileID: 2799282060029815891, guid: a52fe44f06ea530498f24297171f7f18,
+    type: 3}
   maxHealth: 35
   regeneration: 0.5
   explodesOnDeath: 0
@@ -807,8 +808,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackDamage: 5
-  attacksPerSecond: 1.4
-  attackRange: 10
+  attacksPerSecond: 1.3
+  attackRange: 8
   enemyDetectRange: 12
   aoe: 0
   aoeRadius: 1
@@ -889,7 +890,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac56f1b6c1ad8144fb388e944cfc04c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  goldProvided: 8
+  goldProvided: 6
 --- !u!1 &8239150721137117322
 GameObject:
   m_ObjectHideFlags: 0

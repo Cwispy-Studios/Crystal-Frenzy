@@ -64,7 +64,7 @@ public class LootTargetPanel : MonoBehaviour
 
     if (isUpgradeRewarded == true)
     {
-      additionalRewardsText[numAddRewards].text = "<color=magenta>" + upgradeRewarded.ToString().Replace("_", " ") + " UPGRADE</color>";
+      additionalRewardsText[numAddRewards].text = "<color=magenta>" + upgradeRewarded.ToString().Replace("_", " ") + "</color>";
       ++numAddRewards;
     }
   }

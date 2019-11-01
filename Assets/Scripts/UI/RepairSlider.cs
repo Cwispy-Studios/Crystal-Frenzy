@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class RepairSlider : MonoBehaviour
 {
-  private float GOLD_COST_PER_HEALTH = 0.3f;
+  private float GOLD_COST_PER_HEALTH = 0.35f;
 
   [SerializeField]
   private Text

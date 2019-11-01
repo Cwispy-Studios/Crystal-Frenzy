@@ -701,7 +701,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 2.2
-  m_Speed: 12
+  m_Speed: 8
   m_Acceleration: 18
   avoidancePriority: 50
   m_AngularSpeed: 180
@@ -795,10 +795,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ragdollPrefab: {fileID: 0}
-  maxHealth: 65
-  regeneration: 2.2
+  maxHealth: 45
+  regeneration: 2
   explodesOnDeath: 1
-  explosionDmgPctOfHealth: 0.5
+  explosionDmgPctOfHealth: 0.3
   explosionRadius: 10
   combatantType: 0
 --- !u!114 &9114432269934096786
@@ -813,8 +813,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdcce6eefadf3814dbaf768a4697cd9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackDamage: 5
-  attacksPerSecond: 1.6
+  attackDamage: 6
+  attacksPerSecond: 1.5
   attackRange: 2
   enemyDetectRange: 12
   aoe: 0

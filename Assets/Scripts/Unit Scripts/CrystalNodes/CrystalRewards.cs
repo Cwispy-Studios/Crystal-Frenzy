@@ -48,12 +48,12 @@ public class CrystalRewards : MonoBehaviour
 
 
   /**************************************************** BUILDING SLOT VARIABLES ****************************************************/
-  private const float BUILDING_SLOT_CHANCE = 0.4f;
+  private const float BUILDING_SLOT_CHANCE = 0.6f;
   public bool BuildingSlotRewarded { get; private set; } = false;
 
   /**************************************************** RESOURCES VARIABLES ****************************************************/
-  private const float GOLD_PER_POINTONE_LOOT_WEIGHT = 40f;
-  private const float CRYSTAL_PER_POINTONE_LOOT_WEIGHT = 4f;
+  private const float GOLD_PER_POINTONE_LOOT_WEIGHT = 35f;
+  private const float CRYSTAL_PER_POINTONE_LOOT_WEIGHT = 3.5f;
   private const float GOLD_INCREASE_PER_NODE = 10f;
   private const float CRYSTAL_INCREASE_PER_NODE = 1f;
 
@@ -75,34 +75,6 @@ public class CrystalRewards : MonoBehaviour
   {
     if (randomised)
     {
-      //for (int i = 0; i < 10; ++i)
-      //{
-      //  lootWeight = RandomFromDistribution.RandomRangeLinear(MIN_WEIGHT, MAX_WEIGHT, -2f);
-      //  //lootWeight = RandomFromDistribution.RandomRangeExponential(MIN_WEIGHT, MAX_WEIGHT, 0.5f, RandomFromDistribution.Direction_e.Left);
-
-      //  /************************** Randomise if it rewards an upgrade **************************/
-      //  if (lootWeight >= MIN_REWARD_WEIGHT)
-      //  {
-      //    RandomiseUpgradeReward();
-      //  }
-
-      //  /************************** Randomise if node has building slot **************************/
-      //  if (Random.Range(0, 1f) <= BUILDING_SLOT_CHANCE)
-      //  {
-      //    Debug.Log("Building rewarded");
-      //    GetComponent<BuildingSlot>().enabled = true;
-      //    buildingSlotRewarded = true;
-      //  }
-
-      //  else
-      //  {
-      //    GetComponent<BuildingSlot>().enabled = false;
-      //    buildingSlotRewarded = false;
-      //  }
-
-      //  Debug.Log("----------------------------------------");
-      //}
-
       lootWeight = RandomFromDistribution.RandomRangeLinear(MIN_WEIGHT, MAX_WEIGHT, -2.2f);
       //lootWeight = RandomFromDistribution.RandomRangeExponential(MIN_WEIGHT, MAX_WEIGHT, 0.5f, RandomFromDistribution.Direction_e.Left);
 
@@ -120,7 +92,7 @@ public class CrystalRewards : MonoBehaviour
       {
         GetComponent<BuildingSlot>().enabled = true;
         BuildingSlotRewarded = true;
-        waveSpawnerDifficultyMultiplier += 0.05f;
+        waveSpawnerDifficultyMultiplier += 0.1f;
         lootWeight -= 0.2f;
       }
 
@@ -209,7 +181,7 @@ public class CrystalRewards : MonoBehaviour
     {
       if (cumulativeSumOfWeights[i] > randomNumber)
       {
-        waveSpawnerDifficultyMultiplier += 0.15f;
+        waveSpawnerDifficultyMultiplier += 0.2f;
         // Makes the resource rewards lesser
         lootWeight -= 0.45f;
         RewardedUpgrade = averagePricesPerUpgradeType[i].upgradeType;

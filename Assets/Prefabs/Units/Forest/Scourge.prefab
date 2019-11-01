@@ -1189,9 +1189,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0192c10ce0d2589489e608135047b104, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ragdollPrefab: {fileID: 9172484940750733764, guid: d91ab0103a236ea449a323217bd3dd88,
+  ragdollPrefab: {fileID: 8603667380411741435, guid: e47d4cb739aca624596c4c62b36f313c,
     type: 3}
-  maxHealth: 155
+  maxHealth: 185
   regeneration: 1.5
   explodesOnDeath: 0
   explosionDmgPctOfHealth: 0.5
@@ -1209,9 +1209,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdcce6eefadf3814dbaf768a4697cd9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackDamage: 23
-  attacksPerSecond: 1.2
-  attackRange: 4
+  attackDamage: 22
+  attacksPerSecond: 1.4
+  attackRange: 3
   enemyDetectRange: 20
   aoe: 0
   aoeRadius: 1
@@ -1233,7 +1233,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boostValues:
-    healthModifier: 0.085
+    healthModifier: 0.08
     regeneratonModifier: 0.2
     damageModifier: 0.05
     attackSpeedModifier: 0.015
@@ -1282,7 +1282,7 @@ MonoBehaviour:
   poisonEffect:
     hasEffect: 0
     statusType: 0
-    dps: 7
+    dps: 5
     statusDuration: 5
   slowEffect:
     hasEffect: 1
@@ -1319,7 +1319,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac56f1b6c1ad8144fb388e944cfc04c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  goldProvided: 20
+  goldProvided: 18
 --- !u!1 &2961785078366384767
 GameObject:
   m_ObjectHideFlags: 0

@@ -202,7 +202,7 @@ PrefabInstance:
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
       propertyPath: enemySpawners.Array.data[0].meanSpawnInterval
-      value: 12
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
@@ -224,7 +224,7 @@ PrefabInstance:
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
       propertyPath: enemySpawners.Array.data[1].meanSpawnInterval
-      value: 11
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
@@ -239,7 +239,7 @@ PrefabInstance:
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
       propertyPath: enemySpawners.Array.data[0].weight
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c992426098980464aa12ed2359825fa6, type: 3}
@@ -1103,7 +1103,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 33931380}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -15.6, y: 0, z: -2.5}
+  m_LocalPosition: {x: -15.1, y: 0, z: -6.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1489042099}
@@ -1121,11 +1121,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9cf9c5931a3b3c4ba456c8213d7ebfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_position: {x: 639.3033, y: 0, z: 208.45166}
+  m_position: {x: 642.4016, y: 0, z: 207.5363}
   m_precedingControlPointLocalPosition: {x: 2.643242, y: 0, z: 4.948788}
-  m_precedingControlPointPosition: {x: 636.26556, y: 0, z: 212.4068}
+  m_precedingControlPointPosition: {x: 639.3639, y: 0, z: 211.49142}
   m_followingControlPointLocalPosition: {x: -2.6432762, y: 0, z: -4.948757}
-  m_followingControlPointPosition: {x: 642.341, y: 0, z: 204.49652}
+  m_followingControlPointPosition: {x: 645.43933, y: 0, z: 203.58115}
   m_handleMode: 2
 --- !u!1001 &36837619
 PrefabInstance:
@@ -1573,7 +1573,7 @@ PrefabInstance:
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
       propertyPath: enemySpawners.Array.data[0].meanSpawnInterval
-      value: 10
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
@@ -1900,7 +1900,7 @@ PrefabInstance:
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
       propertyPath: enemySpawners.Array.data[0].meanSpawnInterval
-      value: 10
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
@@ -3023,12 +3023,12 @@ PrefabInstance:
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
       propertyPath: enemySpawners.Array.data[0].meanSpawnInterval
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
       propertyPath: enemySpawners.Array.data[0].sdSpawnInterval
-      value: 1.8
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
@@ -6483,7 +6483,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 215823809}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.79, y: 0, z: 0.93}
+  m_LocalPosition: {x: -5.73, y: 0, z: -0.48}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1489042099}
@@ -6501,11 +6501,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9cf9c5931a3b3c4ba456c8213d7ebfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_position: {x: 640.49036, y: 0, z: 218.46254}
-  m_precedingControlPointLocalPosition: {x: 2.1567864, y: 0, z: 0.1567635}
-  m_precedingControlPointPosition: {x: 641.15436, y: 0, z: 220.2664}
-  m_followingControlPointLocalPosition: {x: -2.1567612, y: 0, z: -0.15680665}
-  m_followingControlPointPosition: {x: 639.82635, y: 0, z: 216.65868}
+  m_position: {x: 641.2873, y: 0, z: 217.18433}
+  m_precedingControlPointLocalPosition: {x: 1.6077604, y: 0, z: 0.1839537}
+  m_precedingControlPointPosition: {x: 641.72797, y: 0, z: 218.5536}
+  m_followingControlPointLocalPosition: {x: -1.6077566, y: 0, z: -0.18392637}
+  m_followingControlPointPosition: {x: 640.8466, y: 0, z: 215.81505}
   m_handleMode: 2
 --- !u!1001 &221246489
 PrefabInstance:
@@ -6651,12 +6651,12 @@ PrefabInstance:
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
       propertyPath: enemySpawners.Array.data[3].meanSpawnInterval
-      value: 15
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
       propertyPath: enemySpawners.Array.data[3].sdSpawnInterval
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
@@ -14133,7 +14133,7 @@ PrefabInstance:
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
       propertyPath: enemySpawners.Array.data[0].meanSpawnInterval
-      value: 9
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
@@ -15142,8 +15142,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
+      propertyPath: enemySpawners.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
+        type: 3}
       propertyPath: enemySpawners.Array.data[0].meanSpawnInterval
-      value: 9
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
@@ -15156,6 +15161,32 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 6535236377957169005, guid: d723b6dfd7e20a344b412f994ea781b1,
         type: 3}
+    - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
+        type: 3}
+      propertyPath: enemySpawners.Array.data[1].enemyType
+      value: 
+      objectReference: {fileID: 2530966457903291663, guid: c526594f0b3dd63418d0f17a6be446bb,
+        type: 3}
+    - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
+        type: 3}
+      propertyPath: enemySpawners.Array.data[1].meanSpawnInterval
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
+        type: 3}
+      propertyPath: enemySpawners.Array.data[1].sdSpawnInterval
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
+        type: 3}
+      propertyPath: enemySpawners.Array.data[1].weight
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
+        type: 3}
+      propertyPath: enemySpawners.Array.data[0].weight
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c992426098980464aa12ed2359825fa6, type: 3}
 --- !u!4 &333562451 stripped
@@ -16185,7 +16216,7 @@ PrefabInstance:
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
       propertyPath: enemySpawners.Array.data[0].meanSpawnInterval
-      value: 13
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
@@ -16207,7 +16238,7 @@ PrefabInstance:
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
       propertyPath: enemySpawners.Array.data[1].meanSpawnInterval
-      value: 14.5
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
@@ -16222,7 +16253,7 @@ PrefabInstance:
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
       propertyPath: enemySpawners.Array.data[0].weight
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c992426098980464aa12ed2359825fa6, type: 3}
@@ -21352,7 +21383,7 @@ PrefabInstance:
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
       propertyPath: enemySpawners.Array.data[0].meanSpawnInterval
-      value: 9
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
@@ -22054,7 +22085,7 @@ PrefabInstance:
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
       propertyPath: enemySpawners.Array.data[1].weight
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
@@ -23126,7 +23157,7 @@ PrefabInstance:
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
       propertyPath: enemySpawners.Array.data[0].meanSpawnInterval
-      value: 11
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
@@ -23148,7 +23179,7 @@ PrefabInstance:
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
       propertyPath: enemySpawners.Array.data[1].meanSpawnInterval
-      value: 13
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
@@ -24252,7 +24283,7 @@ PrefabInstance:
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
       propertyPath: enemySpawners.Array.data[0].meanSpawnInterval
-      value: 10
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
@@ -24274,7 +24305,7 @@ PrefabInstance:
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
       propertyPath: enemySpawners.Array.data[1].meanSpawnInterval
-      value: 12
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
@@ -24284,7 +24315,7 @@ PrefabInstance:
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
       propertyPath: enemySpawners.Array.data[1].weight
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
@@ -25357,7 +25388,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 488557432}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -41, y: 0, z: -177.1}
+  m_LocalPosition: {x: -39.7, y: 0, z: -171}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1489042099}
@@ -25375,11 +25406,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9cf9c5931a3b3c4ba456c8213d7ebfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_position: {x: 771.36414, y: 0, z: 123.854034}
-  m_precedingControlPointLocalPosition: {x: -8.6939125, y: 0, z: 2.7882233}
-  m_precedingControlPointPosition: {x: 765.91815, y: 0, z: 117.83699}
-  m_followingControlPointLocalPosition: {x: 8.693916, y: 0, z: -2.788269}
-  m_followingControlPointPosition: {x: 776.8101, y: 0, z: 129.87106}
+  m_position: {x: 766.9016, y: 0, z: 127.143715}
+  m_precedingControlPointLocalPosition: {x: -5.8819046, y: 0, z: 3.126236}
+  m_precedingControlPointPosition: {x: 762.2132, y: 0, z: 123.52755}
+  m_followingControlPointLocalPosition: {x: 5.8819084, y: 0, z: -3.1262207}
+  m_followingControlPointPosition: {x: 771.59, y: 0, z: 130.75989}
   m_handleMode: 2
 --- !u!4 &488890076 stripped
 Transform:
@@ -25467,7 +25498,7 @@ PrefabInstance:
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
       propertyPath: enemySpawners.Array.data[0].meanSpawnInterval
-      value: 14.5
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
@@ -25489,12 +25520,12 @@ PrefabInstance:
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
       propertyPath: enemySpawners.Array.data[1].meanSpawnInterval
-      value: 16
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
       propertyPath: enemySpawners.Array.data[1].sdSpawnInterval
-      value: 0.5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
@@ -25504,7 +25535,7 @@ PrefabInstance:
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
       propertyPath: enemySpawners.Array.data[0].weight
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c992426098980464aa12ed2359825fa6, type: 3}
@@ -28055,8 +28086,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
+      propertyPath: enemySpawners.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
+        type: 3}
       propertyPath: enemySpawners.Array.data[0].meanSpawnInterval
-      value: 9
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
@@ -28069,6 +28105,32 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 6535236377957169005, guid: d723b6dfd7e20a344b412f994ea781b1,
         type: 3}
+    - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
+        type: 3}
+      propertyPath: enemySpawners.Array.data[0].weight
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
+        type: 3}
+      propertyPath: enemySpawners.Array.data[1].enemyType
+      value: 
+      objectReference: {fileID: 2530966457903291663, guid: c526594f0b3dd63418d0f17a6be446bb,
+        type: 3}
+    - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
+        type: 3}
+      propertyPath: enemySpawners.Array.data[1].meanSpawnInterval
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
+        type: 3}
+      propertyPath: enemySpawners.Array.data[1].sdSpawnInterval
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
+        type: 3}
+      propertyPath: enemySpawners.Array.data[1].weight
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c992426098980464aa12ed2359825fa6, type: 3}
 --- !u!1 &557304179
@@ -32970,10 +33032,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_position: {x: 833.323, y: 0, z: 218.97812}
-  m_precedingControlPointLocalPosition: {x: -11.352295, y: 0, z: 15.664886}
-  m_precedingControlPointPosition: {x: 820.7727, y: 0, z: 207.22205}
-  m_followingControlPointLocalPosition: {x: 11.352301, y: 0, z: -15.664917}
-  m_followingControlPointPosition: {x: 845.8733, y: 0, z: 230.73418}
+  m_precedingControlPointLocalPosition: {x: -7.1077805, y: 0, z: 10.2821045}
+  m_precedingControlPointPosition: {x: 825.04694, y: 0, z: 211.56473}
+  m_followingControlPointLocalPosition: {x: 7.1077785, y: 0, z: -10.282196}
+  m_followingControlPointPosition: {x: 841.59906, y: 0, z: 226.39151}
   m_handleMode: 2
 --- !u!1 &563338121
 GameObject:
@@ -33872,7 +33934,7 @@ PrefabInstance:
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
       propertyPath: enemySpawners.Array.data[0].meanSpawnInterval
-      value: 10
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
@@ -40316,7 +40378,7 @@ PrefabInstance:
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
       propertyPath: enemySpawners.Array.data[0].meanSpawnInterval
-      value: 11
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
@@ -40338,7 +40400,7 @@ PrefabInstance:
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
       propertyPath: enemySpawners.Array.data[1].meanSpawnInterval
-      value: 13
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
@@ -41180,12 +41242,12 @@ PrefabInstance:
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
       propertyPath: enemySpawners.Array.data[0].meanSpawnInterval
-      value: 14
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
       propertyPath: enemySpawners.Array.data[0].sdSpawnInterval
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
@@ -41202,7 +41264,7 @@ PrefabInstance:
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
       propertyPath: enemySpawners.Array.data[1].meanSpawnInterval
-      value: 12
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
@@ -41308,12 +41370,12 @@ PrefabInstance:
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
       propertyPath: enemySpawners.Array.data[0].meanSpawnInterval
-      value: 16
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
       propertyPath: enemySpawners.Array.data[0].sdSpawnInterval
-      value: 1.8
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
@@ -43038,12 +43100,12 @@ PrefabInstance:
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
       propertyPath: enemySpawners.Array.data[3].meanSpawnInterval
-      value: 15
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
       propertyPath: enemySpawners.Array.data[3].sdSpawnInterval
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
@@ -43382,7 +43444,7 @@ PrefabInstance:
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
       propertyPath: enemySpawners.Array.data[0].meanSpawnInterval
-      value: 16
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
@@ -48299,7 +48361,7 @@ PrefabInstance:
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
       propertyPath: enemySpawners.Array.data[0].weight
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
@@ -48310,7 +48372,7 @@ PrefabInstance:
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
       propertyPath: enemySpawners.Array.data[1].meanSpawnInterval
-      value: 10
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
@@ -48320,7 +48382,7 @@ PrefabInstance:
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
       propertyPath: enemySpawners.Array.data[1].weight
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
@@ -48538,7 +48600,7 @@ PrefabInstance:
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
       propertyPath: enemySpawners.Array.data[0].meanSpawnInterval
-      value: 12
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
@@ -48560,7 +48622,7 @@ PrefabInstance:
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
       propertyPath: enemySpawners.Array.data[1].meanSpawnInterval
-      value: 14
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
@@ -49593,12 +49655,12 @@ PrefabInstance:
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
       propertyPath: enemySpawners.Array.data[0].meanSpawnInterval
-      value: 16
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
       propertyPath: enemySpawners.Array.data[0].sdSpawnInterval
-      value: 1.8
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
@@ -49688,7 +49750,7 @@ PrefabInstance:
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
       propertyPath: enemySpawners.Array.data[0].meanSpawnInterval
-      value: 12
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
@@ -49710,7 +49772,7 @@ PrefabInstance:
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
       propertyPath: enemySpawners.Array.data[1].meanSpawnInterval
-      value: 11
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
@@ -49725,7 +49787,7 @@ PrefabInstance:
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
       propertyPath: enemySpawners.Array.data[0].weight
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c992426098980464aa12ed2359825fa6, type: 3}
@@ -50899,7 +50961,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1050939749}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -11.1, y: 0, z: -141.5}
+  m_LocalPosition: {x: -18.4, y: 0, z: -150.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1679849164}
@@ -50917,11 +50979,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9cf9c5931a3b3c4ba456c8213d7ebfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_position: {x: 549.6222, y: 0, z: 306.841}
+  m_position: {x: 547.27313, y: 0, z: 316.87033}
   m_precedingControlPointLocalPosition: {x: -6.5829477, y: 0, z: 5.9794464}
-  m_precedingControlPointPosition: {x: 557.40765, y: 0, z: 308.21072}
+  m_precedingControlPointPosition: {x: 555.05865, y: 0, z: 318.24008}
   m_followingControlPointLocalPosition: {x: 6.582933, y: 0, z: -5.9793854}
-  m_followingControlPointPosition: {x: 541.83673, y: 0, z: 305.47125}
+  m_followingControlPointPosition: {x: 539.48773, y: 0, z: 315.50058}
   m_handleMode: 2
 --- !u!1001 &1053083876
 PrefabInstance:
@@ -52812,12 +52874,12 @@ PrefabInstance:
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
       propertyPath: enemySpawners.Array.size
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
       propertyPath: enemySpawners.Array.data[0].meanSpawnInterval
-      value: 10.5
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
@@ -52839,7 +52901,7 @@ PrefabInstance:
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
       propertyPath: enemySpawners.Array.data[1].meanSpawnInterval
-      value: 9
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
@@ -52860,12 +52922,12 @@ PrefabInstance:
         type: 3}
       propertyPath: enemySpawners.Array.data[2].enemyType
       value: 
-      objectReference: {fileID: 8254410145237751959, guid: 41feb93533e53834b9f5c2fd7625de6e,
+      objectReference: {fileID: 2530966457903291663, guid: c526594f0b3dd63418d0f17a6be446bb,
         type: 3}
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
       propertyPath: enemySpawners.Array.data[2].meanSpawnInterval
-      value: 15
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
@@ -52875,7 +52937,7 @@ PrefabInstance:
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
       propertyPath: enemySpawners.Array.data[2].weight
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
@@ -54078,7 +54140,7 @@ PrefabInstance:
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
       propertyPath: enemySpawners.Array.data[3].meanSpawnInterval
-      value: 15
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
@@ -54179,7 +54241,7 @@ PrefabInstance:
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
       propertyPath: enemySpawners.Array.data[0].meanSpawnInterval
-      value: 9
+      value: 10.5
       objectReference: {fileID: 0}
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
@@ -54613,12 +54675,12 @@ PrefabInstance:
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
       propertyPath: enemySpawners.Array.size
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
       propertyPath: enemySpawners.Array.data[0].meanSpawnInterval
-      value: 10.5
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
@@ -54640,7 +54702,7 @@ PrefabInstance:
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
       propertyPath: enemySpawners.Array.data[1].meanSpawnInterval
-      value: 9
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
@@ -54661,12 +54723,12 @@ PrefabInstance:
         type: 3}
       propertyPath: enemySpawners.Array.data[2].enemyType
       value: 
-      objectReference: {fileID: 8254410145237751959, guid: 41feb93533e53834b9f5c2fd7625de6e,
+      objectReference: {fileID: 2530966457903291663, guid: c526594f0b3dd63418d0f17a6be446bb,
         type: 3}
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
       propertyPath: enemySpawners.Array.data[2].meanSpawnInterval
-      value: 15
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
@@ -54676,7 +54738,7 @@ PrefabInstance:
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
       propertyPath: enemySpawners.Array.data[2].weight
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
@@ -57325,7 +57387,7 @@ PrefabInstance:
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
       propertyPath: enemySpawners.Array.data[0].meanSpawnInterval
-      value: 16
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
@@ -58697,7 +58759,7 @@ PrefabInstance:
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
       propertyPath: enemySpawners.Array.data[0].meanSpawnInterval
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
@@ -58729,12 +58791,12 @@ PrefabInstance:
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
       propertyPath: enemySpawners.Array.data[1].weight
-      value: 6
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
       propertyPath: enemySpawners.Array.data[0].weight
-      value: 10
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
@@ -60016,12 +60078,12 @@ PrefabInstance:
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
       propertyPath: enemySpawners.Array.data[0].meanSpawnInterval
-      value: 14
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
       propertyPath: enemySpawners.Array.data[0].sdSpawnInterval
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
@@ -60038,7 +60100,7 @@ PrefabInstance:
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
       propertyPath: enemySpawners.Array.data[1].meanSpawnInterval
-      value: 12
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
@@ -64145,7 +64207,7 @@ PrefabInstance:
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
       propertyPath: enemySpawners.Array.data[0].meanSpawnInterval
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
@@ -64177,12 +64239,12 @@ PrefabInstance:
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
       propertyPath: enemySpawners.Array.data[1].weight
-      value: 6
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
       propertyPath: enemySpawners.Array.data[0].weight
-      value: 10
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
@@ -64625,6 +64687,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
+      propertyPath: enemySpawners.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
+        type: 3}
       propertyPath: enemySpawners.Array.data[0].meanSpawnInterval
       value: 8
       objectReference: {fileID: 0}
@@ -64639,6 +64706,32 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 6535236377957169005, guid: d723b6dfd7e20a344b412f994ea781b1,
         type: 3}
+    - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
+        type: 3}
+      propertyPath: enemySpawners.Array.data[1].enemyType
+      value: 
+      objectReference: {fileID: 2530966457903291663, guid: c526594f0b3dd63418d0f17a6be446bb,
+        type: 3}
+    - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
+        type: 3}
+      propertyPath: enemySpawners.Array.data[1].meanSpawnInterval
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
+        type: 3}
+      propertyPath: enemySpawners.Array.data[1].sdSpawnInterval
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
+        type: 3}
+      propertyPath: enemySpawners.Array.data[1].weight
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
+        type: 3}
+      propertyPath: enemySpawners.Array.data[0].weight
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c992426098980464aa12ed2359825fa6, type: 3}
 --- !u!4 &1474608501 stripped
@@ -65267,12 +65360,12 @@ PrefabInstance:
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
       propertyPath: enemySpawners.Array.data[0].meanSpawnInterval
-      value: 15
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
       propertyPath: enemySpawners.Array.data[0].sdSpawnInterval
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
@@ -67032,7 +67125,7 @@ PrefabInstance:
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
       propertyPath: enemySpawners.Array.data[1].meanSpawnInterval
-      value: 10
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
@@ -67042,7 +67135,7 @@ PrefabInstance:
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
       propertyPath: enemySpawners.Array.data[1].weight
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
@@ -67068,7 +67161,7 @@ PrefabInstance:
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
       propertyPath: enemySpawners.Array.data[0].weight
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c992426098980464aa12ed2359825fa6, type: 3}
@@ -67507,12 +67600,12 @@ PrefabInstance:
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
       propertyPath: enemySpawners.Array.size
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
       propertyPath: enemySpawners.Array.data[0].meanSpawnInterval
-      value: 10.5
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
@@ -67534,7 +67627,7 @@ PrefabInstance:
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
       propertyPath: enemySpawners.Array.data[1].meanSpawnInterval
-      value: 9
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
@@ -67555,12 +67648,12 @@ PrefabInstance:
         type: 3}
       propertyPath: enemySpawners.Array.data[2].enemyType
       value: 
-      objectReference: {fileID: 8254410145237751959, guid: 41feb93533e53834b9f5c2fd7625de6e,
+      objectReference: {fileID: 2530966457903291663, guid: c526594f0b3dd63418d0f17a6be446bb,
         type: 3}
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
       propertyPath: enemySpawners.Array.data[2].meanSpawnInterval
-      value: 15
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
@@ -67570,7 +67663,7 @@ PrefabInstance:
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
       propertyPath: enemySpawners.Array.data[2].weight
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
@@ -69080,7 +69173,7 @@ PrefabInstance:
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
       propertyPath: enemySpawners.Array.data[0].meanSpawnInterval
-      value: 10
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
@@ -69132,7 +69225,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1616470470}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.1, y: 0, z: -43.6}
+  m_LocalPosition: {x: -9.8, y: 0, z: -43.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 517546339}
@@ -69150,11 +69243,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9cf9c5931a3b3c4ba456c8213d7ebfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_position: {x: 682.3523, y: 0, z: 219.71259}
-  m_precedingControlPointLocalPosition: {x: 0.109550476, y: 0, z: 6.8600664}
-  m_precedingControlPointPosition: {x: 676.2903, y: 0, z: 219.04517}
-  m_followingControlPointLocalPosition: {x: -0.10958862, y: 0, z: -6.860015}
-  m_followingControlPointPosition: {x: 688.41425, y: 0, z: 220.37996}
+  m_position: {x: 682.36523, y: 0, z: 218.19112}
+  m_precedingControlPointLocalPosition: {x: 0.69276714, y: 0, z: 4.6589317}
+  m_precedingControlPointPosition: {x: 678.17944, y: 0, z: 218.28317}
+  m_followingControlPointLocalPosition: {x: -0.6927519, y: 0, z: -4.658924}
+  m_followingControlPointPosition: {x: 686.551, y: 0, z: 218.09906}
   m_handleMode: 2
 --- !u!1 &1618140886 stripped
 GameObject:
@@ -69904,7 +69997,7 @@ PrefabInstance:
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
       propertyPath: enemySpawners.Array.data[0].meanSpawnInterval
-      value: 14.5
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
@@ -69926,12 +70019,12 @@ PrefabInstance:
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
       propertyPath: enemySpawners.Array.data[1].meanSpawnInterval
-      value: 16
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
       propertyPath: enemySpawners.Array.data[1].sdSpawnInterval
-      value: 0.5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
@@ -69941,7 +70034,7 @@ PrefabInstance:
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
       propertyPath: enemySpawners.Array.data[0].weight
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c992426098980464aa12ed2359825fa6, type: 3}
@@ -70489,12 +70582,12 @@ PrefabInstance:
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
       propertyPath: enemySpawners.Array.data[0].meanSpawnInterval
-      value: 15
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
       propertyPath: enemySpawners.Array.data[0].sdSpawnInterval
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
@@ -71699,12 +71792,12 @@ PrefabInstance:
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
       propertyPath: enemySpawners.Array.data[0].meanSpawnInterval
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
       propertyPath: enemySpawners.Array.data[0].sdSpawnInterval
-      value: 1.8
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
@@ -74849,7 +74942,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1797442633}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -11.96, y: 0, z: -8.63}
+  m_LocalPosition: {x: -9.8, y: 0, z: -9.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 517546339}
@@ -74867,11 +74960,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9cf9c5931a3b3c4ba456c8213d7ebfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_position: {x: 651.9427, y: 0, z: 212.4138}
+  m_position: {x: 652.55756, y: 0, z: 214.42671}
   m_precedingControlPointLocalPosition: {x: 1.1885004, y: 0, z: 6.505746}
-  m_precedingControlPointPosition: {x: 646.073, y: 0, z: 212.73737}
+  m_precedingControlPointPosition: {x: 646.68787, y: 0, z: 214.75027}
   m_followingControlPointLocalPosition: {x: -1.1885157, y: 0, z: -6.505761}
-  m_followingControlPointPosition: {x: 657.8124, y: 0, z: 212.09024}
+  m_followingControlPointPosition: {x: 658.42725, y: 0, z: 214.10315}
   m_handleMode: 2
 --- !u!1 &1798557003
 GameObject:
@@ -75174,7 +75267,7 @@ PrefabInstance:
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
       propertyPath: enemySpawners.Array.data[0].meanSpawnInterval
-      value: 13
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
@@ -75196,7 +75289,7 @@ PrefabInstance:
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
       propertyPath: enemySpawners.Array.data[1].meanSpawnInterval
-      value: 14.5
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
@@ -75211,7 +75304,7 @@ PrefabInstance:
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
       propertyPath: enemySpawners.Array.data[0].weight
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c992426098980464aa12ed2359825fa6, type: 3}
@@ -77015,8 +77108,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
+      propertyPath: enemySpawners.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
+        type: 3}
       propertyPath: enemySpawners.Array.data[0].meanSpawnInterval
-      value: 9
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
@@ -77029,6 +77127,32 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 6535236377957169005, guid: d723b6dfd7e20a344b412f994ea781b1,
         type: 3}
+    - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
+        type: 3}
+      propertyPath: enemySpawners.Array.data[0].weight
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
+        type: 3}
+      propertyPath: enemySpawners.Array.data[1].enemyType
+      value: 
+      objectReference: {fileID: 2530966457903291663, guid: c526594f0b3dd63418d0f17a6be446bb,
+        type: 3}
+    - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
+        type: 3}
+      propertyPath: enemySpawners.Array.data[1].meanSpawnInterval
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
+        type: 3}
+      propertyPath: enemySpawners.Array.data[1].sdSpawnInterval
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
+        type: 3}
+      propertyPath: enemySpawners.Array.data[1].weight
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c992426098980464aa12ed2359825fa6, type: 3}
 --- !u!1 &1862321968
@@ -77681,7 +77805,7 @@ PrefabInstance:
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
       propertyPath: enemySpawners.Array.data[0].meanSpawnInterval
-      value: 10
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
@@ -77703,7 +77827,7 @@ PrefabInstance:
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
       propertyPath: enemySpawners.Array.data[1].meanSpawnInterval
-      value: 12
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
@@ -77713,7 +77837,7 @@ PrefabInstance:
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
       propertyPath: enemySpawners.Array.data[1].weight
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
@@ -78538,7 +78662,7 @@ PrefabInstance:
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
       propertyPath: enemySpawners.Array.data[0].meanSpawnInterval
-      value: 10
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
@@ -78560,7 +78684,7 @@ PrefabInstance:
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
       propertyPath: enemySpawners.Array.data[1].meanSpawnInterval
-      value: 12
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
@@ -78570,7 +78694,7 @@ PrefabInstance:
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
       propertyPath: enemySpawners.Array.data[1].weight
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
@@ -92847,10 +92971,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_position: {x: 896.13495, y: 0, z: 244.47125}
-  m_precedingControlPointLocalPosition: {x: -3.568821, y: 0, z: 9.2977295}
-  m_precedingControlPointPosition: {x: 888.3329, y: 0, z: 240.28842}
-  m_followingControlPointLocalPosition: {x: 3.56885, y: 0, z: -9.2977295}
-  m_followingControlPointPosition: {x: 903.937, y: 0, z: 248.65405}
+  m_precedingControlPointLocalPosition: {x: -1.4988661, y: 0, z: 6.2444763}
+  m_precedingControlPointPosition: {x: 890.795, y: 0, z: 242.45395}
+  m_followingControlPointLocalPosition: {x: 1.49893, y: 0, z: -6.2444763}
+  m_followingControlPointPosition: {x: 901.4749, y: 0, z: 246.48859}
   m_handleMode: 2
 --- !u!1001 &2068812281
 PrefabInstance:
@@ -93256,7 +93380,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2085419093}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -67.5, y: 0, z: -152.7}
+  m_LocalPosition: {x: -62.1, y: 0, z: -149.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1489042099}
@@ -93274,11 +93398,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9cf9c5931a3b3c4ba456c8213d7ebfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_position: {x: 741.8888, y: 0, z: 111.344864}
-  m_precedingControlPointLocalPosition: {x: -2.5162964, y: 0, z: 9.846954}
-  m_precedingControlPointPosition: {x: 732.9928, y: 0, z: 112.91856}
-  m_followingControlPointLocalPosition: {x: 2.5162811, y: 0, z: -9.846954}
-  m_followingControlPointPosition: {x: 750.7848, y: 0, z: 109.771164}
+  m_position: {x: 741.1971, y: 0, z: 116.92751}
+  m_precedingControlPointLocalPosition: {x: -4.721985, y: 0, z: 11.726181}
+  m_precedingControlPointPosition: {x: 729.9706, y: 0, z: 117.4044}
+  m_followingControlPointLocalPosition: {x: 4.7219925, y: 0, z: -11.726135}
+  m_followingControlPointPosition: {x: 752.4236, y: 0, z: 116.450645}
   m_handleMode: 2
 --- !u!1 &2091482426
 GameObject:

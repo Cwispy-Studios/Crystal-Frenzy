@@ -225,7 +225,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0192c10ce0d2589489e608135047b104, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 125
+  ragdollPrefab: {fileID: 0}
+  maxHealth: 135
   regeneration: 0.1
   explodesOnDeath: 0
   explosionDmgPctOfHealth: 0.25
@@ -243,12 +244,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdcce6eefadf3814dbaf768a4697cd9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackDamage: 16
-  attacksPerSecond: 1.2
+  attackDamage: 27
+  attacksPerSecond: 1.25
   attackRange: 15
   enemyDetectRange: 20
   aoe: 0
   aoeRadius: 1
+  aoeDmgPct: 1
   isHealer: 0
   healPct: 0.5
   preferredTarget: 0
