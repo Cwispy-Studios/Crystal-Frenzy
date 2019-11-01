@@ -63,8 +63,9 @@ public class CameraIssueOrdering : MonoBehaviour
 
     // Ignore UI elements
     int layerMask = (1 << 5) | (1 << 9) | (1 << 10);
+    float distance = GetComponent<CameraControls>().birdsEyeViewMode ? 750f : 65f;
 
-    if (Physics.Raycast(ray, out RaycastHit hit, 750f, ~layerMask))
+    if (Physics.Raycast(ray, out RaycastHit hit, distance, ~layerMask))
     {
       // Right click on ground, order units to that point
       if (hit.collider.tag == "Ground")

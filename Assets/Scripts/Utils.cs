@@ -50,7 +50,7 @@ public class Utils
     DrawScreenRect(new Rect(rect.xMin, rect.yMax - thickness, rect.width, thickness));
   }
 
-  public static GameObject CheckMouseIsOverSelectable()
+  public static GameObject CheckMouseIsOverSelectable(Camera playerCamera)
   {
     Ray ray;
 
@@ -60,8 +60,10 @@ public class Utils
     // Do not count UI, Terrain, FOV and Invisible objects
     int layerMask = (1 << 5) | (1 << 8) | (1 << 9) | (1 << 10);
 
+    float distance = playerCamera.GetComponent<CameraControls>().birdsEyeViewMode ? 750f : 65f;
+
     // Check if the mouse was over any collider when clicked
-    if (Physics.Raycast(ray, out RaycastHit hit, 750f, ~layerMask))
+    if (Physics.Raycast(ray, out RaycastHit hit, distance, ~layerMask))
     {
       // Retrieve selectable component
       GameObject selectable = hit.collider.gameObject;

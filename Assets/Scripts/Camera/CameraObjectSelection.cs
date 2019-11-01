@@ -154,7 +154,7 @@ public class CameraObjectSelection : MonoBehaviour
       ClearHoverList(true);
 
       // Check if the mouse is hovering over any selectable
-      GameObject hoveredObject = Utils.CheckMouseIsOverSelectable();
+      GameObject hoveredObject = Utils.CheckMouseIsOverSelectable(GetComponent<Camera>());
 
       if (hoveredObject != null && hoveredObject.GetComponent<Selectable>() != null && 
         hoveredObject.GetComponent<Selectable>().enabled)
@@ -237,7 +237,7 @@ public class CameraObjectSelection : MonoBehaviour
       ClearHoverList(true);
     }
 
-    GameObject check = Utils.CheckMouseIsOverSelectable();
+    GameObject check = Utils.CheckMouseIsOverSelectable(GetComponent<Camera>());
 
     if (check != null)
     {
