@@ -675,6 +675,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0192c10ce0d2589489e608135047b104, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ragdollPrefab: {fileID: 0}
   maxHealth: 1500
   regeneration: 0
   explodesOnDeath: 0
@@ -696,7 +697,7 @@ MonoBehaviour:
   fovActive: 1
   fovMeshPrefab: {fileID: 6477082172712516352, guid: 3022b499539b4c64c9f13e17f43e0903,
     type: 3}
-  fovRange: 35
+  fovRange: 50
 --- !u!114 &4440799278527876923
 MonoBehaviour:
   m_ObjectHideFlags: 0

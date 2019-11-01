@@ -116,8 +116,8 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 1
-  m_Speed: 8
-  m_Acceleration: 16
+  m_Speed: 7
+  m_Acceleration: 14
   avoidancePriority: 50
   m_AngularSpeed: 220
   m_StoppingDistance: 1
@@ -200,7 +200,7 @@ MonoBehaviour:
   fovActive: 1
   fovMeshPrefab: {fileID: 6477082172712516352, guid: 3022b499539b4c64c9f13e17f43e0903,
     type: 3}
-  fovRange: 30
+  fovRange: 40
 --- !u!114 &4559491972518532284
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -244,8 +244,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdcce6eefadf3814dbaf768a4697cd9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackDamage: 25
-  attacksPerSecond: 1.25
+  attackDamage: 20
+  attacksPerSecond: 1.2
   attackRange: 15
   enemyDetectRange: 20
   aoe: 0

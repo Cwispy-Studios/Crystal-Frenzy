@@ -242,6 +242,7 @@ GameObject:
   - component: {fileID: 2530966457903291649}
   - component: {fileID: 2530966457903291654}
   - component: {fileID: 3523895610889748775}
+  - component: {fileID: -2611876503893697157}
   m_Layer: 0
   m_Name: PapaTeddy
   m_TagString: Untagged
@@ -385,8 +386,8 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 1
-  m_Speed: 6
-  m_Acceleration: 10
+  m_Speed: 5.5
+  m_Acceleration: 11
   avoidancePriority: 50
   m_AngularSpeed: 180
   m_StoppingDistance: 1
@@ -522,9 +523,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boostValues:
-    healthModifier: 0.085
+    healthModifier: 0.08
     regeneratonModifier: 0.05
-    damageModifier: 0.08
+    damageModifier: 0.07
     attackSpeedModifier: 0.01
     attackRangeModifier: 0
     detectRangeModifier: 0
@@ -568,6 +569,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a533fab9a76c8ea4098c563139cf9fea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-2611876503893697157
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2530966457903291663}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac56f1b6c1ad8144fb388e944cfc04c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  goldProvided: 10
 --- !u!1 &2832266503250810750
 GameObject:
   m_ObjectHideFlags: 0
