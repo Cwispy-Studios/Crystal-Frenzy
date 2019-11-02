@@ -1,107 +1,12 @@
 fileFormatVersion: 2
-guid: bb9648afe27705442bfc00b447c5d73c
+guid: a68126dc7999f7f4a82a47852ce8d9a5
 ModelImporter:
   serializedVersion: 26
   internalIDToNameTable:
   - first:
       74: 1827226128182048838
-    second: Take 001
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: ChestStrapMaterial
-    second: {fileID: 2100000, guid: 0a5c553980259574db33d9d743981547, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: EyeMaterial
-    second: {fileID: 2100000, guid: dffdb5c8f409678489c9c1150779016b, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: GloveMaterial
-    second: {fileID: 2100000, guid: 7bc9c64958a664147a65902aab2156ee, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: HelmetDetailMaterial
-    second: {fileID: 2100000, guid: e2ad83da284725c4688a6794563f9d9f, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: HelmetMaterial
-    second: {fileID: 2100000, guid: 35acbe2af98b38a49bdb202d409be7de, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: KnifeBladeMaterial
-    second: {fileID: 2100000, guid: da478d72d017b414a9b49d4fa4130c2d, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: KnifeGuardMaterial
-    second: {fileID: 2100000, guid: e76991c9e3059e244a1d3c65881382a3, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: KnifeHandleMaterial
-    second: {fileID: 2100000, guid: 270360851fdea234cb443eebd0224cb8, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: LeatherChestMaterial
-    second: {fileID: 2100000, guid: efdce3b3310f20e49a0e23e8dbeb7915, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: LipMaterial
-    second: {fileID: 2100000, guid: 581f2224cdcdd3d46ae091b5403f7b45, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: MouthMaterial
-    second: {fileID: 2100000, guid: 117e27ddc2f091240a2c7f0c4fc00452, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: PantsMaterial
-    second: {fileID: 2100000, guid: f42ae5163195b4647883655a7dcc18b6, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: ShirtMaterial
-    second: {fileID: 2100000, guid: 58de0eab7b922f849b48f5558a0f7804, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: ShoeMaterial
-    second: {fileID: 2100000, guid: b06382f09070db741b034b0a88388bb3, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: SkinMaterial
-    second: {fileID: 2100000, guid: 620548eced0f54447b025e10973ac2f5, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: TeethMaterial
-    second: {fileID: 2100000, guid: 916db2fc7a951cc49a5a830e20a3ce1f, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: lambert1
-    second: {fileID: 2100000, guid: 75ef726395729ef459d31c675b2129f3, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: lambert2
-    second: {fileID: 2100000, guid: 75ef726395729ef459d31c675b2129f3, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: lambert3
-    second: {fileID: 2100000, guid: 75ef726395729ef459d31c675b2129f3, type: 2}
+    second: Goblin Walk
+  externalObjects: {}
   materials:
     importMaterials: 1
     materialName: 0
@@ -121,14 +26,43 @@ ModelImporter:
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
     importConstraints: 0
-    animationCompression: 3
+    animationCompression: 1
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Goblin Walk
+      takeName: Take 001
+      internalID: 0
+      firstFrame: 1
+      lastFrame: 34
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     isReadable: 0
   meshes:
     lODScreenPercentages: []
@@ -167,7 +101,7 @@ ModelImporter:
     normalSmoothingSource: 0
   referencedClips: []
   importAnimation: 1
-  copyAvatar: 0
+  copyAvatar: 1
   humanDescription:
     serializedVersion: 3
     human: []
@@ -294,7 +228,8 @@ ModelImporter:
     hasTranslationDoF: 0
     hasExtraRoot: 1
     skeletonHasParents: 1
-  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: bb9648afe27705442bfc00b447c5d73c,
+    type: 3}
   animationType: 2
   humanoidOversampling: 1
   additionalBone: 0
