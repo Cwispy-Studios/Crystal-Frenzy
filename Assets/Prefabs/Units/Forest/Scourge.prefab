@@ -1197,6 +1197,7 @@ MonoBehaviour:
   explosionDmgPctOfHealth: 0.5
   explosionRadius: 10
   combatantType: 0
+  deathSound: event:/SFX/TeddyDie
 --- !u!114 &2961679202835970115
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1220,6 +1221,7 @@ MonoBehaviour:
   healPct: 0.5
   preferredTarget: 0
   projectilePrefab: {fileID: 0}
+  attackSound: event:/SFX/ScourgeHit
 --- !u!114 &2961679202835970114
 MonoBehaviour:
   m_ObjectHideFlags: 0
