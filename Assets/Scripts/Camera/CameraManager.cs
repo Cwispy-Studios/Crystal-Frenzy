@@ -22,7 +22,7 @@ public class CameraManager : MonoBehaviour
   private const float DEFAULT_FOV = 60f;
   private readonly Vector3 BIRDS_EYE_VIEW_ROT = new Vector3(90f, 0f, 0f);
   private const float BIRDS_EYE_VIEW_FOV = 10f;
-  private const float BIRDS_EYE_VIEW_Y = 650f;
+  private const float BIRDS_EYE_VIEW_Y = 1000f;
 
   private Vector3 lastCamRot;
 

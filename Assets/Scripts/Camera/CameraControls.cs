@@ -5,7 +5,7 @@ public class CameraControls : MonoBehaviour
 {
   /*********************** Move variables ***********************/
   private readonly float moveSpeed = 100f;
-  private readonly float birdsEyeViewMoveSpeed = 180f;
+  private readonly float birdsEyeViewMoveSpeed = 275f;
   private readonly float moveDetectPerc = 0.01f;
 
   /*********************** Pan variables ***********************/

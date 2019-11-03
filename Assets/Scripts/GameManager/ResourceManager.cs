@@ -10,6 +10,14 @@ public class ResourceManager : MonoBehaviour
   [SerializeField]
   private Text goldText = null, crystalText = null, UnitCapText = null;
 
+  public int CrystalsIncome
+  {
+    get
+    {
+      return crystalsIncome;
+    }
+  }
+
   public int Gold { get; private set; }
   public int Crystals { get; private set; }
   public int ArmySize { get; private set; }

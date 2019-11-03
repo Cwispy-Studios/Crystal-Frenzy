@@ -539,6 +539,11 @@ public class CameraObjectSelection : MonoBehaviour
     activeSelectableUnits.Remove(selectableObject);
   }
 
+  public static bool IsObjectSelected(GameObject check)
+  {
+    return SelectedUnitsList.Contains(check);
+  }
+
   private void OnGUI()
   {
     if (isSelecting)

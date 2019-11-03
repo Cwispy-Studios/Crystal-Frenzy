@@ -11,11 +11,11 @@ public class CrystalOrder : Order
 
   public override void IssueOrderTarget(GameObject targetUnit)
   {
-    CrystalSeekerSpawner crystalSeekerSpawner = GetComponent<CrystalSeekerSpawner>();
+    //CrystalSeekerSpawner crystalSeekerSpawner = GetComponent<CrystalSeekerSpawner>();
 
-    if (crystalSeekerSpawner != null)
-    {
-      crystalSeekerSpawner.SetCrystalTarget(targetUnit);
-    }
+    //if (crystalSeekerSpawner != null)
+    //{
+    //  crystalSeekerSpawner.SetCrystalTarget(targetUnit);
+    //}
   }
 }

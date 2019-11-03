@@ -16,12 +16,16 @@ public class GameManager : MonoBehaviour
   [SerializeField]
   private UIInterface uiInterface = null;
 
+  [Header("Loot Reward Panel")]
+  [SerializeField]
+  private LootRewardPanel lootRewardPanel = null;
+
   public static ResourceManager resourceManager;
   public static BuildingManager buildingManager;
   public static UpgradeManager upgradeManager;
   public static MinerManager minerManager;
 
-  private List<GameObject> conqueredNodes;
+  private static List<GameObject> conqueredNodes;
   private GameObject attackNode;
 
   // Enemies get stronger each round
@@ -30,7 +34,7 @@ public class GameManager : MonoBehaviour
 
   /////////////////////////////////////////////////////////
   // Preparation phase
-  private bool nodeSelected;
+  public static bool NodeSelected { get; private set; }
 
   private void Awake()
   {
@@ -100,7 +104,6 @@ public class GameManager : MonoBehaviour
       uiInterface.PreparationPhaseSelectNodeUI();
 
       playerCamera.GetComponent<CameraControls>().enabled = true;
-      playerCamera.GetComponent<CameraIssueOrdering>().enabled = true;
 
       uiInterface.UpdateUINodeColours();
     }
@@ -119,7 +122,6 @@ public class GameManager : MonoBehaviour
       uiInterface.PreparationPhaseSelectNodeUI();
 
       playerCamera.GetComponent<CameraControls>().enabled = true;
-      playerCamera.GetComponent<CameraIssueOrdering>().enabled = true;
 
       uiInterface.UpdateUINodeColours();
     }
@@ -129,7 +131,7 @@ public class GameManager : MonoBehaviour
   {
     GameObject lastConqueredNode = conqueredNodes[conqueredNodes.Count - 1];
 
-    if (nodeSelected == false)
+    if (NodeSelected == false)
     {
       uiInterface.UpdateUINodeColours();
 
@@ -168,7 +170,7 @@ public class GameManager : MonoBehaviour
 
   public void BeginArmySelection(bool conquered)
   {
-    nodeSelected = true;
+    NodeSelected = true;
 
     uiInterface.PreparationPhaseSelectArmyUI(conquered);
 
@@ -176,8 +178,6 @@ public class GameManager : MonoBehaviour
 
     // Set the camera to point at the assembly space
     playerCamera.GetComponent<CameraManager>().PointCameraAtPosition(attackingFromNode.GetComponent<ConqueredNode>().AssemblySpace.transform.position, false, false);
-    // Disable the camera ordering
-    playerCamera.GetComponent<CameraIssueOrdering>().enabled = false;
     // Set the unit manager assembly space reference so that selecting our troops spawns them in the assembly space
     uiInterface.UnitManager.SetAssemblySpace(attackingFromNode.GetComponent<ConqueredNode>().AssemblySpace);
 
@@ -189,7 +189,7 @@ public class GameManager : MonoBehaviour
 
   public void ReturnToNodeSelection()
   {
-    nodeSelected = false;
+    NodeSelected = false;
 
     GameObject lastConqueredNode = conqueredNodes[conqueredNodes.Count - 1];
 
@@ -198,8 +198,6 @@ public class GameManager : MonoBehaviour
 
     // Set the UI Interfaces to invisible and show the button to select army roster
     uiInterface.PreparationPhaseSelectNodeUI();
-
-    playerCamera.GetComponent<CameraIssueOrdering>().enabled = true;
 
     uiInterface.UpdateUINodeColours();
   }
@@ -277,11 +275,20 @@ public class GameManager : MonoBehaviour
     // Change crystal colour
     attackNode.GetComponent<CrystalNode>().SetCrystalColour(true);
 
-    // 
+    // Show the loot reward panel
+    lootRewardPanel.SetText(uiInterface.LootTargetPanel, EscortWin);
+    lootRewardPanel.ShowLootPanel(true);
   }
 
   public void EscortWin()
   {
+    // Reset changed components in the cutscene
+    lootRewardPanel.ShowLootPanel(false);
+    playerCamera.GetComponent<CameraObjectSelection>().enabled = true;
+    // Fade in the UI Interfaces
+    UIFade uiFade = uiInterface.GetComponent<UIFade>();
+    uiFade.BeginFadeIn();
+
     resourceManager.GainCrystalManpower();
 
     // Remove all units on the playing field, friendly units are contained in Unit Manager, enemy units are contained in Hideable Manager
@@ -342,13 +349,13 @@ public class GameManager : MonoBehaviour
       conqueredNode.GetComponent<CrystalSeekerSpawner>().SetCrystalTarget(conqueredNode.GetComponent<CrystalNode>().conqueredNode);
       BeginPreparationPhase(false);
       BeginArmySelection(true);
-      nodeSelected = true;
+      NodeSelected = true;
     }
 
     else
     {
       BeginPreparationPhase(true);
-      nodeSelected = false;
+      NodeSelected = false;
 
       // If capturing a node that has a crystal selected, we reset it to null
       if (conqueredNode.GetComponent<CrystalSeekerSpawner>().crystalSelected == true)
@@ -461,14 +468,14 @@ public class GameManager : MonoBehaviour
     // Disable wave spawners of the conquered node
     attackNode.GetComponent<CrystalNode>().SetWaveSpawnersActive(false, null);
 
-    nodeSelected = false;
+    NodeSelected = false;
 
     // Check if our attacking from node has already conquered a node. If yes, skip to army selection screen and force player
     // to attack that node. Otherwise, player is free to choose
     if (attackingFromNode.GetComponent<CrystalNode>().conqueredNode != null)
     {
       attackingFromNode.GetComponent<CrystalSeekerSpawner>().SetCrystalTarget(attackingFromNode.GetComponent<CrystalNode>().conqueredNode);
-      nodeSelected = true;
+      NodeSelected = true;
 
       BeginPreparationPhase(false);
       BeginArmySelection(true);
@@ -536,5 +543,10 @@ public class GameManager : MonoBehaviour
     conqueredNodes[conqueredNodes.Count - 1].GetComponent<CrystalNode>().SetPathVisibilityMeshes(false);
 
     BeginPreparationDefensePhase();
+  }
+
+  public static GameObject GetActiveNode()
+  {
+    return conqueredNodes[conqueredNodes.Count - 1];
   }
 }

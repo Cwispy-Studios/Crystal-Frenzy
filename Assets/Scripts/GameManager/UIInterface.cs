@@ -20,7 +20,7 @@ public class UIInterface : MonoBehaviour
   [SerializeField]
   private LootPopup lootPopup = null;
   [SerializeField]
-  private LootTargetPanel lootTargetPanel = null;
+  public LootTargetPanel LootTargetPanel = null;
   [SerializeField]
   private UnitTooltipPopup unitTooltipPopup = null;
   [SerializeField]
@@ -124,7 +124,7 @@ public class UIInterface : MonoBehaviour
 
   public void UpdateLootTargetPanel(int gold, int crystal, bool buildingSlot, bool upgradeRewarded, UPGRADE_TYPE upgradeReward)
   {
-    lootTargetPanel.SetText(gold, crystal, buildingSlot, upgradeRewarded, upgradeReward);
+    LootTargetPanel.SetText(gold, crystal, buildingSlot, upgradeRewarded, upgradeReward);
   }
 
   //////////////////////////////////////////////////////////////////////////////////////

@@ -63,7 +63,7 @@ public class CameraIssueOrdering : MonoBehaviour
 
     // Ignore UI elements
     int layerMask = (1 << 5) | (1 << 9) | (1 << 10);
-    float distance = GetComponent<CameraControls>().birdsEyeViewMode ? 750f : 150f;
+    float distance = GetComponent<CameraControls>().birdsEyeViewMode ? 1200f : 150f;
 
     if (Physics.Raycast(ray, out RaycastHit hit, distance, ~layerMask))
     {

@@ -31,6 +31,17 @@ public class CrystalNode : MonoBehaviour
   // To add disable component in inspector
   private void Start() { }
 
+  private void Update()
+  {
+    if (GameManager.CurrentPhase == PHASES.PREPARATION && !GameManager.NodeSelected)
+    {
+      if (CameraObjectSelection.IsObjectSelected(gameObject))
+      {
+        GameManager.GetActiveNode().GetComponent<CrystalSeekerSpawner>().SetCrystalTarget(gameObject);
+      }
+    }
+  }
+
   public bool CheckCrystalIsValid(GameObject checkObject, ref GameObject setTarget, ref GameObject crystalPath)
   {
     for (int i = 0; i < connectedNodesData.Length; ++i)

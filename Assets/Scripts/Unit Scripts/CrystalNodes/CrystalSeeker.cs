@@ -24,7 +24,7 @@ public class CrystalSeeker : MonoBehaviour
         gameManager.EscortWinCutscene(gameObject);
         enabled = false;
         //gameManager.EscortWin();
-        //Destroy(gameObject);
+        Destroy(gameObject);
       }
 
       // Enemy captures your node

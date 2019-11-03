@@ -24,29 +24,23 @@ public class CrystalSeekerSpawner : MonoBehaviour
     crystalSelected = false;
   }
 
-  private void Update()
-  {
-    if (crystalSelected)
-    {
-      PathIndicatorIllumination();
-    }
-  }
-
   private void PathIndicatorIllumination()
   {
     ParticleSystem particleSystem = crystalPath.GetComponentInChildren<ParticleSystem>();
     var emittor = particleSystem.emission;
 
-    if (GetComponent<Selectable>().selectStatus == Selectable.SELECT_STATUS.SELECTED)
-    {
-      emittor.enabled = true;
-    }
+    emittor.enabled = true;
 
-    else
-    {
-      emittor.enabled = false;
-      particleSystem.Clear();
-    }
+    //if (GetComponent<Selectable>().selectStatus == Selectable.SELECT_STATUS.SELECTED)
+    //{
+    //  emittor.enabled = true;
+    //}
+
+    //else
+    //{
+    //  emittor.enabled = false;
+    //  particleSystem.Clear();
+    //}
   }
 
   public void SetCrystalTarget(GameObject target)
@@ -60,6 +54,11 @@ public class CrystalSeekerSpawner : MonoBehaviour
       if (GetComponent<CrystalNode>().CheckCrystalIsValid(target, ref crystalTarget, ref crystalPath))
       {
         crystalSelected = true;
+
+        ParticleSystem particleSystem = crystalPath.GetComponentInChildren<ParticleSystem>();
+        var emittor = particleSystem.emission;
+
+        emittor.enabled = true;
       }
 
       else

@@ -73,6 +73,8 @@ public class HideableManager : MonoBehaviour
   {
     for (int i = hideableUnits.Count - 1; i >= 0; --i)
     {
+      hideableUnits[i].GetComponent<GoldGiver>().DisableGoldReward();
+
       Health health = hideableUnits[i].GetComponent<Health>();
       health.ModifyHealth(-health.CurrentHealth, health.transform.forward);
     }

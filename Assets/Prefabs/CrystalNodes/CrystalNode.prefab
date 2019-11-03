@@ -17,7 +17,6 @@ GameObject:
   - component: {fileID: 3592447304192908867}
   - component: {fileID: -8700839933956722381}
   - component: {fileID: 1476391264982174357}
-  - component: {fileID: 7807008728789946622}
   - component: {fileID: 3721100528942192966}
   - component: {fileID: -1362289475002516740}
   - component: {fileID: -6445918545018131961}
@@ -177,18 +176,6 @@ MonoBehaviour:
   fovMeshPrefab: {fileID: 6477082172712516352, guid: 3022b499539b4c64c9f13e17f43e0903,
     type: 3}
   fovRange: 65
---- !u!114 &7807008728789946622
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8532510506944539445}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1db38e105a2d65344b9b7ebf0f311ca7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &3721100528942192966
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -201,13 +188,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3071ad8670c3bb458ac99a06f22f059, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  connectedNodes:
-  - {fileID: 0}
-  pathSplines:
-  - {fileID: 0}
+  isFortress: 0
+  isLifeCrystal: 0
+  connectedNodesData: []
   spawnPoints: []
-  treeWall: {fileID: 0}
   conqueredNode: {fileID: 0}
+  explored: 0
+  active: 0
+  conquerable: 0
+  targeted: 0
 --- !u!114 &-1362289475002516740
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -237,11 +226,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   assemblySpace: {fileID: 0}
-  tempFOVMeshes:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  cameraBound: {fileID: 0}
+  assemblyFOVMesh: {fileID: 0}
+  selectionCameraBound: {fileID: 0}
   conquered: 0
 --- !u!114 &2547541493230240812
 MonoBehaviour:
@@ -257,6 +243,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   goldLoot: 0
   crystalIncomeReward: 20
+  nodeNumber: 1
   randomised: 1
 --- !u!114 &1309242855395777868
 MonoBehaviour:
