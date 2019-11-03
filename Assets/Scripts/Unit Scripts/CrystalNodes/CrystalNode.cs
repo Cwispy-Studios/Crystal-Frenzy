@@ -221,7 +221,7 @@ public class CrystalNode : MonoBehaviour
 
   public void SetCrystalColour(bool corrupted)
   {
-    if (!corrupted)
+    if (corrupted)
     {
       StartLerpColour(corruptedColor, NORMAL_EMISSION, CORRUPTED_EMISSION);
     }
