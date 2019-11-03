@@ -47,15 +47,33 @@ namespace BezierSolution
 
     private float slowDownPerc = 0;
 
+    private FMODUnity.StudioEventEmitter musicEmitter;
+
     private void Awake()
 		{
 			cachedTransform = transform;
 
       unitRadius = GetComponent<SphereCollider>().radius * COLLISION_MARGIN;
+
+      musicEmitter = Camera.main.GetComponent<FMODUnity.StudioEventEmitter>();
     }
 
 		private void Update()
 		{
+      // Player crystal seeker, update progress
+      if (isGoingForward)
+      {
+        musicEmitter.SetParameter("Player Crystal Seeker Progress", (progress - startProgress) / (endProgress - startProgress));
+
+        Debug.Log((progress - startProgress) / (endProgress - startProgress));
+      }
+
+      // Enemy crystal seeker
+      else
+      {
+        musicEmitter.SetParameter("Enemy Crystal Seeker Progress", (endProgress - progress) / (endProgress - startProgress));
+      }
+
 			float targetSpeed = ( isGoingForward ) ? speed : -speed;
 
       if (collisionCountdown < COLLISION_CHECK_INTERVAL)
@@ -247,15 +265,26 @@ namespace BezierSolution
 
     public bool TargetReached()
     {
-      if ((isGoingForward && progress >= endProgress) || (!isGoingForward && progress <= endProgress))
+      if (isGoingForward && progress >= endProgress)
+      {
+        musicEmitter.SetParameter("Player Crystal Seeker Progress", 1);
         return true;
+      }
+      else if (!isGoingForward && progress <= endProgress)
+      {
+        musicEmitter.SetParameter("Enemy Crystal Seeker Progress", 1);
+        return true;
+      }
 
       else return false;
     }
 
-    private void OnDisable()
+    private void OnDestroy()
     {
       GetComponent<Animator>().enabled = false;
+
+      musicEmitter.SetParameter("Player Crystal Seeker Progress", 0);
+      musicEmitter.SetParameter("Enemy Crystal Seeker Progress", 0);
     }
   }
 }

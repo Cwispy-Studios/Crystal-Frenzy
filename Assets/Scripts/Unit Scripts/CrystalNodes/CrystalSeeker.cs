@@ -5,9 +5,13 @@ public class CrystalSeeker : MonoBehaviour
   private GameManager gameManager;
   private bool crystalSeekerReachedTarget = false;
 
+  private FMODUnity.StudioEventEmitter musicEmitter;
+
   private void Awake()
   {
     gameManager = FindObjectOfType<GameManager>();
+
+    musicEmitter = Camera.main.GetComponent<FMODUnity.StudioEventEmitter>();
   }
 
   private void Update()
@@ -24,7 +28,7 @@ public class CrystalSeeker : MonoBehaviour
         gameManager.EscortWinCutscene(gameObject);
         enabled = false;
         //gameManager.EscortWin();
-        Destroy(gameObject);
+        //Destroy(gameObject);
       }
 
       // Enemy captures your node
@@ -36,12 +40,18 @@ public class CrystalSeeker : MonoBehaviour
       }
     }
 
-    // Defense phase and all your units die
-    else if ((GameManager.CurrentPhase == PHASES.DEFENSE && GameManager.resourceManager.ArmySize == 0))
+    // Defense phase
+    else if (GameManager.CurrentPhase == PHASES.DEFENSE)
     {
-      crystalSeekerReachedTarget = true;
-      gameManager.DefenseLose();
-      Destroy(gameObject);
+      musicEmitter.SetParameter("Enemy Crystal Seeker Health", GetComponent<Health>().CurrentHealth / GetComponent<Health>().MaxHealth);
+
+      // All your units die
+      if (GameManager.resourceManager.ArmySize == 0)
+      {
+        crystalSeekerReachedTarget = true;
+        gameManager.DefenseLose();
+        Destroy(gameObject);
+      }
     }
   }
 

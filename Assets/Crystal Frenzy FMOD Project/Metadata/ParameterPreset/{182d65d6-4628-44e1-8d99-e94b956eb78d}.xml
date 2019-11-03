@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.00.00">
+	<object class="ParameterPreset" id="{182d65d6-4628-44e1-8d99-e94b956eb78d}">
+		<property name="name">
+			<value>At Loot Reward Screen</value>
+		</property>
+		<relationship name="folder">
+			<destination>{4e07ee03-ae05-49b9-8834-c847d1b701f7}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{e24dad31-bad3-4e3e-9bdd-c77698b1f66e}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{e24dad31-bad3-4e3e-9bdd-c77698b1f66e}">
+		<property name="parameterType">
+			<value>1</value>
+		</property>
+		<property name="maximum">
+			<value>2</value>
+		</property>
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+	</object>
+</objects>

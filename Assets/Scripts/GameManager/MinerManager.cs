@@ -15,16 +15,22 @@ public class MinerManager : MonoBehaviour
 
   private float destroyedMinerHealthPct = 0.1f;
 
+  private FMODUnity.StudioEventEmitter musicEmitter;
+
   private void Awake()
   {
     CurrentMinerHealth = MaxMinerHealth = minerPrefab.GetComponent<Health>().MaxHealth;
     minerHealthText.text = Mathf.CeilToInt(CurrentMinerHealth).ToString() + " / " + Mathf.CeilToInt(MaxMinerHealth).ToString();
+
+    musicEmitter = Camera.main.GetComponent<FMODUnity.StudioEventEmitter>();
   }
 
   public void HandleMinerHealthChanged(float pct, float currentHealth)
   {
     CurrentMinerHealth = currentHealth;
     minerHealthBar.fillAmount = pct;
+
+    musicEmitter.SetParameter("Player Crystal Seeker Health", pct);
 
     minerHealthText.text = Mathf.CeilToInt(CurrentMinerHealth).ToString() + " / " + Mathf.CeilToInt(MaxMinerHealth).ToString();
   }
@@ -35,6 +41,8 @@ public class MinerManager : MonoBehaviour
     MaxMinerHealth += healthIncrease;
     minerHealthBar.fillAmount = CurrentMinerHealth / MaxMinerHealth;
 
+    musicEmitter.SetParameter("Player Crystal Seeker Health", CurrentMinerHealth / MaxMinerHealth);
+
     minerHealthText.text = Mathf.CeilToInt(CurrentMinerHealth).ToString() + " / " + Mathf.CeilToInt(MaxMinerHealth).ToString();
   }
 
@@ -44,6 +52,8 @@ public class MinerManager : MonoBehaviour
     Mathf.Clamp(CurrentMinerHealth, 0, MaxMinerHealth);
     minerHealthBar.fillAmount = CurrentMinerHealth / MaxMinerHealth;
 
+    musicEmitter.SetParameter("Player Crystal Seeker Health", CurrentMinerHealth / MaxMinerHealth);
+
     minerHealthText.text = Mathf.CeilToInt(CurrentMinerHealth).ToString() + " / " + Mathf.CeilToInt(MaxMinerHealth).ToString();
   }
 
@@ -51,6 +61,8 @@ public class MinerManager : MonoBehaviour
   {
     CurrentMinerHealth = MaxMinerHealth * destroyedMinerHealthPct;
     minerHealthBar.fillAmount = destroyedMinerHealthPct;
+
+    musicEmitter.SetParameter("Player Crystal Seeker Health", destroyedMinerHealthPct);
 
     minerHealthText.text = Mathf.CeilToInt(CurrentMinerHealth).ToString() + " / " + Mathf.CeilToInt(MaxMinerHealth).ToString();
   }

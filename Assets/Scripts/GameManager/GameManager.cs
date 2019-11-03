@@ -36,6 +36,9 @@ public class GameManager : MonoBehaviour
   // Preparation phase
   public static bool NodeSelected { get; private set; }
 
+  private GameObject crystalSeekerToDestroy;
+  private FMODUnity.StudioEventEmitter musicEmitter;
+
   private void Awake()
   {
     resourceManager = GetComponent<ResourceManager>();
@@ -49,6 +52,8 @@ public class GameManager : MonoBehaviour
     };
 
     CurrentPhase = PHASES.PREPARATION;
+
+    musicEmitter = Camera.main.GetComponent<FMODUnity.StudioEventEmitter>();
   }
 
   private void Start()
@@ -82,6 +87,8 @@ public class GameManager : MonoBehaviour
   public void BeginPreparationPhase(bool allowSelection)
   {
     CurrentPhase = PHASES.PREPARATION;
+
+    musicEmitter.SetParameter("Phases", (int)CurrentPhase);
 
     ++CurrentRound;
 
@@ -209,6 +216,8 @@ public class GameManager : MonoBehaviour
     // Update phase, UI and camera
     CurrentPhase = PHASES.ESCORT;
 
+    musicEmitter.SetParameter("Phases", (int)CurrentPhase);
+
     uiInterface.PreparationPhaseDisableUI();
 
     GameObject attackingFromNode = conqueredNodes[conqueredNodes.Count - 1];
@@ -248,6 +257,10 @@ public class GameManager : MonoBehaviour
 
   public void EscortWinCutscene(GameObject crystalSeeker)
   {
+    crystalSeekerToDestroy = crystalSeeker;
+
+    musicEmitter.SetParameter("At Loot Reward Screen", 1);
+
     // Fade out the UI Interfaces
     UIFade uiFade = uiInterface.GetComponent<UIFade>();
     uiFade.BeginFadeOut();
@@ -283,6 +296,10 @@ public class GameManager : MonoBehaviour
 
   public void EscortWin()
   {
+    Destroy(crystalSeekerToDestroy);
+
+    musicEmitter.SetParameter("At Loot Reward Screen", 0);
+
     // Reset changed components in the cutscene
     lootRewardPanel.ShowLootPanel(false);
     playerCamera.GetComponent<CameraObjectSelection>().enabled = true;
@@ -390,6 +407,8 @@ public class GameManager : MonoBehaviour
   {
     CurrentPhase = PHASES.PREPARATION_DEFENSE;
 
+    musicEmitter.SetParameter("Phases", (int)CurrentPhase);
+
     ++CurrentRound;
 
     GameObject attackingFromNode = conqueredNodes[conqueredNodes.Count - 1];
@@ -433,6 +452,8 @@ public class GameManager : MonoBehaviour
   {
     // Update phase, UI and camera
     CurrentPhase = PHASES.DEFENSE;
+
+    musicEmitter.SetParameter("Phases", (int)CurrentPhase);
 
     uiInterface.PreparationDefensePhaseDisableUI();
 
