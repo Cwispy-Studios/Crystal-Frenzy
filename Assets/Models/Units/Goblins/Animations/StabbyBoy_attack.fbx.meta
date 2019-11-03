@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: 94f5ac06ec16d944e982531aed3d1b46
+guid: 1b7b39f1f9922ad41bd2581c65e29fb5
 ModelImporter:
   serializedVersion: 26
   internalIDToNameTable:
   - first:
       74: 1827226128182048838
-    second: Brute Walk
+    second: StabbyBoy Attack
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -35,11 +35,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Brute Walk
+      name: StabbyBoy Attack
       takeName: Take 001
       internalID: 0
       firstFrame: 1
-      lastFrame: 34
+      lastFrame: 36
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -58,7 +58,15 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0.34472933
+        functionName: MeleeAttack
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: bdcce6eefadf3814dbaf768a4697cd9c,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
@@ -66,7 +74,7 @@ ModelImporter:
     isReadable: 0
   meshes:
     lODScreenPercentages: []
-    globalScale: 27
+    globalScale: 20
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
@@ -113,12 +121,12 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 27
+    globalScale: 20
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 1
     skeletonHasParents: 1
-  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 0090bbc6ca1f0b046825fa93f5c7f87f,
+  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 6f618b0fd35f5834ebd3f0933299239d,
     type: 3}
   animationType: 2
   humanoidOversampling: 1

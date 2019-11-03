@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: a68126dc7999f7f4a82a47852ce8d9a5
+guid: cee9ab24ba16ce140bcb228f91ac463e
 ModelImporter:
   serializedVersion: 26
   internalIDToNameTable:
   - first:
       74: 1827226128182048838
-    second: Goblin Walk
+    second: StabbyBoy Idle
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -35,11 +35,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Goblin Walk
+      name: StabbyBoy Idle
       takeName: Take 001
       internalID: 0
       firstFrame: 1
-      lastFrame: 34
+      lastFrame: 36
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -118,17 +118,17 @@ ModelImporter:
       scale: {x: 1, y: 1, z: 1}
     - name: Spine_J
       parentName: StabbyBoy(Clone)
-      position: {x: -0, y: 2.192359, z: 0}
+      position: {x: -0, y: 2.1923587, z: 0}
       rotation: {x: 0.7068032, y: 0.7074102, z: 8.65956e-17, w: -3.7170695e-20}
       scale: {x: 1, y: 1, z: 1}
     - name: Pelvis_J
       parentName: Spine_J
-      position: {x: -0.9580272, y: 3.1745438e-17, z: -0.03291128}
+      position: {x: -0.9580272, y: 3.1745438e-17, z: -0.032911282}
       rotation: {x: 0, y: 0, z: -0.7068032, w: 0.7074102}
       scale: {x: 1, y: 1, z: 1}
     - name: R_U_Leg_J
       parentName: Pelvis_J
-      position: {x: -0.19977349, y: -2.1575805e-17, z: -2.1003106e-20}
+      position: {x: -0.1997735, y: -2.1575805e-17, z: -2.1003106e-20}
       rotation: {x: -0.46671274, y: -0.5312054, z: 0.46671274, w: 0.5312054}
       scale: {x: 1, y: 1, z: 1}
     - name: R_Knee_J
@@ -138,17 +138,17 @@ ModelImporter:
       scale: {x: 1, y: 1, z: 1}
     - name: R_Ankle_J
       parentName: R_Knee_J
-      position: {x: -0.61829907, y: -0.005784399, z: -1.7552066e-16}
+      position: {x: -0.61829907, y: -0.0057843993, z: -1.7552067e-16}
       rotation: {x: 0.7113522, y: 0.7028357, z: -1.9909715e-16, w: -2.0150968e-16}
       scale: {x: 1, y: 1, z: 1}
     - name: R_Foot_J
       parentName: R_Ankle_J
-      position: {x: -0.4306583, y: 0.0025995595, z: -3.0830948e-16}
+      position: {x: -0.4306583, y: 0.0025995597, z: -3.0830948e-16}
       rotation: {x: -0.02735683, y: -0.7065774, z: -0.02735683, w: 0.7065774}
       scale: {x: 1, y: 1, z: 1}
     - name: L_U_Leg_J
       parentName: Pelvis_J
-      position: {x: 0.19977345, y: -0.00000030715043, z: 2.1058568e-20}
+      position: {x: 0.19977346, y: -0.00000030715043, z: 2.1058568e-20}
       rotation: {x: 0.5312054, y: -0.46671274, z: -0.5312054, w: 0.46671274}
       scale: {x: 1, y: 1, z: 1}
     - name: L_Knee_J
@@ -158,27 +158,27 @@ ModelImporter:
       scale: {x: 1, y: 1, z: 1}
     - name: L_Ankle_J
       parentName: L_Knee_J
-      position: {x: 0.61829966, y: 0.0057843835, z: 1.21897e-10}
+      position: {x: 0.6182997, y: 0.0057843835, z: 1.21897e-10}
       rotation: {x: 0.7113522, y: 0.7028357, z: 0.000000016386327, w: 0.000000016584888}
       scale: {x: 1, y: 1, z: 1}
     - name: L_Foot_J
       parentName: L_Ankle_J
-      position: {x: 0.43065745, y: -0.002599531, z: -0.000000009196643}
+      position: {x: 0.43065748, y: -0.0025995309, z: -0.000000009196643}
       rotation: {x: -0.02735683, y: -0.70657736, z: -0.027356828, w: 0.7065774}
       scale: {x: 1, y: 1, z: 1}
     - name: Neck_J
       parentName: Spine_J
-      position: {x: 0.33111808, y: 0.00028426136, z: 4.0550266e-17}
+      position: {x: 0.33111808, y: 0.00028426136, z: 4.0550263e-17}
       rotation: {x: -0, y: 0, z: 0.99999994, w: -0.00042924462}
       scale: {x: 1, y: 1, z: 1}
     - name: Head_J
       parentName: Neck_J
-      position: {x: -0.6822416, y: -3.0350573e-14, z: 8.355047e-17}
+      position: {x: -0.68224156, y: -3.0350573e-14, z: 8.355046e-17}
       rotation: {x: 0.7071068, y: -0.7071068, z: -4.3297806e-17, w: 4.3297806e-17}
       scale: {x: 1, y: 1, z: 1}
     - name: R_Shoulder_J
       parentName: Spine_J
-      position: {x: 0.0029403237, y: 0.38215765, z: 3.600858e-19}
+      position: {x: 0.0029403234, y: 0.38215765, z: 3.600858e-19}
       rotation: {x: 0, y: 0, z: -0.13010061, w: 0.9915008}
       scale: {x: 1, y: 1, z: 1}
     - name: R_Elbow_J
@@ -193,17 +193,17 @@ ModelImporter:
       scale: {x: 1, y: 1, z: 1}
     - name: R_Hand_J
       parentName: R_Wrist_J
-      position: {x: -0.39163598, y: 0.004776049, z: -4.7961576e-17}
+      position: {x: -0.39163598, y: 0.004776049, z: -4.796158e-17}
       rotation: {x: -6.123234e-17, y: 1, z: 6.123234e-17, w: -6.123234e-17}
       scale: {x: 1, y: 1, z: 1}
     - name: L_Shoulder_J
       parentName: Spine_J
-      position: {x: 0.003588819, y: -0.38215303, z: 4.3950355e-19}
+      position: {x: 0.0035888192, y: -0.382153, z: 4.3950355e-19}
       rotation: {x: -0.13095175, y: 0.99138874, z: -5.2959792e-17, w: 6.665506e-17}
       scale: {x: 1, y: 1, z: 1}
     - name: L_Elbow_J
       parentName: L_Shoulder_J
-      position: {x: 0.58984196, y: 3.5527135e-16, z: 7.211079e-17}
+      position: {x: 0.5898419, y: 3.5527132e-16, z: 7.211079e-17}
       rotation: {x: 0.05124649, y: -0.1364786, z: 0.096208826, w: 0.9846275}
       scale: {x: 1, y: 1, z: 1}
     - name: L_Wrist_J
@@ -213,7 +213,7 @@ ModelImporter:
       scale: {x: 1, y: 1, z: 1}
     - name: L_Hand_J
       parentName: L_Wrist_J
-      position: {x: 0.39163595, y: -0.0047799996, z: 4.8464026e-17}
+      position: {x: 0.39163598, y: -0.0047799996, z: 4.846402e-17}
       rotation: {x: -6.123234e-17, y: 1, z: 6.123234e-17, w: -6.123234e-17}
       scale: {x: 1, y: 1, z: 1}
     armTwist: 0.5
@@ -224,7 +224,7 @@ ModelImporter:
     legStretch: 0.05
     feetSpacing: 0
     globalScale: 20
-    rootMotionBoneName: 
+    rootMotionBoneName: Spine_J
     hasTranslationDoF: 0
     hasExtraRoot: 1
     skeletonHasParents: 1

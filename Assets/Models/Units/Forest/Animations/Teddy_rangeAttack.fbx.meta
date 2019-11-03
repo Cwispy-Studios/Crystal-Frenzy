@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: c94d72d338770f7469709299823bfefc
+guid: 137c519f4bcdd4b4fbedcf265db9ab40
 ModelImporter:
   serializedVersion: 26
   internalIDToNameTable:
   - first:
       74: 1827226128182048838
-    second: Splash Attack
+    second: TeddyThrower Attack
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -21,14 +21,12 @@ ModelImporter:
     rigImportErrors: 
     rigImportWarnings: "Copied Avatar Rig Configuration mis-match. Bone length in
       copied configuration does not match position in animation file:\n\t'R_Knee_J'
-      : position error = 59.153667 mm\n\t'Teddy_LSpine_J' : position error = 15.223439
-      mm\n"
+      : position error = 59.153667 mm\n"
     animationImportErrors: 
     animationImportWarnings: "\nClip 'Take 001' has import animation warnings that
       might lower retargeting quality:\nNote: Activate translation DOF on avatar to
-      improve retargeting quality.\n\t'Teddy_LSpine_J' has translation animation that
-      will be discarded.\n\t'USpine_J' has translation animation that will be discarded.\n\t'USpine_J'
-      is inbetween humanoid transforms and has rotation animation that will be discarded.\n"
+      improve retargeting quality.\n\t'USpine_J' is inbetween humanoid transforms
+      and has rotation animation that will be discarded.\n"
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
@@ -42,7 +40,7 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Splash Attack
+      name: TeddyThrower Attack
       takeName: Take 001
       internalID: 0
       firstFrame: 1
@@ -55,9 +53,9 @@ ModelImporter:
       hasAdditiveReferencePose: 0
       loopTime: 0
       loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
       keepOriginalOrientation: 0
       keepOriginalPositionY: 1
       keepOriginalPositionXZ: 0
@@ -66,18 +64,17 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.61721075
-        functionName: MeleeAttack
+      - time: 0.65527064
+        functionName: RangedAttack
         data: 
-        objectReferenceParameter: {fileID: 11500000, guid: bdcce6eefadf3814dbaf768a4697cd9c,
-          type: 3}
+        objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 1
+      additiveReferencePoseFrame: 0
     isReadable: 0
   meshes:
     lODScreenPercentages: []
