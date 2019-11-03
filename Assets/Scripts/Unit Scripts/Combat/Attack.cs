@@ -171,7 +171,7 @@ public class Attack : MonoBehaviour
       bool unitIsEnemy = CheckUnitIsTargetableEnemy(unitsInRange[i].gameObject);
 
       // Check if this unit is a healer and the unit in range is a friend and has a health component and is not itself
-      if (isHealer && !unitIsEnemy && unitsInRange[i].GetComponent<Health>() && unitsInRange[i] != gameObject)
+      if (isHealer && !unitIsEnemy && unitsInRange[i].GetComponent<Health>() && unitsInRange[i].gameObject != gameObject)
       {
         // Check if unit can be healed and is the preferred type
         if (!unitsInRange[i].GetComponent<Health>().AtMaxHealth() && unitsInRange[i].GetComponent<Health>().CombatantType == preferredTarget)
@@ -302,7 +302,7 @@ public class Attack : MonoBehaviour
       if (attackCooldown >= attacksPerSecond)
       {
         // Check if there is projectile
-        if (isHealing && projectilePrefab != null)
+        if (isHealing || projectilePrefab != null)
         {
           if (animator && animator.enabled)
           {
@@ -425,6 +425,8 @@ public class Attack : MonoBehaviour
 
   private void Heal()
   {
+    isHealing = false;
+
     attackedTarget.GetComponent<Health>().ModifyHealth(attackDamage * healPct, Vector3.zero);
 
     FMODUnity.RuntimeManager.PlayOneShot(healSound, transform.position);
