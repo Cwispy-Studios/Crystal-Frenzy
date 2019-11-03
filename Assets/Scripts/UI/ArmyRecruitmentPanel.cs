@@ -18,7 +18,7 @@ public class ArmyRecruitmentPanel : MonoBehaviour
     shootyBoyButton.available = shootyBoyButton.GetComponent<Button>().interactable =
       GameManager.buildingManager.archeryRangeConstructed && GameManager.buildingManager.archeryRangeInControl;
     bruteButton.available = bruteButton.GetComponent<Button>().interactable =
-      GameManager.buildingManager.brawlPitConstructed && GameManager.buildingManager.blacksmithInControl;
+      GameManager.buildingManager.brawlPitConstructed && GameManager.buildingManager.brawlPitInControl;
     warlockButton.available = warlockButton.GetComponent<Button>().interactable =
       GameManager.buildingManager.mageTowerConstructed && GameManager.buildingManager.mageTowerInControl;
   }
