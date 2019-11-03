@@ -252,5 +252,10 @@ namespace BezierSolution
 
       else return false;
     }
+
+    private void OnDisable()
+    {
+      GetComponent<Animator>().enabled = false;
+    }
   }
 }

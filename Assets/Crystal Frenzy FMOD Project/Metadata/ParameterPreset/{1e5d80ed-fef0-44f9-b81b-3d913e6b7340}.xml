@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.00.00">
+	<object class="ParameterPreset" id="{1e5d80ed-fef0-44f9-b81b-3d913e6b7340}">
+		<property name="name">
+			<value>Enemy Crystal Seeker Progress</value>
+		</property>
+		<relationship name="folder">
+			<destination>{4e07ee03-ae05-49b9-8834-c847d1b701f7}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{487ba727-5dad-4444-8ecd-c15f423f61e6}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{487ba727-5dad-4444-8ecd-c15f423f61e6}">
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+	</object>
+</objects>

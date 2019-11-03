@@ -205,7 +205,7 @@ public class CameraObjectSelection : MonoBehaviour
 
       averageVector /= unitManager.SelectedUnits.Count;
 
-      playerCamera.GetComponent<CameraManager>().PointCameraAtPosition(averageVector, playerCamera.GetComponent<CameraControls>().birdsEyeViewMode, 0.5f);
+      playerCamera.GetComponent<CameraManager>().PointCameraAtPosition(averageVector, playerCamera.GetComponent<CameraControls>().birdsEyeViewMode, true, 0.5f);
     }
   }
 
@@ -485,7 +485,7 @@ public class CameraObjectSelection : MonoBehaviour
     SelectedUnitsList.Clear();
   }
 
-  private void ClearHoverList(bool resetSelection)
+  public void ClearHoverList(bool resetSelection)
   {
     if (resetSelection)
     {

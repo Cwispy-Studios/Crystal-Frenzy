@@ -795,6 +795,7 @@ MonoBehaviour:
   explosionDmgPctOfHealth: 0.25
   explosionRadius: 10
   combatantType: 0
+  deathSound: event:/SFX/TeddyDie
 --- !u!114 &8109413875993358451
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -819,6 +820,7 @@ MonoBehaviour:
   preferredTarget: 0
   projectilePrefab: {fileID: 2574113698076494503, guid: 5cb5b06f3a104064492c88450b1fcae8,
     type: 3}
+  attackSound: event:/SFX/TeddyThrowerShoot
 --- !u!114 &-2614433931187345692
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -33,11 +33,11 @@ public class CameraManager : MonoBehaviour
     // Extra safety check
     if (GameManager.CurrentPhase == PHASES.PREPARATION || GameManager.CurrentPhase == PHASES.PREPARATION_DEFENSE)
     {
-      PointCameraAtPosition(setPosition, true);
+      PointCameraAtPosition(setPosition, true, false);
     }
   }
 
-  public void PointCameraAtPosition(Vector3 pointPos, bool birdsEyeView, float duration = 1.2f)
+  public void PointCameraAtPosition(Vector3 pointPos, bool birdsEyeView, bool maintainHeightRot, float duration = 1.2f, bool turnOnCamControls = true)
   {
     GetComponent<CameraControls>().birdsEyeViewMode = birdsEyeView;
 
@@ -47,9 +47,35 @@ public class CameraManager : MonoBehaviour
 
     if (!birdsEyeView)
     {
-      toPos.z -= CameraControls.MAX_ZOOM / Mathf.Tan(DEFAULT_ROT.x * Mathf.Deg2Rad);
-      toPos.y = CameraControls.MAX_ZOOM;
-      rot = DEFAULT_ROT;
+      if (maintainHeightRot)
+      {
+        float correctedY = transform.position.y;
+
+        if (transform.position.y > CameraControls.MAX_ZOOM)
+        {
+          correctedY = CameraControls.MAX_ZOOM;
+        }
+
+        Vector3 normalisedDirectionVec = new Vector3(Mathf.Sin(transform.eulerAngles.y * Mathf.Deg2Rad), 0, Mathf.Cos(transform.eulerAngles.y * Mathf.Deg2Rad));
+        float distanceAwayFromPos = correctedY / Mathf.Tan(DEFAULT_ROT.x * Mathf.Deg2Rad);
+
+        // Use the current rotation and camera height
+        toPos.x -= distanceAwayFromPos * normalisedDirectionVec.x;
+        toPos.z -= distanceAwayFromPos * normalisedDirectionVec.z;
+        toPos.y = correctedY;
+
+        rot = transform.rotation.eulerAngles;
+        rot.x = DEFAULT_ROT.x;
+      }
+
+      else
+      {
+        toPos.z -= CameraControls.MAX_ZOOM / Mathf.Tan(DEFAULT_ROT.x * Mathf.Deg2Rad);
+        toPos.y = CameraControls.MAX_ZOOM;
+
+        rot = DEFAULT_ROT;
+      }
+
       fov = DEFAULT_FOV;
     }
 
@@ -60,10 +86,10 @@ public class CameraManager : MonoBehaviour
       fov = BIRDS_EYE_VIEW_FOV;
     }    
 
-    StartLerp(toPos, rot, fov, duration);
+    StartLerp(toPos, rot, fov, duration, turnOnCamControls);
   }
 
-  private IEnumerator LerpCamera(Vector3 fromPos, Vector3 toPos, Vector3 fromRot, Vector3 toRot, float fromFov, float toFov, float duration)
+  private IEnumerator LerpCamera(Vector3 fromPos, Vector3 toPos, Vector3 fromRot, Vector3 toRot, float fromFov, float toFov, float duration, bool turnOnCamControls)
   {
     float startTime = Time.time;
 
@@ -80,16 +106,41 @@ public class CameraManager : MonoBehaviour
     }
 
     cameraLerping = false;
-    GetComponent<CameraControls>().enabled = true;
+    GetComponent<CameraControls>().enabled = turnOnCamControls;
 
     transform.position = toPos;
     transform.eulerAngles = toRot;
     GetComponent<Camera>().fieldOfView = toFov;
   }
 
-  private Coroutine StartLerp(Vector3 toPos, Vector3 toRot, float toFov, float duration)
+  private Coroutine StartLerp(Vector3 toPos, Vector3 toRot, float toFov, float duration, bool turnOnCamControls)
   {
     StopAllCoroutines();
-    return StartCoroutine(LerpCamera(transform.position, toPos, transform.rotation.eulerAngles, toRot, GetComponent<Camera>().fieldOfView, toFov, duration));
+    return StartCoroutine(LerpCamera(transform.position, toPos, transform.rotation.eulerAngles, toRot, GetComponent<Camera>().fieldOfView, toFov, duration, turnOnCamControls));
+  }
+
+  public void RotateAroundObject(GameObject crystal)
+  {
+    StartRotate(crystal);
+  }
+
+  private IEnumerator RotateCamera(GameObject rotateAround)
+  {
+    while (true)
+    {
+      while (!cameraLerping)
+      {
+        transform.RotateAround(rotateAround.transform.position, Vector3.up, 20f * Time.deltaTime);
+
+        yield return 1;
+      }
+
+      yield return 1;
+    }
+  }
+
+  private Coroutine StartRotate(GameObject rotateAround)
+  {
+    return StartCoroutine(RotateCamera(rotateAround));
   }
 }

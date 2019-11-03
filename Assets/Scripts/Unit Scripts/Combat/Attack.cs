@@ -59,6 +59,8 @@ public class Attack : MonoBehaviour
 
   private GameObject attackTarget = null;
 
+  private GameObject attackedTarget = null;
+
   private Vector3 attackMovePosition;
   private bool isAttackMoveOrder = false;
 
@@ -67,6 +69,9 @@ public class Attack : MonoBehaviour
 
   private const float ATTACK_UPDATE_INTERVAL = 0f;
   private float attackCountdown = 0;
+
+  [FMODUnity.EventRef]
+  public string attackSound = "";
 
   private void Awake()
   {
@@ -273,9 +278,11 @@ public class Attack : MonoBehaviour
 
   private void AttackEnemy(GameObject enemy, float enemyRange, bool healing)
   {
+    attackedTarget = enemy;
+
     // Try to attack them, check the distance between them. The distance from their position + their radius to your position + your radius 
     // must be smaller than the attack range
-    float enemyRadius = GetEnemyRadius(enemy);
+    float enemyRadius = GetEnemyRadius(attackedTarget);
 
     Animator animator = GetComponent<Animator>();
 
@@ -297,81 +304,34 @@ public class Attack : MonoBehaviour
         // Healing has no projectile
         if (isHealing)
         {
-          enemy.GetComponent<Health>().ModifyHealth(attackDamage * healPct, Vector3.zero);
-
           if (animator != null && animator.enabled)
           {
             animator.SetTrigger("Cast Spell");
           }
+
+          else Heal();
         }
 
         // Check if there is projectile
         else if (projectilePrefab != null)
         {
-          // Create the projectile at half height of the unit
-          Vector3 projectilePos = transform.position;
-          projectilePos.y = (GetComponent<NavMeshAgent>().height / 2) * transform.lossyScale.y;
-          GameObject projectile = Instantiate(projectilePrefab, projectilePos, new Quaternion());
-
-          projectile.GetComponent<Projectile>().SetTarget(enemy, attackDamage, GetComponent<StatusEffects>(), aoe, aoeRadius, aoeDmgPct);
-
           if (animator && animator.enabled)
           {
             animator.SetTrigger("Ranged Attack");
           }
-          
+
+          else RangedAttack();
         }
 
         // No projectile means attack hits immediately
         else
         {
-          if (aoe)
-          {
-            int layerMask = 0;
-
-            Collider[] colliders = Physics.OverlapSphere(enemy.transform.position, aoeRadius, ~layerMask);
-
-            for (int i = 0; i < colliders.Length; ++i)
-            {
-              if (colliders[i].GetComponent<Faction>() != null && colliders[i].GetComponent<Health>() != null)
-              {
-                // Check if is unfriendly unit and has health
-                if ((GetComponent<Faction>().faction == Faction.FACTIONS.GOBLINS && colliders[i].GetComponent<Faction>().faction == Faction.FACTIONS.FOREST) ||
-                    (GetComponent<Faction>().faction == Faction.FACTIONS.FOREST && colliders[i].GetComponent<Faction>().faction == Faction.FACTIONS.GOBLINS))
-                {
-                  if (colliders[i].gameObject == enemy)
-                  {
-                    enemy.GetComponent<Health>().ModifyHealth(-attackDamage, transform.position);
-                  }
-           
-                  else
-                  {
-                    colliders[i].GetComponent<Health>().ModifyHealth(-attackDamage * aoeDmgPct, enemy.transform.position);
-                  }
-                 
-                  if (GetComponent<StatusEffects>())
-                  {
-                    GetComponent<StatusEffects>().AfflictStatusEffects(colliders[i].gameObject);
-                  }
-                }
-              }
-            }
-          }
-
-          else
-          {
-            enemy.GetComponent<Health>().ModifyHealth(-attackDamage, transform.position);
-          }
-
-          if (GetComponent<StatusEffects>())
-          {
-            GetComponent<StatusEffects>().AfflictStatusEffects(enemy);
-          }
-
           if (animator != null && animator.enabled)
           {
             animator.SetTrigger("Melee Attack");
           }
+
+          else MeleeAttack();
         }
 
         attackCooldown -= attacksPerSecond;
@@ -384,7 +344,7 @@ public class Attack : MonoBehaviour
       GetComponent<NavMeshAgent>().enabled = true;
 
       GetComponent<NavMeshAgent>().stoppingDistance = attackRange + unitRadius + enemyRadius - STOPPING_MARGIN;
-      GetComponent<NavMeshAgent>().destination = enemy.transform.position;
+      GetComponent<NavMeshAgent>().destination = attackedTarget.transform.position;
     }
 
     else
@@ -393,8 +353,88 @@ public class Attack : MonoBehaviour
       GetComponent<NavMeshAgent>().enabled = true;
 
       GetComponent<NavMeshAgent>().stoppingDistance = attackRange + unitRadius + enemyRadius - STOPPING_MARGIN;
-      GetComponent<NavMeshAgent>().destination = enemy.transform.position;
+      GetComponent<NavMeshAgent>().destination = attackedTarget.transform.position;
     }
+  }
+
+  private void MeleeAttack()
+  {
+    if (attackedTarget == null)
+    {
+      return;
+    }
+
+    if (aoe)
+    {
+      int layerMask = 0;
+
+      Collider[] colliders = Physics.OverlapSphere(attackedTarget.transform.position, aoeRadius, ~layerMask);
+
+      for (int i = 0; i < colliders.Length; ++i)
+      {
+        if (colliders[i].GetComponent<Faction>() != null && colliders[i].GetComponent<Health>() != null)
+        {
+          // Check if is unfriendly unit and has health
+          if ((GetComponent<Faction>().faction == Faction.FACTIONS.GOBLINS && colliders[i].GetComponent<Faction>().faction == Faction.FACTIONS.FOREST) ||
+              (GetComponent<Faction>().faction == Faction.FACTIONS.FOREST && colliders[i].GetComponent<Faction>().faction == Faction.FACTIONS.GOBLINS))
+          {
+            if (colliders[i].gameObject == attackedTarget)
+            {
+              attackedTarget.GetComponent<Health>().ModifyHealth(-attackDamage, transform.position);
+            }
+
+            else
+            {
+              colliders[i].GetComponent<Health>().ModifyHealth(-attackDamage * aoeDmgPct, attackedTarget.transform.position);
+            }
+
+            if (GetComponent<StatusEffects>())
+            {
+              GetComponent<StatusEffects>().AfflictStatusEffects(colliders[i].gameObject);
+            }
+          }
+        }
+      }
+    }
+
+    else
+    {
+      attackedTarget.GetComponent<Health>().ModifyHealth(-attackDamage, transform.position);
+    }
+
+    if (GetComponent<StatusEffects>())
+    {
+      GetComponent<StatusEffects>().AfflictStatusEffects(attackedTarget);
+    }
+
+    FMODUnity.RuntimeManager.PlayOneShot(attackSound, transform.position);
+  }
+
+  private void RangedAttack()
+  {
+    if (attackedTarget == null)
+    {
+      return;
+    }
+
+    // Create the projectile at half height of the unit
+    Vector3 projectilePos = transform.position;
+    projectilePos.y = (GetComponent<NavMeshAgent>().height / 2) * transform.lossyScale.y;
+    GameObject projectile = Instantiate(projectilePrefab, projectilePos, new Quaternion());
+
+    projectile.GetComponent<Projectile>().SetTarget(attackedTarget, attackDamage, GetComponent<StatusEffects>(), aoe, aoeRadius, aoeDmgPct);
+
+    FMODUnity.RuntimeManager.PlayOneShot(attackSound, transform.position);
+  }
+
+  private void Heal()
+  {
+    if (attackedTarget == null)
+    {
+      return;
+    }
+
+    attackedTarget.GetComponent<Health>().ModifyHealth(attackDamage * healPct, Vector3.zero);
   }
 
   public void SetAttackTarget(GameObject target, bool healing)

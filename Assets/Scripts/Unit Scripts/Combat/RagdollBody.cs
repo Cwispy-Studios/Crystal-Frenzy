@@ -18,6 +18,8 @@ public class RagdollBody : MonoBehaviour
     {
       transform.localScale -= Vector3.one * shrinkSpeed * Time.deltaTime;
 
+      //GetComponentInChildren<Rigidbody>().ResetCenterOfMass;
+
       if (transform.localScale.x <= 0)
       {
         Destroy(gameObject);

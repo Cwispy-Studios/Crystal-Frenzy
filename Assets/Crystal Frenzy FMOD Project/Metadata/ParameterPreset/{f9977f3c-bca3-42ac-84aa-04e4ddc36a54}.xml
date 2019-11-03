@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.00.00">
+	<object class="ParameterPreset" id="{f9977f3c-bca3-42ac-84aa-04e4ddc36a54}">
+		<property name="name">
+			<value>Player Crystal Seeker Progress</value>
+		</property>
+		<relationship name="folder">
+			<destination>{4e07ee03-ae05-49b9-8834-c847d1b701f7}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{02a6fd4f-f3ca-4e09-8bbb-889296b5814e}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{02a6fd4f-f3ca-4e09-8bbb-889296b5814e}">
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+	</object>
+</objects>

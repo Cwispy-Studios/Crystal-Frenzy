@@ -19,8 +19,12 @@ public class CrystalSeeker : MonoBehaviour
       if (GetComponent<Faction>().faction == Faction.FACTIONS.GOBLINS)
       {
         crystalSeekerReachedTarget = true;
-        gameManager.EscortWin();
-        Destroy(gameObject);
+        GetComponent<BezierSolution.BezierWalkerWithSpeed>().enabled = false;
+        // Start win cut scene
+        gameManager.EscortWinCutscene(gameObject);
+        enabled = false;
+        //gameManager.EscortWin();
+        //Destroy(gameObject);
       }
 
       // Enemy captures your node

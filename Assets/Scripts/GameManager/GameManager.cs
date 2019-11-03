@@ -175,7 +175,7 @@ public class GameManager : MonoBehaviour
     GameObject attackingFromNode = conqueredNodes[conqueredNodes.Count - 1];
 
     // Set the camera to point at the assembly space
-    playerCamera.GetComponent<CameraManager>().PointCameraAtPosition(attackingFromNode.GetComponent<ConqueredNode>().AssemblySpace.transform.position, false);
+    playerCamera.GetComponent<CameraManager>().PointCameraAtPosition(attackingFromNode.GetComponent<ConqueredNode>().AssemblySpace.transform.position, false, false);
     // Disable the camera ordering
     playerCamera.GetComponent<CameraIssueOrdering>().enabled = false;
     // Set the unit manager assembly space reference so that selecting our troops spawns them in the assembly space
@@ -249,13 +249,44 @@ public class GameManager : MonoBehaviour
     attackingFromNode.GetComponent<CrystalNode>().SetPathVisibilityMeshes(false);
   }
 
+  public void EscortWinCutscene(GameObject crystalSeeker)
+  {
+    // Fade out the UI Interfaces
+    UIFade uiFade = uiInterface.GetComponent<UIFade>();
+    uiFade.BeginFadeOut();
+
+    // Disable camera controls
+    playerCamera.GetComponent<CameraIssueOrdering>().enabled = false;
+    playerCamera.GetComponent<CameraObjectSelection>().ClearSelectionList();
+    playerCamera.GetComponent<CameraObjectSelection>().ClearHoverList(true);
+    playerCamera.GetComponent<CameraObjectSelection>().enabled = false;
+    playerCamera.GetComponent<CameraControls>().enabled = false;
+
+    // Move the camera over to the node we just conquered
+    playerCamera.GetComponent<CameraManager>().PointCameraAtPosition(attackNode.transform.position, false, false, 0.5f, false);
+
+    // Start rotation around the node
+    playerCamera.GetComponent<CameraManager>().RotateAroundObject(attackNode);
+
+    // Disable wave spawners of the conquered node
+    attackNode.GetComponent<CrystalNode>().SetWaveSpawnersActive(false, null);
+
+    // Kill all enemies
+    GetComponent<HideableManager>().KillAllUnits();
+
+    // Change crystal colour
+    attackNode.GetComponent<CrystalNode>().SetCrystalColour(true);
+
+    // 
+  }
+
   public void EscortWin()
   {
     resourceManager.GainCrystalManpower();
 
     // Remove all units on the playing field, friendly units are contained in Unit Manager, enemy units are contained in Hideable Manager
     uiInterface.EscortPhaseRemoveAllUnits();
-    GetComponent<HideableManager>().RemoveAllUnits();
+    //GetComponent<HideableManager>().RemoveAllUnits();
 
     GameObject attackingFromNode = conqueredNodes[conqueredNodes.Count - 1];
     attackingFromNode.GetComponent<CrystalNode>().conqueredNode = attackNode;
@@ -274,9 +305,6 @@ public class GameManager : MonoBehaviour
     // Enable the crystal nodes functionalities
     conqueredNode.GetComponent<CrystalSeekerSpawner>().enabled = true;
     conqueredNode.GetComponent<CrystalOrder>().enabled = true;
-
-    // Disable wave spawners of the conquered node
-    conqueredNode.GetComponent<CrystalNode>().SetWaveSpawnersActive(false, null);
 
     // Initialise the rewards of the connecting nodes (if they have not already been initialised)
     conqueredNode.GetComponent<CrystalNode>().InitialiseRewards();
@@ -361,7 +389,7 @@ public class GameManager : MonoBehaviour
     GameObject attackingFromNode = conqueredNodes[conqueredNodes.Count - 1];
 
     // Set the camera to point at the assembly space
-    playerCamera.GetComponent<CameraManager>().PointCameraAtPosition(attackingFromNode.GetComponent<ConqueredNode>().AssemblySpace.transform.position, false);
+    playerCamera.GetComponent<CameraManager>().PointCameraAtPosition(attackingFromNode.GetComponent<ConqueredNode>().AssemblySpace.transform.position, false, false);
 
     // Disables the player from issuing orders to units
     playerCamera.GetComponent<CameraIssueOrdering>().enabled = false;

@@ -68,4 +68,13 @@ public class HideableManager : MonoBehaviour
       Destroy(hideableUnits[i]);
     }
   }
+
+  public void KillAllUnits()
+  {
+    for (int i = hideableUnits.Count - 1; i >= 0; --i)
+    {
+      Health health = hideableUnits[i].GetComponent<Health>();
+      health.ModifyHealth(-health.CurrentHealth, health.transform.forward);
+    }
+  }
 }

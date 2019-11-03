@@ -103,7 +103,7 @@ public class UIInterface : MonoBehaviour
   }
 
   //////////////////////////////////////////////////////////////////////////////////////
-  // OTHERS
+  // LOOT PANELS
   //////////////////////////////////////////////////////////////////////////////////////
   public void ShowLootPopup(int gold, int crystal, bool buildingSlot, bool upgradeRewarded, UPGRADE_TYPE upgradeReward, bool conquered, GameObject lootObject)
   {
@@ -127,6 +127,9 @@ public class UIInterface : MonoBehaviour
     lootTargetPanel.SetText(gold, crystal, buildingSlot, upgradeRewarded, upgradeReward);
   }
 
+  //////////////////////////////////////////////////////////////////////////////////////
+  // UNIT TOOLTIP
+  //////////////////////////////////////////////////////////////////////////////////////
   public void ShowUnitTooltipPopup(string unitName, int cost, float health, float damage, float attackSpeed, string description, string constructMessage)
   {
     unitTooltipPopup.gameObject.SetActive(true);
@@ -138,6 +141,9 @@ public class UIInterface : MonoBehaviour
     unitTooltipPopup.gameObject.SetActive(false);
   }
 
+  //////////////////////////////////////////////////////////////////////////////////////
+  // BUILDING TOOLTIP
+  //////////////////////////////////////////////////////////////////////////////////////
   public void ShowBuildingTooltipPopup(string buildingName, int cost, string description, string constructMessage)
   {
     buildingTooltipPopup.gameObject.SetActive(true);
@@ -149,6 +155,9 @@ public class UIInterface : MonoBehaviour
     buildingTooltipPopup.gameObject.SetActive(false);
   }
 
+  //////////////////////////////////////////////////////////////////////////////////////
+  // CONSTRUCT PANEL
+  //////////////////////////////////////////////////////////////////////////////////////
   public void ShowConstructPanel(GameObject node)
   {
     showingConstructObject = node;
@@ -164,6 +173,9 @@ public class UIInterface : MonoBehaviour
     }
   }
 
+  //////////////////////////////////////////////////////////////////////////////////////
+  // UPGRADE TOOLTIP
+  //////////////////////////////////////////////////////////////////////////////////////
   public void ShowUpgradeTooltipPopup(string unitName, int unitCost, int cost, float health, float damage, float attackSpeed, string description, string constructMessage)
   {
     upgradeTooltipPopup.gameObject.SetActive(true);
@@ -178,5 +190,10 @@ public class UIInterface : MonoBehaviour
   public void UpdateUINodeColours()
   {
     nodeUIPanel.UpdateUINodesColours();
+  }
+
+  public void FadeUIInterface()
+  {
+
   }
 }

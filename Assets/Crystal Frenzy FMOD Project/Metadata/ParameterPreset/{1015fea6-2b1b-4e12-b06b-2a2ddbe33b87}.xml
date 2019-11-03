@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.00.00">
+	<object class="ParameterPreset" id="{1015fea6-2b1b-4e12-b06b-2a2ddbe33b87}">
+		<property name="name">
+			<value>Player Crystal Seeker Health</value>
+		</property>
+		<relationship name="folder">
+			<destination>{4e07ee03-ae05-49b9-8834-c847d1b701f7}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{857b2b49-ff2b-4619-a4fc-4073cd09f9eb}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{857b2b49-ff2b-4619-a4fc-4073cd09f9eb}">
+		<property name="initialValue">
+			<value>1</value>
+		</property>
+	</object>
+</objects>

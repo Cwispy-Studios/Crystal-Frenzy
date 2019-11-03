@@ -1,7 +1,11 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class CrystalNode : MonoBehaviour
 {
+  private Color normalColor = new Color(93f / 255f, 191f / 255f, 0);
+  private Color corruptedColor = new Color(191f / 255f, 0, 173f / 255f);
+
   [SerializeField]
   private bool isFortress = false;
   public bool IsFortress { get { return isFortress; } }
@@ -200,5 +204,38 @@ public class CrystalNode : MonoBehaviour
         connectedNodesData[i].connectedNode.GetComponent<CrystalNode>().conquerable = false;
       }
     }
+  }
+
+  public void SetCrystalColour(bool corrupted)
+  {
+    if (corrupted)
+    {
+      StartLerpColour(corruptedColor);
+    }
+
+    else
+    {
+      StartLerpColour(normalColor);
+    }
+  }
+
+  private IEnumerator LerpColour(Renderer fromRenderer, Color fromColour, Color toColour)
+  {
+    float startTime = Time.time;
+    float duration = 2f;
+
+    while (Time.time - startTime < duration)
+    {
+      fromRenderer.material.SetColor("_EmissionColor", Color.Lerp(fromColour, toColour, (Time.time - startTime) / duration));
+
+      yield return 1;
+    }
+
+    fromRenderer.material.SetColor("_EmissionColor", toColour);
+  }
+
+  private Coroutine StartLerpColour(Color toColour)
+  {
+    return StartCoroutine(LerpColour(GetComponent<Renderer>(), GetComponent<Renderer>().material.color, toColour));
   }
 }

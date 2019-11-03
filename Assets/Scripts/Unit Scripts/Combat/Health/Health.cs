@@ -59,6 +59,9 @@ public class Health : MonoBehaviour
 
   public event Action<float> OnHealthChanged = delegate { };
 
+  [FMODUnity.EventRef]
+  public string deathSound = "";
+
   private void Awake()
   {
     ogHealth = maxHealth;
@@ -99,6 +102,8 @@ public class Health : MonoBehaviour
     // Kill the unit
     if (CurrentHealth <= 0)
     {
+      FMODUnity.RuntimeManager.PlayOneShot(deathSound, transform.position);
+
       // Check if unit is recruitable, destroys the unit button as well
       RecruitableUnit recruitableUnit = GetComponent<RecruitableUnit>();
 

@@ -15,6 +15,24 @@ public class Projectile : MonoBehaviour
   private float aoeRadius;
   private float aoeDmgPct;
 
+  [FMODUnity.EventRef]
+  public string hitSoundEvent = "";
+  FMOD.Studio.EventInstance hitSound;
+  FMOD.Studio.PARAMETER_ID hitParamaterId;
+
+  private void Start()
+  {
+    hitSound = FMODUnity.RuntimeManager.CreateInstance(hitSoundEvent);
+
+    FMODUnity.RuntimeManager.AttachInstanceToGameObject(hitSound, transform, GetComponent<Rigidbody>());
+
+    FMOD.Studio.EventDescription hitEventDescription;
+    hitSound.getDescription(out hitEventDescription);
+    FMOD.Studio.PARAMETER_DESCRIPTION hitEventParameterDescription;
+    hitEventDescription.getParameterDescriptionByName("hitType", out hitEventParameterDescription);
+    hitParamaterId = hitEventParameterDescription.id;
+  }
+
   private void Update()
   {
     Vector3 direction = targetPos - transform.position;
@@ -27,6 +45,8 @@ public class Projectile : MonoBehaviour
       // Check if target is stil alive
       if (target != null)
       {
+        hitSound.setParameterByID(hitParamaterId, 0);
+
         if (aoe)
         {
           int layerMask = 0;
@@ -71,6 +91,13 @@ public class Projectile : MonoBehaviour
           }
         }        
       }
+
+      else
+      {
+        hitSound.setParameterByID(hitParamaterId, 1);
+      }
+
+      hitSound.start();
 
       // Destroy projectile since it has reached destination
       Destroy(gameObject);

@@ -38,7 +38,7 @@ public class UINode : MonoBehaviour
 
   private void ZoomToNode()
   {
-    playerCamera.GetComponent<CameraManager>().PointCameraAtPosition(node.transform.position, playerCamera.GetComponent<CameraControls>().birdsEyeViewMode, 0.2f);
+    playerCamera.GetComponent<CameraManager>().PointCameraAtPosition(node.transform.position, playerCamera.GetComponent<CameraControls>().birdsEyeViewMode, true, 0.2f);
   }
 
   public void SetNode(GameObject setNode, float worldScale, float panelScale)
