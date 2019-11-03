@@ -83,6 +83,12 @@ public class Health : MonoBehaviour
 
   public void ModifyHealth(float amount, Vector3 damageDirection)
   {
+    // If unit is already dead, do nothing
+    if (CurrentHealth <= 0)
+    {
+      return;
+    }
+
     CurrentHealth += amount;
 
     // Saves the negative health (if it died) so we can use it as a force for the ragdoll

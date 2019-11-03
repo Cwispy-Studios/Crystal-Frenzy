@@ -797,9 +797,9 @@ MonoBehaviour:
   ragdollPrefab: {fileID: 4773658111721926783, guid: 832c1cabac18c2b46a6d6cd1f3d52d29,
     type: 3}
   maxHealth: 45
-  regeneration: 2
+  regeneration: 1
   explodesOnDeath: 1
-  explosionDmgPctOfHealth: 0.3
+  explosionDmgPctOfHealth: 0.45
   explosionRadius: 10
   combatantType: 0
   deathSound: event:/SFX/BugDie
@@ -870,7 +870,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boostValues:
-    healthModifier: 0.08
+    healthModifier: 0.1
     regeneratonModifier: 0.15
     damageModifier: 0.02
     attackSpeedModifier: 0.015
