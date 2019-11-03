@@ -5,6 +5,8 @@ public class CrystalNode : MonoBehaviour
 {
   private Color normalColor = new Color(93f / 255f, 191f / 255f, 0);
   private Color corruptedColor = new Color(191f / 255f, 0, 173f / 255f);
+  private const float NORMAL_EMISSION = 1.55f;
+  private const float CORRUPTED_EMISSION = 2.6f;
 
   [SerializeField]
   private bool isFortress = false;
@@ -219,34 +221,34 @@ public class CrystalNode : MonoBehaviour
 
   public void SetCrystalColour(bool corrupted)
   {
-    if (corrupted)
+    if (!corrupted)
     {
-      StartLerpColour(corruptedColor);
+      StartLerpColour(corruptedColor, NORMAL_EMISSION, CORRUPTED_EMISSION);
     }
 
     else
     {
-      StartLerpColour(normalColor);
+      StartLerpColour(normalColor, CORRUPTED_EMISSION, NORMAL_EMISSION);
     }
   }
 
-  private IEnumerator LerpColour(Renderer fromRenderer, Color fromColour, Color toColour)
+  private IEnumerator LerpColour(Renderer fromRenderer, Color fromColour, Color toColour, float fromEmission, float toEmission)
   {
     float startTime = Time.time;
     float duration = 2f;
 
     while (Time.time - startTime < duration)
     {
-      fromRenderer.material.SetColor("_EmissionColor", Color.Lerp(fromColour, toColour, (Time.time - startTime) / duration));
+      fromRenderer.material.SetColor("_EmissionColor", Color.Lerp(fromColour * fromEmission, toColour * toEmission, (Time.time - startTime) / duration));
 
       yield return 1;
     }
 
-    fromRenderer.material.SetColor("_EmissionColor", toColour);
+    fromRenderer.material.SetColor("_EmissionColor", toColour * toEmission);
   }
 
-  private Coroutine StartLerpColour(Color toColour)
+  private Coroutine StartLerpColour(Color toColour, float fromEmission, float toEmission)
   {
-    return StartCoroutine(LerpColour(GetComponent<Renderer>(), GetComponent<Renderer>().material.color, toColour));
+    return StartCoroutine(LerpColour(GetComponent<Renderer>(), GetComponent<Renderer>().material.color, toColour, fromEmission, toEmission));
   }
 }

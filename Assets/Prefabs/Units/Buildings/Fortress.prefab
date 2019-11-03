@@ -9659,7 +9659,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selectionCirclePrefab: {fileID: 1632290516313722442, guid: 15304a1a55ebbd9408fc3756b9638ab0,
     type: 3}
-  scaleModifier: 1.2
+  scaleModifier: 1.35
 --- !u!114 &279366582317152114
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9769,6 +9769,7 @@ MonoBehaviour:
   explosionDmgPctOfHealth: 0.25
   explosionRadius: 10
   combatantType: 0
+  deathSound: 
 --- !u!114 &1513422491572564236
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9799,6 +9800,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upgradePanelPrefab: {fileID: 4547757109260012683, guid: 0fa873248aff6e24285c5ba55939698f,
     type: 3}
+  instantiate: 1
 --- !u!1 &1418526556980280994
 GameObject:
   m_ObjectHideFlags: 0
