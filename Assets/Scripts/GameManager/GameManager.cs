@@ -94,44 +94,34 @@ public class GameManager : MonoBehaviour
 
     GameObject lastConqueredNode = conqueredNodes[conqueredNodes.Count - 1];
 
+    playerCamera.GetComponent<CameraIssueOrdering>().enabled = false;
+    playerCamera.GetComponent<CameraControls>().enabled = true;
+
+    // Get the latest conquered node and enable the assembly FOV mesh so we can see the conquered node area so we can see the paths and crystal nodes 
+    lastConqueredNode.GetComponent<ConqueredNode>().SetAssemblyFOV(true);
+
     if (allowSelection)
     {
       // Force the camera into a bird's eye view
       playerCamera.GetComponent<CameraManager>().SetBirdsEyeView(lastConqueredNode.transform.position);
 
-      // Get the latest conquered node and enable the assembly FOV mesh so we can see the conquered node area so we can see the paths and crystal nodes 
-      lastConqueredNode.GetComponent<ConqueredNode>().SetAssemblyFOV(true);
       // Turn on the path visibility meshes to all the connected nodes we can attack so we can see the path and our options
       lastConqueredNode.GetComponent<CrystalNode>().SetPathVisibilityMeshes(true);
-
-      // Update the camera bounds
-      playerCamera.GetComponent<CameraControls>().AddCameraBounds(lastConqueredNode.GetComponent<ConqueredNode>().SelectionCameraBound);
-
-      // Set the UI Interfaces to invisible and show the button to select army roster
-      uiInterface.PreparationPhaseSelectNodeUI();
-
-      playerCamera.GetComponent<CameraControls>().enabled = true;
-
-      uiInterface.UpdateUINodeColours();
     }
 
     else
     {
-      // Get the latest conquered node and enable the assembly FOV mesh so we can see the conquered node area so we can see the paths and crystal nodes 
-      lastConqueredNode.GetComponent<ConqueredNode>().SetAssemblyFOV(true);
-      // Turn on the path visibility meshes to all the connected nodes we can attack so we can see the path and our options
+      // Turn on the path visibility meshes to only the connected conquered nodes
       lastConqueredNode.GetComponent<CrystalNode>().SetConqueredPathVisibilityMeshes(lastConqueredNode.GetComponent<CrystalNode>().conqueredNode, true);
-
-      // Update the camera bounds
-      playerCamera.GetComponent<CameraControls>().AddCameraBounds(lastConqueredNode.GetComponent<ConqueredNode>().SelectionCameraBound);
-
-      // Set the UI Interfaces to invisible and show the button to select army roster
-      uiInterface.PreparationPhaseSelectNodeUI();
-
-      playerCamera.GetComponent<CameraControls>().enabled = true;
-
-      uiInterface.UpdateUINodeColours();
     }
+
+    // Update the camera bounds
+    playerCamera.GetComponent<CameraControls>().AddCameraBounds(lastConqueredNode.GetComponent<ConqueredNode>().SelectionCameraBound);
+
+    // Set the UI Interfaces to invisible and show the button to select army roster
+    uiInterface.PreparationPhaseSelectNodeUI();
+
+    uiInterface.UpdateUINodeColours();
   }
 
   private void PreparationPhase()
