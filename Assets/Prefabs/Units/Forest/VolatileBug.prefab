@@ -794,14 +794,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0192c10ce0d2589489e608135047b104, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ragdollPrefab: {fileID: 0}
+  ragdollPrefab: {fileID: 4773658111721926783, guid: 832c1cabac18c2b46a6d6cd1f3d52d29,
+    type: 3}
   maxHealth: 45
   regeneration: 2
   explodesOnDeath: 1
   explosionDmgPctOfHealth: 0.3
   explosionRadius: 10
   combatantType: 0
-  deathSound: 
+  deathSound: event:/SFX/BugDie
+  explodeSound: event:/SFX/VolatileExplode
 --- !u!114 &9114432269934096786
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -825,7 +827,8 @@ MonoBehaviour:
   healPct: 0.5
   preferredTarget: 0
   projectilePrefab: {fileID: 0}
-  attackSound: 
+  attackSound: event:/SFX/VolatileHit
+  healSound: 
 --- !u!114 &9114432269934096785
 MonoBehaviour:
   m_ObjectHideFlags: 0

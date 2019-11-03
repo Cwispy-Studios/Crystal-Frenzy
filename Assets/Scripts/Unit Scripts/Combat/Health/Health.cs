@@ -60,7 +60,7 @@ public class Health : MonoBehaviour
   public event Action<float> OnHealthChanged = delegate { };
 
   [FMODUnity.EventRef]
-  public string deathSound = "";
+  public string deathSound = "", explodeSound = "";
 
   private void Awake()
   {
@@ -115,6 +115,8 @@ public class Health : MonoBehaviour
       // If enemy explodes on death, damages everything around it
       if (explodesOnDeath)
       {
+        FMODUnity.RuntimeManager.PlayOneShot(explodeSound, transform.position);
+
         int layerMask = 0;
 
         Collider[] colliders = Physics.OverlapSphere(transform.position, explosionRadius, ~layerMask);
@@ -144,10 +146,20 @@ public class Health : MonoBehaviour
         overkillDamage = Mathf.Abs(overkillDamage);
 
         // Find the percentage of the overkill damage over the max health, the higher the percentage the greater the force
-        float force = overkillDamage / maxHealth;
+        float force;
+        
+        if (explodesOnDeath)
+        {
+          force = 0.5f;
+        }
+        
+        else
+        {
+          force = overkillDamage / maxHealth;
 
-        force = Mathf.Clamp(force, 0.1f, 0.5f);
-
+          force = Mathf.Clamp(force, 0.1f, 0.5f);
+        }
+       
         deadObject.GetComponentInChildren<Rigidbody>().AddForce((transform.position - damageDirection).normalized * force * 40000f);
         ragdollSpawned = true;
       }

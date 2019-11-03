@@ -84,6 +84,7 @@ GameObject:
   - component: {fileID: -4166828967767744573}
   - component: {fileID: -2290414493991377031}
   - component: {fileID: -434780678151730183}
+  - component: {fileID: 3334878645172342635}
   m_Layer: 0
   m_Name: Bush
   m_TagString: Untagged
@@ -310,12 +311,13 @@ MonoBehaviour:
   travelMode: 0
   speed: 1.75
   rotationLerpModifier: 5
-  lookForward: 1
+  lookForward: 0
   onPathCompleted:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  footstepSound: 
 --- !u!114 &-4166828967767744573
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -353,6 +355,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   goldProvided: 100
+--- !u!114 &3334878645172342635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7396513783761032937}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  Event: event:/SFX/BushMoveLoop
+  PlayEvent: 1
+  StopEvent: 12
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &7664051348828493581
 GameObject:
   m_ObjectHideFlags: 0

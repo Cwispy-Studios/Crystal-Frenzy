@@ -747,7 +747,8 @@ MonoBehaviour:
   explosionDmgPctOfHealth: 0.5
   explosionRadius: 10
   combatantType: 0
-  deathSound: event:/SFX/TeddyDie
+  deathSound: event:/SFX/BugDie
+  explodeSound: 
 --- !u!114 &-74903051473994080
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -773,6 +774,7 @@ MonoBehaviour:
   projectilePrefab: {fileID: 2574113698076494503, guid: d82cb12714761614a8a134c61612c69f,
     type: 3}
   attackSound: event:/SFX/SpitterShoot
+  healSound: 
 --- !u!114 &5928447059531628494
 MonoBehaviour:
   m_ObjectHideFlags: 0
