@@ -225,7 +225,6 @@ public class GameManager : MonoBehaviour
     GameObject spawnedCrystalSeeker = attackingFromNode.GetComponent<CrystalSeekerSpawner>().SpawnCrystalSeeker();
     attackingFromNode.GetComponent<CrystalSeekerSpawner>().ResetCrystalSelection();
     attackingFromNode.GetComponent<CrystalSeekerSpawner>().enabled = false;
-    attackingFromNode.GetComponent<CrystalOrder>().enabled = false;
 
     BuildingSlot buildingSlot = attackNode.GetComponent<BuildingSlot>();
 
@@ -268,6 +267,8 @@ public class GameManager : MonoBehaviour
 
     // Disable wave spawners of the conquered node
     attackNode.GetComponent<CrystalNode>().SetWaveSpawnersActive(false, null);
+    // Make the node visible
+    attackNode.GetComponent<ConqueredNode>().SetAssemblyFOV(true);
 
     // Kill all enemies
     GetComponent<HideableManager>().KillAllUnits();
@@ -311,7 +312,6 @@ public class GameManager : MonoBehaviour
 
     // Enable the crystal nodes functionalities
     conqueredNode.GetComponent<CrystalSeekerSpawner>().enabled = true;
-    conqueredNode.GetComponent<CrystalOrder>().enabled = true;
 
     // Initialise the rewards of the connecting nodes (if they have not already been initialised)
     conqueredNode.GetComponent<CrystalNode>().InitialiseRewards();
@@ -377,7 +377,6 @@ public class GameManager : MonoBehaviour
     attackNode.GetComponent<CrystalSeekerSpawner>().enabled = true;
     // Set the node we were attacking to target the node we were attacking from.
     attackNode.GetComponent<CrystalSeekerSpawner>().SetDefendingCrystalTarget(conqueredNodes[conqueredNodes.Count - 1]);
-    attackNode.GetComponent<CrystalOrder>().enabled = true;
 
     // Disable wave spawners of the conquered node
     attackNode.GetComponent<CrystalNode>().SetWaveSpawnersActive(false, null);
@@ -463,7 +462,6 @@ public class GameManager : MonoBehaviour
 
     // Enable the crystal nodes functionalities
     attackingFromNode.GetComponent<CrystalSeekerSpawner>().enabled = true;
-    attackingFromNode.GetComponent<CrystalOrder>().enabled = true;
 
     // Disable wave spawners of the conquered node
     attackNode.GetComponent<CrystalNode>().SetWaveSpawnersActive(false, null);
@@ -505,7 +503,6 @@ public class GameManager : MonoBehaviour
     // Disable wave spawners and crystal nodes functionalities of the attacking node we lost to
     attackNode.GetComponent<CrystalNode>().SetWaveSpawnersActive(false, null);
     attackNode.GetComponent<CrystalSeekerSpawner>().enabled = false;
-    attackNode.GetComponent<CrystalOrder>().enabled = false;
 
     // Update the attacking node to the node we lost and remove that node from our list of conquered nodes
     attackNode = conqueredNodes[conqueredNodes.Count - 1];
@@ -515,7 +512,6 @@ public class GameManager : MonoBehaviour
     attackNode.GetComponent<Faction>().faction = Faction.FACTIONS.NEUTRAL;
     attackNode.GetComponent<CrystalSeekerSpawner>().enabled = true;
     attackNode.GetComponent<CrystalSeekerSpawner>().SetDefendingCrystalTarget(conqueredNodes[conqueredNodes.Count - 1]);
-    attackNode.GetComponent<CrystalOrder>().enabled = true;
 
     // Lose the crystal income from that node
     resourceManager.LoseIncome(attackNode.GetComponent<CrystalRewards>().CrystalIncomeReward);

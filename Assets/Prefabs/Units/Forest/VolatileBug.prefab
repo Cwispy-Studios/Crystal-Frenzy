@@ -801,6 +801,7 @@ MonoBehaviour:
   explosionDmgPctOfHealth: 0.3
   explosionRadius: 10
   combatantType: 0
+  deathSound: 
 --- !u!114 &9114432269934096786
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -824,6 +825,7 @@ MonoBehaviour:
   healPct: 0.5
   preferredTarget: 0
   projectilePrefab: {fileID: 0}
+  attackSound: 
 --- !u!114 &9114432269934096785
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -923,7 +925,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac56f1b6c1ad8144fb388e944cfc04c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  goldProvided: 8
+  goldProvided: 10
 --- !u!1 &9114432756769351690
 GameObject:
   m_ObjectHideFlags: 0

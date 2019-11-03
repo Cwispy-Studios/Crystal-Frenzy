@@ -33,6 +33,9 @@ public class UpgradeButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     if (newButton != null)
     {
+      newButton.transform.position = transform.position;
+      newButton.transform.SetParent(transform.parent);
+      newButton.GetComponent<RectTransform>().localScale = Vector3.one;
       ExternalUpgrade(newButton);
     }
   }
@@ -52,7 +55,7 @@ public class UpgradeButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
       // Set the next level button's transform equal to this
       nextLevelButton.transform.position = transform.position;
       nextLevelButton.transform.SetParent(transform.parent);
-      nextLevelButton.GetComponent<RectTransform>().localScale = new Vector3(1f, 1f, 1f);
+      nextLevelButton.GetComponent<RectTransform>().localScale = Vector3.one;
     }
 
     GameManager.resourceManager.UpgradeCost(this);

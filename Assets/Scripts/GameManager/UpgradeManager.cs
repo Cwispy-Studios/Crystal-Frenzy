@@ -200,7 +200,7 @@ public class UpgradeManager : MonoBehaviour
 
   public void UpgradeReward(UPGRADE_TYPE upgradeType)
   {
-    // Does nothing if at max level, means player wasted their upgrade
+    // Does nothing if at max level, means player wasted their reward
     if (upgrades[upgradeType].currentUpgradeLevel != upgrades[upgradeType].maxLevel)
     {
       // Create a new struct to update the upgrade level

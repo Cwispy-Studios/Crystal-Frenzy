@@ -45,9 +45,8 @@ public class CrystalSeekerSpawner : MonoBehaviour
 
   public void SetCrystalTarget(GameObject target)
   {
-    // Check if target is a crystal and is not self
-    // Crystals are identified if they have CrystalSeekerSpawner
-    if (target != gameObject && target.GetComponent<CrystalOrder>() != null)
+    // Check if target is not self
+    if (target != gameObject)
     {
       // Check against the connected nodes if that crystal is connected with this object and if crystal does not already belong to the player
       // Also saves the crystal path if it is valid
