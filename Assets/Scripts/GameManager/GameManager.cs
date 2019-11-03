@@ -20,6 +20,10 @@ public class GameManager : MonoBehaviour
   [SerializeField]
   private LootRewardPanel lootRewardPanel = null;
 
+  [Header("Pause Menu Panel")]
+  [SerializeField]
+  private PauseMenu pauseMenuPanel = null;
+
   public static ResourceManager resourceManager;
   public static BuildingManager buildingManager;
   public static UpgradeManager upgradeManager;
@@ -72,6 +76,17 @@ public class GameManager : MonoBehaviour
 
   private void Update()
   {
+    if (pauseMenuPanel.gameObject.activeSelf == false && Input.GetKeyDown(KeyCode.Escape))
+    {
+      uiInterface.GetComponent<CanvasGroup>().interactable = false;
+      pauseMenuPanel.gameObject.SetActive(true);
+    }
+
+    else if (pauseMenuPanel.gameObject.activeSelf)
+    {
+      return;
+    }
+
     if (tutorialManager.DisablePhaseProgression)
     {
       return;

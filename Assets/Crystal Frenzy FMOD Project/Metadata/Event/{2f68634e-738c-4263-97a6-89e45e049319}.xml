@@ -157,9 +157,6 @@
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{fc0a53cb-0769-4fce-b45d-0795ccdfd97e}">
-		<property name="volume">
-			<value>6</value>
-		</property>
 		<property name="name">
 			<value>Miner</value>
 		</property>
@@ -262,6 +259,7 @@
 		<relationship name="effects">
 			<destination>{4bbd451f-edda-4e13-aca6-d3653cb0e48c}</destination>
 			<destination>{692b763d-a3c4-4d5b-a5d8-ef3d35eb8d87}</destination>
+			<destination>{8266f348-f387-4050-b40e-aeb56459a8ac}</destination>
 			<destination>{e24d174d-d658-4a7f-908f-96a693a7626d}</destination>
 			<destination>{43db4eab-552b-4569-8d89-9f29d4d5f319}</destination>
 		</relationship>
@@ -361,6 +359,17 @@
 		<relationship name="modulators">
 			<destination>{70d9ea0e-bfa6-4c76-8d91-9f84347788d5}</destination>
 		</relationship>
+	</object>
+	<object class="CompressorEffect" id="{8266f348-f387-4050-b40e-aeb56459a8ac}">
+		<property name="threshold">
+			<value>-21</value>
+		</property>
+		<property name="ratio">
+			<value>4.0999999</value>
+		</property>
+		<property name="gain">
+			<value>12</value>
+		</property>
 	</object>
 	<object class="MixerSend" id="{e24d174d-d658-4a7f-908f-96a693a7626d}">
 		<property name="level">
