@@ -48,6 +48,10 @@ namespace BezierSolution
     private float slowDownPerc = 0;
 
     private FMODUnity.StudioEventEmitter musicEmitter;
+    private FMODUnity.StudioEventEmitter moveEmitter;
+
+    [FMODUnity.EventRef]
+    public string footstepSound = "";
 
     private void Awake()
 		{
@@ -56,6 +60,7 @@ namespace BezierSolution
       unitRadius = GetComponent<SphereCollider>().radius * COLLISION_MARGIN;
 
       musicEmitter = Camera.main.GetComponent<FMODUnity.StudioEventEmitter>();
+      moveEmitter = GetComponent<FMODUnity.StudioEventEmitter>();
     }
 
 		private void Update()
@@ -268,15 +273,23 @@ namespace BezierSolution
       if (isGoingForward && progress >= endProgress)
       {
         musicEmitter.SetParameter("Player Crystal Seeker Progress", 1);
+        moveEmitter.SetParameter("Moving", 1);
         return true;
       }
       else if (!isGoingForward && progress <= endProgress)
       {
         musicEmitter.SetParameter("Enemy Crystal Seeker Progress", 1);
+        moveEmitter.Stop();
         return true;
       }
 
       else return false;
+    }
+
+    private void PlayFootsteps()
+    {
+      Debug.Log("Footsteps");
+      FMODUnity.RuntimeManager.PlayOneShot(footstepSound, transform.position);
     }
 
     private void OnDestroy()

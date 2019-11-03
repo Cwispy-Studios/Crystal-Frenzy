@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.00.00">
 	<object class="MixerReturn" id="{8988c461-6e14-4971-bc68-08f9c030eb15}">
+		<property name="volume">
+			<value>10</value>
+		</property>
 		<property name="overridingInputFormat">
 			<value>2</value>
 		</property>
@@ -8,7 +11,7 @@
 			<value>true</value>
 		</property>
 		<property name="name">
-			<value>Reverb</value>
+			<value>MainReverb</value>
 		</property>
 		<relationship name="effectChain">
 			<destination>{ff981536-8020-4322-a892-061a16298f52}</destination>
@@ -22,14 +25,65 @@
 	</object>
 	<object class="MixerBusEffectChain" id="{ff981536-8020-4322-a892-061a16298f52}">
 		<relationship name="effects">
+			<destination>{ba4add5a-9843-49d8-83ab-a8ec3cd9f167}</destination>
 			<destination>{1ba2bd02-398f-48ce-9dd2-2dc430798442}</destination>
 			<destination>{bd36b940-b57b-451c-b266-8c545a97b2fb}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{9442bee6-8f2b-44b1-ba02-b2a1fae88962}" />
-	<object class="SFXReverbEffect" id="{1ba2bd02-398f-48ce-9dd2-2dc430798442}">
+	<object class="SFXReverbEffect" id="{ba4add5a-9843-49d8-83ab-a8ec3cd9f167}">
+		<property name="bypass">
+			<value>true</value>
+		</property>
+		<property name="earlyDelay">
+			<value>7</value>
+		</property>
+		<property name="lateDelay">
+			<value>11</value>
+		</property>
+		<property name="HFDecayRatio">
+			<value>67</value>
+		</property>
+		<property name="diffusion">
+			<value>50</value>
+		</property>
+		<property name="highCut">
+			<value>4050</value>
+		</property>
+		<property name="earlyLateMix">
+			<value>66</value>
+		</property>
 		<property name="wetLevel">
-			<value>0</value>
+			<value>-26</value>
+		</property>
+		<property name="dryLevel">
+			<value>-80</value>
+		</property>
+	</object>
+	<object class="SFXReverbEffect" id="{1ba2bd02-398f-48ce-9dd2-2dc430798442}">
+		<property name="earlyDelay">
+			<value>15</value>
+		</property>
+		<property name="lateDelay">
+			<value>35</value>
+		</property>
+		<property name="HFReference">
+			<value>12500</value>
+		</property>
+		<property name="HFDecayRatio">
+			<value>25</value>
+		</property>
+		<property name="density">
+			<value>90</value>
+		</property>
+		<property name="lowShelfGain">
+			<value>-8</value>
+		</property>
+		<property name="earlyLateMix">
+			<value>65</value>
+		</property>
+		<property name="wetLevel">
+			<value>-18</value>
 		</property>
 		<property name="dryLevel">
 			<value>-80</value>

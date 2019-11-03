@@ -407,7 +407,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0192c10ce0d2589489e608135047b104, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ragdollPrefab: {fileID: 0}
+  ragdollPrefab: {fileID: 5729099106640843992, guid: 8ecdbda456c632d42b92311d905235f5,
+    type: 3}
   maxHealth: 155
   regeneration: 0.1
   explodesOnDeath: 0
@@ -437,8 +438,10 @@ MonoBehaviour:
   isHealer: 1
   healPct: 0.8
   preferredTarget: 0
-  projectilePrefab: {fileID: 0}
-  attackSound: 
+  projectilePrefab: {fileID: 2574113698076494503, guid: 0b3bf955dcd7e8a498aa71dad90dfa0a,
+    type: 3}
+  attackSound: event:/SFX/WarlockShoot
+  healSound: event:/SFX/WarlockHeal
 --- !u!114 &9135789159771556362
 MonoBehaviour:
   m_ObjectHideFlags: 0

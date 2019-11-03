@@ -140,6 +140,7 @@
 		<relationship name="effects">
 			<destination>{b878bdaf-62c4-46f2-92f2-d5d8643e38f4}</destination>
 			<destination>{4e8e47fc-b789-4153-8444-1d2c4beec869}</destination>
+			<destination>{96911064-20aa-4e7f-b8b1-7748f50a226b}</destination>
 			<destination>{3bae6700-f280-491a-a6d5-518de028ce2a}</destination>
 		</relationship>
 	</object>
@@ -159,6 +160,17 @@
 		</property>
 		<relationship name="modulators">
 			<destination>{6fa5cab5-b0b8-40f4-a751-59d129ee4408}</destination>
+		</relationship>
+	</object>
+	<object class="MixerSend" id="{96911064-20aa-4e7f-b8b1-7748f50a226b}">
+		<property name="level">
+			<value>-24</value>
+		</property>
+		<property name="inputFormat">
+			<value>1</value>
+		</property>
+		<relationship name="mixerReturn">
+			<destination>{8988c461-6e14-4971-bc68-08f9c030eb15}</destination>
 		</relationship>
 	</object>
 	<object class="ObjectSpatialiserEffect" id="{3bae6700-f280-491a-a6d5-518de028ce2a}">

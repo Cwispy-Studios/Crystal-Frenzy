@@ -71,7 +71,7 @@ public class Attack : MonoBehaviour
   private float attackCountdown = 0;
 
   [FMODUnity.EventRef]
-  public string attackSound = "";
+  public string attackSound = "", healSound = "";
 
   private void Awake()
   {
@@ -170,8 +170,8 @@ public class Attack : MonoBehaviour
     {
       bool unitIsEnemy = CheckUnitIsTargetableEnemy(unitsInRange[i].gameObject);
 
-      // Check if this unit is a healer and the unit in range is a friend and has a health component
-      if (isHealer && !unitIsEnemy && unitsInRange[i].GetComponent<Health>())
+      // Check if this unit is a healer and the unit in range is a friend and has a health component and is not itself
+      if (isHealer && !unitIsEnemy && unitsInRange[i].GetComponent<Health>() && unitsInRange[i] != gameObject)
       {
         // Check if unit can be healed and is the preferred type
         if (!unitsInRange[i].GetComponent<Health>().AtMaxHealth() && unitsInRange[i].GetComponent<Health>().CombatantType == preferredTarget)
@@ -301,19 +301,8 @@ public class Attack : MonoBehaviour
       // Check if ready to attack
       if (attackCooldown >= attacksPerSecond)
       {
-        // Healing has no projectile
-        if (isHealing)
-        {
-          if (animator != null && animator.enabled)
-          {
-            animator.SetTrigger("Cast Spell");
-          }
-
-          else Heal();
-        }
-
         // Check if there is projectile
-        else if (projectilePrefab != null)
+        if (isHealing && projectilePrefab != null)
         {
           if (animator && animator.enabled)
           {
@@ -417,6 +406,13 @@ public class Attack : MonoBehaviour
       return;
     }
 
+    if (isHealing)
+    {
+      Heal();
+
+      return;
+    }
+
     // Create the projectile at half height of the unit
     Vector3 projectilePos = transform.position;
     projectilePos.y = (GetComponent<NavMeshAgent>().height / 2) * transform.lossyScale.y;
@@ -429,12 +425,9 @@ public class Attack : MonoBehaviour
 
   private void Heal()
   {
-    if (attackedTarget == null)
-    {
-      return;
-    }
-
     attackedTarget.GetComponent<Health>().ModifyHealth(attackDamage * healPct, Vector3.zero);
+
+    FMODUnity.RuntimeManager.PlayOneShot(healSound, transform.position);
   }
 
   public void SetAttackTarget(GameObject target, bool healing)
