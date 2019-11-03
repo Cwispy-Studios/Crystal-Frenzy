@@ -286,12 +286,13 @@ MonoBehaviour:
   ragdollPrefab: {fileID: 3699112457609064108, guid: f3e9605a8b383cf4b97e9fe5c4680081,
     type: 3}
   maxHealth: 165
-  regeneration: 2
+  regeneration: 1
   explodesOnDeath: 0
   explosionDmgPctOfHealth: 0.25
   explosionRadius: 10
   combatantType: 0
   deathSound: event:/SFX/GoblinDie
+  explodeSound: 
 --- !u!114 &4365369355350160395
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -305,8 +306,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackDamage: 13
-  attacksPerSecond: 1.5
-  attackRange: 1.5
+  attacksPerSecond: 1.45
+  attackRange: 1.2
   enemyDetectRange: 15
   aoe: 0
   aoeRadius: 1

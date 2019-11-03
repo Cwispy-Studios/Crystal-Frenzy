@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour
   public static BuildingManager buildingManager;
   public static UpgradeManager upgradeManager;
   public static MinerManager minerManager;
+  public static TutorialManager tutorialManager;
 
   private static List<GameObject> conqueredNodes;
   private GameObject attackNode;
@@ -45,6 +46,7 @@ public class GameManager : MonoBehaviour
     buildingManager = GetComponent<BuildingManager>();
     upgradeManager = GetComponent<UpgradeManager>();
     minerManager = GetComponent<MinerManager>();
+    tutorialManager = GetComponent<TutorialManager>();
 
     conqueredNodes = new List<GameObject>
     {
@@ -59,6 +61,7 @@ public class GameManager : MonoBehaviour
   private void Start()
   {
     BeginPreparationPhase(true);
+    tutorialManager.StartTutorial();
   }
 
   private void FixedUpdate()
@@ -69,15 +72,23 @@ public class GameManager : MonoBehaviour
 
   private void Update()
   {
-    switch (CurrentPhase)
+    if (tutorialManager.DisablePhaseProgression)
     {
-      case PHASES.PREPARATION:
-        PreparationPhase();
-        break;
+      return;
+    }
 
-      case PHASES.PREPARATION_DEFENSE:
-        PreparationDefensePhase();
-        break;
+    else
+    {
+      switch (CurrentPhase)
+      {
+        case PHASES.PREPARATION:
+          PreparationPhase();
+          break;
+
+        case PHASES.PREPARATION_DEFENSE:
+          PreparationDefensePhase();
+          break;
+      }
     }
   }
 
@@ -263,7 +274,7 @@ public class GameManager : MonoBehaviour
     playerCamera.GetComponent<CameraControls>().enabled = false;
 
     // Move the camera over to the node we just conquered
-    playerCamera.GetComponent<CameraManager>().PointCameraAtPosition(attackNode.transform.position, false, false, 0.5f, false);
+    playerCamera.GetComponent<CameraManager>().PointCameraAtPosition(attackNode.transform.position, false, false, 0, 0.5f, false);
 
     // Start rotation around the node
     playerCamera.GetComponent<CameraManager>().RotateAroundObject(attackNode);

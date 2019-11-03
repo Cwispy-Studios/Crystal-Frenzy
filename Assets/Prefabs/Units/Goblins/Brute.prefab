@@ -694,6 +694,7 @@ MonoBehaviour:
   explosionRadius: 10
   combatantType: 0
   deathSound: event:/SFX/GoblinDie
+  explodeSound: 
 --- !u!114 &7394659449738150961
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -707,7 +708,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackDamage: 60
-  attacksPerSecond: 0.55
+  attacksPerSecond: 0.65
   attackRange: 3
   enemyDetectRange: 15
   aoe: 1

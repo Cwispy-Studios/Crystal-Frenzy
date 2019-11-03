@@ -488,6 +488,7 @@ MonoBehaviour:
   explosionRadius: 10
   combatantType: 0
   deathSound: event:/SFX/TeddyDie
+  explodeSound: 
 --- !u!114 &2530966457903291648
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -506,12 +507,13 @@ MonoBehaviour:
   enemyDetectRange: 15
   aoe: 1
   aoeRadius: 4
-  aoeDmgPct: 0.1
+  aoeDmgPct: 0.15
   isHealer: 0
   healPct: 0.5
   preferredTarget: 0
   projectilePrefab: {fileID: 0}
   attackSound: event:/SFX/PapaTeddyHit
+  healSound: 
 --- !u!114 &817042360180292343
 MonoBehaviour:
   m_ObjectHideFlags: 0

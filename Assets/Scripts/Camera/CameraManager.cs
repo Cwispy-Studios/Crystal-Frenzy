@@ -37,7 +37,7 @@ public class CameraManager : MonoBehaviour
     }
   }
 
-  public void PointCameraAtPosition(Vector3 pointPos, bool birdsEyeView, bool maintainHeightRot, float duration = 1.2f, bool turnOnCamControls = true)
+  public void PointCameraAtPosition(Vector3 pointPos, bool birdsEyeView, bool maintainHeightRot, float targetHeight = 0, float duration = 1.2f, bool turnOnCamControls = true)
   {
     GetComponent<CameraControls>().birdsEyeViewMode = birdsEyeView;
 
@@ -50,6 +50,11 @@ public class CameraManager : MonoBehaviour
       if (maintainHeightRot)
       {
         float correctedY = transform.position.y;
+
+        if (targetHeight != 0)
+        {
+          correctedY = targetHeight;
+        }
 
         if (transform.position.y > CameraControls.MAX_ZOOM)
         {
@@ -70,8 +75,17 @@ public class CameraManager : MonoBehaviour
 
       else
       {
-        toPos.z -= CameraControls.MAX_ZOOM / Mathf.Tan(DEFAULT_ROT.x * Mathf.Deg2Rad);
-        toPos.y = CameraControls.MAX_ZOOM;
+        if (targetHeight != 0)
+        {
+          toPos.y = targetHeight;
+        }
+
+        else
+        {
+          toPos.y = CameraControls.MAX_ZOOM;
+        }
+
+        toPos.z -= toPos.y / Mathf.Tan(DEFAULT_ROT.x * Mathf.Deg2Rad);
 
         rot = DEFAULT_ROT;
       }

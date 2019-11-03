@@ -69,8 +69,6 @@ namespace BezierSolution
       if (isGoingForward)
       {
         musicEmitter.SetParameter("Player Crystal Seeker Progress", (progress - startProgress) / (endProgress - startProgress));
-
-        Debug.Log((progress - startProgress) / (endProgress - startProgress));
       }
 
       // Enemy crystal seeker
@@ -288,7 +286,6 @@ namespace BezierSolution
 
     private void PlayFootsteps()
     {
-      Debug.Log("Footsteps");
       FMODUnity.RuntimeManager.PlayOneShot(footstepSound, transform.position);
     }
 

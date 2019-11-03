@@ -19,6 +19,8 @@ public class Attack : MonoBehaviour
     get { return attacksPerSecond; }
   }
 
+  private float attackInterval;
+
   private float normalAttacksPerSecond;
   private float normalMoveSpeed;
   private float normalDamage;
@@ -88,11 +90,13 @@ public class Attack : MonoBehaviour
     normalAttacksPerSecond = attacksPerSecond;
     normalMoveSpeed = GetComponent<NavMeshAgent>().speed;
     normalDamage = attackDamage;
+
+    attackInterval = 1f / attacksPerSecond;
   }
 
   private void Update()
   {
-    if (attackCooldown <= attacksPerSecond)
+    if (attackCooldown <= attackInterval)
     {
       attackCooldown += Time.deltaTime;
     }
@@ -299,7 +303,7 @@ public class Attack : MonoBehaviour
       GetComponent<NavMeshObstacle>().enabled = true;
 
       // Check if ready to attack
-      if (attackCooldown >= attacksPerSecond)
+      if (attackCooldown >= attackInterval)
       {
         // Check if there is projectile
         if (isHealing || projectilePrefab != null)
@@ -323,7 +327,7 @@ public class Attack : MonoBehaviour
           else MeleeAttack();
         }
 
-        attackCooldown -= attacksPerSecond;
+        attackCooldown -= attackInterval;
       }
     }
 
@@ -502,6 +506,8 @@ public class Attack : MonoBehaviour
       isHealer = upgradeProperties[i].isHealer;
       healPct = upgradeProperties[i].healPct;
     }
+
+    attackInterval = 1f / attacksPerSecond;
   }
 
   public void SetBoostedValues(BoostValues boostValues)
@@ -510,12 +516,16 @@ public class Attack : MonoBehaviour
     attacksPerSecond += (GameManager.CurrentRound - 1) * boostValues.attackSpeedModifier * ogAttackSpeed;
     attackRange += (GameManager.CurrentRound - 1) * boostValues.attackRangeModifier * ogAttackRange;
     enemyDetectRange += (GameManager.CurrentRound - 1) * boostValues.detectRangeModifier * ogDetectRange;
+
+    attackInterval = 1f / attacksPerSecond;
   }
 
   public void SetSlowAffliction(float attackSlowAmount, float moveSlowAmount)
   {
     attacksPerSecond = normalAttacksPerSecond * (1f + attackSlowAmount);
     GetComponent<NavMeshAgent>().speed = normalMoveSpeed * (1f - moveSlowAmount);
+
+    attackInterval = 1f / attacksPerSecond;
   }
 
   public void SetCurseAffliction(float attackReducAmount)
