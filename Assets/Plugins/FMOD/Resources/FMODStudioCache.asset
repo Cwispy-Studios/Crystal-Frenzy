@@ -360,7 +360,7 @@ MonoBehaviour:
   Path: event:/SFX/ShootyShoot
   guid: 8eb339b33c9b9e4d8603fefedb7182d7
   Banks:
-  - {fileID: -7050434345505502252}
+  - {fileID: 4101977254251270569}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -368,6 +368,23 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 294
+--- !u!114 &-7281561997218829701
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Level Music/Enemy Crystal Seeker Progress
+  m_EditorClassIdentifier: 
+  Name: Enemy Crystal Seeker Progress
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 1
 --- !u!114 &-7269530257416945680
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -469,7 +486,7 @@ MonoBehaviour:
   Path: event:/SFX/TeddyThrowerShoot
   guid: 68cbe799b2879647b5845a1673583d6d
   Banks:
-  - {fileID: -7050434345505502252}
+  - {fileID: 4101977254251270569}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -799,7 +816,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: Assets/Crystal Frenzy FMOD Project/Build/Desktop/Master.strings.bank
   SubDir: 
-  lastModified: 637083646271201421
+  lastModified: 637083849261817217
   LoadResult: 0
   FileSizes:
   - Name: Desktop
@@ -1041,7 +1058,7 @@ MonoBehaviour:
   Path: event:/SFX/TeddyHit
   guid: fefe83374a2f894c8ba6145da87c537a
   Banks:
-  - {fileID: -7050434345505502252}
+  - {fileID: 4101977254251270569}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -1049,6 +1066,23 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 207
+--- !u!114 &-3174550814820596671
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/ShootyHit/HitType
+  m_EditorClassIdentifier: 
+  Name: HitType
+  Min: 0
+  Max: 2
+  Default: 0
+  Exists: 1
 --- !u!114 &-3162192329825500288
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1200,7 +1234,7 @@ MonoBehaviour:
   Path: event:/SFX/ScourgeHit
   guid: 04f3d5b83b00ba489defa0d5ba652de2
   Banks:
-  - {fileID: -7050434345505502252}
+  - {fileID: 4101977254251270569}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -1242,6 +1276,23 @@ MonoBehaviour:
   lastModified: 637083354547976883
   LoadResult: 0
   FileSizes: []
+  Exists: 1
+--- !u!114 &-1974594892106591771
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Level Music/Enemy Crystal Seeker Health
+  m_EditorClassIdentifier: 
+  Name: Enemy Crystal Seeker Health
+  Min: 0
+  Max: 1
+  Default: 0.99500006
   Exists: 1
 --- !u!114 &-1950511992508834082
 MonoBehaviour:
@@ -1295,6 +1346,23 @@ MonoBehaviour:
   Max: 2
   Default: 0
   Exists: 0
+--- !u!114 &-1168937840743582187
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Level Music/At Loot Reward Screen
+  m_EditorClassIdentifier: 
+  Name: At Loot Reward Screen
+  Min: 0
+  Max: 2
+  Default: 0
+  Exists: 1
 --- !u!114 &-883087418090026707
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1361,12 +1429,12 @@ MonoBehaviour:
   Path: event:/SFX/ShootyHit
   guid: 65e997583af5ea489179530ac89d5e08
   Banks:
-  - {fileID: -7050434345505502252}
+  - {fileID: 4101977254251270569}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
   Parameters:
-  - {fileID: 8421042939456311250}
+  - {fileID: -3174550814820596671}
   MinDistance: 1
   MaxDistance: 20
   Length: 0
@@ -1419,7 +1487,7 @@ MonoBehaviour:
   Path: event:/SFX/BruteHit
   guid: db98141311f96d42ad14ef4c183d2595
   Banks:
-  - {fileID: -7050434345505502252}
+  - {fileID: 4101977254251270569}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -1458,7 +1526,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EditorBanks:
   - {fileID: -4540543175397473769}
-  - {fileID: -7050434345505502252}
+  - {fileID: 4101977254251270569}
   EditorEvents:
   - {fileID: 2306951027491537630}
   - {fileID: -627361296830708379}
@@ -1476,10 +1544,10 @@ MonoBehaviour:
   - {fileID: 6898778929606436444}
   EditorParameters: []
   MasterBanks:
-  - {fileID: -7050434345505502252}
+  - {fileID: 4101977254251270569}
   StringsBanks:
   - {fileID: -4540543175397473769}
-  stringsBankWriteTime: 637083646271201421
+  stringsBankWriteTime: 637083849261817217
   cacheVersion: 3
 --- !u!114 &57770194657973208
 MonoBehaviour:
@@ -1602,6 +1670,23 @@ MonoBehaviour:
   Max: 1
   Default: 0
   Exists: 1
+--- !u!114 &803387019537368251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Level Music/Player Crystal Seeker Health
+  m_EditorClassIdentifier: 
+  Name: Player Crystal Seeker Health
+  Min: 0
+  Max: 1
+  Default: 1
+  Exists: 1
 --- !u!114 &873932928980652507
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1720,7 +1805,7 @@ MonoBehaviour:
   Path: event:/SFX/PapaTeddyHit
   guid: dec6589a50869a42bb95c52e5d233d37
   Banks:
-  - {fileID: -7050434345505502252}
+  - {fileID: 4101977254251270569}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -1743,15 +1828,49 @@ MonoBehaviour:
   Path: event:/SFX/TeddyThrowerHit
   guid: ef1fe001759be84d9478aa86e58c2d05
   Banks:
-  - {fileID: -7050434345505502252}
+  - {fileID: 4101977254251270569}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
   Parameters:
-  - {fileID: -9024652733412554689}
+  - {fileID: 1762067588290802679}
   MinDistance: 1
   MaxDistance: 20
   Length: 0
+--- !u!114 &1741411563909391576
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Level Music/Phases
+  m_EditorClassIdentifier: 
+  Name: Phases
+  Min: 0
+  Max: 4
+  Default: 0
+  Exists: 1
+--- !u!114 &1762067588290802679
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/TeddyThrowerHit/HitType
+  m_EditorClassIdentifier: 
+  Name: HitType
+  Min: 0
+  Max: 2
+  Default: 0
+  Exists: 1
 --- !u!114 &1830587102238591889
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1784,7 +1903,7 @@ MonoBehaviour:
   Path: event:/SFX/StabbyHit
   guid: 12b5d231a7907942a859b0c95a5a4dc2
   Banks:
-  - {fileID: -7050434345505502252}
+  - {fileID: 4101977254251270569}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -1824,17 +1943,17 @@ MonoBehaviour:
   Path: event:/Music/Level Music
   guid: 667664d50d84684ab00e852dd3812e92
   Banks:
-  - {fileID: -7050434345505502252}
+  - {fileID: 4101977254251270569}
   IsStream: 1
   Is3D: 1
   IsOneShot: 0
   Parameters:
-  - {fileID: 8190008380157884245}
-  - {fileID: -5429734458647692357}
-  - {fileID: 7607679814914194243}
-  - {fileID: 3901769733831808266}
-  - {fileID: 8384534619330482894}
-  - {fileID: 4842543233610075314}
+  - {fileID: 4132328356344736333}
+  - {fileID: 803387019537368251}
+  - {fileID: -7281561997218829701}
+  - {fileID: -1974594892106591771}
+  - {fileID: -1168937840743582187}
+  - {fileID: 1741411563909391576}
   MinDistance: 1
   MaxDistance: 20
   Length: 191186
@@ -1938,7 +2057,7 @@ MonoBehaviour:
   Path: event:/SFX/GoblinDie
   guid: 9c17b7f80151ee469dcec07becba6b01
   Banks:
-  - {fileID: -7050434345505502252}
+  - {fileID: 4101977254251270569}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -1961,7 +2080,7 @@ MonoBehaviour:
   Path: event:/SFX/TeddyDie
   guid: 9d56d948ad88e441b92dd427f0dd2569
   Banks:
-  - {fileID: -7050434345505502252}
+  - {fileID: 4101977254251270569}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -2036,6 +2155,41 @@ MonoBehaviour:
   Min: 0
   Max: 1
   Default: 0.99500006
+  Exists: 1
+--- !u!114 &4101977254251270569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/Crystal Frenzy FMOD Project/Build/Desktop/Master.bank
+  SubDir: 
+  lastModified: 637083849300532420
+  LoadResult: 0
+  FileSizes: []
+  Exists: 1
+--- !u!114 &4132328356344736333
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Level Music/Player Crystal Seeker Progress
+  m_EditorClassIdentifier: 
+  Name: Player Crystal Seeker Progress
+  Min: 0
+  Max: 1
+  Default: 0
   Exists: 1
 --- !u!114 &4228892611170552160
 MonoBehaviour:
@@ -2121,7 +2275,7 @@ MonoBehaviour:
   Path: event:/SFX/SpitterShoot
   guid: ac2a63d62131be41ba9d29a9cb25d9ac
   Banks:
-  - {fileID: -7050434345505502252}
+  - {fileID: 4101977254251270569}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -2231,6 +2385,23 @@ MonoBehaviour:
   Min: 0
   Max: 1
   Default: 0.99500006
+  Exists: 1
+--- !u!114 &5682967616965008950
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/SpitterHit/HitType
+  m_EditorClassIdentifier: 
+  Name: HitType
+  Min: 0
+  Max: 2
+  Default: 0
   Exists: 1
 --- !u!114 &5767037039419904403
 MonoBehaviour:
@@ -2367,12 +2538,12 @@ MonoBehaviour:
   Path: event:/SFX/SpitterHit
   guid: c80cd4e2157b76478c2f3c9844657b86
   Banks:
-  - {fileID: -7050434345505502252}
+  - {fileID: 4101977254251270569}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
   Parameters:
-  - {fileID: 121945527567301069}
+  - {fileID: 5682967616965008950}
   MinDistance: 1
   MaxDistance: 20
   Length: 0
