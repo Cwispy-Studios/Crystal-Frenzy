@@ -3,6 +3,8 @@ using UnityEngine.UI;
 
 public class PauseMenu : MonoBehaviour
 {
+  public delegate void NextScene();
+
   [SerializeField]
   private GameObject uiInterface = null, confirmationPanel = null;
 
@@ -12,6 +14,8 @@ public class PauseMenu : MonoBehaviour
   [SerializeField]
   private Image confirmationGreyScreen = null;
 
+  private FMODUnity.StudioEventEmitter musicEmitter;
+
   private void Awake()
   {
     continueButton.onClick.AddListener(ContinueGame);
@@ -20,6 +24,8 @@ public class PauseMenu : MonoBehaviour
 
     yesButton.onClick.AddListener(QuitGame);
     noButton.onClick.AddListener(ReturnToMenu);
+
+    musicEmitter = Camera.main.GetComponent<FMODUnity.StudioEventEmitter>();
   }
 
   private void OnEnable()
@@ -82,4 +88,40 @@ public class PauseMenu : MonoBehaviour
   {
     Application.Quit();
   }
+
+  //private void FadeScreen(NextScene nextScene)
+  //{
+  //  musicEmitter.SetParameter("MenuVolume", 0);
+
+  //  fadeScreen.gameObject.SetActive(true);
+  //  StartFade(nextScene);
+  //}
+
+  //private IEnumerator LerpFadeScreen(NextScene nextScene)
+  //{
+  //  float startTime = Time.time;
+  //  Color currentColor = fadeScreen.color;
+  //  Color targetColor = currentColor;
+  //  targetColor.a = 1;
+
+  //  while (Time.time - startTime < FADE_DURATION)
+  //  {
+  //    fadeScreen.color = Color.Lerp(currentColor, targetColor, (Time.time - startTime) / FADE_DURATION);
+  //    musicEmitter.SetParameter("MenuVolume", 1 - ((Time.time - startTime) / FADE_DURATION));
+
+  //    Debug.Log(1 - ((Time.time - startTime) / FADE_DURATION));
+
+  //    yield return 1;
+  //  }
+
+  //  fadeScreen.color = targetColor;
+  //  musicEmitter.SetParameter("MenuVolume", 0);
+
+  //  nextScene();
+  //}
+
+  //private Coroutine StartFade(NextScene nextScene)
+  //{
+  //  return StartCoroutine(LerpFadeScreen(nextScene));
+  //}
 }
