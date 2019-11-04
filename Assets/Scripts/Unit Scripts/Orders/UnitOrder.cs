@@ -19,6 +19,8 @@ public class UnitOrder : Order
   private Attack attack;
   private AnimationState animationState;
 
+  private GameManager gameManager;
+
   private void Awake()
   {
     unitRadius = GetComponent<NavMeshAgent>().radius * ((transform.lossyScale.x + transform.lossyScale.z) / 2f);
@@ -28,6 +30,8 @@ public class UnitOrder : Order
     obstacle = GetComponent<NavMeshObstacle>();
     attack = GetComponent<Attack>();
     animationState = GetComponent<AnimationState>();
+
+    gameManager = FindObjectOfType<GameManager>();
   }
 
   void Update()
@@ -244,7 +248,7 @@ public class UnitOrder : Order
 
   public void SetBoostedValues(BoostValues boostValues)
   {
-    GetComponent<NavMeshAgent>().speed += (GameManager.CurrentRound - 1) * boostValues.speedModifier * GetComponent<NavMeshAgent>().speed;
-    GetComponent<NavMeshAgent>().acceleration = GetComponent<NavMeshAgent>().speed * 1.5f;
+    GetComponent<NavMeshAgent>().speed += (gameManager.CurrentRound - 1) * boostValues.speedModifier * GetComponent<NavMeshAgent>().speed;
+    GetComponent<NavMeshAgent>().acceleration = GetComponent<NavMeshAgent>().speed * 5f;
   }
 } // class end

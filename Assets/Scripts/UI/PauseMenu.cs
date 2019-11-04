@@ -137,8 +137,6 @@ public class PauseMenu : MonoBehaviour
       fadeScreen.color = Color.Lerp(currentColor, targetColor, (Time.time - startTime) / FADE_DURATION);
       Master.setVolume(1 - ((Time.time - startTime) / FADE_DURATION));
 
-      Debug.Log(1 - ((Time.time - startTime) / FADE_DURATION));
-
       yield return 1;
     }
 

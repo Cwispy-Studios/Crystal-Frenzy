@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class UnitFormationManager : MonoBehaviour
 {
-  private List<UnitFormatationData> unitFormations = null;
+  //private List<UnitFormatationData> unitFormations = null;
 
   public void AddToMoveFormation()
   {

@@ -66,10 +66,14 @@ public class Health : MonoBehaviour
   [FMODUnity.EventRef]
   public string deathSound = "", explodeSound = "";
 
+  private GameManager gameManager;
+
   private void Awake()
   {
     ogHealth = maxHealth;
     ogRegeneration = regeneration;
+
+    gameManager = FindObjectOfType<GameManager>();
   }
 
   private void Start()
@@ -225,8 +229,8 @@ public class Health : MonoBehaviour
 
   public void SetBoostedValues(BoostValues boostValues)
   {
-    maxHealth += (GameManager.CurrentRound - 1) * boostValues.healthModifier * ogHealth;
-    regeneration += (GameManager.CurrentRound - 1) * boostValues.regeneratonModifier * ogRegeneration;
+    maxHealth += (gameManager.CurrentRound - 1) * boostValues.healthModifier * ogHealth;
+    regeneration += (gameManager.CurrentRound - 1) * boostValues.regeneratonModifier * ogRegeneration;
 
     CurrentHealth = maxHealth;
   }

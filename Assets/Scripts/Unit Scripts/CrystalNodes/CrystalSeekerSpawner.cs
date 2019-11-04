@@ -17,11 +17,14 @@ public class CrystalSeekerSpawner : MonoBehaviour
 
   private GameObject crystalPath = null;
 
-  public bool crystalSelected { get; private set; }
+  public bool CrystalSelected { get; private set; }
+
+  private GameManager gameManager;
 
   private void Awake()
   {
-    crystalSelected = false;
+    CrystalSelected = false;
+    gameManager = FindObjectOfType<GameManager>();
   }
 
   private void PathIndicatorIllumination()
@@ -52,7 +55,7 @@ public class CrystalSeekerSpawner : MonoBehaviour
       // Also saves the crystal path if it is valid
       if (GetComponent<CrystalNode>().CheckCrystalIsValid(target, ref crystalTarget, ref crystalPath))
       {
-        crystalSelected = true;
+        CrystalSelected = true;
 
         ParticleSystem particleSystem = crystalPath.GetComponentInChildren<ParticleSystem>();
         var emittor = particleSystem.emission;
@@ -62,7 +65,7 @@ public class CrystalSeekerSpawner : MonoBehaviour
 
       else
       {
-        crystalSelected = false;
+        CrystalSelected = false;
       }
     }
   }
@@ -82,12 +85,12 @@ public class CrystalSeekerSpawner : MonoBehaviour
     BezierSpline crystalPathSpline = crystalPath.GetComponent<BezierSpline>();
     BezierWalkerWithSpeed bezierWalker = null;
 
-    if (GameManager.CurrentPhase == PHASES.ESCORT)
+    if (gameManager.CurrentPhase == PHASES.ESCORT)
     {
       crystalSeeker = Instantiate(minerPrefab);
     }
 
-    else if (GameManager.CurrentPhase == PHASES.DEFENSE)
+    else if (gameManager.CurrentPhase == PHASES.DEFENSE)
     {
       crystalSeeker = Instantiate(bushPrefab);
     }
@@ -95,12 +98,12 @@ public class CrystalSeekerSpawner : MonoBehaviour
     bezierWalker = crystalSeeker.GetComponent<BezierWalkerWithSpeed>();
     bezierWalker.spline = crystalPathSpline;
 
-    if (GameManager.CurrentPhase == PHASES.ESCORT)
+    if (gameManager.CurrentPhase == PHASES.ESCORT)
     {
       bezierWalker.SetStartAndEndPoints(1, bezierWalker.spline.Count - 2, true);
     }
 
-    else if (GameManager.CurrentPhase == PHASES.DEFENSE)
+    else if (gameManager.CurrentPhase == PHASES.DEFENSE)
     {
       bezierWalker.SetStartAndEndPoints(bezierWalker.spline.Count - 2, 1, false);
     }
@@ -113,7 +116,7 @@ public class CrystalSeekerSpawner : MonoBehaviour
     TurnOffPathIllumination();
     crystalTarget = null;
     crystalPath = null;
-    crystalSelected = false;
+    CrystalSelected = false;
   }
 
   private void TurnOffPathIllumination()

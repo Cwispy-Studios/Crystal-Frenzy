@@ -23,7 +23,7 @@ public class CameraControls : MonoBehaviour
   private List<GameObject> cameraBounds = new List<GameObject>();
 
   [SerializeField]
-  private FMODUnity.StudioEventEmitter ambienceEmitter;
+  private FMODUnity.StudioEventEmitter ambienceEmitter = null;
 
   private void LateUpdate()
   {
@@ -76,7 +76,7 @@ public class CameraControls : MonoBehaviour
       transform.Translate(Quaternion.Euler(0, -90, 0) * transform.right * scrollSpeed * Time.deltaTime / GetZoomPerc(), Space.World);
     }
 
-    if (CameraManager.cameraLerping == false)
+    if (GetComponent<CameraManager>().cameraLerping == false)
     {
       CheckCameraInBounds(previousPosition);
     }

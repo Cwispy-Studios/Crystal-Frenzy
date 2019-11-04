@@ -25,8 +25,12 @@ public class TutorialManager : MonoBehaviour
   [SerializeField]
   private GameObject fortress = null, firstCrystalNode = null;
 
+  private GameManager gameManager;
+
   public void StartTutorial()
   {
+    gameManager = FindObjectOfType<GameManager>();
+
     tutorialTexts = new string[10];
 
     tutorialTexts[0] = 
@@ -183,7 +187,7 @@ public class TutorialManager : MonoBehaviour
   {
     if (currentTutorialPanel == 4)
     {
-      if (GameManager.GetActiveNode().GetComponent<CrystalSeekerSpawner>().crystalSelected == true)
+      if (gameManager.GetActiveNode().GetComponent<CrystalSeekerSpawner>().CrystalSelected == true)
       {
         SetPanelFive();
       }

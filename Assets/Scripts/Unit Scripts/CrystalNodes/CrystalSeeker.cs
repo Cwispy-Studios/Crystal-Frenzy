@@ -40,7 +40,7 @@ public class CrystalSeeker : MonoBehaviour
     }
 
     // Defense phase, update music based on bush health and check your army size
-    else if (GameManager.CurrentPhase == PHASES.DEFENSE)
+    else if (gameManager.CurrentPhase == PHASES.DEFENSE)
     {
       musicEmitter.SetParameter("Enemy Crystal Seeker Health", GetComponent<Health>().CurrentHealth / GetComponent<Health>().MaxHealth);
 
@@ -82,6 +82,6 @@ public class CrystalSeeker : MonoBehaviour
 
   public void SetBoostedValues(BoostValues boostValues)
   {
-    GetComponent<BezierSolution.BezierWalkerWithSpeed>().speed += (GameManager.CurrentRound - 1) * boostValues.speedModifier * GetComponent<BezierSolution.BezierWalkerWithSpeed>().speed;
+    GetComponent<BezierSolution.BezierWalkerWithSpeed>().speed += (gameManager.CurrentRound - 1) * boostValues.speedModifier * GetComponent<BezierSolution.BezierWalkerWithSpeed>().speed;
   }
 }

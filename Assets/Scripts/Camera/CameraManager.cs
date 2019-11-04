@@ -16,7 +16,7 @@ using UnityEngine;
 
 public class CameraManager : MonoBehaviour
 {
-  public static bool cameraLerping = false;
+  public bool cameraLerping = false;
 
   private readonly Vector3 DEFAULT_ROT = new Vector3(55f, 0f, 0f);
   private const float DEFAULT_FOV = 60f;
@@ -27,7 +27,7 @@ public class CameraManager : MonoBehaviour
   private Vector3 lastCamRot;
 
   [SerializeField]
-  private FMODUnity.StudioEventEmitter ambienceEmitter;
+  private FMODUnity.StudioEventEmitter ambienceEmitter = null;
 
   public void PointCameraAtPosition(Vector3 pointPos, bool birdsEyeView, bool maintainHeightRot, float targetHeight = 0, float duration = 1.2f, bool turnOnCamControls = true)
   {

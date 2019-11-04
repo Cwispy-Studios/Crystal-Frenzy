@@ -30,16 +30,23 @@ public class CrystalNode : MonoBehaviour
     conquerable = false,          // Conquerable are the nodes that are connected to your active node
     targeted = false;             // Targeted nodes are the nodes we are attacking
 
+  private GameManager gameManager;
+
+  private void Awake()
+  {
+    gameManager = FindObjectOfType<GameManager>();
+  }
+
   // To add disable component in inspector
   private void Start() { }
 
   private void Update()
   {
-    if (GameManager.CurrentPhase == PHASES.PREPARATION && !GameManager.NodeSelected)
+    if (gameManager.CurrentPhase == PHASES.PREPARATION && !gameManager.NodeSelected)
     {
       if (CameraObjectSelection.IsObjectSelected(gameObject))
       {
-        GameManager.GetActiveNode().GetComponent<CrystalSeekerSpawner>().SetCrystalTarget(gameObject);
+        gameManager.GetActiveNode().GetComponent<CrystalSeekerSpawner>().SetCrystalTarget(gameObject);
       }
     }
   }

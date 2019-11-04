@@ -91,10 +91,23 @@ public class HealthBarController : MonoBehaviour
 
   private void RemoveHealthBar(Health health)
   {
-    if (healthBars.ContainsKey(health))
+    if (this != null && healthBars.ContainsKey(health))
     {
       Destroy(healthBars[health].gameObject);
       healthBars.Remove(health);
     }
+  }
+
+  private void OnDestroy()
+  {
+    Health.OnHealthAdded -= AddHealthBar;
+    Health.OnHealthRemoved -= RemoveHealthBar;
+
+    foreach (var health in healthBars)
+    {
+      Destroy(health.Value);
+    }
+
+    healthBars.Clear();
   }
 }

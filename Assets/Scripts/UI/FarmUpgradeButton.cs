@@ -9,9 +9,13 @@ public class FarmUpgradeButton : MonoBehaviour, IPointerEnterHandler, IPointerEx
   [HideInInspector]
   public Farm upgradingFarm;
 
+  private GameManager gameManager;
+
   private void Awake()
   {
     uiInterface = FindObjectOfType<UIInterface>();
+
+    gameManager = FindObjectOfType<GameManager>();
   }
 
   private void Start()
@@ -48,7 +52,7 @@ public class FarmUpgradeButton : MonoBehaviour, IPointerEnterHandler, IPointerEx
 
   public void OnPointerEnter(PointerEventData eventData)
   {
-    if (GameManager.CurrentPhase == PHASES.ESCORT || GameManager.CurrentPhase == PHASES.DEFENSE)
+    if (gameManager.CurrentPhase == PHASES.ESCORT || gameManager.CurrentPhase == PHASES.DEFENSE)
     {
       return;
     }

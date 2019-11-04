@@ -29,6 +29,7 @@ public class RepairSlider : MonoBehaviour
 
 
     repairSliderClickInstance = FMODUnity.RuntimeManager.CreateInstance(repairSliderClickSound);
+    FMODUnity.RuntimeManager.AttachInstanceToGameObject(repairSliderClickInstance, Camera.main.transform, (Rigidbody)null);
   }
 
   private void OnEnable()

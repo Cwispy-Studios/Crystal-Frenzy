@@ -15,8 +15,11 @@ public class WaveSpawner : MonoBehaviour
   private GameObject enemyToSpawn = null;
   private float spawnCountdown = 0;
 
+  private GameManager gameManager;
+
   private void Awake()
   {
+    gameManager = FindObjectOfType<GameManager>();
     CalculateSumOfWeights();
     // Automatically spawns the first enemy
     RandomiseSpawn();
@@ -86,7 +89,7 @@ public class WaveSpawner : MonoBehaviour
         float difficultyModifier = 1f;
 
         // Enemies spawn slower in defense phase
-        if (GameManager.CurrentPhase == PHASES.DEFENSE)
+        if (gameManager.CurrentPhase == PHASES.DEFENSE)
         {
           difficultyModifier = 1.5f;
         }

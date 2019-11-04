@@ -14,6 +14,13 @@ public class StatusEffects : MonoBehaviour
   public Slow slowEffect = null;
   public Curse curseEffect = null;
 
+  private GameManager gameManager;
+
+  private void Awake()
+  {
+    gameManager = FindObjectOfType<GameManager>();
+  }
+
   public void AfflictStatusEffects(GameObject target)
   {
     if (target.GetComponent<Afflictable>())
@@ -53,7 +60,7 @@ public class StatusEffects : MonoBehaviour
 
   public void SetBoostedValues(BoostValues boostValues)
   {
-    poisonEffect.dps += (GameManager.CurrentRound - 1) * boostValues.poisonDps * poisonEffect.dps;
-    poisonEffect.statusDuration += (GameManager.CurrentRound - 1) * boostValues.poisonDuration * poisonEffect.statusDuration;
+    poisonEffect.dps += (gameManager.CurrentRound - 1) * boostValues.poisonDps * poisonEffect.dps;
+    poisonEffect.statusDuration += (gameManager.CurrentRound - 1) * boostValues.poisonDuration * poisonEffect.statusDuration;
   }
 }

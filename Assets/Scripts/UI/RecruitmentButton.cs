@@ -14,9 +14,12 @@ public class RecruitmentButton : MonoBehaviour, IPointerEnterHandler, IPointerEx
   [HideInInspector]
   public bool available = true;
 
+  private GameManager gameManager;
+
   private void Awake()
   {
     uiInterface = FindObjectOfType<UIInterface>();
+    gameManager = FindObjectOfType<GameManager>();
   }
 
   private void Start()
@@ -44,7 +47,7 @@ public class RecruitmentButton : MonoBehaviour, IPointerEnterHandler, IPointerEx
 
   public void OnPointerEnter(PointerEventData eventData)
   {
-    if (GameManager.CurrentPhase == PHASES.ESCORT || GameManager.CurrentPhase == PHASES.DEFENSE)
+    if (gameManager.CurrentPhase == PHASES.ESCORT || gameManager.CurrentPhase == PHASES.DEFENSE)
     {
       return;
     }

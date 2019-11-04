@@ -16,10 +16,14 @@ public class ConstructButton : MonoBehaviour, IPointerEnterHandler, IPointerExit
   [HideInInspector]
   public bool available = true;
 
+  private GameManager gameManager;
+
   private void Awake()
   {
     uiInterface = FindObjectOfType<UIInterface>();
     constructableBuildingType = constructableBuildingPrefab.GetComponent<BuildingType>().buildingType;
+
+    gameManager = FindObjectOfType<GameManager>();
   }
 
   private void Start()
@@ -46,7 +50,7 @@ public class ConstructButton : MonoBehaviour, IPointerEnterHandler, IPointerExit
 
   public void OnPointerEnter(PointerEventData eventData)
   {
-    if (GameManager.CurrentPhase == PHASES.ESCORT || GameManager.CurrentPhase == PHASES.DEFENSE)
+    if (gameManager.CurrentPhase == PHASES.ESCORT || gameManager.CurrentPhase == PHASES.DEFENSE)
     {
       return;
     }

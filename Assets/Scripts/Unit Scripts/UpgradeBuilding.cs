@@ -10,6 +10,8 @@ public class UpgradeBuilding : MonoBehaviour
   private UIInterface uiInterface;
   private GameObject upgradePanel;
 
+  private GameManager gameManager;
+
   private void Start()
   {
     uiInterface = FindObjectOfType<UIInterface>();
@@ -25,13 +27,15 @@ public class UpgradeBuilding : MonoBehaviour
     }
 
     upgradePanel.SetActive(false);
+
+    gameManager = FindObjectOfType<GameManager>();
   }
 
   private void Update()
   {
     // Check if this object is selected and belongs to player
     if (CameraObjectSelection.SelectedUnitsList.Contains(gameObject) && GetComponent<Faction>().faction == Faction.FACTIONS.GOBLINS &&
-      (GameManager.CurrentPhase == PHASES.PREPARATION || GameManager.CurrentPhase == PHASES.PREPARATION_DEFENSE))
+      (gameManager.CurrentPhase == PHASES.PREPARATION || gameManager.CurrentPhase == PHASES.PREPARATION_DEFENSE))
     {
       upgradePanel.SetActive(true);
       upgradePanel.GetComponent<UpgradePanel>().building = gameObject;

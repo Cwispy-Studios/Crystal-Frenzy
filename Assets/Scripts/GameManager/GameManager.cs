@@ -30,16 +30,16 @@ public class GameManager : MonoBehaviour
   public static MinerManager minerManager;
   public static TutorialManager tutorialManager;
 
-  private static List<GameObject> conqueredNodes;
+  private List<GameObject> conqueredNodes;
   private GameObject attackNode;
 
   // Enemies get stronger each round
-  public static int CurrentRound { get; private set; } = 0;
-  public static PHASES CurrentPhase { get; private set; }
+  public int CurrentRound { get; private set; } = 0;
+  public PHASES CurrentPhase { get; private set; }
 
   /////////////////////////////////////////////////////////
   // Preparation phase
-  public static bool NodeSelected { get; private set; }
+  public bool NodeSelected { get; private set; }
 
   private GameObject crystalSeekerToDestroy;
 
@@ -166,7 +166,7 @@ public class GameManager : MonoBehaviour
       uiInterface.UpdateUINodeColours();
 
       // While it is false, keep the button not interactable
-      if (lastConqueredNode.GetComponent<CrystalSeekerSpawner>().crystalSelected == false)
+      if (lastConqueredNode.GetComponent<CrystalSeekerSpawner>().CrystalSelected == false)
       {
         uiInterface.PreparationPhaseSetSelectArmyButtonInteractable(false);
       }
@@ -383,7 +383,7 @@ public class GameManager : MonoBehaviour
       NodeSelected = false;
 
       // If capturing a node that has a crystal selected, we reset it to null
-      if (conqueredNode.GetComponent<CrystalSeekerSpawner>().crystalSelected == true)
+      if (conqueredNode.GetComponent<CrystalSeekerSpawner>().CrystalSelected == true)
       {
         conqueredNode.GetComponent<CrystalSeekerSpawner>().ResetCrystalSelection();
       }
@@ -709,7 +709,7 @@ public class GameManager : MonoBehaviour
     GetComponent<HideableManager>().RemoveAllUnits();
   }
 
-  public static GameObject GetActiveNode()
+  public GameObject GetActiveNode()
   {
     return conqueredNodes[conqueredNodes.Count - 1];
   }

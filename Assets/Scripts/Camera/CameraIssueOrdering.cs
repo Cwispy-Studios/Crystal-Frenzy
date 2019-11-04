@@ -11,7 +11,6 @@ public class CameraIssueOrdering : MonoBehaviour
   private List<GameObject> selectableObjects;
 
   private bool orderToGround = false;
-  private bool attackToGround = false;
   private Vector3 orderToGroundPos;
 
   void Update()

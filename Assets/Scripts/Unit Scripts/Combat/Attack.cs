@@ -84,6 +84,8 @@ public class Attack : MonoBehaviour
   private NavMeshObstacle obstacle = null;
   private AnimationState animationState;
 
+  private GameManager gameManager;
+
   [HideInInspector]
   public bool isAttacking = false;
 
@@ -102,6 +104,8 @@ public class Attack : MonoBehaviour
     agent = GetComponent<NavMeshAgent>();
     obstacle = GetComponent<NavMeshObstacle>();
     animationState = GetComponent<AnimationState>();
+
+    gameManager = FindObjectOfType<GameManager>();
   }
 
   private void Start()
@@ -328,19 +332,19 @@ public class Attack : MonoBehaviour
     // If enemy is near enough, try to attack and hold position. Otherwise set the NavMeshAgent to move towards it
     if (animationState.currentAnimationState != CURRENT_ANIMATION_STATE.ATTACK && enemyRange <= (attackRange + unitRadius + enemyRadius))
     {
-      isAttacking = true;
-      animator.SetBool("Move", false);
-
-      // Within range so don't move
-      agent.enabled = false;
-      obstacle.enabled = true;
-
-      // Set the animation status to attacking
-      animationState.currentAnimationState = CURRENT_ANIMATION_STATE.ATTACK;
-
       // Check if ready to attack
       if (attackCooldown >= attackInterval)
       {
+        isAttacking = true;
+        // Set the animation status to attacking
+        animationState.currentAnimationState = CURRENT_ANIMATION_STATE.ATTACK;
+
+        // Within range so don't move
+        agent.enabled = false;
+        obstacle.enabled = true;
+
+        animator.SetBool("Move", false);
+
         // Check if there is projectile
         if (isHealing || projectilePrefab != null)
         {
@@ -564,10 +568,10 @@ public class Attack : MonoBehaviour
 
   public void SetBoostedValues(BoostValues boostValues)
   {
-    attackDamage += (GameManager.CurrentRound - 1) * boostValues.damageModifier * ogAttackRange;
-    attacksPerSecond += (GameManager.CurrentRound - 1) * boostValues.attackSpeedModifier * ogAttackSpeed;
-    attackRange += (GameManager.CurrentRound - 1) * boostValues.attackRangeModifier * ogAttackRange;
-    enemyDetectRange += (GameManager.CurrentRound - 1) * boostValues.detectRangeModifier * ogDetectRange;
+    attackDamage += (gameManager.CurrentRound - 1) * boostValues.damageModifier * ogAttackRange;
+    attacksPerSecond += (gameManager.CurrentRound - 1) * boostValues.attackSpeedModifier * ogAttackSpeed;
+    attackRange += (gameManager.CurrentRound - 1) * boostValues.attackRangeModifier * ogAttackRange;
+    enemyDetectRange += (gameManager.CurrentRound - 1) * boostValues.detectRangeModifier * ogDetectRange;
 
     attackInterval = 1f / attacksPerSecond;
   }
