@@ -29,8 +29,6 @@ public class RepairSlider : MonoBehaviour
 
 
     repairSliderClickInstance = FMODUnity.RuntimeManager.CreateInstance(repairSliderClickSound);
-
-    FMODUnity.RuntimeManager.AttachInstanceToGameObject(repairSliderClickInstance, Camera.main.transform, (Rigidbody)null);
   }
 
   private void OnEnable()
@@ -78,6 +76,7 @@ public class RepairSlider : MonoBehaviour
       repairButton.interactable = false;
     }
 
+    FMODUnity.RuntimeManager.AttachInstanceToGameObject(repairSliderClickInstance, Camera.main.transform, (Rigidbody)null);
     repairSliderClickInstance.setPitch(1 + (sliderValue * 0.5f));
     repairSliderClickInstance.start();
   }
