@@ -14,12 +14,12 @@ public class EventHandler : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
 
   public void OnPointerEnter(PointerEventData eventData)
   {
-    CameraProperties.mouseOverUI = true;
+    playerCamera.GetComponent<CameraManager>().mouseOverUI = true;
   }
 
   public void OnPointerExit(PointerEventData eventData)
   {
-    CameraProperties.mouseOverUI = false;
+    playerCamera.GetComponent<CameraManager>().mouseOverUI = false;
   }
 
   #endregion

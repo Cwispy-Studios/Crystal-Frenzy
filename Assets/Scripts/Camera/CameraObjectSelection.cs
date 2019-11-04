@@ -6,13 +6,13 @@ public class CameraObjectSelection : MonoBehaviour
   [SerializeField]
   private UnitManager unitManager = null;
 
-  private static List<Selectable> activeSelectableUnits = new List<Selectable>();
+  private List<Selectable> activeSelectableUnits = new List<Selectable>();
 
-  public static List<GameObject> SelectedUnitsList { get; private set; }
+  public List<GameObject> SelectedUnitsList { get; private set; }
 
   private bool isSelecting = false;
   private Vector3 originalMousePosition;
-  public static List<GameObject> MouseHoverUnitsList { get; private set; }
+  public List<GameObject> MouseHoverUnitsList { get; private set; }
   private bool friendlyObjectsInList = false;
   private bool friendlyUnitsInList = false;
   private bool nonFriendlyUnitsPurgedFromList = false;
@@ -52,15 +52,15 @@ public class CameraObjectSelection : MonoBehaviour
       activeSelectableUnits[i].CheckFactionColour(GetComponent<Faction>().faction);
     }
 
-    if (CameraProperties.selectionDisabled)
+    if (playerCamera.GetComponent<CameraManager>().selectionDisabled)
     {
       isSelecting = false;
-      CameraProperties.selectionDisabled = false;
+      playerCamera.GetComponent<CameraManager>().selectionDisabled = false;
       return;
     }
     
     // When LMB is pressed down
-    if (Input.GetMouseButtonDown(0) && !CameraProperties.mouseOverUI)
+    if (Input.GetMouseButtonDown(0) && !playerCamera.GetComponent<CameraManager>().mouseOverUI)
     {
       // Begin selection and save this mouse position
       isSelecting = true;
@@ -145,7 +145,7 @@ public class CameraObjectSelection : MonoBehaviour
     } 
 
     // Mouse is just hovering over the map
-    else if (!CameraProperties.mouseOverUI)
+    else if (!playerCamera.GetComponent<CameraManager>().mouseOverUI)
     {
       // Clear the current hover list
       if (MouseHoverUnitsList.Count > 1)
@@ -529,17 +529,17 @@ public class CameraObjectSelection : MonoBehaviour
     }
   }
 
-  public static void AddSelectable(Selectable selectableObject)
+  public void AddSelectable(Selectable selectableObject)
   {
     activeSelectableUnits.Add(selectableObject);
   }
 
-  public static void RemoveSelectable(Selectable selectableObject)
+  public void RemoveSelectable(Selectable selectableObject)
   {
     activeSelectableUnits.Remove(selectableObject);
   }
 
-  public static bool IsObjectSelected(GameObject check)
+  public bool IsObjectSelected(GameObject check)
   {
     return SelectedUnitsList.Contains(check);
   }

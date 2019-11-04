@@ -17,7 +17,7 @@ using UnityEngine.UI;
 
 public class HealthBarController : MonoBehaviour
 {
-  public static Color normalColour = new Color(255f / 255f, 0 / 255f, 0 / 255f);
+  public Color normalColour = new Color(255f / 255f, 0 / 255f, 0 / 255f);
   public static Color poisonColour = new Color(140f / 255f, 255f / 255f, 140f / 255f);
   public static Color slowColour = new Color(255f / 255f, 205f / 255f, 130f / 255f);
   public static Color curseColour = new Color(255f / 255f, 150f / 255f, 255f / 255f);

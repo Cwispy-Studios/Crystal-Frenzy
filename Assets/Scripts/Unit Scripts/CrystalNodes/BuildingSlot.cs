@@ -11,6 +11,13 @@ public class BuildingSlot : MonoBehaviour
   [SerializeField]
   private GameObject buildingSlot = null;
 
+  private Camera playerCamera;
+
+  private void Awake()
+  {
+    playerCamera = Camera.main;
+  }
+
   private void Update()
   {
     if (Constructed == false)
@@ -20,8 +27,8 @@ public class BuildingSlot : MonoBehaviour
 
       if (inControl == false)
       {
-        CameraObjectSelection.SelectedUnitsList.Remove(buildingSlot);
-        CameraObjectSelection.MouseHoverUnitsList.Remove(buildingSlot);
+        playerCamera.GetComponent<CameraObjectSelection>().SelectedUnitsList.Remove(buildingSlot);
+        playerCamera.GetComponent<CameraObjectSelection>().MouseHoverUnitsList.Remove(buildingSlot);
       }
     }
   }

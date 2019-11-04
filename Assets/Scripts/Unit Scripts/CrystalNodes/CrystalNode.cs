@@ -31,10 +31,12 @@ public class CrystalNode : MonoBehaviour
     targeted = false;             // Targeted nodes are the nodes we are attacking
 
   private GameManager gameManager;
+  private Camera playerCamera;
 
   private void Awake()
   {
     gameManager = FindObjectOfType<GameManager>();
+    playerCamera = Camera.main;
   }
 
   // To add disable component in inspector
@@ -44,7 +46,7 @@ public class CrystalNode : MonoBehaviour
   {
     if (gameManager.CurrentPhase == PHASES.PREPARATION && !gameManager.NodeSelected)
     {
-      if (CameraObjectSelection.IsObjectSelected(gameObject))
+      if (playerCamera.GetComponent<CameraObjectSelection>().IsObjectSelected(gameObject))
       {
         gameManager.GetActiveNode().GetComponent<CrystalSeekerSpawner>().SetCrystalTarget(gameObject);
       }

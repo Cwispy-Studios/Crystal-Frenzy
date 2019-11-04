@@ -23,6 +23,7 @@ public class Farm : MonoBehaviour
   private UIInterface uiInterface;
 
   private GameManager gameManager;
+  private Camera playerCamera;
 
   private void Awake()
   {
@@ -34,6 +35,7 @@ public class Farm : MonoBehaviour
     maxLevels = farmUpgradeProperties.Length;
 
     gameManager = FindObjectOfType<GameManager>();
+    playerCamera = Camera.main;
   }
 
   private void Start()
@@ -54,7 +56,7 @@ public class Farm : MonoBehaviour
     }
 
     // Check if this object is selected
-    if (CameraObjectSelection.SelectedUnitsList.Contains(gameObject) && (gameManager.CurrentPhase == PHASES.PREPARATION || gameManager.CurrentPhase == PHASES.PREPARATION_DEFENSE))
+    if (playerCamera.GetComponent<CameraObjectSelection>().SelectedUnitsList.Contains(gameObject) && (gameManager.CurrentPhase == PHASES.PREPARATION || gameManager.CurrentPhase == PHASES.PREPARATION_DEFENSE))
     {
       upgradePanel.SetActive(true);
     }

@@ -40,8 +40,11 @@ public class Selectable : MonoBehaviour
   private int blinkLoops = 0;
   private const int MAX_LOOPS = 4;
 
+  private Camera playerCamera;
+
   private void Awake()
   {
+    playerCamera = Camera.main;
     selectionCircle = Instantiate(selectionCirclePrefab);
     selectionCircle.transform.SetParent(gameObject.transform, false);
     selectionCircle.name = "SelectionCircle";
@@ -66,12 +69,12 @@ public class Selectable : MonoBehaviour
 
   private void OnEnable()
   {
-    CameraObjectSelection.AddSelectable(this);
+    playerCamera.GetComponent<CameraObjectSelection>().AddSelectable(this);
   }
 
   private void OnDisable()
   {
-    CameraObjectSelection.RemoveSelectable(this);
+    playerCamera.GetComponent<CameraObjectSelection>().RemoveSelectable(this);
   }
 
   private void Update()

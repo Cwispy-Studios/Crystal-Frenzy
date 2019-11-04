@@ -4,8 +4,8 @@ using UnityEngine.AI;
 
 public class HideableManager : MonoBehaviour
 {
-  public static List<FogOfWarMesh> fogOfWarMeshList = new List<FogOfWarMesh>();
-  public static List<GameObject> hideableUnits = new List<GameObject>();
+  public List<FogOfWarMesh> fogOfWarMeshList = new List<FogOfWarMesh>();
+  public List<GameObject> hideableUnits = new List<GameObject>();
 
   private const float UPDATE_INTERVAL = 1f;
   private float updateCountdown = UPDATE_INTERVAL;

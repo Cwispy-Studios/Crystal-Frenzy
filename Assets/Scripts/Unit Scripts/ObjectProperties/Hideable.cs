@@ -2,13 +2,20 @@
 
 public class Hideable: MonoBehaviour
 {
+  private HideableManager hideableManager;
+
+  private void Awake()
+  {
+    hideableManager = FindObjectOfType<HideableManager>();
+  }
+
   private void OnEnable()
   {
-    HideableManager.hideableUnits.Add(gameObject);
+    hideableManager.hideableUnits.Add(gameObject);
   }
 
   private void OnDisable()
   {
-    HideableManager.hideableUnits.Remove(gameObject);
+    hideableManager.hideableUnits.Remove(gameObject);
   }
 }

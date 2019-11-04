@@ -320,7 +320,7 @@ public class UnitManager : MonoBehaviour
 
   private void SelectUnitButton(GameObject selectedUnit, GameObject selectedButton)
   {
-    CameraProperties.selectionDisabled = true;
+    playerCamera.GetComponent<CameraManager>().selectionDisabled = true;
     CameraObjectSelection selector = playerCamera.GetComponent<CameraObjectSelection>();
 
     // If shift is not held, we are selecting that unit alone, clear the list

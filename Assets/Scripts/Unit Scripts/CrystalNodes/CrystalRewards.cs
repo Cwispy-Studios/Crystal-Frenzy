@@ -65,10 +65,12 @@ public class CrystalRewards : MonoBehaviour
   private float popupHoverLength = 0;
 
   private UIInterface uiInterface;
+  private Camera playerCamera;
 
   private void Awake()
   {
     uiInterface = FindObjectOfType<UIInterface>();
+    playerCamera = Camera.main;
   }
 
   private void Start()
@@ -116,7 +118,7 @@ public class CrystalRewards : MonoBehaviour
   private void Update()
   {
     // Check if mouse is hovering over object
-    if (CameraObjectSelection.MouseHoverUnitsList.Contains(gameObject))
+    if (playerCamera.GetComponent<CameraObjectSelection>().MouseHoverUnitsList.Contains(gameObject))
     {
       popupHoverLength += Time.deltaTime;
     }

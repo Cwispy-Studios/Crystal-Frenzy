@@ -15,7 +15,7 @@ public class CameraIssueOrdering : MonoBehaviour
 
   void Update()
   {
-    selectableObjects = CameraObjectSelection.SelectedUnitsList;
+    selectableObjects = GetComponent<CameraObjectSelection>().SelectedUnitsList;
 
     // Check if there are friendly units in that list
     bool friendlyUnitsInList = true;

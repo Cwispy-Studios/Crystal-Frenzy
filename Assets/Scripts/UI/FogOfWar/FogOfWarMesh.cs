@@ -19,13 +19,20 @@ public class FogOfWarMesh : MonoBehaviour
     }
   }
 
+  private HideableManager hideableManager = null;
+
+  private void Awake()
+  {
+    hideableManager = FindObjectOfType<HideableManager>();
+  }
+
   private void OnEnable()
   {
-    HideableManager.fogOfWarMeshList.Add(this);
+    hideableManager.fogOfWarMeshList.Add(this);
   }
 
   private void OnDisable()
   {
-    HideableManager.fogOfWarMeshList.Remove(this);
+    hideableManager.fogOfWarMeshList.Remove(this);
   }
 }
