@@ -489,6 +489,9 @@ The percussions and Tuba also become silent as the player's Crystal Seeker dies,
 		</relationship>
 	</object>
 	<object class="EventMixerMaster" id="{5861f92b-7518-4819-b518-2c6f7675cfbd}">
+		<property name="volume">
+			<value>-2</value>
+		</property>
 		<relationship name="automators">
 			<destination>{b8c6689f-0e72-4d2c-897c-a683697e7bc1}</destination>
 		</relationship>

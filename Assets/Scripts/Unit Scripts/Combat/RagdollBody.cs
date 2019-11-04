@@ -22,7 +22,8 @@ public class RagdollBody : MonoBehaviour
     {
       if (!soundPlayed)
       {
-        FMODUnity.RuntimeManager.PlayOneShot(shrinkSound);
+        soundPlayed = true;
+        FMODUnity.RuntimeManager.PlayOneShotAttached(shrinkSound, gameObject);
       }
 
       transform.localScale -= Vector3.one * shrinkSpeed * Time.deltaTime;

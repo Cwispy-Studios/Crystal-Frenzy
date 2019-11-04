@@ -107,8 +107,6 @@ public class TutorialManager : MonoBehaviour
     button2.gameObject.SetActive(true);
 
     // Set the next panels for the buttons
-    button1.onClick.RemoveAllListeners();
-    button2.onClick.RemoveAllListeners();
     button1.onClick.AddListener(panels[currentTutorialPanel + 1]);
     button2.onClick.AddListener(panels[9]);
 
@@ -133,7 +131,7 @@ public class TutorialManager : MonoBehaviour
     button2.gameObject.SetActive(false);
 
     // Set the next panels for the buttons
-    button1.onClick.RemoveAllListeners();
+    button1.onClick.RemoveListener(panels[currentTutorialPanel]);
     button1.onClick.AddListener(panels[currentTutorialPanel + 1]);
   }
 
@@ -154,7 +152,7 @@ public class TutorialManager : MonoBehaviour
     button2.gameObject.SetActive(false);
 
     // Set the next panels for the buttons
-    button1.onClick.RemoveAllListeners();
+    button1.onClick.RemoveListener(panels[currentTutorialPanel]);
     button1.onClick.AddListener(panels[currentTutorialPanel + 1]);
 
     playerCamera.GetComponent<CameraManager>().PointCameraAtPosition(fortress.transform.position, false, false, 20f, 1.2f, false);
@@ -209,7 +207,7 @@ public class TutorialManager : MonoBehaviour
     button2.gameObject.SetActive(false);
 
     // Set the next panels for the buttons
-    button1.onClick.RemoveAllListeners();
+    button1.onClick.RemoveListener(panels[currentTutorialPanel]);
     button1.onClick.AddListener(panels[currentTutorialPanel + 1]);
   }
 
@@ -230,7 +228,7 @@ public class TutorialManager : MonoBehaviour
     button2.gameObject.SetActive(false);
 
     // Set the next panels for the buttons
-    button1.onClick.RemoveAllListeners();
+    button1.onClick.RemoveListener(panels[currentTutorialPanel]);
     button1.onClick.AddListener(panels[currentTutorialPanel + 1]);
   }
 
@@ -251,7 +249,7 @@ public class TutorialManager : MonoBehaviour
     button2.gameObject.SetActive(false);
 
     // Set the next panels for the buttons
-    button1.onClick.RemoveAllListeners();
+    button1.onClick.RemoveListener(panels[currentTutorialPanel]);
     button1.onClick.AddListener(panels[currentTutorialPanel + 1]);
   }
 
@@ -272,7 +270,7 @@ public class TutorialManager : MonoBehaviour
     button2.gameObject.SetActive(false);
 
     // Set the next panels for the buttons
-    button1.onClick.RemoveAllListeners();
+    button1.onClick.RemoveListener(panels[currentTutorialPanel]);
     button1.onClick.AddListener(ContinueGame);
   }
 
@@ -293,7 +291,7 @@ public class TutorialManager : MonoBehaviour
     button2.gameObject.SetActive(false);
 
     // Set the next panels for the buttons
-    button1.onClick.RemoveAllListeners();
+    button1.onClick.RemoveListener(panels[currentTutorialPanel]);
     button1.onClick.AddListener(ContinueGame);
   }
 

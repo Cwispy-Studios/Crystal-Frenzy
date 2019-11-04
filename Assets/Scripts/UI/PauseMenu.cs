@@ -19,6 +19,9 @@ public class PauseMenu : MonoBehaviour
   [SerializeField]
   private Text confirmationText = null;
 
+  [FMODUnity.EventRef]
+  public string menuOpenSound = "", menuCloseSound = "";
+
   private FMOD.Studio.Bus Master;
 
   private const float FADE_DURATION = 2f;
@@ -42,6 +45,8 @@ public class PauseMenu : MonoBehaviour
     confirmationGreyScreen.enabled = false;
     confirmationPanel.SetActive(false);
 
+    FMODUnity.RuntimeManager.PlayOneShotAttached(menuOpenSound, Camera.main.gameObject);
+
     Time.timeScale = 0;
   }
 
@@ -63,6 +68,8 @@ public class PauseMenu : MonoBehaviour
 
   private void ContinueGame()
   {
+    FMODUnity.RuntimeManager.PlayOneShotAttached(menuCloseSound, Camera.main.gameObject);
+
     Time.timeScale = 1f;
     uiInterface.GetComponent<CanvasGroup>().interactable = true;
     gameObject.SetActive(false);

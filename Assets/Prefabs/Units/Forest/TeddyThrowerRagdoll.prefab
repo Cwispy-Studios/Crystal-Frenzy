@@ -230,7 +230,7 @@ GameObject:
   - component: {fileID: 2799282060029815148}
   - component: {fileID: 2550704084273687787}
   m_Layer: 0
-  m_Name: TeddyThrower 1
+  m_Name: TeddyThrowerRagdoll
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -340,6 +340,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46a5c053d0d1e5b40a399924992c48b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shrinkSound: event:/SFX/Units/RagdollShrink
 --- !u!1 &2799282060029815892
 GameObject:
   m_ObjectHideFlags: 0

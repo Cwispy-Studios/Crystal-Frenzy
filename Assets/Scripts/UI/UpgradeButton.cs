@@ -47,6 +47,7 @@ public class UpgradeButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
   private void Upgrade()
   {
+    Camera.main.GetComponent<UISoundEmitter>().PlayButtonClick();
     upgraded = true;
     nextLevelButton = GameManager.upgradeManager.UpgradeButton(upgradeType);
 
