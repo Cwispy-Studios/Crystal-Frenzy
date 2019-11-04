@@ -88,7 +88,7 @@ namespace BezierSolution
       else
       {
         collisionCountdown = 0;
-        //CheckCollision();
+        CheckCollision();
       }
 
       targetSpeed *= (1f - slowDownPerc);

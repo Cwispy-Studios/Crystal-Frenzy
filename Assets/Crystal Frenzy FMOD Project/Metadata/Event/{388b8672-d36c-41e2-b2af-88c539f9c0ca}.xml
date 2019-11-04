@@ -121,6 +121,7 @@
 	<object class="MixerBusEffectChain" id="{9e9905ee-6ed3-4fe6-a806-8b35c8bc651b}">
 		<relationship name="effects">
 			<destination>{2a241660-8ee2-4769-a123-de1eb77ba17d}</destination>
+			<destination>{06bf5c45-63fd-4b5d-bec1-c8f8244bcc26}</destination>
 			<destination>{21221664-83c7-4222-8a11-d1003a3e362a}</destination>
 			<destination>{cc9620ec-3690-4c6c-a11c-14e137771343}</destination>
 			<destination>{abaca85c-3b23-468f-a3e5-03b72b8e88df}</destination>
@@ -132,8 +133,29 @@
 		</relationship>
 	</object>
 	<object class="MixerBusFader" id="{b596fa7e-a989-42bd-90e6-e421d9332d35}" />
-	<object class="SpatialiserEffect" id="{a5a17e47-e835-443c-9665-b439a4e7f8ce}" />
+	<object class="SpatialiserEffect" id="{a5a17e47-e835-443c-9665-b439a4e7f8ce}">
+		<property name="minimumDistance">
+			<value>35</value>
+		</property>
+		<property name="maximumDistance">
+			<value>100</value>
+		</property>
+	</object>
 	<object class="MixerBusFader" id="{2a241660-8ee2-4769-a123-de1eb77ba17d}" />
+	<object class="ThreeEQEffect" id="{06bf5c45-63fd-4b5d-bec1-c8f8244bcc26}">
+		<property name="lowGain">
+			<value>4</value>
+		</property>
+		<property name="midGain">
+			<value>1.5</value>
+		</property>
+		<property name="highGain">
+			<value>-3.5</value>
+		</property>
+		<property name="lowCrossover">
+			<value>500</value>
+		</property>
+	</object>
 	<object class="PitchShifterEffect" id="{21221664-83c7-4222-8a11-d1003a3e362a}">
 		<property name="pitch">
 			<value>1.01000011</value>
@@ -160,6 +182,9 @@
 		</relationship>
 	</object>
 	<object class="ObjectSpatialiserEffect" id="{abaca85c-3b23-468f-a3e5-03b72b8e88df}">
+		<property name="bypass">
+			<value>true</value>
+		</property>
 		<property name="distanceRolloffType">
 			<value>3</value>
 		</property>

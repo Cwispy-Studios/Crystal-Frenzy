@@ -9,12 +9,13 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: BoltMaterial
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: _EMISSION
+  m_ShaderKeywords: _ALPHAPREMULTIPLY_ON _EMISSION
   m_LightmapFlags: 1
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
+  m_CustomRenderQueue: 3000
+  stringTagMap:
+    RenderType: Transparent
   disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3
@@ -60,24 +61,26 @@ Material:
     - Vector1_553BBDC0: 5
     - Vector1_A05D32F9: 0.1
     - Vector1_DB0FD014: 7
+    - _BumpAmt: 10
     - _BumpScale: 1
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
-    - _DstBlend: 0
+    - _DstBlend: 10
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
+    - _InvFade: 1
     - _Metallic: 0
-    - _Mode: 0
+    - _Mode: 3
     - _OcclusionStrength: 1
     - _Parallax: 0.02
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _UVSec: 0
-    - _ZWrite: 1
+    - _ZWrite: 0
     m_Colors:
     - Color_1BDEB42E: {r: 1.472492, g: 1.737282, b: 1.825546, a: 0}
     - Color_93D04CF8: {r: 0.2775454, g: 0.7058087, b: 0.9339623, a: 0}
-    - _Color: {r: 0.9350057, g: 0.05660379, b: 1, a: 1}
-    - _EmissionColor: {r: 1, g: 0.5953326, b: 0, a: 1}
+    - _Color: {r: 0.9350057, g: 0.05660379, b: 1, a: 0.7764706}
+    - _EmissionColor: {r: 1.2311444, g: 0.73385864, b: 0, a: 1}

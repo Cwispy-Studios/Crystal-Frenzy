@@ -150,7 +150,14 @@
 		</relationship>
 	</object>
 	<object class="MixerBusFader" id="{2001e4b4-cd6d-4d66-b2b8-706ed3cc7ac0}" />
-	<object class="SpatialiserEffect" id="{3c02328f-8b8c-446d-a01a-78b5de78363b}" />
+	<object class="SpatialiserEffect" id="{3c02328f-8b8c-446d-a01a-78b5de78363b}">
+		<property name="minimumDistance">
+			<value>40</value>
+		</property>
+		<property name="maximumDistance">
+			<value>100</value>
+		</property>
+	</object>
 	<object class="MixerBusFader" id="{ef220165-d13f-41ff-a030-f7423ce54c2d}" />
 	<object class="CompressorEffect" id="{ad3f94eb-ea85-4e41-b04b-981d72c3b227}">
 		<property name="gain">
@@ -186,6 +193,9 @@
 		</relationship>
 	</object>
 	<object class="ObjectSpatialiserEffect" id="{12e3ee67-dfda-4816-a649-d3fad87d42ea}">
+		<property name="bypass">
+			<value>true</value>
+		</property>
 		<property name="distanceRolloffType">
 			<value>3</value>
 		</property>

@@ -22,8 +22,6 @@ public class MinerManager : MonoBehaviour
     CurrentMinerHealth = MaxMinerHealth = minerPrefab.GetComponent<Health>().MaxHealth;
     minerHealthText.text = Mathf.CeilToInt(CurrentMinerHealth).ToString() + " / " + Mathf.CeilToInt(MaxMinerHealth).ToString();
 
-    CurrentMinerHealth -= 100f;
-
     musicEmitter = Camera.main.GetComponent<FMODUnity.StudioEventEmitter>();
   }
 

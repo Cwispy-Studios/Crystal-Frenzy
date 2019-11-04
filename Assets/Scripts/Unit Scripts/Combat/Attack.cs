@@ -453,6 +453,8 @@ public class Attack : MonoBehaviour
     isHealing = false;
 
     attackedTarget.GetComponent<Health>().ModifyHealth(attackDamage * healPct, Vector3.zero);
+    attackedTarget = null;
+    detectedTarget = null;
 
     FMODUnity.RuntimeManager.PlayOneShot(healSound, transform.position);
   }
