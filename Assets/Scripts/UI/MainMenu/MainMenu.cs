@@ -37,8 +37,6 @@ public class MainMenu : MonoBehaviour
 
   private void FadeScreen(NextScene nextScene)
   {
-    musicEmitter.SetParameter("MenuVolume", 0);
-
     fadeScreen.gameObject.SetActive(true);
     StartFade(nextScene);
   }

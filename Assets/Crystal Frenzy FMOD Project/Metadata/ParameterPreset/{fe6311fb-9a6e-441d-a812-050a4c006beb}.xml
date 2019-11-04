@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.00.00">
 	<object class="ParameterPreset" id="{fe6311fb-9a6e-441d-a812-050a4c006beb}">
 		<property name="name">
-			<value>Volume</value>
+			<value>LevelVolume</value>
 		</property>
 		<relationship name="folder">
 			<destination>{4e07ee03-ae05-49b9-8834-c847d1b701f7}</destination>
@@ -12,9 +12,6 @@
 		</relationship>
 	</object>
 	<object class="GameParameter" id="{2ec8267b-66ac-4e9f-ad28-9acaffe646b4}">
-		<property name="isGlobal">
-			<value>true</value>
-		</property>
 		<property name="initialValue">
 			<value>1</value>
 		</property>

@@ -1,5 +1,7 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -9,20 +11,25 @@ public class PauseMenu : MonoBehaviour
   private GameObject uiInterface = null, confirmationPanel = null;
 
   [SerializeField]
-  private Button continueButton = null, controlsButton = null, quitButton = null, yesButton = null, noButton = null;
+  private Button continueButton = null, controlsButton = null, restartButton = null, quitButton = null, yesButton = null, noButton = null;
 
   [SerializeField]
-  private Image confirmationGreyScreen = null;
+  private Image confirmationGreyScreen = null, fadeScreen = null;
+
+  [SerializeField]
+  private Text confirmationText = null;
 
   private FMODUnity.StudioEventEmitter musicEmitter;
+
+  private const float FADE_DURATION = 2f;
 
   private void Awake()
   {
     continueButton.onClick.AddListener(ContinueGame);
     controlsButton.onClick.AddListener(ControlsMenu);
-    quitButton.onClick.AddListener(AreYouSure);
+    restartButton.onClick.AddListener(delegate { AreYouSure(RestartGame, "Restart The Game?"); });
+    quitButton.onClick.AddListener(delegate { AreYouSure(QuitGame, "Quit The Game?"); });
 
-    yesButton.onClick.AddListener(QuitGame);
     noButton.onClick.AddListener(ReturnToMenu);
 
     musicEmitter = Camera.main.GetComponent<FMODUnity.StudioEventEmitter>();
@@ -64,8 +71,24 @@ public class PauseMenu : MonoBehaviour
 
   }
 
-  private void AreYouSure()
+  private void RestartGame()
   {
+    SceneManager.LoadScene("Level");
+  }
+
+  private void QuitGame()
+  {
+    SceneManager.LoadScene("MainMenu");
+  }
+
+
+  private void AreYouSure(NextScene nextScene, string confirmText)
+  {
+    yesButton.onClick.RemoveAllListeners();
+    yesButton.onClick.AddListener( delegate { FadeScreen(nextScene); });
+
+    confirmationText.text = confirmText;
+
     continueButton.interactable = false;
     controlsButton.interactable = false;
     quitButton.interactable = false;
@@ -84,44 +107,40 @@ public class PauseMenu : MonoBehaviour
     confirmationPanel.SetActive(false);
   }
 
-  private void QuitGame()
+  private void FadeScreen(NextScene nextScene)
   {
-    Application.Quit();
+    Time.timeScale = 1;
+    GetComponent<CanvasGroup>().interactable = false;
+
+    fadeScreen.gameObject.SetActive(true);
+    StartFade(nextScene);
   }
 
-  //private void FadeScreen(NextScene nextScene)
-  //{
-  //  musicEmitter.SetParameter("MenuVolume", 0);
+  private IEnumerator LerpFadeScreen(NextScene nextScene)
+  {
+    float startTime = Time.time;
+    Color currentColor = fadeScreen.color;
+    Color targetColor = currentColor;
+    targetColor.a = 1;
 
-  //  fadeScreen.gameObject.SetActive(true);
-  //  StartFade(nextScene);
-  //}
+    while (Time.time - startTime < FADE_DURATION)
+    {
+      fadeScreen.color = Color.Lerp(currentColor, targetColor, (Time.time - startTime) / FADE_DURATION);
+      musicEmitter.SetParameter("LevelVolume", 1 - ((Time.time - startTime) / FADE_DURATION));
 
-  //private IEnumerator LerpFadeScreen(NextScene nextScene)
-  //{
-  //  float startTime = Time.time;
-  //  Color currentColor = fadeScreen.color;
-  //  Color targetColor = currentColor;
-  //  targetColor.a = 1;
+      Debug.Log(1 - ((Time.time - startTime) / FADE_DURATION));
 
-  //  while (Time.time - startTime < FADE_DURATION)
-  //  {
-  //    fadeScreen.color = Color.Lerp(currentColor, targetColor, (Time.time - startTime) / FADE_DURATION);
-  //    musicEmitter.SetParameter("MenuVolume", 1 - ((Time.time - startTime) / FADE_DURATION));
+      yield return 1;
+    }
 
-  //    Debug.Log(1 - ((Time.time - startTime) / FADE_DURATION));
+    fadeScreen.color = targetColor;
+    musicEmitter.SetParameter("LevelVolume", 0);
 
-  //    yield return 1;
-  //  }
+    nextScene();
+  }
 
-  //  fadeScreen.color = targetColor;
-  //  musicEmitter.SetParameter("MenuVolume", 0);
-
-  //  nextScene();
-  //}
-
-  //private Coroutine StartFade(NextScene nextScene)
-  //{
-  //  return StartCoroutine(LerpFadeScreen(nextScene));
-  //}
+  private Coroutine StartFade(NextScene nextScene)
+  {
+    return StartCoroutine(LerpFadeScreen(nextScene));
+  }
 }
