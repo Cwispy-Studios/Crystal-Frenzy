@@ -2,12 +2,20 @@
 using UnityEngine;
 using UnityEngine.UI;
 
+public enum PHASE_OUTCOME
+{
+  ESCORT_WIN = 0,
+  ESCORT_LOSE,
+  DEFENSE_WIN,
+  DEFENSE_LOSE
+}
+
 public class LootRewardPanel : MonoBehaviour
 {
   public delegate void NextPhase();
 
   [SerializeField]
-  private Text goldText = null, crystalText = null, unitPointsText = null;
+  private Text phaseOutcomeText = null, goldText = null, crystalText = null, unitPointsText = null, bonusCrystalsText = null;
   [SerializeField]
   private Text[] additionalRewardsText = null;
   [HideInInspector]
@@ -22,8 +30,33 @@ public class LootRewardPanel : MonoBehaviour
     transform.localScale = Vector3.zero;
   }
 
-  public void SetText(LootTargetPanel lootTargetPanel, NextPhase nextPhase)
+  public void SetText(LootTargetPanel lootTargetPanel, NextPhase nextPhase, PHASE_OUTCOME phaseOutcome)
   {
+    string outcomeColour = "";
+
+    switch (phaseOutcome)
+    {
+      case PHASE_OUTCOME.ESCORT_WIN:
+        outcomeColour = "<color=green>";
+        phaseOutcomeText.text = outcomeColour + "ESCORT SUCCESS: CRYSTAL CAPTURED" + "</color>";
+        break;
+
+      case PHASE_OUTCOME.ESCORT_LOSE:
+        outcomeColour = "<color=red>";
+        phaseOutcomeText.text = outcomeColour + "ESCORT FAILED: MINER DESTROYED" + "</color>";
+        break;
+
+      case PHASE_OUTCOME.DEFENSE_WIN:
+        outcomeColour = "<color=blue>";
+        phaseOutcomeText.text = outcomeColour + "DEFENSE SUCCESS: CRYSTAL DEFENDED" + "</color>";
+        break;
+
+      case PHASE_OUTCOME.DEFENSE_LOSE:
+        outcomeColour = "<color=red>";
+        phaseOutcomeText.text = outcomeColour + "DEFENSE FAILED: CRYSTAL LOST" + "</color>";
+        break;
+    }
+
     continueButton.onClick.RemoveAllListeners();
     continueButton.onClick.AddListener(delegate { nextPhase(); });
 
@@ -55,6 +88,7 @@ public class LootRewardPanel : MonoBehaviour
     }
 
     unitPointsText.text = GameManager.resourceManager.ArmySize.ToString();
+    bonusCrystalsText.text = "+" + (GameManager.resourceManager.ArmySize * GameManager.resourceManager.crystalsPerUnitPoint).ToString();
 
     int numAddRewards = 0;
 

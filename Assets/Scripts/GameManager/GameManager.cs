@@ -306,7 +306,7 @@ public class GameManager : MonoBehaviour
     attackNode.GetComponent<CrystalNode>().SetCrystalColour(true);
 
     // Show the loot reward panel
-    lootRewardPanel.SetText(uiInterface.LootTargetPanel, EscortWin);
+    lootRewardPanel.SetText(uiInterface.LootTargetPanel, EscortWin, PHASE_OUTCOME.ESCORT_WIN);
     lootRewardPanel.ShowLootPanel(true);
   }
 
@@ -396,6 +396,45 @@ public class GameManager : MonoBehaviour
         conqueredNode.GetComponent<CrystalSeekerSpawner>().ResetCrystalSelection();
       }
     }
+  }
+
+  public void EscortLoseCutscene(GameObject crystalSeeker)
+  {
+    crystalSeekerToDestroy = crystalSeeker;
+
+    musicEmitter.SetParameter("At Loot Reward Screen", 1);
+
+    // Fade out the UI Interfaces
+    UIFade uiFade = uiInterface.GetComponent<UIFade>();
+    uiFade.BeginFadeOut();
+
+    // Disable camera controls
+    playerCamera.GetComponent<CameraIssueOrdering>().enabled = false;
+    playerCamera.GetComponent<CameraObjectSelection>().ClearSelectionList();
+    playerCamera.GetComponent<CameraObjectSelection>().ClearHoverList(true);
+    playerCamera.GetComponent<CameraObjectSelection>().enabled = false;
+    playerCamera.GetComponent<CameraControls>().enabled = false;
+
+    // Move the camera over to the node we just conquered
+    playerCamera.GetComponent<CameraManager>().PointCameraAtPosition(attackNode.transform.position, false, false, 0, 0.5f, false);
+
+    // Start rotation around the node
+    playerCamera.GetComponent<CameraManager>().RotateAroundObject(attackNode);
+
+    // Disable wave spawners of the conquered node
+    attackNode.GetComponent<CrystalNode>().SetWaveSpawnersActive(false, null);
+    // Make the node visible
+    attackNode.GetComponent<ConqueredNode>().SetAssemblyFOV(true);
+
+    // Kill all enemies
+    GetComponent<HideableManager>().KillAllUnits();
+
+    // Change crystal colour
+    attackNode.GetComponent<CrystalNode>().SetCrystalColour(true);
+
+    // Show the loot reward panel
+    lootRewardPanel.SetText(uiInterface.LootTargetPanel, EscortWin, PHASE_OUTCOME.ESCORT_LOSE);
+    lootRewardPanel.ShowLootPanel(true);
   }
 
   public void EscortLose()

@@ -295,6 +295,7 @@ namespace BezierSolution
 
       musicEmitter.SetParameter("Player Crystal Seeker Progress", 0);
       musicEmitter.SetParameter("Enemy Crystal Seeker Progress", 0);
+      musicEmitter.SetParameter("Enemy Crystal Seeker Health", 1);
     }
   }
 }

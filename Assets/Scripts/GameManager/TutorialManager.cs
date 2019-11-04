@@ -110,7 +110,7 @@ public class TutorialManager : MonoBehaviour
     button1.onClick.RemoveAllListeners();
     button2.onClick.RemoveAllListeners();
     button1.onClick.AddListener(panels[currentTutorialPanel + 1]);
-    button2.onClick.AddListener(panels[8]);
+    button2.onClick.AddListener(panels[9]);
 
     // Do not allow player to select Crystal yet
     playerCamera.GetComponent<CameraObjectSelection>().enabled = false;
@@ -264,7 +264,7 @@ public class TutorialManager : MonoBehaviour
 
     // Set the texts
     tutorialText.text = tutorialTexts[currentTutorialPanel - 1];
-    button1Text.text = "I am ready";
+    button1Text.text = "To Battle!";
     button2Text.text = "";
 
     // Set buttons active
@@ -281,11 +281,11 @@ public class TutorialManager : MonoBehaviour
    * ************************************************************************/
   private void SetPanelNine()
   {
-    currentTutorialPanel = 8;
+    currentTutorialPanel = 9;
 
     // Set the texts
     tutorialText.text = tutorialTexts[currentTutorialPanel - 1];
-    button1Text.text = "Continue";
+    button1Text.text = "To Battle!";
     button2Text.text = "";
 
     // Set buttons active
