@@ -49,6 +49,9 @@ public class Attack : MonoBehaviour
   private bool isHealing = false;
 
   [SerializeField]
+  private GameObject healParticleSystem = null;
+
+  [SerializeField]
   private COMBATANT_TYPE preferredTarget = COMBATANT_TYPE.NORMAL;
   [SerializeField]
   private GameObject projectilePrefab = null;
@@ -453,10 +456,11 @@ public class Attack : MonoBehaviour
     isHealing = false;
 
     attackedTarget.GetComponent<Health>().ModifyHealth(attackDamage * healPct, Vector3.zero);
+    Instantiate(healParticleSystem, attackedTarget.transform.position, new Quaternion());
+    FMODUnity.RuntimeManager.PlayOneShot(healSound, attackedTarget.transform.position);
+
     attackedTarget = null;
     detectedTarget = null;
-
-    FMODUnity.RuntimeManager.PlayOneShot(healSound, transform.position);
   }
 
   public void SetAttackTarget(GameObject target, bool healing)

@@ -46,6 +46,8 @@ public class Health : MonoBehaviour
   private bool explodesOnDeath = false;
   [SerializeField]
   private float explosionDmgPctOfHealth = 0.25f, explosionRadius = 10f;
+  [SerializeField]
+  private GameObject explosionEffect = null;
 
   [SerializeField]
   private COMBATANT_TYPE combatantType = COMBATANT_TYPE.NORMAL;
@@ -145,6 +147,8 @@ public class Health : MonoBehaviour
               }
           }
         }
+
+        Instantiate(explosionEffect, transform.position, new Quaternion());
       }
 
       if (ragdollPrefab && !ragdollSpawned)

@@ -310,12 +310,13 @@ MonoBehaviour:
   attackDamage: 13
   attacksPerSecond: 1.45
   attackRange: 1.2
-  enemyDetectRange: 15
+  enemyDetectRange: 20
   aoe: 0
   aoeRadius: 1
   aoeDmgPct: 1
   isHealer: 0
   healPct: 0.5
+  healParticleSystem: {fileID: 0}
   preferredTarget: 0
   projectilePrefab: {fileID: 0}
   isAttacking: 0

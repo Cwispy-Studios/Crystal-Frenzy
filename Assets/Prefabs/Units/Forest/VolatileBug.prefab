@@ -802,7 +802,9 @@ MonoBehaviour:
   regeneration: 1
   explodesOnDeath: 1
   explosionDmgPctOfHealth: 0.4
-  explosionRadius: 10
+  explosionRadius: 8
+  explosionEffect: {fileID: 9107138285578110961, guid: cf7ee988ae001034fa77ae0cb083c0db,
+    type: 3}
   combatantType: 0
   deathSound: event:/SFX/Units/BugDie
   explodeSound: event:/SFX/Units/VolatileExplode
@@ -821,12 +823,13 @@ MonoBehaviour:
   attackDamage: 6
   attacksPerSecond: 1.5
   attackRange: 2
-  enemyDetectRange: 12
+  enemyDetectRange: 15
   aoe: 0
   aoeRadius: 1
   aoeDmgPct: 1
   isHealer: 0
   healPct: 0.5
+  healParticleSystem: {fileID: 0}
   preferredTarget: 0
   projectilePrefab: {fileID: 0}
   isAttacking: 0
