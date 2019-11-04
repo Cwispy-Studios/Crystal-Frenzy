@@ -325,11 +325,6 @@ public class Attack : MonoBehaviour
     // If enemy is near enough, try to attack and hold position. Otherwise set the NavMeshAgent to move towards it
     if (animationState.currentAnimationState != CURRENT_ANIMATION_STATE.ATTACK && enemyRange <= (attackRange + unitRadius + enemyRadius))
     {
-      if (GetComponent<Faction>().faction == Faction.FACTIONS.GOBLINS)
-      {
-        Debug.Log("Attacking");
-      }
-
       isAttacking = true;
       animator.SetBool("Move", false);
 

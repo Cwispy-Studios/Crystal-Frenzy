@@ -13,16 +13,18 @@ public class MainMenu : MonoBehaviour
   [SerializeField]
   private Image fadeScreen = null;
 
-  private FMODUnity.StudioEventEmitter musicEmitter;
-
   private const float FADE_DURATION = 2f;
+
+  private FMOD.Studio.Bus Master;
 
   private void Awake()
   {
     playButton.onClick.AddListener(delegate { FadeScreen(PlayGame); });
     quitButton.onClick.AddListener(delegate { FadeScreen(QuitGame); });
 
-    musicEmitter = Camera.main.GetComponent<FMODUnity.StudioEventEmitter>();
+    Master = FMODUnity.RuntimeManager.GetBus("bus:/Master");
+
+    Master.setVolume(1);
   }
 
   private void PlayGame()
@@ -51,15 +53,13 @@ public class MainMenu : MonoBehaviour
     while (Time.time - startTime < FADE_DURATION)
     {
       fadeScreen.color = Color.Lerp(currentColor, targetColor, (Time.time - startTime) / FADE_DURATION);
-      musicEmitter.SetParameter("MenuVolume", 1 - ((Time.time - startTime) / FADE_DURATION));
-
-      Debug.Log(1 - ((Time.time - startTime) / FADE_DURATION));
+      Master.setVolume(1 - ((Time.time - startTime) / FADE_DURATION));
 
       yield return 1;
     }
 
     fadeScreen.color = targetColor;
-    musicEmitter.SetParameter("MenuVolume", 0);
+    Master.setVolume(0);
 
     nextScene();
   }

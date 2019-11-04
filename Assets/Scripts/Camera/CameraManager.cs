@@ -26,20 +26,22 @@ public class CameraManager : MonoBehaviour
 
   private Vector3 lastCamRot;
 
-  public void SetBirdsEyeView(Vector3 setPosition)
-  {
-    Camera camera = GetComponent<Camera>();
-
-    // Extra safety check
-    if (GameManager.CurrentPhase == PHASES.PREPARATION || GameManager.CurrentPhase == PHASES.PREPARATION_DEFENSE)
-    {
-      PointCameraAtPosition(setPosition, true, false);
-    }
-  }
+  [SerializeField]
+  private FMODUnity.StudioEventEmitter ambienceEmitter;
 
   public void PointCameraAtPosition(Vector3 pointPos, bool birdsEyeView, bool maintainHeightRot, float targetHeight = 0, float duration = 1.2f, bool turnOnCamControls = true)
   {
     GetComponent<CameraControls>().birdsEyeViewMode = birdsEyeView;
+
+    if (birdsEyeView)
+    {
+      ambienceEmitter.SetParameter("BirdsEyeView", 1);
+    }
+
+    else
+    {
+      ambienceEmitter.SetParameter("BirdsEyeView", 0);
+    }
 
     Vector3 toPos = pointPos;
     Vector3 rot;

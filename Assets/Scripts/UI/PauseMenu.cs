@@ -19,7 +19,7 @@ public class PauseMenu : MonoBehaviour
   [SerializeField]
   private Text confirmationText = null;
 
-  private FMODUnity.StudioEventEmitter musicEmitter;
+  private FMOD.Studio.Bus Master;
 
   private const float FADE_DURATION = 2f;
 
@@ -32,7 +32,9 @@ public class PauseMenu : MonoBehaviour
 
     noButton.onClick.AddListener(ReturnToMenu);
 
-    musicEmitter = Camera.main.GetComponent<FMODUnity.StudioEventEmitter>();
+    Master = FMODUnity.RuntimeManager.GetBus("bus:/Master");
+
+    Master.setVolume(1);
   }
 
   private void OnEnable()
@@ -126,7 +128,7 @@ public class PauseMenu : MonoBehaviour
     while (Time.time - startTime < FADE_DURATION)
     {
       fadeScreen.color = Color.Lerp(currentColor, targetColor, (Time.time - startTime) / FADE_DURATION);
-      musicEmitter.SetParameter("LevelVolume", 1 - ((Time.time - startTime) / FADE_DURATION));
+      Master.setVolume(1 - ((Time.time - startTime) / FADE_DURATION));
 
       Debug.Log(1 - ((Time.time - startTime) / FADE_DURATION));
 
@@ -134,7 +136,7 @@ public class PauseMenu : MonoBehaviour
     }
 
     fadeScreen.color = targetColor;
-    musicEmitter.SetParameter("LevelVolume", 0);
+    Master.setVolume(0);
 
     nextScene();
   }

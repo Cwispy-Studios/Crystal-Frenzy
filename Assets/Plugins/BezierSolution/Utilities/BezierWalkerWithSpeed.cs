@@ -48,6 +48,7 @@ namespace BezierSolution
     private float slowDownPerc = 0;
 
     private FMODUnity.StudioEventEmitter musicEmitter;
+
     private FMODUnity.StudioEventEmitter moveEmitter;
 
     [FMODUnity.EventRef]
@@ -58,9 +59,9 @@ namespace BezierSolution
 			cachedTransform = transform;
 
       unitRadius = GetComponent<SphereCollider>().radius * COLLISION_MARGIN;
+      moveEmitter = GetComponent<FMODUnity.StudioEventEmitter>();
 
       musicEmitter = Camera.main.GetComponent<FMODUnity.StudioEventEmitter>();
-      moveEmitter = GetComponent<FMODUnity.StudioEventEmitter>();
     }
 
 		private void Update()

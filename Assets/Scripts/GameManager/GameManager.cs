@@ -42,7 +42,10 @@ public class GameManager : MonoBehaviour
   public static bool NodeSelected { get; private set; }
 
   private GameObject crystalSeekerToDestroy;
+
   private FMODUnity.StudioEventEmitter musicEmitter;
+
+  private FMOD.Studio.Bus Master;
 
   private void Awake()
   {
@@ -58,6 +61,10 @@ public class GameManager : MonoBehaviour
     };
 
     CurrentPhase = PHASES.PREPARATION;
+
+    Master = FMODUnity.RuntimeManager.GetBus("bus:/Master");
+
+    Master.setVolume(1);
 
     musicEmitter = Camera.main.GetComponent<FMODUnity.StudioEventEmitter>();
   }
@@ -129,7 +136,7 @@ public class GameManager : MonoBehaviour
     if (allowSelection)
     {
       // Force the camera into a bird's eye view
-      playerCamera.GetComponent<CameraManager>().SetBirdsEyeView(lastConqueredNode.transform.position);
+      playerCamera.GetComponent<CameraManager>().PointCameraAtPosition(lastConqueredNode.transform.position, true, false);
 
       // Turn on the path visibility meshes to all the connected nodes we can attack so we can see the path and our options
       lastConqueredNode.GetComponent<CrystalNode>().SetPathVisibilityMeshes(true);
@@ -217,7 +224,7 @@ public class GameManager : MonoBehaviour
     GameObject lastConqueredNode = conqueredNodes[conqueredNodes.Count - 1];
 
     // Force the camera into a bird's eye view
-    playerCamera.GetComponent<CameraManager>().SetBirdsEyeView(lastConqueredNode.transform.position);
+    playerCamera.GetComponent<CameraManager>().PointCameraAtPosition(lastConqueredNode.transform.position, true, false);
 
     // Set the UI Interfaces to invisible and show the button to select army roster
     uiInterface.PreparationPhaseSelectNodeUI();

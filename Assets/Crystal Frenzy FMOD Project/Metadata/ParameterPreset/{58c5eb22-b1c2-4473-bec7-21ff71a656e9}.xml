@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.00.00">
+	<object class="ParameterPreset" id="{58c5eb22-b1c2-4473-bec7-21ff71a656e9}">
+		<property name="name">
+			<value>BirdsEyeView</value>
+		</property>
+		<relationship name="folder">
+			<destination>{4e07ee03-ae05-49b9-8834-c847d1b701f7}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{41f18d25-5444-420d-ae42-b381b96bcf14}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{41f18d25-5444-420d-ae42-b381b96bcf14}">
+		<property name="parameterType">
+			<value>2</value>
+		</property>
+		<property name="maximum">
+			<value>2</value>
+		</property>
+		<property name="enumerationLabels">
+			<value>False</value>
+			<value>True</value>
+		</property>
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+	</object>
+</objects>

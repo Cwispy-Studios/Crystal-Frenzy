@@ -186,7 +186,7 @@ public class CrystalRewards : MonoBehaviour
         lootWeight -= 0.45f;
         RewardedUpgrade = averagePricesPerUpgradeType[i].upgradeType;
         RewardsUpgrade = true;
-        Debug.Log("Rewarded upgrade: " + RewardedUpgrade);
+
         break;
       }
     }
@@ -209,8 +209,6 @@ public class CrystalRewards : MonoBehaviour
     for (int i = 0; i < averagePricesPerUpgradeType.Count; ++i)
     {
       int cost = averagePricesPerUpgradeType[i].averagePrice;
-
-      //Debug.Log(averagePricesPerUpgradeType[i].upgradeType + " average cost: " + cost);
 
       if (cost < cheapestUpgradeType)
       {

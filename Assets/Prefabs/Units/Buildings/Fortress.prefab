@@ -9529,6 +9529,7 @@ GameObject:
   - component: {fileID: 1513422491572564464}
   - component: {fileID: 1513422491572564236}
   - component: {fileID: -1272754648598611302}
+  - component: {fileID: -4533034398826360331}
   m_Layer: 0
   m_Name: Fortress
   m_TagString: Untagged
@@ -9762,6 +9763,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0192c10ce0d2589489e608135047b104, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  kill: 0
   ragdollPrefab: {fileID: 0}
   maxHealth: 5000
   regeneration: 0.1
@@ -9770,6 +9772,7 @@ MonoBehaviour:
   explosionRadius: 10
   combatantType: 0
   deathSound: 
+  explodeSound: 
 --- !u!114 &1513422491572564236
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9801,6 +9804,29 @@ MonoBehaviour:
   upgradePanelPrefab: {fileID: 4547757109260012683, guid: 0fa873248aff6e24285c5ba55939698f,
     type: 3}
   instantiate: 1
+--- !u!114 &-4533034398826360331
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 807464147369692416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  Event: event:/SFX/Buildings/FortressFire
+  PlayEvent: 1
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &1418526556980280994
 GameObject:
   m_ObjectHideFlags: 0

@@ -18,10 +18,19 @@ public class RepairSlider : MonoBehaviour
   private int repairHealthAmount = 0;
   private int repairCost = 0;
 
+  [FMODUnity.EventRef]
+  public string repairSliderClickSound = null;
+  private FMOD.Studio.EventInstance repairSliderClickInstance;
+
   private void Awake()
   {
     GetComponent<Slider>().onValueChanged.AddListener(CalculateRepairCost);
     repairButton.onClick.AddListener(Repair);
+
+
+    repairSliderClickInstance = FMODUnity.RuntimeManager.CreateInstance(repairSliderClickSound);
+
+    FMODUnity.RuntimeManager.AttachInstanceToGameObject(repairSliderClickInstance, Camera.main.transform, (Rigidbody)null);
   }
 
   private void OnEnable()
@@ -68,6 +77,9 @@ public class RepairSlider : MonoBehaviour
     {
       repairButton.interactable = false;
     }
+
+    repairSliderClickInstance.setPitch(1 + (sliderValue * 0.5f));
+    repairSliderClickInstance.start();
   }
 
   private void Repair()

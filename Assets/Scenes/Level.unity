@@ -34343,6 +34343,11 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1574251319325358431, guid: 86e2a491536334e4fa911620190206de,
+        type: 3}
+      propertyPath: ambienceEmitter
+      value: 
+      objectReference: {fileID: 867224107}
     - target: {fileID: 1574251319325358428, guid: 86e2a491536334e4fa911620190206de,
         type: 3}
       propertyPath: unitManager
@@ -34393,6 +34398,11 @@ PrefabInstance:
       propertyPath: Params.Array.data[0].Value
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4641990794309465099, guid: 86e2a491536334e4fa911620190206de,
+        type: 3}
+      propertyPath: Event
+      value: event:/Music/Level Music
+      objectReference: {fileID: 0}
     - target: {fileID: 9150068185864046625, guid: 86e2a491536334e4fa911620190206de,
         type: 3}
       propertyPath: m_ShowCustomSorter
@@ -34403,6 +34413,11 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4874293940228224792, guid: 86e2a491536334e4fa911620190206de,
+        type: 3}
+      propertyPath: ambienceEmitter
+      value: 
+      objectReference: {fileID: 867224107}
     m_RemovedComponents:
     - {fileID: 0}
     - {fileID: 0}
@@ -35653,7 +35668,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 440, y: 590}
+  m_SizeDelta: {x: 440, y: 617}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &587830614
 MonoBehaviour:
@@ -46082,6 +46097,60 @@ MonoBehaviour:
   m_followingControlPointLocalPosition: {x: -8.554417, y: 0, z: 2.4116821}
   m_followingControlPointPosition: {x: 534.2575, y: 0, z: 180.49959}
   m_handleMode: 2
+--- !u!1 &867224105
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 867224106}
+  - component: {fileID: 867224107}
+  m_Layer: 13
+  m_Name: AmbienceEmitter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &867224106
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 867224105}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 576539452}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &867224107
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 867224105}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  Event: event:/Ambience/LevelAmbience
+  PlayEvent: 11
+  StopEvent: 12
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1001 &869810475
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -48725,7 +48794,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &959561071
 RectTransform:
   m_ObjectHideFlags: 0
@@ -66727,6 +66796,29 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 129970484}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1474019195
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1474019194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  Event: event:/SFX/Buildings/FortressFire
+  PlayEvent: 1
+  StopEvent: 2
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!114 &1474019207
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -98965,6 +99057,11 @@ PrefabInstance:
       propertyPath: maxHealthText
       value: 
       objectReference: {fileID: 323883425}
+    - target: {fileID: 7210185934444878793, guid: 0fa873248aff6e24285c5ba55939698f,
+        type: 3}
+      propertyPath: repairSliderClickSound
+      value: event:/SFX/UI/RepairSliderMove
+      objectReference: {fileID: 0}
     - target: {fileID: 4547757109260012693, guid: 0fa873248aff6e24285c5ba55939698f,
         type: 3}
       propertyPath: m_Enabled

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.00.00">
+	<object class="ParameterPreset" id="{124efad9-e66f-4ffc-96ac-63aabe7ba84a}">
+		<property name="name">
+			<value>ZoomLevel</value>
+		</property>
+		<relationship name="folder">
+			<destination>{4e07ee03-ae05-49b9-8834-c847d1b701f7}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{b3762898-54ef-4ee7-a793-32ccefcdc501}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{b3762898-54ef-4ee7-a793-32ccefcdc501}">
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+	</object>
+</objects>

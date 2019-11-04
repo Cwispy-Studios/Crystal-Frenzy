@@ -623,7 +623,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  footstepSound: event:/SFX/MinerFootsteps
+  footstepSound: event:/SFX/Units/MinerFootsteps
 --- !u!114 &2925301031265551285
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -677,6 +677,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0192c10ce0d2589489e608135047b104, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  kill: 0
   ragdollPrefab: {fileID: 8149370627129170188, guid: 9267900a2ed08ed489c0a5192eeaf13d,
     type: 3}
   maxHealth: 2000
@@ -741,7 +742,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CollisionTag: 
-  Event: event:/SFX/MinerMoveLoop
+  Event: event:/SFX/Units/MinerMoveLoop
   PlayEvent: 1
   StopEvent: 2
   AllowFadeout: 1

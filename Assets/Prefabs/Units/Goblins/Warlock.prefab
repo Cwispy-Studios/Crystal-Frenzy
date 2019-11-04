@@ -417,7 +417,7 @@ MonoBehaviour:
   explosionDmgPctOfHealth: 0.25
   explosionRadius: 10
   combatantType: 0
-  deathSound: event:/SFX/GoblinDie
+  deathSound: event:/SFX/Units/GoblinDie
   explodeSound: 
 --- !u!114 &2359579135509208406
 MonoBehaviour:
@@ -444,8 +444,8 @@ MonoBehaviour:
   projectilePrefab: {fileID: 2574113698076494503, guid: 0b3bf955dcd7e8a498aa71dad90dfa0a,
     type: 3}
   isAttacking: 0
-  attackSound: event:/SFX/WarlockShoot
-  healSound: event:/SFX/WarlockHeal
+  attackSound: event:/SFX/Units/WarlockShoot
+  healSound: event:/SFX/Units/WarlockHeal
 --- !u!114 &9135789159771556362
 MonoBehaviour:
   m_ObjectHideFlags: 0

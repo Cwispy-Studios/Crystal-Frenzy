@@ -13,7 +13,7 @@ public class CameraControls : MonoBehaviour
 
   /*********************** Zoom variables ***********************/
   private const float MIN_ZOOM = 20f;
-  public static readonly float MAX_ZOOM = 55f;
+  public static readonly float MAX_ZOOM = 50f;
   private readonly float zoomSpeed = 1f;
 
   [HideInInspector]
@@ -21,6 +21,9 @@ public class CameraControls : MonoBehaviour
   public bool birdsEyeViewMode = false;
 
   private List<GameObject> cameraBounds = new List<GameObject>();
+
+  [SerializeField]
+  private FMODUnity.StudioEventEmitter ambienceEmitter;
 
   private void LateUpdate()
   {
@@ -108,6 +111,8 @@ public class CameraControls : MonoBehaviour
         transform.Translate(Vector3.forward * Input.mouseScrollDelta.y * zoomSpeed);
       }
     }
+
+    ambienceEmitter.SetParameter("ZoomLevel", (transform.position.y - MIN_ZOOM) / (MAX_ZOOM - MIN_ZOOM));
   }
 
   private void CheckCameraInBounds(Vector3 oldPosition)

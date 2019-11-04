@@ -98,7 +98,7 @@ The percussions and Tuba also become silent as the player's Crystal Seeker dies,
 			<destination>{1e74b79d-ad5b-462a-8f3c-ed97633ae6c5}</destination>
 		</relationship>
 		<relationship name="output">
-			<destination>{d11622df-423e-462b-beed-bc189d68edf3}</destination>
+			<destination>{dbf150cb-e9d5-4ffd-8338-c8fc7976c38b}</destination>
 		</relationship>
 	</object>
 	<object class="EventAutomatableProperties" id="{130953ea-7993-4b70-93b2-4b5c4d20925f}" />
@@ -2808,9 +2808,6 @@ The percussions and Tuba also become silent as the player's Crystal Seeker dies,
 		<property name="nameOfPropertyBeingAutomated">
 			<value>volume</value>
 		</property>
-		<relationship name="automationCurves">
-			<destination>{885dec14-3bf8-4168-9b2f-5b51b483e2be}</destination>
-		</relationship>
 	</object>
 	<object class="MixerBusEffectChain" id="{ce79f8c2-8727-44c0-a5ea-0dfa848865cf}">
 		<relationship name="effects">
@@ -3163,16 +3160,6 @@ The percussions and Tuba also become silent as the player's Crystal Seeker dies,
 			<destination>{e24dad31-bad3-4e3e-9bdd-c77698b1f66e}</destination>
 		</relationship>
 	</object>
-	<object class="AutomationCurve" id="{885dec14-3bf8-4168-9b2f-5b51b483e2be}">
-		<relationship name="parameter">
-			<destination>{2ec8267b-66ac-4e9f-ad28-9acaffe646b4}</destination>
-		</relationship>
-		<relationship name="automationPoints">
-			<destination>{44cd2cd9-4fa7-470f-af7d-9208fad8c699}</destination>
-			<destination>{0883d5ed-3c3e-4bed-908d-449f9bbe4401}</destination>
-			<destination>{059779d5-8b4f-4525-8a45-61d7bc60c8f6}</destination>
-		</relationship>
-	</object>
 	<object class="MixerBusFader" id="{48f18953-8b11-41c7-80d5-c1644001a19e}" />
 	<object class="SpatialiserEffect" id="{fd2b50b1-4e6f-4edb-8dc1-415bf015dca3}" />
 	<object class="AutomationCurve" id="{dbd21db9-47ab-4adc-9d87-f9af3e29ddac}">
@@ -3269,36 +3256,6 @@ The percussions and Tuba also become silent as the player's Crystal Seeker dies,
 	<object class="MixerBusFader" id="{c5008277-0dd9-42d1-8424-6ccec55adde3}" />
 	<object class="MixerBusFader" id="{e90e8620-8f92-4697-b297-cf6ed6aa18a5}" />
 	<object class="MixerBusFader" id="{3a5251cb-a8d7-4732-ab20-da9e04083203}" />
-	<object class="AutomationPoint" id="{44cd2cd9-4fa7-470f-af7d-9208fad8c699}">
-		<property name="position">
-			<value>0.0042372881355932203</value>
-		</property>
-		<property name="value">
-			<value>-80</value>
-		</property>
-		<property name="curveShape">
-			<value>-0.0674648732</value>
-		</property>
-	</object>
-	<object class="AutomationPoint" id="{0883d5ed-3c3e-4bed-908d-449f9bbe4401}">
-		<property name="position">
-			<value>1</value>
-		</property>
-		<property name="value">
-			<value>0</value>
-		</property>
-	</object>
-	<object class="AutomationPoint" id="{059779d5-8b4f-4525-8a45-61d7bc60c8f6}">
-		<property name="position">
-			<value>0.40000000000000002</value>
-		</property>
-		<property name="value">
-			<value>-15</value>
-		</property>
-		<property name="curveShape">
-			<value>-0.250935137</value>
-		</property>
-	</object>
 	<object class="AutomationPoint" id="{49ac99a7-2612-4d6e-8b31-f32f7ceb4e0e}">
 		<property name="position">
 			<value>0.65000000000000002</value>

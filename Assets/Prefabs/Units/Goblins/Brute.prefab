@@ -695,7 +695,7 @@ MonoBehaviour:
   explosionDmgPctOfHealth: 0.25
   explosionRadius: 10
   combatantType: 0
-  deathSound: event:/SFX/GoblinDie
+  deathSound: event:/SFX/Units/GoblinDie
   explodeSound: 
 --- !u!114 &7394659449738150961
 MonoBehaviour:
@@ -721,7 +721,7 @@ MonoBehaviour:
   preferredTarget: 0
   projectilePrefab: {fileID: 0}
   isAttacking: 0
-  attackSound: event:/SFX/BruteHit
+  attackSound: event:/SFX/Units/BruteHit
   healSound: 
 --- !u!114 &4100849591000208237
 MonoBehaviour:
