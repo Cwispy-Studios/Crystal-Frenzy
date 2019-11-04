@@ -53,11 +53,15 @@ public class HealthBar : MonoBehaviour
 
   private void LateUpdate()
   {
+    if (health == null)
+    {
+      return;
+    }
+
     transform.position = playerCamera.WorldToScreenPoint(health.transform.position + Vector3.up * heightOffset);
 
     Vector3 objectScale = originalScale * playerCamera.GetComponent<CameraControls>().GetZoomPerc();
-    objectScale.x *= objectSize;
-    //objectScale.y *= objectSize * 0.5f;
+    objectScale.x *= objectSize;  
 
     transform.localScale = objectScale;
   }

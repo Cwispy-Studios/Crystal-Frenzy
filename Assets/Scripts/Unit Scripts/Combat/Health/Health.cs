@@ -16,6 +16,8 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
+  public bool kill = false;
+
   public static event Action<Health> OnHealthAdded = delegate { };
   public static event Action<Health> OnHealthRemoved = delegate { };
 
@@ -147,7 +149,7 @@ public class Health : MonoBehaviour
 
       if (ragdollPrefab && !ragdollSpawned)
       {
-        var deadObject = Instantiate(ragdollPrefab, transform.position, transform.rotation);
+        var ragdoll = Instantiate(ragdollPrefab, transform.position, transform.rotation);
 
         overkillDamage = Mathf.Abs(overkillDamage);
 
@@ -166,8 +168,13 @@ public class Health : MonoBehaviour
           force = Mathf.Clamp(force, 0.1f, 0.5f);
         }
        
-        deadObject.GetComponentInChildren<Rigidbody>().AddForce((transform.position - damageDirection).normalized * force * 40000f);
+        ragdoll.GetComponentInChildren<Rigidbody>().AddForce((transform.position - damageDirection).normalized * force * 40000f);
         ragdollSpawned = true;
+
+        if (GetComponent<CrystalSeeker>())
+        {
+          GetComponent<CrystalSeeker>().CrystalSeekerDead(ragdoll);
+        }
       }
   
       Destroy(gameObject);
@@ -178,8 +185,13 @@ public class Health : MonoBehaviour
   {
     ModifyHealth(regeneration * Time.deltaTime, Vector3.zero);
 
+    if (kill)
+    {
+      ModifyHealth(-CurrentHealth, Vector3.zero);
+    }
+
     // Layer 10 is invisible, enemies are set to invisible if they are inside fog of war, we shouldn't see their health bars
-    if (CurrentHealth == maxHealth || gameObject.layer == 10)
+    if (CurrentHealth == maxHealth || gameObject.layer == 10 || CurrentHealth <= 0)
     {
       OnHealthRemoved(this);
     }

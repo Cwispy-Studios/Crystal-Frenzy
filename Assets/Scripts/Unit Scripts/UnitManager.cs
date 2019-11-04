@@ -389,4 +389,13 @@ public class UnitManager : MonoBehaviour
   {
     return unitButtonsList.ToArray();
   }
+
+  public void KillAllUnits()
+  {
+    for (int i = unitButtonsList.Count - 1; i >= 0; --i)
+    {
+      Health health = unitButtonsList[i].GetComponent<UnitButton>().Unit.GetComponent<Health>();
+      health.ModifyHealth(-health.CurrentHealth, health.transform.forward);
+    }
+  }
 }

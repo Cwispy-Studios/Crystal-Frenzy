@@ -237,8 +237,8 @@ public class CrystalRewards : MonoBehaviour
   {
     GameManager.resourceManager.CollectLoot(GoldLoot, CrystalIncomeReward, conquered);
     
-    // Collect upgrade
-    if (RewardsUpgrade)
+    // Collect upgrade only if node has not been conquered before.
+    if (!conquered && RewardsUpgrade)
     {
       GameManager.upgradeManager.UpgradeReward(RewardedUpgrade);
     }

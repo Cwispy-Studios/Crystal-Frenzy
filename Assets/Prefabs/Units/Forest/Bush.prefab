@@ -265,7 +265,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0192c10ce0d2589489e608135047b104, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ragdollPrefab: {fileID: 0}
+  kill: 0
+  ragdollPrefab: {fileID: 3647405598284376408, guid: 0a7bf37d7f5d55640ae32ccc046c7940,
+    type: 3}
   maxHealth: 450
   regeneration: 2
   explodesOnDeath: 0
@@ -273,6 +275,7 @@ MonoBehaviour:
   explosionRadius: 10
   combatantType: 1
   deathSound: 
+  explodeSound: 
 --- !u!114 &-3592790259009596221
 MonoBehaviour:
   m_ObjectHideFlags: 0

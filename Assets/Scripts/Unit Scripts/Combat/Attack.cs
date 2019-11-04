@@ -293,14 +293,15 @@ public class Attack : MonoBehaviour
     // If enemy is near enough, try to attack and hold position. Otherwise set the NavMeshAgent to move towards it
     if (enemyRange <= (attackRange + unitRadius + enemyRadius))
     {
-      if (GetComponent<NavMeshAgent>().enabled)
-      {
-        GetComponent<NavMeshAgent>().stoppingDistance = 0;
-        GetComponent<NavMeshAgent>().destination = transform.position;
-      }
-      
+      // Within range so don't move
       GetComponent<NavMeshAgent>().enabled = false;
       GetComponent<NavMeshObstacle>().enabled = true;
+
+      //if (GetComponent<NavMeshAgent>().enabled)
+      //{
+      //  GetComponent<NavMeshAgent>().stoppingDistance = 0;
+      //  GetComponent<NavMeshAgent>().destination = transform.position;
+      //}
 
       // Check if ready to attack
       if (attackCooldown >= attackInterval)
@@ -331,21 +332,12 @@ public class Attack : MonoBehaviour
       }
     }
 
-    else if (animator != null && animator.enabled && (animator.GetCurrentAnimatorStateInfo(0).IsName("Idle") || animator.GetCurrentAnimatorStateInfo(0).IsName("Move")))
+    else if (animator.GetCurrentAnimatorStateInfo(0).IsName("Idle") || animator.GetCurrentAnimatorStateInfo(0).IsName("Move"))
     {
       GetComponent<NavMeshObstacle>().enabled = false;
       GetComponent<NavMeshAgent>().enabled = true;
 
-      GetComponent<NavMeshAgent>().stoppingDistance = attackRange + unitRadius + enemyRadius - STOPPING_MARGIN;
-      GetComponent<NavMeshAgent>().destination = attackedTarget.transform.position;
-    }
-
-    else
-    {
-      GetComponent<NavMeshObstacle>().enabled = false;
-      GetComponent<NavMeshAgent>().enabled = true;
-
-      GetComponent<NavMeshAgent>().stoppingDistance = attackRange + unitRadius + enemyRadius - STOPPING_MARGIN;
+      GetComponent<NavMeshAgent>().stoppingDistance = attackRange + (unitRadius + enemyRadius) * 0.9f;
       GetComponent<NavMeshAgent>().destination = attackedTarget.transform.position;
     }
   }

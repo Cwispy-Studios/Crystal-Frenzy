@@ -3,7 +3,6 @@
 public class CrystalSeeker : MonoBehaviour
 {
   private GameManager gameManager;
-  private bool crystalSeekerReachedTarget = false;
 
   private FMODUnity.StudioEventEmitter musicEmitter;
 
@@ -22,25 +21,25 @@ public class CrystalSeeker : MonoBehaviour
       // Player wins!
       if (GetComponent<Faction>().faction == Faction.FACTIONS.GOBLINS)
       {
-        crystalSeekerReachedTarget = true;
         GetComponent<BezierSolution.BezierWalkerWithSpeed>().enabled = false;
+
         // Start win cut scene
         gameManager.EscortWinCutscene(gameObject);
         enabled = false;
-        //gameManager.EscortWin();
-        //Destroy(gameObject);
       }
 
       // Enemy captures your node
       else if (GetComponent<Faction>().faction == Faction.FACTIONS.FOREST)
       {
-        crystalSeekerReachedTarget = true;
-        gameManager.DefenseLose();
-        Destroy(gameObject);
+        GetComponent<BezierSolution.BezierWalkerWithSpeed>().enabled = false;
+
+        // Start lose cut scene
+        gameManager.DefenseLoseCutscene(gameObject);
+        enabled = false;
       }
     }
 
-    // Defense phase
+    // Defense phase, update music based on bush health and check your army size
     else if (GameManager.CurrentPhase == PHASES.DEFENSE)
     {
       musicEmitter.SetParameter("Enemy Crystal Seeker Health", GetComponent<Health>().CurrentHealth / GetComponent<Health>().MaxHealth);
@@ -48,31 +47,28 @@ public class CrystalSeeker : MonoBehaviour
       // All your units die
       if (GameManager.resourceManager.ArmySize == 0)
       {
-        crystalSeekerReachedTarget = true;
-        gameManager.DefenseLose();
-        Destroy(gameObject);
+        GetComponent<BezierSolution.BezierWalkerWithSpeed>().enabled = false;
+
+        // Start lose cut scene
+        gameManager.DefenseLoseCutscene(gameObject);
+        enabled = false;
       }
     }
   }
 
-  private void OnDestroy()
+  public void CrystalSeekerDead(GameObject ragdoll)
   {
-    if (crystalSeekerReachedTarget == false)
+    // Player's Crystal Seeker died
+    if (GetComponent<Faction>().faction == Faction.FACTIONS.GOBLINS)
     {
-      // Player's Crystal Seeker died
-      if (GetComponent<Faction>().faction == Faction.FACTIONS.GOBLINS)
-      {
-        gameManager.EscortLose();
+      // Start win cut scene
+      gameManager.EscortLoseCutscene(ragdoll);
+    }
 
-        // Set the miner manager health to 10%
-        GameManager.minerManager.MinerDestroyed();
-      }
-
-      // Enemy's Crystal Seeker died
-      else if (GetComponent<Faction>().faction == Faction.FACTIONS.FOREST)
-      {
-        gameManager.DefenseWin();
-      }
+    // Enemy's Crystal Seeker died
+    else if (GetComponent<Faction>().faction == Faction.FACTIONS.FOREST)
+    {
+      gameManager.DefenseWinCutscene(ragdoll);
     }
   }
 

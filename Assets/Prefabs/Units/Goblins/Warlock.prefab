@@ -297,16 +297,16 @@ NavMeshAgent:
   m_GameObject: {fileID: 2071221393297015012}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 1
+  m_Radius: 0.75
   m_Speed: 6.5
-  m_Acceleration: 13
+  m_Acceleration: 32.5
   avoidancePriority: 50
-  m_AngularSpeed: 180
+  m_AngularSpeed: 240
   m_StoppingDistance: 1
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
-  m_Height: 2
+  m_Height: 3.6
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
@@ -320,11 +320,11 @@ NavMeshObstacle:
   m_Enabled: 0
   serializedVersion: 3
   m_Shape: 0
-  m_Extents: {x: 1, y: 2.1, z: 1}
+  m_Extents: {x: 0.8, y: 2.15, z: 0.8}
   m_MoveThreshold: 0.1
   m_Carve: 0
   m_CarveOnlyStationary: 1
-  m_Center: {x: -0.1, y: 1.1, z: 0.001}
+  m_Center: {x: -0.1, y: 1.35, z: 0.001}
   m_TimeToStationary: 0.5
 --- !u!114 &243661855445176810
 MonoBehaviour:
@@ -407,6 +407,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0192c10ce0d2589489e608135047b104, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  kill: 0
   ragdollPrefab: {fileID: 5729099106640843992, guid: 8ecdbda456c632d42b92311d905235f5,
     type: 3}
   maxHealth: 155

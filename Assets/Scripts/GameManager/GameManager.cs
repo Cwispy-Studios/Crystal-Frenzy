@@ -306,28 +306,13 @@ public class GameManager : MonoBehaviour
     attackNode.GetComponent<CrystalNode>().SetCrystalColour(true);
 
     // Show the loot reward panel
-    lootRewardPanel.SetText(uiInterface.LootTargetPanel, EscortWin, PHASE_OUTCOME.ESCORT_WIN);
+    lootRewardPanel.SetText(uiInterface.LootTargetPanel, attackNode.GetComponent<ConqueredNode>().conquered, EscortWin, PHASE_OUTCOME.ESCORT_WIN);
     lootRewardPanel.ShowLootPanel(true);
   }
 
   public void EscortWin()
   {
-    Destroy(crystalSeekerToDestroy);
-
-    musicEmitter.SetParameter("At Loot Reward Screen", 0);
-
-    // Reset changed components in the cutscene
-    lootRewardPanel.ShowLootPanel(false);
-    playerCamera.GetComponent<CameraObjectSelection>().enabled = true;
-    // Fade in the UI Interfaces
-    UIFade uiFade = uiInterface.GetComponent<UIFade>();
-    uiFade.BeginFadeIn();
-
-    resourceManager.GainCrystalManpower();
-
-    // Remove all units on the playing field, friendly units are contained in Unit Manager, enemy units are contained in Hideable Manager
-    uiInterface.EscortPhaseRemoveAllUnits();
-    //GetComponent<HideableManager>().RemoveAllUnits();
+    EndCutscene();
 
     GameObject attackingFromNode = conqueredNodes[conqueredNodes.Count - 1];
     attackingFromNode.GetComponent<CrystalNode>().conqueredNode = attackNode;
@@ -415,30 +400,30 @@ public class GameManager : MonoBehaviour
     playerCamera.GetComponent<CameraObjectSelection>().enabled = false;
     playerCamera.GetComponent<CameraControls>().enabled = false;
 
-    // Move the camera over to the node we just conquered
-    playerCamera.GetComponent<CameraManager>().PointCameraAtPosition(attackNode.transform.position, false, false, 0, 0.5f, false);
+    // Move the camera over to the crystal seeker we lost
+    playerCamera.GetComponent<CameraManager>().PointCameraAtPosition(crystalSeeker.transform.position, false, false, 0, 0.5f, false);
 
     // Start rotation around the node
-    playerCamera.GetComponent<CameraManager>().RotateAroundObject(attackNode);
+    playerCamera.GetComponent<CameraManager>().RotateAroundObject(crystalSeeker);
 
-    // Disable wave spawners of the conquered node
+    // Disable wave spawners of the node we lost to
     attackNode.GetComponent<CrystalNode>().SetWaveSpawnersActive(false, null);
-    // Make the node visible
-    attackNode.GetComponent<ConqueredNode>().SetAssemblyFOV(true);
 
-    // Kill all enemies
-    GetComponent<HideableManager>().KillAllUnits();
-
-    // Change crystal colour
-    attackNode.GetComponent<CrystalNode>().SetCrystalColour(true);
+    // Kill all your units
+    uiInterface.UnitManager.KillAllUnits();
 
     // Show the loot reward panel
-    lootRewardPanel.SetText(uiInterface.LootTargetPanel, EscortWin, PHASE_OUTCOME.ESCORT_LOSE);
+    lootRewardPanel.SetText(null, false, EscortLose, PHASE_OUTCOME.ESCORT_LOSE);
     lootRewardPanel.ShowLootPanel(true);
   }
 
   public void EscortLose()
   {
+    EndCutscene();
+
+    // Set the miner manager health to 10%
+    minerManager.MinerDestroyed();
+
     resourceManager.GainCrystalManpower();
 
     // Remove all units on the playing field, friendly units are contained in Unit Manager, enemy units are contained in Hideable Manager
@@ -526,8 +511,44 @@ public class GameManager : MonoBehaviour
     attackNode.GetComponent<CrystalNode>().SetWaveSpawnersActive(true, conqueredNodes[conqueredNodes.Count - 1]);
   }
 
+  public void DefenseWinCutscene(GameObject crystalSeeker)
+  {
+    crystalSeekerToDestroy = crystalSeeker;
+
+    musicEmitter.SetParameter("At Loot Reward Screen", 1);
+
+    // Fade out the UI Interfaces
+    UIFade uiFade = uiInterface.GetComponent<UIFade>();
+    uiFade.BeginFadeOut();
+
+    // Disable camera controls
+    playerCamera.GetComponent<CameraIssueOrdering>().enabled = false;
+    playerCamera.GetComponent<CameraObjectSelection>().ClearSelectionList();
+    playerCamera.GetComponent<CameraObjectSelection>().ClearHoverList(true);
+    playerCamera.GetComponent<CameraObjectSelection>().enabled = false;
+    playerCamera.GetComponent<CameraControls>().enabled = false;
+
+    // Move the camera over to the crystal seeker we just killed
+    playerCamera.GetComponent<CameraManager>().PointCameraAtPosition(crystalSeeker.transform.position, false, false, 0, 0.5f, false);
+
+    // Start rotation around the node
+    playerCamera.GetComponent<CameraManager>().RotateAroundObject(crystalSeeker);
+
+    // Disable wave spawners of the conquered node
+    attackNode.GetComponent<CrystalNode>().SetWaveSpawnersActive(false, null);
+
+    // Kill all enemies
+    GetComponent<HideableManager>().KillAllUnits();
+
+    // Show the loot reward panel
+    lootRewardPanel.SetText(null, false, DefenseWin, PHASE_OUTCOME.DEFENSE_WIN);
+    lootRewardPanel.ShowLootPanel(true);
+  }
+
   public void DefenseWin()
   {
+    EndCutscene();
+
     resourceManager.GainCrystalManpower();
 
     // Remove all units on the playing field, friendly units are contained in Unit Manager, enemy units are contained in Hideable Manager
@@ -561,8 +582,52 @@ public class GameManager : MonoBehaviour
     }
   }
 
+  public void DefenseLoseCutscene(GameObject crystalSeeker)
+  {
+    crystalSeekerToDestroy = crystalSeeker;
+
+    musicEmitter.SetParameter("At Loot Reward Screen", 1);
+
+    // Fade out the UI Interfaces
+    UIFade uiFade = uiInterface.GetComponent<UIFade>();
+    uiFade.BeginFadeOut();
+
+    // Disable camera controls
+    playerCamera.GetComponent<CameraIssueOrdering>().enabled = false;
+    playerCamera.GetComponent<CameraObjectSelection>().ClearSelectionList();
+    playerCamera.GetComponent<CameraObjectSelection>().ClearHoverList(true);
+    playerCamera.GetComponent<CameraObjectSelection>().enabled = false;
+    playerCamera.GetComponent<CameraControls>().enabled = false;
+
+    // The node we just lost
+    GameObject lostNode = GetActiveNode();
+
+    // Move the camera over to the node we just lost
+    playerCamera.GetComponent<CameraManager>().PointCameraAtPosition(lostNode.transform.position, false, false, 0, 0.5f, false);
+
+    // Start rotation around the node
+    playerCamera.GetComponent<CameraManager>().RotateAroundObject(lostNode);
+
+    // Disable wave spawners of the attacking node
+    attackNode.GetComponent<CrystalNode>().SetWaveSpawnersActive(false, null);
+    // Make our node visible
+    lostNode.GetComponent<ConqueredNode>().SetAssemblyFOV(true);
+
+    // Kill all your units
+    uiInterface.UnitManager.KillAllUnits();
+
+    // Change crystal colour
+    lostNode.GetComponent<CrystalNode>().SetCrystalColour(false);
+
+    // Show the loot reward panel
+    lootRewardPanel.SetText(null, false, DefenseLose, PHASE_OUTCOME.DEFENSE_LOSE);
+    lootRewardPanel.ShowLootPanel(true);
+  }
+
   public void DefenseLose()
   {
+    EndCutscene();
+
     resourceManager.GainCrystalManpower();
 
     // Remove all units on the playing field, friendly units are contained in Unit Manager, enemy units are contained in Hideable Manager
@@ -615,6 +680,26 @@ public class GameManager : MonoBehaviour
     conqueredNodes[conqueredNodes.Count - 1].GetComponent<CrystalNode>().SetPathVisibilityMeshes(false);
 
     BeginPreparationDefensePhase();
+  }
+
+  private void EndCutscene()
+  {
+    Destroy(crystalSeekerToDestroy);
+
+    musicEmitter.SetParameter("At Loot Reward Screen", 0);
+
+    // Reset changed components in the cutscene
+    lootRewardPanel.ShowLootPanel(false);
+    playerCamera.GetComponent<CameraObjectSelection>().enabled = true;
+    // Fade in the UI Interfaces
+    UIFade uiFade = uiInterface.GetComponent<UIFade>();
+    uiFade.BeginFadeIn();
+
+    resourceManager.GainCrystalManpower();
+
+    // Remove all units on the playing field, friendly units are contained in Unit Manager, enemy units are contained in Hideable Manager
+    uiInterface.EscortPhaseRemoveAllUnits();
+    GetComponent<HideableManager>().RemoveAllUnits();
   }
 
   public static GameObject GetActiveNode()

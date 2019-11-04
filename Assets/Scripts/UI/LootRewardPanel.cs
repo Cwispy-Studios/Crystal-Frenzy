@@ -30,7 +30,7 @@ public class LootRewardPanel : MonoBehaviour
     transform.localScale = Vector3.zero;
   }
 
-  public void SetText(LootTargetPanel lootTargetPanel, NextPhase nextPhase, PHASE_OUTCOME phaseOutcome)
+  public void SetText(LootTargetPanel lootTargetPanel, bool nodeConqueredBefore, NextPhase nextPhase, PHASE_OUTCOME phaseOutcome)
   {
     string outcomeColour = "";
 
@@ -38,7 +38,17 @@ public class LootRewardPanel : MonoBehaviour
     {
       case PHASE_OUTCOME.ESCORT_WIN:
         outcomeColour = "<color=green>";
-        phaseOutcomeText.text = outcomeColour + "ESCORT SUCCESS: CRYSTAL CAPTURED" + "</color>";
+
+        if (nodeConqueredBefore)
+        {
+          phaseOutcomeText.text = outcomeColour + "ESCORT SUCCESS: CRYSTAL RECAPTURED" + "</color>";
+        }
+
+        else
+        {
+          phaseOutcomeText.text = outcomeColour + "ESCORT SUCCESS: CRYSTAL CAPTURED" + "</color>";
+        }
+        
         break;
 
       case PHASE_OUTCOME.ESCORT_LOSE:
@@ -60,12 +70,12 @@ public class LootRewardPanel : MonoBehaviour
     continueButton.onClick.RemoveAllListeners();
     continueButton.onClick.AddListener(delegate { nextPhase(); });
 
-    isBuildingSlotRewarded = lootTargetPanel.isBuildingSlotRewarded;
-    isUpgradeRewarded = lootTargetPanel.isUpgradeRewarded;
-    upgradeRewarded = lootTargetPanel.upgradeRewarded;
+    isBuildingSlotRewarded = lootTargetPanel ? lootTargetPanel.isBuildingSlotRewarded : false;
+    isUpgradeRewarded = (lootTargetPanel && !nodeConqueredBefore) ? lootTargetPanel.isUpgradeRewarded : false;
+    upgradeRewarded = (lootTargetPanel && !nodeConqueredBefore) ? lootTargetPanel.upgradeRewarded : UPGRADE_TYPE.LAST;
 
-    int gold = lootTargetPanel.cacheGold;
-    int crystal = lootTargetPanel.cacheCrystalIncome;
+    int gold = (lootTargetPanel && !nodeConqueredBefore) ? lootTargetPanel.cacheGold : 0;
+    int crystal = lootTargetPanel ? lootTargetPanel.cacheCrystalIncome : 0;
 
     if (gold == 0)
     {
