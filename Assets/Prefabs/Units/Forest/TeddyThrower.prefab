@@ -552,6 +552,7 @@ GameObject:
   - component: {fileID: 8109413875993358453}
   - component: {fileID: 819403203178679864}
   - component: {fileID: 8367624838384346998}
+  - component: {fileID: -232289947138511466}
   m_Layer: 0
   m_Name: TeddyThrower
   m_TagString: Untagged
@@ -822,6 +823,7 @@ MonoBehaviour:
   preferredTarget: 0
   projectilePrefab: {fileID: 2574113698076494503, guid: 5cb5b06f3a104064492c88450b1fcae8,
     type: 3}
+  isAttacking: 0
   attackSound: event:/SFX/TeddyThrowerShoot
   healSound: 
 --- !u!114 &-2614433931187345692
@@ -896,6 +898,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   goldProvided: 7
+--- !u!114 &-232289947138511466
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8109413875993358460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39a34423a60b62142b395a1476ff1b44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentAnimationState: 0
 --- !u!1 &8239150721137117322
 GameObject:
   m_ObjectHideFlags: 0

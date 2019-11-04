@@ -76,11 +76,10 @@ public class CameraIssueOrdering : MonoBehaviour
 
           if (order != null)
           {
-            // Issue an order to the object 
-            selectedObject.GetComponent<Order>().IssueOrderPoint(hit.point);
 
             if (selectedObject.GetComponent<UnitOrder>())
             {
+              selectedObject.GetComponent<UnitOrder>().IssueOrderPoint(hit.point);
               orderToGround = true;
               orderToGroundPos = hit.point;
             }

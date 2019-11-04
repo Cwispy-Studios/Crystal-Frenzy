@@ -9,44 +9,63 @@ public class UnitOrder : Order
   private Vector3 followTargetOldPos;
 
   private bool queuedOrder = false;
-  private Vector3 queuedOrderPos = new Vector3();
+  private Vector3 queuedOrderPos;
 
   private float updateCountdown = 0;
+
+  private Animator animator = null;
+  private NavMeshAgent agent = null;
+  private NavMeshObstacle obstacle = null;
+  private Attack attack;
+  private AnimationState animationState;
 
   private void Awake()
   {
     unitRadius = GetComponent<NavMeshAgent>().radius * ((transform.lossyScale.x + transform.lossyScale.z) / 2f);
+
+    animator = GetComponent<Animator>();
+    agent = GetComponent<NavMeshAgent>();
+    obstacle = GetComponent<NavMeshObstacle>();
+    attack = GetComponent<Attack>();
+    animationState = GetComponent<AnimationState>();
   }
 
   void Update()
   {
-    Animator animator = GetComponent<Animator>();
-
-    if (animator && animator.enabled)
+    if (animationState.currentAnimationState == CURRENT_ANIMATION_STATE.ATTACK)
     {
-      if (GetComponent<NavMeshAgent>().velocity != Vector3.zero)
+      return;
+    }
+
+    // Set the move and idle state if agent is enabled (not attacking)
+    if (agent.enabled && animationState.currentAnimationState != CURRENT_ANIMATION_STATE.ATTACK)
+    {
+      if (agent.velocity != Vector3.zero)
       {
         animator.SetBool("Move", true);
+        animationState.currentAnimationState = CURRENT_ANIMATION_STATE.MOVE;
       }
 
       else
       {
         animator.SetBool("Move", false);
+        animationState.currentAnimationState = CURRENT_ANIMATION_STATE.IDLE;
       }
     }
 
     if (queuedOrder)
     {
-      if (animator)
+      // Only move when not attacking
+      if (animationState.currentAnimationState != CURRENT_ANIMATION_STATE.ATTACK)
       {
-        if (animator.GetCurrentAnimatorStateInfo(0).IsName("Idle") || animator.GetCurrentAnimatorStateInfo(0).IsName("Move"))
-        {
-          GetComponent<NavMeshObstacle>().enabled = false;
-          GetComponent<NavMeshAgent>().enabled = true;
-          
-          GetComponent<NavMeshAgent>().destination = queuedOrderPos;
-          queuedOrder = false;
-        }
+        obstacle.enabled = false;
+        agent.enabled = true;
+
+        agent.destination = queuedOrderPos;
+        agent.stoppingDistance = 0f;
+        queuedOrder = false;
+
+        animationState.currentAnimationState = CURRENT_ANIMATION_STATE.MOVE;
       }
     }
 
@@ -61,12 +80,13 @@ public class UnitOrder : Order
       updateCountdown = 0;
     }
 
-    if (followTarget)
+    // If following target and attack animation completed
+    if (followTarget && animationState.currentAnimationState != CURRENT_ANIMATION_STATE.ATTACK)
     {
-      GetComponent<NavMeshObstacle>().enabled = false;
-      GetComponent<NavMeshAgent>().enabled = true;
+      obstacle.enabled = false;
+      agent.enabled = true;
 
-      // Target still exists
+      // Target still alive
       if (destinationUnit != null)
       {
         if (followTargetOldPos != destinationUnit.transform.position)
@@ -79,45 +99,28 @@ public class UnitOrder : Order
     // Target is dead
     else
     {
-      GetComponent<NavMeshAgent>().stoppingDistance = 0f;
+      agent.stoppingDistance = 0f;
       followTarget = false;
     }
 
-    NavMeshAgent agent = GetComponent<NavMeshAgent>();
-
+    // If not attacking
     if (agent.enabled)
     {
-      // Check if we have arrived yet
+      // Check if we have arrived yet, make unit detect enemies
       if (!agent.pathPending && agent.remainingDistance <= agent.stoppingDistance && (!agent.hasPath || agent.velocity.sqrMagnitude == 0f))
       {
-        if (GetComponent<Attack>() != null)
-        {
-          GetComponent<Attack>().SetDetectingEnemies(true);
-        }
+        attack.SetDetectingEnemies(true);
+        animationState.currentAnimationState = CURRENT_ANIMATION_STATE.IDLE;
       }
 
+      // Not arrived, move
       else
       {
-        //Animator animator = GetComponent<Animator>();
-
-        //if (animator && animator.enabled)
-        //{
-        //  animator.SetBool("Move", true);
-        //}
-
         GetComponent<NavMeshObstacle>().enabled = false;
         GetComponent<NavMeshAgent>().enabled = true;
+
+        animationState.currentAnimationState = CURRENT_ANIMATION_STATE.MOVE;
       }
-    }
-
-    else
-    {
-      //Animator animator = GetComponent<Animator>();
-
-      //if (animator && animator.enabled)
-      //{
-      //  animator.SetBool("Move", false);
-      //}
     }
   }
 
@@ -125,37 +128,28 @@ public class UnitOrder : Order
   {
     followTarget = false;
 
-    GetComponent<NavMeshObstacle>().enabled = false;
-    GetComponent<NavMeshAgent>().enabled = true;
-
-    GetComponent<NavMeshAgent>().stoppingDistance = 0f;
-
-    Animator animator = GetComponent<Animator>();
-
-    if (animator && animator.enabled)
+    // Check if unit's attack status is done attacking (hit has landed), then we can override the animation
+    if (!attack.isAttacking)
     {
-      if (animator.GetCurrentAnimatorStateInfo(0).IsName("Idle") || animator.GetCurrentAnimatorStateInfo(0).IsName("Move"))
-      {
-        GetComponent<NavMeshAgent>().destination = destinationOrder;
-      }
+      obstacle.enabled = false;
+      agent.enabled = true;
 
-      else
-      {
-        queuedOrder = true;
-        queuedOrderPos = destinationOrder;
-      }
+      agent.destination = destinationOrder;
+      agent.stoppingDistance = 0f;
+
+      animator.StopPlayback();
+
+      animationState.currentAnimationState = CURRENT_ANIMATION_STATE.MOVE;
     }
 
+    // Unit is in the middle of attacking, queue the order
     else
     {
-      GetComponent<NavMeshAgent>().destination = destinationOrder;
+      queuedOrder = true;
+      queuedOrderPos = destinationOrder;
     }
     
-
-    if (GetComponent<Attack>() != null)
-    {
-      GetComponent<Attack>().SetDetectingEnemies(false);
-    }
+    attack.SetDetectingEnemies(false);
   }
 
   public override void IssueOrderTarget(GameObject targetUnit)
@@ -163,77 +157,54 @@ public class UnitOrder : Order
     followTarget = true;
     destinationUnit = targetUnit;
 
-    GetComponent<NavMeshObstacle>().enabled = false;
-    GetComponent<NavMeshAgent>().enabled = true;
+    // Check if target is friendly or enemy
+    Faction faction = GetComponent<Faction>();
+    Faction targetFaction = targetUnit.GetComponent<Faction>();
 
-    if (GetComponent<Attack>() != null)
+    // Friendly/neutral unit
+    if (targetFaction.faction == Faction.FACTIONS.NEUTRAL || faction.faction == targetFaction.faction)
     {
-      // Check if target is friendly or enemy
-      Faction faction = GetComponent<Faction>();
-      Faction targetFaction = targetUnit.GetComponent<Faction>();
-
-      if (faction != null && targetFaction != null)
+      // Check if is healer and unit is not at full health and is not crystal seeker
+      if (attack.IsHealer && !targetUnit.GetComponent<Health>().AtMaxHealth() && targetUnit.GetComponent<Health>().CombatantType == COMBATANT_TYPE.NORMAL)
       {
-        // Friendly/neutral unit
-        if (targetFaction.faction == Faction.FACTIONS.NEUTRAL || faction.faction == targetFaction.faction)
-        {
-          if (GetComponent<Attack>().IsHealer && targetUnit.GetComponent<Faction>().faction == targetFaction.faction && !targetUnit.GetComponent<Health>().AtMaxHealth()
-            && targetUnit.GetComponent<Health>().CombatantType == COMBATANT_TYPE.NORMAL)
-          {
-            GetComponent<Attack>().SetAttackTarget(targetUnit, true);
-          }
-
-          else
-          {
-            SetTargetAsDestination();
-          }
-        }
-
-        // Enemy unit
-        else
-        {
-          GetComponent<Attack>().SetAttackTarget(targetUnit, false);
-        }
+        // Heal target
+        attack.SetAttackTarget(targetUnit, true);
       }
-      
 
+      // Move to target
       else
       {
         SetTargetAsDestination();
       }
     }
-    
+
+    // Enemy unit
     else
     {
-      SetTargetAsDestination();
+      attack.SetAttackTarget(targetUnit, false);
     }
   }
 
   private void SetTargetAsDestination()
   {
-    NavMeshAgent agent = GetComponent<NavMeshAgent>();
-
-    Animator animator = GetComponent<Animator>();
-
+    // Update the cached position to follow
     followTargetOldPos = destinationUnit.transform.position;
 
-    if (animator != null && animator.enabled)
+    // Check if unit's attack status is done attacking (hit has landed), then we can override the animation
+    if (!attack.isAttacking)
     {
-      if (animator.GetCurrentAnimatorStateInfo(0).IsName("Idle") || animator.GetCurrentAnimatorStateInfo(0).IsName("Move"))
-      {
-        agent.destination = destinationUnit.transform.position;
-      }
+      obstacle.enabled = false;
+      agent.enabled = true;
 
-      else
-      {
-        queuedOrder = true;
-        queuedOrderPos = destinationUnit.transform.position;
-      }
+      agent.destination = destinationUnit.transform.position;
+
+      animationState.currentAnimationState = CURRENT_ANIMATION_STATE.MOVE;
     }
 
     else
     {
-      agent.destination = destinationUnit.transform.position;
+      queuedOrder = true;
+      queuedOrderPos = destinationUnit.transform.position;
     }
 
     float stoppingDistance = 0f;

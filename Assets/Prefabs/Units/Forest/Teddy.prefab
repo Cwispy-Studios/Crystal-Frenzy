@@ -395,6 +395,7 @@ GameObject:
   - component: {fileID: 6535236377957168996}
   - component: {fileID: 5280886360926694213}
   - component: {fileID: 1544853214405841337}
+  - component: {fileID: 5975722250733037063}
   m_Layer: 0
   m_Name: Teddy
   m_TagString: Untagged
@@ -655,7 +656,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackDamage: 4
   attacksPerSecond: 1.2
-  attackRange: 2.2
+  attackRange: 1
   enemyDetectRange: 12
   aoe: 0
   aoeRadius: 1
@@ -664,6 +665,7 @@ MonoBehaviour:
   healPct: 0.5
   preferredTarget: 0
   projectilePrefab: {fileID: 0}
+  isAttacking: 0
   attackSound: event:/SFX/TeddyHit
   healSound: 
 --- !u!114 &8284558412841734293
@@ -738,6 +740,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   goldProvided: 5
+--- !u!114 &5975722250733037063
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6535236377957169005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39a34423a60b62142b395a1476ff1b44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentAnimationState: 0
 --- !u!1 &6536432551157897295
 GameObject:
   m_ObjectHideFlags: 0

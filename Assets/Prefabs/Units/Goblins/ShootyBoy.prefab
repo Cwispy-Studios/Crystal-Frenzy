@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: -2427904476743164746}
   - component: {fileID: 3950237594561117882}
   - component: {fileID: -5785149660936967516}
+  - component: {fileID: -7963971452351010616}
   m_Layer: 0
   m_Name: ShootyBoy
   m_TagString: Untagged
@@ -316,6 +317,7 @@ MonoBehaviour:
   preferredTarget: 0
   projectilePrefab: {fileID: 3938936689609613190, guid: 1b44f608e3ea32a418a00627d548542f,
     type: 3}
+  isAttacking: 0
   attackSound: event:/SFX/ShootyShoot
   healSound: 
 --- !u!114 &7125494102815859543
@@ -369,6 +371,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a533fab9a76c8ea4098c563139cf9fea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-7963971452351010616
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 41785935244700089}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39a34423a60b62142b395a1476ff1b44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentAnimationState: 0
 --- !u!1 &661365932228247219
 GameObject:
   m_ObjectHideFlags: 0

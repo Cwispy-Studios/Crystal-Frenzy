@@ -30,7 +30,6 @@ public class EnemyAI : MonoBehaviour
     {
       if (updateCountdown <= 0)
       {
-        //GetComponent<UnitOrder>().IssueOrderPoint(target.transform.position);
         GetComponent<Attack>().SetAttackMovePosition(target.transform.position);
         updateCountdown = UPDATE_INTERVAL;
 

@@ -427,6 +427,7 @@ GameObject:
   - component: {fileID: 532199220920963035}
   - component: {fileID: 4974711632971954448}
   - component: {fileID: 1716260139354408529}
+  - component: {fileID: -3596264733078600819}
   m_Layer: 0
   m_Name: Brute
   m_TagString: Untagged
@@ -719,6 +720,7 @@ MonoBehaviour:
   healPct: 0.5
   preferredTarget: 0
   projectilePrefab: {fileID: 0}
+  isAttacking: 0
   attackSound: event:/SFX/BruteHit
   healSound: 
 --- !u!114 &4100849591000208237
@@ -772,6 +774,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a533fab9a76c8ea4098c563139cf9fea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-3596264733078600819
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6530087302226205059}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39a34423a60b62142b395a1476ff1b44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentAnimationState: 0
 --- !u!1 &6549311323100747288
 GameObject:
   m_ObjectHideFlags: 0

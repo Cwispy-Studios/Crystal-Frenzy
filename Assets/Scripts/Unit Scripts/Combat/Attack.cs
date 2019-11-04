@@ -72,6 +72,18 @@ public class Attack : MonoBehaviour
   private const float ATTACK_UPDATE_INTERVAL = 0f;
   private float attackCountdown = 0;
 
+  private bool queuedOrder = false;
+  private Vector3 queuedOrderPos;
+  private bool queuedHealing = false;
+
+  private Animator animator = null;
+  private NavMeshAgent agent = null;
+  private NavMeshObstacle obstacle = null;
+  private AnimationState animationState;
+
+  [HideInInspector]
+  public bool isAttacking = false;
+
   [FMODUnity.EventRef]
   public string attackSound = "", healSound = "";
 
@@ -82,6 +94,11 @@ public class Attack : MonoBehaviour
     ogAttackSpeed = attacksPerSecond;
     ogAttackRange = attackRange;
     ogDetectRange = enemyDetectRange;
+
+    animator = GetComponent<Animator>();
+    agent = GetComponent<NavMeshAgent>();
+    obstacle = GetComponent<NavMeshObstacle>();
+    animationState = GetComponent<AnimationState>();
   }
 
   private void Start()
@@ -96,26 +113,45 @@ public class Attack : MonoBehaviour
 
   private void Update()
   {
+    if (GetComponent<Faction>().faction == Faction.FACTIONS.GOBLINS)
+    {
+      Debug.Log(animationState.currentAnimationState);
+    }
+    // Only check queue order when unit is no longer attacking
+    if (animationState.currentAnimationState != CURRENT_ANIMATION_STATE.ATTACK && queuedOrder)
+    {
+      obstacle.enabled = false;
+      agent.enabled = true;
+
+      queuedOrder = false;
+      agent.destination = queuedOrderPos;
+      isHealing = queuedHealing;
+
+      animationState.currentAnimationState = CURRENT_ANIMATION_STATE.MOVE;
+    }
+
     if (attackCooldown <= attackInterval)
     {
       attackCooldown += Time.deltaTime;
-    }
-
-    if (attackTarget)
-    {
-      // Rotates the unit towards its target, it does not matter if it is not facing the target yet, it can still attack.
-      LookTowardsTarget(attackTarget);
-    }
-
-    else if (detectedTarget)
-    {
-      LookTowardsTarget(detectedTarget);
     }
 
     // As long as unit is not detecting enemies, it is not under an attack move order, so we set it to false
     if (detectingEnemies == false)
     {
       isAttackMoveOrder = false;
+      detectedTarget = null;
+    }
+
+    // Rotates the unit towards its attack target while its hit has not landed and target still alive
+    if (isAttacking && attackTarget)
+    {
+      LookTowardsTarget(attackTarget);
+    }
+
+    // Rotates the unit towards its detected eney
+    else if (detectedTarget)
+    {
+      LookTowardsTarget(detectedTarget);
     }
 
     if (detectCountdown < DETECT_INTERVAL)
@@ -123,6 +159,7 @@ public class Attack : MonoBehaviour
       detectCountdown += Time.deltaTime;
     }
 
+    // Detect enemies
     else
     {
       detectCountdown = 0f;
@@ -139,6 +176,7 @@ public class Attack : MonoBehaviour
       attackCountdown += Time.deltaTime;
     }
 
+    // Attack enemy
     else
     {
       attackCountdown = 0;
@@ -247,11 +285,11 @@ public class Attack : MonoBehaviour
     {
       if (isAttackMoveOrder)
       {
-        GetComponent<NavMeshObstacle>().enabled = false;
-        GetComponent<NavMeshAgent>().enabled = true;
+        obstacle.enabled = false;
+        agent.enabled = true;
 
-        GetComponent<NavMeshAgent>().stoppingDistance = 0;
-        GetComponent<NavMeshAgent>().destination = attackMovePosition;
+        agent.stoppingDistance = 0;
+        agent.destination = attackMovePosition;
       }
     }
   }
@@ -288,20 +326,23 @@ public class Attack : MonoBehaviour
     // must be smaller than the attack range
     float enemyRadius = GetEnemyRadius(attackedTarget);
 
-    Animator animator = GetComponent<Animator>();
-
     // If enemy is near enough, try to attack and hold position. Otherwise set the NavMeshAgent to move towards it
-    if (enemyRange <= (attackRange + unitRadius + enemyRadius))
+    if (animationState.currentAnimationState != CURRENT_ANIMATION_STATE.ATTACK && enemyRange <= (attackRange + unitRadius + enemyRadius))
     {
-      // Within range so don't move
-      GetComponent<NavMeshAgent>().enabled = false;
-      GetComponent<NavMeshObstacle>().enabled = true;
+      if (GetComponent<Faction>().faction == Faction.FACTIONS.GOBLINS)
+      {
+        Debug.Log("Attacking");
+      }
 
-      //if (GetComponent<NavMeshAgent>().enabled)
-      //{
-      //  GetComponent<NavMeshAgent>().stoppingDistance = 0;
-      //  GetComponent<NavMeshAgent>().destination = transform.position;
-      //}
+      isAttacking = true;
+      animator.SetBool("Move", false);
+
+      // Within range so don't move
+      agent.enabled = false;
+      obstacle.enabled = true;
+
+      // Set the animation status to attacking
+      animationState.currentAnimationState = CURRENT_ANIMATION_STATE.ATTACK;
 
       // Check if ready to attack
       if (attackCooldown >= attackInterval)
@@ -309,41 +350,36 @@ public class Attack : MonoBehaviour
         // Check if there is projectile
         if (isHealing || projectilePrefab != null)
         {
-          if (animator && animator.enabled)
-          {
-            animator.SetTrigger("Ranged Attack");
-          }
-
-          else RangedAttack();
+          animator.SetTrigger("Ranged Attack");
         }
 
         // No projectile means attack hits immediately
         else
         {
-          if (animator != null && animator.enabled)
-          {
-            animator.SetTrigger("Melee Attack");
-          }
-
-          else MeleeAttack();
+          animator.SetTrigger("Melee Attack");
         }
 
         attackCooldown -= attackInterval;
       }
     }
 
-    else if (animator.GetCurrentAnimatorStateInfo(0).IsName("Idle") || animator.GetCurrentAnimatorStateInfo(0).IsName("Move"))
+    // Only move automatically once animation is complete 
+    else if (animationState.currentAnimationState != CURRENT_ANIMATION_STATE.ATTACK)
     {
-      GetComponent<NavMeshObstacle>().enabled = false;
-      GetComponent<NavMeshAgent>().enabled = true;
+      obstacle.enabled = false;
+      agent.enabled = true;
 
-      GetComponent<NavMeshAgent>().stoppingDistance = attackRange + (unitRadius + enemyRadius) * 0.9f;
-      GetComponent<NavMeshAgent>().destination = attackedTarget.transform.position;
+      agent.stoppingDistance = attackRange + (unitRadius + enemyRadius);
+      agent.destination = attackedTarget.transform.position;
+
+      animationState.currentAnimationState = CURRENT_ANIMATION_STATE.MOVE;
     }
   }
 
   private void MeleeAttack()
   {
+    isAttacking = false;
+
     if (attackedTarget == null)
     {
       return;
@@ -397,6 +433,8 @@ public class Attack : MonoBehaviour
 
   private void RangedAttack()
   {
+    isAttacking = false;
+
     if (attackedTarget == null)
     {
       return;
@@ -430,13 +468,27 @@ public class Attack : MonoBehaviour
 
   public void SetAttackTarget(GameObject target, bool healing)
   {
-    isHealing = healing;
-
-    GetComponent<NavMeshObstacle>().enabled = false;
-    GetComponent<NavMeshAgent>().enabled = true;
-
     attackTarget = target;
     detectingEnemies = false;
+
+    // Check if in the middle of an attack
+    if (!isAttacking)
+    {
+      obstacle.enabled = false;
+      agent.enabled = true;
+
+      isHealing = healing;
+
+      animationState.currentAnimationState = CURRENT_ANIMATION_STATE.MOVE;
+    }
+
+    
+    else
+    {
+      queuedOrder = true;
+      queuedOrderPos = attackTarget.transform.position;
+      queuedHealing = healing;
+    }
   }
 
   public void SetDetectingEnemies(bool value)
@@ -452,9 +504,20 @@ public class Attack : MonoBehaviour
   public void SetAttackMovePosition(Vector3 attackMovePos)
   {
     attackTarget = null;
-    attackMovePosition = attackMovePos;
     detectingEnemies = true;
     isAttackMoveOrder = true;
+
+    // Check if in the middle of an attack
+    if (!isAttacking)
+    {
+      attackMovePosition = attackMovePos;
+    }
+
+    else
+    {
+      queuedOrder = true;
+      queuedOrderPos = attackMovePos;
+    }
   }
 
   private float GetEnemyRadius(GameObject enemy)
@@ -515,7 +578,7 @@ public class Attack : MonoBehaviour
   public void SetSlowAffliction(float attackSlowAmount, float moveSlowAmount)
   {
     attacksPerSecond = normalAttacksPerSecond * (1f + attackSlowAmount);
-    GetComponent<NavMeshAgent>().speed = normalMoveSpeed * (1f - moveSlowAmount);
+    agent.speed = normalMoveSpeed * (1f - moveSlowAmount);
 
     attackInterval = 1f / attacksPerSecond;
   }
@@ -523,5 +586,10 @@ public class Attack : MonoBehaviour
   public void SetCurseAffliction(float attackReducAmount)
   {
     attackDamage = normalDamage * (1f - attackReducAmount);
+  }
+
+  private void EndAttackAnimation()
+  {
+    animationState.currentAnimationState = CURRENT_ANIMATION_STATE.IDLE;
   }
 }
