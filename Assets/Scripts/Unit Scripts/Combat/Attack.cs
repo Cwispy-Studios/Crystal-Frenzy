@@ -113,10 +113,6 @@ public class Attack : MonoBehaviour
 
   private void Update()
   {
-    if (GetComponent<Faction>().faction == Faction.FACTIONS.GOBLINS)
-    {
-      Debug.Log(animationState.currentAnimationState);
-    }
     // Only check queue order when unit is no longer attacking
     if (animationState.currentAnimationState != CURRENT_ANIMATION_STATE.ATTACK && queuedOrder)
     {
