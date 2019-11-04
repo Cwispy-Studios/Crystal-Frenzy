@@ -1,6 +1,26 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-9180605945791633667
+--- !u!114 &-8912277658758092973
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.strings.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/Crystal Frenzy FMOD Project/Build/Desktop/Master.strings.bank
+  SubDir: 
+  lastModified: 637084726030553609
+  LoadResult: 0
+  FileSizes:
+  - Name: Desktop
+    Value: 2274
+  Exists: 1
+--- !u!114 &-8739846913100886870
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -16,59 +36,8 @@ MonoBehaviour:
   Min: 0
   Max: 1
   Default: 0
-  Exists: 0
---- !u!114 &-9157395781041777135
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/WarlockHit/HitType
-  m_EditorClassIdentifier: 
-  Name: HitType
-  Min: 0
-  Max: 2
-  Default: 0
-  Exists: 0
---- !u!114 &-9143115122317623423
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Level Music/Enemy Crystal Seeker Progress
-  m_EditorClassIdentifier: 
-  Name: Enemy Crystal Seeker Progress
-  Min: 0
-  Max: 1
-  Default: 0
-  Exists: 0
---- !u!114 &-9061143288018214370
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/TeddyThrowerHit/HitType
-  m_EditorClassIdentifier: 
-  Name: HitType
-  Min: 0
-  Max: 2
-  Default: 0
-  Exists: 0
---- !u!114 &-8989574414807663706
+  Exists: 1
+--- !u!114 &-8543984565725876444
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -83,7 +52,7 @@ MonoBehaviour:
   Path: event:/SFX/TeddyThrowerShoot
   guid: 68cbe799b2879647b5845a1673583d6d
   Banks:
-  - {fileID: 5362395666935071844}
+  - {fileID: 4783821977017112652}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -91,278 +60,7 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 130
---- !u!114 &-8989390016122545100
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Level Music/Player Crystal Seeker Health
-  m_EditorClassIdentifier: 
-  Name: Player Crystal Seeker Health
-  Min: 0
-  Max: 1
-  Default: 1
-  Exists: 1
---- !u!114 &-8883632760402630844
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SFX/SpitterShoot
-  m_EditorClassIdentifier: 
-  Path: event:/SFX/SpitterShoot
-  guid: ac2a63d62131be41ba9d29a9cb25d9ac
-  Banks:
-  - {fileID: 5362395666935071844}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 397
---- !u!114 &-8722366709474685498
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Level Music/Player Crystal Seeker Health
-  m_EditorClassIdentifier: 
-  Name: Player Crystal Seeker Health
-  Min: 0
-  Max: 1
-  Default: 1
-  Exists: 0
---- !u!114 &-8646662878334008497
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Level Music/At Loot Reward Screen
-  m_EditorClassIdentifier: 
-  Name: At Loot Reward Screen
-  Min: 0
-  Max: 2
-  Default: 0
-  Exists: 0
---- !u!114 &-8599643983466398741
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/MinerMoveLoop/Moving
-  m_EditorClassIdentifier: 
-  Name: Moving
-  Min: 0
-  Max: 2
-  Default: 0
-  Exists: 0
---- !u!114 &-8581877282740811532
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/ShootyHit/HitType
-  m_EditorClassIdentifier: 
-  Name: HitType
-  Min: 0
-  Max: 2
-  Default: 0
-  Exists: 0
---- !u!114 &-8475491066810363587
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/MinerMoveLoop/Moving
-  m_EditorClassIdentifier: 
-  Name: Moving
-  Min: 0
-  Max: 2
-  Default: 0
-  Exists: 1
---- !u!114 &-8469677750302250090
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Master.bank
-  m_EditorClassIdentifier: 
-  Path: Assets/Crystal Frenzy FMOD Project/Build/Desktop/Master.bank
-  SubDir: 
-  lastModified: 637084259786664657
-  LoadResult: 0
-  FileSizes: []
-  Exists: 0
---- !u!114 &-8469282515738370570
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Level Music/Phases
-  m_EditorClassIdentifier: 
-  Name: Phases
-  Min: 0
-  Max: 4
-  Default: 0
-  Exists: 1
---- !u!114 &-8339247082818952085
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/ShootyHit/HitType
-  m_EditorClassIdentifier: 
-  Name: HitType
-  Min: 0
-  Max: 2
-  Default: 0
-  Exists: 1
---- !u!114 &-8263482422375255057
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Master.strings.bank
-  m_EditorClassIdentifier: 
-  Path: Assets/Crystal Frenzy FMOD Project/Build/Desktop/Master.strings.bank
-  SubDir: 
-  lastModified: 637084282323190423
-  LoadResult: 0
-  FileSizes:
-  - Name: Desktop
-    Value: 2274
-  Exists: 1
---- !u!114 &-8096816288135345646
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Level Music/Phases
-  m_EditorClassIdentifier: 
-  Name: Phases
-  Min: 0
-  Max: 4
-  Default: 0
-  Exists: 1
---- !u!114 &-8087916059597384265
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Level Music/Player Crystal Seeker Health
-  m_EditorClassIdentifier: 
-  Name: Player Crystal Seeker Health
-  Min: 0
-  Max: 1
-  Default: 1
-  Exists: 0
---- !u!114 &-8062352780485608909
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Level Music/Player Crystal Seeker Progress
-  m_EditorClassIdentifier: 
-  Name: Player Crystal Seeker Progress
-  Min: 0
-  Max: 1
-  Default: 0
-  Exists: 0
---- !u!114 &-8027973261744319861
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SFX/BruteHit
-  m_EditorClassIdentifier: 
-  Path: event:/SFX/BruteHit
-  guid: db98141311f96d42ad14ef4c183d2595
-  Banks:
-  - {fileID: 5362395666935071844}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 326
---- !u!114 &-7929903335194824133
+--- !u!114 &-8280684198348681093
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -379,177 +77,7 @@ MonoBehaviour:
   Max: 1
   Default: 0.99500006
   Exists: 1
---- !u!114 &-7834295417137592446
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Menu Music/Volume
-  m_EditorClassIdentifier: 
-  Name: Volume
-  Min: 0
-  Max: 1
-  Default: 1
-  Exists: 0
---- !u!114 &-7832953758346127141
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/SpitterHit/HitType
-  m_EditorClassIdentifier: 
-  Name: HitType
-  Min: 0
-  Max: 2
-  Default: 0
-  Exists: 0
---- !u!114 &-7796980397768377250
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/ShootyHit/HitType
-  m_EditorClassIdentifier: 
-  Name: HitType
-  Min: 0
-  Max: 2
-  Default: 0
-  Exists: 0
---- !u!114 &-7623940866949373146
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/ShootyHit/HitType
-  m_EditorClassIdentifier: 
-  Name: HitType
-  Min: 0
-  Max: 2
-  Default: 0
-  Exists: 0
---- !u!114 &-7623884200735609092
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Level Music/Enemy Crystal Seeker Progress
-  m_EditorClassIdentifier: 
-  Name: Enemy Crystal Seeker Progress
-  Min: 0
-  Max: 1
-  Default: 0
-  Exists: 0
---- !u!114 &-7580989944286867062
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/TeddyThrowerHit/HitType
-  m_EditorClassIdentifier: 
-  Name: HitType
-  Min: 0
-  Max: 2
-  Default: 0
-  Exists: 1
---- !u!114 &-7399441051847897841
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/MinerMoveLoop/Moving
-  m_EditorClassIdentifier: 
-  Name: Moving
-  Min: 0
-  Max: 2
-  Default: 0
-  Exists: 1
---- !u!114 &-7315202354131142894
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/MinerMoveLoop/Moving
-  m_EditorClassIdentifier: 
-  Name: Moving
-  Min: 0
-  Max: 2
-  Default: 0
-  Exists: 1
---- !u!114 &-7189454880450772434
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/MinerMoveLoop/Moving
-  m_EditorClassIdentifier: 
-  Name: Moving
-  Min: 0
-  Max: 2
-  Default: 0
-  Exists: 1
---- !u!114 &-7087205629755233663
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Level Music/Enemy Crystal Seeker Health
-  m_EditorClassIdentifier: 
-  Name: Enemy Crystal Seeker Health
-  Min: 0
-  Max: 1
-  Default: 0.99500006
-  Exists: 0
---- !u!114 &-7011227701741668032
+--- !u!114 &-7721252935527191056
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -566,1460 +94,7 @@ MonoBehaviour:
   Max: 1
   Default: 0
   Exists: 1
---- !u!114 &-6984357404963438456
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/WarlockHit/HitType
-  m_EditorClassIdentifier: 
-  Name: HitType
-  Min: 0
-  Max: 2
-  Default: 0
-  Exists: 0
---- !u!114 &-6949152682081890812
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Level Music/Enemy Crystal Seeker Progress
-  m_EditorClassIdentifier: 
-  Name: Enemy Crystal Seeker Progress
-  Min: 0
-  Max: 1
-  Default: 0
-  Exists: 1
---- !u!114 &-6755021473340784080
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SFX/BugDie
-  m_EditorClassIdentifier: 
-  Path: event:/SFX/BugDie
-  guid: d50304ed053d7a4e8c5c29bae398fe0c
-  Banks:
-  - {fileID: 5362395666935071844}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 793
---- !u!114 &-6699254484669269730
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Level Music/Player Crystal Seeker Health
-  m_EditorClassIdentifier: 
-  Name: Player Crystal Seeker Health
-  Min: 0
-  Max: 1
-  Default: 1
-  Exists: 0
---- !u!114 &-6622797818445660452
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Master.bank
-  m_EditorClassIdentifier: 
-  Path: Assets/Crystal Frenzy FMOD Project/Build/Desktop/Master.bank
-  SubDir: 
-  lastModified: 637084267647116090
-  LoadResult: 0
-  FileSizes: []
-  Exists: 1
---- !u!114 &-6539050742957199235
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SFX/SpitterHit
-  m_EditorClassIdentifier: 
-  Path: event:/SFX/SpitterHit
-  guid: c80cd4e2157b76478c2f3c9844657b86
-  Banks:
-  - {fileID: 5362395666935071844}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters:
-  - {fileID: -1281807044567013151}
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 0
---- !u!114 &-6523240879449247593
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/TeddyThrowerHit/HitType
-  m_EditorClassIdentifier: 
-  Name: HitType
-  Min: 0
-  Max: 2
-  Default: 0
-  Exists: 1
---- !u!114 &-6505607122800972767
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Level Music/Player Crystal Seeker Progress
-  m_EditorClassIdentifier: 
-  Name: Player Crystal Seeker Progress
-  Min: 0
-  Max: 1
-  Default: 0
-  Exists: 1
---- !u!114 &-6388139369686363670
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SFX/MinerMoveLoop
-  m_EditorClassIdentifier: 
-  Path: event:/SFX/MinerMoveLoop
-  guid: 4e63682f8c73634297a689e45e049319
-  Banks:
-  - {fileID: 5362395666935071844}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 0
-  Parameters:
-  - {fileID: -8475491066810363587}
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 2056
---- !u!114 &-6354394006527989815
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/WarlockHit/HitType
-  m_EditorClassIdentifier: 
-  Name: HitType
-  Min: 0
-  Max: 2
-  Default: 0
-  Exists: 1
---- !u!114 &-6309051944376073431
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/MinerMoveLoop/Moving
-  m_EditorClassIdentifier: 
-  Name: Moving
-  Min: 0
-  Max: 2
-  Default: 0
-  Exists: 1
---- !u!114 &-6299264073368111631
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Level Music/Phases
-  m_EditorClassIdentifier: 
-  Name: Phases
-  Min: 0
-  Max: 4
-  Default: 0
-  Exists: 1
---- !u!114 &-6078770888844518822
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Level Music/At Loot Reward Screen
-  m_EditorClassIdentifier: 
-  Name: At Loot Reward Screen
-  Min: 0
-  Max: 2
-  Default: 0
-  Exists: 1
---- !u!114 &-6001952020679893035
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Level Music/Enemy Crystal Seeker Progress
-  m_EditorClassIdentifier: 
-  Name: Enemy Crystal Seeker Progress
-  Min: 0
-  Max: 1
-  Default: 0
-  Exists: 1
---- !u!114 &-5835886668799616856
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Level Music/Enemy Crystal Seeker Health
-  m_EditorClassIdentifier: 
-  Name: Enemy Crystal Seeker Health
-  Min: 0
-  Max: 1
-  Default: 0.99500006
-  Exists: 0
---- !u!114 &-5786016398871186053
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Level Music/Enemy Crystal Seeker Health
-  m_EditorClassIdentifier: 
-  Name: Enemy Crystal Seeker Health
-  Min: 0
-  Max: 1
-  Default: 0.99500006
-  Exists: 0
---- !u!114 &-5778452684503211508
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Level Music/Phases
-  m_EditorClassIdentifier: 
-  Name: Phases
-  Min: 0
-  Max: 4
-  Default: 0
-  Exists: 0
---- !u!114 &-5618540692485905839
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Level Music/At Loot Reward Screen
-  m_EditorClassIdentifier: 
-  Name: At Loot Reward Screen
-  Min: 0
-  Max: 2
-  Default: 0
-  Exists: 0
---- !u!114 &-5558089885459724767
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Level Music/At Loot Reward Screen
-  m_EditorClassIdentifier: 
-  Name: At Loot Reward Screen
-  Min: 0
-  Max: 2
-  Default: 0
-  Exists: 0
---- !u!114 &-5467498860706099330
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Music/Menu Music
-  m_EditorClassIdentifier: 
-  Path: event:/Music/Menu Music
-  guid: 56034f3eda56be48851a188d5439587d
-  Banks:
-  - {fileID: 5362395666935071844}
-  IsStream: 1
-  Is3D: 1
-  IsOneShot: 0
-  Parameters:
-  - {fileID: -3283666953755627168}
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 188275
---- !u!114 &-5383859511002680136
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SFX/TeddyDie
-  m_EditorClassIdentifier: 
-  Path: event:/SFX/TeddyDie
-  guid: 9d56d948ad88e441b92dd427f0dd2569
-  Banks:
-  - {fileID: 5362395666935071844}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 471
---- !u!114 &-5329351235540759296
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/SpitterHit/HitType
-  m_EditorClassIdentifier: 
-  Name: HitType
-  Min: 0
-  Max: 2
-  Default: 0
-  Exists: 0
---- !u!114 &-5172165527753046912
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SFX/MinerFootsteps
-  m_EditorClassIdentifier: 
-  Path: event:/SFX/MinerFootsteps
-  guid: 72868b386cd3e241b2af88c539f9c0ca
-  Banks:
-  - {fileID: 5362395666935071844}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 642
---- !u!114 &-5127329528795509716
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/SpitterHit/HitType
-  m_EditorClassIdentifier: 
-  Name: HitType
-  Min: 0
-  Max: 2
-  Default: 0
-  Exists: 1
---- !u!114 &-5110569224336102179
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Level Music/MenuVolume
-  m_EditorClassIdentifier: 
-  Name: MenuVolume
-  Min: 0
-  Max: 1
-  Default: 1
-  Exists: 1
---- !u!114 &-5007036832690604589
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Level Music/Player Crystal Seeker Progress
-  m_EditorClassIdentifier: 
-  Name: Player Crystal Seeker Progress
-  Min: 0
-  Max: 1
-  Default: 0
-  Exists: 1
---- !u!114 &-4866109394485556596
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Level Music/Enemy Crystal Seeker Progress
-  m_EditorClassIdentifier: 
-  Name: Enemy Crystal Seeker Progress
-  Min: 0
-  Max: 1
-  Default: 0
-  Exists: 1
---- !u!114 &-4844330671766929129
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SFX/VolatileHit
-  m_EditorClassIdentifier: 
-  Path: event:/SFX/VolatileHit
-  guid: e52c1da1dd24db4b9d0c0bfa5527a69c
-  Banks:
-  - {fileID: 5362395666935071844}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 268
---- !u!114 &-4842587245257990839
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Master.bank
-  m_EditorClassIdentifier: 
-  Path: Assets/Crystal Frenzy FMOD Project/Build/Desktop/Master.bank
-  SubDir: 
-  lastModified: 637084267044463383
-  LoadResult: 0
-  FileSizes: []
-  Exists: 0
---- !u!114 &-4594765526334231310
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Level Music/Player Crystal Seeker Health
-  m_EditorClassIdentifier: 
-  Name: Player Crystal Seeker Health
-  Min: 0
-  Max: 1
-  Default: 1
-  Exists: 1
---- !u!114 &-4359958737199671795
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/MinerMoveLoop/Moving
-  m_EditorClassIdentifier: 
-  Name: Moving
-  Min: 0
-  Max: 2
-  Default: 0
-  Exists: 0
---- !u!114 &-4292933296387672385
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Level Music/Enemy Crystal Seeker Health
-  m_EditorClassIdentifier: 
-  Name: Enemy Crystal Seeker Health
-  Min: 0
-  Max: 1
-  Default: 0.99500006
-  Exists: 0
---- !u!114 &-4165416528257224509
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/SpitterHit/HitType
-  m_EditorClassIdentifier: 
-  Name: HitType
-  Min: 0
-  Max: 2
-  Default: 0
-  Exists: 1
---- !u!114 &-3872799490836659933
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/ShootyHit/HitType
-  m_EditorClassIdentifier: 
-  Name: HitType
-  Min: 0
-  Max: 2
-  Default: 0
-  Exists: 1
---- !u!114 &-3798643756576191728
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/MinerMoveLoop/Moving
-  m_EditorClassIdentifier: 
-  Name: Moving
-  Min: 0
-  Max: 2
-  Default: 0
-  Exists: 0
---- !u!114 &-3564357880128077097
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/SpitterHit/HitType
-  m_EditorClassIdentifier: 
-  Name: HitType
-  Min: 0
-  Max: 2
-  Default: 0
-  Exists: 0
---- !u!114 &-3502142108650932105
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Music/Level Music
-  m_EditorClassIdentifier: 
-  Path: event:/Music/Level Music
-  guid: 667664d50d84684ab00e852dd3812e92
-  Banks:
-  - {fileID: 5362395666935071844}
-  IsStream: 1
-  Is3D: 1
-  IsOneShot: 0
-  Parameters:
-  - {fileID: 3231789073449025687}
-  - {fileID: -5007036832690604589}
-  - {fileID: -2152673511719836841}
-  - {fileID: -6949152682081890812}
-  - {fileID: 8259504519710084627}
-  - {fileID: -2126313680854799826}
-  - {fileID: -708722330127759441}
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 191186
---- !u!114 &-3383443475154685888
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/MinerMoveLoop/Moving
-  m_EditorClassIdentifier: 
-  Name: Moving
-  Min: 0
-  Max: 2
-  Default: 0
-  Exists: 1
---- !u!114 &-3343660194064936400
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SFX/ScourgeHit
-  m_EditorClassIdentifier: 
-  Path: event:/SFX/ScourgeHit
-  guid: 04f3d5b83b00ba489defa0d5ba652de2
-  Banks:
-  - {fileID: 5362395666935071844}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 388
---- !u!114 &-3324733122718334693
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Level Music/Player Crystal Seeker Progress
-  m_EditorClassIdentifier: 
-  Name: Player Crystal Seeker Progress
-  Min: 0
-  Max: 1
-  Default: 0
-  Exists: 0
---- !u!114 &-3283666953755627168
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Menu Music/LevelVolume
-  m_EditorClassIdentifier: 
-  Name: LevelVolume
-  Min: 0
-  Max: 1
-  Default: 1
-  Exists: 1
---- !u!114 &-3183946755650377938
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/SpitterHit/HitType
-  m_EditorClassIdentifier: 
-  Name: HitType
-  Min: 0
-  Max: 2
-  Default: 0
-  Exists: 0
---- !u!114 &-3140362482644176827
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Master.bank
-  m_EditorClassIdentifier: 
-  Path: Assets/Crystal Frenzy FMOD Project/Build/Desktop/Master.bank
-  SubDir: 
-  lastModified: 637084257194264713
-  LoadResult: 0
-  FileSizes: []
-  Exists: 0
---- !u!114 &-3137602805759427612
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/SpitterHit/HitType
-  m_EditorClassIdentifier: 
-  Name: HitType
-  Min: 0
-  Max: 2
-  Default: 0
-  Exists: 1
---- !u!114 &-3079832313295418854
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/TeddyThrowerHit/HitType
-  m_EditorClassIdentifier: 
-  Name: HitType
-  Min: 0
-  Max: 2
-  Default: 0
-  Exists: 0
---- !u!114 &-3065616214206971456
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Level Music/Enemy Crystal Seeker Health
-  m_EditorClassIdentifier: 
-  Name: Enemy Crystal Seeker Health
-  Min: 0
-  Max: 1
-  Default: 0.99500006
-  Exists: 0
---- !u!114 &-3050692906386497572
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Level Music/Player Crystal Seeker Health
-  m_EditorClassIdentifier: 
-  Name: Player Crystal Seeker Health
-  Min: 0
-  Max: 1
-  Default: 1
-  Exists: 0
---- !u!114 &-2952085472482252999
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Master.bank
-  m_EditorClassIdentifier: 
-  Path: Assets/Crystal Frenzy FMOD Project/Build/Desktop/Master.bank
-  SubDir: 
-  lastModified: 637084044761421849
-  LoadResult: 0
-  FileSizes: []
-  Exists: 0
---- !u!114 &-2757028725096148042
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/WarlockHit/HitType
-  m_EditorClassIdentifier: 
-  Name: HitType
-  Min: 0
-  Max: 2
-  Default: 0
-  Exists: 1
---- !u!114 &-2592728207431932241
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Master.bank
-  m_EditorClassIdentifier: 
-  Path: Assets/Crystal Frenzy FMOD Project/Build/Desktop/Master.bank
-  SubDir: 
-  lastModified: 637084018576532749
-  LoadResult: 0
-  FileSizes: []
-  Exists: 1
---- !u!114 &-2569041427369474808
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Level Music/Phases
-  m_EditorClassIdentifier: 
-  Name: Phases
-  Min: 0
-  Max: 4
-  Default: 0
-  Exists: 0
---- !u!114 &-2524072698147154367
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Level Music/Enemy Crystal Seeker Progress
-  m_EditorClassIdentifier: 
-  Name: Enemy Crystal Seeker Progress
-  Min: 0
-  Max: 1
-  Default: 0
-  Exists: 1
---- !u!114 &-2506573148912601191
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Level Music/At Loot Reward Screen
-  m_EditorClassIdentifier: 
-  Name: At Loot Reward Screen
-  Min: 0
-  Max: 2
-  Default: 0
-  Exists: 0
---- !u!114 &-2459325271970205214
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Menu Music/MenuVolume
-  m_EditorClassIdentifier: 
-  Name: MenuVolume
-  Min: 0
-  Max: 1
-  Default: 1
-  Exists: 1
---- !u!114 &-2439811963140420653
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Master.bank
-  m_EditorClassIdentifier: 
-  Path: Assets/Crystal Frenzy FMOD Project/Build/Desktop/Master.bank
-  SubDir: 
-  lastModified: 637084018576532749
-  LoadResult: 0
-  FileSizes: []
-  Exists: 0
---- !u!114 &-2327624079110087692
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Level Music/Phases
-  m_EditorClassIdentifier: 
-  Name: Phases
-  Min: 0
-  Max: 4
-  Default: 0
-  Exists: 0
---- !u!114 &-2152673511719836841
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Level Music/Player Crystal Seeker Health
-  m_EditorClassIdentifier: 
-  Name: Player Crystal Seeker Health
-  Min: 0
-  Max: 1
-  Default: 1
-  Exists: 1
---- !u!114 &-2128957193013343160
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Level Music/Enemy Crystal Seeker Progress
-  m_EditorClassIdentifier: 
-  Name: Enemy Crystal Seeker Progress
-  Min: 0
-  Max: 1
-  Default: 0
-  Exists: 0
---- !u!114 &-2126313680854799826
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Level Music/At Loot Reward Screen
-  m_EditorClassIdentifier: 
-  Name: At Loot Reward Screen
-  Min: 0
-  Max: 2
-  Default: 0
-  Exists: 1
---- !u!114 &-2092638183632235449
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Level Music/Player Crystal Seeker Health
-  m_EditorClassIdentifier: 
-  Name: Player Crystal Seeker Health
-  Min: 0
-  Max: 1
-  Default: 1
-  Exists: 1
---- !u!114 &-2063450337029545212
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/SpitterHit/HitType
-  m_EditorClassIdentifier: 
-  Name: HitType
-  Min: 0
-  Max: 2
-  Default: 0
-  Exists: 0
---- !u!114 &-1938678496269569108
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: Volume
-  m_EditorClassIdentifier: 
-  Name: Volume
-  Min: 0
-  Max: 1
-  Default: 1
-  Exists: 0
---- !u!114 &-1894931898334599476
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Level Music/At Loot Reward Screen
-  m_EditorClassIdentifier: 
-  Name: At Loot Reward Screen
-  Min: 0
-  Max: 2
-  Default: 0
-  Exists: 1
---- !u!114 &-1894511783711806919
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/TeddyThrowerHit/HitType
-  m_EditorClassIdentifier: 
-  Name: HitType
-  Min: 0
-  Max: 2
-  Default: 0
-  Exists: 0
---- !u!114 &-1748712489825245342
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/TeddyThrowerHit/HitType
-  m_EditorClassIdentifier: 
-  Name: HitType
-  Min: 0
-  Max: 2
-  Default: 0
-  Exists: 0
---- !u!114 &-1591188429719104523
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Level Music/Enemy Crystal Seeker Health
-  m_EditorClassIdentifier: 
-  Name: Enemy Crystal Seeker Health
-  Min: 0
-  Max: 1
-  Default: 0.99500006
-  Exists: 1
---- !u!114 &-1500405174494700171
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/WarlockHit/HitType
-  m_EditorClassIdentifier: 
-  Name: HitType
-  Min: 0
-  Max: 2
-  Default: 0
-  Exists: 0
---- !u!114 &-1359421144952377110
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Level Music/Player Crystal Seeker Health
-  m_EditorClassIdentifier: 
-  Name: Player Crystal Seeker Health
-  Min: 0
-  Max: 1
-  Default: 1
-  Exists: 1
---- !u!114 &-1320888566065669030
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Level Music/At Loot Reward Screen
-  m_EditorClassIdentifier: 
-  Name: At Loot Reward Screen
-  Min: 0
-  Max: 2
-  Default: 0
-  Exists: 1
---- !u!114 &-1281807044567013151
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/SpitterHit/HitType
-  m_EditorClassIdentifier: 
-  Name: HitType
-  Min: 0
-  Max: 2
-  Default: 0
-  Exists: 1
---- !u!114 &-1154039729206566528
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Level Music/At Loot Reward Screen
-  m_EditorClassIdentifier: 
-  Name: At Loot Reward Screen
-  Min: 0
-  Max: 2
-  Default: 0
-  Exists: 0
---- !u!114 &-986466108278601010
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SFX/GoblinDie
-  m_EditorClassIdentifier: 
-  Path: event:/SFX/GoblinDie
-  guid: 9c17b7f80151ee469dcec07becba6b01
-  Banks:
-  - {fileID: 5362395666935071844}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 410
---- !u!114 &-960467064400073721
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Level Music/Enemy Crystal Seeker Progress
-  m_EditorClassIdentifier: 
-  Name: Enemy Crystal Seeker Progress
-  Min: 0
-  Max: 1
-  Default: 0
-  Exists: 0
---- !u!114 &-908801397602603468
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/WarlockHit/HitType
-  m_EditorClassIdentifier: 
-  Name: HitType
-  Min: 0
-  Max: 2
-  Default: 0
-  Exists: 1
---- !u!114 &-890448450814900063
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/TeddyThrowerHit/HitType
-  m_EditorClassIdentifier: 
-  Name: HitType
-  Min: 0
-  Max: 2
-  Default: 0
-  Exists: 1
---- !u!114 &-727652974270802831
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/MinerMoveLoop/Moving
-  m_EditorClassIdentifier: 
-  Name: Moving
-  Min: 0
-  Max: 2
-  Default: 0
-  Exists: 1
---- !u!114 &-708722330127759441
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Level Music/Phases
-  m_EditorClassIdentifier: 
-  Name: Phases
-  Min: 0
-  Max: 4
-  Default: 0
-  Exists: 1
---- !u!114 &-560319623926032448
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/ShootyHit/HitType
-  m_EditorClassIdentifier: 
-  Name: HitType
-  Min: 0
-  Max: 2
-  Default: 0
-  Exists: 0
---- !u!114 &-550213162720663246
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Level Music/Player Crystal Seeker Progress
-  m_EditorClassIdentifier: 
-  Name: Player Crystal Seeker Progress
-  Min: 0
-  Max: 1
-  Default: 0
-  Exists: 0
---- !u!114 &-522525364043101176
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/MinerMoveLoop/Moving
-  m_EditorClassIdentifier: 
-  Name: Moving
-  Min: 0
-  Max: 2
-  Default: 0
-  Exists: 0
---- !u!114 &-492275968598264050
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/ShootyHit/HitType
-  m_EditorClassIdentifier: 
-  Name: HitType
-  Min: 0
-  Max: 2
-  Default: 0
-  Exists: 0
---- !u!114 &-36828918359939061
+--- !u!114 &-7107013152287910104
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2034,7 +109,7 @@ MonoBehaviour:
   Path: event:/SFX/TeddyHit
   guid: fefe83374a2f894c8ba6145da87c537a
   Banks:
-  - {fileID: 5362395666935071844}
+  - {fileID: 4783821977017112652}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -2042,54 +117,7 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 207
---- !u!114 &11400000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d32cf7c32a3ed8347bac48ef5ed56d82, type: 3}
-  m_Name: FMODStudioCache
-  m_EditorClassIdentifier: 
-  EditorBanks:
-  - {fileID: -8263482422375255057}
-  - {fileID: 5362395666935071844}
-  EditorEvents:
-  - {fileID: -3343660194064936400}
-  - {fileID: 9130515167440336160}
-  - {fileID: -6388139369686363670}
-  - {fileID: 3890201366641585419}
-  - {fileID: 616619717164502671}
-  - {fileID: -3502142108650932105}
-  - {fileID: -8989574414807663706}
-  - {fileID: 421742363865375103}
-  - {fileID: -5172165527753046912}
-  - {fileID: 5651913436604654831}
-  - {fileID: 1582784200078375508}
-  - {fileID: -986466108278601010}
-  - {fileID: -5383859511002680136}
-  - {fileID: -8883632760402630844}
-  - {fileID: -6539050742957199235}
-  - {fileID: -6755021473340784080}
-  - {fileID: 2676270442464985911}
-  - {fileID: -8027973261744319861}
-  - {fileID: 8195871071741460665}
-  - {fileID: -4844330671766929129}
-  - {fileID: 4851778879697051071}
-  - {fileID: 2758950743751141676}
-  - {fileID: -36828918359939061}
-  - {fileID: -5467498860706099330}
-  EditorParameters: []
-  MasterBanks:
-  - {fileID: 5362395666935071844}
-  StringsBanks:
-  - {fileID: -8263482422375255057}
-  stringsBankWriteTime: 637084282323190423
-  cacheVersion: 3
---- !u!114 &45264592031244849
+--- !u!114 &-6849414038606891037
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2099,163 +127,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/MinerMoveLoop/Moving
+  m_Name: parameter:/Level Music/Player Crystal Seeker Health
   m_EditorClassIdentifier: 
-  Name: Moving
+  Name: Player Crystal Seeker Health
   Min: 0
-  Max: 2
-  Default: 0
-  Exists: 0
---- !u!114 &227468944257522458
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/WarlockHit/HitType
-  m_EditorClassIdentifier: 
-  Name: HitType
-  Min: 0
-  Max: 2
-  Default: 0
+  Max: 1
+  Default: 1
   Exists: 1
---- !u!114 &421742363865375103
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SFX/WarlockHeal
-  m_EditorClassIdentifier: 
-  Path: event:/SFX/WarlockHeal
-  guid: 695633d6d72ad64292e310298211a598
-  Banks:
-  - {fileID: 5362395666935071844}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 750
---- !u!114 &603289170650519571
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/WarlockHit/HitType
-  m_EditorClassIdentifier: 
-  Name: HitType
-  Min: 0
-  Max: 2
-  Default: 0
-  Exists: 1
---- !u!114 &608884892010844688
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Level Music/At Loot Reward Screen
-  m_EditorClassIdentifier: 
-  Name: At Loot Reward Screen
-  Min: 0
-  Max: 2
-  Default: 0
-  Exists: 0
---- !u!114 &616619717164502671
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SFX/ShootyHit
-  m_EditorClassIdentifier: 
-  Path: event:/SFX/ShootyHit
-  guid: 65e997583af5ea489179530ac89d5e08
-  Banks:
-  - {fileID: 5362395666935071844}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters:
-  - {fileID: 2111384121297993115}
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 0
---- !u!114 &632878702318307072
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/ShootyHit/HitType
-  m_EditorClassIdentifier: 
-  Name: HitType
-  Min: 0
-  Max: 2
-  Default: 0
-  Exists: 0
---- !u!114 &693661581660921040
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/TeddyThrowerHit/HitType
-  m_EditorClassIdentifier: 
-  Name: HitType
-  Min: 0
-  Max: 2
-  Default: 0
-  Exists: 1
---- !u!114 &997847702616891980
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/ShootyHit/HitType
-  m_EditorClassIdentifier: 
-  Name: HitType
-  Min: 0
-  Max: 2
-  Default: 0
-  Exists: 0
---- !u!114 &1037268104950480737
+--- !u!114 &-6720657331470622790
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2272,93 +151,7 @@ MonoBehaviour:
   Max: 2
   Default: 0
   Exists: 1
---- !u!114 &1250683638180657973
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Level Music/Player Crystal Seeker Progress
-  m_EditorClassIdentifier: 
-  Name: Player Crystal Seeker Progress
-  Min: 0
-  Max: 1
-  Default: 0
-  Exists: 1
---- !u!114 &1283558726151039433
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Master.bank
-  m_EditorClassIdentifier: 
-  Path: Assets/Crystal Frenzy FMOD Project/Build/Desktop/Master.bank
-  SubDir: 
-  lastModified: 637084238428874397
-  LoadResult: 0
-  FileSizes: []
-  Exists: 1
---- !u!114 &1398394572159962218
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Level Music/Phases
-  m_EditorClassIdentifier: 
-  Name: Phases
-  Min: 0
-  Max: 4
-  Default: 0
-  Exists: 0
---- !u!114 &1531783475362771601
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Level Music/Enemy Crystal Seeker Progress
-  m_EditorClassIdentifier: 
-  Name: Enemy Crystal Seeker Progress
-  Min: 0
-  Max: 1
-  Default: 0
-  Exists: 0
---- !u!114 &1559585232214645533
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Level Music/Player Crystal Seeker Progress
-  m_EditorClassIdentifier: 
-  Name: Player Crystal Seeker Progress
-  Min: 0
-  Max: 1
-  Default: 0
-  Exists: 1
---- !u!114 &1582784200078375508
+--- !u!114 &-5942094143734328989
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2373,7 +166,7 @@ MonoBehaviour:
   Path: event:/SFX/ShootyShoot
   guid: 8eb339b33c9b9e4d8603fefedb7182d7
   Banks:
-  - {fileID: 5362395666935071844}
+  - {fileID: 4783821977017112652}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -2381,7 +174,7 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 294
---- !u!114 &1614190813635120584
+--- !u!114 &-5822420141830919761
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2390,237 +183,28 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Level Music/Enemy Crystal Seeker Progress
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Music/Level Music
   m_EditorClassIdentifier: 
-  Name: Enemy Crystal Seeker Progress
-  Min: 0
-  Max: 1
-  Default: 0
-  Exists: 0
---- !u!114 &1622867325754101528
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Level Music/Enemy Crystal Seeker Health
-  m_EditorClassIdentifier: 
-  Name: Enemy Crystal Seeker Health
-  Min: 0
-  Max: 1
-  Default: 0.99500006
-  Exists: 1
---- !u!114 &1857115300716714831
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: Volume
-  m_EditorClassIdentifier: 
-  Name: Volume
-  Min: 0
-  Max: 1
-  Default: 1
-  Exists: 0
---- !u!114 &1898928017931830172
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/TeddyThrowerHit/HitType
-  m_EditorClassIdentifier: 
-  Name: HitType
-  Min: 0
-  Max: 2
-  Default: 0
-  Exists: 0
---- !u!114 &2087518910103941637
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/ShootyHit/HitType
-  m_EditorClassIdentifier: 
-  Name: HitType
-  Min: 0
-  Max: 2
-  Default: 0
-  Exists: 1
---- !u!114 &2100465148413083203
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Level Music/At Loot Reward Screen
-  m_EditorClassIdentifier: 
-  Name: At Loot Reward Screen
-  Min: 0
-  Max: 2
-  Default: 0
-  Exists: 1
---- !u!114 &2111384121297993115
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/ShootyHit/HitType
-  m_EditorClassIdentifier: 
-  Name: HitType
-  Min: 0
-  Max: 2
-  Default: 0
-  Exists: 1
---- !u!114 &2143403201874930133
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Level Music/Phases
-  m_EditorClassIdentifier: 
-  Name: Phases
-  Min: 0
-  Max: 4
-  Default: 0
-  Exists: 0
---- !u!114 &2148979770542954577
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Level Music/At Loot Reward Screen
-  m_EditorClassIdentifier: 
-  Name: At Loot Reward Screen
-  Min: 0
-  Max: 2
-  Default: 0
-  Exists: 0
---- !u!114 &2363516189049263120
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Level Music/Player Crystal Seeker Health
-  m_EditorClassIdentifier: 
-  Name: Player Crystal Seeker Health
-  Min: 0
-  Max: 1
-  Default: 1
-  Exists: 0
---- !u!114 &2426043795909815622
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Master.bank
-  m_EditorClassIdentifier: 
-  Path: Assets/Crystal Frenzy FMOD Project/Build/Desktop/Master.bank
-  SubDir: 
-  lastModified: 637084243356942566
-  LoadResult: 0
-  FileSizes: []
-  Exists: 1
---- !u!114 &2439777368826140858
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Level Music/Player Crystal Seeker Health
-  m_EditorClassIdentifier: 
-  Name: Player Crystal Seeker Health
-  Min: 0
-  Max: 1
-  Default: 1
-  Exists: 0
---- !u!114 &2513632247982792488
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Level Music/Enemy Crystal Seeker Health
-  m_EditorClassIdentifier: 
-  Name: Enemy Crystal Seeker Health
-  Min: 0
-  Max: 1
-  Default: 0.99500006
-  Exists: 0
---- !u!114 &2661762350765859624
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Level Music/Enemy Crystal Seeker Progress
-  m_EditorClassIdentifier: 
-  Name: Enemy Crystal Seeker Progress
-  Min: 0
-  Max: 1
-  Default: 0
-  Exists: 1
---- !u!114 &2676270442464985911
+  Path: event:/Music/Level Music
+  guid: 667664d50d84684ab00e852dd3812e92
+  Banks:
+  - {fileID: 4783821977017112652}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 0
+  Parameters:
+  - {fileID: -2143019560189160055}
+  - {fileID: -7721252935527191056}
+  - {fileID: -6849414038606891037}
+  - {fileID: -8739846913100886870}
+  - {fileID: -8280684198348681093}
+  - {fileID: -6720657331470622790}
+  - {fileID: 7146066822209229813}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 191186
+--- !u!114 &-5074878902617978493
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2635,7 +219,7 @@ MonoBehaviour:
   Path: event:/SFX/WarlockShoot
   guid: d5fdbf9a7da7fe408374a3d6c348c84f
   Banks:
-  - {fileID: 5362395666935071844}
+  - {fileID: 4783821977017112652}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -2643,7 +227,54 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 633
---- !u!114 &2758950743751141676
+--- !u!114 &-3259455299079017733
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/SpitterHit
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/SpitterHit
+  guid: c80cd4e2157b76478c2f3c9844657b86
+  Banks:
+  - {fileID: 4783821977017112652}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters:
+  - {fileID: -2021066845042455149}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &-2934397892482194368
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/BruteHit
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/BruteHit
+  guid: db98141311f96d42ad14ef4c183d2595
+  Banks:
+  - {fileID: 4783821977017112652}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 326
+--- !u!114 &-2609096879093763698
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2658,16 +289,16 @@ MonoBehaviour:
   Path: event:/SFX/TeddyThrowerHit
   guid: ef1fe001759be84d9478aa86e58c2d05
   Banks:
-  - {fileID: 5362395666935071844}
+  - {fileID: 4783821977017112652}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
   Parameters:
-  - {fileID: 693661581660921040}
+  - {fileID: 5894270932300084252}
   MinDistance: 1
   MaxDistance: 20
   Length: 0
---- !u!114 &2877192616149309318
+--- !u!114 &-2516837861640880332
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2677,31 +308,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/TeddyThrowerHit/HitType
-  m_EditorClassIdentifier: 
-  Name: HitType
-  Min: 0
-  Max: 2
-  Default: 0
-  Exists: 0
---- !u!114 &2885015343040870874
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/TeddyThrowerHit/HitType
+  m_Name: parameter:/WarlockHit/HitType
   m_EditorClassIdentifier: 
   Name: HitType
   Min: 0
   Max: 2
   Default: 0
   Exists: 1
---- !u!114 &2924566620769938073
+--- !u!114 &-2205257154788163231
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2710,83 +324,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Level Music/Phases
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/ShootyHit
   m_EditorClassIdentifier: 
-  Name: Phases
-  Min: 0
-  Max: 4
-  Default: 0
-  Exists: 1
---- !u!114 &3056228151704743350
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Level Music/Player Crystal Seeker Progress
-  m_EditorClassIdentifier: 
-  Name: Player Crystal Seeker Progress
-  Min: 0
-  Max: 1
-  Default: 0
-  Exists: 1
---- !u!114 &3070490186539194750
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/ShootyHit/HitType
-  m_EditorClassIdentifier: 
-  Name: HitType
-  Min: 0
-  Max: 2
-  Default: 0
-  Exists: 1
---- !u!114 &3134912945926616914
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/TeddyThrowerHit/HitType
-  m_EditorClassIdentifier: 
-  Name: HitType
-  Min: 0
-  Max: 2
-  Default: 0
-  Exists: 1
---- !u!114 &3183569480503388987
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/ShootyHit/HitType
-  m_EditorClassIdentifier: 
-  Name: HitType
-  Min: 0
-  Max: 2
-  Default: 0
-  Exists: 1
---- !u!114 &3231789073449025687
+  Path: event:/SFX/ShootyHit
+  guid: 65e997583af5ea489179530ac89d5e08
+  Banks:
+  - {fileID: 4783821977017112652}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters:
+  - {fileID: -220575202719244716}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &-2143019560189160055
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2803,24 +356,7 @@ MonoBehaviour:
   Max: 1
   Default: 1
   Exists: 1
---- !u!114 &3325367333262112698
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/SpitterHit/HitType
-  m_EditorClassIdentifier: 
-  Name: HitType
-  Min: 0
-  Max: 2
-  Default: 0
-  Exists: 0
---- !u!114 &3449188661241288414
+--- !u!114 &-2021066845042455149
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2837,7 +373,7 @@ MonoBehaviour:
   Max: 2
   Default: 0
   Exists: 1
---- !u!114 &3620728374348204226
+--- !u!114 &-1887886641945967090
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2846,15 +382,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/WarlockHit/HitType
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/MinerMoveLoop
   m_EditorClassIdentifier: 
-  Name: HitType
-  Min: 0
-  Max: 2
-  Default: 0
-  Exists: 1
---- !u!114 &3697124209535357878
+  Path: event:/SFX/MinerMoveLoop
+  guid: 4e63682f8c73634297a689e45e049319
+  Banks:
+  - {fileID: 4783821977017112652}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 0
+  Parameters:
+  - {fileID: 5155213545191521078}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 2056
+--- !u!114 &-1271559282036379231
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2863,33 +406,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Level Music/Enemy Crystal Seeker Health
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/WarlockHeal
   m_EditorClassIdentifier: 
-  Name: Enemy Crystal Seeker Health
-  Min: 0
-  Max: 1
-  Default: 0.99500006
-  Exists: 1
---- !u!114 &3757048023984305204
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Master.bank
-  m_EditorClassIdentifier: 
-  Path: Assets/Crystal Frenzy FMOD Project/Build/Desktop/Master.bank
-  SubDir: 
-  lastModified: 637084044761421849
-  LoadResult: 0
-  FileSizes: []
-  Exists: 1
---- !u!114 &3890201366641585419
+  Path: event:/SFX/WarlockHeal
+  guid: 695633d6d72ad64292e310298211a598
+  Banks:
+  - {fileID: 4783821977017112652}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 750
+--- !u!114 &-1130232516933113423
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2904,7 +435,7 @@ MonoBehaviour:
   Path: event:/SFX/VolatileExplode
   guid: 535d751972bbd948bc9bcc0b6bd0b16b
   Banks:
-  - {fileID: 5362395666935071844}
+  - {fileID: 4783821977017112652}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -2912,602 +443,7 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 701
---- !u!114 &4060359637979829505
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Level Music/Player Crystal Seeker Health
-  m_EditorClassIdentifier: 
-  Name: Player Crystal Seeker Health
-  Min: 0
-  Max: 1
-  Default: 1
-  Exists: 0
---- !u!114 &4255686964696531750
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/SpitterHit/HitType
-  m_EditorClassIdentifier: 
-  Name: HitType
-  Min: 0
-  Max: 2
-  Default: 0
-  Exists: 0
---- !u!114 &4617568640792460647
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Level Music/At Loot Reward Screen
-  m_EditorClassIdentifier: 
-  Name: At Loot Reward Screen
-  Min: 0
-  Max: 2
-  Default: 0
-  Exists: 1
---- !u!114 &4779490000620449701
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Level Music/Phases
-  m_EditorClassIdentifier: 
-  Name: Phases
-  Min: 0
-  Max: 4
-  Default: 0
-  Exists: 1
---- !u!114 &4851778879697051071
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SFX/WarlockHit
-  m_EditorClassIdentifier: 
-  Path: event:/SFX/WarlockHit
-  guid: e592bb64a435a24eab6b7db275bba4a9
-  Banks:
-  - {fileID: 5362395666935071844}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters:
-  - {fileID: -908801397602603468}
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 0
---- !u!114 &4862096989962436389
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Level Music/Enemy Crystal Seeker Progress
-  m_EditorClassIdentifier: 
-  Name: Enemy Crystal Seeker Progress
-  Min: 0
-  Max: 1
-  Default: 0
-  Exists: 0
---- !u!114 &4897621392259730597
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: Volume
-  m_EditorClassIdentifier: 
-  Name: Volume
-  Min: 0
-  Max: 1
-  Default: 1
-  Exists: 0
---- !u!114 &4964563303044888185
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Master.bank
-  m_EditorClassIdentifier: 
-  Path: Assets/Crystal Frenzy FMOD Project/Build/Desktop/Master.bank
-  SubDir: 
-  lastModified: 637084262526104242
-  LoadResult: 0
-  FileSizes: []
-  Exists: 0
---- !u!114 &5061843001710116442
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Master.bank
-  m_EditorClassIdentifier: 
-  Path: Assets/Crystal Frenzy FMOD Project/Build/Desktop/Master.bank
-  SubDir: 
-  lastModified: 637084018576532749
-  LoadResult: 0
-  FileSizes: []
-  Exists: 0
---- !u!114 &5178298338609329932
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Level Music/Enemy Crystal Seeker Health
-  m_EditorClassIdentifier: 
-  Name: Enemy Crystal Seeker Health
-  Min: 0
-  Max: 1
-  Default: 0.99500006
-  Exists: 0
---- !u!114 &5178537651984155334
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/WarlockHit/HitType
-  m_EditorClassIdentifier: 
-  Name: HitType
-  Min: 0
-  Max: 2
-  Default: 0
-  Exists: 0
---- !u!114 &5323698874518624442
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Level Music/At Loot Reward Screen
-  m_EditorClassIdentifier: 
-  Name: At Loot Reward Screen
-  Min: 0
-  Max: 2
-  Default: 0
-  Exists: 0
---- !u!114 &5362395666935071844
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Master.bank
-  m_EditorClassIdentifier: 
-  Path: Assets/Crystal Frenzy FMOD Project/Build/Desktop/Master.bank
-  SubDir: 
-  lastModified: 637084282322153211
-  LoadResult: 0
-  FileSizes: []
-  Exists: 1
---- !u!114 &5600393399397074450
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Level Music/Player Crystal Seeker Progress
-  m_EditorClassIdentifier: 
-  Name: Player Crystal Seeker Progress
-  Min: 0
-  Max: 1
-  Default: 0
-  Exists: 0
---- !u!114 &5605510361336193419
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/SpitterHit/HitType
-  m_EditorClassIdentifier: 
-  Name: HitType
-  Min: 0
-  Max: 2
-  Default: 0
-  Exists: 1
---- !u!114 &5651913436604654831
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SFX/BushMoveLoop
-  m_EditorClassIdentifier: 
-  Path: event:/SFX/BushMoveLoop
-  guid: 7c666ce057d7e049b89fa9a462601f57
-  Banks:
-  - {fileID: 5362395666935071844}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 0
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 977
---- !u!114 &5976330251044697943
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/TeddyThrowerHit/HitType
-  m_EditorClassIdentifier: 
-  Name: HitType
-  Min: 0
-  Max: 2
-  Default: 0
-  Exists: 0
---- !u!114 &5977617181170358240
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/WarlockHit/HitType
-  m_EditorClassIdentifier: 
-  Name: HitType
-  Min: 0
-  Max: 2
-  Default: 0
-  Exists: 0
---- !u!114 &6231214631222883303
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Level Music/Enemy Crystal Seeker Progress
-  m_EditorClassIdentifier: 
-  Name: Enemy Crystal Seeker Progress
-  Min: 0
-  Max: 1
-  Default: 0
-  Exists: 1
---- !u!114 &6541936480036271445
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Level Music/Phases
-  m_EditorClassIdentifier: 
-  Name: Phases
-  Min: 0
-  Max: 4
-  Default: 0
-  Exists: 0
---- !u!114 &6569836540442461449
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/MinerMoveLoop/Moving
-  m_EditorClassIdentifier: 
-  Name: Moving
-  Min: 0
-  Max: 2
-  Default: 0
-  Exists: 0
---- !u!114 &6621809343095874800
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/TeddyThrowerHit/HitType
-  m_EditorClassIdentifier: 
-  Name: HitType
-  Min: 0
-  Max: 2
-  Default: 0
-  Exists: 0
---- !u!114 &6667279694585556160
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/WarlockHit/HitType
-  m_EditorClassIdentifier: 
-  Name: HitType
-  Min: 0
-  Max: 2
-  Default: 0
-  Exists: 0
---- !u!114 &6722867694306388928
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Master.bank
-  m_EditorClassIdentifier: 
-  Path: Assets/Crystal Frenzy FMOD Project/Build/Desktop/Master.bank
-  SubDir: 
-  lastModified: 637084044761421849
-  LoadResult: 0
-  FileSizes: []
-  Exists: 1
---- !u!114 &6812847444937523558
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/WarlockHit/HitType
-  m_EditorClassIdentifier: 
-  Name: HitType
-  Min: 0
-  Max: 2
-  Default: 0
-  Exists: 1
---- !u!114 &6930384536117403890
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Level Music/Enemy Crystal Seeker Health
-  m_EditorClassIdentifier: 
-  Name: Enemy Crystal Seeker Health
-  Min: 0
-  Max: 1
-  Default: 0.99500006
-  Exists: 1
---- !u!114 &6995125710220955994
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Level Music/Player Crystal Seeker Health
-  m_EditorClassIdentifier: 
-  Name: Player Crystal Seeker Health
-  Min: 0
-  Max: 1
-  Default: 1
-  Exists: 1
---- !u!114 &7179431073497754068
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/MinerMoveLoop/Moving
-  m_EditorClassIdentifier: 
-  Name: Moving
-  Min: 0
-  Max: 2
-  Default: 0
-  Exists: 0
---- !u!114 &7231462577972159221
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Level Music/Player Crystal Seeker Progress
-  m_EditorClassIdentifier: 
-  Name: Player Crystal Seeker Progress
-  Min: 0
-  Max: 1
-  Default: 0
-  Exists: 0
---- !u!114 &7271706091177408674
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/SpitterHit/HitType
-  m_EditorClassIdentifier: 
-  Name: HitType
-  Min: 0
-  Max: 2
-  Default: 0
-  Exists: 1
---- !u!114 &7505989449320960799
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Level Music/Enemy Crystal Seeker Progress
-  m_EditorClassIdentifier: 
-  Name: Enemy Crystal Seeker Progress
-  Min: 0
-  Max: 1
-  Default: 0
-  Exists: 1
---- !u!114 &7506788911185423252
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/TeddyThrowerHit/HitType
-  m_EditorClassIdentifier: 
-  Name: HitType
-  Min: 0
-  Max: 2
-  Default: 0
-  Exists: 1
---- !u!114 &7714491035478278283
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/MinerMoveLoop/Moving
-  m_EditorClassIdentifier: 
-  Name: Moving
-  Min: 0
-  Max: 2
-  Default: 0
-  Exists: 0
---- !u!114 &8065197700133535887
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Level Music/Player Crystal Seeker Progress
-  m_EditorClassIdentifier: 
-  Name: Player Crystal Seeker Progress
-  Min: 0
-  Max: 1
-  Default: 0
-  Exists: 0
---- !u!114 &8195871071741460665
+--- !u!114 &-945454422738511043
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3522,7 +458,7 @@ MonoBehaviour:
   Path: event:/SFX/PapaTeddyHit
   guid: dec6589a50869a42bb95c52e5d233d37
   Banks:
-  - {fileID: 5362395666935071844}
+  - {fileID: 4783821977017112652}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -3530,7 +466,7 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 401
---- !u!114 &8198673532393318468
+--- !u!114 &-424271720411958166
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3540,48 +476,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/ShootyHit/HitType
+  m_Name: parameter:/Menu Music/LevelVolume
   m_EditorClassIdentifier: 
-  Name: HitType
-  Min: 0
-  Max: 2
-  Default: 0
-  Exists: 1
---- !u!114 &8233030952758756995
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Level Music/Player Crystal Seeker Health
-  m_EditorClassIdentifier: 
-  Name: Player Crystal Seeker Health
+  Name: LevelVolume
   Min: 0
   Max: 1
   Default: 1
-  Exists: 0
---- !u!114 &8259504519710084627
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Level Music/Enemy Crystal Seeker Health
-  m_EditorClassIdentifier: 
-  Name: Enemy Crystal Seeker Health
-  Min: 0
-  Max: 1
-  Default: 0.99500006
   Exists: 1
---- !u!114 &8263722421737543142
+--- !u!114 &-220575202719244716
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3597,25 +499,8 @@ MonoBehaviour:
   Min: 0
   Max: 2
   Default: 0
-  Exists: 0
---- !u!114 &8350840723343044460
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Level Music/Phases
-  m_EditorClassIdentifier: 
-  Name: Phases
-  Min: 0
-  Max: 4
-  Default: 0
   Exists: 1
---- !u!114 &8420459609734554138
+--- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3624,134 +509,45 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Level Music/Enemy Crystal Seeker Health
+  m_Script: {fileID: 11500000, guid: d32cf7c32a3ed8347bac48ef5ed56d82, type: 3}
+  m_Name: FMODStudioCache
   m_EditorClassIdentifier: 
-  Name: Enemy Crystal Seeker Health
-  Min: 0
-  Max: 1
-  Default: 0.99500006
-  Exists: 1
---- !u!114 &8613296053341572161
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/SpitterHit/HitType
-  m_EditorClassIdentifier: 
-  Name: HitType
-  Min: 0
-  Max: 2
-  Default: 0
-  Exists: 0
---- !u!114 &8738609777123767361
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Level Music/Player Crystal Seeker Progress
-  m_EditorClassIdentifier: 
-  Name: Player Crystal Seeker Progress
-  Min: 0
-  Max: 1
-  Default: 0
-  Exists: 0
---- !u!114 &8928733867068048160
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Level Music/Phases
-  m_EditorClassIdentifier: 
-  Name: Phases
-  Min: 0
-  Max: 4
-  Default: 0
-  Exists: 0
---- !u!114 &8971130711049641135
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Level Music/Player Crystal Seeker Progress
-  m_EditorClassIdentifier: 
-  Name: Player Crystal Seeker Progress
-  Min: 0
-  Max: 1
-  Default: 0
-  Exists: 0
---- !u!114 &9055916567285084216
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Level Music/Phases
-  m_EditorClassIdentifier: 
-  Name: Phases
-  Min: 0
-  Max: 4
-  Default: 0
-  Exists: 0
---- !u!114 &9089535033581441939
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Level Music/Enemy Crystal Seeker Health
-  m_EditorClassIdentifier: 
-  Name: Enemy Crystal Seeker Health
-  Min: 0
-  Max: 1
-  Default: 0.99500006
-  Exists: 0
---- !u!114 &9112153766093160548
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Level Music/Player Crystal Seeker Progress
-  m_EditorClassIdentifier: 
-  Name: Player Crystal Seeker Progress
-  Min: 0
-  Max: 1
-  Default: 0
-  Exists: 1
---- !u!114 &9130515167440336160
+  EditorBanks:
+  - {fileID: -8912277658758092973}
+  - {fileID: 4783821977017112652}
+  EditorEvents:
+  - {fileID: 2975837356750265024}
+  - {fileID: 263046720694167894}
+  - {fileID: -1887886641945967090}
+  - {fileID: -1130232516933113423}
+  - {fileID: 1941225003162662736}
+  - {fileID: -2205257154788163231}
+  - {fileID: -5822420141830919761}
+  - {fileID: -8543984565725876444}
+  - {fileID: -1271559282036379231}
+  - {fileID: 8970577507223641315}
+  - {fileID: 5857569125008253388}
+  - {fileID: -5942094143734328989}
+  - {fileID: 6253707746134950889}
+  - {fileID: 6480702878055158854}
+  - {fileID: 6907734907948979524}
+  - {fileID: -3259455299079017733}
+  - {fileID: 8234190089040264700}
+  - {fileID: -5074878902617978493}
+  - {fileID: -2934397892482194368}
+  - {fileID: -945454422738511043}
+  - {fileID: 7464342612323809831}
+  - {fileID: 1761885209228772719}
+  - {fileID: -2609096879093763698}
+  - {fileID: -7107013152287910104}
+  EditorParameters: []
+  MasterBanks:
+  - {fileID: 4783821977017112652}
+  StringsBanks:
+  - {fileID: -8912277658758092973}
+  stringsBankWriteTime: 637084726030553609
+  cacheVersion: 3
+--- !u!114 &263046720694167894
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3766,7 +562,7 @@ MonoBehaviour:
   Path: event:/SFX/StabbyHit
   guid: 12b5d231a7907942a859b0c95a5a4dc2
   Banks:
-  - {fileID: 5362395666935071844}
+  - {fileID: 4783821977017112652}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -3774,7 +570,7 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 192
---- !u!114 &9132495219398201641
+--- !u!114 &1761885209228772719
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3783,15 +579,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/WarlockHit/HitType
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/WarlockHit
   m_EditorClassIdentifier: 
-  Name: HitType
-  Min: 0
-  Max: 2
-  Default: 0
-  Exists: 0
---- !u!114 &9160267209474604854
+  Path: event:/SFX/WarlockHit
+  guid: e592bb64a435a24eab6b7db275bba4a9
+  Banks:
+  - {fileID: 4783821977017112652}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters:
+  - {fileID: -2516837861640880332}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &1941225003162662736
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3800,15 +603,45 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/WarlockHit/HitType
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Music/Menu Music
   m_EditorClassIdentifier: 
-  Name: HitType
-  Min: 0
-  Max: 2
-  Default: 0
-  Exists: 0
---- !u!114 &9170413955410985843
+  Path: event:/Music/Menu Music
+  guid: 56034f3eda56be48851a188d5439587d
+  Banks:
+  - {fileID: 4783821977017112652}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 0
+  Parameters:
+  - {fileID: -424271720411958166}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 188275
+--- !u!114 &2975837356750265024
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/ScourgeHit
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/ScourgeHit
+  guid: 04f3d5b83b00ba489defa0d5ba652de2
+  Banks:
+  - {fileID: 4783821977017112652}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 388
+--- !u!114 &4783821977017112652
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3822,11 +655,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: Assets/Crystal Frenzy FMOD Project/Build/Desktop/Master.bank
   SubDir: 
-  lastModified: 637084018576532749
+  lastModified: 637084726113249068
   LoadResult: 0
   FileSizes: []
-  Exists: 0
---- !u!114 &9203183664449072304
+  Exists: 1
+--- !u!114 &5155213545191521078
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3836,10 +669,205 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Level Music/Player Crystal Seeker Health
+  m_Name: parameter:/MinerMoveLoop/Moving
   m_EditorClassIdentifier: 
-  Name: Player Crystal Seeker Health
+  Name: Moving
   Min: 0
-  Max: 1
-  Default: 1
+  Max: 2
+  Default: 0
   Exists: 1
+--- !u!114 &5857569125008253388
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/BushMoveLoop
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/BushMoveLoop
+  guid: 7c666ce057d7e049b89fa9a462601f57
+  Banks:
+  - {fileID: 4783821977017112652}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 977
+--- !u!114 &5894270932300084252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/TeddyThrowerHit/HitType
+  m_EditorClassIdentifier: 
+  Name: HitType
+  Min: 0
+  Max: 2
+  Default: 0
+  Exists: 1
+--- !u!114 &6253707746134950889
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/GoblinDie
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/GoblinDie
+  guid: 9c17b7f80151ee469dcec07becba6b01
+  Banks:
+  - {fileID: 4783821977017112652}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 410
+--- !u!114 &6480702878055158854
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/TeddyDie
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/TeddyDie
+  guid: 9d56d948ad88e441b92dd427f0dd2569
+  Banks:
+  - {fileID: 4783821977017112652}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 471
+--- !u!114 &6907734907948979524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/SpitterShoot
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/SpitterShoot
+  guid: ac2a63d62131be41ba9d29a9cb25d9ac
+  Banks:
+  - {fileID: 4783821977017112652}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 397
+--- !u!114 &7146066822209229813
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Level Music/Phases
+  m_EditorClassIdentifier: 
+  Name: Phases
+  Min: 0
+  Max: 4
+  Default: 0
+  Exists: 1
+--- !u!114 &7464342612323809831
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/VolatileHit
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/VolatileHit
+  guid: e52c1da1dd24db4b9d0c0bfa5527a69c
+  Banks:
+  - {fileID: 4783821977017112652}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 268
+--- !u!114 &8234190089040264700
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/BugDie
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/BugDie
+  guid: d50304ed053d7a4e8c5c29bae398fe0c
+  Banks:
+  - {fileID: 4783821977017112652}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 793
+--- !u!114 &8970577507223641315
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/MinerFootsteps
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/MinerFootsteps
+  guid: 72868b386cd3e241b2af88c539f9c0ca
+  Banks:
+  - {fileID: 4783821977017112652}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 642
