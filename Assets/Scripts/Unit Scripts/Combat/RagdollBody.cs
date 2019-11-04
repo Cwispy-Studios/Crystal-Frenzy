@@ -7,6 +7,10 @@ public class RagdollBody : MonoBehaviour
 
   private float shrinkSpeed = 1.5f;
 
+  [FMODUnity.EventRef]
+  public string shrinkSound = "";
+  private bool soundPlayed = false;
+
   private void Update()
   {
     if (lifetimeCountdown < LIFETIME)
@@ -16,6 +20,11 @@ public class RagdollBody : MonoBehaviour
 
     else
     {
+      if (!soundPlayed)
+      {
+        FMODUnity.RuntimeManager.PlayOneShot(shrinkSound);
+      }
+
       transform.localScale -= Vector3.one * shrinkSpeed * Time.deltaTime;
 
       GetComponentInChildren<Rigidbody>().ResetCenterOfMass();
