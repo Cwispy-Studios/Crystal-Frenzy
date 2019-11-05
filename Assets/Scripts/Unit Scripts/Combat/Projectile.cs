@@ -97,6 +97,7 @@ public class Projectile : MonoBehaviour
         hitSound.setParameterByID(hitParamaterId, 1);
       }
 
+      FMODUnity.RuntimeManager.AttachInstanceToGameObject(hitSound, transform, GetComponent<Rigidbody>());
       hitSound.start();
 
       // Destroy projectile since it has reached destination

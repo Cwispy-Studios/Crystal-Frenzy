@@ -15039,8 +15039,9 @@ MonoBehaviour:
   explodesOnDeath: 0
   explosionDmgPctOfHealth: 0.25
   explosionRadius: 10
+  explosionEffect: {fileID: 0}
   combatantType: 1
-  deathSound: 
+  deathSound: event:/SFX/Units/MinerDie
   explodeSound: 
 --- !u!114 &6874352428671528951
 MonoBehaviour:
@@ -15121,6 +15122,7 @@ MonoBehaviour:
   minorSmoke: {fileID: 5740935751940413874}
   majorSmoke: {fileID: 1042227364133223030}
   majorSparks: {fileID: 4543788363581139328}
+  sparkSound: event:/SFX/Units/MinerDamaged
 --- !u!1 &5981299769077955700
 GameObject:
   m_ObjectHideFlags: 0

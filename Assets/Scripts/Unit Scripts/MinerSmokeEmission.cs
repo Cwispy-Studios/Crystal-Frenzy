@@ -7,6 +7,10 @@ public class MinerSmokeEmission : MonoBehaviour
 
   private Health minerHealth = null;
 
+  [FMODUnity.EventRef]
+  public string sparkSound = "";
+  private FMOD.Studio.EventInstance sparkInstance;
+
   private void Awake()
   {
     minorSmoke.Stop();
@@ -14,11 +18,19 @@ public class MinerSmokeEmission : MonoBehaviour
     majorSparks.Stop();
 
     minerHealth = GetComponent<Health>();
+    sparkInstance = FMODUnity.RuntimeManager.CreateInstance(sparkSound);
+    FMODUnity.RuntimeManager.AttachInstanceToGameObject(sparkInstance, transform, GetComponent<Rigidbody>());
   }
 
   private void Update()
   {
     float healthPct = minerHealth.CurrentHealth / minerHealth.MaxHealth;
+
+    FMODUnity.RuntimeManager.AttachInstanceToGameObject(sparkInstance, transform, GetComponent<Rigidbody>());
+
+    FMOD.Studio.PLAYBACK_STATE playbackState;
+
+    sparkInstance.getPlaybackState(out playbackState);
 
     if (healthPct >= 0.6f)
     {
@@ -36,6 +48,11 @@ public class MinerSmokeEmission : MonoBehaviour
       
       majorSmoke.Stop();
       majorSparks.Stop();
+    
+      if (playbackState == FMOD.Studio.PLAYBACK_STATE.PLAYING)
+      {
+        sparkInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+      }
     }
 
     else
@@ -50,6 +67,11 @@ public class MinerSmokeEmission : MonoBehaviour
       if (!majorSparks.isPlaying)
       {
         majorSparks.Play();
+      }
+
+      if (playbackState == FMOD.Studio.PLAYBACK_STATE.STOPPED)
+      {
+        sparkInstance.start();
       }
     }
   }

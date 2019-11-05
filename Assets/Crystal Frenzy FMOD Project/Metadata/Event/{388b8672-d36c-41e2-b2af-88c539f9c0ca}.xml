@@ -122,6 +122,7 @@
 		<relationship name="effects">
 			<destination>{2a241660-8ee2-4769-a123-de1eb77ba17d}</destination>
 			<destination>{06bf5c45-63fd-4b5d-bec1-c8f8244bcc26}</destination>
+			<destination>{4dbb5bfc-f596-412a-99f5-769a0facaf9d}</destination>
 			<destination>{21221664-83c7-4222-8a11-d1003a3e362a}</destination>
 			<destination>{cc9620ec-3690-4c6c-a11c-14e137771343}</destination>
 			<destination>{abaca85c-3b23-468f-a3e5-03b72b8e88df}</destination>
@@ -154,6 +155,11 @@
 		</property>
 		<property name="lowCrossover">
 			<value>500</value>
+		</property>
+	</object>
+	<object class="CompressorEffect" id="{4dbb5bfc-f596-412a-99f5-769a0facaf9d}">
+		<property name="gain">
+			<value>3</value>
 		</property>
 	</object>
 	<object class="PitchShifterEffect" id="{21221664-83c7-4222-8a11-d1003a3e362a}">
