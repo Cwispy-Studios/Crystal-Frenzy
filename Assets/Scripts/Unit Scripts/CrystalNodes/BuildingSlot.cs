@@ -65,12 +65,14 @@ public class BuildingSlot : MonoBehaviour
   public void RecaptureBuilding()
   {
     buildingSlot.GetComponent<Faction>().faction = Faction.FACTIONS.GOBLINS;
+    buildingSlot.GetComponent<ConstructableBuilding>().SetBuildingButtonInteractable(true);
     GameManager.buildingManager.RecaptureBuilding(buildingSlot);
   }
 
   public void LoseBuilding()
   {
     buildingSlot.GetComponent<Faction>().faction = Faction.FACTIONS.NEUTRAL;
+    buildingSlot.GetComponent<ConstructableBuilding>().SetBuildingButtonInteractable(false);
     GameManager.buildingManager.LoseBuilding(buildingSlot);
   }
 

@@ -396,6 +396,8 @@ GameObject:
   - component: {fileID: 4772873626863035383}
   - component: {fileID: 4772873626863035376}
   - component: {fileID: 5891851463954874321}
+  - component: {fileID: -1621472976435881953}
+  - component: {fileID: 8163820928829959843}
   m_Layer: 0
   m_Name: CrystalGuardian
   m_TagString: Untagged
@@ -772,6 +774,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a533fab9a76c8ea4098c563139cf9fea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-1621472976435881953
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4772873626863035385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac56f1b6c1ad8144fb388e944cfc04c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  goldProvided: 50
+--- !u!114 &8163820928829959843
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4772873626863035385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39a34423a60b62142b395a1476ff1b44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentAnimationState: 0
 --- !u!1 &4908163593256449452
 GameObject:
   m_ObjectHideFlags: 0

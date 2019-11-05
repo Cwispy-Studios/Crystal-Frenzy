@@ -16,6 +16,9 @@ public class ConstructButton : MonoBehaviour, IPointerEnterHandler, IPointerExit
   [HideInInspector]
   public bool available = true;
 
+  [SerializeField]
+  private ConstructedBuildingsPanel constructedBuildingPanel = null;
+
   private GameManager gameManager;
 
   private void Awake()
@@ -40,8 +43,9 @@ public class ConstructButton : MonoBehaviour, IPointerEnterHandler, IPointerExit
   {
     GameManager.resourceManager.SpendGold(constructableBuildingPrefab.GetComponent<ConstructableBuilding>().goldCost);
 
-    connectedNode.GetComponentInParent<BuildingSlot>().SetConstruction(
-      Instantiate(constructableBuildingPrefab, connectedNode.transform.position, connectedNode.transform.rotation, connectedNode.transform.parent));
+    var constructedBuilding = Instantiate(constructableBuildingPrefab, connectedNode.transform.position, connectedNode.transform.rotation, connectedNode.transform.parent);
+    connectedNode.GetComponentInParent<BuildingSlot>().SetConstruction(constructedBuilding);
+    constructedBuildingPanel.AddNewConstructedBuilding(constructedBuilding, GetComponent<Image>().sprite);
 
     uiInterface.HideBuildingTooltipPopup();
     uiInterface.HideConstructPanel(connectedNode);
