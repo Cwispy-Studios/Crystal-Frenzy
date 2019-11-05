@@ -46,6 +46,8 @@ The percussions and Tuba also become silent as the player's Crystal Seeker dies,
 			<destination>{99a32abc-b317-4b96-a9c9-7e00ebf4fdb2}</destination>
 			<destination>{8baeda70-7ca5-4f9c-be9b-b13f1ff879b6}</destination>
 			<destination>{cbfde478-bff6-4821-ab6e-cb2ddef0f3a3}</destination>
+			<destination>{b28228e5-8a02-4c1a-8487-327d4228b2ac}</destination>
+			<destination>{fb43256a-6255-4768-9d08-d4359a11f4c4}</destination>
 		</relationship>
 		<relationship name="groupTracks">
 			<destination>{3bf91a89-1458-4f4b-89d7-89675917a2bd}</destination>
@@ -112,6 +114,8 @@ The percussions and Tuba also become silent as the player's Crystal Seeker dies,
 	<object class="MarkerTrack" id="{99a32abc-b317-4b96-a9c9-7e00ebf4fdb2}" />
 	<object class="MarkerTrack" id="{8baeda70-7ca5-4f9c-be9b-b13f1ff879b6}" />
 	<object class="MarkerTrack" id="{cbfde478-bff6-4821-ab6e-cb2ddef0f3a3}" />
+	<object class="MarkerTrack" id="{b28228e5-8a02-4c1a-8487-327d4228b2ac}" />
+	<object class="MarkerTrack" id="{fb43256a-6255-4768-9d08-d4359a11f4c4}" />
 	<object class="GroupTrack" id="{3bf91a89-1458-4f4b-89d7-89675917a2bd}">
 		<relationship name="automationTracks">
 			<destination>{2b394b78-7ef9-40d4-a098-3c3c78ca0e08}</destination>
@@ -456,6 +460,8 @@ The percussions and Tuba also become silent as the player's Crystal Seeker dies,
 			<destination>{794e8eab-7487-40b0-9eda-2152034ed68d}</destination>
 			<destination>{35590ccb-2c6b-47e1-9b18-8c942479286f}</destination>
 			<destination>{8270742d-1677-4a20-ac64-2827e7ba3f4f}</destination>
+			<destination>{f536e83b-60c9-4bed-88a8-3186eb46f813}</destination>
+			<destination>{9e61f747-6600-4564-90f3-fa74ef9200e5}</destination>
 		</relationship>
 	</object>
 	<object class="ParameterProxy" id="{9b3f9a35-5087-4214-b32b-290b2629e1ff}">
@@ -2314,9 +2320,6 @@ The percussions and Tuba also become silent as the player's Crystal Seeker dies,
 		<relationship name="markerTrack">
 			<destination>{ef17cb2b-9abf-4d5d-a35f-be4dddf5a542}</destination>
 		</relationship>
-		<relationship name="triggerConditions">
-			<destination>{1d88bbef-290a-44bb-872d-56ca2cb04d58}</destination>
-		</relationship>
 	</object>
 	<object class="LoopRegion" id="{9bf37d05-f9e6-43f3-88d7-ac82e9ae22eb}">
 		<property name="position">
@@ -2807,6 +2810,49 @@ The percussions and Tuba also become silent as the player's Crystal Seeker dies,
 			<destination>{e300e08a-8db9-45d7-bba1-dd7290761c64}</destination>
 		</relationship>
 	</object>
+	<object class="TransitionRegion" id="{f536e83b-60c9-4bed-88a8-3186eb46f813}">
+		<property name="position">
+			<value>46.779662782485943</value>
+		</property>
+		<property name="length">
+			<value>124.06779661016949</value>
+		</property>
+		<property name="quantizationInterval">
+			<value>2</value>
+		</property>
+		<relationship name="timeline">
+			<destination>{24067568-f80f-4b3f-89c8-f95d3deed698}</destination>
+		</relationship>
+		<relationship name="markerTrack">
+			<destination>{b28228e5-8a02-4c1a-8487-327d4228b2ac}</destination>
+		</relationship>
+		<relationship name="destination">
+			<destination>{e2eaee15-9924-4dfe-b5cc-c2e3c823e35e}</destination>
+		</relationship>
+		<relationship name="triggerConditions">
+			<destination>{416f63dd-303c-4716-919a-02dcbfd1ff65}</destination>
+		</relationship>
+	</object>
+	<object class="TransitionRegion" id="{9e61f747-6600-4564-90f3-fa74ef9200e5}">
+		<property name="position">
+			<value>46.779662782485943</value>
+		</property>
+		<property name="length">
+			<value>124.06779661016949</value>
+		</property>
+		<relationship name="timeline">
+			<destination>{24067568-f80f-4b3f-89c8-f95d3deed698}</destination>
+		</relationship>
+		<relationship name="markerTrack">
+			<destination>{fb43256a-6255-4768-9d08-d4359a11f4c4}</destination>
+		</relationship>
+		<relationship name="destination">
+			<destination>{37a60f17-3cd2-4953-82b7-89945ef11142}</destination>
+		</relationship>
+		<relationship name="triggerConditions">
+			<destination>{2a7443b4-8a0e-47a9-8afa-c749666e1fd5}</destination>
+		</relationship>
+	</object>
 	<object class="Automator" id="{b8c6689f-0e72-4d2c-897c-a683697e7bc1}">
 		<property name="nameOfPropertyBeingAutomated">
 			<value>volume</value>
@@ -2921,17 +2967,6 @@ The percussions and Tuba also become silent as the player's Crystal Seeker dies,
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{ac87ec30-3c50-4d21-be55-e87e68ee01fb}" />
-	<object class="ParameterCondition" id="{1d88bbef-290a-44bb-872d-56ca2cb04d58}">
-		<property name="minimum">
-			<value>0</value>
-		</property>
-		<property name="maximum">
-			<value>0</value>
-		</property>
-		<relationship name="parameter">
-			<destination>{aa841e91-90a9-42a9-9362-4e020d0dde83}</destination>
-		</relationship>
-	</object>
 	<object class="ParameterCondition" id="{f751e67b-105c-4f54-abd9-46f2f7fab433}">
 		<property name="minimum">
 			<value>1</value>
@@ -3161,6 +3196,28 @@ The percussions and Tuba also become silent as the player's Crystal Seeker dies,
 		</property>
 		<relationship name="parameter">
 			<destination>{e24dad31-bad3-4e3e-9bdd-c77698b1f66e}</destination>
+		</relationship>
+	</object>
+	<object class="ParameterCondition" id="{416f63dd-303c-4716-919a-02dcbfd1ff65}">
+		<property name="minimum">
+			<value>0</value>
+		</property>
+		<property name="maximum">
+			<value>0</value>
+		</property>
+		<relationship name="parameter">
+			<destination>{aa841e91-90a9-42a9-9362-4e020d0dde83}</destination>
+		</relationship>
+	</object>
+	<object class="ParameterCondition" id="{2a7443b4-8a0e-47a9-8afa-c749666e1fd5}">
+		<property name="minimum">
+			<value>2</value>
+		</property>
+		<property name="maximum">
+			<value>2</value>
+		</property>
+		<relationship name="parameter">
+			<destination>{aa841e91-90a9-42a9-9362-4e020d0dde83}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusFader" id="{48f18953-8b11-41c7-80d5-c1644001a19e}" />

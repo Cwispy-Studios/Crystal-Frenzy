@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 343797262634457931}
   - component: {fileID: 8612548521859911311}
   - component: {fileID: -5857222811818983605}
+  - component: {fileID: 9210096403643431575}
   m_Layer: 0
   m_Name: BushRagdoll
   m_TagString: Untagged
@@ -106,6 +107,19 @@ MonoBehaviour:
   fovMeshPrefab: {fileID: 6477082172712516352, guid: 3022b499539b4c64c9f13e17f43e0903,
     type: 3}
   fovRange: 50
+--- !u!114 &9210096403643431575
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3647405598284376408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81a826cb8e39d55418cbd607969ee6e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  faction: 2
 --- !u!1 &4496751939947538620
 GameObject:
   m_ObjectHideFlags: 0

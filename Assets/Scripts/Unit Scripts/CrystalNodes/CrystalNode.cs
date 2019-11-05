@@ -241,23 +241,25 @@ public class CrystalNode : MonoBehaviour
     }
   }
 
-  private IEnumerator LerpColour(Renderer fromRenderer, Color fromColour, Color toColour, float fromEmission, float toEmission)
+  private IEnumerator LerpColour(Color fromColour, Color toColour, float fromEmission, float toEmission)
   {
     float startTime = Time.time;
     float duration = 2f;
 
+    Material crystalMaterial = GetComponent<Renderer>().material;
+
     while (Time.time - startTime < duration)
     {
-      fromRenderer.material.SetColor("_EmissionColor", Color.Lerp(fromColour * fromEmission, toColour * toEmission, (Time.time - startTime) / duration));
+      crystalMaterial.SetColor("_EmissionColor", Color.Lerp(fromColour * fromEmission, toColour * toEmission, (Time.time - startTime) / duration));
 
       yield return 1;
     }
 
-    fromRenderer.material.SetColor("_EmissionColor", toColour * toEmission);
+    crystalMaterial.SetColor("_EmissionColor", toColour * toEmission);
   }
 
   private Coroutine StartLerpColour(Color toColour, float fromEmission, float toEmission)
   {
-    return StartCoroutine(LerpColour(GetComponent<Renderer>(), GetComponent<Renderer>().material.color, toColour, fromEmission, toEmission));
+    return StartCoroutine(LerpColour(GetComponent<Renderer>().material.GetColor("_EmissionColor"), toColour, fromEmission, toEmission));
   }
 }
