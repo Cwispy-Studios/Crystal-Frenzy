@@ -75,8 +75,6 @@ public class Farm : MonoBehaviour
 
     GameManager.resourceManager.FarmClaimed(this, farmLevel);
 
-    GameManager.uiSoundEmitter.PlayConstructSound();
-
     if (farmLevel == maxLevels)
     {
       return false;

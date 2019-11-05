@@ -30,6 +30,8 @@ public class FarmUpgradeButton : MonoBehaviour, IPointerEnterHandler, IPointerEx
 
   private void UpgradeFarm()
   {
+    Camera.main.GetComponent<UISoundEmitter>().PlayConstructSound();
+
     uiInterface.HideBuildingTooltipPopup();
 
     GameManager.resourceManager.SpendGold(upgradingFarm.farmUpgradeProperties[upgradingFarm.farmLevel].cost);

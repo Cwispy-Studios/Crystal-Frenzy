@@ -488,6 +488,7 @@ MonoBehaviour:
   explodesOnDeath: 0
   explosionDmgPctOfHealth: 0.25
   explosionRadius: 10
+  explosionEffect: {fileID: 0}
   combatantType: 0
   deathSound: event:/SFX/Units/TeddyDie
   explodeSound: 
@@ -589,7 +590,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac56f1b6c1ad8144fb388e944cfc04c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  goldProvided: 12
+  goldProvided: 10
 --- !u!114 &2788263532031378086
 MonoBehaviour:
   m_ObjectHideFlags: 0

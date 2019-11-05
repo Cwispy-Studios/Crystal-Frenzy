@@ -28,7 +28,8 @@ using UnityEditor;
 public class UpdateSkinnedMeshWindow : EditorWindow
 {
   [MenuItem("Window/Update Skinned Mesh Bones")]
-  public static void OpenWindow()
+  public 
+    void OpenWindow()
   {
     var window = GetWindow<UpdateSkinnedMeshWindow>();
     window.titleContent = new GUIContent("Skin Updater");

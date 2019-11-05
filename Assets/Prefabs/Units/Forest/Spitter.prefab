@@ -748,6 +748,7 @@ MonoBehaviour:
   explodesOnDeath: 0
   explosionDmgPctOfHealth: 0.5
   explosionRadius: 10
+  explosionEffect: {fileID: 0}
   combatantType: 0
   deathSound: event:/SFX/Units/BugDie
   explodeSound: 
@@ -772,6 +773,7 @@ MonoBehaviour:
   aoeDmgPct: 1
   isHealer: 0
   healPct: 0.5
+  healParticleSystem: {fileID: 0}
   preferredTarget: 0
   projectilePrefab: {fileID: 2574113698076494503, guid: d82cb12714761614a8a134c61612c69f,
     type: 3}
@@ -877,7 +879,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac56f1b6c1ad8144fb388e944cfc04c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  goldProvided: 15
+  goldProvided: 13
 --- !u!114 &-8830497494277120363
 MonoBehaviour:
   m_ObjectHideFlags: 0

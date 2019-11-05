@@ -20,6 +20,7 @@ public class WaveSpawner : MonoBehaviour
   private void Awake()
   {
     gameManager = FindObjectOfType<GameManager>();
+
     CalculateSumOfWeights();
     // Automatically spawns the first enemy
     RandomiseSpawn();

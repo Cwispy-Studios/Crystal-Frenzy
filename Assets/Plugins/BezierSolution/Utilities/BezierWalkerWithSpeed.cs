@@ -209,8 +209,17 @@ namespace BezierSolution
 
           agent.Warp(transform.position + (direction * (unitRadius + collidingUnitRadius)));
 
-          agent.enabled = agentWasEnabled;
-          obstacle.enabled = obstacleWasEnabled;
+          if (agentWasEnabled)
+          {
+            obstacle.enabled = obstacleWasEnabled;
+            agent.enabled = agentWasEnabled;
+          }
+
+          else if (obstacleWasEnabled)
+          {
+            agent.enabled = agentWasEnabled;
+            obstacle.enabled = obstacleWasEnabled; 
+          }
 
           // Only resume the destination if agent was already enabled
           if (agent.enabled)
