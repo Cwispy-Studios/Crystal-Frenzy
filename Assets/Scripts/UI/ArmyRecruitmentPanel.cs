@@ -30,11 +30,13 @@ public class ArmyRecruitmentPanel : MonoBehaviour
     if (button == stabbyBoyButton)
     {
       unitName = "Stabby Boy";
+      description = "The grunts of your army. Equipped with just a butter knife, these are the Goblins you send in to die first.";
     }
 
     else if (button == shootyBoyButton)
     {
       unitName = "Shooty Boy";
+      description = "Armed with a crossbow, Shooty Boys are able to rain hell down on your foes from a distance.";
 
       if (!GameManager.buildingManager.archeryRangeConstructed)
       {
@@ -45,6 +47,7 @@ public class ArmyRecruitmentPanel : MonoBehaviour
     else if (button == bruteButton)
     {
       unitName = "Brute";
+      description = "Massive Goblins that can soak up damage and hold the frontline. Their massive reach allows them to hit multiple targets at once.";
 
       if (!GameManager.buildingManager.brawlPitConstructed)
       {
@@ -55,6 +58,7 @@ public class ArmyRecruitmentPanel : MonoBehaviour
     else if (button == warlockButton)
     {
       unitName = "Warlock";
+      description = "Practitioners of magic, your Warlocks keep your units alive in the battlefield, healing them, unless you choose to take them down a darker path....";
 
       if (!GameManager.buildingManager.mageTowerConstructed)
       {

@@ -53,15 +53,15 @@ public class CrystalRewards : MonoBehaviour
 
   /**************************************************** RESOURCES VARIABLES ****************************************************/
   private const float GOLD_PER_POINTONE_LOOT_WEIGHT = 36f;
-  private const float CRYSTAL_PER_POINTONE_LOOT_WEIGHT = 4.2f;
+  private const float CRYSTAL_PER_POINTONE_LOOT_WEIGHT = 4.6f;
   private const float GOLD_INCREASE_PER_NODE = 11f;
-  private const float CRYSTAL_INCREASE_PER_NODE = 1.9f;
+  private const float CRYSTAL_INCREASE_PER_NODE = 2.1f;
 
   // Makes units spawn faster
   private float waveSpawnerDifficultyMultiplier = 1f;
 
   // Popup variables
-  private const float POPUP_HOVER_TIME = 0.5f;
+  private const float POPUP_HOVER_TIME = 0.25f;
   private float popupHoverLength = 0;
 
   private UIInterface uiInterface;

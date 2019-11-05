@@ -169,7 +169,7 @@ public class UnitOrder : Order
     if (targetFaction.faction == Faction.FACTIONS.NEUTRAL || faction.faction == targetFaction.faction)
     {
       // Check if is healer and unit is not at full health and is not crystal seeker
-      if (attack.IsHealer && !targetUnit.GetComponent<Health>().AtMaxHealth() && targetUnit.GetComponent<Health>().CombatantType == COMBATANT_TYPE.NORMAL)
+      if (attack.IsHealer && targetUnit.GetComponent<Health>() && !targetUnit.GetComponent<Health>().AtMaxHealth() && targetUnit.GetComponent<Health>().CombatantType == COMBATANT_TYPE.NORMAL)
       {
         // Heal target
         attack.SetAttackTarget(targetUnit, true);

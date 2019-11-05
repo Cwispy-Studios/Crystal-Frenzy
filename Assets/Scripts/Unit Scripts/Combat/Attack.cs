@@ -199,7 +199,7 @@ public class Attack : MonoBehaviour
 
   private void DetectEnemies()
   {
-    Collider[] unitsInRange = Physics.OverlapSphere(transform.position, enemyDetectRange);
+    Collider[] unitsInRange = Physics.OverlapSphere(transform.position, enemyDetectRange, 1 << 0);
 
     float closestEnemyRange = 9999f;
 
@@ -208,6 +208,17 @@ public class Attack : MonoBehaviour
     float lowestHpPct = 100f;
     isHealing = false;
 
+    bool enemyInRange = false;
+
+    for (int i = 0; i < unitsInRange.Length; ++i)
+    {
+      if (unitsInRange[i].GetComponent<Faction>() && unitsInRange[i].GetComponent<Faction>().faction == Faction.FACTIONS.FOREST)
+      {
+        enemyInRange = true;
+        break;
+      }
+    }
+
     for (int i = 0; i < unitsInRange.Length; ++i)
     {
       bool unitIsEnemy = CheckUnitIsTargetableEnemy(unitsInRange[i].gameObject);
@@ -215,9 +226,15 @@ public class Attack : MonoBehaviour
       // Check if this unit is a healer and the unit in range is a friend and has a health component and is not itself
       if (isHealer && !unitIsEnemy && unitsInRange[i].GetComponent<Health>() && unitsInRange[i].gameObject != gameObject)
       {
-        // Check if unit can be healed and is the preferred type
+        // Check if unit can be healed and is the preferred type 
         if (!unitsInRange[i].GetComponent<Health>().AtMaxHealth() && unitsInRange[i].GetComponent<Health>().CombatantType == preferredTarget)
         {
+          // Warlocks only heal each other if there is no enemy in range
+          if (unitsInRange[i].GetComponent<UnitType>().unitType == UNIT_TYPE.WARLOCK && enemyInRange)
+          {
+            continue;
+          }
+
           isHealing = true;
 
           // Save the distance
@@ -433,7 +450,7 @@ public class Attack : MonoBehaviour
       return;
     }
 
-    if (isHealing)
+    if (isHealing || GetComponent<Faction>().faction == attackedTarget.GetComponent<Faction>().faction)
     {
       Heal();
 

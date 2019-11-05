@@ -109,7 +109,7 @@ public class ConstructButton : MonoBehaviour, IPointerEnterHandler, IPointerExit
 
       case BUILDING_TYPE.MAGE_TOWER:
         buildingName = "Mage Tower";
-        description = "Allows you command of <color=magenta>Warlocks</color>. Gifted magic users able to buff your army while inflicting unnatural devastation.";
+        description = "Allows you command of <color=magenta>Warlocks</color>. Gifted magic users able to heal your army while inflicting unnatural devastation. Also allows upgrading of Warlocks.";
 
         if (GameManager.buildingManager.mageTowerConstructed)
         {

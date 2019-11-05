@@ -43,5 +43,7 @@ public class ConstructedBuildingsPanel : MonoBehaviour
     {
       anchoredPos.y += ICON_GAP_Y * (constructedBuildingsList.Count);
     }
+
+    constructedBuildingsList.Add(newButton.GetComponent<Button>());
   }
 }
