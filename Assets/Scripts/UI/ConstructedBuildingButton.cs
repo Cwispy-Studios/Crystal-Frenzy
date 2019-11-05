@@ -15,7 +15,7 @@ public class ConstructedBuildingButton : MonoBehaviour
   {
     constructedBuilding = building;
     constructedBuilding.GetComponent<ConstructableBuilding>().SetBuildingButton(this);
-    GetComponent<Button>().onClick.AddListener(delegate { playerCamera.GetComponent<CameraManager>().PointCameraAtPosition(constructedBuilding.transform.position, playerCamera.GetComponent<CameraControls>().birdsEyeViewMode, true); });
+    GetComponent<Button>().onClick.AddListener(delegate { playerCamera.GetComponent<CameraManager>().PointCameraAtPosition(constructedBuilding.transform.position, playerCamera.GetComponent<CameraControls>().birdsEyeViewMode, true, 0, 0.5f); });
   }
 
   public void SetButtonInteractable(bool interactable)

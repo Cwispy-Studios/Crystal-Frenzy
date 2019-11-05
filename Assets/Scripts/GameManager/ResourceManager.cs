@@ -1,14 +1,17 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class ResourceManager : MonoBehaviour
 {
-  public int crystalsPerUnitPoint = 10;
+  public int crystalsPerUnitPoint = 5;
 
   [SerializeField]
   private int startingGold = 0, startingCrystals = 0, crystalsIncome = 0, startingUnitCap = 5;
   [SerializeField]
-  private Text goldText = null, crystalText = null, UnitCapText = null;
+  private Text goldText = null, crystalText = null, UnitCapText = null, crystalsPerUnitPointText = null, timeText = null;
+
+  private float startTime;
 
   public int CrystalsIncome
   {
@@ -29,6 +32,8 @@ public class ResourceManager : MonoBehaviour
     Crystals = startingCrystals;
     ArmySize = 0;
     UnitCap = startingUnitCap;
+
+    startTime = Time.time;
   }
 
   private void LateUpdate()
@@ -36,6 +41,8 @@ public class ResourceManager : MonoBehaviour
     goldText.text = Gold.ToString();
     crystalText.text = Crystals.ToString() + " (+" + crystalsIncome.ToString() + ")";
     UnitCapText.text = ArmySize.ToString() + " / " + UnitCap;
+    crystalsPerUnitPointText.text = crystalsPerUnitPoint.ToString();
+    timeText.text = TimeSpan.FromSeconds(Time.time - startTime).ToString("mm\\:ss");
   }
 
   public void UpdateArmySize(int value)

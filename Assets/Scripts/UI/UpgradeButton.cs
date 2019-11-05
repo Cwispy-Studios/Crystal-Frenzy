@@ -459,17 +459,17 @@ public class UpgradeButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         {
           case 1:
             upgradeName = "Efficient Manpower";
-            description = "Increases the amount of crystals gained per unit point by remaining by 10 at the end of Escort and Defense Phases.";
+            description = "Increases the amount of crystals gained per unit point by remaining by 5 at the end of Escort and Defense Phases.";
             break;
 
           case 2:
             upgradeName = "Efficient Whipping";
-            description = "Increases the amount of crystals gained per unit point remaining by 10 at the end of Escort and Defense Phases.";
+            description = "Increases the amount of crystals gained per unit point remaining by 5 at the end of Escort and Defense Phases.";
             break;
 
           case 3:
             upgradeName = "Capital Punishment";
-            description = "Increases the amount of crystals gained per unit point remaining by 10 at the end of Escort and Defense Phases.";
+            description = "Increases the amount of crystals gained per unit point remaining by 5 at the end of Escort and Defense Phases.";
             break;
 
           default:
