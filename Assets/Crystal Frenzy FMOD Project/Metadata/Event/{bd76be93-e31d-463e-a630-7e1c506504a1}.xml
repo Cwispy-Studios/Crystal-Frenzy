@@ -113,6 +113,7 @@
 	<object class="MixerBusEffectChain" id="{a6eacf94-6079-4703-a058-c1a20c1a5df5}">
 		<relationship name="effects">
 			<destination>{95606f17-fd10-46e0-b0c5-6f2730acba23}</destination>
+			<destination>{d9fd2137-c650-4e2b-b246-c2cb3a6b8564}</destination>
 			<destination>{58368287-dfbd-4aa3-b67b-74bf441c5f39}</destination>
 		</relationship>
 	</object>
@@ -126,6 +127,11 @@
 	</object>
 	<object class="MixerBusPanner" id="{fb360095-1c7f-4577-9f67-d40dbc3b544f}" />
 	<object class="MixerBusFader" id="{95606f17-fd10-46e0-b0c5-6f2730acba23}" />
+	<object class="CompressorEffect" id="{d9fd2137-c650-4e2b-b246-c2cb3a6b8564}">
+		<property name="gain">
+			<value>6</value>
+		</property>
+	</object>
 	<object class="SpatialiserEffect" id="{58368287-dfbd-4aa3-b67b-74bf441c5f39}">
 		<property name="bypass">
 			<value>true</value>

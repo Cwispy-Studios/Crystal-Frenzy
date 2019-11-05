@@ -121,6 +121,7 @@
 	<object class="MixerBusEffectChain" id="{8da119cb-d5b6-411b-ad1b-fac800fce699}">
 		<relationship name="effects">
 			<destination>{17c60b88-8d19-4fc1-b33f-e7eeef1e0741}</destination>
+			<destination>{c625f493-0adb-45a4-87b5-8e679383bd7e}</destination>
 			<destination>{a677458a-db9e-4012-bca6-70173a69c78d}</destination>
 		</relationship>
 	</object>
@@ -132,6 +133,11 @@
 		</property>
 	</object>
 	<object class="MixerBusFader" id="{17c60b88-8d19-4fc1-b33f-e7eeef1e0741}" />
+	<object class="CompressorEffect" id="{c625f493-0adb-45a4-87b5-8e679383bd7e}">
+		<property name="gain">
+			<value>6</value>
+		</property>
+	</object>
 	<object class="PitchShifterEffect" id="{a677458a-db9e-4012-bca6-70173a69c78d}">
 		<property name="bypass">
 			<value>true</value>

@@ -357,12 +357,12 @@ PrefabInstance:
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
       propertyPath: enemySpawners.Array.data[1].meanSpawnInterval
-      value: 12
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
       propertyPath: enemySpawners.Array.data[1].sdSpawnInterval
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
@@ -3390,7 +3390,7 @@ PrefabInstance:
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
       propertyPath: enemySpawners.Array.data[0].meanSpawnInterval
-      value: 11
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
@@ -12564,7 +12564,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 233899126}
   m_LocalRotation: {x: -0, y: -0.20119356, z: -0, w: 0.9795515}
-  m_LocalPosition: {x: -61.3, y: 0, z: -107.6}
+  m_LocalPosition: {x: -68.8, y: 0, z: -109.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1489042099}
@@ -12582,11 +12582,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9cf9c5931a3b3c4ba456c8213d7ebfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_position: {x: 707.64453, y: 0, z: 132.90457}
-  m_precedingControlPointLocalPosition: {x: -0.42718196, y: 0, z: 9.342703}
-  m_precedingControlPointPosition: {x: 699.3339, y: 0, z: 132.69202}
-  m_followingControlPointLocalPosition: {x: 0.42718196, y: -0, z: -9.342703}
-  m_followingControlPointPosition: {x: 715.9551, y: 0, z: 133.11713}
+  m_position: {x: 706.7564, y: 0, z: 125.98825}
+  m_precedingControlPointLocalPosition: {x: 3.9058497, y: 0, z: 8.612213}
+  m_precedingControlPointPosition: {x: 699.1725, y: 0, z: 129.61343}
+  m_followingControlPointLocalPosition: {x: -3.9058397, y: 0, z: -8.6122675}
+  m_followingControlPointPosition: {x: 714.34033, y: 0, z: 122.36307}
   m_handleMode: 2
 --- !u!1 &234445244
 GameObject:
@@ -14021,7 +14021,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 279939557}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -62.2, y: 0, z: -74.5}
+  m_LocalPosition: {x: -66.5, y: 0, z: -71.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1489042099}
@@ -14039,11 +14039,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9cf9c5931a3b3c4ba456c8213d7ebfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_position: {x: 680.513, y: 0, z: 144.31458}
-  m_precedingControlPointLocalPosition: {x: 4.194992, y: 0, z: 7.616905}
-  m_precedingControlPointPosition: {x: 675.8839, y: 0, z: 150.50464}
-  m_followingControlPointLocalPosition: {x: -4.194973, y: 0, z: -7.6169434}
-  m_followingControlPointPosition: {x: 685.1421, y: 0, z: 138.1245}
+  m_position: {x: 676.345, y: 0, z: 142.00635}
+  m_precedingControlPointLocalPosition: {x: 1.2549133, y: 0, z: 9.76746}
+  m_precedingControlPointPosition: {x: 668.89636, y: 0, z: 146.60448}
+  m_followingControlPointLocalPosition: {x: -1.2549133, y: 0, z: -9.767448}
+  m_followingControlPointPosition: {x: 683.7936, y: 0, z: 137.4082}
   m_handleMode: 2
 --- !u!1 &280336659
 GameObject:
@@ -17128,7 +17128,7 @@ PrefabInstance:
     - target: {fileID: 737092888763501998, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
       propertyPath: m_Name
-      value: CN2-2WS (1)
+      value: CN2RWS (1)
       objectReference: {fileID: 0}
     - target: {fileID: 737092888763501998, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
@@ -51912,7 +51912,7 @@ PrefabInstance:
     - target: {fileID: 737092888763501997, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 12.2
+      value: 14.6
       objectReference: {fileID: 0}
     - target: {fileID: 737092888763501997, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
@@ -51922,7 +51922,7 @@ PrefabInstance:
     - target: {fileID: 737092888763501997, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -35.1
+      value: -33.2
       objectReference: {fileID: 0}
     - target: {fileID: 737092888763501997, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
@@ -51994,12 +51994,12 @@ PrefabInstance:
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
       propertyPath: enemySpawners.Array.data[1].meanSpawnInterval
-      value: 12
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
       propertyPath: enemySpawners.Array.data[1].sdSpawnInterval
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
@@ -60141,7 +60141,7 @@ PrefabInstance:
     - target: {fileID: 737092888763501998, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
       propertyPath: m_Name
-      value: CN2-2WS
+      value: CN2RWS
       objectReference: {fileID: 0}
     - target: {fileID: 737092888763501998, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
@@ -69050,7 +69050,7 @@ PrefabInstance:
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
       propertyPath: enemySpawners.Array.data[0].meanSpawnInterval
-      value: 12
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
@@ -74474,7 +74474,7 @@ PrefabInstance:
     - target: {fileID: 737092888763501998, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
       propertyPath: m_Name
-      value: CN2-2WS (2)
+      value: CN2RWS (2)
       objectReference: {fileID: 0}
     - target: {fileID: 737092888763501998, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
@@ -75129,7 +75129,7 @@ PrefabInstance:
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
       propertyPath: enemySpawners.Array.data[0].meanSpawnInterval
-      value: 12
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
@@ -76367,7 +76367,7 @@ PrefabInstance:
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
       propertyPath: enemySpawners.Array.data[0].meanSpawnInterval
-      value: 11
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 737092888763501996, guid: c992426098980464aa12ed2359825fa6,
         type: 3}
@@ -99351,7 +99351,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2085419093}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -62.1, y: 0, z: -149.4}
+  m_LocalPosition: {x: -64.5, y: 0, z: -150.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1489042099}
@@ -99369,11 +99369,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9cf9c5931a3b3c4ba456c8213d7ebfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_position: {x: 741.1971, y: 0, z: 116.92751}
+  m_position: {x: 741.5315, y: 0, z: 114.43412}
   m_precedingControlPointLocalPosition: {x: -4.721985, y: 0, z: 11.726181}
-  m_precedingControlPointPosition: {x: 729.9706, y: 0, z: 117.4044}
+  m_precedingControlPointPosition: {x: 730.305, y: 0, z: 114.911}
   m_followingControlPointLocalPosition: {x: 4.7219925, y: 0, z: -11.726135}
-  m_followingControlPointPosition: {x: 752.4236, y: 0, z: 116.450645}
+  m_followingControlPointPosition: {x: 752.758, y: 0, z: 113.957245}
   m_handleMode: 2
 --- !u!1001 &2088421603
 PrefabInstance:
@@ -101545,7 +101545,7 @@ PrefabInstance:
     - target: {fileID: 2547541493230240812, guid: 515433029e942ff46a8ae49154164f32,
         type: 3}
       propertyPath: goldLoot
-      value: 150
+      value: 175
       objectReference: {fileID: 0}
     - target: {fileID: 2547541493230240812, guid: 515433029e942ff46a8ae49154164f32,
         type: 3}
@@ -101560,7 +101560,7 @@ PrefabInstance:
     - target: {fileID: 2547541493230240812, guid: 515433029e942ff46a8ae49154164f32,
         type: 3}
       propertyPath: crystalIncomeReward
-      value: 35
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 1476391264982174357, guid: 515433029e942ff46a8ae49154164f32,
         type: 3}
