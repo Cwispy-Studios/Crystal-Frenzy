@@ -44,6 +44,8 @@ public class ConstructedBuildingsPanel : MonoBehaviour
       anchoredPos.y += ICON_GAP_Y * (constructedBuildingsList.Count);
     }
 
+    newButton.GetComponent<RectTransform>().anchoredPosition = anchoredPos;
+
     constructedBuildingsList.Add(newButton.GetComponent<Button>());
   }
 }
