@@ -39,8 +39,8 @@ public class RepairSlider : MonoBehaviour
 
   private void InitialiseSlider()
   {
-    currentHealthText.text = GameManager.minerManager.CurrentMinerHealth.ToString();
-    maxHealthText.text = GameManager.minerManager.MaxMinerHealth.ToString();
+    currentHealthText.text = GameManager.minerManager.CurrentMinerHealth.ToString("F0");
+    maxHealthText.text = GameManager.minerManager.MaxMinerHealth.ToString("F0");
 
     if (GameManager.minerManager.CurrentMinerHealth == GameManager.minerManager.MaxMinerHealth)
     {

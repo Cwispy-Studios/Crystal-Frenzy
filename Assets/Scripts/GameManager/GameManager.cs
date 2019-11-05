@@ -24,10 +24,17 @@ public class GameManager : MonoBehaviour
   [SerializeField]
   private PauseMenu pauseMenuPanel = null;
 
+  [Header("Miner and Bush Information Canvas")]
+  [SerializeField]
+  private GameObject minerCanvas = null;
+  [SerializeField]
+  private GameObject bushCanvas = null;
+
   public static ResourceManager resourceManager;
   public static BuildingManager buildingManager;
   public static UpgradeManager upgradeManager;
   public static MinerManager minerManager;
+  public static BushManager bushManager;
   public static TutorialManager tutorialManager;
 
   private List<GameObject> conqueredNodes;
@@ -53,6 +60,7 @@ public class GameManager : MonoBehaviour
     buildingManager = GetComponent<BuildingManager>();
     upgradeManager = GetComponent<UpgradeManager>();
     minerManager = GetComponent<MinerManager>();
+    bushManager = GetComponent<BushManager>();
     tutorialManager = GetComponent<TutorialManager>();
 
     conqueredNodes = new List<GameObject>
@@ -124,6 +132,9 @@ public class GameManager : MonoBehaviour
     musicEmitter.SetParameter("Phases", (int)CurrentPhase);
 
     ++CurrentRound;
+
+    minerCanvas.GetComponent<CanvasGroup>().alpha = 1;
+    bushCanvas.GetComponent<CanvasGroup>().alpha = 0;
 
     GameObject lastConqueredNode = conqueredNodes[conqueredNodes.Count - 1];
 
@@ -511,6 +522,11 @@ public class GameManager : MonoBehaviour
     attackNode.GetComponent<CrystalSeekerSpawner>().ResetCrystalSelection();
     attackNode.GetComponent<CrystalSeekerSpawner>().enabled = false;
 
+    minerCanvas.GetComponent<CanvasGroup>().alpha = 0;
+    bushCanvas.GetComponent<CanvasGroup>().alpha = 1;
+
+    bushManager.Initialise(spawnedCrystalSeeker);
+
     // Change unit panel buttons to combat buttons so clicking on them selects units instead of deleting them
     uiInterface.UnitManager.SetUnitButtonsToCombat();
 
@@ -557,6 +573,8 @@ public class GameManager : MonoBehaviour
     EndCutscene();
 
     resourceManager.GainCrystalManpower();
+
+    bushManager.ResetHealth();
 
     // Remove all units on the playing field, friendly units are contained in Unit Manager, enemy units are contained in Hideable Manager
     uiInterface.EscortPhaseRemoveAllUnits();

@@ -127,7 +127,11 @@
 	</object>
 	<object class="MixerBusPanner" id="{4de97f46-e25a-4767-ab9e-f916f9279673}" />
 	<object class="MixerBusFader" id="{df734220-eb41-45fc-b5d6-086f454f4401}" />
-	<object class="SpatialiserEffect" id="{c2c99a1a-052e-4ff6-80ff-b605e487a86d}" />
+	<object class="SpatialiserEffect" id="{c2c99a1a-052e-4ff6-80ff-b605e487a86d}">
+		<property name="bypass">
+			<value>true</value>
+		</property>
+	</object>
 	<object class="MixerBusFader" id="{c44ce70d-cbfa-40f0-a75b-db4d2bc011d3}" />
 	<object class="ThreeEQEffect" id="{c3ced0bf-ce5f-4fcc-a205-6aff7f683663}">
 		<property name="bypass">

@@ -108,9 +108,17 @@ public class Health : MonoBehaviour
 
     OnHealthChanged(currentHealthPct);
     
-    if (GetComponent<CrystalSeeker>() != null && GetComponent<Faction>().faction == Faction.FACTIONS.GOBLINS)
+    if (GetComponent<CrystalSeeker>() != null)
     {
-      GameManager.minerManager.HandleMinerHealthChanged(currentHealthPct, CurrentHealth);
+      if (GetComponent<Faction>().faction == Faction.FACTIONS.GOBLINS)
+      {
+        GameManager.minerManager.HandleMinerHealthChanged(currentHealthPct, CurrentHealth);
+      }
+
+      else if (GetComponent<Faction>().faction == Faction.FACTIONS.FOREST)
+      {
+        GameManager.bushManager.HandleBushHealthChanged(currentHealthPct, CurrentHealth);
+      }
     }
 
     // Kill the unit

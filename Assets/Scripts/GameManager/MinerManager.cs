@@ -4,11 +4,11 @@ using UnityEngine.UI;
 public class MinerManager : MonoBehaviour
 {
   [SerializeField]
-  private Image minerHealthBar = null;
+  private Image minerHealthBar = null, minerProgressBar = null;
   [SerializeField]
   private CrystalSeeker minerPrefab = null;
   [SerializeField]
-  private Text minerHealthText = null;
+  private Text minerHealthText = null, minerProgressText = null;
 
   public float CurrentMinerHealth { get; private set; }
   public float MaxMinerHealth { get; private set; }
@@ -20,7 +20,10 @@ public class MinerManager : MonoBehaviour
   private void Awake()
   {
     CurrentMinerHealth = MaxMinerHealth = minerPrefab.GetComponent<Health>().MaxHealth;
-    minerHealthText.text = Mathf.CeilToInt(CurrentMinerHealth).ToString() + " / " + Mathf.CeilToInt(MaxMinerHealth).ToString();
+    minerHealthText.text = Mathf.FloorToInt(CurrentMinerHealth).ToString() + " / " + Mathf.CeilToInt(MaxMinerHealth).ToString();
+
+    minerProgressBar.fillAmount = 0;
+    minerProgressText.text = "0%";
 
     musicEmitter = Camera.main.GetComponent<FMODUnity.StudioEventEmitter>();
   }
@@ -32,7 +35,14 @@ public class MinerManager : MonoBehaviour
 
     musicEmitter.SetParameter("Player Crystal Seeker Health", pct);
 
-    minerHealthText.text = Mathf.CeilToInt(CurrentMinerHealth).ToString() + " / " + Mathf.CeilToInt(MaxMinerHealth).ToString();
+    minerHealthText.text = Mathf.FloorToInt(CurrentMinerHealth).ToString() + " / " + Mathf.CeilToInt(MaxMinerHealth).ToString();
+  }
+
+  public void UpdateProgressPct(float pct)
+  {
+    minerProgressBar.fillAmount = pct;
+    minerProgressText.text = (pct * 100f).ToString("F1") + "%";
+    musicEmitter.SetParameter("Player Crystal Seeker Progress", pct);
   }
 
   public void UpgradeMinerHealth(float healthIncrease)
@@ -43,7 +53,7 @@ public class MinerManager : MonoBehaviour
 
     musicEmitter.SetParameter("Player Crystal Seeker Health", CurrentMinerHealth / MaxMinerHealth);
 
-    minerHealthText.text = Mathf.CeilToInt(CurrentMinerHealth).ToString() + " / " + Mathf.CeilToInt(MaxMinerHealth).ToString();
+    minerHealthText.text = Mathf.FloorToInt(CurrentMinerHealth).ToString() + " / " + Mathf.CeilToInt(MaxMinerHealth).ToString();
   }
 
   public void RepairMiner(int healthRepaired)
@@ -54,7 +64,7 @@ public class MinerManager : MonoBehaviour
 
     musicEmitter.SetParameter("Player Crystal Seeker Health", CurrentMinerHealth / MaxMinerHealth);
 
-    minerHealthText.text = Mathf.CeilToInt(CurrentMinerHealth).ToString() + " / " + Mathf.CeilToInt(MaxMinerHealth).ToString();
+    minerHealthText.text = Mathf.FloorToInt(CurrentMinerHealth).ToString() + " / " + Mathf.CeilToInt(MaxMinerHealth).ToString();
   }
 
   public void MinerDestroyed()
@@ -64,6 +74,6 @@ public class MinerManager : MonoBehaviour
 
     musicEmitter.SetParameter("Player Crystal Seeker Health", destroyedMinerHealthPct);
 
-    minerHealthText.text = Mathf.CeilToInt(CurrentMinerHealth).ToString() + " / " + Mathf.CeilToInt(MaxMinerHealth).ToString();
+    minerHealthText.text = Mathf.FloorToInt(CurrentMinerHealth).ToString() + " / " + Mathf.CeilToInt(MaxMinerHealth).ToString();
   }
 }
