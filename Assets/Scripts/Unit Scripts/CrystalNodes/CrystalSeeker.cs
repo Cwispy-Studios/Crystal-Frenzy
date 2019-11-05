@@ -48,7 +48,7 @@ public class CrystalSeeker : MonoBehaviour
       if (GameManager.resourceManager.ArmySize == 0)
       {
         GetComponent<BezierSolution.BezierWalkerWithSpeed>().enabled = false;
-
+        GameManager.bushManager.UpdateProgressPct(1);
         // Start lose cut scene
         gameManager.DefenseLoseCutscene(gameObject);
         enabled = false;
