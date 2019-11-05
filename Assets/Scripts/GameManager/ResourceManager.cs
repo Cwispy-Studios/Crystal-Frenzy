@@ -3,10 +3,10 @@ using UnityEngine.UI;
 
 public class ResourceManager : MonoBehaviour
 {
-  public int crystalsPerUnitPoint = 5;
+  public int crystalsPerUnitPoint = 10;
 
   [SerializeField]
-  private int startingGold = 100, startingCrystals = 0, crystalsIncome = 0, startingUnitCap = 10;
+  private int startingGold = 0, startingCrystals = 0, crystalsIncome = 0, startingUnitCap = 5;
   [SerializeField]
   private Text goldText = null, crystalText = null, UnitCapText = null;
 

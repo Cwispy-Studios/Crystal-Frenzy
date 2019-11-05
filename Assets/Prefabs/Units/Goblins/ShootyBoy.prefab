@@ -290,6 +290,7 @@ MonoBehaviour:
   explodesOnDeath: 0
   explosionDmgPctOfHealth: 0.25
   explosionRadius: 10
+  explosionEffect: {fileID: 0}
   combatantType: 0
   deathSound: event:/SFX/Units/GoblinDie
   explodeSound: 
@@ -305,8 +306,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdcce6eefadf3814dbaf768a4697cd9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackDamage: 22
-  attacksPerSecond: 1.15
+  attackDamage: 24
+  attacksPerSecond: 1.3
   attackRange: 16
   enemyDetectRange: 25
   aoe: 0
@@ -314,6 +315,7 @@ MonoBehaviour:
   aoeDmgPct: 1
   isHealer: 0
   healPct: 0.5
+  healParticleSystem: {fileID: 0}
   preferredTarget: 0
   projectilePrefab: {fileID: 3938936689609613190, guid: 1b44f608e3ea32a418a00627d548542f,
     type: 3}

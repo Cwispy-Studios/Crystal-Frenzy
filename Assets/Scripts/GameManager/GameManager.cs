@@ -29,6 +29,7 @@ public class GameManager : MonoBehaviour
   public static UpgradeManager upgradeManager;
   public static MinerManager minerManager;
   public static TutorialManager tutorialManager;
+  public static UISoundEmitter uiSoundEmitter;
 
   private List<GameObject> conqueredNodes;
   private GameObject attackNode;
@@ -54,6 +55,7 @@ public class GameManager : MonoBehaviour
     upgradeManager = GetComponent<UpgradeManager>();
     minerManager = GetComponent<MinerManager>();
     tutorialManager = GetComponent<TutorialManager>();
+    uiSoundEmitter = GetComponent<UISoundEmitter>();
 
     conqueredNodes = new List<GameObject>
     {

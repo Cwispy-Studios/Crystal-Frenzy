@@ -68,7 +68,7 @@ public class UpgradeButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     if (upgradeType == UPGRADE_TYPE.CRYSTAL_MINING)
     {
-      GameManager.resourceManager.crystalsPerUnitPoint += 5;
+      GameManager.resourceManager.crystalsPerUnitPoint += 10;
     }
 
     if (upgradeType == UPGRADE_TYPE.MINER_HEALTH)
@@ -107,22 +107,22 @@ public class UpgradeButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         {
           case 1:
             upgradeName = "Hardened Plating";
-            description = "The Miner is constructed with sturdier materials, increasing it's health.";
+            description = "The Miner is constructed with sturdier materials, increasing its health and gaining some regeneration.";
             break;
 
           case 2:
             upgradeName = "Reinforced Plating";
-            description = "The Miner is outfitted with additional platings, increasing it's health. The additional platings also slightly decrease the movement speed of the Miner.";
+            description = "The Miner is outfitted with additional platings, increasing its health and gaining some regeneration. The additional platings also slightly decrease the movement speed of the Miner.";
             break;
 
           case 3:
             upgradeName = "Imbued Plating";
-            description = "The Miner's constrution is further improved, increasing it's health. The additional constructions also slightly decrease the movement speed of the Miner.";
+            description = "The Miner's constrution is further improved, increasing its health and gaining some regeneration. The additional constructions also slightly decrease the movement speed of the Miner.";
             break;
 
           case 4:
             upgradeName = "Infused Plating";
-            description = "The Miner's armour is infused with Crystal essense, greatly increating it's health and slightly increasing it's movement speed.";
+            description = "The Miner's armour is infused with Crystal essense, greatly increasing its health, gaining some regeneration and slightly increasing it's movement speed.";
             break;
 
           default:
@@ -137,22 +137,22 @@ public class UpgradeButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         {
           case 1:
             upgradeName = "Greased Motors";
-            description = "The Miner's motors are now maintained, increasing it's movement speed.";
+            description = "The Miner's motors are now maintained, increasing its movement speed.";
             break;
 
           case 2:
             upgradeName = "Fine Motors";
-            description = "";
+            description = "The Motors have been upgraded with better materials, increasing its movement speed.";
             break;
 
           case 3:
-            upgradeName = "Advanced Plating";
-            description = "";
+            upgradeName = "Powered Motors";
+            description = "The Motors are now powered with steam, increasing its movement speed.";
             break;
 
           case 4:
             upgradeName = "Crystal Powered Motors";
-            description = "The Miner's motors have been engineered to move with the help of Crystal energy, greatly increasing it's movement speed.";
+            description = "The Miner's motors have been engineered to move with the help of Crystal energy, greatly increasing its movement speed.";
             break;
 
           default:
@@ -167,17 +167,17 @@ public class UpgradeButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         {
           case 1:
             upgradeName = "Upgraded Stabby";
-            description = "Equip your Stabby Goblins with a sharper butter knife and some clothes";
+            description = "Equip your Stabby Goblins with a sharper butter knife and some clothes.";
             break;
 
           case 2:
             upgradeName = "Upgraded Stabby";
-            description = "Equips your Stabby Goblins with a dagger and some armour";
+            description = "Equips your Stabby Goblins with a dagger and some armour.";
             break;
 
           case 3:
             upgradeName = "Upgraded Stabby";
-            description = "Equips your Stabby Goblins w";
+            description = "Tell your Stabbys there are ready to become stronger, increasing their motivation.";
             break;
 
           default:
@@ -191,17 +191,17 @@ public class UpgradeButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         {
           case 1:
             upgradeName = "Upgraded Shooty";
-            description = "Increased Damage and Health.";
+            description = "Equips your Shooty with better gear.";
             break;
 
           case 2:
             upgradeName = "Upgraded Shooty";
-            description = "Increased Damage and Health";
+            description = "Upgrades your Shooty crossbows and armour.";
             break;
 
           case 3:
             upgradeName = "Upgraded Shooty";
-            description = "Increased Damage and Health";
+            description = "Upgrades your Shooty crossbows and armour.";
             break;
 
           default:
@@ -215,17 +215,17 @@ public class UpgradeButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         {
           case 1:
             upgradeName = "Upgraded Brute";
-            description = "Increased Damage and Health.";
+            description = "Equip your Brutes with lighter and sharper swords.";
             break;
 
           case 2:
             upgradeName = "Upgraded Brute";
-            description = "Increased Damage and Health";
+            description = "Equip your Brutes with thicker swords";
             break;
 
           case 3:
             upgradeName = "Upgraded Brute";
-            description = "Increased Damage and Health";
+            description = "Equips your Brutes with stronger muscles.";
             break;
 
           default:
@@ -239,17 +239,17 @@ public class UpgradeButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         {
           case 1:
             upgradeName = "Upgraded Warlock";
-            description = "Increased Damage and Health, your Warlocks heal more";
+            description = "Your warlocks further practice the art of magic, for some money of course. Healing is increased.";
             break;
 
           case 2:
             upgradeName = "Upgraded Warlock";
-            description = "Increased Damage and Health, your Warlocks heal more";
+            description = "Your warlocks further practice the art of magic, for some money of course. Healing is increased.";
             break;
 
           case 3:
             upgradeName = "Upgraded Warlock";
-            description = "Increased Damage and Health, your Warlocks heal more";
+            description = "Your warlocks further practice the art of magic, for some money of course. Healing is increased.";
             break;
 
           default:
@@ -292,12 +292,12 @@ public class UpgradeButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
           case 2:
             upgradeName = "Upgraded Stabby Beefed";
-            description = "";
+            description = "Your Stabby Goblins have been beefed up, becoming significantly stronger at the cost of higher upkeep.";
             break;
 
           case 3:
             upgradeName = "Upgraded Stabby Beefed";
-            description = "";
+            description = "Your Stabby Goblins have been beefed up, becoming significantly stronger at the cost of higher upkeep.";
             break;
 
           default:
@@ -316,12 +316,12 @@ public class UpgradeButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
           case 2:
             upgradeName = "Upgraded Shooty Fast";
-            description = "";
+            description = "Your Shooty Goblins prioritise speed over damage, while sacrificing some range.";
             break;
 
           case 3:
             upgradeName = "Upgraded Shooty Fast";
-            description = "";
+            description = "Your Shooty Goblins prioritise speed over damage, while sacrificing some range.";
             break;
 
           default:
@@ -340,12 +340,12 @@ public class UpgradeButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
           case 2:
             upgradeName = "Upgraded Shooty Nuke";
-            description = "";
+            description = "Your Shooty Goblins are now marksmen, dealing massive damage from a further distance, at the cost of lower attack speed.";
             break;
 
           case 3:
             upgradeName = "Upgraded Shooty Nuke";
-            description = "";
+            description = "Your Shooty Goblins are now marksmen, dealing massive damage from a further distance, at the cost of lower attack speed.";
             break;
 
           default:
@@ -359,17 +359,17 @@ public class UpgradeButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         {
           case 1:
             upgradeName = "Upgraded Brute Cheap";
-            description = "Your Brutes are now less ";
+            description = "Your Brutes have become more subdued and peaceful. At least they are cheaper.";
             break;
 
           case 2:
             upgradeName = "Upgraded Brute Cheap";
-            description = "";
+            description = "Your Brutes have become more subdued and peaceful. At least they are cheaper.";
             break;
 
           case 3:
             upgradeName = "Upgraded Brute Cheap";
-            description = "";
+            description = "Your Brutes have become more subdued and peaceful. At least they are cheaper.";
             break;
 
           default:
@@ -383,17 +383,17 @@ public class UpgradeButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         {
           case 1:
             upgradeName = "Upgraded Brute Tank";
-            description = "The Miner's motors are now maintained, increasing it's movement speed.";
+            description = "Your Brutes are now on steroids and deal massive splash damage. But they also eat more.";
             break;
 
           case 2:
             upgradeName = "Upgraded Brute Tank";
-            description = "";
+            description = "Your Brutes are now on steroids and deal massive splash damage. But they also eat more.";
             break;
 
           case 3:
             upgradeName = "Upgraded Brute Tank";
-            description = "";
+            description = "Your Brutes are now on steroids and deal massive splash damage. But they also eat more.";
             break;
 
           default:
@@ -412,12 +412,12 @@ public class UpgradeButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
           case 2:
             upgradeName = "Saintly Warlocks";
-            description = "";
+            description = "Your Warlocks now speak the word of God, and are able to heal more efficiently.";
             break;
 
           case 3:
-            upgradeName = "Upgraded Brute Cheap";
-            description = "";
+            upgradeName = "Saintly Warlocks";
+            description = "Your Warlocks now speak the word of God, and are able to heal more efficiently.";
             break;
 
           default:
@@ -431,17 +431,17 @@ public class UpgradeButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         {
           case 1:
             upgradeName = "Dark Warlock";
-            description = "Your warlocks dabble into Dark Magic, giving them splash damage.";
+            description = "Your warlocks dabble into Dark Magic, robbing them of their healing abilities but giving them splash damage.";
             break;
 
           case 2:
             upgradeName = "Dark Warlock";
-            description = "";
+            description = "Your warlocks dabble further into Dark Magic, allowing them to Curse their targets, decreasing their damage.";
             break;
 
           case 3:
             upgradeName = "Upgraded Brute Tank";
-            description = "";
+            description = "Your warlocks dabble furhter into Dark Magic, allowing them to Slow their targets, decreasing their movement and attack speed.";
             break;
 
           default:
@@ -455,17 +455,17 @@ public class UpgradeButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         {
           case 1:
             upgradeName = "Efficient Manpower";
-            description = "Increases the amount of crystals gained per unit point remaining at the end of Escort and Defense Phases.";
+            description = "Increases the amount of crystals gained per unit point by remaining by 10 at the end of Escort and Defense Phases.";
             break;
 
           case 2:
             upgradeName = "Efficient Whipping";
-            description = "Increases the amount of crystals gained per unit point remaining at the end of Escort and Defense Phases.";
+            description = "Increases the amount of crystals gained per unit point remaining by 10 at the end of Escort and Defense Phases.";
             break;
 
           case 3:
             upgradeName = "Capital Punishment";
-            description = "Increases the amount of crystals gained per unit point remaining at the end of Escort and Defense Phases.";
+            description = "Increases the amount of crystals gained per unit point remaining by 10 at the end of Escort and Defense Phases.";
             break;
 
           default:
