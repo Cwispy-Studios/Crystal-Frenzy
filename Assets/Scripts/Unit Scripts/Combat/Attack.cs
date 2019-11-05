@@ -120,6 +120,11 @@ public class Attack : MonoBehaviour
 
   private void Update()
   {
+    if (isAttacking)
+    {
+      return;
+    }
+
     // Only check queue order when unit is no longer attacking
     if (animationState.currentAnimationState != CURRENT_ANIMATION_STATE.ATTACK && queuedOrder)
     {
