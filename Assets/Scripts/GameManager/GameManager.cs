@@ -323,11 +323,29 @@ public class GameManager : MonoBehaviour
     // Kill all enemies
     GetComponent<HideableManager>().KillAllUnits();
 
-    // Change crystal colour
-    attackNode.GetComponent<CrystalNode>().SetCrystalColour(true);
+    // Check if the crystal we won is not the life crystal
+    if (attackNode != fortress)
+    {
+      // Change crystal colour
+      attackNode.GetComponent<CrystalNode>().SetCrystalColour(true);
 
-    // Show the loot reward panel
-    lootRewardPanel.SetText(uiInterface.LootTargetPanel, attackNode.GetComponent<ConqueredNode>().conquered, EscortWin, PHASE_OUTCOME.ESCORT_WIN);
+      // Show the loot reward panel
+      lootRewardPanel.SetText(uiInterface.LootTargetPanel, attackNode.GetComponent<ConqueredNode>().conquered, EscortWin, PHASE_OUTCOME.ESCORT_WIN);
+    }
+
+    // Lost the game
+    else
+    {
+      musicEmitter.AllowFadeout = true;
+      musicEmitter.Stop();
+
+      FMODUnity.RuntimeManager.PlayOneShot(victoryStinger);
+
+      // Show the loot reward panel
+      lootRewardPanel.SetText(null, false, null, PHASE_OUTCOME.GAME_WIN);
+      lootRewardPanel.SetReferenceToCrystalSeeker(crystalSeeker);
+    }
+
     lootRewardPanel.ShowLootPanel(true);
   }
 
@@ -665,7 +683,6 @@ public class GameManager : MonoBehaviour
       // Show the loot reward panel
       lootRewardPanel.SetText(null, false, null, PHASE_OUTCOME.GAME_LOSE);
       lootRewardPanel.SetReferenceToCrystalSeeker(crystalSeeker);
-      Destroy(crystalSeeker);
     }
 
     lootRewardPanel.ShowLootPanel(true);
