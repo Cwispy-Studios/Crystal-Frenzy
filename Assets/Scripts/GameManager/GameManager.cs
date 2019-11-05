@@ -54,6 +54,9 @@ public class GameManager : MonoBehaviour
 
   private FMOD.Studio.Bus Master;
 
+  [FMODUnity.EventRef]
+  public string victoryStinger = "", defeatStinger = "";
+
   private void Awake()
   {
     resourceManager = GetComponent<ResourceManager>();
@@ -611,6 +614,9 @@ public class GameManager : MonoBehaviour
   {
     crystalSeekerToDestroy = crystalSeeker;
 
+    // The node we just lost
+    GameObject lostNode = GetActiveNode();
+
     musicEmitter.SetParameter("At Loot Reward Screen", 1);
 
     // Fade out the UI Interfaces
@@ -623,9 +629,6 @@ public class GameManager : MonoBehaviour
     playerCamera.GetComponent<CameraObjectSelection>().ClearHoverList(true);
     playerCamera.GetComponent<CameraObjectSelection>().enabled = false;
     playerCamera.GetComponent<CameraControls>().enabled = false;
-
-    // The node we just lost
-    GameObject lostNode = GetActiveNode();
 
     // Move the camera over to the node we just lost
     playerCamera.GetComponent<CameraManager>().PointCameraAtPosition(lostNode.transform.position, false, false, 0, 0.5f, false);
@@ -641,11 +644,30 @@ public class GameManager : MonoBehaviour
     // Kill all your units
     uiInterface.UnitManager.KillAllUnits();
 
-    // Change crystal colour
-    lostNode.GetComponent<CrystalNode>().SetCrystalColour(false);
+    // Check if the crystal we lost is not the fortress
+    if (lostNode != fortress)
+    {
+      // Change crystal colour
+      lostNode.GetComponent<CrystalNode>().SetCrystalColour(false);
 
-    // Show the loot reward panel
-    lootRewardPanel.SetText(null, false, DefenseLose, PHASE_OUTCOME.DEFENSE_LOSE);
+      // Show the loot reward panel
+      lootRewardPanel.SetText(null, false, DefenseLose, PHASE_OUTCOME.DEFENSE_LOSE);
+    }
+
+    // Lost the game
+    else
+    {
+      musicEmitter.AllowFadeout = true;
+      musicEmitter.Stop();
+
+      FMODUnity.RuntimeManager.PlayOneShot(defeatStinger);
+
+      // Show the loot reward panel
+      lootRewardPanel.SetText(null, false, null, PHASE_OUTCOME.GAME_LOSE);
+      lootRewardPanel.SetReferenceToCrystalSeeker(crystalSeeker);
+      Destroy(crystalSeeker);
+    }
+
     lootRewardPanel.ShowLootPanel(true);
   }
 

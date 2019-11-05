@@ -8,13 +8,13 @@ public class PauseMenu : MonoBehaviour
   public delegate void NextScene();
 
   [SerializeField]
-  private GameObject uiInterface = null, confirmationPanel = null;
+  private GameObject uiInterface = null, menuPanel = null, confirmationPanel = null;
 
   [SerializeField]
   private Button continueButton = null, controlsButton = null, restartButton = null, quitButton = null, yesButton = null, noButton = null;
 
   [SerializeField]
-  private Image confirmationGreyScreen = null, fadeScreen = null;
+  private Image greyScreen = null, confirmationGreyScreen = null, fadeScreen = null;
 
   [SerializeField]
   private Text confirmationText = null;
@@ -149,5 +149,23 @@ public class PauseMenu : MonoBehaviour
   private Coroutine StartFade(NextScene nextScene)
   {
     return StartCoroutine(LerpFadeScreen(nextScene));
+  }
+
+  public void GameOverRestart()
+  {
+    gameObject.SetActive(true);
+    greyScreen.enabled = false;
+    menuPanel.SetActive(false);
+
+    FadeScreen(RestartGame);
+  }
+
+  public void GameOverQuit()
+  {
+    gameObject.SetActive(true);
+    greyScreen.enabled = false;
+    menuPanel.SetActive(false);
+
+    FadeScreen(QuitGame);
   }
 }

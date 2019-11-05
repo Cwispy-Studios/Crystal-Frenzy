@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class UIFade : MonoBehaviour
 {
-  private const float FADE_SPEED = 0.5f;
+  private const float FADE_SPEED = 0.75f;
 
   public void BeginFadeOut()
   {

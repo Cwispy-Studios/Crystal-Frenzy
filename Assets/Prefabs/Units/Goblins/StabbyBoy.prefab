@@ -174,7 +174,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 41785935244700089}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.65
+  m_Radius: 0.8
   m_Speed: 6
   m_Acceleration: 30
   avoidancePriority: 50
@@ -197,11 +197,11 @@ NavMeshObstacle:
   m_Enabled: 0
   serializedVersion: 3
   m_Shape: 0
-  m_Extents: {x: 0.6, y: 1.925, z: 0.6}
+  m_Extents: {x: 0.8, y: 2, z: 0.8}
   m_MoveThreshold: 0.1
   m_Carve: 0
   m_CarveOnlyStationary: 1
-  m_Center: {x: 0, y: 1.325, z: 0}
+  m_Center: {x: 0, y: 1.195, z: 0}
   m_TimeToStationary: 0.5
 --- !u!114 &2255082812454074551
 MonoBehaviour:

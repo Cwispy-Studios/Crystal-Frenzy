@@ -7,7 +7,9 @@ public enum PHASE_OUTCOME
   ESCORT_WIN = 0,
   ESCORT_LOSE,
   DEFENSE_WIN,
-  DEFENSE_LOSE
+  DEFENSE_LOSE,
+  GAME_WIN,
+  GAME_LOSE
 }
 
 public class LootRewardPanel : MonoBehaviour
@@ -23,11 +25,16 @@ public class LootRewardPanel : MonoBehaviour
   [HideInInspector]
   public UPGRADE_TYPE upgradeRewarded;
   [SerializeField]
-  private Button continueButton = null;
+  private Button continueButton = null, playAgainButton = null, quitButton = null;
+
+  private GameObject crystalSeekerToDestroy = null;
 
   private void Awake()
   {
     transform.localScale = Vector3.zero;
+
+    playAgainButton.onClick.AddListener(DestroyCrystalSeeker);
+    quitButton.onClick.AddListener(DestroyCrystalSeeker);
   }
 
   public void SetText(LootTargetPanel lootTargetPanel, bool nodeConqueredBefore, NextPhase nextPhase, PHASE_OUTCOME phaseOutcome)
@@ -65,10 +72,31 @@ public class LootRewardPanel : MonoBehaviour
         outcomeColour = "<color=red>";
         phaseOutcomeText.text = outcomeColour + "DEFENSE FAILED: CRYSTAL LOST" + "</color>";
         break;
+
+      case PHASE_OUTCOME.GAME_WIN:
+        outcomeColour = "<color=magenta>";
+        phaseOutcomeText.text = outcomeColour + "LIFE CRYSTAL CAPTURED: GOOD WORK OVERLORD" + "</color>";
+        break;
+
+      case PHASE_OUTCOME.GAME_LOSE:
+        outcomeColour = "<color=red>";
+        phaseOutcomeText.text = outcomeColour + "FORTRESS LOST: ENJOY BEING FEASTED ON" + "</color>";
+        break;
     }
 
-    continueButton.onClick.RemoveAllListeners();
-    continueButton.onClick.AddListener(delegate { nextPhase(); });
+    // Game over, hide the continue button and enable the restart and quit button
+    if (phaseOutcome == PHASE_OUTCOME.GAME_WIN || phaseOutcome == PHASE_OUTCOME.GAME_LOSE)
+    {
+      continueButton.gameObject.SetActive(false);
+      playAgainButton.gameObject.SetActive(true);
+      quitButton.gameObject.SetActive(true);
+    }
+
+    else
+    {
+      continueButton.onClick.RemoveAllListeners();
+      continueButton.onClick.AddListener(delegate { nextPhase(); });
+    }
 
     isBuildingSlotRewarded = lootTargetPanel ? lootTargetPanel.isBuildingSlotRewarded : false;
     isUpgradeRewarded = (lootTargetPanel && !nodeConqueredBefore) ? lootTargetPanel.isUpgradeRewarded : false;
@@ -138,7 +166,7 @@ public class LootRewardPanel : MonoBehaviour
     }
 
     float startScaleTime = Time.time;
-    float scaleDuration = 1f;
+    float scaleDuration = 0.85f;
 
     while (Time.time - startScaleTime < scaleDuration)
     {
@@ -158,8 +186,18 @@ public class LootRewardPanel : MonoBehaviour
   private Coroutine StartScaling(bool show)
   {
     Vector3 targetScale = show ? Vector3.one : Vector3.zero;
-    float delayDuration = show ? 2f : 0f;
+    float delayDuration = show ? 1.5f : 0f;
 
     return StartCoroutine(Scale(transform.localScale, targetScale, delayDuration));
+  }
+
+  public void SetReferenceToCrystalSeeker(GameObject crystalSeeker)
+  {
+    crystalSeekerToDestroy = crystalSeeker;
+  }
+
+  private void DestroyCrystalSeeker()
+  {
+    Destroy(crystalSeekerToDestroy);
   }
 }
