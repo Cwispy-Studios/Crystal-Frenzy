@@ -75,4 +75,9 @@ public class MinerSmokeEmission : MonoBehaviour
       }
     }
   }
+
+  private void OnDestroy()
+  {
+    sparkInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+  }
 }

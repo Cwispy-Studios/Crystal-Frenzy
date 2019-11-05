@@ -1193,8 +1193,8 @@ MonoBehaviour:
   kill: 0
   ragdollPrefab: {fileID: 8603667380411741435, guid: e47d4cb739aca624596c4c62b36f313c,
     type: 3}
-  maxHealth: 185
-  regeneration: 1.5
+  maxHealth: 175
+  regeneration: 1.35
   explodesOnDeath: 0
   explosionDmgPctOfHealth: 0.5
   explosionRadius: 10
@@ -1215,7 +1215,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackDamage: 25
-  attacksPerSecond: 1.2
+  attacksPerSecond: 1.1
   attackRange: 3
   enemyDetectRange: 22
   aoe: 0
@@ -1328,7 +1328,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac56f1b6c1ad8144fb388e944cfc04c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  goldProvided: 16
+  goldProvided: 18
 --- !u!114 &7137956629960621701
 MonoBehaviour:
   m_ObjectHideFlags: 0

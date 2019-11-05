@@ -292,6 +292,7 @@ MonoBehaviour:
   explodesOnDeath: 0
   explosionDmgPctOfHealth: 0.25
   explosionRadius: 10
+  explosionEffect: {fileID: 0}
   combatantType: 0
   deathSound: event:/SFX/Units/GoblinDie
   explodeSound: 
@@ -308,8 +309,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackDamage: 13
-  attacksPerSecond: 1.45
-  attackRange: 1.2
+  attacksPerSecond: 1.48
+  attackRange: 1.25
   enemyDetectRange: 20
   aoe: 0
   aoeRadius: 1

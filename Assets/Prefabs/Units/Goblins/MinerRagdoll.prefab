@@ -1297,6 +1297,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5135010331157834527}
   - component: {fileID: 8750624140778614726}
+  - component: {fileID: -6036772030287934879}
   m_Layer: 0
   m_Name: MinerRagdoll
   m_TagString: Untagged
@@ -1398,6 +1399,22 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.04073882, y: -1.0058274, z: 0.07195604}
     m_Extent: {x: 2.2679152, y: 1.6171329, z: 2.3666}
   m_DirtyAABB: 0
+--- !u!114 &-6036772030287934879
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8149370627129170188}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f46ca6d4acc06d84590ca4596c85cfae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fovActive: 1
+  fovMeshPrefab: {fileID: 6477082172712516352, guid: 3022b499539b4c64c9f13e17f43e0903,
+    type: 3}
+  fovRange: 50
 --- !u!1 &8277265797070397446
 GameObject:
   m_ObjectHideFlags: 0
