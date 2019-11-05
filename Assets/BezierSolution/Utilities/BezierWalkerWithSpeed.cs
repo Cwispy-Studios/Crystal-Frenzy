@@ -275,7 +275,8 @@ namespace BezierSolution
     public bool TargetReached()
     {
       if (isGoingForward && progress >= endProgress)
-      {       
+      {
+        GameManager.minerManager.UpdateProgressPct(1);
         moveEmitter.SetParameter("Moving", 1);
         return true;
       }

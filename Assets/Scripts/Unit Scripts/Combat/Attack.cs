@@ -382,9 +382,7 @@ public class Attack : MonoBehaviour
 
     if (aoe)
     {
-      int layerMask = 0;
-
-      Collider[] colliders = Physics.OverlapSphere(attackedTarget.transform.position, aoeRadius, ~layerMask);
+      Collider[] colliders = Physics.OverlapSphere(attackedTarget.transform.position, aoeRadius, 1 << 0);
 
       for (int i = 0; i < colliders.Length; ++i)
       {
@@ -447,7 +445,7 @@ public class Attack : MonoBehaviour
     projectilePos.y = (GetComponent<NavMeshAgent>().height / 2) * transform.lossyScale.y;
     GameObject projectile = Instantiate(projectilePrefab, projectilePos, new Quaternion());
 
-    projectile.GetComponent<Projectile>().SetTarget(attackedTarget, attackDamage, GetComponent<StatusEffects>(), aoe, aoeRadius, aoeDmgPct);
+    projectile.GetComponent<Projectile>().SetTarget(attackedTarget, attackDamage, GetComponent<StatusEffects>(), aoe, aoeRadius, aoeDmgPct, GetComponent<Faction>().faction);
 
     FMODUnity.RuntimeManager.PlayOneShot(attackSound, transform.position);
   }

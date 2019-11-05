@@ -117,7 +117,7 @@ public class UpgradeManager : MonoBehaviour
 
       for (int i = 1; i <= upgradeLevel; ++i)
       {
-        cumulativeUpgrades[i - 1] = upgrades[upgradeType].upgradeLevelsButtons[upgradeLevel].GetComponent<UpgradeButton>().upgradeProperties;
+        cumulativeUpgrades[i - 1] = upgrades[upgradeType].upgradeLevelsButtons[i].GetComponent<UpgradeButton>().upgradeProperties;
       }
 
       return cumulativeUpgrades;

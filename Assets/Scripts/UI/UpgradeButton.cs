@@ -45,11 +45,15 @@ public class UpgradeButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
   private void FixedUpdate()
   {
-    GetComponent<Button>().interactable = (cost <= GameManager.resourceManager.Crystals) && (GameManager.upgradeManager.UpgradeIsAvailable(upgradeType));
+    if (!upgraded)
+    {
+      GetComponent<Button>().interactable = (cost <= GameManager.resourceManager.Crystals) && (GameManager.upgradeManager.UpgradeIsAvailable(upgradeType));
+    }
   }
 
   private void Upgrade()
   {
+    GetComponent<Button>().interactable = false;
     Camera.main.GetComponent<UISoundEmitter>().PlayButtonClick();
     upgraded = true;
     nextLevelButton = GameManager.upgradeManager.UpgradeButton(upgradeType);

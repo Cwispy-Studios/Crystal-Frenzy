@@ -14,6 +14,7 @@ public class Projectile : MonoBehaviour
   private bool aoe;
   private float aoeRadius;
   private float aoeDmgPct;
+  private Faction.FACTIONS faction;
 
   [FMODUnity.EventRef]
   public string hitSoundEvent = "";
@@ -49,17 +50,15 @@ public class Projectile : MonoBehaviour
 
         if (aoe)
         {
-          int layerMask = 0;
-
-          Collider[] colliders = Physics.OverlapSphere(transform.position, aoeRadius, ~layerMask);
+          Collider[] colliders = Physics.OverlapSphere(transform.position, aoeRadius, 1 << 0);
 
           for (int i = 0; i < colliders.Length; ++i)
           {
             if (colliders[i].GetComponent<Faction>() != null && colliders[i].GetComponent<Health>() != null)
             {
               // Check if is unfriendly unit and has health
-              if ((GetComponent<Faction>().faction == Faction.FACTIONS.GOBLINS && colliders[i].GetComponent<Faction>().faction == Faction.FACTIONS.FOREST) ||
-                  (GetComponent<Faction>().faction == Faction.FACTIONS.FOREST && colliders[i].GetComponent<Faction>().faction == Faction.FACTIONS.GOBLINS))
+              if ((faction == Faction.FACTIONS.GOBLINS && colliders[i].GetComponent<Faction>().faction == Faction.FACTIONS.FOREST) ||
+                  (faction == Faction.FACTIONS.FOREST && colliders[i].GetComponent<Faction>().faction == Faction.FACTIONS.GOBLINS))
               {
                 if (colliders[i].gameObject == target)
                 {
@@ -120,7 +119,7 @@ public class Projectile : MonoBehaviour
     }
   }
 
-  public void SetTarget(GameObject setTarget, float setDamage, StatusEffects statusEffects, bool isAoe, float aoeRad, float aoeDamagePct)
+  public void SetTarget(GameObject setTarget, float setDamage, StatusEffects statusEffects, bool isAoe, float aoeRad, float aoeDamagePct, Faction.FACTIONS projectileFaction)
   {
     target = setTarget;
     damage = setDamage;
@@ -128,6 +127,7 @@ public class Projectile : MonoBehaviour
     aoe = isAoe;
     aoeRadius = aoeRad;
     aoeDmgPct = aoeDamagePct;
+    faction = projectileFaction;
 
     targetPos = target.transform.position;
 
