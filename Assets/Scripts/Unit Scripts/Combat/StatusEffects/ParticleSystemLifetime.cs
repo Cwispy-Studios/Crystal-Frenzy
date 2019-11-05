@@ -8,6 +8,7 @@ public class ParticleSystemLifetime : MonoBehaviour
   private float OBJECT_LIFETIME = 5f;
   private float timer = 0f;
   private ParticleSystem particles = null;
+  private GameObject attachedObject = null;
 
   private void Awake()
   {
@@ -17,6 +18,11 @@ public class ParticleSystemLifetime : MonoBehaviour
 
   private void Update()
   {
+    if (attachedObject)
+    {
+      transform.position = attachedObject.transform.position;
+    }
+
     if (timer >= particleSystemLifetime)
     {
       if (particles.isPlaying)
@@ -31,5 +37,10 @@ public class ParticleSystemLifetime : MonoBehaviour
     }
 
     timer += Time.deltaTime;
+  }
+
+  public void SetAttachedObject(GameObject attached)
+  {
+    attachedObject = attached;
   }
 }

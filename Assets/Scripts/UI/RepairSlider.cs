@@ -90,4 +90,9 @@ public class RepairSlider : MonoBehaviour
     GetComponent<Slider>().value = 0;
     InitialiseSlider();
   }
+
+  private void OnDestroy()
+  {
+    repairSliderClickInstance.release();
+  }
 }

@@ -69,11 +69,11 @@ public class Attack : MonoBehaviour
   private Vector3 attackMovePosition;
   private bool isAttackMoveOrder = false;
 
-  private const float DETECT_INTERVAL = 1f;
-  private float detectCountdown = 0;
+  private const float DETECT_UPDATE_INTERVAL = 1f;
+  private float detectUpdateCountdown = 0;
 
   private const float ATTACK_UPDATE_INTERVAL = 0f;
-  private float attackCountdown = 0;
+  private float attackUpdateCountdown = 0;
 
   private bool queuedOrder = false;
   private Vector3 queuedOrderPos;
@@ -120,27 +120,15 @@ public class Attack : MonoBehaviour
 
   private void Update()
   {
-    if (isAttacking)
-    {
-      return;
-    }
-
-    // Only check queue order when unit is no longer attacking
-    if (animationState.currentAnimationState != CURRENT_ANIMATION_STATE.ATTACK && queuedOrder)
-    {
-      obstacle.enabled = false;
-      agent.enabled = true;
-
-      queuedOrder = false;
-      agent.destination = queuedOrderPos;
-      isHealing = queuedHealing;
-
-      animationState.currentAnimationState = CURRENT_ANIMATION_STATE.MOVE;
-    }
-
+    // Update attack cooldown, and attack target intervals
     if (attackCooldown <= attackInterval)
     {
       attackCooldown += Time.deltaTime;
+    }
+
+    if (detectUpdateCountdown < DETECT_UPDATE_INTERVAL)
+    {
+      detectUpdateCountdown += Time.deltaTime;
     }
 
     // As long as unit is not detecting enemies, it is not under an attack move order, so we set it to false
@@ -161,16 +149,30 @@ public class Attack : MonoBehaviour
     {
       LookTowardsTarget(detectedTarget);
     }
-
-    if (detectCountdown < DETECT_INTERVAL)
+    
+    // While it is in the middle of animation, do not perform any other logic
+    if (isAttacking)
     {
-      detectCountdown += Time.deltaTime;
+      return;
+    }
+
+    // Only check queue order when unit is no longer attacking
+    if (animationState.currentAnimationState != CURRENT_ANIMATION_STATE.ATTACK && queuedOrder)
+    {
+      obstacle.enabled = false;
+      agent.enabled = true;
+
+      queuedOrder = false;
+      agent.destination = queuedOrderPos;
+      isHealing = queuedHealing;
+
+      animationState.currentAnimationState = CURRENT_ANIMATION_STATE.MOVE;
     }
 
     // Detect enemies
-    else
+    if (detectUpdateCountdown >= DETECT_UPDATE_INTERVAL)
     {
-      detectCountdown = 0f;
+      detectUpdateCountdown = 0f;
 
       // If there is no attack target and is detecting enemies, unit will constantly look out for enemies within their detect range
       if (attackTarget == null && detectingEnemies)
@@ -179,29 +181,19 @@ public class Attack : MonoBehaviour
       }
     }
 
-    if (attackCountdown < ATTACK_UPDATE_INTERVAL)
+    // Attack targeted or detected enemy
+    if (attackTarget != null)
     {
-      attackCountdown += Time.deltaTime;
+      float enemyRange = Vector3.Distance(transform.position, attackTarget.transform.position);
+
+      AttackEnemy(attackTarget, enemyRange, isHealing);
     }
 
-    // Attack enemy
-    else
+    else if (detectingEnemies && detectedTarget != null)
     {
-      attackCountdown = 0;
+      float enemyRange = Vector3.Distance(transform.position, detectedTarget.transform.position);
 
-      if (attackTarget != null)
-      {
-        float enemyRange = Vector3.Distance(transform.position, attackTarget.transform.position);
-
-        AttackEnemy(attackTarget, enemyRange, isHealing);
-      }
-
-      else if (detectingEnemies && detectedTarget != null)
-      {
-        float enemyRange = Vector3.Distance(transform.position, detectedTarget.transform.position);
-
-        AttackEnemy(detectedTarget, enemyRange, isHealing);
-      }
+      AttackEnemy(detectedTarget, enemyRange, isHealing);
     }
   }
 
@@ -465,7 +457,8 @@ public class Attack : MonoBehaviour
     isHealing = false;
 
     attackedTarget.GetComponent<Health>().ModifyHealth(attackDamage * healPct, Vector3.zero);
-    Instantiate(healParticleSystem, attackedTarget.transform.position, new Quaternion());
+    var particleSystem = Instantiate(healParticleSystem, attackedTarget.transform.position, new Quaternion());
+    particleSystem.GetComponent<ParticleSystemLifetime>().SetAttachedObject(attackedTarget);
     FMODUnity.RuntimeManager.PlayOneShot(healSound, attackedTarget.transform.position);
 
     attackedTarget = null;
