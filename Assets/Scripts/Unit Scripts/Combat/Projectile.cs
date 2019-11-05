@@ -110,6 +110,9 @@ public class Projectile : MonoBehaviour
       transform.Translate(direction.normalized * distanceCovered, Space.World);
       transform.LookAt(targetPos);
 
+      // For arrows
+      transform.Rotate(0, 90, 0);
+
       // If target is not dead yet, update the target position
       // Otherwise projectile just hits the last position of the target
       if (target != null)
