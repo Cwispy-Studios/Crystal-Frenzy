@@ -17,14 +17,30 @@ public class MainMenu : MonoBehaviour
 
   private FMOD.Studio.Bus Master;
 
+  public bool cheatVersion;
+
   private void Awake()
   {
-    playButton.onClick.AddListener(delegate { FadeScreen(PlayGame); });
+    if (cheatVersion)
+    {
+      playButton.onClick.AddListener(delegate { FadeScreen(CheatGame); });
+    }
+
+    else
+    {
+      playButton.onClick.AddListener(delegate { FadeScreen(PlayGame); });
+    }
+    
     quitButton.onClick.AddListener(delegate { FadeScreen(QuitGame); });
 
     Master = FMODUnity.RuntimeManager.GetBus("bus:/Master");
 
     Master.setVolume(1);
+  }
+
+  private void CheatGame()
+  {
+    SceneManager.LoadScene("PresentationCheatScene");
   }
 
   private void PlayGame()
