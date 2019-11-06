@@ -69,7 +69,7 @@ public class Attack : MonoBehaviour
   private Vector3 attackMovePosition;
   private bool isAttackMoveOrder = false;
 
-  private const float DETECT_UPDATE_INTERVAL = 1f;
+  private const float DETECT_UPDATE_INTERVAL = 0.8f;
   private float detectUpdateCountdown = 0;
 
   private const float ATTACK_UPDATE_INTERVAL = 0f;
