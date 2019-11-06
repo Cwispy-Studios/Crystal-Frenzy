@@ -91,4 +91,9 @@ public class ResourceManager : MonoBehaviour
   {
     Crystals += crystalsPerUnitPoint * ArmySize;
   }
+
+  public void CheatCrystals()
+  {
+    Crystals += 1000;
+  }
 }

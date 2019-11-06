@@ -16,6 +16,8 @@ public class CameraControls : MonoBehaviour
   public static readonly float MAX_ZOOM = 50f;
   private readonly float zoomSpeed = 1.3f;
 
+  private bool freeView = false;
+
   [HideInInspector]
 
   public bool birdsEyeViewMode = false;
@@ -76,7 +78,7 @@ public class CameraControls : MonoBehaviour
       transform.Translate(Quaternion.Euler(0, -90, 0) * transform.right * scrollSpeed * Time.deltaTime / GetZoomPerc(), Space.World);
     }
 
-    if (GetComponent<CameraManager>().cameraLerping == false)
+    if (GetComponent<CameraManager>().cameraLerping == false && !freeView)
     {
       CheckCameraInBounds(previousPosition);
     }
@@ -190,6 +192,21 @@ public class CameraControls : MonoBehaviour
     if (cameraBounds.Contains(cameraBound))
     {
       cameraBounds.Remove(cameraBound);
+    }
+  }
+
+  public void SetFreeView()
+  {
+    freeView = !freeView;
+
+    if (freeView)
+    {
+      GetComponent<CameraManager>().PointCameraAtPosition(transform.position, true, false, 2800f, 1f, true, true);
+    }
+
+    else
+    {
+      GetComponent<CameraManager>().PointCameraAtPosition(transform.position, false, false);
     }
   }
 }

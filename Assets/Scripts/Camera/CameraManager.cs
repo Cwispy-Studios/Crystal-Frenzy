@@ -32,7 +32,7 @@ public class CameraManager : MonoBehaviour
   [SerializeField]
   private FMODUnity.StudioEventEmitter ambienceEmitter = null;
 
-  public void PointCameraAtPosition(Vector3 pointPos, bool birdsEyeView, bool maintainHeightRot, float targetHeight = 0, float duration = 1.2f, bool turnOnCamControls = true)
+  public void PointCameraAtPosition(Vector3 pointPos, bool birdsEyeView, bool maintainHeightRot, float targetHeight = 0, float duration = 1.2f, bool turnOnCamControls = true, bool cheat = false)
   {
     GetComponent<CameraControls>().birdsEyeViewMode = birdsEyeView;
 
@@ -103,6 +103,11 @@ public class CameraManager : MonoBehaviour
       toPos.y = BIRDS_EYE_VIEW_Y;
       rot = BIRDS_EYE_VIEW_ROT;
       fov = BIRDS_EYE_VIEW_FOV;
+
+      if (cheat)
+      {
+        toPos.y = targetHeight;
+      }
     }    
 
     StartLerp(toPos, rot, fov, duration, turnOnCamControls);
