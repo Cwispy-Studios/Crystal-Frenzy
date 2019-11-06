@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
 
   [Header("Scene Objects")]
   [SerializeField]
-  private GameObject playerCamera = null, fortress = null;
+  private GameObject playerCamera = null, fortress = null, lifeCrystal = null;
 
   [Header("UI Interfaces")]
   [SerializeField]
@@ -324,7 +324,7 @@ public class GameManager : MonoBehaviour
     GetComponent<HideableManager>().KillAllUnits();
 
     // Check if the crystal we won is not the life crystal
-    if (attackNode != fortress)
+    if (attackNode != lifeCrystal)
     {
       // Change crystal colour
       attackNode.GetComponent<CrystalNode>().SetCrystalColour(true);

@@ -35,13 +35,13 @@ public class ConstructedBuildingsPanel : MonoBehaviour
     {
       anchoredPos.x += ICON_GAP_X;
 
-      anchoredPos.y += ICON_GAP_Y * (constructedBuildingsList.Count - secondColumnCount);
+      anchoredPos.y -= ICON_GAP_Y * (constructedBuildingsList.Count - secondColumnCount);
     }
 
     // Second column
     else
     {
-      anchoredPos.y += ICON_GAP_Y * (constructedBuildingsList.Count);
+      anchoredPos.y -= ICON_GAP_Y * (constructedBuildingsList.Count);
     }
 
     newButton.GetComponent<RectTransform>().anchoredPosition = anchoredPos;
