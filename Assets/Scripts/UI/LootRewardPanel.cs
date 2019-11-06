@@ -75,7 +75,7 @@ public class LootRewardPanel : MonoBehaviour
 
       case PHASE_OUTCOME.GAME_WIN:
         outcomeColour = "<color=magenta>";
-        phaseOutcomeText.text = outcomeColour + "LIFE CRYSTAL CAPTURED: GOOD WORK OVERLORD" + "</color>";
+        phaseOutcomeText.text = outcomeColour + "MISSION COMPLETE" + "</color>";
         break;
 
       case PHASE_OUTCOME.GAME_LOSE:
