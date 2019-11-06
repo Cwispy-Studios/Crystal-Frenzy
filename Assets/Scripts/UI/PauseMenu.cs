@@ -14,7 +14,7 @@ public class PauseMenu : MonoBehaviour
   private Button continueButton = null, controlsButton = null, restartButton = null, quitButton = null, yesButton = null, noButton = null;
 
   [SerializeField]
-  private Image greyScreen = null, confirmationGreyScreen = null, fadeScreen = null;
+  private Image greyScreen = null, confirmationGreyScreen = null, fadeScreen = null, controlsImage = null;
 
   [SerializeField]
   private Text confirmationText = null;
@@ -29,7 +29,7 @@ public class PauseMenu : MonoBehaviour
   private void Awake()
   {
     continueButton.onClick.AddListener(ContinueGame);
-    controlsButton.onClick.AddListener(ControlsMenu);
+    controlsButton.onClick.AddListener(Controls);
     restartButton.onClick.AddListener(delegate { AreYouSure(RestartGame, "Restart The Game?"); });
     quitButton.onClick.AddListener(delegate { AreYouSure(QuitGame, "Quit The Game?"); });
 
@@ -54,7 +54,7 @@ public class PauseMenu : MonoBehaviour
   {
     if (Input.GetKeyDown(KeyCode.Escape))
     {
-      if (confirmationPanel.activeSelf)
+      if (confirmationPanel.activeSelf || controlsImage.gameObject.activeSelf)
       {
         ReturnToMenu();
       }
@@ -73,11 +73,6 @@ public class PauseMenu : MonoBehaviour
     Time.timeScale = 1f;
     uiInterface.GetComponent<CanvasGroup>().interactable = true;
     gameObject.SetActive(false);
-  }
-
-  private void ControlsMenu()
-  {
-
   }
 
   private void RestartGame()
@@ -106,6 +101,15 @@ public class PauseMenu : MonoBehaviour
     confirmationPanel.SetActive(true);
   }
 
+  private void Controls()
+  {
+    continueButton.interactable = false;
+    controlsButton.interactable = false;
+    quitButton.interactable = false;
+
+    controlsImage.gameObject.SetActive(true);
+  }
+
   private void ReturnToMenu()
   {
     continueButton.interactable = true;
@@ -114,6 +118,8 @@ public class PauseMenu : MonoBehaviour
 
     confirmationGreyScreen.enabled = false;
     confirmationPanel.SetActive(false);
+
+    controlsImage.gameObject.SetActive(false);
   }
 
   private void FadeScreen(NextScene nextScene)
