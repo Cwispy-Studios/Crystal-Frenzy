@@ -72,7 +72,7 @@ public class UpgradeButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     if (upgradeType == UPGRADE_TYPE.CRYSTAL_MINING)
     {
-      GameManager.resourceManager.crystalsPerUnitPoint += 5;
+      GameManager.resourceManager.crystalsPerUnitPoint += 7;
     }
 
     if (upgradeType == UPGRADE_TYPE.MINER_HEALTH)
