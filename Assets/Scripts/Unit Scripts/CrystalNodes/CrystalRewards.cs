@@ -48,14 +48,14 @@ public class CrystalRewards : MonoBehaviour
 
 
   /**************************************************** BUILDING SLOT VARIABLES ****************************************************/
-  private const float BUILDING_SLOT_CHANCE = 0.6f;
+  private const float BUILDING_SLOT_CHANCE = 0.65f;
   public bool BuildingSlotRewarded { get; private set; } = false;
 
   /**************************************************** RESOURCES VARIABLES ****************************************************/
   private const float GOLD_PER_POINTONE_LOOT_WEIGHT = 36f;
-  private const float CRYSTAL_PER_POINTONE_LOOT_WEIGHT = 4.6f;
+  private const float CRYSTAL_PER_POINTONE_LOOT_WEIGHT = 5f;
   private const float GOLD_INCREASE_PER_NODE = 11f;
-  private const float CRYSTAL_INCREASE_PER_NODE = 2.1f;
+  private const float CRYSTAL_INCREASE_PER_NODE = 2.5f;
 
   // Makes units spawn faster
   private float waveSpawnerDifficultyMultiplier = 1f;

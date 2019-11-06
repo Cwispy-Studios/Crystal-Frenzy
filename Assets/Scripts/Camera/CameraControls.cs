@@ -14,7 +14,7 @@ public class CameraControls : MonoBehaviour
   /*********************** Zoom variables ***********************/
   private const float MIN_ZOOM = 20f;
   public static readonly float MAX_ZOOM = 50f;
-  private readonly float zoomSpeed = 1f;
+  private readonly float zoomSpeed = 1.3f;
 
   [HideInInspector]
 
