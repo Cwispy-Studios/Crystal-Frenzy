@@ -11,6 +11,8 @@ public class Hideable: MonoBehaviour
 
   private void OnEnable()
   {
+    gameObject.layer = 10;
+    GetComponent<Selectable>().enabled = false;
     hideableManager.hideableUnits.Add(gameObject);
   }
 

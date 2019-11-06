@@ -7,7 +7,7 @@ public class HideableManager : MonoBehaviour
   public List<FogOfWarMesh> fogOfWarMeshList = new List<FogOfWarMesh>();
   public List<GameObject> hideableUnits = new List<GameObject>();
 
-  private const float UPDATE_INTERVAL = 1f;
+  private const float UPDATE_INTERVAL = 0.1f;
   private float updateCountdown = UPDATE_INTERVAL;
 
   private void Update()
@@ -30,8 +30,10 @@ public class HideableManager : MonoBehaviour
           // Point to circle collision
           if (fogOfWarMeshList[fovMesh].FovShape == FOV_SHAPE.CIRCLE)
           {
-            if (Vector3.SqrMagnitude(hideableUnits[i].transform.position - fogOfWarMeshList[fovMesh].transform.position) <= 
-                fogOfWarMeshList[fovMesh].transform.lossyScale.x * fogOfWarMeshList[fovMesh].transform.lossyScale.x)
+            float distanceBetweenSqr = Vector3.SqrMagnitude(hideableUnits[i].transform.position - fogOfWarMeshList[fovMesh].transform.position);
+            float radiusSqr = (hideableUnits[i].transform.lossyScale.x * 0.5f + fogOfWarMeshList[fovMesh].transform.lossyScale.x * 0.5f) * (hideableUnits[i].transform.lossyScale.x * 0.5f + fogOfWarMeshList[fovMesh].transform.lossyScale.x * 0.5f);
+
+            if (distanceBetweenSqr <= radiusSqr)
             {
               hideableUnits[i].layer = 0;
               hideableUnits[i].GetComponent<Selectable>().enabled = true;
