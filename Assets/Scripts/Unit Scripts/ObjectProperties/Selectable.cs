@@ -74,8 +74,9 @@ public class Selectable : MonoBehaviour
 
   private void OnDisable()
   {
-    playerCamera.GetComponent<CameraObjectSelection>().RemoveSelectable(this);
-  }
+    if (playerCamera)
+      playerCamera.GetComponent<CameraObjectSelection>().RemoveSelectable(this);
+  } 
 
   private void Update()
   {
