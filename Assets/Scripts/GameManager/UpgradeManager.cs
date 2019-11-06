@@ -161,10 +161,10 @@ public class UpgradeManager : MonoBehaviour
 
   public GameObject CheckUpgradeLevel(UPGRADE_TYPE upgradeType, int upgradeLevel)
   {
-      int currentUpgradeLevel = upgrades[upgradeType].currentUpgradeLevel + 1;
+    int currentUpgradeLevel = upgrades[upgradeType].currentUpgradeLevel + 1;
 
     // If levels are unequal, return the new button that should replace the old one
-    if (upgradeLevel != currentUpgradeLevel)
+    if (upgradeLevel != currentUpgradeLevel && currentUpgradeLevel <= upgrades[upgradeType].max)
     {
       return Instantiate(upgrades[upgradeType].upgradeLevelsButtons[currentUpgradeLevel]);
     }
