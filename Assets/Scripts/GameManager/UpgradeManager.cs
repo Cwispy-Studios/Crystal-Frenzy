@@ -164,7 +164,7 @@ public class UpgradeManager : MonoBehaviour
     int currentUpgradeLevel = upgrades[upgradeType].currentUpgradeLevel + 1;
 
     // If levels are unequal, return the new button that should replace the old one
-    if (upgradeLevel != currentUpgradeLevel && currentUpgradeLevel <= upgrades[upgradeType].max)
+    if (upgradeLevel != currentUpgradeLevel && currentUpgradeLevel <= upgrades[upgradeType].maxLevel)
     {
       return Instantiate(upgrades[upgradeType].upgradeLevelsButtons[currentUpgradeLevel]);
     }
