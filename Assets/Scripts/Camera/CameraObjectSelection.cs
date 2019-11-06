@@ -194,16 +194,16 @@ public class CameraObjectSelection : MonoBehaviour
 
   private void CenterOnSelected()
   {
-    if (unitManager.SelectedUnits.Count > 0)
+    if (SelectedUnitsList.Count > 0)
     {
       Vector3 averageVector = Vector3.zero;
 
-      for (int i = 0; i < unitManager.SelectedUnits.Count; ++i)
+      for (int i = 0; i < SelectedUnitsList.Count; ++i)
       {
-        averageVector += unitManager.SelectedUnits[i].transform.position;
+        averageVector += SelectedUnitsList[i].transform.position;
       }
 
-      averageVector /= unitManager.SelectedUnits.Count;
+      averageVector /= SelectedUnitsList.Count;
 
       playerCamera.GetComponent<CameraManager>().PointCameraAtPosition(averageVector, playerCamera.GetComponent<CameraControls>().birdsEyeViewMode, true, 0, 0.3f);
     }
