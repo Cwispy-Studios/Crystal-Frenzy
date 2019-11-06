@@ -770,4 +770,9 @@ public class GameManager : MonoBehaviour
   {
     return conqueredNodes[conqueredNodes.Count - 1];
   }
+
+  public void CheatRound(int num)
+  {
+    CurrentRound += num;
+  }
 }

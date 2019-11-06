@@ -67,5 +67,15 @@ public class Cheats : MonoBehaviour
         crystalSeeker.GetComponent<BezierSolution.BezierWalkerWithSpeed>().speed -= 2f;
       }
     }
+
+    if (Input.GetKeyDown(KeyCode.R))
+    {
+      FindObjectOfType<GameManager>().CheatRound(1);
+    }
+
+    if (Input.GetKeyDown(KeyCode.E))
+    {
+      FindObjectOfType<GameManager>().CheatRound(-1);
+    }
   }
 }
