@@ -113,6 +113,11 @@ public class CrystalRewards : MonoBehaviour
 
       GetComponent<CrystalNode>().AdjustSpawners(waveSpawnerDifficultyMultiplier);
     }
+
+    else
+    {
+      BuildingSlotRewarded = GetComponent<BuildingSlot>().HasBuildingSlot();
+    }
   }
 
   private void Update()

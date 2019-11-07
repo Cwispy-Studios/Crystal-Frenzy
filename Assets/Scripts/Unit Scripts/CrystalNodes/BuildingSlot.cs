@@ -76,6 +76,11 @@ public class BuildingSlot : MonoBehaviour
     GameManager.buildingManager.LoseBuilding(buildingSlot);
   }
 
+  public bool HasBuildingSlot()
+  {
+    return buildingSlot != null;
+  }
+
   private void OnDisable()
   {
     buildingSlot.SetActive(false);
