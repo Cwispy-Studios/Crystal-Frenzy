@@ -463,11 +463,12 @@ public class GameManager : MonoBehaviour
     // Set the miner manager health to 10%
     minerManager.MinerDestroyed();
 
-    resourceManager.GainCrystalManpower();
-
     // Remove all units on the playing field, friendly units are contained in Unit Manager, enemy units are contained in Hideable Manager
     uiInterface.EscortPhaseRemoveAllUnits();
     GetComponent<HideableManager>().RemoveAllUnits();
+
+    // Collect crystal income
+    resourceManager.CollectCrystalIncome();
 
     // Enable the crystal nodes functionalities
     attackNode.GetComponent<CrystalSeekerSpawner>().enabled = true;
@@ -593,13 +594,14 @@ public class GameManager : MonoBehaviour
   {
     EndCutscene();
 
-    resourceManager.GainCrystalManpower();
-
     bushManager.ResetHealth();
 
     // Remove all units on the playing field, friendly units are contained in Unit Manager, enemy units are contained in Hideable Manager
     uiInterface.EscortPhaseRemoveAllUnits();
     GetComponent<HideableManager>().RemoveAllUnits();
+
+    // Collect crystal income
+    resourceManager.CollectCrystalIncome();
 
     GameObject attackingFromNode = conqueredNodes[conqueredNodes.Count - 1];
 
@@ -692,8 +694,6 @@ public class GameManager : MonoBehaviour
   {
     EndCutscene();
 
-    resourceManager.GainCrystalManpower();
-
     // Remove all units on the playing field, friendly units are contained in Unit Manager, enemy units are contained in Hideable Manager
     uiInterface.EscortPhaseRemoveAllUnits();
     GetComponent<HideableManager>().RemoveAllUnits();
@@ -701,6 +701,9 @@ public class GameManager : MonoBehaviour
     GameObject lostNode = conqueredNodes[conqueredNodes.Count - 1];
     lostNode.GetComponent<CrystalNode>().active = false;
     attackNode.GetComponent<CrystalNode>().targeted = true;
+
+    // Collect crystal income
+    resourceManager.CollectCrystalIncome();
 
     // Remove the path camera bounds from the node we lost
     //playerCamera.GetComponent<CameraControls>().RemoveCameraBounds(lostNode.GetComponent<CrystalNode>().RetrieveCameraBound(attackNode));

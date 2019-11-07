@@ -67,6 +67,11 @@ public class ResourceManager : MonoBehaviour
     Crystals += crystalsIncome;
   }
 
+  public void CollectCrystalIncome()
+  {
+    Crystals += crystalsIncome;
+  }
+
   public void LoseIncome(int crystalIncome)
   {
     crystalsIncome -= crystalIncome;
