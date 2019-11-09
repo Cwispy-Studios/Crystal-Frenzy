@@ -14,7 +14,7 @@ public class GoldGiver : MonoBehaviour
 
   private void OnDestroy()
   {
-    if (rewardsGold)
+    if (rewardsGold && GameManager.resourceManager)
     {
       GameManager.resourceManager.SpendGold(-goldProvided);
     } 

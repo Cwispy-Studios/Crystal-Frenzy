@@ -61,6 +61,9 @@ public class BushManager : MonoBehaviour
 
   public void UpdateProgressPct(float pct)
   {
+    if (bushProgressBar == null || bushProgressText == null)
+      return;
+
     bushProgressBar.fillAmount = pct;
     bushProgressText.text = (pct * 100f).ToString("F1") + "%";
 

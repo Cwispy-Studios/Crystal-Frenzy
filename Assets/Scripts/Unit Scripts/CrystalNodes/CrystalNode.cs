@@ -168,12 +168,13 @@ public class CrystalNode : MonoBehaviour
     return null;
   }
 
-  public void SetWaveSpawnersActive(bool active, GameObject target)
+  public void SetWaveSpawnersActive(bool active, GameObject target, CrystalPath path)
   {
     foreach (GameObject spawnPoint in spawnPoints)
     {
       spawnPoint.GetComponent<WaveSpawner>().enabled = active;
       spawnPoint.GetComponent<WaveSpawner>().target = target;
+      spawnPoint.GetComponent<WaveSpawner>().crystalPath = path;
     }
   }
 

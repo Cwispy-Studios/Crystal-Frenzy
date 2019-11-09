@@ -72,9 +72,6 @@ public class Attack : MonoBehaviour
   private const float DETECT_UPDATE_INTERVAL = 0.8f;
   private float detectUpdateCountdown = 0;
 
-  private const float ATTACK_UPDATE_INTERVAL = 0f;
-  private float attackUpdateCountdown = 0;
-
   private bool queuedOrder = false;
   private Vector3 queuedOrderPos;
   private bool queuedHealing = false;

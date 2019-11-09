@@ -18,7 +18,7 @@ public class CameraManager : MonoBehaviour
 {
   public bool cameraLerping = false;
 
-  private readonly Vector3 DEFAULT_ROT = new Vector3(55f, 0f, 0f);
+  public static readonly Vector3 DEFAULT_ROT = new Vector3(55f, 0f, 0f);
   private const float DEFAULT_FOV = 60f;
   private readonly Vector3 BIRDS_EYE_VIEW_ROT = new Vector3(90f, 0f, 0f);
   private const float BIRDS_EYE_VIEW_FOV = 10f;

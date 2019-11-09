@@ -8,6 +8,7 @@ public class WaveSpawner : MonoBehaviour
   private EnemySpawner[] enemySpawners = null;
 
   public GameObject target = null;
+  public CrystalPath crystalPath = null;
 
   private float[] cumulativeSumOfWeights = null;
   private float sumOfWeights = 0;
@@ -69,7 +70,7 @@ public class WaveSpawner : MonoBehaviour
       spawnedEnemy.GetComponent<NavMeshAgent>().Warp(transform.position);
 
       // Set it to attack move towards the crystal seeker position instead of at the crystal seeker
-      spawnedEnemy.GetComponent<EnemyAI>().target = target;
+      spawnedEnemy.GetComponent<EnemyAI>().SetTarget(target, crystalPath);
 
       enemyToSpawn = null;
     }

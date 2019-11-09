@@ -40,6 +40,11 @@ public class MinerManager : MonoBehaviour
 
   public void UpdateProgressPct(float pct)
   {
+    if (minerProgressBar == null)
+    {
+      return;
+    }
+
     minerProgressBar.fillAmount = pct;
     minerProgressText.text = (pct * 100f).ToString("F1") + "%";
     musicEmitter.SetParameter("Player Crystal Seeker Progress", pct);

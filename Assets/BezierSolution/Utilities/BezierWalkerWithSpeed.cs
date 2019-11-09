@@ -299,8 +299,15 @@ namespace BezierSolution
     {
       GetComponent<Animator>().enabled = false;
 
-      GameManager.minerManager.UpdateProgressPct(0);
-      GameManager.bushManager.UpdateProgressPct(0);
+      if (GameManager.minerManager)
+      {
+        GameManager.minerManager.UpdateProgressPct(0);
+      }
+
+      if (GameManager.bushManager)
+      {
+        GameManager.bushManager.UpdateProgressPct(0);
+      }
     }
   }
 }

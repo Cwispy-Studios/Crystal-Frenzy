@@ -111,6 +111,11 @@ public class CrystalSeekerSpawner : MonoBehaviour
     return crystalSeeker;
   }
 
+  public CrystalPath GetPath()
+  {
+    return crystalPath.GetComponent<CrystalPath>();
+  }
+
   public void ResetCrystalSelection()
   {
     TurnOffPathIllumination();

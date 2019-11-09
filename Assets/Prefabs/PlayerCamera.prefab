@@ -70,7 +70,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 311
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -140,6 +140,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f618b852db1e4124985ef30f246bde57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cameraLerping: 0
+  mouseOverUI: 0
+  selectionDisabled: 0
+  ambienceEmitter: {fileID: 0}
 --- !u!114 &1574251319325358431
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -153,6 +157,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   birdsEyeViewMode: 0
+  ambienceEmitter: {fileID: 0}
 --- !u!114 &1574251319325358428
 MonoBehaviour:
   m_ObjectHideFlags: 0

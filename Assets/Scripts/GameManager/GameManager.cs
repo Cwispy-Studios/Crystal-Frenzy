@@ -36,6 +36,7 @@ public class GameManager : MonoBehaviour
   public static MinerManager minerManager;
   public static BushManager bushManager;
   public static TutorialManager tutorialManager;
+  public static MinerTracker minerTracker;
 
   private List<GameObject> conqueredNodes;
   private GameObject attackNode;
@@ -65,6 +66,7 @@ public class GameManager : MonoBehaviour
     minerManager = GetComponent<MinerManager>();
     bushManager = GetComponent<BushManager>();
     tutorialManager = GetComponent<TutorialManager>();
+    minerTracker = GetComponent<MinerTracker>();
 
     conqueredNodes = new List<GameObject>
     {
@@ -269,8 +271,11 @@ public class GameManager : MonoBehaviour
 
     // Disabled the crystal nodes functionalities and spawns a crystal seeker
     GameObject spawnedCrystalSeeker = attackingFromNode.GetComponent<CrystalSeekerSpawner>().SpawnCrystalSeeker();
+    CrystalPath path = attackingFromNode.GetComponent<CrystalSeekerSpawner>().GetPath();
+    minerTracker.TrackMiner(spawnedCrystalSeeker);
+
     attackingFromNode.GetComponent<CrystalSeekerSpawner>().ResetCrystalSelection();
-    attackingFromNode.GetComponent<CrystalSeekerSpawner>().enabled = false;
+    attackingFromNode.GetComponent<CrystalSeekerSpawner>().enabled = false;    
 
     BuildingSlot buildingSlot = attackNode.GetComponent<BuildingSlot>();
 
@@ -284,7 +289,7 @@ public class GameManager : MonoBehaviour
     uiInterface.UnitManager.SetUnitButtonsToCombat();
 
     // Start wave spawners of attack node
-    attackNode.GetComponent<CrystalNode>().SetWaveSpawnersActive(true, spawnedCrystalSeeker);
+    attackNode.GetComponent<CrystalNode>().SetWaveSpawnersActive(true, spawnedCrystalSeeker, path);
     // Disables the tree wall so units can pass through, finds it in the attacking node
     attackingFromNode.GetComponent<CrystalNode>().DisableTreeWall(attackNode);
 
@@ -316,7 +321,7 @@ public class GameManager : MonoBehaviour
     playerCamera.GetComponent<CameraManager>().RotateAroundObject(attackNode);
 
     // Disable wave spawners of the conquered node
-    attackNode.GetComponent<CrystalNode>().SetWaveSpawnersActive(false, null);
+    attackNode.GetComponent<CrystalNode>().SetWaveSpawnersActive(false, null, null);
     // Make the node visible
     attackNode.GetComponent<ConqueredNode>().SetAssemblyFOV(true);
 
@@ -446,7 +451,7 @@ public class GameManager : MonoBehaviour
     playerCamera.GetComponent<CameraManager>().RotateAroundObject(crystalSeeker);
 
     // Disable wave spawners of the node we lost to
-    attackNode.GetComponent<CrystalNode>().SetWaveSpawnersActive(false, null);
+    attackNode.GetComponent<CrystalNode>().SetWaveSpawnersActive(false, null, null);
 
     // Kill all your units
     uiInterface.UnitManager.KillAllUnits();
@@ -476,7 +481,7 @@ public class GameManager : MonoBehaviour
     attackNode.GetComponent<CrystalSeekerSpawner>().SetDefendingCrystalTarget(conqueredNodes[conqueredNodes.Count - 1]);
 
     // Disable wave spawners of the conquered node
-    attackNode.GetComponent<CrystalNode>().SetWaveSpawnersActive(false, null);
+    attackNode.GetComponent<CrystalNode>().SetWaveSpawnersActive(false, null, null);
 
     BeginPreparationDefensePhase();
   }
@@ -553,7 +558,7 @@ public class GameManager : MonoBehaviour
     uiInterface.UnitManager.SetUnitButtonsToCombat();
 
     // Start wave spawners of attack node towards your crystal
-    attackNode.GetComponent<CrystalNode>().SetWaveSpawnersActive(true, conqueredNodes[conqueredNodes.Count - 1]);
+    attackNode.GetComponent<CrystalNode>().SetWaveSpawnersActive(true, conqueredNodes[conqueredNodes.Count - 1], conqueredNodes[conqueredNodes.Count - 1].GetComponent<CrystalNode>().RetrieveSpline(attackNode).GetComponent<CrystalPath>());
   }
 
   public void DefenseWinCutscene(GameObject crystalSeeker)
@@ -580,7 +585,7 @@ public class GameManager : MonoBehaviour
     playerCamera.GetComponent<CameraManager>().RotateAroundObject(crystalSeeker);
 
     // Disable wave spawners of the conquered node
-    attackNode.GetComponent<CrystalNode>().SetWaveSpawnersActive(false, null);
+    attackNode.GetComponent<CrystalNode>().SetWaveSpawnersActive(false, null, null);
 
     // Kill all enemies
     GetComponent<HideableManager>().KillAllUnits();
@@ -609,7 +614,7 @@ public class GameManager : MonoBehaviour
     attackingFromNode.GetComponent<CrystalSeekerSpawner>().enabled = true;
 
     // Disable wave spawners of the conquered node
-    attackNode.GetComponent<CrystalNode>().SetWaveSpawnersActive(false, null);
+    attackNode.GetComponent<CrystalNode>().SetWaveSpawnersActive(false, null, null);
 
     NodeSelected = false;
 
@@ -657,7 +662,7 @@ public class GameManager : MonoBehaviour
     playerCamera.GetComponent<CameraManager>().RotateAroundObject(lostNode);
 
     // Disable wave spawners of the attacking node
-    attackNode.GetComponent<CrystalNode>().SetWaveSpawnersActive(false, null);
+    attackNode.GetComponent<CrystalNode>().SetWaveSpawnersActive(false, null, null);
     // Make our node visible
     lostNode.GetComponent<ConqueredNode>().SetAssemblyFOV(true);
 
@@ -709,7 +714,7 @@ public class GameManager : MonoBehaviour
     //playerCamera.GetComponent<CameraControls>().RemoveCameraBounds(lostNode.GetComponent<CrystalNode>().RetrieveCameraBound(attackNode));
 
     // Disable wave spawners and crystal nodes functionalities of the attacking node we lost to
-    attackNode.GetComponent<CrystalNode>().SetWaveSpawnersActive(false, null);
+    attackNode.GetComponent<CrystalNode>().SetWaveSpawnersActive(false, null, null);
     attackNode.GetComponent<CrystalSeekerSpawner>().enabled = false;
 
     // Update the attacking node to the node we lost and remove that node from our list of conquered nodes
@@ -740,7 +745,7 @@ public class GameManager : MonoBehaviour
     }
 
     // Disable wave spawners of the new attacking node
-    attackNode.GetComponent<CrystalNode>().SetWaveSpawnersActive(false, null);
+    attackNode.GetComponent<CrystalNode>().SetWaveSpawnersActive(false, null, null);
 
     // Turn off the assembly visibility mesh of the node we lost
     attackNode.GetComponent<ConqueredNode>().SetAssemblyFOV(false);
