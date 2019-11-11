@@ -14,7 +14,8 @@ public class Selectable : MonoBehaviour
   {
     NEUTRAL = 0,
     FRIENDLY,
-    UNFRIENDLY
+    UNFRIENDLY,
+    NONE
   }
 
   private const float TARGET_CIRCLE_MODIFIER = 1.05f;
@@ -27,7 +28,7 @@ public class Selectable : MonoBehaviour
   [System.NonSerialized]
   public SELECT_STATUS selectStatus = SELECT_STATUS.UNSELECTED;
   [System.NonSerialized]
-  public SELECT_FACTION selectFaction = SELECT_FACTION.NEUTRAL;
+  public SELECT_FACTION selectFaction = SELECT_FACTION.NONE;
 
   private GameObject selectionCircle;
   private GameObject targetCircle;
@@ -62,6 +63,14 @@ public class Selectable : MonoBehaviour
     // Set how far down the projector projects based on the y position of the object
     selectionCircle.GetComponent<Projector>().farClipPlane += parentSize.y;
     targetCircle.GetComponent<Projector>().farClipPlane += parentSize.y;
+
+    // Assign new material instances to the selection and target circles and destroy the current instances
+    Material selectionCircleMaterial = new Material(selectionCircle.GetComponent<Projector>().material);
+    Material targetCircleMaterial = new Material(targetCircle.GetComponent<Projector>().material);
+
+    selectionCircle.GetComponent<Projector>().material = selectionCircleMaterial;
+    targetCircle.GetComponent<Projector>().material = targetCircleMaterial;
+
     // Default invisible
     ChangeTransparency(selectionCircle, ALPHA_TRANSPARENT);
     ChangeTransparency(targetCircle, ALPHA_TRANSPARENT);
@@ -105,12 +114,16 @@ public class Selectable : MonoBehaviour
 
   private void ChangeTransparency(GameObject circle, float alpha)
   {
-    Material circleMaterial = new Material(circle.GetComponent<Projector>().material);
+    //Material circleMaterial = new Material(circle.GetComponent<Projector>().material);
 
-    Color newColor = circleMaterial.color;
+    //Color newColor = circleMaterial.color;
+    //newColor.a = alpha;
+    //circleMaterial.color = newColor;
+    //circle.GetComponent<Projector>().material = circleMaterial;
+
+    Color newColor = circle.GetComponent<Projector>().material.color;
     newColor.a = alpha;
-    circleMaterial.color = newColor;
-    circle.GetComponent<Projector>().material = circleMaterial;
+    circle.GetComponent<Projector>().material.color = newColor;
   }
 
   public void CheckFactionColour(Faction.FACTIONS playerFaction)
@@ -154,9 +167,7 @@ public class Selectable : MonoBehaviour
 
   private void ChangeColour(GameObject circle, SELECT_FACTION newFactionColour)
   {
-    Material circleMaterial = new Material(circle.GetComponent<Projector>().material);
-
-    Color newColor = circleMaterial.color;
+    Color newColor = circle.GetComponent<Projector>().material.color;
 
     switch (newFactionColour)
     {
@@ -182,8 +193,9 @@ public class Selectable : MonoBehaviour
         break;
     }
 
-    circleMaterial.color = newColor;
-    circle.GetComponent<Projector>().material = circleMaterial;
+    circle.GetComponent<Projector>().material.color = newColor;
+
+    newColor = circle.GetComponent<Projector>().material.color;
   }
 
   
@@ -226,14 +238,7 @@ public class Selectable : MonoBehaviour
 
   private void OnDestroy()
   {
-    //if (selectStatus == SELECT_STATUS.SELECTED)
-    //{
-    //  CameraObjectSelection.Select(gameObject);
-    //}
-
-    //else if (selectStatus == SELECT_STATUS.HOVER)
-    //{
-    //  CameraObjectSelection.RemoveDeadHoverUnit(gameObject);
-    //}
+    Destroy(selectionCircle.GetComponent<Projector>().material);
+    Destroy(targetCircle.GetComponent<Projector>().material);
   }
 }

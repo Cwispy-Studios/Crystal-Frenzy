@@ -143,7 +143,9 @@ public class MinerTracker : MonoBehaviour
             if (LineLineIntersection(out intersectionPoint, bottomLeftOfScreen, bottomRightOfScreen - bottomLeftOfScreen, centerOfScreen, minerPos - centerOfScreen) && intersectionPoint.x >= bottomLeftOfScreen.x && intersectionPoint.x <= bottomRightOfScreen.x)
             {
               intersectionPointFound = true;
-              trackerFramePos.x = ( (intersectionPoint.x - bottomLeftOfScreen.x) / (bottomRightOfScreen.x - bottomLeftOfScreen.x) ) * (maxWidthOffset * 2f) - maxWidthOffset;
+              float xAxisAway = intersectionPoint.x - bottomLeftOfScreen.x;
+              float xAxisLength = bottomRightOfScreen.x - bottomLeftOfScreen.x;
+              trackerFramePos.x = (xAxisAway / xAxisLength) * (maxWidthOffset * 2f) - maxWidthOffset;
               trackerFramePos.y = bottomScreenLimit;
               Debug.Log("Bottom");
             }
