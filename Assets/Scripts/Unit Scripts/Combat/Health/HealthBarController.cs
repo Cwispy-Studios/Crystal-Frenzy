@@ -17,10 +17,11 @@ using UnityEngine.UI;
 
 public class HealthBarController : MonoBehaviour
 {
-  public Color normalColour = new Color(255f / 255f, 0 / 255f, 0 / 255f);
+  public static Color normalColour = new Color(255f / 255f, 0 / 255f, 0 / 255f);
   public static Color poisonColour = new Color(140f / 255f, 255f / 255f, 140f / 255f);
   public static Color slowColour = new Color(255f / 255f, 205f / 255f, 130f / 255f);
   public static Color curseColour = new Color(255f / 255f, 150f / 255f, 255f / 255f);
+  public static Color blankColour = new Color(0, 0, 0, 1f);
 
   [SerializeField]
   private HealthBar healthBarPrefab = null;
@@ -39,41 +40,39 @@ public class HealthBarController : MonoBehaviour
     {
       Afflictable afflictable = item.Key.GetComponent<Afflictable>();
 
+      item.Value.GetComponentInChildren<Image>().color = blankColour;
+
       if (afflictable)
       {
         int numAfflictions = 0;
 
-        Color healthBarColour = new Color(0, 0, 0, 1);
-
         if (afflictable.posionAffliction.Active)
         {
-          healthBarColour += poisonColour;
+          item.Value.GetComponentInChildren<Image>().color += poisonColour;
           ++numAfflictions;
         }
 
         if (afflictable.slowAffliction.Active)
         {
-          healthBarColour += slowColour;
+          item.Value.GetComponentInChildren<Image>().color += slowColour;
           ++numAfflictions;
         }
 
         if (afflictable.curseAffliction.Active)
         {
-          healthBarColour += curseColour;
+          item.Value.GetComponentInChildren<Image>().color += curseColour;
           ++numAfflictions;
         }
 
         if (numAfflictions == 0)
         {
-          healthBarColour = new Color(1, 0, 0, 1);
+          item.Value.GetComponentInChildren<Image>().color = normalColour;
         }
 
         else
         {
-          healthBarColour /= numAfflictions;
+          item.Value.GetComponentInChildren<Image>().color /= numAfflictions;
         }
-
-        item.Value.GetComponentInChildren<Image>().color = healthBarColour;
       }
     }
   }

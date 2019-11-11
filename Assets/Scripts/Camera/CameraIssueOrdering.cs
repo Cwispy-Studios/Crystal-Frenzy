@@ -13,6 +13,8 @@ public class CameraIssueOrdering : MonoBehaviour
   private bool orderToGround = false;
   private Vector3 orderToGroundPos;
 
+  private static Color redCircleColour = new Color(1, 0, 0, 0.8f);
+
   void Update()
   {
     selectableObjects = GetComponent<CameraObjectSelection>().SelectedUnitsList;
@@ -49,9 +51,7 @@ public class CameraIssueOrdering : MonoBehaviour
 
       if (Input.GetKey(attackMoveCommand))
       {
-        Color redCircleColor = new Color(1, 0, 0, 0.8f);
-
-        moveCircle.GetComponent<Renderer>().material.SetColor("_Color", redCircleColor);
+        moveCircle.GetComponent<Renderer>().material.SetColor("_Color", redCircleColour);
       }
     }
   }

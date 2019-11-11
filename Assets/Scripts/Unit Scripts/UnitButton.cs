@@ -40,37 +40,35 @@ public class UnitButton : MonoBehaviour
     {
       int numAfflictions = 0;
 
-      Color healthBarColour = new Color(0, 0, 0, 1);
+      healthBar.color = HealthBarController.blankColour;
 
       if (afflictable.posionAffliction.Active)
       {
-        healthBarColour += HealthBarController.poisonColour;
+        healthBar.color += HealthBarController.poisonColour;
         ++numAfflictions;
       }
 
       if (afflictable.slowAffliction.Active)
       {
-        healthBarColour += HealthBarController.slowColour;
+        healthBar.color += HealthBarController.slowColour;
         ++numAfflictions;
       }
 
       if (afflictable.curseAffliction.Active)
       {
-        healthBarColour += HealthBarController.curseColour;
+        healthBar.color += HealthBarController.curseColour;
         ++numAfflictions;
       }
 
       if (numAfflictions == 0)
       {
-        healthBarColour = new Color(1, 0, 0, 1);
+        healthBar.color = HealthBarController.normalColour;
       }
 
       else
       {
-        healthBarColour /= numAfflictions;
+        healthBar.color /= numAfflictions;
       }
-
-      healthBar.color = healthBarColour;
     }
   }
 
