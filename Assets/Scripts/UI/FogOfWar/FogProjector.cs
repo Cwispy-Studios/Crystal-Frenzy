@@ -65,7 +65,9 @@ public class FogProjector : MonoBehaviour
     StopCoroutine(BlendFog());
     blendAmount = 0;
     // Swap the textures
+    prevTexture.Release();
     Graphics.Blit(currTexture, prevTexture);
+    currTexture.Release();
     Graphics.Blit(fogTexture, currTexture);
 
     StartCoroutine(BlendFog());

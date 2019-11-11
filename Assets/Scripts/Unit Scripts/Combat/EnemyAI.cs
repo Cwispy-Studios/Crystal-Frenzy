@@ -120,6 +120,7 @@ public class EnemyAI : MonoBehaviour
 
   private void SetNextWaypointTarget(int index)
   {
+    // Credit: https://stackoverflow.com/questions/3120357/get-closest-point-to-a-line
     // Find the waypoint to target
     CrystalWaypoint waypoint = crystalPath.GetCrystalWaypoint(currentWaypointIndex);
     // Set the attack move position to the nearest point on the waypoint line
