@@ -36,6 +36,9 @@ public class CrystalNode : MonoBehaviour
   private bool isBlinking = false;
   private bool isHighlighted = false;
 
+  [FMODUnity.EventRef]
+  public string validCrystalSelectonSound = "";
+
   private GameManager gameManager;
   private Camera playerCamera;
 
@@ -52,12 +55,12 @@ public class CrystalNode : MonoBehaviour
   {
     if (gameManager.CurrentPhase == PHASES.PREPARATION && !gameManager.NodeSelected)
     {
-      if (playerCamera.GetComponent<CameraObjectSelection>().IsObjectSelected(gameObject))
+      if (!targeted && playerCamera.GetComponent<CameraObjectSelection>().IsObjectSelected(gameObject))
       {
         gameManager.GetActiveNode().GetComponent<CrystalSeekerSpawner>().SetCrystalTarget(gameObject);
       }
 
-      if (conquerable)
+      if (conquerable && !GetComponent<ConqueredNode>().conquered)
       {
         if (!isBlinking && !isHighlighted)
         {
@@ -139,6 +142,8 @@ public class CrystalNode : MonoBehaviour
             particleSystem.Clear();
           }
         }
+
+        FMODUnity.RuntimeManager.PlayOneShot(validCrystalSelectonSound);
 
         return true;
       }

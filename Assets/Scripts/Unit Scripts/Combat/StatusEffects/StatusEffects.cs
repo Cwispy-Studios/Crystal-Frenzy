@@ -14,6 +14,9 @@ public class StatusEffects : MonoBehaviour
   public Slow slowEffect = null;
   public Curse curseEffect = null;
 
+  [FMODUnity.EventRef]
+  public string poisonSound = "", slowSound = "", curseSound = "";
+
   private GameManager gameManager;
 
   private void Awake()
@@ -28,16 +31,19 @@ public class StatusEffects : MonoBehaviour
       if (poisonEffect.hasEffect)
       {
         target.GetComponent<Afflictable>().posionAffliction.SetAffliction(poisonEffect);
+        FMODUnity.RuntimeManager.PlayOneShotAttached(poisonSound, target);
       }
 
       if (slowEffect.hasEffect)
       {
         target.GetComponent<Afflictable>().slowAffliction.SetAffliction(slowEffect);
+        FMODUnity.RuntimeManager.PlayOneShotAttached(slowSound, target);
       }
 
       if (curseEffect.hasEffect)
       {
         target.GetComponent<Afflictable>().curseAffliction.SetAffliction(curseEffect);
+        FMODUnity.RuntimeManager.PlayOneShotAttached(curseSound, target);
       }
     }
   }

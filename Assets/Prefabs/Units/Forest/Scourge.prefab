@@ -1304,6 +1304,9 @@ MonoBehaviour:
     statusType: 0
     attackReducPct: 0.15
     statusDuration: 5
+  poisonSound: event:/SFX/Units/StatusHitPoison
+  slowSound: event:/SFX/Units/StatusHitSlow
+  curseSound: event:/SFX/Units/StatusHitCurse
 --- !u!114 &2961679202835970118
 MonoBehaviour:
   m_ObjectHideFlags: 0

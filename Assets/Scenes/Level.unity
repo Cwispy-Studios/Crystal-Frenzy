@@ -5098,6 +5098,11 @@ PrefabInstance:
       propertyPath: connectedNodesData.Array.data[0].cameraBound
       value: 
       objectReference: {fileID: 2066059685}
+    - target: {fileID: 7406312429625842019, guid: 867dd8fa1b64e2d41b7fd836efdd719e,
+        type: 3}
+      propertyPath: validCrystalSelectonSound
+      value: event:/SFX/UI/ValidCrystal
+      objectReference: {fileID: 0}
     - target: {fileID: 9086957502837967012, guid: 867dd8fa1b64e2d41b7fd836efdd719e,
         type: 3}
       propertyPath: crystalNodesSplines.Array.size
@@ -5381,9 +5386,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -53.7, y: 0, z: 35.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 533841788}
-  - {fileID: 1135277055}
+  m_Children: []
   m_Father: {fileID: 499539288}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -15132,6 +15135,11 @@ PrefabInstance:
       propertyPath: highlightedMaterial
       value: 
       objectReference: {fileID: 2100000, guid: bf565185343de524cb7097a5e0c2792a, type: 2}
+    - target: {fileID: 3721100528942192966, guid: 515433029e942ff46a8ae49154164f32,
+        type: 3}
+      propertyPath: validCrystalSelectonSound
+      value: event:/SFX/UI/ValidCrystal
+      objectReference: {fileID: 0}
     - target: {fileID: 7950338876556812265, guid: 515433029e942ff46a8ae49154164f32,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -18569,6 +18577,11 @@ PrefabInstance:
       propertyPath: highlightedMaterial
       value: 
       objectReference: {fileID: 2100000, guid: bf565185343de524cb7097a5e0c2792a, type: 2}
+    - target: {fileID: 3721100528942192966, guid: 515433029e942ff46a8ae49154164f32,
+        type: 3}
+      propertyPath: validCrystalSelectonSound
+      value: event:/SFX/UI/ValidCrystal
+      objectReference: {fileID: 0}
     - target: {fileID: 7950338876556812265, guid: 515433029e942ff46a8ae49154164f32,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -24984,6 +24997,11 @@ PrefabInstance:
       propertyPath: highlightedMaterial
       value: 
       objectReference: {fileID: 2100000, guid: bf565185343de524cb7097a5e0c2792a, type: 2}
+    - target: {fileID: 3721100528942192966, guid: 515433029e942ff46a8ae49154164f32,
+        type: 3}
+      propertyPath: validCrystalSelectonSound
+      value: event:/SFX/UI/ValidCrystal
+      objectReference: {fileID: 0}
     - target: {fileID: 7950338876556812265, guid: 515433029e942ff46a8ae49154164f32,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -30960,6 +30978,11 @@ PrefabInstance:
       propertyPath: highlightedMaterial
       value: 
       objectReference: {fileID: 2100000, guid: bf565185343de524cb7097a5e0c2792a, type: 2}
+    - target: {fileID: 3721100528942192966, guid: 515433029e942ff46a8ae49154164f32,
+        type: 3}
+      propertyPath: validCrystalSelectonSound
+      value: event:/SFX/UI/ValidCrystal
+      objectReference: {fileID: 0}
     - target: {fileID: 7950338876556812265, guid: 515433029e942ff46a8ae49154164f32,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -31158,98 +31181,6 @@ MonoBehaviour:
   m_followingControlPointLocalPosition: {x: -1.4084148, y: 0, z: 3.086196}
   m_followingControlPointPosition: {x: 788.84564, y: 0, z: 129.20699}
   m_handleMode: 2
---- !u!1 &533841787
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 533841788}
-  - component: {fileID: 533841791}
-  - component: {fileID: 533841790}
-  - component: {fileID: 533841789}
-  m_Layer: 0
-  m_Name: Cube
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &533841788
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 533841787}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.081125, y: 0, z: 10.73075}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 130477236}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &533841789
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 533841787}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!23 &533841790
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 533841787}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
---- !u!33 &533841791
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 533841787}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &534442801
 GameObject:
   m_ObjectHideFlags: 0
@@ -41235,7 +41166,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 764, y: 920.25}
+  m_AnchoredPosition: {x: 764, y: 920}
   m_SizeDelta: {x: 180, y: 180}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &614250519
@@ -43081,6 +43012,11 @@ PrefabInstance:
       propertyPath: highlightedMaterial
       value: 
       objectReference: {fileID: 2100000, guid: bf565185343de524cb7097a5e0c2792a, type: 2}
+    - target: {fileID: 3721100528942192966, guid: 515433029e942ff46a8ae49154164f32,
+        type: 3}
+      propertyPath: validCrystalSelectonSound
+      value: event:/SFX/UI/ValidCrystal
+      objectReference: {fileID: 0}
     - target: {fileID: 7950338876556812265, guid: 515433029e942ff46a8ae49154164f32,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -47843,6 +47779,11 @@ PrefabInstance:
       propertyPath: highlightedMaterial
       value: 
       objectReference: {fileID: 2100000, guid: bf565185343de524cb7097a5e0c2792a, type: 2}
+    - target: {fileID: 3721100528942192966, guid: 515433029e942ff46a8ae49154164f32,
+        type: 3}
+      propertyPath: validCrystalSelectonSound
+      value: event:/SFX/UI/ValidCrystal
+      objectReference: {fileID: 0}
     - target: {fileID: 7950338876556812265, guid: 515433029e942ff46a8ae49154164f32,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -49090,6 +49031,11 @@ PrefabInstance:
       propertyPath: highlightedMaterial
       value: 
       objectReference: {fileID: 2100000, guid: bf565185343de524cb7097a5e0c2792a, type: 2}
+    - target: {fileID: 3721100528942192966, guid: 515433029e942ff46a8ae49154164f32,
+        type: 3}
+      propertyPath: validCrystalSelectonSound
+      value: event:/SFX/UI/ValidCrystal
+      objectReference: {fileID: 0}
     - target: {fileID: 7950338876556812265, guid: 515433029e942ff46a8ae49154164f32,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -49542,6 +49488,11 @@ PrefabInstance:
       propertyPath: highlightedMaterial
       value: 
       objectReference: {fileID: 2100000, guid: bf565185343de524cb7097a5e0c2792a, type: 2}
+    - target: {fileID: 3721100528942192966, guid: 515433029e942ff46a8ae49154164f32,
+        type: 3}
+      propertyPath: validCrystalSelectonSound
+      value: event:/SFX/UI/ValidCrystal
+      objectReference: {fileID: 0}
     - target: {fileID: 7950338876556812265, guid: 515433029e942ff46a8ae49154164f32,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -57978,6 +57929,11 @@ PrefabInstance:
       propertyPath: highlightedMaterial
       value: 
       objectReference: {fileID: 2100000, guid: bf565185343de524cb7097a5e0c2792a, type: 2}
+    - target: {fileID: 3721100528942192966, guid: 515433029e942ff46a8ae49154164f32,
+        type: 3}
+      propertyPath: validCrystalSelectonSound
+      value: event:/SFX/UI/ValidCrystal
+      objectReference: {fileID: 0}
     - target: {fileID: 7950338876556812265, guid: 515433029e942ff46a8ae49154164f32,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -63991,98 +63947,6 @@ MonoBehaviour:
   m_followingControlPointLocalPosition: {x: -18.112434, y: 0, z: -5.07064}
   m_followingControlPointPosition: {x: 47.07457, y: 0, z: 454.97763}
   m_handleMode: 2
---- !u!1 &1135277054
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1135277055}
-  - component: {fileID: 1135277058}
-  - component: {fileID: 1135277057}
-  - component: {fileID: 1135277056}
-  m_Layer: 0
-  m_Name: Cube (1)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1135277055
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1135277054}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.081125, y: 0, z: -10.73075}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 130477236}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &1135277056
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1135277054}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!23 &1135277057
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1135277054}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
---- !u!33 &1135277058
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1135277054}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &1135890187
 GameObject:
   m_ObjectHideFlags: 0
@@ -74190,6 +74054,11 @@ PrefabInstance:
       propertyPath: highlightedMaterial
       value: 
       objectReference: {fileID: 2100000, guid: bf565185343de524cb7097a5e0c2792a, type: 2}
+    - target: {fileID: 3721100528942192966, guid: 515433029e942ff46a8ae49154164f32,
+        type: 3}
+      propertyPath: validCrystalSelectonSound
+      value: event:/SFX/UI/ValidCrystal
+      objectReference: {fileID: 0}
     - target: {fileID: 7950338876556812265, guid: 515433029e942ff46a8ae49154164f32,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -79086,6 +78955,11 @@ PrefabInstance:
       propertyPath: highlightedMaterial
       value: 
       objectReference: {fileID: 2100000, guid: bf565185343de524cb7097a5e0c2792a, type: 2}
+    - target: {fileID: 3721100528942192966, guid: 515433029e942ff46a8ae49154164f32,
+        type: 3}
+      propertyPath: validCrystalSelectonSound
+      value: event:/SFX/UI/ValidCrystal
+      objectReference: {fileID: 0}
     - target: {fileID: 7950338876556812265, guid: 515433029e942ff46a8ae49154164f32,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -84914,6 +84788,11 @@ PrefabInstance:
       propertyPath: highlightedMaterial
       value: 
       objectReference: {fileID: 2100000, guid: bf565185343de524cb7097a5e0c2792a, type: 2}
+    - target: {fileID: 3721100528942192966, guid: 515433029e942ff46a8ae49154164f32,
+        type: 3}
+      propertyPath: validCrystalSelectonSound
+      value: event:/SFX/UI/ValidCrystal
+      objectReference: {fileID: 0}
     - target: {fileID: 7950338876556812265, guid: 515433029e942ff46a8ae49154164f32,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -92493,6 +92372,11 @@ PrefabInstance:
       propertyPath: highlightedMaterial
       value: 
       objectReference: {fileID: 2100000, guid: bf565185343de524cb7097a5e0c2792a, type: 2}
+    - target: {fileID: 3721100528942192966, guid: 515433029e942ff46a8ae49154164f32,
+        type: 3}
+      propertyPath: validCrystalSelectonSound
+      value: event:/SFX/UI/ValidCrystal
+      objectReference: {fileID: 0}
     - target: {fileID: 7950338876556812265, guid: 515433029e942ff46a8ae49154164f32,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -94326,6 +94210,11 @@ PrefabInstance:
       propertyPath: highlightedMaterial
       value: 
       objectReference: {fileID: 2100000, guid: bf565185343de524cb7097a5e0c2792a, type: 2}
+    - target: {fileID: 3721100528942192966, guid: 515433029e942ff46a8ae49154164f32,
+        type: 3}
+      propertyPath: validCrystalSelectonSound
+      value: event:/SFX/UI/ValidCrystal
+      objectReference: {fileID: 0}
     - target: {fileID: 7950338876556812265, guid: 515433029e942ff46a8ae49154164f32,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -95093,6 +94982,11 @@ PrefabInstance:
       propertyPath: highlightedMaterial
       value: 
       objectReference: {fileID: 2100000, guid: bf565185343de524cb7097a5e0c2792a, type: 2}
+    - target: {fileID: 3721100528942192966, guid: 515433029e942ff46a8ae49154164f32,
+        type: 3}
+      propertyPath: validCrystalSelectonSound
+      value: event:/SFX/UI/ValidCrystal
+      objectReference: {fileID: 0}
     - target: {fileID: 7950338876556812265, guid: 515433029e942ff46a8ae49154164f32,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -112667,6 +112561,11 @@ PrefabInstance:
       propertyPath: highlightedMaterial
       value: 
       objectReference: {fileID: 2100000, guid: bf565185343de524cb7097a5e0c2792a, type: 2}
+    - target: {fileID: 3721100528942192966, guid: 515433029e942ff46a8ae49154164f32,
+        type: 3}
+      propertyPath: validCrystalSelectonSound
+      value: event:/SFX/UI/ValidCrystal
+      objectReference: {fileID: 0}
     - target: {fileID: 7950338876556812265, guid: 515433029e942ff46a8ae49154164f32,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -115513,6 +115412,11 @@ PrefabInstance:
       propertyPath: highlightedMaterial
       value: 
       objectReference: {fileID: 2100000, guid: bf565185343de524cb7097a5e0c2792a, type: 2}
+    - target: {fileID: 3721100528942192966, guid: 515433029e942ff46a8ae49154164f32,
+        type: 3}
+      propertyPath: validCrystalSelectonSound
+      value: event:/SFX/UI/ValidCrystal
+      objectReference: {fileID: 0}
     - target: {fileID: 7950338876556812265, guid: 515433029e942ff46a8ae49154164f32,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -116487,6 +116391,11 @@ PrefabInstance:
       propertyPath: highlightedMaterial
       value: 
       objectReference: {fileID: 2100000, guid: bf565185343de524cb7097a5e0c2792a, type: 2}
+    - target: {fileID: 3721100528942192966, guid: 515433029e942ff46a8ae49154164f32,
+        type: 3}
+      propertyPath: validCrystalSelectonSound
+      value: event:/SFX/UI/ValidCrystal
+      objectReference: {fileID: 0}
     - target: {fileID: 7950338876556812265, guid: 515433029e942ff46a8ae49154164f32,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -117417,6 +117326,7 @@ MonoBehaviour:
   conquerable: 0
   targeted: 0
   highlightedMaterial: {fileID: 2100000, guid: bf565185343de524cb7097a5e0c2792a, type: 2}
+  validCrystalSelectonSound: event:/SFX/UI/ValidCrystal
 --- !u!1 &7576196287225377102
 GameObject:
   m_ObjectHideFlags: 0
