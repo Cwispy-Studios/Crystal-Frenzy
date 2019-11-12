@@ -41176,7 +41176,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1878741620}
-        m_MethodName: PlayCombatStartSound
+        m_MethodName: PlayCombatStartDefenseSound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -91080,7 +91080,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1878741620}
-        m_MethodName: PlayCombatStartSound
+        m_MethodName: PlayCombatStartEscortSound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -96258,7 +96258,8 @@ MonoBehaviour:
   buttonClickSound: event:/SFX/UI/ButtonClick
   constructButtonSound: event:/SFX/UI/Construct
   repairButtonSound: event:/SFX/UI/Repair
-  combatStartSound: event:/SFX/UI/CombatStart
+  combatStartEscortSound: event:/SFX/UI/CombatStartEscort
+  combatStartDefenseSound: event:/SFX/UI/CombatStartDefense
   beginPhaseSound: event:/SFX/UI/BeginNewPhase
 --- !u!1 &1881194079 stripped
 GameObject:

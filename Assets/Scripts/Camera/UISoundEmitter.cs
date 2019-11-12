@@ -3,7 +3,7 @@
 public class UISoundEmitter : MonoBehaviour
 {
   [FMODUnity.EventRef]
-  public string buttonClickSound = "", constructButtonSound = "", repairButtonSound = "", combatStartSound = "", beginPhaseSound = "";
+  public string buttonClickSound = "", constructButtonSound = "", repairButtonSound = "", combatStartEscortSound = "", combatStartDefenseSound = "", beginPhaseSound = "";
 
   public void PlayButtonClick()
   {
@@ -20,9 +20,14 @@ public class UISoundEmitter : MonoBehaviour
     FMODUnity.RuntimeManager.PlayOneShot(repairButtonSound);
   }
 
-  public void PlayCombatStartSound()
+  public void PlayCombatStartEscortSound()
   {
-    FMODUnity.RuntimeManager.PlayOneShot(combatStartSound);
+    FMODUnity.RuntimeManager.PlayOneShot(combatStartEscortSound);
+  }
+
+  public void PlayCombatStartDefenseSound()
+  {
+    FMODUnity.RuntimeManager.PlayOneShot(combatStartDefenseSound);
   }
 
   public void PlayBeginPhaseSound()
