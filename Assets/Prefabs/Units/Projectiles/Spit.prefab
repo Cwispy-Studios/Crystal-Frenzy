@@ -121,7 +121,7 @@ Transform:
   m_GameObject: {fileID: 2813076626855344709}
   m_LocalRotation: {x: -0.00000008940697, y: 0.00000004371139, z: -0.000000043711406,
     w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.28, z: -0}
   m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
   m_Children: []
   m_Father: {fileID: 2574113698076857991}
@@ -695,13 +695,13 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     randomizeRotationDirection: 0
-    maxNumParticles: 80
+    maxNumParticles: 120
     size3D: 0
     rotation3D: 0
     gravityModifier:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.04
+      scalar: 0.01
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -960,7 +960,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 20
+      scalar: 0
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -1013,7 +1013,7 @@ ParticleSystem:
     rateOverDistance:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0
+      scalar: 40
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -1398,17 +1398,17 @@ ParticleSystem:
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 0.9622642, g: 0.90208906, b: 0.6853863, a: 0}
-        key1: {r: 0.9811321, g: 0.47668213, b: 0.7792171, a: 1}
-        key2: {r: 0.10879651, g: 0.38679248, b: 0.027367389, a: 1}
+        key0: {r: 0.10879651, g: 0.38679248, b: 0.027367389, a: 0}
+        key1: {r: 0.9811321, g: 0.2784314, b: 0.7792171, a: 1}
+        key2: {r: 0.9607843, g: 0.9019608, b: 0.6862745, a: 1}
         key3: {r: 0, g: 0, b: 0, a: 1}
         key4: {r: 0, g: 0, b: 0, a: 0}
         key5: {r: 0, g: 0, b: 0, a: 0}
         key6: {r: 0, g: 0, b: 0, a: 0}
         key7: {r: 0, g: 0, b: 0, a: 0}
-        ctime0: 6939
-        ctime1: 28142
-        ctime2: 52043
+        ctime0: 7710
+        ctime1: 32768
+        ctime2: 57825
         ctime3: 0
         ctime4: 0
         ctime5: 0
@@ -1416,7 +1416,7 @@ ParticleSystem:
         ctime7: 0
         atime0: 0
         atime1: 7132
-        atime2: 29491
+        atime2: 32768
         atime3: 58403
         atime4: 65535
         atime5: 0
