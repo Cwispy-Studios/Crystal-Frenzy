@@ -69,9 +69,6 @@ public class MinerTracker : MonoBehaviour
     // In Escort Phase and miner still alive
     if (miner != null)
     {
-      // Point the camera at the miner
-      PointMinerTrackerAtMiner();
-
       // Check if the miner is off the screen
       Vector3 minerViewportPoint = playerCamera.WorldToViewportPoint(miner.transform.position);
 
@@ -80,6 +77,9 @@ public class MinerTracker : MonoBehaviour
       {
         // Show the tracker frame
         minerTrackerFrame.gameObject.SetActive(true);
+
+        // Point the camera at the miner
+        PointMinerTrackerAtMiner();
 
         // Find the center of the camera
         Ray ray = playerCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f + bottomViewportLimit - (1f - topViewportLimit), 0));
@@ -242,7 +242,8 @@ public class MinerTracker : MonoBehaviour
 
               zAxisAway = intersectionPoint.z - bottomRightOfScreen.z;
               zAxisLength = topRightOfScreen.z - bottomRightOfScreen.z;
-              trackerFramePos.y = bottomPanel.sprite.rect.height + spriteHeightOffset + ((zAxisAway / zAxisLength) * maxHeightOffset);
+              trackerFramePos.y = bottomPanel.sprite.rect.height + ((zAxisAway / zAxisLength) * (maxHeightOffset));
+              trackerFramePos.y -= Mathf.Sin(angle * Mathf.Deg2Rad) * spriteHeightOffset;
               Debug.Log("Right");
               break;
 
@@ -252,7 +253,8 @@ public class MinerTracker : MonoBehaviour
 
               zAxisAway = intersectionPoint.z - bottomLeftOfScreen.z;
               zAxisLength = topLeftOfScreen.z - bottomLeftOfScreen.z;
-              trackerFramePos.y = bottomPanel.sprite.rect.height + spriteHeightOffset + ((zAxisAway / zAxisLength) * maxHeightOffset);
+              trackerFramePos.y = bottomPanel.sprite.rect.height + ((zAxisAway / zAxisLength) * (maxHeightOffset));
+              trackerFramePos.y -= Mathf.Sin(angle * Mathf.Deg2Rad) * spriteHeightOffset;
               Debug.Log("Left");
               break;
           }
