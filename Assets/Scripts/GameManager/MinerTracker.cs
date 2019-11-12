@@ -13,6 +13,9 @@ public class MinerTracker : MonoBehaviour
   [SerializeField]
   private Image topPanel = null, bottomPanel = null;
 
+  [SerializeField]
+  private UIInterface uiInterface = null;
+
   private GameObject miner;
   private Camera playerCamera;
 
@@ -30,27 +33,35 @@ public class MinerTracker : MonoBehaviour
   private float topScreenLimit;
   private float bottomScreenLimit;
 
+  private enum INTERSECTION_BORDER
+  {
+    BOTTOM = 0,
+    TOP,
+    RIGHT,
+    LEFT,
+    LAST
+  }
+
   private void Awake()
   {
+    Vector2 resolution = uiInterface.GetComponent<CanvasScaler>().referenceResolution;
     playerCamera = Camera.main;
 
+    spriteWidthOffset = (minerTrackerFrame.GetComponent<RectTransform>().sizeDelta.x / 2f);
+    spriteHeightOffset = (minerTrackerFrame.GetComponent<RectTransform>().sizeDelta.y / 2f);
+
     // Calculate the playing screen size based on the height of the top and bottom panels
-    screenWidth = Screen.width;
-    screenHeight = Screen.height - topPanel.sprite.rect.height - bottomPanel.sprite.rect.height;
+    screenWidth = resolution.x;
+    screenHeight = resolution.y - topPanel.GetComponent<RectTransform>().sizeDelta.y - bottomPanel.GetComponent<RectTransform>().sizeDelta.y;
 
-    maxWidthOffset = (screenWidth / 2f);
-    maxHeightOffset = (screenHeight / 2f);
+    maxWidthOffset = (screenWidth / 2f) - spriteWidthOffset;
+    maxHeightOffset = screenHeight;
 
-    spriteWidthOffset = (minerTrackerFrame.sprite.rect.width / 2f);
-    spriteHeightOffset = (minerTrackerFrame.sprite.rect.height / 2f);
+    topViewportLimit = 1f - (topPanel.GetComponent<RectTransform>().sizeDelta.y / resolution.y);
+    bottomViewportLimit = bottomPanel.GetComponent<RectTransform>().sizeDelta.y / resolution.y;
 
-    topViewportLimit = 1f - (topPanel.sprite.rect.height / Screen.height);
-    bottomViewportLimit = bottomPanel.sprite.rect.height / Screen.height;
-
-    topScreenLimit = Screen.height - topPanel.sprite.rect.height;
-    bottomScreenLimit = bottomPanel.sprite.rect.height;
-
-    //centerHeight = (Screen.height / 2f) + (bottomPanel.sprite.rect.height / 2f) - (topPanel.sprite.rect.height / 2f);
+    topScreenLimit = resolution.y - topPanel.GetComponent<RectTransform>().sizeDelta.y;
+    bottomScreenLimit = bottomPanel.GetComponent<RectTransform>().sizeDelta.y;
   }
 
   private void Update()
@@ -64,12 +75,6 @@ public class MinerTracker : MonoBehaviour
       // Check if the miner is off the screen
       Vector3 minerViewportPoint = playerCamera.WorldToViewportPoint(miner.transform.position);
 
-      //Vector3 bottomLeft = playerCamera.ScreenToWorldPoint(Vector3.zero);
-      //Debug.Log(bottomLeft);
-      //Vector3 bottomRight = playerCamera.ScreenToWorldPoint(new Vector2(Screen.width, 0));
-      //Vector3 topLeft = playerCamera.ScreenToWorldPoint(Vector3.zero);
-      //Vector3 topRight = playerCamera.ScreenToWorldPoint(new Vector2(Screen.width, 0));
-
       // Miner is out of viewport
       if (minerViewportPoint.x < 0 || minerViewportPoint.x > 1 || minerViewportPoint.y < bottomViewportLimit || minerViewportPoint.y > topViewportLimit)
       {
@@ -77,14 +82,23 @@ public class MinerTracker : MonoBehaviour
         minerTrackerFrame.gameObject.SetActive(true);
 
         // Find the center of the camera
-        Ray ray = playerCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f + bottomViewportLimit - topViewportLimit, 0));
+        Ray ray = playerCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f + bottomViewportLimit - (1f - topViewportLimit), 0));
 
-        if (Physics.Raycast(ray, out RaycastHit hit, 100f, 1 << 8))
+        if (Physics.Raycast(ray, out RaycastHit hit, 150f, 1 << 11))
         {
           Vector3 centerOfScreen = hit.point;
           centerOfScreen.y = 0;
           Vector3 minerPos = miner.transform.position;
           minerPos.y = 0;
+
+          Vector2 minerPos2D = new Vector2 { x = minerPos.x - centerOfScreen.x, y = minerPos.z - centerOfScreen.z };
+
+          float angle = Vector2.SignedAngle(Vector2.right, minerPos2D) + playerCamera.transform.eulerAngles.y;
+          float angleRad = angle * Mathf.Deg2Rad;
+
+          // Set the frame's angle
+          minerTrackerFrame.transform.eulerAngles = new Vector3(0, 0, angle);
+          minerTrackerImage.transform.eulerAngles = Vector2.zero;
 
           Vector3 bottomLeftOfScreen = Vector3.zero;
           Vector3 bottomRightOfScreen = Vector3.zero;
@@ -94,7 +108,7 @@ public class MinerTracker : MonoBehaviour
           // Find the bottom left of the camera
           ray = playerCamera.ViewportPointToRay(new Vector3(0, bottomViewportLimit, 0));
 
-          if (Physics.Raycast(ray, out hit, 100f, 1 << 8))
+          if (Physics.Raycast(ray, out hit, 100f, 1 << 11))
           {
             bottomLeftOfScreen = hit.point;
           }
@@ -102,7 +116,7 @@ public class MinerTracker : MonoBehaviour
           // Find the bottom right of the camera
           ray = playerCamera.ViewportPointToRay(new Vector3(1, bottomViewportLimit, 0));
 
-          if (Physics.Raycast(ray, out hit, 100f, 1 << 8))
+          if (Physics.Raycast(ray, out hit, 100f, 1 << 11))
           {
             bottomRightOfScreen = hit.point;
           }
@@ -110,7 +124,7 @@ public class MinerTracker : MonoBehaviour
           // Find the top left of the camera
           ray = playerCamera.ViewportPointToRay(new Vector3(0, topViewportLimit, 0));
 
-          if (Physics.Raycast(ray, out hit, 100f, 1 << 8))
+          if (Physics.Raycast(ray, out hit, 175f, 1 << 11))
           {
             topLeftOfScreen = hit.point;
           }
@@ -118,7 +132,7 @@ public class MinerTracker : MonoBehaviour
           // Find the top right of the camera
           ray = playerCamera.ViewportPointToRay(new Vector3(1, topViewportLimit, 0));
 
-          if (Physics.Raycast(ray, out hit, 100f, 1 << 8))
+          if (Physics.Raycast(ray, out hit, 175f, 1 << 11))
           {
             topRightOfScreen = hit.point;
           }
@@ -128,80 +142,153 @@ public class MinerTracker : MonoBehaviour
           topLeftOfScreen.y = 0;
           topRightOfScreen.y = 0;
 
-          Debug.Log("Bottom left: " + bottomLeftOfScreen + "Bottom right: " + bottomRightOfScreen + "Top left: " + topLeftOfScreen + "Top Right: " + topRightOfScreen + "Center: " + centerOfScreen);
-
           Vector3 intersectionPoint = Vector3.zero;
-
-          bool intersectionPointFound = false;
 
           Vector2 trackerFramePos = Vector3.zero;
 
+          Debug.DrawLine(bottomLeftOfScreen, bottomRightOfScreen, Color.blue);
+          Debug.DrawLine(bottomRightOfScreen, topRightOfScreen, Color.blue);
+          Debug.DrawLine(topRightOfScreen, topLeftOfScreen, Color.blue);
+          Debug.DrawLine(topLeftOfScreen, bottomLeftOfScreen, Color.blue);
+          Debug.DrawLine(centerOfScreen, minerPos, Color.yellow);
+
+          Vector3[] intersectionPoints = new Vector3[(int)INTERSECTION_BORDER.LAST];
+          bool[] intersects = new bool[(int)INTERSECTION_BORDER.LAST];
+
+          for (int i = 0; i < (int)INTERSECTION_BORDER.LAST; ++i)
+          {
+            intersectionPoints[i] = Vector3.zero;
+            intersects[i] = false;
+          }
+
           // Check against every border of the screen for collision
           // Check bottom border
-          if (minerPos.z < centerOfScreen.z)
+          if (LineLineIntersection(out intersectionPoints[(int)INTERSECTION_BORDER.BOTTOM], bottomRightOfScreen, bottomLeftOfScreen - bottomRightOfScreen, centerOfScreen, minerPos - centerOfScreen) &&
+            PointLiesOnLine(bottomLeftOfScreen, bottomRightOfScreen, intersectionPoints[(int)INTERSECTION_BORDER.BOTTOM]))
           {
-            if (LineLineIntersection(out intersectionPoint, bottomLeftOfScreen, bottomRightOfScreen - bottomLeftOfScreen, centerOfScreen, minerPos - centerOfScreen) && intersectionPoint.x >= bottomLeftOfScreen.x && intersectionPoint.x <= bottomRightOfScreen.x)
-            {
-              intersectionPointFound = true;
-              float xAxisAway = intersectionPoint.x - bottomLeftOfScreen.x;
-              float xAxisLength = bottomRightOfScreen.x - bottomLeftOfScreen.x;
-              trackerFramePos.x = (xAxisAway / xAxisLength) * (maxWidthOffset * 2f) - maxWidthOffset;
-              trackerFramePos.y = bottomScreenLimit;
-              Debug.Log("Bottom");
-            }
+            intersects[(int)INTERSECTION_BORDER.BOTTOM] = true;
           }
 
           // Check top border
-          else if (minerPos.z > centerOfScreen.z)
+          if (LineLineIntersection(out intersectionPoints[(int)INTERSECTION_BORDER.TOP], topRightOfScreen, topLeftOfScreen - topRightOfScreen, centerOfScreen, minerPos - centerOfScreen) &&
+            PointLiesOnLine(topLeftOfScreen, topRightOfScreen, intersectionPoints[(int)INTERSECTION_BORDER.TOP]))
           {
-            if (LineLineIntersection(out intersectionPoint, topRightOfScreen, topLeftOfScreen - topRightOfScreen, centerOfScreen, minerPos - centerOfScreen) && intersectionPoint.x >= topLeftOfScreen.x && intersectionPoint.x <= topRightOfScreen.x)
+            intersects[(int)INTERSECTION_BORDER.TOP] = true;
+          }
+
+          // Check right border
+          if (LineLineIntersection(out intersectionPoints[(int)INTERSECTION_BORDER.RIGHT], bottomRightOfScreen, topRightOfScreen - bottomRightOfScreen, centerOfScreen, minerPos - centerOfScreen) &&
+            PointLiesOnLine(bottomRightOfScreen, topRightOfScreen, intersectionPoints[(int)INTERSECTION_BORDER.RIGHT]))
+          {
+            intersects[(int)INTERSECTION_BORDER.RIGHT] = true;
+          }
+
+          // Check left border
+          if (LineLineIntersection(out intersectionPoints[(int)INTERSECTION_BORDER.LEFT], topLeftOfScreen, bottomLeftOfScreen - topLeftOfScreen, centerOfScreen, minerPos - centerOfScreen) &&
+            PointLiesOnLine(bottomLeftOfScreen, topLeftOfScreen, intersectionPoints[(int)INTERSECTION_BORDER.LEFT]))
+          {
+            intersects[(int)INTERSECTION_BORDER.LEFT] = true;
+          }
+
+          float shortestSqrDistance = 999999999f;
+          INTERSECTION_BORDER closestBorder = INTERSECTION_BORDER.LAST;
+
+          // Compare the distance from the intersection points to the miner position and grab the closest one
+          for (int i = 0; i < (int)INTERSECTION_BORDER.LAST; ++i)
+          {
+            if (intersects[i])
             {
-              intersectionPointFound = true;
+              float sqrMag = (intersectionPoints[i] - minerPos).sqrMagnitude;
+
+              if (sqrMag < shortestSqrDistance)
+              {
+                shortestSqrDistance = sqrMag;
+                closestBorder = (INTERSECTION_BORDER)i;
+                intersectionPoint = intersectionPoints[i];
+              }
+            }
+          }
+
+          float xAxisAway;
+          float xAxisLength;
+          float zAxisAway;
+          float zAxisLength;
+
+          switch (closestBorder)
+          {
+            case INTERSECTION_BORDER.BOTTOM:
+              xAxisAway = intersectionPoint.x - bottomLeftOfScreen.x;
+              xAxisLength = bottomRightOfScreen.x - bottomLeftOfScreen.x;
+              trackerFramePos.x = (xAxisAway / xAxisLength) * (maxWidthOffset * 2f) - maxWidthOffset;
+
+              trackerFramePos.y = bottomScreenLimit;
+              trackerFramePos.y -= (Mathf.Sin(angle * Mathf.Deg2Rad) * spriteHeightOffset);
+              Debug.Log("Bottom");
+              break;
+
+            case INTERSECTION_BORDER.TOP:
+              xAxisAway = intersectionPoint.x - topLeftOfScreen.x;
+              xAxisLength = topRightOfScreen.x - topLeftOfScreen.x;
+              trackerFramePos.x = (xAxisAway / xAxisLength) * (maxWidthOffset * 2f) - maxWidthOffset;
+
               trackerFramePos.y = topScreenLimit;
+              trackerFramePos.y -= (Mathf.Sin(angle * Mathf.Deg2Rad) * spriteHeightOffset);
               Debug.Log("Top");
-            }
+              break;
+
+            case INTERSECTION_BORDER.RIGHT:
+              trackerFramePos.x = maxWidthOffset + spriteWidthOffset;
+              trackerFramePos.x -= Mathf.Cos(angle * Mathf.Deg2Rad) * spriteWidthOffset;
+
+              if (intersectionPoint.z < 0)
+              {
+                zAxisAway = 0;
+              }
+
+              else if (intersectionPoint.z > topRightOfScreen.z)
+              {
+                zAxisAway = topRightOfScreen.z;
+              }
+
+              else
+              {
+                zAxisAway = intersectionPoint.z - bottomRightOfScreen.z;
+              }
+
+
+              zAxisLength = topRightOfScreen.z - bottomRightOfScreen.z;
+              trackerFramePos.y = bottomPanel.sprite.rect.height + spriteHeightOffset + ((zAxisAway / zAxisLength) * maxHeightOffset);
+              Debug.Log("Right");
+              break;
+
+            case INTERSECTION_BORDER.LEFT:
+              trackerFramePos.x = -maxWidthOffset - spriteWidthOffset;
+              trackerFramePos.x -= Mathf.Cos(angle * Mathf.Deg2Rad) * spriteWidthOffset;
+
+              if (intersectionPoint.z < 0)
+              {
+                zAxisAway = 0;
+              }
+
+              else if (intersectionPoint.z > topLeftOfScreen.z)
+              {
+                zAxisAway = topLeftOfScreen.z;
+              }
+
+              else
+              {
+                zAxisAway = intersectionPoint.z - bottomLeftOfScreen.z;
+              }
+
+              zAxisLength = topLeftOfScreen.z - bottomLeftOfScreen.z;
+              trackerFramePos.y = bottomPanel.sprite.rect.height + spriteHeightOffset + ((zAxisAway / zAxisLength) * maxHeightOffset);
+              Debug.Log("Left");
+              break;
           }
 
-          // Check x-axis borders if intersection not found yet
-          if (!intersectionPointFound)
-          {
-            if (minerPos.x > centerOfScreen.x)
-            {
-              // Check right border
-              if (LineLineIntersection(out intersectionPoint, bottomRightOfScreen, topRightOfScreen - bottomRightOfScreen, centerOfScreen, minerPos - centerOfScreen))
-              {
-                intersectionPointFound = true;
-                trackerFramePos.x = maxWidthOffset;
-                trackerFramePos.y = centerOfScreen.z;
-                Debug.Log("Right");
-              }
-            }
-            
-            else if (minerPos.x < centerOfScreen.x)
-            {
-              // Check left border
-              if (LineLineIntersection(out intersectionPoint, topLeftOfScreen, bottomLeftOfScreen - topLeftOfScreen, centerOfScreen, minerPos - centerOfScreen))
-              {
-                intersectionPointFound = true;
-                trackerFramePos.x = -maxWidthOffset;
-                trackerFramePos.y = centerOfScreen.z;
-                Debug.Log("Left");
-              }
-            }
-          }
+          Debug.DrawLine(intersectionPoint, centerOfScreen, Color.red);
 
-          Debug.Log(intersectionPoint);
-
-          Vector2 minerPos2D = new Vector2 { x = minerPos.x - centerOfScreen.x , y = minerPos.z - centerOfScreen.z };
-
-          float angle = Vector2.SignedAngle(Vector2.right, minerPos2D);
-          float angleRad = angle * Mathf.Deg2Rad;
-
-          // Set the frame's angle
-          minerTrackerFrame.transform.eulerAngles = new Vector3(0, 0, angle);
-
-          minerTrackerFrame.GetComponent<RectTransform>().anchoredPosition = trackerFramePos;
-          minerTrackerImage.transform.eulerAngles = Vector2.zero;
+          minerTrackerFrame.GetComponent<RectTransform>().anchoredPosition = trackerFramePos;    
         }
       }
 
@@ -226,7 +313,7 @@ public class MinerTracker : MonoBehaviour
   {
     Vector3 toPos = miner.transform.position;
 
-    toPos.y = CameraControls.DEFAULT_ZOOM;
+    toPos.y = 10f;
     toPos.z -= toPos.y / Mathf.Tan(CameraManager.DEFAULT_ROT.x * Mathf.Deg2Rad);
 
     minerTracker.transform.position = toPos;
@@ -259,22 +346,26 @@ public class MinerTracker : MonoBehaviour
     }
   }
 
-  // Distance to point (p) from line segment (end points a b)
-  private float DistanceSqrLineSegmentPoint(Vector3 a, Vector3 b, Vector3 p)
+  private bool PointLiesOnLine(Vector3 lineStart, Vector3 lineEnd, Vector3 point)
   {
-    // If a == b line segment is a point and will cause a divide by zero in the line segment test.
-    // Instead return distance from a
-    if (a == b)
-      return Vector3.Distance(a, p);
+    float linePointX = point.x - lineStart.x;
+    float linePointZ = point.z - lineStart.z;
 
-    // Line segment to point distance equation
-    Vector3 ba = b - a;
-    Vector3 pa = a - p;
-    Vector3 c = ba * (Vector3.Dot(ba, pa) / Vector3.Dot(ba, ba));
-    Vector3 d = pa - c;
+    float lineX = lineEnd.x - lineStart.x;
+    float lineZ = lineEnd.z - lineStart.z;
 
-    float d2 = Vector3.Dot(d, d);
-    return d2;
+    if (Mathf.Abs(lineX) >= Mathf.Abs(lineZ))
+    {
+      return lineX > 0 ?
+        lineStart.x <= point.x && point.x <= lineEnd.x :
+        lineEnd.x <= point.x && point.x <= lineStart.x;
+    }
+
+    else
+    {
+      return lineZ > 0 ?
+        lineStart.z <= point.z && point.z <= lineEnd.z :
+        lineEnd.z <= point.z && point.z <= lineStart.z;
+    }
   }
-
 }

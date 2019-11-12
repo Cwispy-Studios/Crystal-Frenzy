@@ -74,6 +74,11 @@ public class HealthBarController : MonoBehaviour
           item.Value.GetComponentInChildren<Image>().color /= numAfflictions;
         }
       }
+
+      else
+      {
+        item.Value.GetComponentInChildren<Image>().color = normalColour;
+      }
     }
   }
 
