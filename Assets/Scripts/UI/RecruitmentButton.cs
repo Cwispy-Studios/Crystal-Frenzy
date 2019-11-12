@@ -27,7 +27,7 @@ public class RecruitmentButton : MonoBehaviour, IPointerEnterHandler, IPointerEx
     GetComponent<Button>().onClick.AddListener(AddToUnitPanel);
   }
 
-  private void Update()
+  private void FixedUpdate()
   {
     if (!available || GameManager.resourceManager.ArmySize + recruitableUnit.GetComponent<RecruitableUnit>().unitPoints > GameManager.resourceManager.UnitCap)
     {

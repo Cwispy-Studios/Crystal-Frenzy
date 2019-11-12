@@ -70,7 +70,7 @@ public class MinerTracker : MonoBehaviour
     if (miner != null)
     {
       // Check if the miner is off the screen
-      Vector3 minerViewportPoint = playerCamera.WorldToViewportPoint(miner.transform.position);
+      Vector3 minerViewportPoint = playerCamera.WorldToViewportPoint(miner.transform.localPosition);
 
       // Miner is out of viewport
       if (minerViewportPoint.x < 0 || minerViewportPoint.x > 1 || minerViewportPoint.y < bottomViewportLimit || minerViewportPoint.y > topViewportLimit)
@@ -88,7 +88,7 @@ public class MinerTracker : MonoBehaviour
         {
           Vector3 centerOfScreen = hit.point;
           centerOfScreen.y = 0;
-          Vector3 minerPos = miner.transform.position;
+          Vector3 minerPos = miner.transform.localPosition;
           minerPos.y = 0;
 
           Vector2 minerPos2D = new Vector2 { x = minerPos.x - centerOfScreen.x, y = minerPos.z - centerOfScreen.z };
@@ -344,9 +344,6 @@ public class MinerTracker : MonoBehaviour
 
   public void MoveCameraToMiner()
   {
-    playerCamera.GetComponent<CameraManager>().PointCameraAtPosition(miner.transform.position, false, true, 0, 0.25f);
-
-    Debug.Log(miner.transform.position);
-    Debug.Log(miner.transform.localPosition);
+    playerCamera.GetComponent<CameraManager>().PointCameraAtPosition(miner.transform.localPosition, false, true, 0, 0.25f);
   }
 }

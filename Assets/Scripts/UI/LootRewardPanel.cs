@@ -17,7 +17,7 @@ public class LootRewardPanel : MonoBehaviour
   public delegate void NextPhase();
 
   [SerializeField]
-  private Text phaseOutcomeText = null, goldText = null, crystalText = null, unitPointsText = null, bonusCrystalsText = null;
+  private Text phaseOutcomeText = null, goldText = null, crystalText = null, unitPointsText = null, bonusCrystalsText = null, explanationText = null;
   [SerializeField]
   private Text[] additionalRewardsText = null;
   [HideInInspector]
@@ -49,11 +49,13 @@ public class LootRewardPanel : MonoBehaviour
         if (nodeConqueredBefore)
         {
           phaseOutcomeText.text = outcomeColour + "ESCORT SUCCESS: CRYSTAL RECAPTURED" + "</color>";
+          explanationText.text = "You have recaptured a Crystal Node! You regain control of the Crystal Income and constructed buildings from this Node but do not get any Gold. Choose your next Crystal Node to capture if one of them has not been captured before already.";
         }
 
         else
         {
           phaseOutcomeText.text = outcomeColour + "ESCORT SUCCESS: CRYSTAL CAPTURED" + "</color>";
+          explanationText.text = "You have captured a Crystal Node! All the previous connected Crystal Nodes are now locked off. Choose your next Crystal Node to capture if one of them has not been captured before already.";
         }
         
         break;
@@ -61,26 +63,31 @@ public class LootRewardPanel : MonoBehaviour
       case PHASE_OUTCOME.ESCORT_LOSE:
         outcomeColour = "<color=red>";
         phaseOutcomeText.text = outcomeColour + "ESCORT FAILED: MINER DESTROYED" + "</color>";
+        explanationText.text = "Your Miner has been destroyed! You blundering fool. While your engineers attempt to rebuild the Miner, the enemy will now send their own Crystal Seeker to reclaim their lost territory. Destroy it to proceed with your conquest.";
         break;
 
       case PHASE_OUTCOME.DEFENSE_WIN:
         outcomeColour = "<color=blue>";
         phaseOutcomeText.text = outcomeColour + "DEFENSE SUCCESS: CRYSTAL DEFENDED" + "</color>";
+        explanationText.text = "The enemy Crystal Seeker has been destroyed! Your Miner has been reconstructed with only a tiny portion of its health and you can send it out to capture Crystal Nodes again. Do not forget to repair it.";
         break;
 
       case PHASE_OUTCOME.DEFENSE_LOSE:
         outcomeColour = "<color=red>";
         phaseOutcomeText.text = outcomeColour + "DEFENSE FAILED: CRYSTAL LOST" + "</color>";
+        explanationText.text = "You failed to destroy the enemy Crystal Seeker! You incompetent fool. You have lost control of your last captured Crystal Node along with its Crystal Income and any constructed building attached to it. The enemy will send out another Crystal Seeker after their victory, defend your Crystal Node again.";
         break;
 
       case PHASE_OUTCOME.GAME_WIN:
         outcomeColour = "<color=magenta>";
-        phaseOutcomeText.text = outcomeColour + "MISSION COMPLETE" + "</color>";
+        phaseOutcomeText.text = outcomeColour + "GAME WON: ANOTHER FOREST CONQUERED" + "</color>";
+        explanationText.text = "";
         break;
 
       case PHASE_OUTCOME.GAME_LOSE:
         outcomeColour = "<color=red>";
-        phaseOutcomeText.text = outcomeColour + "FORTRESS LOST: ENJOY BEING FEASTED ON" + "</color>";
+        phaseOutcomeText.text = outcomeColour + "GAME LOST: ENJOY BEING FEASTED ON" + "</color>";
+        explanationText.text = "";
         break;
     }
 

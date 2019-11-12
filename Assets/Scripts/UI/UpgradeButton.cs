@@ -27,6 +27,8 @@ public class UpgradeButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
   private void Start()
   {
     GetComponent<Button>().onClick.AddListener(Upgrade);
+
+    GetComponent<Button>().interactable = (cost <= GameManager.resourceManager.Crystals) && (GameManager.upgradeManager.UpgradeIsAvailable(upgradeType));
   }
 
   private void Update()
