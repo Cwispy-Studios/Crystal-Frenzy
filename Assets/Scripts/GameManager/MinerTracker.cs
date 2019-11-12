@@ -240,22 +240,7 @@ public class MinerTracker : MonoBehaviour
               trackerFramePos.x = maxWidthOffset + spriteWidthOffset;
               trackerFramePos.x -= Mathf.Cos(angle * Mathf.Deg2Rad) * spriteWidthOffset;
 
-              if (intersectionPoint.z < 0)
-              {
-                zAxisAway = 0;
-              }
-
-              else if (intersectionPoint.z > topRightOfScreen.z)
-              {
-                zAxisAway = topRightOfScreen.z;
-              }
-
-              else
-              {
-                zAxisAway = intersectionPoint.z - bottomRightOfScreen.z;
-              }
-
-
+              zAxisAway = intersectionPoint.z - bottomRightOfScreen.z;
               zAxisLength = topRightOfScreen.z - bottomRightOfScreen.z;
               trackerFramePos.y = bottomPanel.sprite.rect.height + spriteHeightOffset + ((zAxisAway / zAxisLength) * maxHeightOffset);
               Debug.Log("Right");
@@ -265,21 +250,7 @@ public class MinerTracker : MonoBehaviour
               trackerFramePos.x = -maxWidthOffset - spriteWidthOffset;
               trackerFramePos.x -= Mathf.Cos(angle * Mathf.Deg2Rad) * spriteWidthOffset;
 
-              if (intersectionPoint.z < 0)
-              {
-                zAxisAway = 0;
-              }
-
-              else if (intersectionPoint.z > topLeftOfScreen.z)
-              {
-                zAxisAway = topLeftOfScreen.z;
-              }
-
-              else
-              {
-                zAxisAway = intersectionPoint.z - bottomLeftOfScreen.z;
-              }
-
+              zAxisAway = intersectionPoint.z - bottomLeftOfScreen.z;
               zAxisLength = topLeftOfScreen.z - bottomLeftOfScreen.z;
               trackerFramePos.y = bottomPanel.sprite.rect.height + spriteHeightOffset + ((zAxisAway / zAxisLength) * maxHeightOffset);
               Debug.Log("Left");
@@ -313,7 +284,7 @@ public class MinerTracker : MonoBehaviour
   {
     Vector3 toPos = miner.transform.position;
 
-    toPos.y = 10f;
+    toPos.y = 7f;
     toPos.z -= toPos.y / Mathf.Tan(CameraManager.DEFAULT_ROT.x * Mathf.Deg2Rad);
 
     minerTracker.transform.position = toPos;
