@@ -41109,6 +41109,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1878741620}
+        m_MethodName: PlayCombatStartSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &612618188
@@ -51368,6 +51379,17 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1878741620}
         m_MethodName: PlayButtonClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1878741620}
+        m_MethodName: PlayBeginPhaseSound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -90932,6 +90954,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1878741620}
+        m_MethodName: PlayCombatStartSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1758965994
@@ -96055,6 +96088,8 @@ MonoBehaviour:
   buttonClickSound: event:/SFX/UI/ButtonClick
   constructButtonSound: event:/SFX/UI/Construct
   repairButtonSound: event:/SFX/UI/Repair
+  combatStartSound: event:/SFX/UI/CombatStart
+  beginPhaseSound: event:/SFX/UI/BeginNewPhase
 --- !u!1 &1881194079 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6477082172712516352, guid: 3022b499539b4c64c9f13e17f43e0903,

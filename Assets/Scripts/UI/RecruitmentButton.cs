@@ -29,7 +29,7 @@ public class RecruitmentButton : MonoBehaviour, IPointerEnterHandler, IPointerEx
 
   private void FixedUpdate()
   {
-    if (!available || GameManager.resourceManager.ArmySize + recruitableUnit.GetComponent<RecruitableUnit>().unitPoints > GameManager.resourceManager.UnitCap)
+    if (!available || GameManager.resourceManager.ArmySize + recruitableUnit.GetComponent<RecruitableUnit>().unitPoints  > GameManager.resourceManager.UnitCap)
     {
       GetComponent<Button>().interactable = false;
     }
