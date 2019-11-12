@@ -341,4 +341,12 @@ public class MinerTracker : MonoBehaviour
         lineEnd.z <= point.z && point.z <= lineStart.z;
     }
   }
+
+  public void MoveCameraToMiner()
+  {
+    playerCamera.GetComponent<CameraManager>().PointCameraAtPosition(miner.transform.position, false, true, 0, 0.25f);
+
+    Debug.Log(miner.transform.position);
+    Debug.Log(miner.transform.localPosition);
+  }
 }
