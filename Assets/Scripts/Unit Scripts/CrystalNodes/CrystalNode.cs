@@ -30,6 +30,12 @@ public class CrystalNode : MonoBehaviour
     conquerable = false,          // Conquerable are the nodes that are connected to your active node
     targeted = false;             // Targeted nodes are the nodes we are attacking
 
+  [SerializeField]
+  private Material highlightedMaterial = null;
+  private Material normalMaterial;
+  private bool isBlinking = false;
+  private bool isHighlighted = false;
+
   private GameManager gameManager;
   private Camera playerCamera;
 
@@ -50,6 +56,32 @@ public class CrystalNode : MonoBehaviour
       {
         gameManager.GetActiveNode().GetComponent<CrystalSeekerSpawner>().SetCrystalTarget(gameObject);
       }
+
+      if (conquerable)
+      {
+        if (!isBlinking && !isHighlighted)
+        {
+          StartBlinking();
+        }
+      }
+
+      else if (isBlinking)
+      {
+        StopBlinking();
+      }
+    }
+
+    else
+    {
+      if (isHighlighted)
+      {
+        HighlightCrystalNode(false);
+      }
+
+      if (isBlinking)
+      {
+        StopBlinking();
+      }      
     }
   }
 
@@ -57,18 +89,43 @@ public class CrystalNode : MonoBehaviour
   {
     for (int i = 0; i < connectedNodesData.Length; ++i)
     {
-      // Check if the crystal selected is connected to this node, and if the crystal does not already belong to the player, 
-      // AND the crystal node number must be greater than or equal to this node
+      // Check if the crystal selected is connected to this node, and if the crystal does not already belong to the player
       if (connectedNodesData[i].connectedNode == checkObject && checkObject.GetComponent<Faction>().faction != GetComponent<Faction>().faction)
       {
-        // Set the previous node as not targetted if it exists and make the new one the targeted one
+        // Set the previous node as not targeted if it exists and make the new one the targeted one
         if (setTarget != null)
         {
-          setTarget.GetComponent<CrystalNode>().targeted = false;
+          CrystalNode previousCrystalNode = setTarget.GetComponent<CrystalNode>();
+
+          if (previousCrystalNode.isHighlighted)
+          {
+            previousCrystalNode.HighlightCrystalNode(false);
+          }
+
+          if (!previousCrystalNode.isBlinking)
+          {
+            previousCrystalNode.StartBlinking();
+          }
+
+          previousCrystalNode.targeted = false;
         }
         
+        // Update the crystal node target
         setTarget = checkObject;
-        setTarget.GetComponent<CrystalNode>().targeted = true;
+
+        CrystalNode targetedCrystalNode = setTarget.GetComponent<CrystalNode>();
+        targetedCrystalNode.targeted = true;
+
+        if (targetedCrystalNode.isBlinking)
+        {
+          targetedCrystalNode.StopBlinking();
+        }
+
+        if (!targetedCrystalNode.isHighlighted)
+        {
+          targetedCrystalNode.HighlightCrystalNode(true);
+        }
+
         crystalPath = connectedNodesData[i].pathSpline;
 
         for (int notSelected = 0; notSelected < connectedNodesData.Length; ++notSelected)
@@ -262,5 +319,55 @@ public class CrystalNode : MonoBehaviour
     Material crystalMaterial = GetComponent<Renderer>().material;
 
     return StartCoroutine(LerpColour(crystalMaterial, GetComponent<Renderer>().material.GetColor("_EmissionColor"), toColour, fromEmission, toEmission));
+  }
+
+  private void StartBlinking()
+  {
+    if (isBlinking)
+    {
+      StopBlinking();
+    }
+
+    isBlinking = true;
+    normalMaterial = GetComponent<Renderer>().material;
+    StartCoroutine("TargetBlink");
+  }
+
+  private void StopBlinking()
+  {
+    isBlinking = false;
+    GetComponent<Renderer>().material = normalMaterial;
+    StopAllCoroutines();
+  }
+
+  IEnumerator TargetBlink()
+  {
+    bool highlighted = false;
+
+    while (true)
+    {
+      switch (highlighted)
+      {
+        case false:
+          GetComponent<Renderer>().material = highlightedMaterial;
+          highlighted = true;
+
+          yield return new WaitForSeconds(0.25f);
+          break;
+
+        case true:
+          GetComponent<Renderer>().material = normalMaterial;
+          highlighted = false;
+
+          yield return new WaitForSeconds(0.25f);
+          break;
+      }
+    }
+  }
+
+  private void HighlightCrystalNode(bool highlight)
+  {
+    isHighlighted = highlight;
+    GetComponent<Renderer>().material = highlight ? highlightedMaterial : normalMaterial;
   }
 }

@@ -61,7 +61,7 @@ public class CrystalRewards : MonoBehaviour
   private float waveSpawnerDifficultyMultiplier = 1f;
 
   // Popup variables
-  private const float POPUP_HOVER_TIME = 0.25f;
+  private const float POPUP_HOVER_TIME = 0.2f;
   private float popupHoverLength = 0;
 
   private UIInterface uiInterface;

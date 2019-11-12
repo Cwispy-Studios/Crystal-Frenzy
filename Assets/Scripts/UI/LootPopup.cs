@@ -112,7 +112,27 @@ public class LootPopup : MonoBehaviour
     else
     {
       goldText.text = "<color=grey>" + gold.ToString() + "</color>";
-      crystalText.text = "<color=grey>" + "+" + crystal.ToString() + "</color>";
+
+      /***************************************** CRYSTAL INCOME TEXT *****************************************/
+
+      string compareColour;
+
+      if (crystal > lootTargetPanel.cacheCrystalIncome)
+      {
+        compareColour = "<color=lime>";
+      }
+
+      else if (crystal < lootTargetPanel.cacheCrystalIncome)
+      {
+        compareColour = "<color=red>";
+      }
+
+      else
+      {
+        compareColour = "<color=white>";
+      }
+
+      crystalText.text = compareColour + "+" + crystal.ToString() + "</color> (" + "+" + lootTargetPanel.cacheCrystalIncome + ")";
     }
   }
 }

@@ -49,13 +49,13 @@ public class LootRewardPanel : MonoBehaviour
         if (nodeConqueredBefore)
         {
           phaseOutcomeText.text = outcomeColour + "ESCORT SUCCESS: CRYSTAL RECAPTURED" + "</color>";
-          explanationText.text = "You have recaptured a Crystal Node! You regain control of the Crystal Income and constructed buildings from this Node but do not get any Gold. Choose your next Crystal Node to capture if one of them has not been captured before already.";
+          explanationText.text = "You have recaptured a Crystal Node! Choose your next Crystal Node to capture if one of them has not been captured before already. Otherwise, assemble your army.";
         }
 
         else
         {
           phaseOutcomeText.text = outcomeColour + "ESCORT SUCCESS: CRYSTAL CAPTURED" + "</color>";
-          explanationText.text = "You have captured a Crystal Node! All the previous connected Crystal Nodes are now locked off. Choose your next Crystal Node to capture if one of them has not been captured before already.";
+          explanationText.text = "You have captured a Crystal Node! All the adjacent Crystal Nodes are now blocked off. Choose your next Crystal Node to capture if one of them has not been captured before already. Otherwise, assemble your army.";
         }
         
         break;
