@@ -56,6 +56,11 @@ public class PauseMenu : MonoBehaviour
     {
       if (confirmationPanel.activeSelf || controlsImage.gameObject.activeSelf)
       {
+        if (controlsImage.gameObject.activeSelf)
+        {
+          FMODUnity.RuntimeManager.PlayOneShot(menuCloseSound);
+        }
+
         ReturnToMenu();
       }
 

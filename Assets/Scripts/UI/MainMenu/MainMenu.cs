@@ -8,39 +8,41 @@ public class MainMenu : MonoBehaviour
   public delegate void NextScene();
 
   [SerializeField]
-  private Button playButton = null, quitButton = null;
+  private Button playButton = null, quitButton = null, controlsButton = null;
 
   [SerializeField]
-  private Image fadeScreen = null;
+  private Image fadeScreen = null, greyScreen = null, controlsImage = null;
 
   private const float FADE_DURATION = 2f;
 
   private FMOD.Studio.Bus Master;
 
-  public bool cheatVersion;
+  [FMODUnity.EventRef]
+  public string openControlsSound = "", closeControlsSound = "";
 
   private void Awake()
   {
-    if (cheatVersion)
-    {
-      playButton.onClick.AddListener(delegate { FadeScreen(CheatGame); });
-    }
-
-    else
-    {
-      playButton.onClick.AddListener(delegate { FadeScreen(PlayGame); });
-    }
+    playButton.onClick.AddListener(delegate { FadeScreen(PlayGame); });
     
     quitButton.onClick.AddListener(delegate { FadeScreen(QuitGame); });
+
+    controlsButton.onClick.AddListener(Controls);
 
     Master = FMODUnity.RuntimeManager.GetBus("bus:/Master");
 
     Master.setVolume(1);
   }
 
-  private void CheatGame()
+  private void Update()
   {
-    SceneManager.LoadScene("PresentationCheatScene");
+    if (Input.GetKeyDown(KeyCode.Escape))
+    {
+      if (controlsImage.gameObject.activeSelf)
+      {
+        FMODUnity.RuntimeManager.PlayOneShot(closeControlsSound);
+        ExitControlsScreen();
+      }
+    }
   }
 
   private void PlayGame()
@@ -51,6 +53,28 @@ public class MainMenu : MonoBehaviour
   private void QuitGame()
   {
     Application.Quit();
+  }
+
+  private void Controls()
+  {
+    playButton.interactable = false;
+    controlsButton.interactable = false;
+    quitButton.interactable = false;
+
+    greyScreen.gameObject.SetActive(true);
+    controlsImage.gameObject.SetActive(true);
+
+    FMODUnity.RuntimeManager.PlayOneShot(openControlsSound);
+  }
+
+  private void ExitControlsScreen()
+  {
+    playButton.interactable = true;
+    controlsButton.interactable = true;
+    quitButton.interactable = true;
+
+    greyScreen.gameObject.SetActive(false);
+    controlsImage.gameObject.SetActive(false);
   }
 
   private void FadeScreen(NextScene nextScene)
