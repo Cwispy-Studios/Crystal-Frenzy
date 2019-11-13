@@ -120,8 +120,8 @@ public class UnitOrder : Order
       // Not arrived, move
       else
       {
-        GetComponent<NavMeshObstacle>().enabled = false;
-        GetComponent<NavMeshAgent>().enabled = true;
+        obstacle.enabled = false;
+        agent.enabled = true;
 
         animationState.currentAnimationState = CURRENT_ANIMATION_STATE.MOVE;
       }
@@ -241,14 +241,14 @@ public class UnitOrder : Order
   {
     for (int i = 0; i < upgradeProperties.Length; ++i)
     {
-      GetComponent<NavMeshAgent>().speed += upgradeProperties[i].speed;
-      GetComponent<NavMeshAgent>().acceleration = GetComponent<NavMeshAgent>().speed * 1.5f;
+      agent.speed += upgradeProperties[i].speed;
+      agent.acceleration = agent.speed * 1.5f;
     }
   }
 
   public void SetBoostedValues(BoostValues boostValues)
   {
-    GetComponent<NavMeshAgent>().speed += (gameManager.CurrentRound - 1) * boostValues.speedModifier * GetComponent<NavMeshAgent>().speed;
-    GetComponent<NavMeshAgent>().acceleration = GetComponent<NavMeshAgent>().speed * 5f;
+    agent.speed += (gameManager.CurrentRound - 1) * boostValues.speedModifier * agent.speed;
+    agent.acceleration = agent.speed * 5f;
   }
 } // class end

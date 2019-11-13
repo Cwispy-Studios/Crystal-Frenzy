@@ -10,6 +10,7 @@ public class UpgradeButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
   public UpgradeProperties upgradeProperties;
 
   private UIInterface uiInterface = null;
+  private UnitManager unitManager = null;
 
   [HideInInspector]
   public bool upgraded = false;
@@ -22,6 +23,7 @@ public class UpgradeButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
   {
     uiInterface = FindObjectOfType<UIInterface>();
     gameManager = FindObjectOfType<GameManager>();
+    unitManager = FindObjectOfType<UnitManager>();
   }
 
   private void Start()
@@ -81,6 +83,11 @@ public class UpgradeButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     {
       GameManager.minerManager.UpgradeMinerHealth(upgradeProperties.health);
     }
+
+    if (upgradeType != UPGRADE_TYPE.CRYSTAL_MINING && upgradeType != UPGRADE_TYPE.MINER_HEALTH && upgradeType != UPGRADE_TYPE.MINER_SPEED)
+    {
+      unitManager.RemoveAllUnits();
+    }s
   }
 
   private void ExternalUpgrade(GameObject newButton)
