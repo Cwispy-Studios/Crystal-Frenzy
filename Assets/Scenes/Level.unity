@@ -87373,7 +87373,7 @@ RectTransform:
   - {fileID: 124045433}
   - {fileID: 1661949797}
   m_Father: {fileID: 1886751013}
-  m_RootOrder: 14
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -96784,9 +96784,9 @@ RectTransform:
   - {fileID: 457235595}
   - {fileID: 935600187}
   - {fileID: 102371703}
+  - {fileID: 1666615291}
   - {fileID: 424902096}
   - {fileID: 1666759951}
-  - {fileID: 1666615291}
   - {fileID: 1938895299}
   m_Father: {fileID: 1921686381}
   m_RootOrder: 2
@@ -116796,7 +116796,7 @@ PrefabInstance:
     - target: {fileID: 4547757109260012692, guid: 0fa873248aff6e24285c5ba55939698f,
         type: 3}
       propertyPath: m_RootOrder
-      value: 12
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 4547757109260012692, guid: 0fa873248aff6e24285c5ba55939698f,
         type: 3}
@@ -117012,6 +117012,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 4547757109260012695, guid: 0fa873248aff6e24285c5ba55939698f,
+        type: 3}
+      propertyPath: debugText
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0fa873248aff6e24285c5ba55939698f, type: 3}
@@ -117424,7 +117429,7 @@ PrefabInstance:
     - target: {fileID: 7316673324241631683, guid: 166a04a6b7a5cb74b8ae6b22dab5dab7,
         type: 3}
       propertyPath: m_RootOrder
-      value: 13
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 7316673324241631683, guid: 166a04a6b7a5cb74b8ae6b22dab5dab7,
         type: 3}
@@ -117509,6 +117514,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 3d6e5e0c9ac69674c859198e601bb395,
         type: 3}
+    - target: {fileID: 7316673324241631708, guid: 166a04a6b7a5cb74b8ae6b22dab5dab7,
+        type: 3}
+      propertyPath: debugText
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 166a04a6b7a5cb74b8ae6b22dab5dab7, type: 3}
 --- !u!1 &7341564103762034963 stripped

@@ -35,15 +35,18 @@ public class UpgradeButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
   private void Update()
   {
-    // Check against the Upgrade Manager if it has been upgraded 
-    GameObject newButton = GameManager.upgradeManager.CheckUpgradeLevel(upgradeType, upgradeProperties.upgradeLevel);
-
-    if (newButton != null)
+    if (!upgraded)
     {
-      newButton.transform.position = transform.position;
-      newButton.transform.SetParent(transform.parent);
-      newButton.GetComponent<RectTransform>().localScale = Vector3.one;
-      ExternalUpgrade(newButton);
+      // Check against the Upgrade Manager if it has been upgraded 
+      GameObject newButton = GameManager.upgradeManager.CheckUpgradeLevel(upgradeType, upgradeProperties.upgradeLevel);
+
+      if (newButton != null)
+      {
+        newButton.transform.position = transform.position;
+        newButton.transform.SetParent(transform.parent);
+        newButton.GetComponent<RectTransform>().localScale = Vector3.one;
+        ExternalUpgrade(newButton);
+      }
     }
   }
 
