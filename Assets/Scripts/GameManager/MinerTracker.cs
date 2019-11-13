@@ -223,7 +223,7 @@ public class MinerTracker : MonoBehaviour
 
               trackerFramePos.y = bottomScreenLimit;
               trackerFramePos.y -= (Mathf.Sin(angle * Mathf.Deg2Rad) * spriteHeightOffset);
-              Debug.Log("Bottom");
+              //Debug.Log("Bottom");
               break;
 
             case INTERSECTION_BORDER.TOP:
@@ -233,7 +233,7 @@ public class MinerTracker : MonoBehaviour
 
               trackerFramePos.y = topScreenLimit;
               trackerFramePos.y -= (Mathf.Sin(angle * Mathf.Deg2Rad) * spriteHeightOffset);
-              Debug.Log("Top");
+              //Debug.Log("Top");
               break;
 
             case INTERSECTION_BORDER.RIGHT:
@@ -244,7 +244,7 @@ public class MinerTracker : MonoBehaviour
               zAxisLength = topRightOfScreen.z - bottomRightOfScreen.z;
               trackerFramePos.y = bottomPanel.sprite.rect.height + ((zAxisAway / zAxisLength) * (maxHeightOffset));
               trackerFramePos.y -= Mathf.Sin(angle * Mathf.Deg2Rad) * spriteHeightOffset;
-              Debug.Log("Right");
+              //Debug.Log("Right");
               break;
 
             case INTERSECTION_BORDER.LEFT:
@@ -255,7 +255,7 @@ public class MinerTracker : MonoBehaviour
               zAxisLength = topLeftOfScreen.z - bottomLeftOfScreen.z;
               trackerFramePos.y = bottomPanel.sprite.rect.height + ((zAxisAway / zAxisLength) * (maxHeightOffset));
               trackerFramePos.y -= Mathf.Sin(angle * Mathf.Deg2Rad) * spriteHeightOffset;
-              Debug.Log("Left");
+              //Debug.Log("Left");
               break;
           }
 

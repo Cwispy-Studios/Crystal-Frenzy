@@ -177,6 +177,7 @@ public class CrystalNode : MonoBehaviour
       {
         connectedNodesData[connectedNodeIndex].connectedNode.GetComponent<CrystalNode>().explored = true;
         connectedNodesData[connectedNodeIndex].connectedNode.GetComponent<CrystalNode>().conquerable = true;
+        connectedNodesData[connectedNodeIndex].connectedNode.GetComponent<CrystalNode>().targeted = false;
 
         for (int visibilityMeshIndex = 0; visibilityMeshIndex < connectedNodesData[connectedNodeIndex].pathVisibilityMeshes.Length; ++visibilityMeshIndex)
         {
@@ -188,6 +189,7 @@ public class CrystalNode : MonoBehaviour
       {
         connectedNodesData[connectedNodeIndex].connectedNode.GetComponent<CrystalNode>().explored = true;
         connectedNodesData[connectedNodeIndex].connectedNode.GetComponent<CrystalNode>().conquerable = true;
+        connectedNodesData[connectedNodeIndex].connectedNode.GetComponent<CrystalNode>().targeted = false;
 
         for (int visibilityMeshIndex = 0; visibilityMeshIndex < connectedNodesData[connectedNodeIndex].pathVisibilityMeshes.Length; ++visibilityMeshIndex)
         {

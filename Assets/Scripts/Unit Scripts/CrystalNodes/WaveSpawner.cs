@@ -7,6 +7,8 @@ public class WaveSpawner : MonoBehaviour
   [SerializeField]
   private EnemySpawner[] enemySpawners = null;
 
+  private Vector3 spawnPos;
+
   public GameObject target = null;
   public CrystalPath crystalPath = null;
 
@@ -26,6 +28,8 @@ public class WaveSpawner : MonoBehaviour
     // Automatically spawns the first enemy
     RandomiseSpawn();
     spawnCountdown = 0;
+
+    spawnPos = transform.position;
   }
 
   // Implementation from: https://softwareengineering.stackexchange.com/questions/150616/get-weighted-random-item
@@ -66,10 +70,12 @@ public class WaveSpawner : MonoBehaviour
     // Spawn the unit
     else
     {
-      GameObject spawnedEnemy = Instantiate(enemyToSpawn, transform.position, transform.rotation);
-      spawnedEnemy.GetComponent<NavMeshAgent>().Warp(transform.position);
+      GameObject spawnedEnemy = Instantiate(enemyToSpawn, spawnPos, transform.rotation);
+      spawnedEnemy.GetComponent<NavMeshObstacle>().enabled = false;
+      spawnedEnemy.GetComponent<NavMeshAgent>().enabled = true;
+      spawnedEnemy.GetComponent<NavMeshAgent>().Warp(spawnPos);
 
-      // Set it to attack move towards the crystal seeker position instead of at the crystal seeker
+      // Set the target and the spline to follow
       spawnedEnemy.GetComponent<EnemyAI>().SetTarget(target, crystalPath);
 
       enemyToSpawn = null;

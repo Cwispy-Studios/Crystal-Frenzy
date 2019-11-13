@@ -692,7 +692,7 @@ NavMeshAgent:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8109413875993358460}
-  m_Enabled: 1
+  m_Enabled: 0
   m_AgentTypeID: 0
   m_Radius: 0.75
   m_Speed: 6
@@ -796,6 +796,7 @@ MonoBehaviour:
   explodesOnDeath: 0
   explosionDmgPctOfHealth: 0.25
   explosionRadius: 10
+  explosionEffect: {fileID: 0}
   combatantType: 0
   deathSound: event:/SFX/Units/TeddyDie
   explodeSound: 

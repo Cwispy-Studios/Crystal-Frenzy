@@ -160,8 +160,9 @@ public class GameManager : MonoBehaviour
 
     else
     {
+      lastConqueredNode.GetComponent<CrystalNode>().SetPathVisibilityMeshes(true, lastConqueredNode.GetComponent<CrystalNode>().conqueredNode);
       // Turn on the path visibility meshes to only the connected conquered nodes
-      lastConqueredNode.GetComponent<CrystalNode>().SetConqueredPathVisibilityMeshes(lastConqueredNode.GetComponent<CrystalNode>().conqueredNode, true);
+      //lastConqueredNode.GetComponent<CrystalNode>().SetConqueredPathVisibilityMeshes(lastConqueredNode.GetComponent<CrystalNode>().conqueredNode, true);
     }
 
     // Update the camera bounds
