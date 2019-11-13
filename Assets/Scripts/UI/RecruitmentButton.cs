@@ -29,7 +29,25 @@ public class RecruitmentButton : MonoBehaviour, IPointerEnterHandler, IPointerEx
 
   private void FixedUpdate()
   {
-    if (!available || GameManager.resourceManager.ArmySize + recruitableUnit.GetComponent<RecruitableUnit>().unitPoints  > GameManager.resourceManager.UnitCap)
+    int unitPoints = recruitableUnit.GetComponent<RecruitableUnit>().unitPoints;
+
+    UPGRADE_TYPE[] affectedByUpgrades = recruitableUnit.GetComponent<Upgradable>().affectedByUpgrades;
+
+    for (int i = 0; i < affectedByUpgrades.Length; ++i)
+    {
+      // Retrieve the ugrade properties
+      UpgradeProperties[] upgradeProperties = GameManager.upgradeManager.RetrieveUpgradeProperties(affectedByUpgrades[i]);
+
+      if (upgradeProperties != null)
+      {
+        for (int up = 0; up < upgradeProperties.Length; ++up)
+        {
+          unitPoints += upgradeProperties[up].cost;
+        }
+      }
+    }
+
+    if (!available || GameManager.resourceManager.ArmySize + unitPoints > GameManager.resourceManager.UnitCap)
     {
       GetComponent<Button>().interactable = false;
     }
