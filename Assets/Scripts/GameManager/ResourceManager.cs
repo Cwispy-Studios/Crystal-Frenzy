@@ -42,7 +42,7 @@ public class ResourceManager : MonoBehaviour
     crystalText.text = Crystals.ToString() + " (+" + crystalsIncome.ToString() + ")";
     UnitCapText.text = ArmySize.ToString() + " / " + UnitCap;
     crystalsPerUnitPointText.text = crystalsPerUnitPoint.ToString();
-    timeText.text = TimeSpan.FromSeconds(Time.time - startTime).ToString("mm\\:ss");
+    timeText.text = TimeSpan.FromSeconds(Time.time - startTime).ToString("hh\\:mm\\:ss");
   }
 
   public void UpdateArmySize(int value)

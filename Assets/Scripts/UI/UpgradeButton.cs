@@ -308,12 +308,12 @@ public class UpgradeButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
           case 2:
             upgradeName = "Upgraded Stabby Beefed";
-            description = "Your Stabby Goblins have been beefed up, becoming significantly stronger at the cost of higher upkeep.";
+            description = "Your Stabby Goblins have been beefed up, becoming stronger.";
             break;
 
           case 3:
             upgradeName = "Upgraded Stabby Beefed";
-            description = "Your Stabby Goblins have been beefed up, becoming significantly stronger at the cost of higher upkeep.";
+            description = "Your Stabby Goblins have been beefed up, becoming stronger.";
             break;
 
           default:
