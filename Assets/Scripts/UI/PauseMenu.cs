@@ -60,7 +60,7 @@ public class PauseMenu : MonoBehaviour
         {
           FMODUnity.RuntimeManager.PlayOneShot(menuCloseSound);
         }
-
+        
         ReturnToMenu();
       }
 

@@ -45,33 +45,29 @@ public class EnemyAI : MonoBehaviour
   {
     updateCountdown = 0;
 
-    // Enemies only warp in Escort Phase
-    if (gameManager.CurrentPhase == PHASES.ESCORT)
+    // Determine how far in the path unit should warp to
+    if (firstTimeCheck)
     {
-      // Determine how far in the path unit should warp to
-      if (firstTimeCheck)
+      DetermineWaypointToWarp();
+      lastCheckTime = Time.time;
+    }
+
+    else
+    {
+      if (Time.time - lastCheckTime >= CLOSEST_PROGRESS_CHECK_INTERVAL)
       {
         DetermineWaypointToWarp();
-        lastCheckTime = Time.time;
       }
 
       else
       {
-        if (Time.time - lastCheckTime >= CLOSEST_PROGRESS_CHECK_INTERVAL)
+        if (validWarpPosition)
         {
-          DetermineWaypointToWarp();
+          GetComponent<NavMeshAgent>().Warp(crystalPath.GetCrystalWaypoint(waypointToWarpTo).lineCenter);
+
+          currentWaypointIndex = waypointToWarpTo - 1;
         }
-
-        else
-        {
-          if (validWarpPosition)
-          {
-            GetComponent<NavMeshAgent>().Warp(crystalPath.GetCrystalWaypoint(waypointToWarpTo).lineCenter);
-
-            currentWaypointIndex = waypointToWarpTo - 1;
-          }
-        } 
-      }
+      } 
     }
   }
 
