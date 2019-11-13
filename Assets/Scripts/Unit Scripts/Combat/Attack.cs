@@ -106,7 +106,7 @@ public class Attack : MonoBehaviour
     obstacle = GetComponent<NavMeshObstacle>();
     animationState = GetComponent<AnimationState>();
 
-    setAnimationSpeed = baseAnimationSpeed = animator.GetFloat("AttackAnimationState");
+    setAnimationSpeed = baseAnimationSpeed = animator.GetFloat("AttackAnimationSpeed");
 
     gameManager = FindObjectOfType<GameManager>();
   }

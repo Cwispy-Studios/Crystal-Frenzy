@@ -1,10 +1,18 @@
 ﻿using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemyAI : MonoBehaviour
 {
   private const float WAYPOINT_MARGIN = 15;
   private const float UPDATE_INTERVAL = 2f;
   private float updateCountdown = 0;
+
+  private const float CLOSEST_PROGRESS_CHECK_INTERVAL = 2.5f;
+  private static float lastCheckTime;
+  private static bool firstTimeCheck = true;
+  private static float furthestProgress;
+  private static int waypointToWarpTo;
+  private static bool validWarpPosition;
 
   public GameObject target;
   private bool targetIsMiner = false;
@@ -17,12 +25,54 @@ public class EnemyAI : MonoBehaviour
   private bool targetMiner = false;
   private Vector3 targetPos;
 
+  private static GameManager gameManager = null;
+  private static UnitManager unitManager = null;
+
+  private void Awake()
+  {
+    if (gameManager == null)
+    {
+      gameManager = FindObjectOfType<GameManager>();
+    }
+
+    if (unitManager == null)
+    {
+      unitManager = FindObjectOfType<UnitManager>();
+    }
+  }
+
   private void Start()
   {
     updateCountdown = 0;
 
-    // Determine how far in the path unit should warp to
-    
+    // Enemies only warp in Escort Phase
+    if (gameManager.CurrentPhase == PHASES.ESCORT)
+    {
+      // Determine how far in the path unit should warp to
+      if (firstTimeCheck)
+      {
+        DetermineWaypointToWarp();
+        lastCheckTime = Time.time;
+      }
+
+      else
+      {
+        if (Time.time - lastCheckTime >= CLOSEST_PROGRESS_CHECK_INTERVAL)
+        {
+          DetermineWaypointToWarp();
+        }
+
+        else
+        {
+          if (validWarpPosition)
+          {
+            GetComponent<NavMeshAgent>().Warp(crystalPath.GetCrystalWaypoint(waypointToWarpTo).lineCenter);
+
+            currentWaypointIndex = waypointToWarpTo - 1;
+          }
+        } 
+      }
+    }
   }
 
   private void Update()
@@ -131,5 +181,45 @@ public class EnemyAI : MonoBehaviour
     targetProgress = waypoint.pointProgress;
     GetComponent<Attack>().SetAttackMovePosition(targetPos);
     initialWaypointSet = true;
+  }
+
+  private void DetermineWaypointToWarp()
+  {
+    float minerProgress = 0;
+    // Check miner's progress (if it is a miner)
+    if (targetIsMiner)
+    {
+      minerProgress = target.GetComponent<BezierSolution.BezierWalkerWithSpeed>().NormalizedT;
+    }
+
+    // Check all the players units to find which has the furthest progress
+    float furthestUnitProgress = unitManager.FindFurthestProgressOnSpline(crystalPath.GetComponent<BezierSolution.BezierSpline>());
+
+    furthestProgress = minerProgress > furthestUnitProgress ? minerProgress : furthestUnitProgress;
+
+    validWarpPosition = false;
+    waypointToWarpTo = 0;
+
+    // Find the way point which is closest to the furthest progress
+    for (int i = 2; i < currentWaypointIndex; ++i)
+    {
+      // Find first waypoint from furthest to nearest waypoints if the player's progress is further than each of them
+      if (crystalPath.GetCrystalWaypoint(i).pointProgress >= furthestProgress)
+      {
+        waypointToWarpTo = i + 2;
+
+        // Take this waypoint + 2 to spawn from, but check if that number is not greater than the last waypoint count
+        validWarpPosition = waypointToWarpTo <= crystalPath.GetLastWaypointIndex();
+
+        break;
+      }
+    }
+
+    if (validWarpPosition)
+    {
+      GetComponent<NavMeshAgent>().Warp(crystalPath.GetCrystalWaypoint(waypointToWarpTo).lineCenter);
+
+      currentWaypointIndex = waypointToWarpTo - 1;
+    }
   }
 }

@@ -398,4 +398,24 @@ public class UnitManager : MonoBehaviour
       health.ModifyHealth(-health.CurrentHealth, health.transform.forward);
     }
   }
+
+  public float FindFurthestProgressOnSpline(BezierSolution.BezierSpline crystalPath)
+  {
+    float furthestProgress = 0;
+
+    for (int i = 0; i < unitButtonsList.Count; ++i)
+    {
+      float unitProgress = 0;
+      crystalPath.FindNearestPointTo(unitButtonsList[i].GetComponent<UnitButton>().Unit.transform.localPosition, out unitProgress);
+
+      if (unitProgress > furthestProgress)
+      {
+        furthestProgress = unitProgress;
+      }
+    }
+
+    Debug.Log(furthestProgress);
+
+    return furthestProgress;
+  }
 }
