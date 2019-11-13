@@ -70,9 +70,9 @@ public class Projectile : MonoBehaviour
                   colliders[i].GetComponent<Health>().ModifyHealth(-damage * aoeDmgPct, transform.position);
                 }
 
-                if (GetComponent<StatusEffects>())
+                if (statusEffects)
                 {
-                  GetComponent<StatusEffects>().AfflictStatusEffects(colliders[i].gameObject);
+                  statusEffects.AfflictStatusEffects(colliders[i].gameObject);
                 }
               }
             }

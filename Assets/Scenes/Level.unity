@@ -96135,6 +96135,20 @@ MonoBehaviour:
   combatStartEscortSound: event:/SFX/UI/CombatStartEscort
   combatStartDefenseSound: event:/SFX/UI/CombatStartDefense
   beginPhaseSound: event:/SFX/UI/BeginNewPhase
+--- !u!114 &1878741621
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1878741619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 644d9614ede301749bd870419af7da37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fogOfWarBlackProjector: {fileID: 126032204}
+  fogOfWarProjector: {fileID: 1331269608}
 --- !u!1 &1881194079 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6477082172712516352, guid: 3022b499539b4c64c9f13e17f43e0903,

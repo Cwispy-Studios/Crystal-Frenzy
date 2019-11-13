@@ -268,7 +268,7 @@ public class UpgradeButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         switch (upgradeLevel)
         {
           case 1:
-            upgradeName = "Upgraded Stabby Cheap";
+            upgradeName = "Stabby Cheap";
             description = "Your Stabby Goblins are as ill equipped as before. At least they are still cheap.";
             break;
 
@@ -292,7 +292,7 @@ public class UpgradeButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         switch (upgradeLevel)
         {
           case 1:
-            upgradeName = "Upgraded Stabby Beefed";
+            upgradeName = "Stabby Beefed";
             description = "Your Stabby Goblins have been beefed up, becoming significantly stronger at the cost of higher upkeep.";
             break;
 
@@ -316,7 +316,7 @@ public class UpgradeButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         switch (upgradeLevel)
         {
           case 1:
-            upgradeName = "Upgraded Shooty Fast";
+            upgradeName = "Shooty Fast";
             description = "Your Shooty Goblins prioritise speed over damage, while sacrificing some range.";
             break;
 
@@ -340,7 +340,7 @@ public class UpgradeButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         switch (upgradeLevel)
         {
           case 1:
-            upgradeName = "Upgraded Shooty Nuke";
+            upgradeName = "Shooty Nuke";
             description = "Your Shooty Goblins are now marksmen, dealing massive damage from a further distance, at the cost of lower attack speed.";
             break;
 
@@ -364,7 +364,7 @@ public class UpgradeButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         switch (upgradeLevel)
         {
           case 1:
-            upgradeName = "Upgraded Brute Cheap";
+            upgradeName = "Brute Cheap";
             description = "Your Brutes have become more subdued and peaceful. At least they are cheaper.";
             break;
 
@@ -388,7 +388,7 @@ public class UpgradeButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         switch (upgradeLevel)
         {
           case 1:
-            upgradeName = "Upgraded Brute Tank";
+            upgradeName = "Brute Tank";
             description = "Your Brutes are now on steroids and deal massive splash damage. But they also eat more.";
             break;
 
@@ -417,12 +417,12 @@ public class UpgradeButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
             break;
 
           case 2:
-            upgradeName = "Saintly Warlocks";
+            upgradeName = "Upgraded Saintly Warlocks";
             description = "Your Warlocks now speak the word of God, and are able to heal more efficiently.";
             break;
 
           case 3:
-            upgradeName = "Saintly Warlocks";
+            upgradeName = "Upgraded Saintly Warlocks";
             description = "Your Warlocks now speak the word of God, and are able to heal more efficiently.";
             break;
 
@@ -441,13 +441,13 @@ public class UpgradeButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
             break;
 
           case 2:
-            upgradeName = "Dark Warlock";
+            upgradeName = "Upgraded Dark Warlock";
             description = "Your warlocks dabble further into Dark Magic, allowing them to Curse their targets, decreasing their damage.";
             break;
 
           case 3:
-            upgradeName = "Upgraded Brute Tank";
-            description = "Your warlocks dabble furhter into Dark Magic, allowing them to Slow their targets, decreasing their movement and attack speed.";
+            upgradeName = "Upgraded Dark Warlock";
+            description = "Your warlocks dabble furhter into Dark Magic, allowing them to also Slow their targets, decreasing their movement and attack speed.";
             break;
 
           default:
