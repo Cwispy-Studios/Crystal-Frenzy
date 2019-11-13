@@ -322,7 +322,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boostValues:
-    healthModifier: 0.25
+    healthModifier: 0.28
     regeneratonModifier: 0.2
     damageModifier: 0
     attackSpeedModifier: 0
@@ -330,7 +330,7 @@ MonoBehaviour:
     detectRangeModifier: 0
     poisonDps: 0
     poisonDuration: 0
-    speedModifier: 0.15
+    speedModifier: 0.125
 --- !u!114 &-1532671479032559535
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -456,16 +456,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: PointerArrow
       objectReference: {fileID: 0}
-    - target: {fileID: -6057140222963153312, guid: e628771fcda682346a455b946a4dc6f8,
-        type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: aaff9673439b8fd4daf218a8c18522cc, type: 2}
-    - target: {fileID: -6057140222963153312, guid: e628771fcda682346a455b946a4dc6f8,
-        type: 3}
-      propertyPath: m_ApplyRootMotion
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: e628771fcda682346a455b946a4dc6f8,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -520,6 +510,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -6057140222963153312, guid: e628771fcda682346a455b946a4dc6f8,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: aaff9673439b8fd4daf218a8c18522cc, type: 2}
+    - target: {fileID: -6057140222963153312, guid: e628771fcda682346a455b946a4dc6f8,
+        type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -1504981713932161579, guid: e628771fcda682346a455b946a4dc6f8,
         type: 3}
