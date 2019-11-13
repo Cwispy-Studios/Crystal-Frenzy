@@ -36,7 +36,7 @@ public class ArmyRecruitmentPanel : MonoBehaviour
     else if (button == shootyBoyButton)
     {
       unitName = "Shooty Boy";
-      description = "Armed with a crossbow, Shooty Boys are able to rain hell down on your foes from a distance.";
+      description = "Armed with a crossbow, Shooty Boys are able to rain down hell on your foes from a distance.";
 
       if (!GameManager.buildingManager.archeryRangeConstructed)
       {

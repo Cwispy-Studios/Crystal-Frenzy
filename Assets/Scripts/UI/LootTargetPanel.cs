@@ -58,7 +58,7 @@ public class LootTargetPanel : MonoBehaviour
 
     if (isBuildingSlotRewarded == true)
     {
-      additionalRewardsText[numAddRewards].text += "<color=lightblue>Building Slot</color>";
+      additionalRewardsText[numAddRewards].text += "<color=darkblue>Building Slot</color>";
       ++numAddRewards;
     }
 

@@ -49,13 +49,13 @@ public class LootRewardPanel : MonoBehaviour
         if (nodeConqueredBefore)
         {
           phaseOutcomeText.text = outcomeColour + "ESCORT SUCCESS: CRYSTAL RECAPTURED" + "</color>";
-          explanationText.text = "You recaptured a Crystal Node! Choose your next Crystal Node to capture if one has not been captured before. Otherwise, assemble your army.";
+          explanationText.text = "You recaptured a Crystal Node! Recapture or choose your next Crystal Node to capture and assemble your army.";
         }
 
         else
         {
           phaseOutcomeText.text = outcomeColour + "ESCORT SUCCESS: CRYSTAL CAPTURED" + "</color>";
-          explanationText.text = "You captured a Crystal Node! All adjacent Crystal Nodes are now blocked off. Choose your next Crystal Node to capture if one has not been captured before. Otherwise, assemble your army.";
+          explanationText.text = "You captured a Crystal Node! All adjacent Crystal Nodes are now blocked off. Recapture or choose your next Crystal Node to capture and assemble your army.";
         }
         
         break;
@@ -75,7 +75,7 @@ public class LootRewardPanel : MonoBehaviour
       case PHASE_OUTCOME.DEFENSE_LOSE:
         outcomeColour = "<color=red>";
         phaseOutcomeText.text = outcomeColour + "DEFENSE FAILED: CRYSTAL LOST" + "</color>";
-        explanationText.text = "You failed to destroy the enemy Crystal Seeker! You incompetent fool. You have lost control of your last captured Crystal Node along with its Crystal Income and any constructed building attached to it. The enemy will send out another Crystal Seeker after their victory, defend your Crystal Node again.";
+        explanationText.text = "You failed to destroy the enemy Crystal Seeker! You incompetent fool. You have lost control of your last captured Crystal Node. The enemy will send out another Crystal Seeker after their victory, defend your Crystal Node again.";
         break;
 
       case PHASE_OUTCOME.GAME_WIN:

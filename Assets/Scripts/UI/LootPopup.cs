@@ -75,7 +75,7 @@ public class LootPopup : MonoBehaviour
 
       else if (buildingSlot == true && !lootTargetPanel.isBuildingSlotRewarded)
       {
-        additionalRewardsText[numAddRewards].text += "<color=lightblue>Building Slot</color>";
+        additionalRewardsText[numAddRewards].text += "<color=darkblue>Building Slot</color>";
         ++numAddRewards;
       }
 

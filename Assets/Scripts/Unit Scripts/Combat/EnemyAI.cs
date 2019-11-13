@@ -20,6 +20,9 @@ public class EnemyAI : MonoBehaviour
   private void Start()
   {
     updateCountdown = 0;
+
+    // Determine how far in the path unit should warp to
+    
   }
 
   private void Update()
