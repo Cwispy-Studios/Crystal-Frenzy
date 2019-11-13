@@ -49,13 +49,13 @@ public class LootRewardPanel : MonoBehaviour
         if (nodeConqueredBefore)
         {
           phaseOutcomeText.text = outcomeColour + "ESCORT SUCCESS: CRYSTAL RECAPTURED" + "</color>";
-          explanationText.text = "You have recaptured a Crystal Node! Choose your next Crystal Node to capture if one of them has not been captured before already. Otherwise, assemble your army.";
+          explanationText.text = "You recaptured a Crystal Node! Choose your next Crystal Node to capture if one has not been captured before. Otherwise, assemble your army.";
         }
 
         else
         {
           phaseOutcomeText.text = outcomeColour + "ESCORT SUCCESS: CRYSTAL CAPTURED" + "</color>";
-          explanationText.text = "You have captured a Crystal Node! All the adjacent Crystal Nodes are now blocked off. Choose your next Crystal Node to capture if one of them has not been captured before already. Otherwise, assemble your army.";
+          explanationText.text = "You captured a Crystal Node! All adjacent Crystal Nodes are now blocked off. Choose your next Crystal Node to capture if one has not been captured before. Otherwise, assemble your army.";
         }
         
         break;
@@ -63,13 +63,13 @@ public class LootRewardPanel : MonoBehaviour
       case PHASE_OUTCOME.ESCORT_LOSE:
         outcomeColour = "<color=red>";
         phaseOutcomeText.text = outcomeColour + "ESCORT FAILED: MINER DESTROYED" + "</color>";
-        explanationText.text = "Your Miner has been destroyed! You blundering fool. While your engineers attempt to rebuild the Miner, the enemy will now send their own Crystal Seeker to reclaim their lost territory. Destroy it to proceed with your conquest.";
+        explanationText.text = "Your Miner has been destroyed! You blundering fool. While your engineers rebuild the Miner, the enemy will send their own Crystal Seeker to reclaim their lost territory. Destroy it to proceed with your conquest.";
         break;
 
       case PHASE_OUTCOME.DEFENSE_WIN:
         outcomeColour = "<color=blue>";
         phaseOutcomeText.text = outcomeColour + "DEFENSE SUCCESS: CRYSTAL DEFENDED" + "</color>";
-        explanationText.text = "The enemy Crystal Seeker has been destroyed! Your Miner has been reconstructed with only a tiny portion of its health and you can send it out to capture Crystal Nodes again. Do not forget to repair it.";
+        explanationText.text = "The enemy Crystal Seeker has been destroyed! Your Miner has been shoddily reconstructed and you can deploy it to capture Crystal Nodes again. Do not forget to repair it.";
         break;
 
       case PHASE_OUTCOME.DEFENSE_LOSE:
