@@ -4,6 +4,7 @@ using UnityEngine.AI;
 public class Attack : MonoBehaviour
 {
   private const float STOPPING_MARGIN = 1f;
+  private const float HEAL_RANGE_MODIFIER = 0.75f;
 
   [SerializeField]
   private float attackDamage = 0;
@@ -347,8 +348,8 @@ public class Attack : MonoBehaviour
     // must be smaller than the attack range
     float enemyRadius = GetEnemyRadius(attackTarget);
 
-    // If enemy is near enough, try to attack and hold position. Otherwise set the NavMeshAgent to move towards it
-    if (animationState.currentAnimationState != CURRENT_ANIMATION_STATE.ATTACK && enemyRange <= (attackRange + unitRadius + enemyRadius))
+    // If enemy is near enough, try to attack and hold position. Otherwise set the NavMeshAgent to move towards it. Healing range is slightly shorter
+    if (animationState.currentAnimationState != CURRENT_ANIMATION_STATE.ATTACK && ( (!isHealing && enemyRange <= attackRange + unitRadius + enemyRadius) || (isHealing && enemyRange <= (attackRange + unitRadius + enemyRadius) * HEAL_RANGE_MODIFIER) ) )
     {
       // Check if ready to attack
       if (attackCooldown >= attackInterval)
@@ -385,7 +386,9 @@ public class Attack : MonoBehaviour
       obstacle.enabled = false;
       agent.enabled = true;
 
-      agent.stoppingDistance = attackRange + (unitRadius + enemyRadius);
+      float baseRange = attackRange + (unitRadius + enemyRadius);
+
+      agent.stoppingDistance = isHealing ? baseRange * HEAL_RANGE_MODIFIER : baseRange;
       agent.destination = attackTarget.transform.localPosition;
 
       animationState.currentAnimationState = CURRENT_ANIMATION_STATE.MOVE;
