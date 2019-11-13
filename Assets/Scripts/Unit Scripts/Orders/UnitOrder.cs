@@ -13,11 +13,16 @@ public class UnitOrder : Order
 
   private float updateCountdown = 0;
 
+  private float baseMoveSpeed;
+  private float normalMoveSpeed;
+
   private Animator animator = null;
   private NavMeshAgent agent = null;
   private NavMeshObstacle obstacle = null;
   private Attack attack;
   private AnimationState animationState;
+
+  private float setAnimationSpeed;
 
   private GameManager gameManager;
 
@@ -30,6 +35,9 @@ public class UnitOrder : Order
     obstacle = GetComponent<NavMeshObstacle>();
     attack = GetComponent<Attack>();
     animationState = GetComponent<AnimationState>();
+
+    baseMoveSpeed = normalMoveSpeed = agent.speed;
+    setAnimationSpeed = animator.GetFloat("MoveAnimationSpeed");
 
     gameManager = FindObjectOfType<GameManager>();
   }
@@ -244,11 +252,30 @@ public class UnitOrder : Order
       agent.speed += upgradeProperties[i].speed;
       agent.acceleration = agent.speed * 1.5f;
     }
+
+    normalMoveSpeed = agent.speed;
+    setAnimationSpeed = agent.speed / baseMoveSpeed;
+    Mathf.Clamp(setAnimationSpeed, 0.8f, 2f);
+    animator.SetFloat("MoveAnimationSpeed", setAnimationSpeed);
   }
 
   public void SetBoostedValues(BoostValues boostValues)
   {
     agent.speed += (gameManager.CurrentRound - 1) * boostValues.speedModifier * agent.speed;
     agent.acceleration = agent.speed * 5f;
+
+    normalMoveSpeed = agent.speed;
+    setAnimationSpeed = agent.speed / baseMoveSpeed;
+    Mathf.Clamp(setAnimationSpeed, 0.8f, 2f);
+    animator.SetFloat("MoveAnimationSpeed", setAnimationSpeed);
+  }
+
+  public void SetSlowAffliction(float attackSlowAmount, float moveSlowAmount)
+  {
+    agent.speed = normalMoveSpeed * (1f - moveSlowAmount);
+
+    setAnimationSpeed = agent.speed / baseMoveSpeed;
+    Mathf.Clamp(setAnimationSpeed, 0.8f, 2f);
+    animator.SetFloat("MoveAnimationSpeed", setAnimationSpeed);
   }
 } // class end

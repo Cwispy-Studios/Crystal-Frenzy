@@ -84,7 +84,7 @@ public class UpgradeButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
       GameManager.minerManager.UpgradeMinerHealth(upgradeProperties.health);
     }
 
-    if (upgradeType != UPGRADE_TYPE.CRYSTAL_MINING && upgradeType != UPGRADE_TYPE.MINER_HEALTH && upgradeType != UPGRADE_TYPE.MINER_SPEED)
+    if (unitManager && upgradeType != UPGRADE_TYPE.CRYSTAL_MINING && upgradeType != UPGRADE_TYPE.MINER_HEALTH && upgradeType != UPGRADE_TYPE.MINER_SPEED)
     {
       unitManager.RemoveAllUnits();
     }

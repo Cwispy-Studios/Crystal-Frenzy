@@ -23,13 +23,12 @@ public class Attack : MonoBehaviour
   private float attackInterval;
 
   private float normalAttacksPerSecond;
-  private float normalMoveSpeed;
   private float normalDamage;
 
-  private float ogDamage;
-  private float ogAttackSpeed;
-  private float ogAttackRange;
-  private float ogDetectRange;
+  private float baseDamage;
+  private float baseAttackSpeed;
+  private float baseAttackRange;
+  private float baseDetectRange;
 
   [SerializeField]
   private bool aoe = false;
@@ -83,6 +82,9 @@ public class Attack : MonoBehaviour
   private NavMeshObstacle obstacle = null;
   private AnimationState animationState;
 
+  private float baseAnimationSpeed;
+  private float setAnimationSpeed;
+
   private GameManager gameManager;
 
   [HideInInspector]
@@ -94,15 +96,17 @@ public class Attack : MonoBehaviour
   private void Awake()
   {
     unitRadius = GetComponent<NavMeshAgent>().radius * ((transform.lossyScale.x + transform.lossyScale.z) / 2f);
-    ogDamage = attackDamage;
-    ogAttackSpeed = attacksPerSecond;
-    ogAttackRange = attackRange;
-    ogDetectRange = enemyDetectRange;
+    baseDamage = attackDamage;
+    baseAttackSpeed = attacksPerSecond;
+    baseAttackRange = attackRange;
+    baseDetectRange = enemyDetectRange;
 
     animator = GetComponent<Animator>();
     agent = GetComponent<NavMeshAgent>();
     obstacle = GetComponent<NavMeshObstacle>();
     animationState = GetComponent<AnimationState>();
+
+    setAnimationSpeed = baseAnimationSpeed = animator.GetFloat("AttackAnimationState");
 
     gameManager = FindObjectOfType<GameManager>();
   }
@@ -111,7 +115,6 @@ public class Attack : MonoBehaviour
   {
     attackCooldown = attacksPerSecond;
     normalAttacksPerSecond = attacksPerSecond;
-    normalMoveSpeed = GetComponent<NavMeshAgent>().speed;
     normalDamage = attackDamage;
 
     attackInterval = 1f / attacksPerSecond;
@@ -616,24 +619,38 @@ public class Attack : MonoBehaviour
     }
 
     attackInterval = 1f / attacksPerSecond;
+    normalAttacksPerSecond = attacksPerSecond;
+
+    setAnimationSpeed = attacksPerSecond / baseAttackSpeed;
+    Mathf.Clamp(setAnimationSpeed, 0.8f, 2f);
+    animator.SetFloat("AttackAnimationSpeed", setAnimationSpeed);
   }
 
   public void SetBoostedValues(BoostValues boostValues)
   {
-    attackDamage += (gameManager.CurrentRound - 1) * boostValues.damageModifier * ogAttackRange;
-    attacksPerSecond += (gameManager.CurrentRound - 1) * boostValues.attackSpeedModifier * ogAttackSpeed;
-    attackRange += (gameManager.CurrentRound - 1) * boostValues.attackRangeModifier * ogAttackRange;
-    enemyDetectRange += (gameManager.CurrentRound - 1) * boostValues.detectRangeModifier * ogDetectRange;
+    attackDamage += (gameManager.CurrentRound - 1) * boostValues.damageModifier * baseAttackRange;
+    attacksPerSecond += (gameManager.CurrentRound - 1) * boostValues.attackSpeedModifier * baseAttackSpeed;
+    attackRange += (gameManager.CurrentRound - 1) * boostValues.attackRangeModifier * baseAttackRange;
+    enemyDetectRange += (gameManager.CurrentRound - 1) * boostValues.detectRangeModifier * baseDetectRange;
 
     attackInterval = 1f / attacksPerSecond;
+
+    normalAttacksPerSecond = attacksPerSecond;
+
+    setAnimationSpeed = attacksPerSecond / baseAttackSpeed;
+    Mathf.Clamp(setAnimationSpeed, 0.8f, 2f);
+    animator.SetFloat("AttackAnimationSpeed", setAnimationSpeed);
   }
 
   public void SetSlowAffliction(float attackSlowAmount, float moveSlowAmount)
   {
     attacksPerSecond = normalAttacksPerSecond * (1f + attackSlowAmount);
-    agent.speed = normalMoveSpeed * (1f - moveSlowAmount);
 
     attackInterval = 1f / attacksPerSecond;
+
+    setAnimationSpeed = attacksPerSecond / baseAttackSpeed;
+    Mathf.Clamp(setAnimationSpeed, 0.8f, 2f);
+    animator.SetFloat("AttackAnimationSpeed", setAnimationSpeed);
   }
 
   public void SetCurseAffliction(float attackReducAmount)
