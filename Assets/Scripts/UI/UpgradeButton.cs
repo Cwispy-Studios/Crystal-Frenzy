@@ -87,7 +87,7 @@ public class UpgradeButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     if (upgradeType != UPGRADE_TYPE.CRYSTAL_MINING && upgradeType != UPGRADE_TYPE.MINER_HEALTH && upgradeType != UPGRADE_TYPE.MINER_SPEED)
     {
       unitManager.RemoveAllUnits();
-    }s
+    }
   }
 
   private void ExternalUpgrade(GameObject newButton)
