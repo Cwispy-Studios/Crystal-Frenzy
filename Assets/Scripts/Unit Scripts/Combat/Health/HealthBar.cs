@@ -43,7 +43,7 @@ public class HealthBar : MonoBehaviour
     // Get size average of x and z
     objectSize = ((objectBounds.x + objectBounds.z) / 2);
 
-    heightOffset = objectBounds.y;
+    heightOffset = objectBounds.y * 1.1f;
   }
 
   private void HandleHealthChanged(float pct)
@@ -61,7 +61,7 @@ public class HealthBar : MonoBehaviour
     transform.position = playerCamera.WorldToScreenPoint(health.transform.position + Vector3.up * heightOffset);
 
     Vector3 objectScale = originalScale * playerCamera.GetComponent<CameraControls>().GetZoomPerc();
-    objectScale.x *= objectSize;  
+    objectScale.x *= objectSize * 0.9f;  
 
     transform.localScale = objectScale;
   }
