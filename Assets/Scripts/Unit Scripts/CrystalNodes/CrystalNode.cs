@@ -242,7 +242,7 @@ public class CrystalNode : MonoBehaviour
     }
   }
 
-  public void DisableTreeWall(GameObject attackedNode)
+  public void SetTreeWallActive(GameObject attackedNode, bool active)
   {
     for (int connectedNodeIndex = 0; connectedNodeIndex < connectedNodesData.Length; ++connectedNodeIndex)
     {
@@ -251,7 +251,7 @@ public class CrystalNode : MonoBehaviour
       {
         if (connectedNodesData[connectedNodeIndex].treeWall != null)
         {
-          connectedNodesData[connectedNodeIndex].treeWall.SetActive(false);
+          connectedNodesData[connectedNodeIndex].treeWall.SetActive(active);
         }
       }
     }
