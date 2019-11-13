@@ -93,7 +93,7 @@ public class UnitOrder : Order
       // Target still alive
       if (destinationUnit != null)
       {
-        if (followTargetOldPos != destinationUnit.transform.position)
+        if (followTargetOldPos != destinationUnit.transform.localPosition)
         {
           SetTargetAsDestination();
         }
@@ -192,7 +192,7 @@ public class UnitOrder : Order
   private void SetTargetAsDestination()
   {
     // Update the cached position to follow
-    followTargetOldPos = destinationUnit.transform.position;
+    followTargetOldPos = destinationUnit.transform.localPosition;
 
     // Check if unit's attack status is done attacking (hit has landed), then we can override the animation
     if (!attack.isAttacking)
@@ -200,7 +200,7 @@ public class UnitOrder : Order
       obstacle.enabled = false;
       agent.enabled = true;
 
-      agent.destination = destinationUnit.transform.position;
+      agent.destination = destinationUnit.transform.localPosition;
 
       animationState.currentAnimationState = CURRENT_ANIMATION_STATE.MOVE;
     }
@@ -208,7 +208,7 @@ public class UnitOrder : Order
     else
     {
       queuedOrder = true;
-      queuedOrderPos = destinationUnit.transform.position;
+      queuedOrderPos = destinationUnit.transform.localPosition;
     }
 
     float stoppingDistance = 0f;

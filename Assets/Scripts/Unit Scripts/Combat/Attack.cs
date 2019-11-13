@@ -62,9 +62,10 @@ public class Attack : MonoBehaviour
   private bool detectingEnemies = true;
   private GameObject detectedTarget = null;
 
-  private GameObject attackTarget = null;
+  private GameObject focusAttackTarget = null;
 
-  private GameObject attackedTarget = null;
+  private GameObject attackTarget = null;
+  private Vector3 cachedAttackTargetPos;
 
   private Vector3 attackMovePosition;
   private bool isAttackMoveOrder = false;
@@ -136,9 +137,9 @@ public class Attack : MonoBehaviour
     }
 
     // Rotates the unit towards its attack target while its hit has not landed and target still alive
-    if (isAttacking && attackTarget)
+    if (isAttacking && focusAttackTarget)
     {
-      LookTowardsTarget(attackTarget);
+      LookTowardsTarget(focusAttackTarget);
     }
 
     // Rotates the unit towards its detected eney
@@ -150,6 +151,12 @@ public class Attack : MonoBehaviour
     // While it is in the middle of animation, do not perform any other logic
     if (isAttacking)
     {
+      if (attackTarget)
+      {
+        // Save the attack target position in case it dies and we need its position to apply aoe damage around its last known position
+        cachedAttackTargetPos = attackTarget.transform.localPosition;
+      }
+
       return;
     }
 
@@ -172,23 +179,23 @@ public class Attack : MonoBehaviour
       detectUpdateCountdown = 0f;
 
       // If there is no attack target and is detecting enemies, unit will constantly look out for enemies within their detect range
-      if (attackTarget == null && detectingEnemies)
+      if (focusAttackTarget == null && detectingEnemies)
       {
         DetectEnemies();
       }
     }
 
     // Attack targeted or detected enemy
-    if (attackTarget != null)
+    if (focusAttackTarget != null)
     {
-      float enemyRange = Vector3.Distance(transform.position, attackTarget.transform.position);
+      float enemyRange = Vector3.Distance(transform.localPosition, focusAttackTarget.transform.localPosition);
 
-      AttackEnemy(attackTarget, enemyRange, isHealing);
+      AttackEnemy(focusAttackTarget, enemyRange, isHealing);
     }
 
     else if (detectingEnemies && detectedTarget != null)
     {
-      float enemyRange = Vector3.Distance(transform.position, detectedTarget.transform.position);
+      float enemyRange = Vector3.Distance(transform.localPosition, detectedTarget.transform.localPosition);
 
       AttackEnemy(detectedTarget, enemyRange, isHealing);
     }
@@ -196,7 +203,7 @@ public class Attack : MonoBehaviour
 
   private void DetectEnemies()
   {
-    Collider[] unitsInRange = Physics.OverlapSphere(transform.position, enemyDetectRange, 1 << 0);
+    Collider[] unitsInRange = Physics.OverlapSphere(transform.localPosition, enemyDetectRange, 1 << 0);
 
     float closestEnemyRange = 9999f;
 
@@ -235,7 +242,7 @@ public class Attack : MonoBehaviour
           isHealing = true;
 
           // Save the distance
-          float distance = Vector3.Distance(transform.position, unitsInRange[i].transform.position);
+          float distance = Vector3.Distance(transform.localPosition, unitsInRange[i].transform.localPosition);
 
           // Prioritise lowest hp
           if (unitsInRange[i].GetComponent<Health>().HealthPct() < lowestHpPct)
@@ -256,7 +263,7 @@ public class Attack : MonoBehaviour
           if (unitsInRange[i].GetComponent<Health>().CombatantType == preferredTarget)
           {
             // Check if the target is the preferred type
-            float distance = Vector3.Distance(transform.position, unitsInRange[i].transform.position);
+            float distance = Vector3.Distance(transform.localPosition, unitsInRange[i].transform.localPosition);
 
             if (distance < closestEnemyRange)
             {
@@ -277,7 +284,7 @@ public class Attack : MonoBehaviour
           }
 
           // Check if the target is the preferred type
-          float distance = Vector3.Distance(transform.position, unitsInRange[i].transform.position);
+          float distance = Vector3.Distance(transform.localPosition, unitsInRange[i].transform.localPosition);
 
           if (distance < closestEnemyRange)
           {
@@ -334,11 +341,11 @@ public class Attack : MonoBehaviour
 
   private void AttackEnemy(GameObject enemy, float enemyRange, bool healing)
   {
-    attackedTarget = enemy;
+    attackTarget = enemy;
 
     // Try to attack them, check the distance between them. The distance from their position + their radius to your position + your radius 
     // must be smaller than the attack range
-    float enemyRadius = GetEnemyRadius(attackedTarget);
+    float enemyRadius = GetEnemyRadius(attackTarget);
 
     // If enemy is near enough, try to attack and hold position. Otherwise set the NavMeshAgent to move towards it
     if (animationState.currentAnimationState != CURRENT_ANIMATION_STATE.ATTACK && enemyRange <= (attackRange + unitRadius + enemyRadius))
@@ -379,7 +386,7 @@ public class Attack : MonoBehaviour
       agent.enabled = true;
 
       agent.stoppingDistance = attackRange + (unitRadius + enemyRadius);
-      agent.destination = attackedTarget.transform.position;
+      agent.destination = attackTarget.transform.localPosition;
 
       animationState.currentAnimationState = CURRENT_ANIMATION_STATE.MOVE;
     }
@@ -389,14 +396,46 @@ public class Attack : MonoBehaviour
   {
     isAttacking = false;
 
-    if (attackedTarget == null)
+    if (attackTarget == null)
     {
+      if (aoe)
+      {
+        bool targetHit = false;
+
+        Collider[] colliders = Physics.OverlapSphere(cachedAttackTargetPos, aoeRadius, 1 << 0);
+
+        for (int i = 0; i < colliders.Length; ++i)
+        {
+          if (colliders[i].GetComponent<Faction>() != null && colliders[i].GetComponent<Health>() != null)
+          {
+            // Check if is unfriendly unit and has health
+            if ((GetComponent<Faction>().faction == Faction.FACTIONS.GOBLINS && colliders[i].GetComponent<Faction>().faction == Faction.FACTIONS.FOREST) ||
+                (GetComponent<Faction>().faction == Faction.FACTIONS.FOREST && colliders[i].GetComponent<Faction>().faction == Faction.FACTIONS.GOBLINS))
+            {
+              targetHit = true;
+
+              colliders[i].GetComponent<Health>().ModifyHealth(-attackDamage * aoeDmgPct, attackTarget.transform.localPosition);
+
+              if (GetComponent<StatusEffects>())
+              {
+                GetComponent<StatusEffects>().AfflictStatusEffects(colliders[i].gameObject);
+              }
+            }
+          }
+        }
+
+        if (targetHit)
+        {
+          FMODUnity.RuntimeManager.PlayOneShot(attackSound, transform.localPosition);
+        }
+      }
+
       return;
     }
 
     if (aoe)
     {
-      Collider[] colliders = Physics.OverlapSphere(attackedTarget.transform.position, aoeRadius, 1 << 0);
+      Collider[] colliders = Physics.OverlapSphere(attackTarget.transform.localPosition, aoeRadius, 1 << 0);
 
       for (int i = 0; i < colliders.Length; ++i)
       {
@@ -406,14 +445,14 @@ public class Attack : MonoBehaviour
           if ((GetComponent<Faction>().faction == Faction.FACTIONS.GOBLINS && colliders[i].GetComponent<Faction>().faction == Faction.FACTIONS.FOREST) ||
               (GetComponent<Faction>().faction == Faction.FACTIONS.FOREST && colliders[i].GetComponent<Faction>().faction == Faction.FACTIONS.GOBLINS))
           {
-            if (colliders[i].gameObject == attackedTarget)
+            if (colliders[i].gameObject == attackTarget)
             {
-              attackedTarget.GetComponent<Health>().ModifyHealth(-attackDamage, transform.position);
+              attackTarget.GetComponent<Health>().ModifyHealth(-attackDamage, transform.localPosition);
             }
 
             else
             {
-              colliders[i].GetComponent<Health>().ModifyHealth(-attackDamage * aoeDmgPct, attackedTarget.transform.position);
+              colliders[i].GetComponent<Health>().ModifyHealth(-attackDamage * aoeDmgPct, attackTarget.transform.localPosition);
             }
 
             if (GetComponent<StatusEffects>())
@@ -427,27 +466,27 @@ public class Attack : MonoBehaviour
 
     else
     {
-      attackedTarget.GetComponent<Health>().ModifyHealth(-attackDamage, transform.position);
+      attackTarget.GetComponent<Health>().ModifyHealth(-attackDamage, transform.localPosition);
     }
 
     if (GetComponent<StatusEffects>())
     {
-      GetComponent<StatusEffects>().AfflictStatusEffects(attackedTarget);
+      GetComponent<StatusEffects>().AfflictStatusEffects(attackTarget);
     }
 
-    FMODUnity.RuntimeManager.PlayOneShot(attackSound, transform.position);
+    FMODUnity.RuntimeManager.PlayOneShot(attackSound, transform.localPosition);
   }
 
   private void RangedAttack()
   {
     isAttacking = false;
 
-    if (attackedTarget == null)
+    if (attackTarget == null)
     {
       return;
     }
 
-    if (isHealing || GetComponent<Faction>().faction == attackedTarget.GetComponent<Faction>().faction)
+    if (isHealing || GetComponent<Faction>().faction == attackTarget.GetComponent<Faction>().faction)
     {
       Heal();
 
@@ -455,31 +494,31 @@ public class Attack : MonoBehaviour
     }
 
     // Create the projectile at half height of the unit
-    Vector3 projectilePos = transform.position;
+    Vector3 projectilePos = transform.localPosition;
     projectilePos.y = (GetComponent<NavMeshAgent>().height / 2) * transform.lossyScale.y;
     GameObject projectile = Instantiate(projectilePrefab, projectilePos, new Quaternion());
 
-    projectile.GetComponent<Projectile>().SetTarget(attackedTarget, attackDamage, GetComponent<StatusEffects>(), aoe, aoeRadius, aoeDmgPct, GetComponent<Faction>().faction);
+    projectile.GetComponent<Projectile>().SetTarget(attackTarget, attackDamage, GetComponent<StatusEffects>(), aoe, aoeRadius, aoeDmgPct, GetComponent<Faction>().faction);
 
-    FMODUnity.RuntimeManager.PlayOneShot(attackSound, transform.position);
+    FMODUnity.RuntimeManager.PlayOneShot(attackSound, transform.localPosition);
   }
 
   private void Heal()
   {
     isHealing = false;
 
-    attackedTarget.GetComponent<Health>().ModifyHealth(attackDamage * healPct, Vector3.zero);
-    var particleSystem = Instantiate(healParticleSystem, attackedTarget.transform.position, new Quaternion());
-    particleSystem.GetComponent<ParticleSystemLifetime>().SetAttachedObject(attackedTarget);
-    FMODUnity.RuntimeManager.PlayOneShot(healSound, attackedTarget.transform.position);
+    attackTarget.GetComponent<Health>().ModifyHealth(attackDamage * healPct, Vector3.zero);
+    var particleSystem = Instantiate(healParticleSystem, attackTarget.transform.localPosition, new Quaternion());
+    particleSystem.GetComponent<ParticleSystemLifetime>().SetAttachedObject(attackTarget);
+    FMODUnity.RuntimeManager.PlayOneShot(healSound, attackTarget.transform.localPosition);
 
-    attackedTarget = null;
+    attackTarget = null;
     detectedTarget = null;
   }
 
   public void SetAttackTarget(GameObject target, bool healing)
   {
-    attackTarget = target;
+    focusAttackTarget = target;
     detectingEnemies = false;
 
     // Check if in the middle of an attack
@@ -497,7 +536,7 @@ public class Attack : MonoBehaviour
     else
     {
       queuedOrder = true;
-      queuedOrderPos = attackTarget.transform.position;
+      queuedOrderPos = focusAttackTarget.transform.localPosition;
       queuedHealing = healing;
     }
   }
@@ -508,13 +547,13 @@ public class Attack : MonoBehaviour
 
     if (value == false)
     {
-      attackTarget = null;
+      focusAttackTarget = null;
     }
   }
 
   public void SetAttackMovePosition(Vector3 attackMovePos)
   {
-    attackTarget = null;
+    focusAttackTarget = null;
     detectingEnemies = true;
     isAttackMoveOrder = true;
 
@@ -553,7 +592,7 @@ public class Attack : MonoBehaviour
 
   private void LookTowardsTarget(GameObject target)
   {
-    Quaternion targetRotation = Quaternion.LookRotation(target.transform.position - transform.position);
+    Quaternion targetRotation = Quaternion.LookRotation(target.transform.localPosition - transform.localPosition);
     transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, GetComponent<NavMeshAgent>().angularSpeed * Mathf.Deg2Rad * Time.deltaTime);
   }
 

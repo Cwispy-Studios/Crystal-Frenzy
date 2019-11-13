@@ -36,7 +36,7 @@ public class Projectile : MonoBehaviour
 
   private void Update()
   {
-    Vector3 direction = targetPos - transform.position;
+    Vector3 direction = targetPos - transform.localPosition;
 
     float distanceCovered = speed * Time.deltaTime;
 
@@ -62,12 +62,12 @@ public class Projectile : MonoBehaviour
               {
                 if (colliders[i].gameObject == target)
                 {
-                  colliders[i].GetComponent<Health>().ModifyHealth(-damage, transform.position);
+                  colliders[i].GetComponent<Health>().ModifyHealth(-damage, transform.localPosition);
                 }
 
                 else
                 {
-                  colliders[i].GetComponent<Health>().ModifyHealth(-damage * aoeDmgPct, transform.position);
+                  colliders[i].GetComponent<Health>().ModifyHealth(-damage * aoeDmgPct, transform.localPosition);
                 }
 
                 if (statusEffects)
@@ -82,7 +82,7 @@ public class Projectile : MonoBehaviour
         else
         {
           // Damage the target
-          target.GetComponent<Health>().ModifyHealth(-damage, transform.position);
+          target.GetComponent<Health>().ModifyHealth(-damage, transform.localPosition);
 
           if (statusEffects)
           {
@@ -91,9 +91,51 @@ public class Projectile : MonoBehaviour
         }        
       }
 
+      // Target is dead, hit ground
       else
       {
-        hitSound.setParameterByID(hitParamaterId, 1);
+        // Damage targets around the ground
+        if (aoe)
+        {
+          bool targetHit = false;
+
+          Collider[] colliders = Physics.OverlapSphere(transform.localPosition, aoeRadius, 1 << 0);
+
+          for (int i = 0; i < colliders.Length; ++i)
+          {
+            if (colliders[i].GetComponent<Faction>() != null && colliders[i].GetComponent<Health>() != null)
+            {
+              // Check if is unfriendly unit and has health
+              if ((faction == Faction.FACTIONS.GOBLINS && colliders[i].GetComponent<Faction>().faction == Faction.FACTIONS.FOREST) ||
+                  (faction == Faction.FACTIONS.FOREST && colliders[i].GetComponent<Faction>().faction == Faction.FACTIONS.GOBLINS))
+              {
+                targetHit = true;
+
+                colliders[i].GetComponent<Health>().ModifyHealth(-damage * aoeDmgPct, transform.localPosition);
+
+                if (statusEffects)
+                {
+                  statusEffects.AfflictStatusEffects(colliders[i].gameObject);
+                }
+              }
+            }
+          }
+
+          if (targetHit)
+          {
+            hitSound.setParameterByID(hitParamaterId, 0);
+          }
+
+          else
+          {
+            hitSound.setParameterByID(hitParamaterId, 1);
+          }
+        }
+
+        else
+        {
+          hitSound.setParameterByID(hitParamaterId, 1);
+        }
       }
 
       FMODUnity.RuntimeManager.AttachInstanceToGameObject(hitSound, transform, GetComponent<Rigidbody>());
