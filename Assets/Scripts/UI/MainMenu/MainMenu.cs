@@ -47,7 +47,8 @@ public class MainMenu : MonoBehaviour
 
   private void PlayGame()
   {
-    SceneManager.LoadScene("Level");
+    PlayerPrefs.SetInt("sceneToLoad",1);
+    SceneManager.LoadScene("LoadingScreen");
   }
 
   private void QuitGame()
